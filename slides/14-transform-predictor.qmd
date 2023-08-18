@@ -1,0 +1,374 @@
+---
+title: "Variable transformations"
+subtitle: "Log-transformed predictor"
+author: "Prof. Maria Tackett"
+date: "2022-10-17"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 Week 08](https://sta210-fa22.netlify.app/weeks/week-08.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+```{r}
+#| include: false
+
+# figure options
+knitr::opts_chunk$set(
+  fig.width = 10, fig.asp = 0.618, out.width = "90%",
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+```
+
+## Announcements
+
+-   [HW 02](https://sta210-fa22.netlify.app/hw/hw-02.html) due Wed, Oct 19, 11:59pm
+-   [Data Science Career Panel](https://renci.org/event/2022-ncds-fall-career-panel-analyzing-data-science-careers/) - October 19, 12 - 1pm, online
+-   Click here for [Week 08](../weeks/week-08.qmd) activities.
+
+## Mid-semester survey {.midi}
+
+Thank you to everyone who filled out a mid-semester survey!
+
+**Most helpful with learning**
+
+-   Lectures / application exercises
+-   Office hours
+
+**Something to do more of to help with learning**
+
+-   Reviewing assignments / common mistakes
+-   More examples /application exercises
+
+**Something the students can do more of / keep doing**
+
+-   Review lecture notes
+-   Do assigned readings
+-   Attend office hours
+
+## Mid-semester survey {.small}
+
+**Other notes:**
+
+-   We will review office hours schedule to make sure they are scheduled during times that don't have major conflicts
+
+-   **Grading**
+
+    -   Wording in statistics matters! For example - these are two different statements:
+
+        -   **Correct:** For every one month in age, we expect the respiratory rate to decrease by 0.659 breaths per minute, on average.
+        -   **Incorrect:** For every one month in age, the respiratory rate will decrease by 0.659 breaths per minute.
+
+    -   Full credit is awarded for (1) using the most appropriate methods (e.g., appropriate summary statistics given a distribution), (2) comprehensively and accurately justifying response, (3) consistency in response and explanation.
+
+    -   There is an example in the lecture notes, application exercises, and/or readings.
+
+## Regrade requests
+
+-   Dates they are available in email from Gradescope
+-   Review solutions and ask during office hours first
+-   Do not submit regrade requests to dispute point values
+-   Question is completely regraded by Prof. Tackett or Head TA
+-   [Policy](https://sta210-fa22.netlify.app/syllabus.html#regrade-requests) in syllabus
+
+## Topics
+
+-   Log transformation on the response variable
+
+-   Log transformation on the predictor variable
+
+## Computational set up
+
+```{r}
+#| echo: true
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(Sleuth3) 
+library(patchwork)
+
+# set default theme and larger font size for ggplot2
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 20))
+```
+
+# Recap
+
+## Respiratory Rate vs. Age {.midi}
+
+-   A high respiratory rate can potentially indicate a respiratory infection in children. In order to determine what indicates a "high" rate, we first want to understand the relationship between a child's age and their respiratory rate.
+
+-   The data contain the respiratory rate for 618 children ages 15 days to 3 years. It was obtained from the **Sleuth3** R package and is originally form a 1994 publication "Reference Values for Respiratory Rate in the First 3 Years of Life".
+
+-   **Variables**:
+
+    -   `Age`: age in months
+    -   `Rate`: respiratory rate (breaths per minute)
+
+## Rate vs. Age
+
+```{r}
+#| echo: false
+respiratory <- ex0824 |>
+  mutate(log_rate = log(Rate), 
+         log_age = log(Age))
+ggplot(data=respiratory, aes(x=Age, y=Rate)) +
+  geom_point(alpha = 0.7) + 
+  geom_smooth() +
+  labs(title  = "Respiratory Rate vs. Age", 
+       x = "Age in months", 
+       y = "Respiratory rate in breaths per minute")
+```
+
+## Training + test sets
+
+```{r}
+set.seed(101222)
+# iniital split 
+resp_split <- initial_split(respiratory)
+
+# training set
+resp_train <- training(resp_split)
+
+# test set
+resp_test <- testing(resp_split)
+
+```
+
+## Model 1: Rate vs. Age
+
+```{r}
+resp_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(Rate ~ Age, data = resp_train)
+
+tidy(resp_fit) |>
+  kable(digits = 3)
+```
+
+## Model 1: Residuals
+
+```{r echo=FALSE}
+resp_aug <- augment(resp_fit$fit)
+
+resid_orig <- ggplot(data= resp_aug, aes(x=.fitted, y=.resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept=0,color="red") + 
+  labs(x = "Predicted", y = "Residuals", 
+       title = "Model 1: Residuals vs. Predicted")
+
+resid_orig
+```
+
+## Consider different transformations...
+
+```{r}
+#| echo: false
+
+p1 <- ggplot(data=resp_train, aes(x=Age, y=Rate)) +
+  geom_point(alpha = 0.7) + 
+  geom_smooth(method = "lm")
+p2 <- ggplot(data=resp_train, aes(x=Age, y=log_rate)) +
+  geom_point(alpha = 0.7) + 
+  geom_smooth(method = "lm") + 
+    labs(y = "log(Rate)")
+p3 <- ggplot(data=resp_train, aes(x=log_age, y=Rate)) +
+  geom_point(alpha = 0.7) + 
+  geom_smooth(method = "lm") + 
+    labs(x = "log(Age)")
+  
+p4 <- ggplot(data=resp_train, aes(x=log_age, y=log_rate)) +
+  geom_point(alpha = 0.7) + 
+  geom_smooth(method = "lm") + 
+    labs(x = "log(Age)", y = "log(Rate)")
+  
+(p1 + p2) / (p3 + p4)
+```
+
+## Model 2: log(Rate) vs. Age
+
+```{r}
+#| echo: false
+#fit model
+resp_logy_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(log_rate ~ Age, data = resp_train)
+
+tidy(resp_logy_fit) |>
+  kable(digits = 3)
+```
+
+<br>
+
+-   **Slope:** For each additional month in a child's age, the median respiratory rate is expected to multiply by a factor of `r round(exp(-0.018), 3)` \[exp(-0.018)\].
+
+-   **Intercept:** The median respiratory rate for children who are 0 months old is expected to be `r round(exp(3.381), 3)` \[exp(3.381)\].
+
+## Model 2: Residuals
+
+```{r echo=F}
+resp_logy_aug <- augment(resp_logy_fit$fit)
+
+resid_logy <- ggplot(data = resp_logy_aug, aes(x = .fitted, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept=0, color="red") +
+  labs(x="Predicted", y="Residuals",
+       title="Model 2: Residuals vs. Predicted")
+
+resid_logy
+```
+
+## Compare residual plots
+
+```{r}
+#| echo: false
+
+resid_orig + resid_logy
+```
+
+# Log transformation on a predictor variable
+
+## Log Transformation on $X$
+
+```{r,echo=F}
+set.seed(1)
+s <- ggplot2::diamonds |> sample_n(100)
+p1 <- ggplot(data=s,aes(x=carat,y=log(price)))+
+  geom_point(color="blue")+
+  ggtitle("Scatterplot")+
+  xlab("X")+
+  ylab("Y")
+```
+
+```{r,echo=F}
+mod2 <- lm(log(price) ~ carat, data=s)
+s <- s |> mutate(residuals = resid(mod2), predicted = predict(mod2))
+p2 <- ggplot(data=s,aes(x=predicted, y=residuals)) + 
+geom_point(alpha = 0.7)+
+geom_hline(yintercept=0,color="red") +
+  ggtitle("Residual vs. Predicted")+
+  xlab("Predicted")+
+  ylab("residuals") 
+```
+
+```{r, echo = F, fig.height = 2.5}
+p1 + p2 + plot_annotation(title = "Example data")
+```
+
+Try a transformation on $X$ if the scatterplot shows some curvature but the variance is constant for all values of $X$
+
+## Rate vs. log(Age)
+
+```{r,echo=F}
+ggplot(data= resp_train,aes(x=log_age,y=Rate)) + 
+  geom_point(alpha = 0.7)  +
+  ggtitle("Respiratory Rate vs. log(Age)") + 
+  xlab("log(Age)")+
+  ylab("Respiratory Rate")
+```
+
+## Model with Transformation on $X$ {.midi}
+
+Suppose we have the following regression equation:
+
+$$\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 \log(X)$$
+
+. . .
+
+-   **Intercept:** When $X = 1$ $(\log(X) = 0)$, $Y$ is expected to be $\hat{\beta}_0$ (i.e. the mean of $Y$ is $\hat{\beta}_0$)
+
+-   **Slope:** When $X$ is multiplied by a factor of $\mathbf{C}$, the mean of $Y$ is expected to increase by $\boldsymbol{\hat{\beta}_1}\mathbf{\log(C)}$ units
+
+    -   **Example**: when $X$ is multiplied by a factor of 2, $Y$ is expected to increase by $\boldsymbol{\hat{\beta}_1}\mathbf{\log(2)}$ units
+
+## Model 3: Rate vs. log(Age)
+
+```{r,echo=F}
+resp_logx_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(Rate ~ log_age, data = resp_train)
+
+tidy(resp_logx_fit) |>
+  kable(digits = 3)
+```
+
+<br>
+
+::: question
+Interpret the slope and intercept in the context of the data.
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 4)
+```
+
+## Model 3: Residuals
+
+```{r}
+#| echo: false
+resp_logx_aug <- augment(resp_logx_fit$fit)
+
+resid_logx <- ggplot(data = resp_logx_aug, aes(x = .fitted, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept=0, color="red") +
+  labs(x="Predicted", y="Residuals",
+       title="Model 3: Residuals vs. Predicted")
+
+resid_logx
+```
+
+## Choose a model
+
+Recall the goal of the analysis:
+
+*In order to determine what indicates a "high" rate, we first want to understand the relationship between a child's age and their respiratory rate.*
+
+<br>
+
+::: question
+Which is the preferred metric to compare the models - $R^2$ or RMSE?
+:::
+
+## Compare models on testing data
+
+```{r}
+#| echo: false
+
+m1_test_aug <- predict(resp_fit, resp_test) |>
+  bind_cols(resp_test) 
+
+m2_test_aug <- predict(resp_logy_fit, resp_test) |>
+  bind_cols(resp_test) 
+
+m3_test_aug <- predict(resp_logx_fit, resp_test) |>
+  bind_cols(resp_test) 
+```
+
+| Rate vs. Age                                                            | log(Rate) vs. Age                                                           | Rate vs. log(Age)                                                      |
+|-------------------------------------------------------------------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------|
+| `r round(rsq(m1_test_aug, truth = Rate, estimate = .pred)$.estimate,3)` | `r round(rsq(m2_test_aug, truth = log_rate, estimate = .pred)$.estimate,3)` | `r round(rsq(m3_test_aug, truth = Rate, estimate =.pred)$.estimate,3)` |
+
+<br>
+
+::: question
+Which model would you choose?
+:::
+
+## Learn more
+
+See [Log Transformations in Linear Regression](https://github.com/sta210-sp20/supplemental-notes/blob/master/log-transformations.pdf) for more details about interpreting regression models with log-transformed variables.

@@ -1,0 +1,77 @@
+---
+title: "Exam 01 review"
+author: "Prof. Maria Tackett"
+date: "2022-09-28"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 Week 05](https://sta210-fa22.netlify.app/weeks/week-05.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+```{r setup}
+#| include: false
+
+library(countdown)
+
+knitr::opts_chunk$set(
+  fig.width = 10,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  fig.align = "center"
+)
+```
+
+## Announcements
+
+-   Exam 01: Sep 28 - 30
+
+    -   [Videos for Weeks 01 - 05](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/EfXF6q4ev7dNq53PBcDetSgBrNry2EB85vWv2xrUzGahbg?e=i3gLl6) available until Sep 28 at 11:59pm
+
+-   No TA office hours Wed - Fri
+
+-   No labs this week - use time to work on exam
+
+-   Ed Discussion archived Wed 7pm - Sat 9am
+
+-   See [Week 05](https://sta210-fa22.netlify.app/weeks/week-05.html) for this week's activities.
+
+## Exam 01
+
+-   Released today \~ 7pm (will receive email) and due Friday at 11:59pm
+
+-   Exam instructions can be found in the README of the `exam-01` Repo
+
+    -   Exercise prompts will be in `exam-01.qmd`
+
+-   Covers everything we've done thus far - Weeks 01 - 05
+
+-   Office Hours:
+
+    -   Thu, 10 - 11am (Prof. Tackett)
+
+-   Have clarification questions about exam instructions during the exam?
+
+    -   Email Prof. Tackett with "STA 210 Exam" in the subject line
+
+# Application Exercise
+
+::: appex
+📋 [AE 07: Exam 01 Review](https://sta210-fa22.netlify.app/ae/ae-07-exam-01-review.html)
+:::

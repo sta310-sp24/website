@@ -1,0 +1,94 @@
+---
+title: "AE 11: MLR Inference + conditions"
+subtitle: "Trail riders"
+date: "Oct 26, 2022"
+editor: visual
+execute: 
+  warning: false
+  message: false
+---
+
+::: callout-important
+Go to the [course GitHub organization](https://github.com/sta210-fa22) and locate your `ae-11`- to get started.
+
+The AE is due on GitHub by Saturday, October 29 at 11:59pm.
+:::
+
+## Packages
+
+```{r}
+#| message: false
+#| warning: false 
+
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+```
+
+## Data
+
+```{r}
+#| message: false
+#| warning: false 
+
+rail_trail <- read_csv("data/rail_trail.csv")
+```
+
+## Exercise 1
+
+Below is the model predicting `volume` from `hightemp` and `season`.
+
+```{r}
+rt_mlr_main_fit <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(volume ~ hightemp + season, data = rail_trail)
+
+tidy(rt_mlr_main_fit) |>
+  kable(digits = 2)
+```
+
+Add an interaction effect between `hightemp` and `season` to the model. Do the data provide evidence of a significant interaction effect? Comment on the significance of the interaction terms.
+
+```{r}
+#| label: model-with-interaction
+
+## add code
+```
+
+## Exercise 2
+
+Below is the model predicting `volume` from all available predictors.
+
+```{r}
+#| label: full-model
+
+rt_full_fit <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(volume ~ ., data = rail_trail)
+
+tidy(rt_full_fit) |>
+kable(digits = 2)
+```
+
+Fill in the code to plot the histogram of residuals with an overlay of the normal distribution based on the results of the model.
+
+::: callout-note
+Update to `eval: true` once the code is updated.
+:::
+
+```{r}
+#| label: dist-of-residuals
+#| eval: false 
+
+
+rt_full_aug <- augment(_______)
+
+ggplot(rt_full_aug, aes(.resid)) +
+  geom_histogram(aes(y = after_stat(density)), binwidth = 50) +
+  stat_function(
+    fun = dnorm, 
+    args = list(mean = mean(rt_full_aug$____), sd = ______), 
+    lwd = 2, 
+    color = "red"
+  )
+```

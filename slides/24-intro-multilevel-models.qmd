@@ -1,0 +1,462 @@
+---
+title: "Introduction to multilevel models"
+author: "Prof. Maria Tackett"
+date: "2022-11-28"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 Week 14](https://sta210-fa22.netlify.app/weeks/week-14.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+```{r}
+#| include: false
+
+# figure options
+knitr::opts_chunk$set(
+  fig.width = 8, fig.asp = 0.618, out.width = "90%",
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+
+library(countdown)
+library(tidyverse)
+library(knitr)
+library(tidyr)
+library(tidymodels)
+library(patchwork)
+```
+
+## Announcements
+
+-   Due dates
+
+    -   [Statistics experience](../hw/stats-experience.html) due Fri, Dec 09, 11:59pm
+
+-   Exam 02: Mon, Dec 05 (evening) - Thu, Dec 08, 12pm (noon)
+
+    -   Exam 02 review on Mon Dec 05
+
+    -   [Click here](https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=3abb0b6f-0db5-4d55-84f2-aefd0140874b) for lecture recordings - available until Dec 05, 11:59pm
+
+-   See [Week 14](../weeks/week-14.html) activities
+
+------------------------------------------------------------------------
+
+## Learning goals
+
+-   Recognize a potential for correlation in a data set
+-   Identify observational units at varying levels
+-   Understand issues correlated data may cause in modeling
+-   Understand how random effects models can be used to take correlation into account
+
+# Correlated observations
+
+## Examples of correlated data {.midi}
+
+::: incremental
+-   In an education study, scores for students from a particular teacher are typically more similar than scores of other students with a different teacher
+-   In a study measuring depression indices weekly over a month, the four measures for the same patient tend to be more similar than depression indices from other patients
+-   In political polling, opinions of members from the same household tend to be more similar than opinions of members from another household
+:::
+
+. . .
+
+Correlation among outcomes within the same group (teacher, patient, household) is called **intraclass correlation**
+
+## Multilevel data {.midi}
+
+-   We can think of correlated data as having a multilevel structure
+
+    -   Population elements are aggregated into groups
+    -   There are observational units and measurements at each level
+
+. . .
+
+-   For now we will focus on data with two levels:
+
+    -   **Level one**: Most basic level of observation
+    -   **Level two**: Groups formed from aggregated level-one observations
+
+. . .
+
+-   Example: education
+    -   Level one: students in a class
+    -   Level two: class / teacher
+
+## Two types of effects
+
+::: incremental
+-   **Fixed effects**: Effects that are of interest in the study
+    -   Can think of these as effects whose interpretations would be included in a write up of the study
+-   **Random effects**: Effects we're not interested in studying but whose variability we want to understand
+    -   Can think of these as effects whose interpretations would not necessarily be included in a write up of the study
+:::
+
+## Example
+
+Researchers are interested in understanding the effect social media has on opinions about a proposed economic plan. They randomly select 1000 households. They ask each adult in the household how many minutes they spend on social media daily and whether they support the proposed economic plan.
+
+-   **Fixed effect**: daily minutes on social media
+-   **Random effect**: household
+
+## Practice {.midi}
+
+Researchers conducted a randomized controlled study where patients were randomly assigned to either an anti-epileptic drug or a placebo. For each patient, the number of seizures at baseline was measured over a 2-week period. For four consecutive visits the number of seizures were determined over the past 2-week period. Patient age and sex along with visit number were recorded.
+
+::: question
+1.  What are the level one and level two observational units?
+2.  What is the response variable?
+3.  Describe the within-group variation.
+4.  What are the fixed effects? What are the random effects?
+:::
+
+```{r}
+#| echo: false 
+
+countdown(minutes = 3, seconds  = 0)
+
+```
+
+# Multilevel models
+
+## Data: Music performance anxiety
+
+The data [`musicdata.csv`](data/musicdata.csv) come from the Sadler and Miller (2010) study of the emotional state of musicians before performances. The dataset contains information collected from 37 undergraduate music majors who completed the Positive Affect Negative Affect Schedule (PANAS), an instrument produces a measure of anxiety (negative affect) and a measure of happiness (positive affect). This analysis will focus on negative affect as a measure of performance anxiety.
+
+## Data: Music performance anxiety
+
+The primary variables we'll use are
+
+-   **`na`**: negative affect score on PANAS (the response variable)
+-   **`perform_type`**: type of performance (Solo, Large Ensemble, Small Ensemble)
+-   **`instrument`**: type of instrument (Voice, Orchestral, Piano)
+
+## Look at data {.midi}
+
+```{r echo = F}
+music <- read_csv("data/musicdata.csv")
+music |>
+  filter(id %in% c(1, 43)) |>
+  group_by(id) |>
+  slice(1:3) |>
+  select(id, diary, perform_type, na, gender, instrument) |>
+  kable()
+```
+
+-   What are the Level One observations? Level Two observations?
+
+-   What are the Level One variables? Level Two variables?
+
+## Univariate exploratory data analysis
+
+**Level One variables**
+
+Two ways to approach univariate EDA (visualizations and summary statistics) for Level One variables:
+
+-   Use individual observations (i.e., treat observations as independent)
+
+-   Use aggregated values for each Level Two observation
+
+. . .
+
+**Level Two variables**
+
+-   Use a data set that contains one row per Level Two observation
+
+## Bivariate exploratory data analysis {.midi}
+
+**Goals**
+
+-   Explore general association between the predictor and response variable
+-   Explore whether subjects at a given level of the predictor tend to have similar mean responses
+-   Explore whether variation in response differs at different levels of a predictor
+
+There are two ways to visualize these associations:
+
+-   One plot of individual observations (i.e., treat observations as independent)
+
+-   Separate plots of responses vs. predictor for each Level Two observation (lattice plots)
+
+## Application exercise
+
+::: appex
+📋 [AE 15: Introduction to Multilevel models](../ae/ae-15-multilevel-models.html)
+:::
+
+Complete Part 2: Bivariate EDA
+
+```{r echo = F}
+library(countdown)
+countdown(minutes = 8, seconds = 00,
+          margin = "1.25%")
+```
+
+# Fitting the model
+
+## Questions we want to answer
+
+The goal is to understand variability in performance anxiety (`na`) based on performance-level and musician-level characteristics.
+
+Specifically:
+
+-   What is the association between performance type (large ensemble or not) and performance anxiety? Does the association differ based on instrument type (orchestral or not)?
+
+## Linear regression model
+
+::: question
+What is the problem with using the following model to draw conclusions?
+:::
+
+```{r echo = F}
+music <- music |>
+  mutate(orchestra = if_else(instrument == "orchestral instrument", 1, 0), 
+         large_ensemble = if_else(perform_type == "Large Ensemble", 1,0))
+
+ols <- lm(na ~ orchestra + large_ensemble + orchestra * large_ensemble, 
+          data = music)
+tidy(ols) |> kable(digits = 3)
+```
+
+------------------------------------------------------------------------
+
+## Other modeling approaches {.midi}
+
+`r emo::ji("one")` Condense each musician's set of responses into a single outcome (e.g., mean max, last observation, etc.) and fit a linear model on these condensed observations
+
+-   Leaves few observations (37) to fit the model
+-   Ignoring a lot of information in the multiple observations for each musician
+
+. . .
+
+`r emo::ji("two")` Fit a separate model for each musician understand the association between performance type (Level One models). Then fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).
+
+. . .
+
+**Let's look at approach #2**
+
+## Level One model
+
+We'll start with the Level One model to understand the association between performance type and performance anxiety for the $i^{th}$ musician.\
+$$na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_i, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)$$
+
+::: question
+Why is it more meaningful to use performance type for the Level One model than instrument?
+:::
+
+. . .
+
+For now, estimate $a_i$ and $b_i$ using least-squares regression.
+
+## Level One model for one student
+
+Below is partial data for observation #22
+
+```{r echo = F}
+music |>
+  filter(id == 22) |>
+  select(id, diary, perform_type, instrument, na) |>
+  slice(1:3, 13:15) |>
+  kable()
+```
+
+## Level One model for musician 22 {.midi}
+
+```{r}
+id_22 <- music |>
+  filter(id == 22)
+
+linear_reg() |>
+  set_engine("lm") |>
+  fit(na ~ large_ensemble, data = id_22) |>
+  tidy() |> kable(digits = 3)
+```
+
+## Application exercise
+
+::: appex
+📋 [AE 15: Introduction to Multilevel models](../ae/ae-15-multilevel-models.html)
+:::
+
+See Part 3: Level One Models to fit the Level One model for all 37 musicians.
+
+## Level One model summaries
+
+```{r echo = F}
+# set up tibble for fitted values 
+
+model_stats <- tibble(slopes = rep(0,37), 
+               intercepts = rep(0,37), 
+               r.squared = rep(0, 37))
+
+
+ids <- music |> distinct(id) |> pull()
+
+# counter to keep track of row number to store model_stats
+
+count <- 1
+
+for(i in ids){
+level_one_model <- music |>
+  filter(id == i) |>
+  lm(na ~ large_ensemble, data = _)
+
+level_one_model_tidy <- tidy(level_one_model)
+
+
+model_stats$slopes[count] <- level_one_model_tidy$estimate[2]
+model_stats$intercepts[count] <- level_one_model_tidy$estimate[1]
+model_stats$r.squared[count] <- glance(level_one_model)$r.squared
+
+count = count + 1
+}
+```
+
+```{r echo = F, fig.cap = "Recreated from BMLR Figure 8.9"}
+p1 <- ggplot(data = model_stats, aes(x = intercepts)) + 
+  geom_histogram(fill = "steelblue", color = "black", binwidth = 2) + 
+  labs(x = "Fitted intercepts", 
+      title  = "Intercepts", 
+      subtitle = "from 37 musicians")
+
+p2 <- ggplot(data = model_stats, aes(x = slopes)) + 
+  geom_histogram(fill = "steelblue", color = "black", binwidth = 2) + 
+  labs(x = "Fitted Slopes", 
+      title  = "Slopes", 
+      subtitle = "from 37 musicians")
+
+p1 + p2
+```
+
+. . .
+
+**Now let's consider if there is an association between the estimated slopes, estimated intercepts, and the type of instrument.**
+
+## Level Two Model
+
+The slope and intercept for the $i^{th}$ musician can be modeled as\
+$$\begin{aligned}&a_i = \alpha_0 + \alpha_1 ~ Orchestra_i + u_i \\
+&b_i = \beta_0 + \beta_1 ~ Orchestra_i + v_i\end{aligned}$$
+
+Note the response variable in the Level Two models are not observed outcomes but the (fitted) slope and intercept from each musician
+
+## Application exercise
+
+::: appex
+📋 [AE 15: Introduction to Multilevel models](../ae/ae-15-multilevel-models.html)
+:::
+
+See Part 4: Level Two Models.
+
+## Estimated coefficients by instrument
+
+```{r echo = F}
+
+musicians <- music |>
+  distinct(id, orchestra) |>
+  bind_cols(model_stats)
+
+p1 <- ggplot(data = musicians, aes(x = intercepts, y = factor(orchestra))) + 
+  geom_boxplot(fill = "steelblue", color = "black") + 
+  labs(x = "Fitted intercepts", 
+       y = "Orchestra")
+
+p2 <- ggplot(data = musicians, aes(x = slopes, y = factor(orchestra))) + 
+  geom_boxplot(fill = "steelblue", color = "black") + 
+  labs(x = "Fitted slopes", 
+       y = "Orchestra")
+
+p1 / p2
+```
+
+## Level Two model
+
+**Model for intercepts**
+
+```{r echo = F}
+a <- lm(intercepts ~ orchestra, data = musicians) 
+tidy(a) |>
+  kable(digits = 3)
+```
+
+**Model for slopes**
+
+```{r echo = F}
+b <- lm(slopes ~ orchestra, data = musicians) 
+tidy(b) |>
+  kable(digits = 3)
+```
+
+## Writing out the models
+
+**Level One**
+
+$$\hat{na}_{ij}  = \hat{a}_i + \hat{b}_i ~ LargeEnsemble_{ij}$$
+
+for each musician.
+
+. . .
+
+**Level Two**
+
+```{=tex}
+\begin{aligned}&\hat{a}_i = 16.283 + 1.441 ~ Orchestra_i \\
+&\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\end{aligned}
+```
+## Composite model {.midi}
+
+```{=tex}
+\begin{aligned}\hat{na}_i &= 16.283 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
+&- 1.406 ~ Orchestra:LargeEnsemble_{ij}\end{aligned}
+```
+(Note that we also have the error terms $\epsilon_{ij}, u_i, v_i$ that we will discuss next class.)
+
+::: question
+-   What is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who place orchestral instruments?
+
+-   What is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?
+:::
+
+## Disadvantages to this approach
+
+`r emo::ji("warning")` Weighs each musician the same regardless of number of diary entries
+
+`r emo::ji("warning")` Drops subjects who have missing values for slope (7 individuals who didn't play a large ensemble performance)
+
+`r emo::ji("warning")` Does not share strength effectively across individuals.
+
+## Application exercise
+
+::: appex
+📋 [AE 15: Introduction to Multilevel models](../ae/ae-15-multilevel-models.html)
+:::
+
+See Part 5: Distribution of $R^2$ values.
+
+## Next time
+
+We will use a unified approach that utilizes likelihood-based methods to address some of these drawbacks.
+
+## Acknowledgements
+
+-   The content in the slides is from
+
+    -   [BMLR: Chapter 7 - Correlated data](https://bookdown.org/roback/bookdown-BeyondMLR/ch-corrdata.html)
+
+    -   [BMLR: Chapter 8 - Introduction to Multilevel Models](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html)
+
+-   Sadler, Michael E., and Christopher J. Miller. 2010. "Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians." Social Psychological and Personality Science 1 (3): 280--87. http://dx.doi.org/10.1177/1948550610370492.

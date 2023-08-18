@@ -1,0 +1,45 @@
+---
+title: "Week 14"
+subtitle: "Multilevel models"
+description: ""
+author: "Nov 28 - Dec 02"
+date: ""
+tbl-colwidths: [60,40]
+title-block-style: none
+---
+
+::: callout-important
+-   AE 15 due Sat, Dec 03, 11:59pm
+-   Team Feedback #2 due Tue, Dec 06, 11:59pm
+-   Looking ahead
+    -   Exam 02: Dec 05 (evening) - Dec 08, 12pm (noon)
+        -   Click here for all lecture recordings
+:::
+
+# Prepare
+
+| Reading                                                                                                                                                                | Corresponding lecture |
+|----------------------------------------------------|--------------------|
+| 📖 Beyond Multiple Linear Regression, Chapter 7: [Correlated Data](https://bookdown.org/roback/bookdown-BeyondMLR/ch-corrdata.html) (optional)                         | Nov 28                |
+| 📖 Beyond Multiple Linear Regression, Chapter 8:[Introduction to Multilevel Models](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html) (optional) | Nov 28 & Nov 30       |
+
+# Participate
+
+| Topic                                                                             | Date        |
+|-----------------------------------------------------|-------------------|
+| 💻 [Introduction to Multilevel Models](../slides/24-intro-multilevel-models.html) | Nov 28      |
+| 💻 [Fitting Multilevel Models](../slides/25-multilevel-models-pt2.html)           | Nov 30      |
+| 💻 [Lab: Written report](../slides/lab-dec01-02.html)                             | Dec 01 & 02 |
+
+# Practice
+
+|                                                                                   |
+|------------------------------------------------------------------------|
+| 📋 [AE 15: Introduction to Multilevel Models](../ae/ae-15-multilevel-models.html) |
+
+# Perform
+
+|                                                                                                       |                                                                |
+|--------------------------------------------|----------------------------|
+| 📝 [Project written report](https://sta210-fa22.netlify.app/project-instructions.html#written-report) | due Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm) |
+| 📝 [Statistics experience](../hw/stats-experience.html)                                               | due Fri, Dec 09, 11:59pm                                       |

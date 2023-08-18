@@ -1,0 +1,198 @@
+---
+title: "Lab: Project Proposal"
+author: "Oct 27 - 28, 2022"
+footer: "[🔗 Week 09](https://sta210-fa22.netlify.app/weeks/week-09.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+```{r}
+# figure options
+knitr::opts_chunk$set(
+  fig.width = 10, fig.asp = 0.618,
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+```
+
+```{r}
+library(tidyverse)
+library(viridis)
+library(tidymodels)
+library(knitr)
+```
+
+# Welcome
+
+## Goals
+
+-   Review models with log-transformed response or predictor variables
+-   Project proposal
+
+# Models with log-transformed variables
+
+## Movies data {.midi}
+
+The goal of this analysis is to predict the total gross revenue of a movie using opening weekend statistics. The data set includes movies released in the U.S. in 2009 that opened on 500 or more theater screens. The data were obtained from *Handbook of Regression Analysis.*
+
+The variables we'll use are
+
+-   `TotalGross`: Total US gross revenue in millions of dollars
+
+-   `Opening`: opening weekend gross revenue in millions of dollars
+
+-   `Screens`: the number of screens on which the movie opened
+
+```{r}
+movies <- read_csv("data/movies2009.csv") |>
+  rename(TotalGross = `Total Gross`)
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 20))
+
+knitr::opts_chunk$set(
+  fig.width = 10, fig.asp = 0.618, out.width = "90%",
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+
+```
+
+## Exploratory data analysis
+
+Below are the distributions and measure of center for the response and each predictor variable.
+
+::: {.columns width="33%"}
+::: {.column width="33%"}
+```{r}
+ggplot(data = movies, aes(x = TotalGross)) + 
+  geom_histogram(fill = "steelblue", color = "black") +
+  labs(x = "", 
+       title = "Total Gross Revenue") + 
+  theme_bw()
+
+movies |>
+  summarise(mean = mean(TotalGross), median = median(TotalGross)) |>
+  kable(digits = 2)
+  
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+ggplot(data = movies, aes(x = Opening)) + 
+  geom_histogram(fill = "steelblue", color = "black") +
+  labs(x = "", 
+       title = "Opening Weekend Revenue") + 
+  theme_bw()
+
+movies |>
+  summarise(mean = mean(Opening), median = median(Opening)) |>
+  kable(digits = 2)
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+ggplot(data = movies, aes(x = Screens)) + 
+  geom_histogram(fill = "steelblue", color = "black") +
+  labs(x = "", 
+       title = "Number of Theater Screens Opening Weekend") + 
+  theme_bw()
+
+movies |>
+  summarise(mean = mean(Screens), median = median(Screens)) |>
+  kable(digits = 2)
+```
+:::
+:::
+
+## Log-transformed response variable {.small}
+
+We'll start by considering the following model with a log-transformed response variable. Note that `OpeningCent` and `ScreenCent` are the mean-centered version of `Opening` and `Screens.`
+
+$$
+\log(TotalGross) = \beta_0 + \beta_1 \times OpeningCent + \beta_2 \times ScreensCent + \epsilon \hspace{8mm} \epsilon \sim N(0, \sigma^2_{\epsilon})
+$$
+
+. . .
+
+The model output is below:
+
+```{r}
+movies <- movies |>
+  mutate(OpeningCent = Opening - mean(Opening), 
+         ScreensCent = Screens - mean(Screens))
+
+m1 <- linear_reg() |>
+  set_engine("lm") |>
+  fit(log(TotalGross) ~ OpeningCent + ScreensCent, data = movies)
+
+tidy(m1) |>
+  
+  kable(digits = 4)
+```
+
+<br>
+
+. . .
+
+::: question
+-   Interpret the intercept in the context of the data.
+
+-   Interpret the effect of `Opening` in the context of the data.
+:::
+
+## Log-transformed predictor variable {.small}
+
+Next let's consider the following model with a log-transformed predictor. Note that `OpeningCent` and `ScreenCent` are the mean-centered version of `Opening` and `Screens.`
+
+$$TotalGross = \beta_0 + \beta_1 \times \log(OpeningCent) + \beta_2 \times ScreensCent + \epsilon \hspace{8mm} \epsilon \sim N(0, \sigma^2_{\epsilon})
+$$
+
+. . .
+
+The model output is below:
+
+```{r}
+movies <- movies |>
+  mutate(OpeningCent = Opening - mean(Opening), 
+         ScreensCent = Screens - mean(Screens))
+
+m1 <- linear_reg() |>
+  set_engine("lm") |>
+  fit(TotalGross ~ log(OpeningCent) + ScreensCent, data = movies)
+
+tidy(m1) |>
+  
+  kable(digits = 4)
+```
+
+<br>
+
+. . .
+
+::: question
+-   Interpret the intercept in the context of the data.
+
+-   Interpret the effect of a 10% increase in `Opening` in the context of the data.
+:::
+
+# Project proposal
+
+## Project proposal
+
+-   Choose one of the usable data sets proposed in the Topic Ideas
+
+-   [Click here](https://sta210-fa22.netlify.app/project-instructions.html#project-proposal) for proposal instructions

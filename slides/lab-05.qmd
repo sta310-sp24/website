@@ -1,0 +1,126 @@
+---
+title: "Lab 05"
+subtitle: "Recipes + Model comparison"
+author: "Oct 20 - 21, 2022"
+footer: "[🔗 Week 08](https://sta210-fa22.netlify.app/weeks/week-08.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+```{r}
+# figure options
+knitr::opts_chunk$set(
+  fig.width = 10, fig.asp = 0.618,
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+```
+
+```{r}
+library(tidyverse)
+library(viridis)
+library(tidymodels)
+library(knitr)
+```
+
+# Welcome
+
+## Goals
+
+-   Review interaction effects
+-   Lab 05: Halloween candy
+
+# Interaction terms
+
+## Diamonds data
+
+The data contain the price and other attributes of a random sample of 1000 diamonds. This sample was drawn from the `diamonds` data frame in the **tidyverse** R package.
+
+The variables in this example are
+
+-   `price`: Price in US dollars
+
+-   `carat`: Weight of the diamond (units = carats)
+
+-   `cut`: Quality of the cut of the diamond (Fair, Good, Ideal)
+
+The goal is to use the carat and cut to understand variability in the price.
+
+## Exploratory data analysis {.small}
+
+```{r}
+#| echo: false
+
+set.seed(1234)
+diamonds_samp <- diamonds |>
+  filter(cut %in% c("Good", "Ideal", "Fair")) |>
+  sample_n(1000) |>
+  mutate(cut = factor(cut, order = FALSE, levels = c("Fair", "Good", "Ideal") ))
+
+ggplot(data = diamonds_samp, aes(x = carat, y = price, color = cut)) + geom_jitter(alpha= 0.5) + 
+  geom_smooth(method = "lm", se  = FALSE) + 
+  scale_color_viridis_d(end = 0.95) + 
+  labs(x = "Carats", 
+       y = "Price in US Dollars", 
+      color = "Cut", 
+      title = "Price versus Carats by Color") +
+  theme_bw()
+```
+
+::: question
+Does the plot show evidence of an interaction effect between carats and cut?
+:::
+
+## Model {.midi}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+diamonds_model <- linear_reg() |>
+  set_engine("lm") |>
+  fit(price ~ carat + cut + carat * cut, data = diamonds_samp) 
+
+tidy(diamonds_model) |>
+  select(term, estimate) |>
+  kable(digits = 3)
+```
+:::
+
+::: {.column width="50%"}
+::: question
+::: midi
+-   Interpret the coefficient of `cutGood` in the context of the data.
+-   Interpret the coefficient of `carat:cutGood` in the context of the data.
+-   Suppose we fit a model for `Fair` cut diamonds. What is the intercept? What is the slope of `carat` ?
+-   Suppose we fit a model for `Ideal` cut diamonds. What is the intercept? What is the slope of `carat`?
+:::
+:::
+:::
+:::
+
+# Lab 05: Recipes + Model Comparison
+
+## Resources for Lab 05 {.midi}
+
+-   Lecture notes:
+
+    -   [Feature engineering](https://sta210-fa22.netlify.app/slides/11-feature-engineering.html#/title-slide)
+    -   [Feature engineering: Model workflow](https://sta210-fa22.netlify.app/slides/12-feature-engineering-pt2.html#/title-slide)
+    -   [Model comparison](https://sta210-fa22.netlify.app/slides/15-model-comparison.html)
+
+-   [Recipes package function reference](https://recipes.tidymodels.org/reference/index.html)
+
+-   Tidy Modeling in R - [Chapter 8: Feature engineering with recipes](https://www.tmwr.org/recipes.html)

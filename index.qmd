@@ -1,0 +1,50 @@
+---
+title: "STA 210: Regression Analysis"
+subtitle: "Fall 2023 - Dr. Maria Tackett"
+execute: 
+  freeze: false
+---
+
+# Overview
+
+Learn approaches for analyzing multivariate data sets, emphasizing analysis of variance, linear regression, and logistic regression. Learn techniques for checking the appropriateness of proposed models, such as residual analyses and case influence diagnostics, and techniques for selecting models. Gain experience dealing with the challenges that arise in practice through assignments that utilize real-world data. This class emphasizes data analysis over mathematical theory.
+
+# Class meetings
+
+|             |             |                            |                     |
+|-------------|-------------|----------------------------|---------------------|
+| **Lecture** | Section 001 | Mon & Wed 10:15 - 11:30 am | Reuben-Cooke 130    |
+|             | Section 002 | Mon & Wed 3:30 - 4:45pm    | Social Sciences 136 |
+| **Lab**     | Lab 01      | Thu 3:30 - 4:45pm          | Perkins Link #5     |
+|             | Lab 02      | Thu 5:15 - 6:30pm          | Perkins Link #5     |
+|             | Lab 03      | Fri 12 - 1:15pm            | Perkins Link #5     |
+|             | Lab 04      | Fri 1:45 - 3pm             | Old Chemistry 003   |
+
+# Teaching team
+
+### Instructor
+
+[Maria Tackett](https://www2.stat.duke.edu/~mt324) is an Assistant Professor of the Practice in the Department of Statistical Science at Duke University. Her work focuses on understanding how active learning strategies can be used to promote engagement and student motivation in undergraduate statistics courses. She also studies how classroom practices in introductory math and statistics courses impact students' sense of community, self-efficacy, and learning outcomes.
+
+| Office hours         | Location      |
+|----------------------|---------------|
+| Fri 1 - 3pm          | Old Chem 118B |
+| *or by appointment.* |               |
+
+## Teaching assistants
+
+::: {.callout-important appearance="simple" icon="false"}
+Click here for full list of office hours.
+:::
+
+| Name              | Role    | Lab section                |
+|-------------------|---------|----------------------------|
+| Sam Rosen         | Head TA | Lab 01: Tu 10:05 - 11:20am |
+| Donald Cayton     | TA      | Lab 02: Tu 11:45am - 1pm   |
+| Linxuan Wang      | TA      | Lab 03: Th 10:05 - 11:20am |
+| Xiaojun Zheng     | TA      | Lab 04: 11:45am - 1pm      |
+| Bethany Astor     | TA      |                            |
+| Jon Campbell      | TA      |                            |
+| Allison Li        | TA      |                            |
+| Mitchelle Mojekwu | TA      |                            |
+| Ben Thorpe        | TA      |                            |

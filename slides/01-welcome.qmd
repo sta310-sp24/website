@@ -1,0 +1,367 @@
+---
+title: "Welcome to STA 210!"
+author: "Prof. Maria Tackett"
+date: "2022-08-29"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 Week 01](https://sta210-fa22.netlify.app/weeks/week-01.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+# Welcome!
+
+## Meet the professor
+
+::: columns
+::: {.column width="50%"}
+![](images/01/maria.png){fig-alt="Headshot of Maria Tackett" fig-align="center"}
+
+::: center
+**Dr. Maria Tackett**
+:::
+:::
+
+::: {.column width="50%"}
+-   Assistant Professor of the Practice, Department of Statistical Science
+
+-   Work focuses on statistics education, specifically active learning, motivation, and classroom community
+
+-   Find out more at [maria-tackett.netlify.app](https://maria-tackett.netlify.app)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Meet TAs
+
+::: columns
+::: {.column width="50%"}
+-   Carson Garcia (UG)
+
+-   Sara Meta (UG)
+
+-   Medy Mu (UG)
+
+-   Glenn Palmer (PhD)
+
+-   Braden Scherting (PhD)
+:::
+
+::: {.column width="50%"}
+-   Luke Vrotsos (PhD)
+
+-   Ben Wallace (UG)
+
+-   Aaditya Warrier (UG)
+
+-   Grace Zhao (MS)
+:::
+:::
+
+## Check in on Ed Discussion!
+
+-   Go to the class Ed Discussion
+
+    -   [Section 001 (10:15am lecture)](https://edstem.org/us/courses/26900/discussion/1706930)
+
+    -   [Section 002 (3:30pm lecture)](https://edstem.org/us/courses/26900/discussion/1706937)
+
+-   Answer the poll question: **How are you doing?**
+
+# Regression analysis
+
+## What is regression analysis?
+
+::: {style="font-size: 0.85em;"}
+> "In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when ***the focus is on the relationship between a dependent variable and one or more independent variables (or 'predictors')***. More specifically, regression analysis helps one understand how the typical value of the dependent variable (or 'criterion variable') changes when any one of the independent variables is varied, while the other independent variables are held fixed."
+
+Source: [Wikipedia](https://en.wikipedia.org/wiki/Regression_analysis) (previous definition)
+:::
+
+# STA 210
+
+## Course FAQ
+
+**Q - What background is assumed for the course?**
+
+A - Introductory statistics or probability course at Duke
+
+. . .
+
+**Q - Will we be doing computing?**
+
+A - Yes. We will use the computing language R and version control platform GitHub
+
+. . .
+
+**Q - Will we learn the mathematical theory of regression?**
+
+A - Yes and No. The course is primarily focused on application; however, we will discuss some of the mathematics of simple linear regression. There a 0.5-credit course [STA 211: Mathematics of Regression](https://stat.duke.edu/courses/mathematics-regression) to take simultaneously or after this course to dive into more of the mathematics.
+
+------------------------------------------------------------------------
+
+## Course learning objectives
+
+-   Analyze real-world data to answer questions about multivariable relationships.
+
+-   Fit and evaluate linear and logistic regression models.
+
+-   Assess whether a proposed model is appropriate and describe its limitations.
+
+-   Use Quarto to write reproducible reports and GitHub for version control and collaboration.
+
+-   Communicate results from statistical analyses to a general audience.
+
+## Course topics
+
+::: columns
+::: {.column width="50%"}
+**Unit 1: Quantitative Response Variable**
+
+-   Simple Linear Regression
+
+-   Multiple Linear Regression
+
+<br>
+
+**Unit 2: Categorical Response Variable**
+
+-   Logistic Regression
+:::
+
+::: {.column width="50%"}
+**Unit 3: Looking Ahead**
+
+-   Mixed and random effects
+
+-   Introduction to linear mixed models
+
+-   Presenting statistical results
+:::
+:::
+
+## Examples of regression in practice
+
+-   [New Yorkers Will Pay \$56 A Month To Trim A Minute Off Their Commute](https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/)
+
+-   [How FiveThirtyEight's 2020 Presidential Forecast Works --- And What's Different Because Of COVID-19](https://fivethirtyeight.com/features/how-fivethirtyeights-2020-presidential-forecast-works-and-whats-different-because-of-covid-19/)
+
+-   [Effect of Forensic Evidence on Criminal Justice Case Processing](https://onlinelibrary.wiley.com/doi/10.1111/1556-4029.12020)
+
+-   [Why it's so freaking hard to make a good COVID-19 model](https://fivethirtyeight.com/features/why-its-so-freaking-hard-to-make-a-good-covid-19-model/)
+
+# Course overview
+
+## Course toolkit
+
+-   **Course website**: [sta210-fa22.netlify.app](https://sta210-fa22.netlify.app)
+    -   Central hub for the course!
+    -   **Tour of the website**
+-   **Sakai**: [sakai.duke.edu](https://sakai.duke.edu)
+    -   Gradebook
+    -   Announcements
+    -   Gradescope
+-   **Ed Discussion**: [edstem.org/us/courses/26900/discussion](https://edstem.org/us/courses/26900/discussion/)
+    -   Class Q&A and discussion forum
+
+------------------------------------------------------------------------
+
+## Computing toolkit
+
+::: columns
+::: {.column width="50%"}
+![](images/01/rstudio.png){fig-alt="RStudio logo" fig-align="center" width="75%"}
+:::
+
+::: {.column width="50%"}
+-   All analyses using R, a statistical programming language
+
+-   Write reproducible reports in Quarto
+
+-   Access RStudio through [STA 210 Docker Containers](https://cmgr.oit.duke.edu/containers)
+:::
+:::
+
+## Computing toolkit
+
+::: columns
+::: {.column width="50%"}
+![](images/01/github.png){fig-alt="GitHub logo" fig-align="center" width="75%"}
+:::
+
+::: {.column width="50%"}
+-   Access assignments
+
+<!-- -->
+
+-   Facilitates version control and collaboration
+
+-   All work in [STA 210 course organization](https://github.com/sta210-fa22)
+:::
+:::
+
+## Activities: Prepare, Participate, Practice, Perform
+
+::: small
+::: incremental
+-   **Prepare:** Introduce new content and prepare for lectures by completing the readings (and sometimes watching the videos)
+
+-   **Participate:** Attend and actively participate in lectures and labs, office hours, team meetings
+
+-   **Practice:** Practice applying statistical concepts and computing with application exercises during lecture, graded for completion
+
+-   **Perform:** Put together what you've learned to analyze real-world data
+
+    -   Lab assignments (first individual, later team-based)
+
+    -   Homework assignments (individual)
+
+    -   Two take-home exams
+
+    -   Term project presented during the final exam period
+:::
+:::
+
+## Grading
+
+| Category              | Percentage |
+|-----------------------|------------|
+| Homework              | 35%        |
+| Final project         | 15%        |
+| Lab                   | 15%        |
+| Exam 01               | 15%        |
+| Exam 02               | 15%        |
+| Application Exercises | 2.5%       |
+| Teamwork              | 2.5%       |
+
+See the [syllabus](https://sta210-fa22.netlify.app/syllabus.html) for details on how the final letter grade will be calculated.
+
+## Support
+
+-   Attend office hours to meet with a member of the teaching team
+    -   Full office hours schedule begins Tuesday, September 6
+-   Ask and answer questions on course discussion forum
+-   Use email for questions regarding personal matters and/or grades
+-   Read the [Course Support](https://sta210-fa22.netlify.app/support.html) page for more details
+
+## Diversity & inclusion
+
+::: small
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.
+
+-   If you have a name that differs from those that appear in your official Duke records, please let me know.
+
+-   Please let me know your preferred pronouns, if you are comfortable sharing.
+
+-   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your advisers and deans are excellent resources.
+
+-   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said or done in class (by anyone) that made you feel uncomfortable, please talk to me about it.
+:::
+
+## Accessibility
+
+-   The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) is available to ensure that students are able to engage with their courses and related assignments.
+
+-   I am committed to making all course materials accessible and I'm always learning how to do this better. If any course component is not accessible to you in any way, please don't hesitate to let me know.
+
+# Course policies
+
+## COVID policies
+
+-   `r emo::ji("mask")` Wear a mask at all times in lectures and labs based on current university policy
+
+-   Read and follow the [university guidelines](https://coronavirus.duke.edu/guidelines-requirements/)
+
+## Late work, waivers, and regrade requests
+
+-   We have policies!
+
+-   Read about them in the [syllabus](https://sta210-fa22.netlify.app/syllabus.html) and refer back to them as needed
+
+## Collaboration & sharing code
+
+-   We have policies!
+
+-   Read about them in the [syllabus](https://sta210-fa22.netlify.app/syllabus.html) and refer to them as needed
+
+-   We'll discuss these more before the first assignments
+
+## Academic integrity
+
+> To uphold the Duke Community Standard:
+>
+> -   I will not lie, cheat, or steal in my academic endeavors;
+>
+> -   I will conduct myself honorably in all my endeavors; and
+>
+> -   I will act if the Standard is compromised.
+
+\
+By participating in this course, you are agreeing that all your work and conduct will be in accordance with the Duke Community Standard.
+
+## If you're not sure...
+
+Ask if you're not sure if something violates a policy!
+
+# Having a successful semester in STA 210
+
+## Five tips for success
+
+1.  Complete all the preparation work (readings and videos) before class.
+
+2.  Ask questions.
+
+3.  Do the homeworks and labs and get started on homework early when possible.
+
+4.  Don't procrastinate and don't let a week pass by with lingering questions.
+
+5.  Stay up-to-date on announcements (posted on Sakai & sent via email).
+
+## Learning during a pandemic
+
+I want to make sure that you learn everything you were hoping to learn from this class. If this requires flexibility, please don't hesitate to ask.
+
+-   You never owe me personal information about your health (mental or physical) but you're always welcome to talk to me. If I can't help, I likely know someone who can.
+
+-   I want you to learn lots of things from this class, but I primarily want you to stay healthy, balanced, and grounded.
+
+See the [Course Support](https://sta210-fa22.netlify.app/support.html) page for information on Duke's academic and wellness resources.
+
+# Questions?
+
+# Let's look at some data!
+
+## Application exercise
+
+::: appex
+📋 [AE 01 - Movie Budgets and Revenues](https://sta210-fa22.netlify.app/ae/ae-01-movies.html)
+:::
+
+# This week
+
+## For this week...
+
+-   Read the syllabus
+
+-   See [Week 01](https://sta210-fa22.netlify.app/weeks/week-01.html) on the schedule for lecture slides, assignments, and readings.
+
+-   Complete the [STA 210 Student Survey](https://duke.qualtrics.com/jfe/form/SV_cGV5IKoeadWR59s) (will ask for a GitHub username)
+
+    -   [Click here](https://happygitwithr.com/github-acct.html) for information on registering for a GitHub account and choosing a username.
+    -   You will go over this in lab this week.
+
+-   Reserve an [STA 210 Docker Container](https://cmgr.oit.duke.edu/containers)

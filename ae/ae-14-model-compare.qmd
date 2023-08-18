@@ -1,0 +1,116 @@
+---
+title: "AE 14: Logistic regression"
+subtitle: "Model comparsion"
+date: "Nov 14, 2022"
+editor: visual
+execute: 
+  warning: false
+  message: false
+editor_options: 
+  chunk_output_type: console
+---
+
+::: callout-important
+Go to the [course GitHub organization](https://github.com/sta210-fa22) and locate your `ae-14`- to get started.
+
+The AE is due on GitHub by Thursday, November 17 , 11:59pm.
+:::
+
+## Packages
+
+```{r}
+#| label: load-pkgs-data
+#| message: false
+ 
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+```
+
+## Data
+
+For this application exercise we will work with a data set of 25,000 randomly sampled flights that departed one of three NYC airports (JFK, LGA, EWR) in 2013.
+
+```{r}
+flight_data <- read_csv("data/flight-data.csv")
+```
+
+The goal of this analysis is to fit a model that could be used to predict whether a flight will arrive on time (up to 30 minutes past the scheduled arrival time) or late (more than 30 minutes past the scheduled arrival time).
+
+1.  Convert `arr_delay` to factor with levels `"late"` (first level) and `"on_time"` (second level). This variable is our outcome and it indicates whether the flight's arrival was more than 30 minutes.
+
+```{r}
+# add code
+```
+
+## Modeling prep
+
+2.  Split the data into testing (75%) and training (25%), and save each subset.
+
+```{r}
+set.seed(222)
+
+# add code
+```
+
+3.  Specify a logistic regression model that uses the `"glm"` engine.
+
+```{r}
+# add code
+```
+
+Next, we'll create two recipes and workflows and compare them to each other.
+
+## Model 1: Everything and the kitchen sink
+
+4.  Define a recipe that predicts `arr_delay` using all variables except for `flight` and `time_hour`, which, in combination, can be used to identify a flight, and `dest`. Also make sure this recipe handles dummy coding as well as issues that can arise due to having categorical variables with some levels apparent in the training set but not in the testing set. Call this recipe `flights_rec1`.
+
+```{r}
+# add code
+```
+
+5.  Create a workflow that uses `flights_rec1` and the model you specified.
+
+```{r}
+# add code
+```
+
+6.  Fit the this model to the training data using your workflow and display a tidy summary of the model fit.
+
+```{r}
+# add code
+```
+
+7.  Predict `arr_delay` for the testing data using this model.
+
+```{r}
+# add code
+```
+
+8.  Plot the ROC curve and find the area under the curve. Comment on how well you think this model has done for predicting arrival delay.
+
+```{r}
+# add code
+```
+
+## Model 2: Let's be a bit more thoughtful
+
+9.  Define a new recipe, `flights_rec2`, that, in addition to what was done in `flights_rec1`, adds features for day of week and month based on `date` and also adds indicators for all US holidays (also based on `date`). A list of these holidays can be found in `timeDate::listHolidays("US")`. Once these features are added, `date` should be removed from the data. Then, create a new workflow, fit the same model (logistic regression) to the training data, and do predictions on the testing data. Finally, draw another ROC curve and find the area under the curve.
+
+```{r}
+# add code
+```
+
+## Putting it altogether
+
+10. Create an ROC curve that plots both models, in different colors, and adds a legend indicating which model is which.
+
+```{r}
+# add code
+```
+
+11. Compare the predictive performance of this new model to the previous one. Based on the ROC curves and area under the curve statistic, which model does better?
+
+## Acknowledgement
+
+This exercise was inspired by [tidymodels.org/start/recipes](https://www.tidymodels.org/start/recipes/){.uri} and adapted from [sta210-s22.github.io/website/ae/ae-10-flight-delays](https://sta210-s22.github.io/website/ae/ae-10-flight-delays).

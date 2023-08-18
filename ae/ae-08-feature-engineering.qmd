@@ -1,0 +1,213 @@
+---
+title: "AE 08: Feature Engineering- Model workflow"
+subtitle: "The Office"
+date: "Oct 05, 2022"
+editor: visual
+---
+
+::: callout-important
+Go to the [course GitHub organization](https://github.com/sta210-fa22) and locate your `ae-08`- to get started.
+
+The AE is due on GitHub by Saturday, October 08 at 11:59pm.
+:::
+
+## Packages
+
+```{r load-packages}
+#| message: false
+library(tidyverse)
+library(tidymodels)
+library(viridis)
+library(knitr)
+```
+
+## Load data
+
+```{r}
+#| message: false
+office_ratings <- read_csv("data/office_ratings.csv")
+```
+
+## Exploratory data analysis
+
+Below are two of the exploratory data analysis plots from lecture.
+
+```{r}
+ggplot(office_ratings, aes(x = imdb_rating)) +
+  geom_histogram(binwidth = 0.25) +
+  labs(
+    title = "The Office ratings",
+    x = "IMDB rating"
+  )
+```
+
+```{r}
+office_ratings |>
+  mutate(season = as_factor(season)) |>
+  ggplot(aes(x = season, y = imdb_rating, color = season)) +
+  geom_boxplot() +
+  geom_jitter() +
+  guides(color = "none") +
+  labs(
+    title = "The Office ratings",
+    x = "Season",
+    y = "IMDB rating"
+  ) +
+  scale_color_viridis_d()
+```
+
+## Test/train split
+
+```{r}
+set.seed(123)
+office_split <- initial_split(office_ratings) # prop = 3/4 by default
+office_train <- training(office_split)
+office_test  <- testing(office_split)
+```
+
+## Build a recipe
+
+```{r}
+office_rec <- recipe(imdb_rating ~ ., data = office_train) |>
+  # make title's role ID
+  update_role(title, new_role = "ID") |>
+  # extract day of week and month of air_date
+  step_date(air_date, features = c("dow", "month")) |>
+  # identify holidays and add indicators
+  step_holiday(
+    air_date, 
+    holidays = c("USThanksgivingDay", "USChristmasDay", "USNewYearsDay", "USIndependenceDay"), 
+    keep_original_cols = FALSE
+  ) |>
+  # turn season into factor
+  step_num2factor(season, levels = as.character(1:9)) |>
+  # make dummy variables
+  step_dummy(all_nominal_predictors()) |>
+  # remove zero variance predictors
+  step_zv(all_predictors())
+```
+
+```{r}
+#| label: view-recipe
+
+office_rec
+```
+
+## Workflows and model fitting
+
+### Specify model
+
+```{r}
+
+office_spec <- linear_reg() |>
+  set_engine("lm")
+
+office_spec
+```
+
+### Build workflow
+
+```{r}
+
+office_wflow <- workflow() |>
+  add_model(office_spec) |>
+  add_recipe(office_rec)
+```
+
+```{r}
+#| label: view-workflow
+office_wflow
+```
+
+### Fit model to training data
+
+```{r}
+office_fit <- office_wflow |>
+  fit(data = office_train)
+
+tidy(office_fit) |>
+  kable(digits = 3)
+```
+
+## Evaluate model on training data
+
+### Make predictions
+
+::: callout-important
+Fill in the code and make `#| eval: true` before rendering the document.
+:::
+
+```{r}
+#| eval: false
+
+office_train_pred <- predict(office_fit, ______) |>
+  bind_cols(_____)
+```
+
+### Calculate $R^2$
+
+::: callout-important
+Fill in the code and make `#| eval: true` before rendering the document.
+:::
+
+```{r}
+#| eval: false
+rsq(office_train_pred, truth = _____, estimate = _____)
+```
+
+-   What is preferred - high or low values of $R^2$?
+
+### Calculate RMSE
+
+::: callout-important
+Fill in the code and make `#| eval: true` before rendering the document.
+:::
+
+```{r}
+#| eval: false
+rmse(______, ________, ________)
+```
+
+-   What is preferred - high or low values of RMSE?
+
+-   Is this RMSE considered high or low? *Hint: Consider the range of the response variable to answer this question*.
+
+    ```{r}
+    office_train |>
+      summarise(min = min(imdb_rating), max = max(imdb_rating))
+    ```
+
+## Evaluate model on testing data
+
+Answer the following before evaluating the model performance on testing data:
+
+-   Do you expect $R^2$ on the testing data to be higher or lower than the $R^2$ calculated using training data? Why?
+
+-   Do you expect RMSE on the testing data to be higher or lower than the $R^2$ calculated using training data? Why?
+
+### Make predictions
+
+```{r}
+# fill in code to make predictions from testing data
+
+```
+
+### Calculate $R^2$
+
+```{r}
+# fill in code to calculate $R^2$ for testing data
+
+```
+
+### Calculate RMSE
+
+```{r}
+# fill in code to calculate RMSE for testing data
+
+```
+
+## Compare training and testing data results
+
+-   Compare the $R^2$ for the training and testing data. Is this what you expected?
+
+-   Compare the RMSE for the training and testing data. Is this what you expected?

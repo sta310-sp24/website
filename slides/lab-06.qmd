@@ -1,0 +1,58 @@
+---
+title: "Lab 06"
+subtitle: "Logistic regression"
+author: "Nov 03 - 04, 2022"
+footer: "[🔗 Week 10](https://sta210-fa22.netlify.app/weeks/week-10.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+# Welcome
+
+```{r}
+# figure options
+knitr::opts_chunk$set(
+  fig.width = 10, fig.asp = 0.618,
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+```
+
+```{r}
+library(tidyverse)
+library(viridis)
+library(tidymodels)
+library(knitr)
+```
+
+## Goals
+
+-   Complete AE 13
+-   Lab 06: Logistic regression intro
+
+# Application exercise
+
+::: appex
+📋 [AE 13: Logistic Regression Intro](../ae/ae-13-logistic-intro.html)
+:::
+
+## Resources for Lab 06
+
+-   Lecture notes
+
+    -   [Logistic Regression: Introduction](../slides/19-logistic-intro.html)
+
+-   IMS, Chap 9: [Logistic Regression](https://openintro-ims.netlify.app/model-logistic.html)

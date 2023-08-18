@@ -1,0 +1,49 @@
+---
+title: "Lab: Written report"
+author: "Dec 01 - 02, 2022"
+footer: "[🔗 Week 14](https://sta210-fa22.netlify.app/weeks/week-14.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+## Announcements
+
+-   Teammates feedback #2 due Tue, Dec 06
+
+-   Please fill out course evaluations and TA evaluations!
+
+-   If you submitted a Round 1 submission, check GitHub Issues for feedback.
+
+-   Project written report due Fri, Dec 09, 11:59pm. Will be accepted (with no late penalty) until Sun, Dec 11, 11:59pm
+
+## Written report reminders {.midi}
+
+-   Use a descriptive title for the report.
+
+-   Suppress all code, warnings, and messages.
+
+-   Neatly format every table / data frame using `kable()`.
+
+-   Write the report in narrative form (avoid bullet point lists).
+
+-   Use variable descriptions, not variable names, in narrative.
+
+-   Use neatly formatted links and citations; include a reference list at the end of the report.
+
+    -   At a minimum you should have a citation for the data set.
+
+    -   [Click here](https://quarto.org/docs/visual-editor/technical.html#citations) for guide on adding citations in Quarto using the visual editor

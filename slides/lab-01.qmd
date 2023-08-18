@@ -1,0 +1,116 @@
+---
+title: "Lab 01"
+subtitle: "Simple Linear Regression"
+author: "Sep 08 - 09, 2022"
+footer: "[🔗 Week 02](https://sta210-fa22.netlify.app/weeks/week-02.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+## Computing toolkit for reproducibility
+
+-   **Scriptability** $\rightarrow$ R
+
+-   **Literate programming** (code, narrative, output in one place) $\rightarrow$ Quarto
+
+-   **Version control** $\rightarrow$ Git / GitHub
+
+. . .
+
+::: question
+You discussed R and RStudio in class this week, so we will focus on version control using Git and GitHub.
+:::
+
+# Version control and collaboration
+
+## Git and GitHub
+
+![](images/03/git-github.png){fig-align="center"}
+
+-   **Git** is a version control system -- like "Track Changes" features from Microsoft Word.
+-   **GitHub** is the home for your Git-based projects on the internet (like DropBox but much better).
+-   We will use GitHub as the home for course assignments and activities and for collaboration
+
+## What is versioning?
+
+<br>
+
+![](images/03/lego-steps.png){fig-align="center"}
+
+## What is versioning?
+
+with human readable messages
+
+![](images/03/lego-steps-commit-messages.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Git and GitHub tips
+
+::: incremental
+-   There are a lot of Git commands and very few people know them all. 99% of the time you will use git to commit, push, and pull.
+-   We will be doing git things and interfacing with GitHub through RStudio
+    -   If you Google for help, skip any methods for using git through the command line.
+-   There is a great resource for working with git and R: [happygitwithr.com](http://happygitwithr.com/).
+    -   Some of the content in there is beyond the scope of this course, but it's a good place to look for help.
+:::
+
+# Getting started on Lab 01
+
+## Do you have the `lab-01` repo?
+
+-   Go to the GitHub course organization: <https://github.com/sta210-fa22>
+
+-   You should see a repo with the prefix **`lab-01-`** followed by your GitHub username
+
+-   If you do not have this repo, please let your TA know!
+
+## Demo
+
+**Follow along as your TA demonstrates the following:**
+
+-   Configure Git using SSH
+
+-   Clone repo (using SSH) and start new project in RStudio
+
+-   Render document and produce PDF
+
+-   Update name in YAML
+
+    -   Render, commit, push changes to GitHub
+
+    -   See updates in your GitHub repo
+
+## Tips for working on lab
+
+-   You do not have to finish the lab in class, they will always be due the following **Monday (Thursday labs) or Tuesday (Friday labs)**. One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when a TA can help you on the spot and leave the narrative writing until later.
+
+-   Do not pressure each other to finish early (particularly once you start working on teams); use the time wisely to really learn the material and produce a quality report.
+
+## **When you\'re done with lab**
+
+-   Make sure all your final changes have been pushed to your GitHub repo
+
+-   Submit the PDF of your responses to [**Gradescope**](https://www.gradescope.com/)
+
+    -   You can access Gradescope through Sakai or the course website
+
+    -   Login using your Duke NetID credentials
+
+    -   See Lab 01 instructions for details on submitting an assignment on Gradescope
+
+\

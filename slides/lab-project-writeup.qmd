@@ -1,0 +1,75 @@
+---
+title: "Lab: Project Analysis + written report"
+author: "Nov 17 - 18, 2022"
+footer: "[🔗 Week 12](https://sta210-fa22.netlify.app/weeks/week-12.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+## Goals
+
+```{r}
+# figure options
+knitr::opts_chunk$set(
+  fig.width = 10, fig.asp = 0.618,
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+```
+
+```{r}
+library(tidyverse)
+library(viridis)
+library(tidymodels)
+library(knitr)
+```
+
+-   Work on project analysis and write up
+
+## Project timeline
+
+-   Project meetings (optional): Nov 21 & 22
+    -   [Click here](https://docs.google.com/spreadsheets/d/1vIgC8SBaskHRFcU1Ge8-XlrOy6BstneBpvLIlc7Oa-A/edit?usp=sharing) to sign up by Sun, Nov 20 at 11:59pm. Only one meeting per team.
+-   [Round 1 submission](https://sta210-fa22.netlify.app/project-instructions.html#draft-report) (optional) due Nov 22 at 11:59pm
+-   [Written report](https://sta210-fa22.netlify.app/project-instructions.html#written-report) due Fri, Dec 09 at 11:59pm
+-   Video presentations during exam week
+
+## Tips for report {.midi}
+
+There is a **10-page limit** on the final report.
+
+-   All code, warnings, and messages must be suppressed in the final report. Add the following code to the YAML:
+
+``` {.unnumbered .unnumbered .unnumbered}
+execute:
+  echo: false
+  warning: false
+  message: false
+```
+
+-   Tell a cohesive and focused story. You won't have room to give extensive details about everything you did in the analysis, so carefully consider where to put more/ less detail.
+
+    -   Use the appendix for additional graphs and text you want to share. The reader may not read the appendix, so the body of the report should still be comprehensive without the material in the appendix.
+
+## Tips for report {.midi}
+
+-   Use code chunk options to change the size of figures.
+
+    -   Don't make them so small they become unreadable!
+
+-   Use variable descriptions, <u>not</u>variable names in the narrative.
+
+See [Project Tips + Resources](https://sta210-fa22.netlify.app/project-tips.html#formatting-communication-tips) for more tips.

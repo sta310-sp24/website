@@ -1,0 +1,20 @@
+{
+  "hash": "9fbd55ad9c1aa31156f294c379fc2f95",
+  "result": {
+    "markdown": "---\ntitle: \"Exam 01 review\"\nauthor: \"Prof. Maria Tackett\"\ndate: \"2022-09-28\"\ndate-format: \"MMM DD, YYYY\"\nfooter: \"[🔗 Week 05](https://sta210-fa22.netlify.app/weeks/week-05.html)\"\nlogo: \"../images/logo.png\"\nformat: \n  revealjs:\n    theme: slides.scss\n    multiplex: false\n    transition: fade\n    slide-number: true\n    incremental: false \n    chalkboard: true\nexecute:\n  freeze: auto\n  echo: true\n  warning: false\n  message: false\nknitr:\n  opts_chunk: \n    R.options:      \n    width: 200\n---\n\n\n\n\n## Announcements\n\n-   Exam 01: Sep 28 - 30\n\n    -   [Videos for Weeks 01 - 05](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/EfXF6q4ev7dNq53PBcDetSgBrNry2EB85vWv2xrUzGahbg?e=i3gLl6) available until Sep 28 at 11:59pm\n\n-   No TA office hours Wed - Fri\n\n-   No labs this week - use time to work on exam\n\n-   Ed Discussion archived Wed 7pm - Sat 9am\n\n-   See [Week 05](https://sta210-fa22.netlify.app/weeks/week-05.html) for this week's activities.\n\n## Exam 01\n\n-   Released today \\~ 7pm (will receive email) and due Friday at 11:59pm\n\n-   Exam instructions can be found in the README of the `exam-01` Repo\n\n    -   Exercise prompts will be in `exam-01.qmd`\n\n-   Covers everything we've done thus far - Weeks 01 - 05\n\n-   Office Hours:\n\n    -   Thu, 10 - 11am (Prof. Tackett)\n\n-   Have clarification questions about exam instructions during the exam?\n\n    -   Email Prof. Tackett with \"STA 210 Exam\" in the subject line\n\n# Application Exercise\n\n::: appex\n📋 [AE 07: Exam 01 Review](https://sta210-fa22.netlify.app/ae/ae-07-exam-01-review.html)\n:::\n",
+    "supporting": [
+      "10-exam-01-review_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    function fireSlideChanged(previousSlide, currentSlide) {\n\n      // dispatch for htmlwidgets\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for reveal\n    if (window.Reveal) {\n      window.Reveal.addEventListener(\"slidechanged\", function(event) {\n        fireSlideChanged(event.previousSlide, event.currentSlide);\n      });\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,48 @@
+---
+title: "Week 06"
+subtitle: "Feature Engineering"
+description: "Lab 04"
+author: "Oct 03 - 07"
+date: ""
+tbl-colwidths: [60,40]
+title-block-style: none
+---
+
+::: callout-important
+**Due dates:**
+
+-   Lab 04:
+    -   due Thu, Oct 13, 11:59pm (Thu lab)
+
+    -   due Fri, Oct 14, 11:59pm (Fri lab)
+-   HW 02:
+    -   due Wed, Oct 19, 11:59pm
+:::
+
+# Prepare
+
+| Reading                                                                                                  | Corresponding lecture |
+|----------------------------------------------------------------------------------------------------------|-----------------------|
+| 📖 Tidy Modeling in R - [Chapter 8: Feature engineering with recipes](https://www.tmwr.org/recipes.html) | Oct 05                |
+
+# Participate
+
+| Topic                                                                              | Date        |
+|------------------------------------------------------------------------------------|-------------|
+| 💻 [Feature engineering](../slides/11-feature-engineering.qmd)                     | Oct 03      |
+| 💻 [Feature engineering: Model workflow](../slides/12-feature-engineering-pt2.qmd) | Oct 05      |
+| 💻 [Lab 04](../slides/lab-04.qmd)                                                  | Oct 06 & 07 |
+
+# Practice
+
+|                                                                                                    |
+|----------------------------------------------------------------------------------------------------|
+| 📋 [AE 08: Feature engineering](https://sta210-fa22.netlify.app/ae/ae-08-feature-engineering.html) |
+
++----------------------------------+--------------------------------+
+| Assignment                       | Due date                       |
++==================================+================================+
+| 📝 [Lab 04](../labs/lab-04.html) | Thu, Oct 13, 11:59pm (Thu lab) |
+|                                  |                                |
+|                                  | Fri, Oct 14, 11:59pm (Fri lab) |
++----------------------------------+--------------------------------+

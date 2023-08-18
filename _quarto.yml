@@ -1,0 +1,83 @@
+project:
+  type: website
+
+website:
+  page-navigation: true
+  title: "STA 210 - Fall 2023"
+  description: "Homepage for STA 210 - Regression Analysis at Duke University, Fall 2023"
+  site-url: https://sta210-fa23.netlify.app
+
+  repo-url: https://github.com/sta210-fa23/website
+  repo-actions: [edit, issue]
+  
+  page-footer:
+    background: "#7eb7c2"
+    left: |
+      &copy; Copyright 2022, Maria Tackett
+    right: |
+      This site is built with [Quarto](https://quarto.org/)
+
+  sidebar:
+    background: "#7eb7c2"
+    logo: "images/logo.png"
+    align: center
+    tools: 
+      - icon: github
+        href: https://github.com/sta210-fa23
+        text: "GitHub organization"
+      - icon: code-square
+        href: https://cmgr.oit.duke.edu/containers
+        text: "RStudio Containers"
+      - icon: person-fill
+        text: "Sakai"
+        menu:
+          - text: Discussion forum
+            url: https://edstem.org/us/courses/26900/discussion/
+          - text: Gradescope (Section 001)
+            url: https://sakai.duke.edu/portal/site/539329c2-8893-4f4a-82b1-ebebc1cf2a45/page/03b9bd7b-d226-40d6-b747-fd1536bd09bf
+          - text: Gradescope (Section 002)
+            url: https://sakai.duke.edu/portal/site/8644d884-07c5-485c-bd1e-06c6c229f7de/page/5c3b941e-c292-4851-926f-99799b468130
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents: 
+      - href: schedule.qmd
+        text: Schedule
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: support.qmd
+        text: Support
+      - href: links.qmd
+        text: Useful links
+      - section: Computing
+        contents: 
+        - href: computing-access.qmd
+          text: Access
+        - href: computing-troubleshooting.qmd
+          text: Troubleshooting
+        - href: computing-r-resources.qmd
+          text: R resources
+      - section: Project
+        contents:
+        - href: project-instructions.qmd
+          text: Instructions
+        - href: project-tips.qmd
+          text: Tips + resources
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+    mainfont: "Open Sans"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+
+execute:
+  freeze: auto
+
+editor: visual    
+    
+
+
+

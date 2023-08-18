@@ -1,0 +1,12 @@
+---
+title: "Useful links"
+---
+
+|                            |                                                                                                                                  |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| RStudio containers         | 🔗 on [Duke Container Manager](https://cmgr.oit.duke.edu/containers)                                                             |
+| Course GitHub organization | 🔗 on [GitHub](https://github.com/sta210-fa22)                                                                                   |
+| Discussion forum           | 🔗 on [Ed Discussion](https://edstem.org/us/courses/26900/discussion/)                                                           |
+| Gradescope (Section 001)   | 🔗 on [Sakai](https://sakai.duke.edu/portal/site/539329c2-8893-4f4a-82b1-ebebc1cf2a45/page/03b9bd7b-d226-40d6-b747-fd1536bd09bf) |
+| Gradescope (Section 002)   | 🔗 on [Sakai](https://sakai.duke.edu/portal/site/8644d884-07c5-485c-bd1e-06c6c229f7de/page/5c3b941e-c292-4851-926f-99799b468130) |
+| Zoom links                 | 🔗 on [Sakai](https://sakai.duke.edu/portal/site/e6f58eb4-029a-4130-bfa3-e5555d967a43/page/a7f0564b-6ce0-4606-ae2d-4de1c8b9ba58) |

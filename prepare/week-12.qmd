@@ -1,0 +1,41 @@
+---
+title: "Week 12"
+subtitle: "LR: Model Comparison + Inference"
+description: "HW 04"
+author: "Nov 14 - 18"
+date: ""
+tbl-colwidths: [60,40]
+title-block-style: none
+---
+
+::: callout-important
+-   AE 14: due Thu, Nov 17, 11:59pm
+-   HW 04: due Mon, Nov 21, 11:59pm
+:::
+
+# Prepare
+
+| Reading                                                                                                        | Corresponding lecture |
+|----------------------------------------------------------------------------------------------------------------|-----------------------|
+| 📖 IMS, Chp 26: [Inference for logistic regression](https://openintro-ims.netlify.app/inf-model-logistic.html) | Nov 16                |
+
+# Participate
+
+|                                                                                  |             |
+|----------------------------------------------------------------------------------|-------------|
+| 💻 [Logistic regression: Model comparison](../slides/22-model-compare.html)      | Nov 14      |
+| 💻 [Logistic Regression: Inference + conditions](../slides/23-logistic-inf.html) | Nov 16      |
+| 💻 [Lab: Project analysis + write up](../slides/lab-project-writeup.html)        | Nov 17 + 18 |
+
+# Practice
+
+|                                                                                    |
+|------------------------------------------------------------------------------------|
+| 📋 [AE 14: Logistic regression - Model Comparison](../ae/ae-14-model-compare.html) |
+
+# Perform
+
+|                                                         |                          |
+|---------------------------------------------------------|--------------------------|
+| 📝 [HW 04](../hw/hw-04.html)                            | due Mon, Nov 21, 11:59pm |
+| 📝 [Statistics experience](../hw/stats-experience.html) | due Fri, Dec 09, 11:59pm |

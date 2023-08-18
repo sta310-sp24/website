@@ -1,0 +1,75 @@
+---
+title: "Welcome to STA 210 Labs!"
+author: "Sep 01 - 02, 2022"
+footer: "[🔗 Week 01](https://sta210-fa22.netlify.app/weeks/week-01.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+## Meet your TA!
+
+![](images/labs/hello-sticker.jpeg){fig-alt="Pink sticker that says Hello my name is." fig-align="center"}
+
+## Meet each other!
+
+::: midi
+-   Get into groups of 4 - 5.
+
+-   Introduce yourself - Name, year, major
+
+-   Choose a reporter
+
+    -   Need help choosing? Person with birthday closest to today's date.
+
+-   Identify **8 things** everyone in the group has in common
+
+    -   Not being a Duke student
+    -   Not clothes (we're all wearing socks)
+    -   Not body parts (we all have a nose)
+
+-   Reporter will share list with the class.
+:::
+
+```{r}
+#| echo: false 
+
+countdown::countdown(minutes  = 6)
+```
+
+## What to expect in lab
+
+-   Introduction to the lab assignment (\~ 5 - 10 minutes)
+
+-   Work on the lab assignment (individual at first, but in teams for the rest of the semester)
+
+-   Lab instructions will be posted on the course website
+
+-   Start each lab by finding your assignment repo in the course GitHub organization
+
+    -   More on the computing tools in Monday's lecture
+
+# Any questions about the course?
+
+## For today's lab
+
+-   Complete the [STA 210 Student Survey](https://duke.qualtrics.com/jfe/form/SV_cGV5IKoeadWR59s) (will ask for a GitHub username)
+
+    -   [Click here](https://happygitwithr.com/github-acct.html) for information on registering for a GitHub account and choosing a username.
+
+-   Reserve a [STA 210 Docker Container](https://cmgr.oit.duke.edu/containers)
+
+    -   Make sure to reserve the container titled "STA210", <u>not</u> "RStudio"

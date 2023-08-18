@@ -1,0 +1,44 @@
+---
+title: "Week 11"
+subtitle: "Logistic regression (LR)"
+description: "Lab 07"
+author: "Nov 07 - 11"
+date: ""
+tbl-colwidths: [60,40]
+title-block-style: none
+---
+
+::: callout-important
+-   Lab 07
+
+    -   due Mon, Nov 14, 11:59pm (Thu labs)
+
+    -   due Tue, Nov 15, 11:59pm (Fri labs)
+:::
+
+# Prepare
+
+| Reading                                                                                      | Corresponding lecture |
+|----------------------------------------------------------------------------------------------|-----------------------|
+| 📖 IMS, Chap 9: [Logistic Regression](https://openintro-ims.netlify.app/model-logistic.html) | Nov 07 & Nov 09       |
+
+# Participate
+
+| Topic                                                                                        | Date   |
+|----------------------------------------------------------------------------------------------|--------|
+| 💻 [Logistic regression: Odds ratios](../slides/20-odds-ratios.html)                         | Nov 07 |
+| 💻 [Logistic regression: Prediction + classification](../slides/21-logistic-prediction.html) | Nov 09 |
+
+# Practice
+
+No AEs this week.
+
+# Perform
+
++--------------------------------------------------------------------------------------+-----------------------------------------+
+| 📝 [Lab 07](../labs/lab-07.html)                                                     | -   due Mon, Nov 14, 11:59pm (Thu labs) |
+|                                                                                      |                                         |
+|                                                                                      | -   due Tue, Nov 15, 11:59pm (Fri labs) |
++--------------------------------------------------------------------------------------+-----------------------------------------+
+| 📝 [Statistics Experience](https://sta210-fa22.netlify.app/hw/stats-experience.html) | due Fri, Dec 09, 11:59pm                |
++--------------------------------------------------------------------------------------+-----------------------------------------+

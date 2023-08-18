@@ -1,0 +1,106 @@
+---
+title: "Lab 04"
+subtitle: "Feature engineering"
+author: "Oct 06 - 07, 2022"
+footer: "[🔗 Week 06](https://sta210-fa22.netlify.app/weeks/week-06.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+# Welcome
+
+## Goals
+
+-   Meet your team!
+-   Team agreement
+-   Lab 04: The Office
+-   STA 210 Mid Semester Survey
+
+## Meet your team!
+
+-   [**Click here**](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/EYAMe-DTHh5BpK-R0rLvUNYBKrYc88n8COENMulIBS3pCw?e=uPiWFd) to find your team.
+
+-   Sit with your team.
+
+## Team name + agreement
+
+-   Come up with a team name. You can't have the same name as another group in the class, so be creative!
+
+    -   Your TA will get your team name by the end of lab.
+
+-   Fill out the team agreement. The goals of the agreement are to...
+
+    -   Gain a common understanding of the team's goals and expectations for collaboration
+    -   Make a plan for team communication
+    -   Make a plan for working outside of lab
+
+## Team workflow
+
+-   Only <u>**one**</u> team member should type at a time. There are markers in today's lab to help you determine whose turn it is to type.
+
+    -   Every team member should still be engaged in discussion for all questions, even if it's not your turn type.
+
+-   Don't forget to **pull** to get your teammates' updates before making changes to the `.qmd` file.
+
+    ::: callout-important
+    **Only one submission per team on Gradescope. Read the submission instructions carefully!**
+    :::
+
+## Team workflow, in action
+
+-   Complete the "Workflow: Using Git and GitHub as a team" section of the lab in your teams.
+-   Raise your hand if you have any questions about the workflow.
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, font_size = "2em")
+```
+
+## Tips for working on a team {.midi}
+
+-   Do not pressure each other to finish early; use the time wisely to really learn the material and produce a quality report.
+
+-   The labs are structured to help you learn the steps of a data analysis. Do not split up the lab among the team members; work on it together in its entirety.
+
+-   Everyone has something to contribute! Use the lab groups as an opportunity to share ideas and learn from each other.
+
+## STA 210 Mid Semester Survey
+
+Please take a few minutes to complete the STA 210 Mid Semester Survey.\
+\
+[Click here](https://duke.qualtrics.com/jfe/form/SV_cwh38yvzlVjWvA2) to access the survey.
+
+## Resources for Lab 04 {.midi}
+
+-   Lecture notes:
+
+    -   [Feature engineering](https://sta210-fa22.netlify.app/slides/11-feature-engineering.html#/title-slide)
+    -   [Feature engineering: Model workflow](https://sta210-fa22.netlify.app/slides/12-feature-engineering-pt2.html#/title-slide)
+
+-   [Recipes package function reference](https://recipes.tidymodels.org/reference/index.html)
+
+-   Tidy Modeling in R - [Chapter 8: Feature engineering with recipes](https://www.tmwr.org/recipes.html)
+
+::: callout-note
+If you haven't already, you will need to install the **schrute** R package for the lab. Run the code below in the **console**.
+:::
+
+```{r}
+#| eval: false
+
+install.packages("schrute")
+```

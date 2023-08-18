@@ -1,0 +1,18 @@
+{
+  "hash": "bd2ff3a84e84ba474bf6a8d52edb23bc",
+  "result": {
+    "markdown": "---\ntitle: \"Lab 03\"\nsubtitle: \"Inference for Simple Linear Regression using Mathematical Models\"\nauthor: \"Sep 22 - 23, 2022\"\nfooter: \"[🔗 Week 04](https://sta210-fa22.netlify.app/weeks/week-04.html)\"\nlogo: \"../images/logo.png\"\nformat: \n  revealjs:\n    theme: slides.scss\n    multiplex: false\n    transition: fade\n    slide-number: true\n    incremental: false \n    chalkboard: true\nexecute:\n  freeze: auto\n  echo: true\nknitr:\n  opts_chunk: \n    R.options:      \n    width: 200\n---\n\n\n## Reminders {.midi}\n\nMake sure to do the following as you complete the assignment:\n\n-   Write all narrative in complete sentences.\n\n-   Use informative axis titles and labels on all graphs.\n\n-   Implement version control in your reproducible workflow.\n\n    -   Throughout the assignment periodically **render** your Quarto document to produce the updated PDF, **commit** the changes in the Git pane, and **push** the updated files to GitHub.\n\n    -   Benchmark: Push changes to GitHub at least three times as you work on the assignment.\n\n## Today's lab\n\n-   Focused on mathematical inference for simple linear regression and checking model conditions.\n\n-   Remember to mark all pages in your Gradescope submission. The first page should be marked for the \"Workflow & formatting\" and \"Reproducible report\" sections.\n\n-   Use lectures and AEs from [Week 04](../weeks/week-04.qmd) as reference as you complete the lab.\\\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    function fireSlideChanged(previousSlide, currentSlide) {\n\n      // dispatch for htmlwidgets\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for reveal\n    if (window.Reveal) {\n      window.Reveal.addEventListener(\"slidechanged\", function(event) {\n        fireSlideChanged(event.previousSlide, event.currentSlide);\n      });\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

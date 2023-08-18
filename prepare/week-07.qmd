@@ -1,0 +1,50 @@
+---
+title: "Week 07"
+subtitle: "Variable transformations"
+description: "Introduce project, HW 02"
+author: "Oct 10 - 14"
+date: ""
+tbl-colwidths: [60,40]
+title-block-style: none
+---
+
+::: callout-important
+**Due dates:**
+
+-   Lab 04:
+    -   due Thu, Oct 13, 11:59pm (Thu lab)
+
+    -   due Fri, Oct 14, 11:59pm (Fri lab)
+-   Project topic ideas:
+    -   due Mon, Oct 17, 11:59pm (Thu lab)
+
+    -   due Tue, Oct 18, 11:59pm (Fri lab)
+-   HW 02:
+    -   due Wed, Oct 19, 11:59pm
+:::
+
+# Prepare
+
+No readings this week.
+
+# Participate
+
+| Topic                                                                    | Date   |
+|--------------------------------------------------------------------------|--------|
+| 💻 [Variable transformations](../slides/13-variable-transformations.qmd) | Oct 12 |
+
+# Practice
+
+No Application Exercises this week.
+
+# Perform
+
++----------------------------------------------------+----------------------------------------+
+| Assignment                                         | Due date                               |
++====================================================+========================================+
+| [Project topic ideas](../project-instructions.qmd) | -   due Mon, Oct 17, 11:59pm (Thu lab) |
+|                                                    |                                        |
+|                                                    | -   due Tue, Oct 18, 11:59pm (Fri lab) |
++----------------------------------------------------+----------------------------------------+
+| 📝 [HW 02](../hw/hw-02.qmd)                        | Wed, Oct 19, 11:59pm                   |
++----------------------------------------------------+----------------------------------------+

@@ -1,0 +1,55 @@
+---
+title: "Week 10"
+subtitle: "Odds + Odds Ratios"
+description: "HW 03 + Lab 06"
+author: "Oct 31 - Nov 04"
+date: ""
+tbl-colwidths: [60,40]
+title-block-style: none
+---
+
+::: callout-important
+-   AE 12 due Thu, Nov 03, 11:59pm
+-   AE 13 due Sat, Nov 05, 11:59pm
+-   Project Proposal due Fri, Nov 04: 11:59pm
+-   HW 03 due Mon, Nov 07, 11:59pm
+-   Lab 06:
+    -   due Mon, Nov 07, 11:59pm (Thu labs)
+
+    -   due Tue, Nov 08, 11:59pm (Fri labs)
+:::
+
+# Prepare
+
+| Reading                                                                                      | Corresponding lecture |
+|----------------------------------------------------------------------------------------------|-----------------------|
+| 📖 IMS, Chap 9: [Logistic Regression](https://openintro-ims.netlify.app/model-logistic.html) | Nov 02                |
+
+# Participate
+
+| Topic                                                                    | Date        |
+|--------------------------------------------------------------------------|-------------|
+| 💻 [MLR: Conditions](../slides/18-mlr-conditions.html)                   | Oct 31      |
+| 💻 [Logistic Regression: Introduction](../slides/19-logistic-intro.html) | Nov 02      |
+| 💻 [Lab 06](../slides/lab-06.html)                                       | Nov 03 - 04 |
+
+# Practice
+
+|                                                                            |
+|----------------------------------------------------------------------------|
+| 📋 [AE 12: Multiple Linear Regression Review](../ae/ae-12-mlr-review.html) |
+| 📋 [AE 13: Logistic Regression Intro](../ae/ae-13-logistic-intro.html)     |
+
+# Perform
+
++---------------------------------------------------------------------------------------------------+-----------------------------------------+
+| 📝 [Project Proposal](https://sta210-fa22.netlify.app/project-instructions.html#project-proposal) | due Fri, Nov 04, 11:59pm                |
++---------------------------------------------------------------------------------------------------+-----------------------------------------+
+| 📝 [HW 03](../hw/hw-03.html)                                                                      | due Mon, Nov 07, 11:59pm                |
++---------------------------------------------------------------------------------------------------+-----------------------------------------+
+| 📝 [Lab 06](../labs/lab-06.html)                                                                  | -   due Mon, Nov 07, 11:59pm (Thu labs) |
+|                                                                                                   |                                         |
+|                                                                                                   | -   due Tue, Nov 08, 11:59pm (Fri labs) |
++---------------------------------------------------------------------------------------------------+-----------------------------------------+
+| 📝 [Statistics Experience](https://sta210-fa22.netlify.app/hw/stats-experience.html)              | due Fri, Dec 09, 11:59pm                |
++---------------------------------------------------------------------------------------------------+-----------------------------------------+

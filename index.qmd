@@ -11,14 +11,14 @@ Learn approaches for analyzing multivariate data sets, emphasizing analysis of v
 
 # Class meetings
 
-|             |             |                            |                     |
-|-------------|-------------|----------------------------|---------------------|
-| **Lecture** | Section 001 | Mon & Wed 10:15 - 11:30 am | Reuben-Cooke 130    |
-|             | Section 002 | Mon & Wed 3:30 - 4:45pm    | Social Sciences 136 |
-| **Lab**     | Lab 01      | Thu 3:30 - 4:45pm          | Perkins Link #5     |
-|             | Lab 02      | Thu 5:15 - 6:30pm          | Perkins Link #5     |
-|             | Lab 03      | Fri 12 - 1:15pm            | Perkins Link #5     |
-|             | Lab 04      | Fri 1:45 - 3pm             | Old Chemistry 003   |
+|             |             |                           |                     |
+|-------------|-------------|---------------------------|---------------------|
+| **Lecture** | Section 001 | Mon & Wed 10:05 - 11:20am | Reuben-Cooke 130    |
+|             | Section 002 | Mon & Wed 1:45 - 3pm      | Old Chem 116        |
+| **Lab**     | Lab 01      | Tue 10:05 - 11:20am       | Reuben-Cooke 129    |
+|             | Lab 02      | Tue 11:45am - 1pm         | LSRC A155           |
+|             | Lab 03      | Thu 10:05 - 11:20am       | Reuben-Cooke 129    |
+|             | Lab 04      | Thu 11:45am - 1pm         | Social Sciences 124 |
 
 # Teaching team
 
@@ -33,18 +33,18 @@ Learn approaches for analyzing multivariate data sets, emphasizing analysis of v
 
 ## Teaching assistants
 
-::: {.callout-important appearance="simple" icon="false"}
-Click here for full list of office hours.
+::: {.callout-tip appearance="simple" icon="false"}
+[Click here](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing) for schedule of office hours.
 :::
 
-| Name              | Role    | Lab section                |
-|-------------------|---------|----------------------------|
-| Sam Rosen         | Head TA | Lab 01: Tu 10:05 - 11:20am |
-| Donald Cayton     | TA      | Lab 02: Tu 11:45am - 1pm   |
-| Linxuan Wang      | TA      | Lab 03: Th 10:05 - 11:20am |
-| Xiaojun Zheng     | TA      | Lab 04: 11:45am - 1pm      |
-| Bethany Astor     | TA      |                            |
-| Jon Campbell      | TA      |                            |
-| Allison Li        | TA      |                            |
-| Mitchelle Mojekwu | TA      |                            |
-| Ben Thorpe        | TA      |                            |
+| Name              | Role    | Lab section                 |
+|-------------------|---------|-----------------------------|
+| Sam Rosen         | Head TA | Lab 01: Tue 10:05 - 11:20am |
+| Donald Cayton     | TA      | Lab 02: Tue 11:45am - 1pm   |
+| Linxuan Wang      | TA      | Lab 03: Thu 10:05 - 11:20am |
+| Xiaojun Zheng     | TA      | Lab 04: Thu 11:45am - 1pm   |
+| Bethany Astor     | TA      |                             |
+| Jon Campbell      | TA      |                             |
+| Allison Li        | TA      |                             |
+| Mitchelle Mojekwu | TA      |                             |
+| Ben Thorpe        | TA      |                             |

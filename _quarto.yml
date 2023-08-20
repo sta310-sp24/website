@@ -34,9 +34,9 @@ website:
           - text: Discussion forum
             url: https://edstem.org/us/courses/26900/discussion/
           - text: Gradescope (Section 001)
-            url: https://sakai.duke.edu/portal/site/539329c2-8893-4f4a-82b1-ebebc1cf2a45/page/03b9bd7b-d226-40d6-b747-fd1536bd09bf
+            url: https://www.gradescope.com/courses/578156
           - text: Gradescope (Section 002)
-            url: https://sakai.duke.edu/portal/site/8644d884-07c5-485c-bd1e-06c6c229f7de/page/5c3b941e-c292-4851-926f-99799b468130
+            url: https://www.gradescope.com/courses/578157
     style: "docked"
     search: true
     collapse-level: 1

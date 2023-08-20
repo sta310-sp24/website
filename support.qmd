@@ -30,13 +30,15 @@ There are times may need help with the class that is beyond what can be provided
 
 -   **DukeReach**: Provides comprehensive outreach services to identify and support students in managing all aspects of well being. If you have concerns about a student's behavior or health visit the website for resources and assistance. Go to [studentaffairs.duke.edu/dukereach](http://studentaffairs.duke.edu/dukereach)
 
--   **Counseling and Psychological Services (CAPS)**: CAPS services include individual, group, and couples counseling services, health coaching, psychiatric services, and workshops and discussions. Contact CAPS at (919) 660-1000
+-   **Counseling and Psychological Services (CAPS)**: CAPS services include individual, group, and couples counseling services, health coaching, psychiatric services, and workshops and discussions. (919) 660-1000 or [students.duke.edu/wellness/caps](https://students.duke.edu/wellness/caps/)
 
--   **Blue Devils Care**. A convenient and cost-effective way for Duke students to receive 24/7 mental health support through TalkNow. Go to [bluedevilscare.duke.edu](https://www.timely.md/faq/blue-devils-care-faq/)
+-   **TimelyCare (formerly known as Blue Devils Care):** An online platform that is a convenient, confidential, and free way for Duke students to receive 24/7 mental health support through TalkNow and scheduled counseling. [bluedevilscare.duke.edu](https://bluedevilscare.duke.edu)
 
 ## **Technology accommodations**
 
-Students with demonstrated high financial need who have limited access to computers may request assistance in the form of loaner laptops. For technology assistance requests, please go [here](https://keeplearning.duke.edu/technical-support/). Please note that supplies are limited.
+Technology Accommodations
+
+Highly aided students who have limited access to computers may request loaner laptops through the [DukeLIFE Technology Assistance Program](https://dukelife.duke.edu/technology-assistance-program/). Please note that supplies are limited.
 
 Note that we will be using Duke's computational resources in this course. These resources are freely available to you. As long as your computer can connect to the internet and open a browser window, you can perform the necessary computing for this course. All software we use is open-source and/or freely available.
 

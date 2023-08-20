@@ -2,18 +2,39 @@
 title: Syllabus
 ---
 
-[**Click here**](sta210-fa22-syllabus.pdf) **to download a PDF of the syllabus.**
+[**Click here**](sta210-fa23-syllabus.pdf) **to download a PDF of the syllabus.**
 
 ## Course info
 
-|             |            |                            |                     |
-|-------------|------------|----------------------------|---------------------|
-| **Lecture** | Section 01 | Mon & Wed 10:15 - 11:30 am | Reuben-Cooke 130    |
-|             | Section 02 | Mon & Wed 3:30 - 4:45pm    | Social Sciences 136 |
-| **Lab**     | Lab 01     | Thu 3:30 - 4:45pm          | Perkins Link #5     |
-|             | Lab 02     | Thu 5:15 - 6:30pm          | Perkins Link #5     |
-|             | Lab 03     | Fri 12 - 1:15pm            | Perkins Link #5     |
-|             | Lab 04     | Fri 1:45 - 3pm             | Old Chemistry 003   |
+### Class meetings
+
+|             |             |                           |                     |
+|-------------|-------------|---------------------------|---------------------|
+| **Lecture** | Section 001 | Mon & Wed 10:05 - 11:20am | Reuben-Cooke 130    |
+|             | Section 002 | Mon & Wed 1:45 - 3pm      | Old Chem 116        |
+| **Lab**     | Lab 01      | Tue 10:05 - 11:20am       | Reuben-Cooke 129    |
+|             | Lab 02      | Tue 11:45am - 1pm         | LSRC A155           |
+|             | Lab 03      | Thu 10:05 - 11:20am       | Reuben-Cooke 129    |
+|             | Lab 04      | Thu 11:45am - 1pm         | Social Sciences 124 |
+
+### Teaching team
+
+| Name                | Role       |                             |
+|---------------------|------------|-----------------------------|
+| Prof. Maria Tackett | Instructor | Office Hours: Fri 1 - 3pm   |
+| Sam Rosen           | Head TA    | Lab 01: Tue 10:05 - 11:20am |
+| Donald Cayton       | TA         | Lab 02: Tue 11:45am - 1pm   |
+| Linxuan Wang        | TA         | Lab 03: Thu 10:05 - 11:20am |
+| Xiaojun Zheng       | TA         | Lab 04: Thu 11:45am - 1pm   |
+| Bethany Astor       | TA         |                             |
+| Jon Campbell        | TA         |                             |
+| Allison Li          | TA         |                             |
+| Mitchelle Mojekwu   | TA         |                             |
+| Ben Thorpe          | TA         |                             |
+
+::: {.callout-important appearance="simple" icon="false"}
+[Click here](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing) for schedule of office hours.
+:::
 
 ## Course Learning Objectives
 
@@ -23,7 +44,7 @@ By the end of the semester, you will be able to...
 -   fit and evaluate linear and logistic regression models.
 -   assess whether a proposed model is appropriate and describe its limitations.
 -   use Quarto to write reproducible reports and GitHub for version control and collaboration.
--   communicate results from statistical analyses to a general audience.
+-   effectively communicate results from statistical analyses to a general audience.
 
 ## Course community
 
@@ -43,6 +64,10 @@ Furthermore, I would like to create a learning environment for my students that 
 
 -   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your academic dean is an excellent resource.
 -   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please let me or a member of the teaching team know.
+
+### Pronouns
+
+Pronouns are meaningful tools to communicate identities and experiences, and using pronouns supports a campus environment where all community members can thrive. Please update your gender pronouns in Duke Hub. You can learn more at the [Center for Sexual and Gender Diversity\'s website](https://students.duke.edu/belonging/icr/csgd/pronouns/).
 
 ### Accessibility
 
@@ -239,13 +264,27 @@ Lectures will be recorded on Panopto and will be made available to students with
 
 Please also make sure that any official documentation, such as STINFs, Dean's excuses, NOVAPs, and quarantine/removal from class notices from student health are also uploaded to the form.
 
-About one week before each exam, the class recordings will be available to all students. These videos will be available until the exam deadline.\
+About one week before each exam, the class recordings will be available to all students. These videos will be available until the exam deadline.
 
 ### Attendance policy
 
--   **COVID Symptoms, Exposure, or Infection:** Student health, safety, and well-being are the university's top priorities. To help ensure your well-being and the well-being of those around you, please do not come to class if you have tested positive for COVID-19or have possible symptoms and have not yet been tested.If any of these situations apply to you, you must follow university guidance related to the ongoing COVID-19 pandemic and current health and safety protocols. If you are experiencing any COVID-19 symptoms, [contact student health](https://coronavirus.duke.edu/testing/#symptomatic-testing) ([dshcheckin\@duke.edu](mailto:dshcheckin@duke.edu), 919-681-9355). Learn more about current university policy related to COVID-19 at [coronavirus.duke.edu](https://coronavirus.duke.edu/).
+\[ADD ATTENDANCE POLICY\]
 
--   **Religious accommodations:** Students are permitted by university policy to be absent from class to observe a religious holiday. Accordingly, Trinity College of Arts & Sciences and the Pratt School of Engineering have established procedures to be followed by students for notifying their instructors of an absence necessitated by the observance of a religious holiday. Please submit requests for religious accommodations at the beginning of the semester so that we can work to make suitable arrangements well ahead of time. You can find the policy and relevant notification form here: [trinity.duke.edu/undergraduate/academic-policies/religious-holidays](https://trinity.duke.edu/undergraduate/academic-policies/religious-holidays)\
+#### Attendance Policy Related to COVID Symptoms, Exposure, or Infection
+
+Student health, safety, and well-being are the university's top priorities. To help ensure your well-being and the well-being of those around you, please do not come to class if you have tested positive for COVID-19 or have possible symptoms and have not yet been tested. If any of these situations apply to you, you must follow university guidance related to the ongoing COVID-19 pandemic and current health and safety protocols. If you are experiencing any COVID-19 symptoms, contact student health ([dshcheckin\@duke.edu](mailto:dshcheckin@duke.edu), 919-681-9355). Learn more about current university policy related to COVID-19 at [coronavirus.duke.edu](https://coronavirus.duke.edu/).
+
+To keep the university community as safe and healthy as possible, you will be expected to follow these guidelines. Please reach out to me and your academic dean as soon as possible if you need to quarantine or isolate so that we can discuss arrangements for your continued participation in class.
+
+## Accommodations
+
+### Academic accommodations
+
+If you are a student with a disability and need accommodations for this class, it is your responsibility to register with the Student Disability Access Office (SDAO) and provide them with documentation of your disability. SDAO will work with you to determine what accommodations are appropriate for your situation. Please note that accommodations are not retroactive and disability accommodations cannot be provided until a Faculty Accommodation Letter has been given to me. Please contact SDAO for more information: [sdao\@duke.edu](mailto:sdao@duke.edu) or [access.duke.edu](https://access.duke.edu).
+
+### **Religious accommodations**
+
+Students are permitted by university policy to be absent from class to observe a religious holiday. Accordingly, Trinity College of Arts & Sciences and the Pratt School of Engineering have established procedures to be followed by students for notifying their instructors of an absence necessitated by the observance of a religious holiday. Please submit requests for religious accommodations at the beginning of the semester so that we can work to make suitable arrangements well ahead of time. You can find the policy and relevant notification form here: [trinity.duke.edu/undergraduate/academic-policies/religious-holidays](https://trinity.duke.edu/undergraduate/academic-policies/religious-holidays)
 
 ## Academic and wellness support
 
@@ -259,8 +298,8 @@ There are times may need help with the class that is beyond what can be provided
 
 ## Important dates
 
--   **Aug 29:** Classes begin
--   **Sep 9**: Drop/add ends
+-   **Aug 28:** Classes begin
+-   **Sep 8:** Drop/add ends
 -   **Oct 10 - 11**: Fall break
 -   **Nov 11** Last day to withdraw with W
 -   **Nov 23 - 25:** Thanksgiving recess

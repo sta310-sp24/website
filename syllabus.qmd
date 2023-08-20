@@ -50,7 +50,13 @@ By the end of the semester, you will be able to...
 
 ### Duke Community Standard
 
-As a student in this course, you have agreed to uphold the [Duke Community Standard](https://studentaffairs.duke.edu/conduct/about-us/duke-community-standard) as well as the practices specific to this course.
+All students must adhere to the [Duke Community Standard(DCS)](https://studentaffairs.duke.edu/conduct/about-us/duke-community-standard): Duke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, and accountability. Citizens of this community commit to reflect upon these principles in all academic and non-academic endeavors, and to protect and promote a culture of integrity.
+
+To uphold the Duke Community Standard, students agree:
+
+> -   I will not lie, cheat, or steal in my academic endeavors;
+> -   I will conduct myself honorably in all my endeavors;and
+> -   I will act if the Standard is compromised.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_KN97j30ST4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
@@ -77,7 +83,7 @@ The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) 
 
 ### Communication
 
-All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website, [sta210-fa22.netlify.app](https://sta210-fa22.netlify.app).
+All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website, [sta210-fa23.netlify.app](https://sta210-fa23.netlify.app).
 
 Announcements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.
 
@@ -85,7 +91,7 @@ Announcements will be emailed through Sakai Announcements periodically. Please c
 
 -   If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.
 -   The teaching team is here to help you be successful in the course. You are encouraged to attend *office hours*[^1] to ask questions about the course content and assignments. Many questions are most effectively answered as you discuss them with others, so office hours are a valuable resource. You are encouraged to use them!
--   Outside of class and office hours, any general questions about course content or assignments should be posted on the class discussion forum [Ed Discussion](https://edstem.org/us/courses/26900/discussion/). There is a chance another student has already asked a similar question, so please check the other posts in Ed Discussion before adding a new question. If you know the answer to a question posted in the discussion forum, you are encouraged to respond!
+-   Outside of class and office hours, any general questions about course content or assignments should be posted on the class discussion forum [Ed Discussion](https://edstem.org/). There is a chance another student has already asked a similar question, so please check the other posts in Ed Discussion before adding a new question. If you know the answer to a question posted in the discussion forum, you are encouraged to respond!
 
 [^1]: Office hours are times the teaching team set aside each week to meet with students. [Click here](https://academicguides.duke.edu/reasons-to-attend-office-hours/) to learn more about how to effectively use office hours.
 
@@ -109,7 +115,7 @@ While there is no official textbook for the course, readings will primarily be a
 
 ## Lectures and labs
 
-The goal of both the lectures and the labs is for them to be as interactive as possible. My role as instructor is to introduce you new tools and techniques, but it is up to you to take them and make use of them. A lot of what you do in this course will involve writing code, and coding is a skill that is best learned by doing. Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab. You are expected to prepare for lectures by completing assigned readings, attend all lecture and lab sessions, and meaningfully contribute to in-class exercises and discussion. Additionally, some lectures will feature application exercises that will be graded for completion.
+The goal of both the lectures and the labs is for them to be as interactive as possible. My role as instructor is to introduce you to new tools and techniques, but it is up to you to take them and make use of them. A lot of what you do in this course will involve writing code, and coding is a skill that is best learned by doing. Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab. You are expected to prepare for lectures by completing assigned readings, attend all lecture and lab sessions, and meaningfully contribute to in-class exercises and discussion. Additionally, some lectures will feature application exercises that will be graded for completion.
 
 You are expected to bring a laptop, tablet, or Chromebook to each class so that you can take part in the in-class exercises. Please make sure your device is fully charged before you come to class as the number of outlets in the classroom will not be sufficient to accommodate everyone.
 
@@ -127,11 +133,11 @@ You will be assessed based on six components: application exercises, homework, l
 
 Parts of some lectures will be dedicated to working on Application Exercises (AEs). These exercises which give you an opportunity to practice apply the statistical concepts and code introduced in the prepare assignment. These AEs are due within three days of the corresponding lecture period. Specifically, AEs from Monday lectures are due Thursday by 11:59p ET, and AEs from Wednesday lectures are due Saturday by 11:59p ET.
 
-Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts. Successful on-time completion of at least 80% of AEs will result in full credit for AEs in the final course grade.
+Because these AEs are for practice, they will be graded based on making a good-faith effort in attempting all questions covered in class. You are welcome to, but not required, to work on AEs beyond lecture. Successful on-time effort on at least 80% of AEs will result in full credit for AEs in the final course grade. Because AEs are intended for in-class activities, there are no extensions given on AEs.
 
 ### Labs
 
-In labs, you will apply the concepts discussed in lecture to various data analysis scenarios, with a focus on the computation. Most lab assignments will be completed in teams, and all team members are expected to contribute equally to the completion of each assignment. You are expected to use the team's Git repository on the course's GitHub page as the central platform for collaboration. Commits to this repository will be used as a metric of each team member's relative contribution for each lab, and there will be periodic peer evaluation on the team collaboration. Lab assignments will be completed using Quarto, correspond to an appropriate GitHub repository, and submitted for grading in Gradescope.
+In labs, you will apply the concepts discussed in lecture to various data analysis scenarios, with a focus on the computation and communication. Most lab assignments will be completed in teams, and all team members are expected to contribute equally to the completion of each assignment. You are expected to use the team's Git repository on the course's GitHub page as the central platform for collaboration. Commits to this repository will be used as a metric of each team member's relative contribution for each lab, and there will be periodic peer evaluation on the team collaboration. Lab assignments will be completed using Quarto, correspond to an appropriate GitHub repository, and submitted for grading in Gradescope.
 
 *The lowest lab grade will be dropped at the end of the semester.*
 
@@ -145,11 +151,11 @@ One homework assignment will be dedicated to a *statistics experience*. The stat
 
 ### Exams
 
-There will be two take-home, open-note exams. Through these exams you have the opportunity to demonstrate what you've learned in the course thus far. The exams will focus on both conceptual understanding of the content and application through analysis and computational tasks. The content of the exam will be related to the content in reading assignments, lectures, application exercises, homeworks, and labs. More detail about the exams will be given during the semester.
+There will be two exams in this course. Each exam will include a closed-notes in-class component and an open-note take-home component. Through these exams you have the opportunity to demonstrate what you've learned in the course thus far. The exams will focus on both conceptual understanding of the content and application through analysis and computational tasks. The content of the exam will be related to the content in reading assignments, lectures, application exercises, homework, and lab assignments. More detail about the exams will be given during the semester.
 
 ### Project
 
-The purpose of the [final project](/project/) is to apply what you've learned throughout the semester to analyze an interesting data-driven research question. The project will be completed with your lab teams, and each team will present their work in video and in writing during the final exam period. More information about the project will be provided during the semester.
+The purpose of the [final project](/project/) is to apply what you've learned throughout the semester to analyze an interesting data-driven research question. The project will be completed with your lab teams, and each team will present their work through a written report and presentation. More information about the project will be provided during the semester.
 
 ## Grading
 
@@ -164,7 +170,7 @@ The final course grade will be calculated as follows:
 | Lab                   | 15%        |
 | Exam 01               | 15%        |
 | Exam 02               | 15%        |
-| Application Exercises | 2.5%       |
+| Application exercises | 2.5%       |
 | Teamwork              | 2.5%       |
 
 </center>
@@ -212,20 +218,11 @@ Your success on this course depends very much on you and the effort you put into
 
 **TL;DR: Don't cheat!**
 
-All students must adhere to the Duke Community Standard(DCS): Duke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, and accountability. Citizens of this community commit to reflect upon these principles in all academic and non-academic endeavors, and to protect and promote a culture of integrity.
+-   Only work that is clearly assigned as team work should be completed collaboratively.
 
-To uphold the Duke Community Standard, students agree:
-
-> -   I will not lie, cheat, or steal in my academic endeavors;
-> -   I will conduct myself honorably in all my endeavors;and
-> -   I will act if the Standard is compromised.
-
-Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including academic integrity(e.g., completing one's own work, following proper citation of sources,adhering to guidance around group work projects,and more).Ignoring these requirements is a violation of the Duke Community Standard. Any questions and/or concerns regarding academic integrity can be directed to the Office of Student Conduct and Community Standards at [conduct\@duke.edu](mailto:conduct@duke.edu).
-
-### Collaboration policy
-
-Only work that is clearly assigned as team work should be completed collaboratively.
-
+```{=html}
+<!-- -->
+```
 -   The homework assignments must be completed individually and you are welcomed to discuss the assignment with classmates at a high level (e.g., discuss what's the best way for approaching a problem, what functions are useful for accomplishing a particular task, etc.). However you may not directly share answers to homework questions (including any code) with anyone other than myself and the teaching assistants.
 
 -   You may not discuss or otherwise work with others on the exams. Unauthorized collaboration or using unauthorized materials will be considered a violation for all students involved. More details will be given closer to the exam date.
@@ -233,6 +230,8 @@ Only work that is clearly assigned as team work should be completed collaborativ
 -   For the projects and team labs, collaboration within teams is not only allowed, but expected. Communication between teams at a high level is also allowed however you may not share code or components of the project or team labs across teams.
 
 -   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
+
+Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including academic integrity(e.g., completing one's own work, following proper citation of sources,adhering to guidance around group work projects,and more).Ignoring these requirements is a violation of the Duke Community Standard. Any questions and/or concerns regarding academic integrity can be directed to the Office of Student Conduct and Community Standards at [conduct\@duke.edu](mailto:conduct@duke.edu).
 
 ### Late work policy
 

@@ -117,11 +117,11 @@ While there is no official textbook for the course, readings will primarily be a
 
 The goal of both the lectures and the labs is for them to be as interactive as possible. My role as instructor is to introduce you to new tools and techniques, but it is up to you to take them and make use of them. A lot of what you do in this course will involve writing code, and coding is a skill that is best learned by doing. Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab. You are expected to prepare for lectures by completing assigned readings, attend all lecture and lab sessions, and meaningfully contribute to in-class exercises and discussion. Additionally, some lectures will feature application exercises that will be graded for completion.
 
-You are expected to bring a laptop, tablet, or Chromebook to each class so that you can take part in the in-class exercises. Please make sure your device is fully charged before you come to class as the number of outlets in the classroom will not be sufficient to accommodate everyone.
+You are expected to bring a laptop, tablet, or Chromebook to each class so that you can participate in the in-class exercises. Please make sure your device is fully charged before you come to class, as the number of outlets in the classroom will not be sufficient to accommodate everyone.
 
 ## Teams
 
-You will be assigned to a team at the beginning of the semester. You are encouraged to sit with your teammates in lecture and you will also work with them in the lab sessions. All team members are expected to contribute equally to the completion of the labs and project and you will be asked to evaluate your team members throughout the semester. Failure to adequately contribute to an assignment will result in a penalty to your mark relative to the team's overall mark.
+You will be assigned to a team at the beginning of the semester. You are encouraged to sit with your teammates in lecture and you will also work with them in the lab sessions. All team members are expected to contribute equally to the completion of the labs and project, and you will be asked to evaluate your team members throughout the semester. Failure to adequately contribute to an assignment will result in a penalty to your mark relative to the team's overall mark.
 
 You are expected to make use of the provided GitHub repository as their central collaborative platform. Commits to this repository will be used as a metric (one of several) of each team member's relative contribution for each project.
 
@@ -239,7 +239,7 @@ The due dates for assignments are there to help you keep up with the course mate
 
 -   Homework and labs may be submitted up to 3 days late. There will be a 5% deduction for each 24-hour period the assignment is late.
 
--   There is no late work is accepted for application exercises, since these are designed to help you prepare for labs and homework.
+-   There is no late work is accepted for application exercises, since these are designed as in-class activities to help you prepare for labs and homework.
 
 -   The late work policy for exams will be provided with the exam instructions.
 
@@ -257,23 +257,25 @@ Regrade requests must be submitted on Gradescope within a week of when an assign
 
 *No grades will be changed after the final project presentations.*
 
-### Class recordings request
-
-Lectures will be recorded on Panopto and will be made available to students with an excused absence upon request. Videos shared with such students will be available for a week. To request a particular lecture's video, please fill out the form at <https://forms.office.com/r/qU8ANXb6tB>.
-
-Please also make sure that any official documentation, such as STINFs, Dean's excuses, NOVAPs, and quarantine/removal from class notices from student health are also uploaded to the form.
-
-About one week before each exam, the class recordings will be available to all students. These videos will be available until the exam deadline.
-
 ### Attendance policy
 
-\[ADD ATTENDANCE POLICY\]
+Every student is expected to attend and participate in lecture and labs. There may be times, however, when you cannot attend class. Lecture recordings are available upon request for students who have an excused absence. See the [Lecture recording request] policy for more detail. If you miss a lecture, make sure to review the material and complete the application exercise, if applicable, before the next lecture. Labs dedicated to completing the lab assignment and collaborating with your lab team. If you miss a lab session, make sure to communicate with your lab TA and teammates about how you can make up your contribution. If you know you\'re going to miss a lab session and you\'re feeling well enough to do so, notify your lab TA and teammates ahead of time.
+
+More details on Trinity attendance policies are available [here](https://trinity.duke.edu/undergraduate/academic-policies/class-attendance-and-missed-work).
 
 #### Attendance Policy Related to COVID Symptoms, Exposure, or Infection
 
 Student health, safety, and well-being are the university's top priorities. To help ensure your well-being and the well-being of those around you, please do not come to class if you have tested positive for COVID-19 or have possible symptoms and have not yet been tested. If any of these situations apply to you, you must follow university guidance related to the ongoing COVID-19 pandemic and current health and safety protocols. If you are experiencing any COVID-19 symptoms, contact student health ([dshcheckin\@duke.edu](mailto:dshcheckin@duke.edu), 919-681-9355). Learn more about current university policy related to COVID-19 at [coronavirus.duke.edu](https://coronavirus.duke.edu/).
 
 To keep the university community as safe and healthy as possible, you will be expected to follow these guidelines. Please reach out to me and your academic dean as soon as possible if you need to quarantine or isolate so that we can discuss arrangements for your continued participation in class.
+
+### Lecture recording request
+
+Lectures will be recorded on Panopto and will be made available to students with an excused absence upon request. Videos shared with such students will be available for a week after the lecture date. To request a particular lecture's video, please fill out the form at [forms.office.com/r/FbRXJm4Ln1](https://forms.office.com/r/FbRXJm4Ln1). Please submit the form within 24 hours of missing lecture to ensure you have sufficient time to watch the recording. Please also make sure that any official documentation, such as STINFs, Dean's excuses, NOVAPs, and quarantine/removal from class notices from student health are also uploaded to the form.
+
+About one week before each exam, the class recordings will be available to all students. These videos will be available until the exam deadline.
+
+### 
 
 ## Accommodations
 

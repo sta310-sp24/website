@@ -14,7 +14,7 @@ Learn approaches for analyzing multivariate data sets, emphasizing analysis of v
 |             |             |                           |                     |
 |-------------|-------------|---------------------------|---------------------|
 | **Lecture** | Section 001 | Mon & Wed 10:05 - 11:20am | Reuben-Cooke 130    |
-|             | Section 002 | Mon & Wed 1:45 - 3pm      | Old Chem 116        |
+|             | Section 002 | Mon & Wed 1:25 - 2:40pm   | Old Chem 116        |
 | **Lab**     | Lab 01      | Tue 10:05 - 11:20am       | Reuben-Cooke 129    |
 |             | Lab 02      | Tue 11:45am - 1pm         | LSRC A155           |
 |             | Lab 03      | Thu 10:05 - 11:20am       | Reuben-Cooke 129    |

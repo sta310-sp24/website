@@ -11,7 +11,7 @@ title: Syllabus
 |             |             |                           |                     |
 |-------------|-------------|---------------------------|---------------------|
 | **Lecture** | Section 001 | Mon & Wed 10:05 - 11:20am | Reuben-Cooke 130    |
-|             | Section 002 | Mon & Wed 1:45 - 3pm      | Old Chem 116        |
+|             | Section 002 | Mon & Wed 1:25 - 2:40pm   | Old Chem 116        |
 | **Lab**     | Lab 01      | Tue 10:05 - 11:20am       | Reuben-Cooke 129    |
 |             | Lab 02      | Tue 11:45am - 1pm         | LSRC A155           |
 |             | Lab 03      | Thu 10:05 - 11:20am       | Reuben-Cooke 129    |
@@ -32,7 +32,7 @@ title: Syllabus
 | Mitchelle Mojekwu   | TA         |                             |
 | Ben Thorpe          | TA         |                             |
 
-::: {.callout-important appearance="simple" icon="false"}
+::: {.callout-note appearance="simple" icon="false"}
 [Click here](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing) for schedule of office hours.
 :::
 
@@ -85,7 +85,7 @@ The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) 
 
 All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website, [sta210-fa23.netlify.app](https://sta210-fa23.netlify.app).
 
-Announcements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.
+Links to Zoom meetings may be found in Sakai. Periodic announcements will be sent via email and will also be available through Ed Discussion and Sakai Announcements. Please check your email regularly to ensure you have the latest announcements for the course.
 
 ### Getting help in the course
 
@@ -97,7 +97,7 @@ Announcements will be emailed through Sakai Announcements periodically. Please c
 
 ### Email
 
-If there is a question that's not appropriate for the public forum, you are welcome to email me directly. **If you email me, please include "STA 210" in the subject line.** Barring extenuating circumstances, I will respond to STA 210 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.
+If you have questions about assignment extensions or accommodations, please email [sta210\@duke.edu](mailto:sta210@duke.edu.). This email address is accessible to me and the head TA. Please see [Assignment extensions] for more information. If you have any other questions that are not appropriate for the public forum, you are welcome to email me directly at [maria.tackett\@duke.edu](mailto:maria.tackett@duke.edu). **If you email me, please include "STA 210" in the subject line.** Barring extenuating circumstances, I will respond to STA 210 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.
 
 Check out the [Support](support.qmd) page for more resources.
 
@@ -115,7 +115,7 @@ While there is no official textbook for the course, readings will primarily be a
 
 ## Lectures and labs
 
-The goal of both the lectures and the labs is for them to be as interactive as possible. My role as instructor is to introduce you to new tools and techniques, but it is up to you to take them and make use of them. A lot of what you do in this course will involve writing code, and coding is a skill that is best learned by doing. Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab. You are expected to prepare for lectures by completing assigned readings, attend all lecture and lab sessions, and meaningfully contribute to in-class exercises and discussion. Additionally, some lectures will feature application exercises that will be graded for completion.
+Lectures and labs are designed to be interactive, so you gain experience applying new concepts and learning from each other. My role as instructor is to introduce you to new methods, tools, and techniques, but it is up to you to take them and make use of them. A lot of what you do in this course will involve writing code, and coding is a skill that is best learned by doing. Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab. You are expected to prepare for class by completing assigned readings, attend all lecture and lab sessions, and meaningfully contribute to in-class exercises and discussion. Additionally, some lectures will feature application exercises that will be graded based on completing what we do in class.
 
 You are expected to bring a laptop, tablet, or Chromebook to each class so that you can participate in the in-class exercises. Please make sure your device is fully charged before you come to class, as the number of outlets in the classroom will not be sufficient to accommodate everyone.
 
@@ -123,7 +123,7 @@ You are expected to bring a laptop, tablet, or Chromebook to each class so that 
 
 You will be assigned to a team at the beginning of the semester. You are encouraged to sit with your teammates in lecture and you will also work with them in the lab sessions. All team members are expected to contribute equally to the completion of the labs and project, and you will be asked to evaluate your team members throughout the semester. Failure to adequately contribute to an assignment will result in a penalty to your mark relative to the team's overall mark.
 
-You are expected to make use of the provided GitHub repository as their central collaborative platform. Commits to this repository will be used as a metric (one of several) of each team member's relative contribution for each project.
+You are expected to make use of the provided GitHub repository as the central collaborative platform. Commits to this repository will be used as a metric (one of several) of each team member's relative contribution for each project.
 
 ## Activities & Assessment
 
@@ -231,13 +231,13 @@ Your success on this course depends very much on you and the effort you put into
 
 -   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
 
-Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including academic integrity(e.g., completing one's own work, following proper citation of sources,adhering to guidance around group work projects,and more).Ignoring these requirements is a violation of the Duke Community Standard. Any questions and/or concerns regarding academic integrity can be directed to the Office of Student Conduct and Community Standards at [conduct\@duke.edu](mailto:conduct@duke.edu).
+Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including academic integrity(e.g., completing one's own work, following proper citation of sources, adhering to guidance around group work projects,and more).Ignoring these requirements is a violation of the Duke Community Standard. Any questions and/or concerns regarding academic integrity can be directed to the Office of Student Conduct and Community Standards at [conduct\@duke.edu](mailto:conduct@duke.edu).
 
 ### Late work policy
 
-The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest homework and lab assignment will be dropped to accommodate such circumstances.
+The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. *Note that the lowest homework and lab assignment will be dropped to accommodate such circumstances.*
 
--   Homework and labs may be submitted up to 3 days late. There will be a 5% deduction for each 24-hour period the assignment is late.
+-   Homework and labs may be submitted up to 1 day late. There will be a 5% deduction for each 24-hour period the assignment is late.
 
 -   There is no late work is accepted for application exercises, since these are designed as in-class activities to help you prepare for labs and homework.
 
@@ -247,9 +247,15 @@ The due dates for assignments are there to help you keep up with the course mate
 
 ### Waiver for extenuating circumstances
 
-If there are circumstances that prevent you from completing a lab or homework assignment by the stated due date, you may email [Professor Tackett](mailto:maria.tackett@duke.edu) before the deadline to waive the late penalty. In your email, you only need to request the waiver; you do not need to provide explanation. This waiver may only be used for once in the semester, so only use it for a truly extenuating circumstance.
+If there are circumstances that prevent you from completing a lab or homework assignment by the stated due date, you may email [sta210\@duke.edu](mailto:sta210@duke.edu) before the deadline to waive the late penalty. In your email, you only need to request the waiver; you do not need to provide explanation. *This waiver may only be used once in the semester, so only use it for a truly extenuating circumstance.*
 
 If there are circumstances that are having a longer-term impact on your academic performance, please let your academic dean know, as they can be a resource. Please let Professor Tackett know if you need help contacting your academic dean.
+
+### Assignment extensions
+
+Sam Rosen ([sta210\@duke.edu](mailto:sta210@duke.edu)) will serve as the Head TA this semester. Among many things, Sam's role is to handle all **assignment extension questions**. This includes answering questions about the late work policy, along with granting extensions based on the documented arrangements for accommodations and extenuating circumstances via the one-time late waiver or documentation from the Academic Dean. Please see [Late work policy] and [Waiver for extenuating circumstances] for more information about these policies.
+
+Please direct all questions about late work policies to sta210\@duke.edu. This email will be directed to Sam and myself. **This email address only accept emails from Duke email addresses.**
 
 ### Regrade Requests
 
@@ -273,9 +279,7 @@ To keep the university community as safe and healthy as possible, you will be ex
 
 Lectures will be recorded on Panopto and will be made available to students with an excused absence upon request. Videos shared with such students will be available for a week after the lecture date. To request a particular lecture's video, please fill out the form at [forms.office.com/r/FbRXJm4Ln1](https://forms.office.com/r/FbRXJm4Ln1). Please submit the form within 24 hours of missing lecture to ensure you have sufficient time to watch the recording. Please also make sure that any official documentation, such as STINFs, Dean's excuses, NOVAPs, and quarantine/removal from class notices from student health are also uploaded to the form.
 
-About one week before each exam, the class recordings will be available to all students. These videos will be available until the exam deadline.
-
-### 
+About one week before each exam, the class recordings will be available to all students. These recordings will be available until 10am the day of the exam.
 
 ## Accommodations
 
@@ -301,11 +305,11 @@ There are times may need help with the class that is beyond what can be provided
 
 -   **Aug 28:** Classes begin
 -   **Sep 8:** Drop/add ends
--   **Oct 10 - 11**: Fall break
--   **Nov 11** Last day to withdraw with W
--   **Nov 23 - 25:** Thanksgiving recess
--   **Dec 9**: Classes end
--   **Dec 10 - 13** Reading period
--   **Dec 14 - 19**: Final exams
+-   **Oct 16 - 17**: Fall break
+-   **Nov 10**: Last day to withdraw with W
+-   **Nov 22 - 26:** Thanksgiving recess
+-   **Dec 8**: Classes end
+-   **Dec 9 - 12**: Reading period
+-   **Dec 13 - 18**: Final exams
 
-[Click here](https://registrar.duke.edu/fall-2022-academic-calendar) for the full Duke academic calendar.
+[Click here](https://registrar.duke.edu/2023-2024-academic-calendar/) for the full Duke academic calendar.

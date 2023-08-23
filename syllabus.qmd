@@ -73,7 +73,7 @@ Furthermore, I would like to create a learning environment for my students that 
 
 ### Pronouns
 
-Pronouns are meaningful tools to communicate identities and experiences, and using pronouns supports a campus environment where all community members can thrive. Please update your gender pronouns in Duke Hub. You can learn more at the [Center for Sexual and Gender Diversity\'s website](https://students.duke.edu/belonging/icr/csgd/pronouns/).
+Pronouns are meaningful tools to communicate identities and experiences, and using pronouns supports a campus environment where all community members can thrive. Please update your gender pronouns in Duke Hub. You can learn more at the [Center for Sexual and Gender Diversity's website](https://students.duke.edu/belonging/icr/csgd/pronouns/).
 
 ### Accessibility
 
@@ -220,9 +220,8 @@ Your success on this course depends very much on you and the effort you put into
 
 -   Only work that is clearly assigned as team work should be completed collaboratively.
 
-```{=html}
 <!-- -->
-```
+
 -   The homework assignments must be completed individually and you are welcomed to discuss the assignment with classmates at a high level (e.g., discuss what's the best way for approaching a problem, what functions are useful for accomplishing a particular task, etc.). However you may not directly share answers to homework questions (including any code) with anyone other than myself and the teaching assistants.
 
 -   You may not discuss or otherwise work with others on the exams. Unauthorized collaboration or using unauthorized materials will be considered a violation for all students involved. More details will be given closer to the exam date.
@@ -230,6 +229,10 @@ Your success on this course depends very much on you and the effort you put into
 -   For the projects and team labs, collaboration within teams is not only allowed, but expected. Communication between teams at a high level is also allowed however you may not share code or components of the project or team labs across teams.
 
 -   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
+
+-   **Use of generative artificial intelligence (AI)**: You should treat use of generative AI, such as ChatGPT, the same as other online resources. You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite that the code came from ChatGPT. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism. Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you you may use generative AI as a resource to help as you complete assignments but not a tool to complete the assignments. You are ultimately responsible for the work you turn it in and it should reflect your understanding of the course content.
+
+If you are unsure if the use of a particular resource complies with the academic honesty policy, please ask a member of the teaching team.
 
 Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including academic integrity(e.g., completing one's own work, following proper citation of sources, adhering to guidance around group work projects,and more).Ignoring these requirements is a violation of the Duke Community Standard. Any questions and/or concerns regarding academic integrity can be directed to the Office of Student Conduct and Community Standards at [conduct\@duke.edu](mailto:conduct@duke.edu).
 
@@ -249,7 +252,7 @@ The due dates for assignments are there to help you keep up with the course mate
 
 If there are circumstances that prevent you from completing a lab or homework assignment by the stated due date, you may email [sta210\@duke.edu](mailto:sta210@duke.edu) before the deadline to waive the late penalty. In your email, you only need to request the waiver; you do not need to provide explanation. *This waiver may only be used once in the semester, so only use it for a truly extenuating circumstance.*
 
-If there are circumstances that are having a longer-term impact on your academic performance, please let your academic dean know, as they can be a resource. Please let Professor Tackett know if you need help contacting your academic dean.
+If there are circumstances that are having a longer-term impact on your academic performance, please let your academic dean know, as they can be a resource. Please let me know if you need help contacting your academic dean.
 
 ### Assignment extensions
 
@@ -265,7 +268,7 @@ Regrade requests must be submitted on Gradescope within a week of when an assign
 
 ### Attendance policy
 
-Every student is expected to attend and participate in lecture and labs. There may be times, however, when you cannot attend class. Lecture recordings are available upon request for students who have an excused absence. See the [Lecture recording request] policy for more detail. If you miss a lecture, make sure to review the material and complete the application exercise, if applicable, before the next lecture. Labs dedicated to completing the lab assignment and collaborating with your lab team. If you miss a lab session, make sure to communicate with your lab TA and teammates about how you can make up your contribution. If you know you\'re going to miss a lab session and you\'re feeling well enough to do so, notify your lab TA and teammates ahead of time.
+Every student is expected to attend and participate in lecture and labs. There may be times, however, when you cannot attend class. Lecture recordings are available upon request for students who have an excused absence. See the [Lecture recording request] policy for more detail. If you miss a lecture, make sure to review the material and complete the application exercise, if applicable, before the next lecture. Labs dedicated to completing the lab assignment and collaborating with your lab team. If you miss a lab session, make sure to communicate with your lab TA and teammates about how you can make up your contribution. If you know you're going to miss a lab session and you're feeling well enough to do so, notify your lab TA and teammates ahead of time.
 
 More details on Trinity attendance policies are available [here](https://trinity.duke.edu/undergraduate/academic-policies/class-attendance-and-missed-work).
 

@@ -1,9 +1,9 @@
 ---
 title: "Welcome to STA 210!"
 author: "Prof. Maria Tackett"
-date: "2022-08-29"
+date: "2023-08-28"
 date-format: "MMM DD, YYYY"
-footer: "[🔗 Week 01](https://sta210-fa22.netlify.app/weeks/week-01.html)"
+footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"
 format: 
   revealjs:
@@ -38,7 +38,9 @@ knitr:
 ::: {.column width="50%"}
 -   Assistant Professor of the Practice, Department of Statistical Science
 
--   Work focuses on statistics education, specifically active learning, motivation, and classroom community
+-   Work focuses on statistics education and sense of belonging in introductory math and statistics classes
+
+-   Co-leader of the Bass Connections team Mental Health and the Justice System in Durham County
 
 -   Find out more at [maria-tackett.netlify.app](https://maria-tackett.netlify.app)
 :::
@@ -50,29 +52,29 @@ knitr:
 
 ::: columns
 ::: {.column width="50%"}
--   Carson Garcia (UG)
+-   Sam Rosen (PhD): Head TA + Lab 01
 
--   Sara Meta (UG)
+-   Bethany Astor (MS): Lab 02
 
--   Medy Mu (UG)
+-   Jon Campbell (MS)
 
--   Glenn Palmer (PhD)
+-   Donald Cayton (MS): Lab 02
 
--   Braden Scherting (PhD)
+-   Allison Li (UG)
 :::
 
 ::: {.column width="50%"}
--   Luke Vrotsos (PhD)
+-   Mitchelle Mojekwu (UG): Lab 04
 
--   Ben Wallace (UG)
+-   Ben Thorpe (UG)
 
--   Aaditya Warrier (UG)
+-   Linxuan Wang (MS): Lab 03
 
--   Grace Zhao (MS)
+-   Xiaojun Zheng (PhD): Lab 04
 :::
 :::
 
-## Check in on Ed Discussion!
+## Check in on Ed Discussion! - UPDATE LINKS
 
 -   Go to the class Ed Discussion
 
@@ -80,7 +82,7 @@ knitr:
 
     -   [Section 002 (3:30pm lecture)](https://edstem.org/us/courses/26900/discussion/1706937)
 
--   Answer the poll question: **How are you doing?**
+-   Answer the poll question: **How are you doing? - Maybe change this to which graph best describes how your summer went.**
 
 # Regression analysis
 
@@ -104,7 +106,7 @@ A - Introductory statistics or probability course at Duke
 
 **Q - Will we be doing computing?**
 
-A - Yes. We will use the computing language R and version control platform GitHub
+A - Yes. We will use the computing language R for analysis, Quarto for writing up results, and GitHub for version control and collaboration
 
 . . .
 

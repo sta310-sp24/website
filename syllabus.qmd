@@ -24,14 +24,14 @@ format:
 |---------------------|------------|-----------------------------|
 | Prof. Maria Tackett | Instructor | Office Hours: Fri 1 - 3pm   |
 | Sam Rosen           | Head TA    | Lab 01: Tue 10:05 - 11:20am |
+| Bethany Astor       | TA         | Lab 02: Tue 11:45am - 1pm   |
+| Jon Campbell        | TA         |                             |
 | Donald Cayton       | TA         | Lab 02: Tue 11:45am - 1pm   |
+| Allison Li          | TA         |                             |
+| Mitchelle Mojekwu   | TA         | Lab 04: Thu 11:45am - 1pm   |
+| Ben Thorpe          | TA         |                             |
 | Linxuan Wang        | TA         | Lab 03: Thu 10:05 - 11:20am |
 | Xiaojun Zheng       | TA         | Lab 04: Thu 11:45am - 1pm   |
-| Bethany Astor       | TA         |                             |
-| Jon Campbell        | TA         |                             |
-| Allison Li          | TA         |                             |
-| Mitchelle Mojekwu   | TA         |                             |
-| Ben Thorpe          | TA         |                             |
 
 ::: {.callout-note appearance="simple" icon="false"}
 [Click here](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing) for schedule of office hours.

@@ -123,7 +123,7 @@
     "href": "links.html",
     "title": "Useful links",
     "section": "",
-    "text": "RStudio containers\n🔗 on Duke Container Manager\n\n\nCourse GitHub organization\n🔗 on GitHub\n\n\nDiscussion forum\n🔗 on Ed Discussion\n\n\nGradescope (Section 001)\n🔗 on Sakai\n\n\nGradescope (Section 002)\n🔗 on Sakai\n\n\nZoom links\n🔗 on Sakai"
+    "text": "RStudio containers\n🔗 on Duke Container Manager\n\n\nCourse GitHub organization\n🔗 on GitHub\n\n\nDiscussion forum\n🔗 on Ed Discussion\n\n\nAssignment submission\n🔗 on Gradescope\n\n\nZoom links\n🔗 on Sakai"
   },
   {
     "objectID": "index.html",
@@ -200,7 +200,7 @@
     "href": "support.html#email",
     "title": "Course support",
     "section": "Email",
-    "text": "Email\nIf you have questions about personal matters that are not appropriate for the class discussion forum (e.g. illness, accommodations, etc.), you may email Professor Tackett at maria.tackett@duke.edu. If you email me, please include “STA 210” in the subject line. Barring extenuating circumstances, I will respond to STA 210 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday."
+    "text": "Email\nIf you have questions about personal matters that are not appropriate for the class discussion forum (e.g. illness, accommodations, etc.), you may email Professor Tackett at maria.tackett@duke.edu. If you email me, please include “STA 210” in the subject line. Barring extenuating circumstances, I will respond to STA 210 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.\nIf you have questions about assignment extensions, please email sta210@duke.edu. This email is accessible to the Head TA Sam Rosen and Professor Tackett."
   },
   {
     "objectID": "support.html#academic-support",
@@ -221,7 +221,7 @@
     "href": "support.html#technology-accommodations",
     "title": "Course support",
     "section": "Technology accommodations",
-    "text": "Technology accommodations\nTechnology Accommodations\nHighly aided students who have limited access to computers may request loaner laptops through the DukeLIFE Technology Assistance Program. Please note that supplies are limited.\nNote that we will be using Duke’s computational resources in this course. These resources are freely available to you. As long as your computer can connect to the internet and open a browser window, you can perform the necessary computing for this course. All software we use is open-source and/or freely available."
+    "text": "Technology accommodations\nHighly aided students who have limited access to computers may request loaner laptops through the DukeLIFE Technology Assistance Program. Please note that supplies are limited.\nNote that we will be using Duke’s computational resources in this course. These resources are freely available to you. As long as your computer can connect to the internet and open a browser window, you can perform the necessary computing for this course. All software we use is open-source and/or freely available."
   },
   {
     "objectID": "support.html#course-materials-costs",

@@ -1,8 +1,9 @@
 ---
 title: Syllabus
+format: 
+  html: default
+  pdf: default
 ---
-
-[**Click here**](sta210-fa23-syllabus.pdf) **to download a PDF of the syllabus.**
 
 ## Course info
 

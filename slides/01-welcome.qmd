@@ -10,7 +10,7 @@ format:
     theme: slides.scss
     multiplex: false
     transition: fade
-    slide-number: true
+    slide-number: false
     incremental: false 
     chalkboard: true
 execute:
@@ -24,34 +24,23 @@ knitr:
 
 # Welcome!
 
-## Meet the professor
+## Meet Prof. Tackett! {.midi}
 
-::: columns
-::: {.column width="50%"}
-![](images/01/maria.png){fig-alt="Headshot of Maria Tackett" fig-align="center"}
-
-::: center
-**Dr. Maria Tackett**
-:::
-:::
-
-::: {.column width="50%"}
--   Assistant Professor of the Practice, Department of Statistical Science
-
+::: incremental
+-   Education and career journey
+    -   BS in Math and MS in Statistics from University of Tennessee
+    -   Statistician at Capital One
+    -   PhD in Statistics from University of Virginia
+    -   Assistant Professor of the Practice, Department of Statistical Science at Duke
 -   Work focuses on statistics education and sense of belonging in introductory math and statistics classes
-
 -   Co-leader of the Bass Connections team Mental Health and the Justice System in Durham County
-
--   Find out more at [maria-tackett.netlify.app](https://maria-tackett.netlify.app)
-:::
+-   Mom of (almost) 8-month-old twins 🙂
 :::
 
 ------------------------------------------------------------------------
 
-## Meet TAs
+## Meet the Teaching Assistants (TAs)
 
-::: columns
-::: {.column width="50%"}
 -   Sam Rosen (PhD): Head TA + Lab 01
 
 -   Bethany Astor (MS): Lab 02
@@ -61,9 +50,7 @@ knitr:
 -   Donald Cayton (MS): Lab 02
 
 -   Allison Li (UG)
-:::
 
-::: {.column width="50%"}
 -   Mitchelle Mojekwu (UG): Lab 04
 
 -   Ben Thorpe (UG)
@@ -71,8 +58,6 @@ knitr:
 -   Linxuan Wang (MS): Lab 03
 
 -   Xiaojun Zheng (PhD): Lab 04
-:::
-:::
 
 ## Check in on Ed Discussion! - UPDATE LINKS
 
@@ -93,6 +78,16 @@ knitr:
 
 Source: [Wikipedia](https://en.wikipedia.org/wiki/Regression_analysis) (previous definition)
 :::
+
+## Examples of regression in practice - UPDATE THESE?
+
+-   [New Yorkers Will Pay \$56 A Month To Trim A Minute Off Their Commute](https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/)
+
+-   [How FiveThirtyEight's 2020 Presidential Forecast Works --- And What's Different Because Of COVID-19](https://fivethirtyeight.com/features/how-fivethirtyeights-2020-presidential-forecast-works-and-whats-different-because-of-covid-19/)
+
+-   [Effect of Forensic Evidence on Criminal Justice Case Processing](https://onlinelibrary.wiley.com/doi/10.1111/1556-4029.12020)
+
+-   [Why it's so freaking hard to make a good COVID-19 model](https://fivethirtyeight.com/features/why-its-so-freaking-hard-to-make-a-good-covid-19-model/)
 
 # STA 210
 
@@ -117,6 +112,8 @@ A - Yes and No. The course is primarily focused on application; however, we will
 ------------------------------------------------------------------------
 
 ## Course learning objectives
+
+By the end of the semester, you will be able to...
 
 -   analyze real-world data to answer questions about multivariable relationships.
 
@@ -143,28 +140,17 @@ A - Yes and No. The course is primarily focused on application; however, we will
 **Unit 2: Categorical Response Variable**
 
 -   Logistic Regression
+-   Multinomial logistic regression
 :::
 
 ::: {.column width="50%"}
 **Unit 3: Looking Ahead**
 
--   Mixed and random effects
-
--   Introduction to linear mixed models
+-   Special topics
 
 -   Presenting statistical results
 :::
 :::
-
-## Examples of regression in practice - UPDATE THESE?
-
--   [New Yorkers Will Pay \$56 A Month To Trim A Minute Off Their Commute](https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/)
-
--   [How FiveThirtyEight's 2020 Presidential Forecast Works --- And What's Different Because Of COVID-19](https://fivethirtyeight.com/features/how-fivethirtyeights-2020-presidential-forecast-works-and-whats-different-because-of-covid-19/)
-
--   [Effect of Forensic Evidence on Criminal Justice Case Processing](https://onlinelibrary.wiley.com/doi/10.1111/1556-4029.12020)
-
--   [Why it's so freaking hard to make a good COVID-19 model](https://fivethirtyeight.com/features/why-its-so-freaking-hard-to-make-a-good-covid-19-model/)
 
 # Course overview
 
@@ -177,19 +163,20 @@ A - Yes and No. The course is primarily focused on application; however, we will
     -   Gradebook
     -   Announcements
     -   Gradescope
--   **Ed Discussion**: [edstem.org/us/courses/44523/discussion](https://edstem.org/us/courses/44523/discussion)
-    -   Class Q&A and discussion forum
+    -   Ed Discussion
+-   **GitHub:** [github.com/sta210-fa23](github.com/sta210-fa23)
+    -   Distribute assignments
+    -   Platform for version control and collaboration
 
-------------------------------------------------------------------------
-
-## Computing toolkit
+## Computing toolkit {.midi}
 
 ::: columns
 ::: {.column width="50%"}
-![](images/01/rstudio.png){fig-alt="RStudio logo" fig-align="center" width="75%"}
+::: {.fragment fragment-index="1"}
+![](images/01/rstudio.png){fig-alt="RStudio logo" fig-align="center" width="5.61in" height="1.6in"}
 :::
 
-::: {.column width="50%"}
+::: {.fragment fragment-index="2"}
 -   All analyses using R, a statistical programming language
 
 -   Write reproducible reports in Quarto
@@ -198,25 +185,24 @@ A - Yes and No. The course is primarily focused on application; however, we will
 :::
 :::
 
-## Computing toolkit
-
-::: columns
 ::: {.column width="50%"}
-![](images/01/github.png){fig-alt="GitHub logo" fig-align="center" width="75%"}
+::: {.fragment fragment-index="1"}
+![](images/01/github.png){fig-alt="GitHub logo" fig-align="center" width="5.61in" height="1.6in"}
 :::
 
-::: {.column width="50%"}
--   Access assignments
+::: {.fragment fragment-index="3"}
+-   All analyses using R, a statistical programming language
 
-<!-- -->
+-   Write reproducible reports in Quarto
 
--   Facilitates version control and collaboration
-
--   All work in [STA 210 course organization](https://github.com/sta210-fa22)
+-   Access RStudio through [STA 210 Docker Containers](https://cmgr.oit.duke.edu/containers)
 :::
 :::
+:::
 
-## Activities: Prepare, Participate, Practice, Perform
+# Activities + assessments
+
+## Prepare, Participate, Practice, Perform
 
 ::: small
 ::: incremental
@@ -232,7 +218,7 @@ A - Yes and No. The course is primarily focused on application; however, we will
 
     -   Homework assignments (individual)
 
-    -   Two take-home exams
+    -   Two exams
 
     -   Term project presented during the final exam period
 :::
@@ -250,15 +236,16 @@ A - Yes and No. The course is primarily focused on application; however, we will
 | Application Exercises | 2.5%       |
 | Teamwork              | 2.5%       |
 
-See the [syllabus](https://sta210-fa22.netlify.app/syllabus.html) for details on how the final letter grade will be calculated.
+See the [syllabus](https://sta210-fa23.netlify.app/syllabus.html) for details on how the final letter grade will be calculated.
 
 ## Support
 
 -   Attend office hours to meet with a member of the teaching team
-    -   Full office hours schedule begins Tuesday, September 6
+    -   Prof. Tackett's office hours start Fri, Sep 1, 1 - 3pm
+    -   Full office hours schedule starts Tue, Sep 5
 -   Ask and answer questions on course discussion forum
 -   Use email for questions regarding personal matters and/or grades
--   Read the [Course Support](https://sta210-fa22.netlify.app/support.html) page for more details
+-   Read the [Course Support](https://sta210-fa23.netlify.app/support.html) page for more details
 
 ## Diversity & inclusion
 
@@ -278,29 +265,27 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 
 -   The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) is available to ensure that students are able to engage with their courses and related assignments.
 
--   I am committed to making all course materials accessible and I'm always learning how to do this better. If any course component is not accessible to you in any way, please don't hesitate to let me know.
+-   If you have documented accommodations from SDAO, please send the documentation as soon as possible.
+
+-   I am committed to making all course activities and materials accessible. If any course component is not accessible to you in any way, please don't hesitate to let me know.
 
 # Course policies
 
-## COVID policies
+## COVID-19 and other illness
 
--   `r emo::ji("mask")` Wear a mask at all times in lectures and labs based on current university policy
+-   Please do not come to class if you have tested positive for COVID-19, have possible symptoms and have not yet been tested, or have other illness.
 
--   Read and follow the [university guidelines](https://coronavirus.duke.edu/guidelines-requirements/)
+-   Lecture recordings are available for excused absences. See [Lecture recording request](https://sta210-fa23.netlify.app/syllabus#lecture-recording-request) in the syllabus for more information and a link to the request form.
+
+-   Read and follow the university guidelines regarding COVID-19 at [coronavirus.duke.edu](https://coronavirus.duke.edu/).
 
 ## Late work, waivers, and regrade requests
 
--   We have policies!
+-   We have policies! We will discuss them in detail when the first assignment is released.
 
--   Read about them in the [syllabus](https://sta210-fa22.netlify.app/syllabus.html) and refer back to them as needed
+-   Read more about them in the [Course policies](https://sta210-fa23.netlify.app/syllabus.html#course-policies) section of the syllabus and refer back to them as needed
 
-## Collaboration & sharing code
-
--   We have policies!
-
--   Read about them in the [syllabus](https://sta210-fa22.netlify.app/syllabus.html) and refer to them as needed
-
--   We'll discuss these more before the first assignments
+-   If you have questions, email [sta210\@duke.edu](mailto: sta210@duke.edu)
 
 ## Academic integrity
 
@@ -315,6 +300,26 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 \
 By participating in this course, you are agreeing that all your work and conduct will be in accordance with the Duke Community Standard.
 
+## Collaboration & sharing code
+
+-   We have policies! We will discuss them in detail when the first assignment is released.
+
+-   Read about them in the [Academic honesty](https://sta210-fa22.netlify.app/syllabus.html#academic-honesty) section of the syllabus and refer to them as needed
+
+## Use of artificial intelligence (AI) {.midi}
+
+-   You should treat AI tools, such as ChatGPT, the same as other online resources.
+
+-   You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
+
+-    Unless instructed otherwise, AI is [**not**]{.underline} permitted for writing narrative on assignments.
+
+. . .
+
+::: callout-important
+In general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content.
+:::
+
 ## If you're not sure...
 
 Ask if you're not sure if something violates a policy!
@@ -327,43 +332,36 @@ Ask if you're not sure if something violates a policy!
 
 2.  Ask questions.
 
-3.  Do the homeworks and labs and get started on homework early when possible.
+3.  Do the homework and labs; get started on homework early when possible.
 
 4.  Don't procrastinate and don't let a week pass by with lingering questions.
 
-5.  Stay up-to-date on announcements (posted on Sakai & sent via email).
-
-## Learning during a pandemic
-
-I want to make sure that you learn everything you were hoping to learn from this class. If this requires flexibility, please don't hesitate to ask.
-
--   You never owe me personal information about your health (mental or physical) but you're always welcome to talk to me. If I can't help, I likely know someone who can.
-
--   I want you to learn lots of things from this class, but I primarily want you to stay healthy, balanced, and grounded.
-
-See the [Course Support](https://sta210-fa22.netlify.app/support.html) page for information on Duke's academic and wellness resources.
+5.  Stay up-to-date on announcements on Ed Discussion and sent via email.
 
 # Questions?
 
 # Let's look at some data!
 
-## Application exercise
+## Application exercise - UPDATE LINKS IN AE!!!
 
 ::: appex
-📋 [AE 01 - Movie Budgets and Revenues](https://sta210-fa22.netlify.app/ae/ae-01-movies.html)
+📋 [AE 01 - Movie Budgets and Revenues](https://sta210-fa23.netlify.app/ae/ae-01-movies.html)
 :::
 
 # This week
 
 ## For this week...
 
--   Read the syllabus
+-   Read the [syllabus](https://sta210-fa23.netlify.app/syllabus)
 
--   See [Week 01](https://sta210-fa22.netlify.app/weeks/week-01.html) on the schedule for lecture slides, assignments, and readings.
+-   See the [course schedule](https://sta210-fa23.netlify.app/schedule) for an overview of the semester
 
--   Complete the [STA 210 Student Survey](https://duke.qualtrics.com/jfe/form/SV_cGV5IKoeadWR59s) (will ask for a GitHub username)
+-   Labs start this week!
 
-    -   [Click here](https://happygitwithr.com/github-acct.html) for information on registering for a GitHub account and choosing a username.
-    -   You will go over this in lab this week.
+    -   Section 001: Labs on Tuesday
 
--   Reserve an [STA 210 Docker Container](https://cmgr.oit.duke.edu/containers)
+    -   Section 002: Labs on Thursday
+
+-   This week's lab is focused on introductions and computing
+
+-   Wednesday's lecture: The Big Picture

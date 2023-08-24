@@ -118,15 +118,15 @@ A - Yes and No. The course is primarily focused on application; however, we will
 
 ## Course learning objectives
 
--   Analyze real-world data to answer questions about multivariable relationships.
+-   analyze real-world data to answer questions about multivariable relationships.
 
--   Fit and evaluate linear and logistic regression models.
+-   use R to fit and evaluate linear and logistic regression models.
 
--   Assess whether a proposed model is appropriate and describe its limitations.
+-   assess whether a proposed model is appropriate and describe its limitations.
 
--   Use Quarto to write reproducible reports and GitHub for version control and collaboration.
+-   use Quarto to write reproducible reports and GitHub for version control and collaboration.
 
--   Communicate results from statistical analyses to a general audience.
+-   effectively communicate statistical results through writing and oral presentations.
 
 ## Course topics
 
@@ -156,7 +156,7 @@ A - Yes and No. The course is primarily focused on application; however, we will
 :::
 :::
 
-## Examples of regression in practice
+## Examples of regression in practice - UPDATE THESE?
 
 -   [New Yorkers Will Pay \$56 A Month To Trim A Minute Off Their Commute](https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/)
 
@@ -170,14 +170,14 @@ A - Yes and No. The course is primarily focused on application; however, we will
 
 ## Course toolkit
 
--   **Course website**: [sta210-fa22.netlify.app](https://sta210-fa22.netlify.app)
+-   **Course website**: [sta210-fa23.netlify.app](https://sta210-fa23.netlify.app)
     -   Central hub for the course!
     -   **Tour of the website**
 -   **Sakai**: [sakai.duke.edu](https://sakai.duke.edu)
     -   Gradebook
     -   Announcements
     -   Gradescope
--   **Ed Discussion**: [edstem.org/us/courses/26900/discussion](https://edstem.org/us/courses/26900/discussion/)
+-   **Ed Discussion**: [edstem.org/us/courses/44523/discussion](https://edstem.org/us/courses/44523/discussion)
     -   Class Q&A and discussion forum
 
 ------------------------------------------------------------------------

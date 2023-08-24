@@ -42,10 +42,10 @@ format:
 By the end of the semester, you will be able to...
 
 -   analyze real-world data to answer questions about multivariable relationships.
--   fit and evaluate linear and logistic regression models.
+-   use R to fit and evaluate linear and logistic regression models.
 -   assess whether a proposed model is appropriate and describe its limitations.
 -   use Quarto to write reproducible reports and GitHub for version control and collaboration.
--   effectively communicate results from statistical analyses to a general audience.
+-   effectively communicate statistical results through writing and oral presentations.
 
 ## Course community
 

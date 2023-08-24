@@ -1978,14 +1978,14 @@
     "href": "slides/01-welcome.html#meet-the-professor",
     "title": "Welcome to STA 210!",
     "section": "Meet the professor",
-    "text": "Meet the professor\n\n\n\n\n\n\n\n\nDr. Maria Tackett\n\n\n\nAssistant Professor of the Practice, Department of Statistical Science\nWork focuses on statistics education, specifically active learning, motivation, and classroom community\nFind out more at maria-tackett.netlify.app"
+    "text": "Meet the professor\n\n\n\n\n\n\n\n\nDr. Maria Tackett\n\n\n\nAssistant Professor of the Practice, Department of Statistical Science\nWork focuses on statistics education and sense of belonging in introductory math and statistics classes\nCo-leader of the Bass Connections team Mental Health and the Justice System in Durham County\nFind out more at maria-tackett.netlify.app"
   },
   {
     "objectID": "slides/01-welcome.html#meet-tas",
     "href": "slides/01-welcome.html#meet-tas",
     "title": "Welcome to STA 210!",
     "section": "Meet TAs",
-    "text": "Meet TAs\n\n\n\nCarson Garcia (UG)\nSara Meta (UG)\nMedy Mu (UG)\nGlenn Palmer (PhD)\nBraden Scherting (PhD)\n\n\n\nLuke Vrotsos (PhD)\nBen Wallace (UG)\nAaditya Warrier (UG)\nGrace Zhao (MS)"
+    "text": "Meet TAs\n\n\n\nSam Rosen (PhD): Head TA + Lab 01\nBethany Astor (MS): Lab 02\nJon Campbell (MS)\nDonald Cayton (MS): Lab 02\nAllison Li (UG)\n\n\n\nMitchelle Mojekwu (UG): Lab 04\nBen Thorpe (UG)\nLinxuan Wang (MS): Lab 03\nXiaojun Zheng (PhD): Lab 04"
   },
   {
     "objectID": "slides/01-welcome.html#check-in-on-ed-discussion",
@@ -2006,14 +2006,14 @@
     "href": "slides/01-welcome.html#course-faq",
     "title": "Welcome to STA 210!",
     "section": "Course FAQ",
-    "text": "Course FAQ\nQ - What background is assumed for the course?\nA - Introductory statistics or probability course at Duke\n\nQ - Will we be doing computing?\nA - Yes. We will use the computing language R and version control platform GitHub\n\n\nQ - Will we learn the mathematical theory of regression?\nA - Yes and No. The course is primarily focused on application; however, we will discuss some of the mathematics of simple linear regression. There a 0.5-credit course STA 211: Mathematics of Regression to take simultaneously or after this course to dive into more of the mathematics."
+    "text": "Course FAQ\nQ - What background is assumed for the course?\nA - Introductory statistics or probability course at Duke\n\nQ - Will we be doing computing?\nA - Yes. We will use the computing language R for analysis, Quarto for writing up results, and GitHub for version control and collaboration\n\n\nQ - Will we learn the mathematical theory of regression?\nA - Yes and No. The course is primarily focused on application; however, we will discuss some of the mathematics of simple linear regression. There a 0.5-credit course STA 211: Mathematics of Regression to take simultaneously or after this course to dive into more of the mathematics."
   },
   {
     "objectID": "slides/01-welcome.html#course-learning-objectives",
     "href": "slides/01-welcome.html#course-learning-objectives",
     "title": "Welcome to STA 210!",
     "section": "Course learning objectives",
-    "text": "Course learning objectives\n\nAnalyze real-world data to answer questions about multivariable relationships.\nFit and evaluate linear and logistic regression models.\nAssess whether a proposed model is appropriate and describe its limitations.\nUse Quarto to write reproducible reports and GitHub for version control and collaboration.\nCommunicate results from statistical analyses to a general audience."
+    "text": "Course learning objectives\n\nanalyze real-world data to answer questions about multivariable relationships.\nuse R to fit and evaluate linear and logistic regression models.\nassess whether a proposed model is appropriate and describe its limitations.\nuse Quarto to write reproducible reports and GitHub for version control and collaboration.\neffectively communicate statistical results through writing and oral presentations."
   },
   {
     "objectID": "slides/01-welcome.html#course-topics",
@@ -2034,7 +2034,7 @@
     "href": "slides/01-welcome.html#course-toolkit",
     "title": "Welcome to STA 210!",
     "section": "Course toolkit",
-    "text": "Course toolkit\n\nCourse website: sta210-fa22.netlify.app\n\nCentral hub for the course!\nTour of the website\n\nSakai: sakai.duke.edu\n\nGradebook\nAnnouncements\nGradescope\n\nEd Discussion: edstem.org/us/courses/26900/discussion\n\nClass Q&A and discussion forum"
+    "text": "Course toolkit\n\nCourse website: sta210-fa23.netlify.app\n\nCentral hub for the course!\nTour of the website\n\nSakai: sakai.duke.edu\n\nGradebook\nAnnouncements\nGradescope\n\nEd Discussion: edstem.org/us/courses/44523/discussion\n\nClass Q&A and discussion forum"
   },
   {
     "objectID": "slides/01-welcome.html#computing-toolkit",
@@ -2146,7 +2146,7 @@
     "href": "slides/01-welcome.html#for-this-week",
     "title": "Welcome to STA 210!",
     "section": "For this week…",
-    "text": "For this week…\n\nRead the syllabus\nSee Week 01 on the schedule for lecture slides, assignments, and readings.\nComplete the STA 210 Student Survey (will ask for a GitHub username)\n\nClick here for information on registering for a GitHub account and choosing a username.\nYou will go over this in lab this week.\n\nReserve an STA 210 Docker Container\n\n\n\n\n🔗 Week 01"
+    "text": "For this week…\n\nRead the syllabus\nSee Week 01 on the schedule for lecture slides, assignments, and readings.\nComplete the STA 210 Student Survey (will ask for a GitHub username)\n\nClick here for information on registering for a GitHub account and choosing a username.\nYou will go over this in lab this week.\n\nReserve an STA 210 Docker Container\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "project-tips.html",
@@ -2161,5 +2161,19 @@
     "title": "Computing troubleshooting",
     "section": "",
     "text": "If you’re having difficulty launching an RStudio session from your reserved container, go to status.oit.duke.edu and scroll down to Teaching and Learning Tools. Under this heading you’ll find an entry called Container Manager (CMGR Coursework Containers).\n\nIf the status shows something other than Operational, this means there is a known incident with the containers. Check back later to see if it’s been resolved. If there’s a deadline coming up soon, post on the course forum to let us know that there’s an issue. We can look into how quickly it might get resolved and decide on what to do about the deadline accordingly. Note: We don’t anticipate this to happen regularly, the systems are Operational a huge majority of the time!\nIf the status shows Operational, this means the system is expected to be working. Check your internet connection, if need be, restart your computer to ensure a fresh new connection. If your issue persists, post on the course forum with details on what you’ve tried and the errors you see (including verbatim errors and/or screenshots)."
+  },
+  {
+    "objectID": "slides/01-welcome.html#check-in-on-ed-discussion---update-links",
+    "href": "slides/01-welcome.html#check-in-on-ed-discussion---update-links",
+    "title": "Welcome to STA 210!",
+    "section": "Check in on Ed Discussion! - UPDATE LINKS",
+    "text": "Check in on Ed Discussion! - UPDATE LINKS\n\nGo to the class Ed Discussion\n\nSection 001 (10:15am lecture)\nSection 002 (3:30pm lecture)\n\nAnswer the poll question: How are you doing? - Maybe change this to which graph best describes how your summer went."
+  },
+  {
+    "objectID": "slides/01-welcome.html#examples-of-regression-in-practice---update-these",
+    "href": "slides/01-welcome.html#examples-of-regression-in-practice---update-these",
+    "title": "Welcome to STA 210!",
+    "section": "Examples of regression in practice - UPDATE THESE?",
+    "text": "Examples of regression in practice - UPDATE THESE?\n\nNew Yorkers Will Pay $56 A Month To Trim A Minute Off Their Commute\nHow FiveThirtyEight’s 2020 Presidential Forecast Works — And What’s Different Because Of COVID-19\nEffect of Forensic Evidence on Criminal Justice Case Processing\nWhy it’s so freaking hard to make a good COVID-19 model"
   }
 ]

@@ -31,12 +31,12 @@ website:
       - icon: person-fill
         text: "Sakai"
         menu:
-          - text: Discussion forum
-            url: https://edstem.org/us/courses/26900/discussion/
-          - text: Gradescope (Section 001)
-            url: https://www.gradescope.com/courses/578156
-          - text: Gradescope (Section 002)
-            url: https://www.gradescope.com/courses/578157
+          - text: Sakai
+            url: https://sakai.duke.edu/portal/site/f2e8b7dc-61e6-4431-9b5c-29f8411ee5db
+          - text: Ed Discussion 
+            url: https://edstem.org/us/courses/44523/discussion/
+          - text: Gradescope 
+            url: https://www.gradescope.com/courses/584312
     style: "docked"
     search: true
     collapse-level: 1

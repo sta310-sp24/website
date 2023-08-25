@@ -1,0 +1,79 @@
+---
+title: "Welcome to STA 210 Labs!"
+author: "Aug 29 & Sep 1 "
+footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+## Meet your TA!
+
+![](images/labs/hello-sticker.jpeg){fig-alt="Pink sticker that says Hello my name is." fig-align="center"}
+
+## Meet each other!
+
+::: midi
+-   Get into groups of 4 - 5.
+
+-   Introduce yourself - Name, year, major
+
+-   Choose a reporter
+
+    -   Need help choosing? Person with birthday closest to today's date.
+
+-   Identify **8 things** everyone in the group has in common
+
+    -   Not being a Duke student
+    -   Not clothes (e.g., we're all wearing socks)
+    -   Not body parts (e.g., we all have a nose)
+
+-   Reporter will share list with the class.
+:::
+
+```{r}
+#| echo: false 
+
+countdown::countdown(minutes  = 6)
+```
+
+## What to expect in lab
+
+-   Introduction to the lab assignment (\~ 5 - 10 minutes)
+
+-   Work on the lab assignment (individual for the first few weeks, but in teams for the rest of the semester)
+
+-   Lab instructions will be posted on the course website
+
+-   Start each lab by finding your assignment repo in the course GitHub organization
+
+    -   More on the computing tools during lecture
+
+# Any questions about the course?
+
+## For today's lab
+
+-   Reserve [STA 210 Docker Container](https://cmgr.oit.duke.edu/containers)
+
+    -   Make sure to reserve the container titled "STA210" [**not**]{.underline} "RStudio"
+
+    -   Start the container and confirm you see the RStudio interface
+
+-   [Click here](https://happygitwithr.com/github-acct.html) for information on registering for a GitHub account and choosing a username.
+
+-   Click here to submit your GitHub username and confirm you have access to RStudio.
+
+-   Complete the [STA 210 Get to Know You Survey](https://duke.qualtrics.com/jfe/form/SV_cGV5IKoeadWR59s)

@@ -1817,7 +1817,7 @@
     "href": "ae/ae-01-movies.html#data",
     "title": "AE 01: Movie Budgets and Revenues",
     "section": "Data",
-    "text": "Data\nThe movies data set includes basic information about each movie including budget, genre, movie studio, director, etc. A full list of the variables may be found here.\n\nmovies &lt;- read_csv(\"https://raw.githubusercontent.com/danielgrijalva/movie-stats/master/movies.csv\")\n\nView the first 10 rows of data.\n\nmovies |&gt;\n  slice(1:10)\n\n# A tibble: 10 × 15\n   name   rating genre  year released score  votes director writer star  country\n   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  \n 1 The S… R      Drama  1980 June 13…   8.4 9.27e5 Stanley… Steph… Jack… United…\n 2 The B… R      Adve…  1980 July 2,…   5.8 6.5 e4 Randal … Henry… Broo… United…\n 3 Star … PG     Acti…  1980 June 20…   8.7 1.2 e6 Irvin K… Leigh… Mark… United…\n 4 Airpl… PG     Come…  1980 July 2,…   7.7 2.21e5 Jim Abr… Jim A… Robe… United…\n 5 Caddy… R      Come…  1980 July 25…   7.3 1.08e5 Harold … Brian… Chev… United…\n 6 Frida… R      Horr…  1980 May 9, …   6.4 1.23e5 Sean S.… Victo… Bets… United…\n 7 The B… R      Acti…  1980 June 20…   7.9 1.88e5 John La… Dan A… John… United…\n 8 Ragin… R      Biog…  1980 Decembe…   8.2 3.3 e5 Martin … Jake … Robe… United…\n 9 Super… PG     Acti…  1980 June 19…   6.8 1.01e5 Richard… Jerry… Gene… United…\n10 The L… R      Biog…  1980 May 16,…   7   1   e4 Walter … Bill … Davi… United…\n# … with 4 more variables: budget &lt;dbl&gt;, gross &lt;dbl&gt;, company &lt;chr&gt;,\n#   runtime &lt;dbl&gt;"
+    "text": "Data\nThe movies data set includes basic information about each movie including budget, genre, movie studio, director, etc. A full list of the variables may be found here.\n\nmovies &lt;- read_csv(\"https://raw.githubusercontent.com/danielgrijalva/movie-stats/master/movies.csv\")\n\nView the first 10 rows of data.\n\nmovies |&gt;\n  slice(1:10)\n\n# A tibble: 10 × 15\n   name   rating genre  year released score  votes director writer star  country\n   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  \n 1 The S… R      Drama  1980 June 13…   8.4 9.27e5 Stanley… Steph… Jack… United…\n 2 The B… R      Adve…  1980 July 2,…   5.8 6.5 e4 Randal … Henry… Broo… United…\n 3 Star … PG     Acti…  1980 June 20…   8.7 1.20e6 Irvin K… Leigh… Mark… United…\n 4 Airpl… PG     Come…  1980 July 2,…   7.7 2.21e5 Jim Abr… Jim A… Robe… United…\n 5 Caddy… R      Come…  1980 July 25…   7.3 1.08e5 Harold … Brian… Chev… United…\n 6 Frida… R      Horr…  1980 May 9, …   6.4 1.23e5 Sean S.… Victo… Bets… United…\n 7 The B… R      Acti…  1980 June 20…   7.9 1.88e5 John La… Dan A… John… United…\n 8 Ragin… R      Biog…  1980 Decembe…   8.2 3.30e5 Martin … Jake … Robe… United…\n 9 Super… PG     Acti…  1980 June 19…   6.8 1.01e5 Richard… Jerry… Gene… United…\n10 The L… R      Biog…  1980 May 16,…   7   1   e4 Walter … Bill … Davi… United…\n# ℹ 4 more variables: budget &lt;dbl&gt;, gross &lt;dbl&gt;, company &lt;chr&gt;, runtime &lt;dbl&gt;"
   },
   {
     "objectID": "ae/ae-01-movies.html#analysis",
@@ -1831,14 +1831,14 @@
     "href": "ae/ae-01-movies.html#exercises",
     "title": "AE 01: Movie Budgets and Revenues",
     "section": "Exercises",
-    "text": "Exercises\n\nSuppose we fit a regression model for each genre that uses budget to predict gross revenue. What are the signs of the correlation between budget and gross and the slope in each regression equation?\nSuppose we fit the regression model from the previous question. Which genre would you expect to have the smallest residuals, on average (residual = observed revenue - predicted revenue)?\nPost your response on ED Discussion.\n\nSection 001 (10:15am lecture)\nSection 002 (3:30pm lecture)\n\nIn the remaining time, discuss the following: Notice in the graph above that budget and gross are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)?"
+    "text": "Exercises\n\nSuppose we fit a regression model for each genre that uses budget to predict gross revenue. What are the signs of the correlation between budget and gross and the slope in each regression equation?\nSuppose we fit the regression model from the previous question. Which genre would you expect to have the smallest residuals, on average (residual = observed revenue - predicted revenue)?\nPost your response on ED Discussion.\n\nSection 001 (10:05am lecture)\nSection 002 (1:25pm lecture)\n\nIn the remaining time, discuss the following: Notice in the graph above that budget and gross are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)? Post your group’s response in the AE 01 Movie Budgets comments on Ed Discussion."
   },
   {
     "objectID": "ae/ae-01-movies.html#references",
     "href": "ae/ae-01-movies.html#references",
     "title": "AE 01: Movie Budgets and Revenues",
     "section": "References",
-    "text": "References\n\nhttps://github.com/danielgrijalva/movie-stats\nInternet Movie Database"
+    "text": "References\n\ngithub.com/danielgrijalva/movie-stats\nInternet Movie Database"
   },
   {
     "objectID": "ae/ae-01-movies.html#appendix",
@@ -2154,5 +2154,33 @@
     "title": "Computing troubleshooting",
     "section": "",
     "text": "If you’re having difficulty launching an RStudio session from your reserved container, go to status.oit.duke.edu and scroll down to Teaching and Learning Tools. Under this heading you’ll find an entry called Container Manager (CMGR Coursework Containers).\n\nIf the status shows something other than Operational, this means there is a known incident with the containers. Check back later to see if it’s been resolved. If there’s a deadline coming up soon, post on the course forum to let us know that there’s an issue. We can look into how quickly it might get resolved and decide on what to do about the deadline accordingly. Note: We don’t anticipate this to happen regularly, the systems are Operational a huge majority of the time!\nIf the status shows Operational, this means the system is expected to be working. Check your internet connection, if need be, restart your computer to ensure a fresh new connection. If your issue persists, post on the course forum with details on what you’ve tried and the errors you see (including verbatim errors and/or screenshots)."
+  },
+  {
+    "objectID": "slides/lab-00.html#meet-your-ta",
+    "href": "slides/lab-00.html#meet-your-ta",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "Meet your TA!",
+    "text": "Meet your TA!"
+  },
+  {
+    "objectID": "slides/lab-00.html#meet-each-other",
+    "href": "slides/lab-00.html#meet-each-other",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "Meet each other!",
+    "text": "Meet each other!\n\n\nGet into groups of 4 - 5.\nIntroduce yourself - Name, year, major\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to today’s date.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (e.g., we’re all wearing socks)\nNot body parts (e.g., we all have a nose)\n\nReporter will share list with the class.\n\n\n\n\n\n−+\n06:00"
+  },
+  {
+    "objectID": "slides/lab-00.html#what-to-expect-in-lab",
+    "href": "slides/lab-00.html#what-to-expect-in-lab",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "What to expect in lab",
+    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual for the first few weeks, but in teams for the rest of the semester)\nLab instructions will be posted on the course website\nStart each lab by finding your assignment repo in the course GitHub organization\n\nMore on the computing tools during lecture"
+  },
+  {
+    "objectID": "slides/lab-00.html#for-todays-lab",
+    "href": "slides/lab-00.html#for-todays-lab",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "For today’s lab",
+    "text": "For today’s lab\n\nReserve STA 210 Docker Container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nClick here for information on registering for a GitHub account and choosing a username.\nClick here to submit your GitHub username and confirm you have access to RStudio.\nComplete the STA 210 Get to Know You Survey\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   }
 ]

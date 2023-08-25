@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-08-29">
+<meta name="dcterms.date" content="2023-08-28">
 
 <title>STA 210 - Fall 2023 - AE 01: Movie Budgets and Revenues</title>
 <style>
@@ -95,13 +95,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-<script src="../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="../site_libs/datatables-binding-0.23/datatables.js"></script>
+<script src="../site_libs/datatables-binding-0.28/datatables.js"></script>
 <script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="../site_libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="../site_libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="../site_libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="../site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
 <link href="../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 29, 2022</p>
+      <p class="date">August 28, 2023</p>
     </div>
   </div>
   
@@ -323,16 +323,15 @@ Important
    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  
  1 The S… R      Drama  1980 June 13…   8.4 9.27e5 Stanley… Steph… Jack… United…
  2 The B… R      Adve…  1980 July 2,…   5.8 6.5 e4 Randal … Henry… Broo… United…
- 3 Star … PG     Acti…  1980 June 20…   8.7 1.2 e6 Irvin K… Leigh… Mark… United…
+ 3 Star … PG     Acti…  1980 June 20…   8.7 1.20e6 Irvin K… Leigh… Mark… United…
  4 Airpl… PG     Come…  1980 July 2,…   7.7 2.21e5 Jim Abr… Jim A… Robe… United…
  5 Caddy… R      Come…  1980 July 25…   7.3 1.08e5 Harold … Brian… Chev… United…
  6 Frida… R      Horr…  1980 May 9, …   6.4 1.23e5 Sean S.… Victo… Bets… United…
  7 The B… R      Acti…  1980 June 20…   7.9 1.88e5 John La… Dan A… John… United…
- 8 Ragin… R      Biog…  1980 Decembe…   8.2 3.3 e5 Martin … Jake … Robe… United…
+ 8 Ragin… R      Biog…  1980 Decembe…   8.2 3.30e5 Martin … Jake … Robe… United…
  9 Super… PG     Acti…  1980 June 19…   6.8 1.01e5 Richard… Jerry… Gene… United…
 10 The L… R      Biog…  1980 May 16,…   7   1   e4 Walter … Bill … Davi… United…
-# … with 4 more variables: budget &lt;dbl&gt;, gross &lt;dbl&gt;, company &lt;chr&gt;,
-#   runtime &lt;dbl&gt;</code></pre>
+# ℹ 4 more variables: budget &lt;dbl&gt;, gross &lt;dbl&gt;, company &lt;chr&gt;, runtime &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -381,16 +380,16 @@ Important
 <li><p>Suppose we fit the regression model from the previous question. Which genre would you expect to have the smallest residuals, on average (<em>residual = observed revenue - predicted revenue</em>)?</p>
 <p>Post your response on ED Discussion.</p>
 <ul>
-<li><p><a href="https://edstem.org/us/courses/26900/discussion/1706944">Section 001 (10:15am lecture)</a></p></li>
-<li><p><a href="https://edstem.org/us/courses/26900/discussion/1706948">Section 002 (3:30pm lecture)</a></p></li>
+<li><p><a href="https://edstem.org/us/courses/44523/discussion/3344010">Section 001 (10:05am lecture)</a></p></li>
+<li><p><a href="https://edstem.org/us/courses/44523/discussion/3344021">Section 002 (1:25pm lecture)</a></p></li>
 </ul></li>
-<li><p>In the remaining time, discuss the following: Notice in the graph above that <code>budget</code> and <code>gross</code> are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)?</p></li>
+<li><p>In the remaining time, discuss the following: Notice in the graph above that <code>budget</code> and <code>gross</code> are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)? <strong>Post your group’s response in the AE 01 Movie Budgets comments on Ed Discussion.</strong></p></li>
 </ol>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ol type="1">
-<li><a href="https://github.com/danielgrijalva/movie-stats" class="uri">https://github.com/danielgrijalva/movie-stats</a></li>
+<li><a href="https://github.com/danielgrijalva/movie-stats" class="uri">github.com/danielgrijalva/movie-stats</a></li>
 <li><a href="https://www.imdb.com/">Internet Movie Database</a></li>
 </ol>
 </section>
@@ -405,8 +404,8 @@ Important
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="htmlwidget-a5151ef9f68c9c38d0f3" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5151ef9f68c9c38d0f3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["Action","Adventure","Animation","Biography","Comedy","Crime","Drama","Family","Fantasy","History","Horror","Music","Musical","Mystery","Romance","Sci-Fi","Sport","Thriller","Western"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genre<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-96baaa0b8c8afc2df959" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-96baaa0b8c8afc2df959">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["Action","Adventure","Animation","Biography","Comedy","Crime","Drama","Family","Fantasy","History","Horror","Music","Musical","Mystery","Romance","Sci-Fi","Sport","Thriller","Western"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>genre<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 

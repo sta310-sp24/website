@@ -1,6 +1,6 @@
 ---
 title: "AE 01: Movie Budgets and Revenues"
-date: "Aug 29, 2022"
+date: "August 28, 2023"
 editor: visual
 ---
 
@@ -84,15 +84,15 @@ movies |>
 
     Post your response on ED Discussion.
 
-    -   [Section 001 (10:15am lecture)](https://edstem.org/us/courses/26900/discussion/1706944)
+    -   [Section 001 (10:05am lecture)](https://edstem.org/us/courses/44523/discussion/3344010)
 
-    -   [Section 002 (3:30pm lecture)](https://edstem.org/us/courses/26900/discussion/1706948)
+    -   [Section 002 (1:25pm lecture)](https://edstem.org/us/courses/44523/discussion/3344021)
 
-3.  In the remaining time, discuss the following: Notice in the graph above that `budget` and `gross` are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)?
+3.  In the remaining time, discuss the following: Notice in the graph above that `budget` and `gross` are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)? **Post your group's response in the AE 01 Movie Budgets comments on Ed Discussion.**
 
 ## References
 
-1.  <https://github.com/danielgrijalva/movie-stats>
+1.  [github.com/danielgrijalva/movie-stats](https://github.com/danielgrijalva/movie-stats){.uri}
 2.  [Internet Movie Database](https://www.imdb.com/)
 
 ## Appendix

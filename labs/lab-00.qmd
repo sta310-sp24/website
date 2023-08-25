@@ -12,13 +12,13 @@ execute:
 Please complete all today's lab tasks before leaving lab today.
 :::
 
--   Reserve [STA 210 RStudio Container](https://cmgr.oit.duke.edu/containers)
+-   Reserve a [STA 210 container](https://cmgr.oit.duke.edu/containers)
 
     -   Make sure to reserve the container titled "STA210" [**not**]{.underline} "RStudio"
 
     -   Start the container and confirm you see the RStudio interface
 
--   [Submit](https://forms.office.com/r/S1eSDTjB6M) your GitHub username and confirm you have access to the RStudio container
+-   [Submit](https://forms.office.com/r/S1eSDTjB6M) your GitHub username and confirm you have access to the 210 container
 
     -   If you do not have a GitHub username, [click here](https://happygitwithr.com/github-acct.html) for information on registering for a GitHub account and choosing a username
 

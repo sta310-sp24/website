@@ -5,9 +5,7 @@ editor: visual
 ---
 
 ::: callout-important
-**This application exercise is a demo only.**
-
-You do not have a corresponding repository for it and you're not expected to turn in anything for it.
+For this AE, you will discuss the questions in groups and submit answers on Ed Discussion. This AE does not count towards the Application Exercise grade.
 :::
 
 We will look at the relationship between budget and revenue for movies made in the United States in 1986 to 2020. The dataset is created based on data from the [Internet Movie Database (IMDB)](https://www.imdb.com/).
@@ -60,7 +58,9 @@ movies |>
     scale_color_viridis_d()
 ```
 
+::: {.callout-note appearance="simple"}
 *What do you observe from the plot?*
+:::
 
 Next, let's see the relationship between a movie's budget and its gross revenue.
 
@@ -88,7 +88,7 @@ movies |>
 
     -   [Section 002 (1:25pm lecture)](https://edstem.org/us/courses/44523/discussion/3344021)
 
-3.  In the remaining time, discuss the following: Notice in the graph above that `budget` and `gross` are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)? **Post your group's response in the AE 01 Movie Budgets comments on Ed Discussion.**
+3.  \[Time permitting\] Discuss the following: Notice in the graph above that `budget` and `gross` are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)? **Post your group's response in the AE 01 Movie Budgets comments on Ed Discussion.**
 
 ## References
 

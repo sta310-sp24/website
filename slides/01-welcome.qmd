@@ -59,15 +59,13 @@ knitr:
 
 -   Xiaojun Zheng (PhD): Lab 04
 
-## Check in on Ed Discussion! - UPDATE LINKS
+# Check-in on Ed Discussion!
 
--   Go to the class Ed Discussion
+Click on the link and answer the Ed Discussion poll
 
-    -   [Section 001 (10:15am lecture)](https://edstem.org/us/courses/26900/discussion/1706930)
+-   [Section 001 (10:05am lecture)](https://edstem.org/us/courses/44523/discussion/3346720)
 
-    -   [Section 002 (3:30pm lecture)](https://edstem.org/us/courses/26900/discussion/1706937)
-
--   Answer the poll question: **How are you doing? - Maybe change this to which graph best describes how your summer went.**
+-   [Section 002 (1:25pm lecture)](https://edstem.org/us/courses/44523/discussion/3346722)
 
 # Regression analysis
 
@@ -79,7 +77,7 @@ knitr:
 Source: [Wikipedia](https://en.wikipedia.org/wiki/Regression_analysis) (previous definition)
 :::
 
-## Examples of regression in practice - UPDATE THESE?
+## Examples of regression in practice 
 
 -   [New Yorkers Will Pay \$56 A Month To Trim A Minute Off Their Commute](https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/)
 
@@ -87,7 +85,7 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Regression_analysis) (previous
 
 -   [Effect of Forensic Evidence on Criminal Justice Case Processing](https://onlinelibrary.wiley.com/doi/10.1111/1556-4029.12020)
 
--   [Why it's so freaking hard to make a good COVID-19 model](https://fivethirtyeight.com/features/why-its-so-freaking-hard-to-make-a-good-covid-19-model/)
+-   [Why it's so freaking hard to make a good COVID-19 model](https://fivethirtyeight.com/features/why-its-so-freaking-hard-to-make-a-good-covid-19-model/) (from March 2020)
 
 # STA 210
 
@@ -285,7 +283,7 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 
 -   Read more about them in the [Course policies](https://sta210-fa23.netlify.app/syllabus.html#course-policies) section of the syllabus and refer back to them as needed
 
--   If you have questions, email [sta210\@duke.edu](mailto: sta210@duke.edu)
+-   If you have questions, email [sta210\@duke.edu](mailto:%20sta210@duke.edu)
 
 ## Academic integrity
 
@@ -304,7 +302,7 @@ By participating in this course, you are agreeing that all your work and conduct
 
 -   We have policies! We will discuss them in detail when the first assignment is released.
 
--   Read about them in the [Academic honesty](https://sta210-fa22.netlify.app/syllabus.html#academic-honesty) section of the syllabus and refer to them as needed
+-   Read about them in the [Academic honesty](https://sta210-fa23.netlify.app/syllabus.html#academic-honesty) section of the syllabus and refer to them as needed
 
 ## Use of artificial intelligence (AI) {.midi}
 
@@ -312,7 +310,7 @@ By participating in this course, you are agreeing that all your work and conduct
 
 -   You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
 
--    Unless instructed otherwise, AI is [**not**]{.underline} permitted for writing narrative on assignments.
+-   Unless instructed otherwise, AI is [**not**]{.underline} permitted for writing narrative on assignments.
 
 . . .
 
@@ -340,9 +338,11 @@ Ask if you're not sure if something violates a policy!
 
 # Questions?
 
+Raise your hand or post on Ed Discussion
+
 # Let's look at some data!
 
-## Application exercise - UPDATE LINKS IN AE!!!
+## Application exercise 
 
 ::: appex
 📋 [AE 01 - Movie Budgets and Revenues](https://sta210-fa23.netlify.app/ae/ae-01-movies.html)

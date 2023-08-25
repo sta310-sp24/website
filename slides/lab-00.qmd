@@ -64,16 +64,8 @@ countdown::countdown(minutes  = 6)
 
 # Any questions about the course?
 
-## For today's lab {.midi}
+## Today's lab {.midi}
 
--   Reserve [STA 210 RStudio Container](https://cmgr.oit.duke.edu/containers)
+The rest of the today's lab is focused on setting up the computing for the course and completing the class survey. Click the link below for the Lab 00 instructions.
 
-    -   Make sure to reserve the container titled "STA210" [**not**]{.underline} "RStudio"
-
-    -   Start the container and confirm you see the RStudio interface
-
--   [Submit](https://forms.office.com/r/S1eSDTjB6M) your GitHub username and confirm you have access to the RStudio container
-
-    -   If you do not have a GitHub username, [click here](https://happygitwithr.com/github-acct.html) for information on registering for a GitHub account and choosing a username
-
--   Complete the [STA 210 Student Survey](https://forms.office.com/r/fySdtq2mNT)
+🔗 [sta210-fa23.netlify.app/labs/lab-00.html](sta210-fa23.netlify.app/labs/lab-00.html)

@@ -147,11 +147,11 @@
     "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual for the first few weeks, but in teams for the rest of the semester)\nLab instructions will be posted on the course website\nStart each lab by finding your assignment repo in the course GitHub organization\n\nMore on the computing tools during lecture"
   },
   {
-    "objectID": "slides/lab-00.html#for-todays-lab",
-    "href": "slides/lab-00.html#for-todays-lab",
+    "objectID": "slides/lab-00.html#todays-lab",
+    "href": "slides/lab-00.html#todays-lab",
     "title": "Welcome to STA 210 Labs!",
-    "section": "For today’s lab",
-    "text": "For today’s lab\n\nReserve STA 210 RStudio Container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the RStudio container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "section": "Today’s lab",
+    "text": "Today’s lab\nThe rest of the today’s lab is focused on setting up the computing for the course and completing the class survey. Click the link below for the Lab 00 instructions.\n🔗 sta210-fa23.netlify.app/labs/lab-00.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "computing-access.html",
@@ -824,6 +824,13 @@
     "title": "HW: Statistics Experience",
     "section": "Submission",
     "text": "Submission\nSubmit the reflection as a PDF under the Statistics Experience assignment on Gradescope by Fri, Dec 09 at 11:59pm. It must be submitted by the deadline on Gradescope to be considered for grading."
+  },
+  {
+    "objectID": "labs/lab-00.html",
+    "href": "labs/lab-00.html",
+    "title": "Lab 00: Getting started",
+    "section": "",
+    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve STA 210 RStudio Container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the RStudio container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
   },
   {
     "objectID": "prepare/week-08.html",

@@ -151,7 +151,7 @@
     "href": "slides/lab-00.html#for-todays-lab",
     "title": "Welcome to STA 210 Labs!",
     "section": "For today’s lab",
-    "text": "For today’s lab\n\nReserve STA 210 Docker Container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nClick here for information on registering for a GitHub account and choosing a username.\nClick here to submit your GitHub username and confirm you have access to RStudio.\nComplete the STA 210 Get to Know You Survey\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "text": "For today’s lab\n\nReserve STA 210 RStudio Container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the RStudio container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "computing-access.html",

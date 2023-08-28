@@ -64,15 +64,15 @@ Take a few moments to meet or (reconnect with) your neighbor!
 countdown::countdown(minutes = 3, seconds = 0)
 ```
 
-## Topics 
+## Topics
 
 -   List of topics for the data
 
 ------------------------------------------------------------------------
 
-![Data science life cycle from [R for Data Science](https://r4ds.had.co.nz) with modifications from *The Art of Statistics: How to Learn from Data*.](images/02/data-analysis-life-cycle.png){alt="Data science life cycle from R for Data Science with modifications from The Art of Statistics: How to Learn from Data."}
+![Data science life cycle from R for Data Science with modifications from The Art of Statistics: How to Learn from Data.](images/02/data-analysis-life-cycle.png)
 
-# Reproducibility 
+# Reproducibility
 
 ## Reproducibility checklist
 
@@ -98,7 +98,7 @@ What does it mean for an analysis to be reproducible?
 
 ✔️ Can you extend the code to do other things?
 
-## Why is reproducibility important? 
+## Why is reproducibility important?
 
 ## When things go wrong
 
@@ -152,7 +152,7 @@ Source: [Modern Dive](https://moderndive.com/1-getting-started.html)
 
 -   The amount of scaffolding in the template will decrease over the semester
 
-## Application exercise - maybe update this? 
+## Application exercise - maybe update this?
 
 \[Can't use R in class bc Thursday lab hasn't gone yet\]
 

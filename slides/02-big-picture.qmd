@@ -1,0 +1,165 @@
+---
+title: "The big picture"
+subtitle: "Exploring mulitvariable relationsihps + Reproducibility"
+author: "Prof. Maria Tackett"
+date: "2023-08-30"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: false
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+## Announcements - UPDATE
+
+-   [R Resources](https://sta210-fa22.netlify.app/computing-r-resources.html) page updated on the course website
+
+-   Upcoming R workshops by Duke Center for Data and Visualization Sciences:
+
+    -   [​R for data science: getting started, EDA, data wrangling](https://urldefense.com/v3/__https://duke.libcal.com/event/9417980__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBTAP-19e$ "https://urldefense.com/v3/__https://duke.libcal.com/event/9417980__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBTAP-19e$") **- Thu, Sep 15 at 1pm**
+
+    -   [R for data science: visualization, pivot, join, regression](https://urldefense.com/v3/__https://duke.libcal.com/event/9417981__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBYJ8b5Gy$ "https://urldefense.com/v3/__https://duke.libcal.com/event/9417981__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBYJ8b5Gy$") **- Thu, Sep 22 at 1pm**
+
+-   [Policy](https://sta210-fa22.netlify.app/syllabus.html#class-recordings-request)on requesting class recordings
+
+-   See [Week 01](https://sta210-fa22.netlify.app/weeks/week-01.html) for lecture notes, readings, AEs, and assignments
+
+## Statistician of the Day
+
+-   what this is
+
+-   goal
+
+-   How the statisticians are chosen
+
+-   You'll get a chance to contribute
+
+## Statistician of the day
+
+## Meet your neighbor
+
+Take a few moments to meet or (reconnect with) your neighbor!
+
+-   Name
+-   Year
+-   Major
+-   A highlight or something that stood out in the first two days of class
+
+```{r}
+#| echo: false
+
+countdown::countdown(minutes = 3, seconds = 0)
+```
+
+## Topics 
+
+-   List of topics for the data
+
+------------------------------------------------------------------------
+
+![Data science life cycle from [R for Data Science](https://r4ds.had.co.nz) with modifications from *The Art of Statistics: How to Learn from Data*.](images/02/data-analysis-life-cycle.png){alt="Data science life cycle from R for Data Science with modifications from The Art of Statistics: How to Learn from Data."}
+
+# Reproducibility 
+
+## Reproducibility checklist
+
+::: question
+What does it mean for an analysis to be reproducible?
+:::
+
+. . .
+
+**Near term goals**:
+
+✔️ Are the tables and figures reproducible from the code and data?
+
+✔️ Does the code actually do what you think it does?
+
+✔️ In addition to what was done, is it clear *why* it was done?
+
+. . .
+
+**Long term goals**:
+
+✔️ Can the code be used for other data?
+
+✔️ Can you extend the code to do other things?
+
+## Why is reproducibility important? 
+
+## When things go wrong
+
+\[ Get examples from Timbers paper\]
+
+## Toolkit
+
+-   **Scriptability** $\rightarrow$ R
+
+-   **Literate programming** (code, narrative, output in one place) $\rightarrow$ Quarto
+
+-   **Version control** $\rightarrow$ Git / GitHub
+
+    -   *More on this in this week's lab*
+
+## What are R and RStudio?
+
+-   R is a statistical programming language
+
+-   RStudio is a convenient interface for R (an integrated development environment, IDE)
+
+![](images/03/r_vs_rstudio_1.png){fig-align="center"}
+
+Source: [Modern Dive](https://moderndive.com/1-getting-started.html)
+
+------------------------------------------------------------------------
+
+## RStudio IDE
+
+![](images/03/rstudio-panes.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Quarto
+
+-   Fully reproducible reports -- the analysis is run from the beginning each time you render
+
+-   Code goes in chunks and narrative goes outside of chunks
+
+-   Visual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)
+
+## Quarto
+
+![](images/03/quarto.png){fig-align="center"}
+
+## How will we use Quarto?
+
+-   Every application exercise and assignment is written in a Quarto document
+
+-   You'll have a template Quarto document to start with
+
+-   The amount of scaffolding in the template will decrease over the semester
+
+## Application exercise - maybe update this? 
+
+\[Can't use R in class bc Thursday lab hasn't gone yet\]
+
+::: appex
+📋 [github.com/sta210-fa22/ae-02-bikeshare](https://github.com/sta210-fa22/ae-02-bikeshare)
+:::
+
+# Multivariable relationships
+
+-   Take the Fall 2021 Starbucks notes + update. Maybe use Ikea data?

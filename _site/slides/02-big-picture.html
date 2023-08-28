@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
-  <title>STA 210 - Fall 2023 - Welcome to STA 210!</title>
+  <title>STA 210 - Fall 2023 - The big picture</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -321,13 +321,16 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Welcome to STA 210!</h1>
+  <h1 class="title">The big picture</h1>
+  <p class="subtitle">Exploring mulitvariable relationsihps + Reproducibility</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -337,410 +340,152 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 
-  <p class="date">Aug 28, 2023</p>
+  <p class="date">Aug 30, 2023</p>
 </section>
-<section>
-<section id="welcome" class="title-slide slide level1 center">
-<h1>Welcome!</h1>
-
-</section>
-<section id="meet-prof.-tackett" class="slide level2 midi">
-<h2>Meet Prof.&nbsp;Tackett!</h2>
-<div>
+<section id="announcements---update" class="slide level2">
+<h2>Announcements - UPDATE</h2>
 <ul>
-<li class="fragment">Education and career journey
+<li><p><a href="https://sta210-fa22.netlify.app/computing-r-resources.html">R Resources</a> page updated on the course website</p></li>
+<li><p>Upcoming R workshops by Duke Center for Data and Visualization Sciences:</p>
 <ul>
-<li class="fragment">BS in Math and MS in Statistics from University of Tennessee</li>
-<li class="fragment">Statistician at Capital One</li>
-<li class="fragment">PhD in Statistics from University of Virginia</li>
-<li class="fragment">Assistant Professor of the Practice, Department of Statistical Science at Duke</li>
+<li><p><a href="https://urldefense.com/v3/__https://duke.libcal.com/event/9417980__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBTAP-19e$" title="https://urldefense.com/v3/__https://duke.libcal.com/event/9417980__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBTAP-19e$">​R for data science: getting started, EDA, data wrangling</a> <strong>- Thu, Sep 15 at 1pm</strong></p></li>
+<li><p><a href="https://urldefense.com/v3/__https://duke.libcal.com/event/9417981__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBYJ8b5Gy$" title="https://urldefense.com/v3/__https://duke.libcal.com/event/9417981__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBYJ8b5Gy$">R for data science: visualization, pivot, join, regression</a> <strong>- Thu, Sep 22 at 1pm</strong></p></li>
 </ul></li>
-<li class="fragment">Work focuses on statistics education and sense of belonging in introductory math and statistics classes</li>
-<li class="fragment">Co-leader of the Bass Connections team Mental Health and the Justice System in Durham County</li>
-<li class="fragment">Mom of (almost) 8-month-old twins 🙂</li>
+<li><p><a href="https://sta210-fa22.netlify.app/syllabus.html#class-recordings-request">Policy</a>on requesting class recordings</p></li>
+<li><p>See <a href="https://sta210-fa22.netlify.app/weeks/week-01.html">Week 01</a> for lecture notes, readings, AEs, and assignments</p></li>
 </ul>
+</section>
+<section id="statistician-of-the-day" class="slide level2">
+<h2>Statistician of the Day</h2>
+<ul>
+<li><p>what this is</p></li>
+<li><p>goal</p></li>
+<li><p>How the statisticians are chosen</p></li>
+<li><p>You’ll get a chance to contribute</p></li>
+</ul>
+</section>
+<section id="statistician-of-the-day-1" class="slide level2">
+<h2>Statistician of the day</h2>
+</section>
+<section id="meet-your-neighbor" class="slide level2">
+<h2>Meet your neighbor</h2>
+<p>Take a few moments to meet or (reconnect with) your neighbor!</p>
+<ul>
+<li>Name</li>
+<li>Year</li>
+<li>Major</li>
+<li>A highlight or something that stood out in the first two days of class</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_344c32be" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
 </div>
 </section>
-<section id="meet-the-teaching-assistants-tas" class="slide level2">
-<h2>Meet the Teaching Assistants (TAs)</h2>
+<section id="topics" class="slide level2">
+<h2>Topics</h2>
 <ul>
-<li><p>Sam Rosen (PhD): Head TA + Lab 01</p></li>
-<li><p>Bethany Astor (MS): Lab 02</p></li>
-<li><p>Jon Campbell (MS)</p></li>
-<li><p>Donald Cayton (MS): Lab 02</p></li>
-<li><p>Allison Li (UG)</p></li>
-<li><p>Mitchelle Mojekwu (UG): Lab 04</p></li>
-<li><p>Ben Thorpe (UG)</p></li>
-<li><p>Linxuan Wang (MS): Lab 03</p></li>
-<li><p>Xiaojun Zheng (PhD): Lab 04</p></li>
-</ul>
-</section></section>
-<section id="check-in-on-ed-discussion" class="title-slide slide level1 center">
-<h1>Check-in on Ed Discussion!</h1>
-<p>Click on the link and answer the Ed Discussion poll</p>
-<ul>
-<li><p><a href="https://edstem.org/us/courses/44523/discussion/3346720">Section 001 (10:05am lecture)</a></p></li>
-<li><p><a href="https://edstem.org/us/courses/44523/discussion/3346722">Section 002 (1:25pm lecture)</a></p></li>
+<li>List of topics for the data</li>
 </ul>
 </section>
+<section class="slide level2">
 
+
+<img data-src="images/02/data-analysis-life-cycle.png" class="r-stretch quarto-figure-center"><p class="caption">Data science life cycle from R for Data Science with modifications from The Art of Statistics: How to Learn from Data.</p></section>
 <section>
-<section id="regression-analysis" class="title-slide slide level1 center">
-<h1>Regression analysis</h1>
+<section id="reproducibility" class="title-slide slide level1 center">
+<h1>Reproducibility</h1>
 
 </section>
-<section id="what-is-regression-analysis" class="slide level2">
-<h2>What is regression analysis?</h2>
-<div style="font-size: 0.85em;">
-<blockquote>
-<p>“In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when <strong><em>the focus is on the relationship between a dependent variable and one or more independent variables (or ‘predictors’)</em></strong>. More specifically, regression analysis helps one understand how the typical value of the dependent variable (or ‘criterion variable’) changes when any one of the independent variables is varied, while the other independent variables are held fixed.”</p>
-</blockquote>
-<p>Source: <a href="https://en.wikipedia.org/wiki/Regression_analysis">Wikipedia</a> (previous definition)</p>
-</div>
-</section>
-<section id="examples-of-regression-in-practice" class="slide level2">
-<h2>Examples of regression in practice</h2>
-<ul>
-<li><p><a href="https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/">New Yorkers Will Pay $56 A Month To Trim A Minute Off Their Commute</a></p></li>
-<li><p><a href="https://fivethirtyeight.com/features/how-fivethirtyeights-2020-presidential-forecast-works-and-whats-different-because-of-covid-19/">How FiveThirtyEight’s 2020 Presidential Forecast Works — And What’s Different Because Of COVID-19</a></p></li>
-<li><p><a href="https://onlinelibrary.wiley.com/doi/10.1111/1556-4029.12020">Effect of Forensic Evidence on Criminal Justice Case Processing</a></p></li>
-<li><p><a href="https://fivethirtyeight.com/features/why-its-so-freaking-hard-to-make-a-good-covid-19-model/">Why it’s so freaking hard to make a good COVID-19 model</a> (from March 2020)</p></li>
-</ul>
-</section></section>
-<section>
-<section id="sta-210" class="title-slide slide level1 center">
-<h1>STA 210</h1>
-
-</section>
-<section id="course-faq" class="slide level2 midi">
-<h2>Course FAQ</h2>
-<p><strong>Q - What background is assumed for the course?</strong></p>
-<p>A - Introductory statistics or probability course at Duke</p>
-<div class="fragment">
-<p><strong>Q - Will we be doing computing?</strong></p>
-<p>A - Yes. We will use the computing language R for analysis, Quarto for writing up results, and GitHub for version control and collaboration</p>
+<section id="reproducibility-checklist" class="slide level2">
+<h2>Reproducibility checklist</h2>
+<div class="question">
+<p>What does it mean for an analysis to be reproducible?</p>
 </div>
 <div class="fragment">
-<p><strong>Q - Will we learn the mathematical theory of regression?</strong></p>
-<p>A - Yes and No.&nbsp;The course is primarily focused on application; however, we will discuss some of the mathematics of simple linear regression. There a 0.5-credit course <a href="https://stat.duke.edu/courses/mathematics-regression">STA 211: Mathematics of Regression</a> to take simultaneously or after this course to dive into more of the mathematics.</p>
+<p><strong>Near term goals</strong>:</p>
+<p>✔️ Are the tables and figures reproducible from the code and data?</p>
+<p>✔️ Does the code actually do what you think it does?</p>
+<p>✔️ In addition to what was done, is it clear <em>why</em> it was done?</p>
 </div>
-</section>
-<section id="course-learning-objectives" class="slide level2 midi">
-<h2>Course learning objectives</h2>
-<p>By the end of the semester, you will be able to…</p>
-<ul>
-<li><p>analyze real-world data to answer questions about multivariable relationships.</p></li>
-<li><p>use R to fit and evaluate linear and logistic regression models.</p></li>
-<li><p>assess whether a proposed model is appropriate and describe its limitations.</p></li>
-<li><p>use Quarto to write reproducible reports and GitHub for version control and collaboration.</p></li>
-<li><p>effectively communicate statistical results through writing and oral presentations.</p></li>
-</ul>
-</section>
-<section id="course-topics" class="slide level2 midi">
-<h2>Course topics</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Unit 1: Quantitative Response Variable</strong></p>
-<ul>
-<li><p>Simple Linear Regression</p></li>
-<li><p>Multiple Linear Regression</p></li>
-</ul>
-<p><br></p>
-<p><strong>Unit 2: Categorical Response Variable</strong></p>
-<ul>
-<li>Logistic Regression</li>
-<li>Multinomial logistic regression</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Unit 3: Looking Ahead</strong></p>
-<ul>
-<li><p>Special topics</p></li>
-<li><p>Presenting statistical results</p></li>
-</ul>
-</div>
-</div>
-</section></section>
-<section>
-<section id="course-overview" class="title-slide slide level1 center">
-<h1>Course overview</h1>
-
-</section>
-<section id="course-toolkit" class="slide level2 midi">
-<h2>Course toolkit</h2>
-<ul>
-<li><strong>Course website</strong>: <a href="https://sta210-fa23.netlify.app">sta210-fa23.netlify.app</a>
-<ul>
-<li>Central hub for the course!</li>
-<li><strong>Tour of the website</strong></li>
-</ul></li>
-<li><strong>Sakai</strong>: <a href="https://sakai.duke.edu">sakai.duke.edu</a>
-<ul>
-<li>Gradebook</li>
-<li>Announcements</li>
-<li>Gradescope</li>
-<li>Ed Discussion</li>
-</ul></li>
-<li><strong>GitHub:</strong> <a href="github.com/sta210-fa23">github.com/sta210-fa23</a>
-<ul>
-<li>Distribute assignments</li>
-<li>Platform for version control and collaboration</li>
-</ul></li>
-</ul>
-</section>
-<section id="computing-toolkit" class="slide level2 midi">
-<h2>Computing toolkit</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="fragment" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/01/rstudio.png" style="width:5.61in;height:1.6in" alt="RStudio logo"></p>
-</figure>
-</div>
-</div>
-<div class="fragment" data-fragment-index="2">
-<ul>
-<li><p>All analyses using R, a statistical programming language</p></li>
-<li><p>Write reproducible reports in Quarto</p></li>
-<li><p>Access RStudio through <a href="https://cmgr.oit.duke.edu/containers">STA 210 Docker Containers</a></p></li>
-</ul>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fragment" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/01/github.png" style="width:5.61in;height:1.6in" alt="GitHub logo"></p>
-</figure>
-</div>
-</div>
-<div class="fragment" data-fragment-index="3">
-<ul>
-<li><p>Access assignments</p></li>
-<li><p>Facilitates version control and collaboration</p></li>
-<li><p>All work in <a href="https://github.com/sta210-fa23">STA 210 course organization</a></p></li>
-</ul>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="activities-assessments" class="title-slide slide level1 center">
-<h1>Activities + assessments</h1>
-
-</section>
-<section id="prepare-participate-practice-perform" class="slide level2">
-<h2>Prepare, Participate, Practice, Perform</h2>
-<div class="small">
-<div>
-<ul>
-<li class="fragment"><p><strong>Prepare:</strong> Introduce new content and prepare for lectures by completing the readings (and sometimes watching the videos)</p></li>
-<li class="fragment"><p><strong>Participate:</strong> Attend and actively participate in lectures and labs, office hours, team meetings</p></li>
-<li class="fragment"><p><strong>Practice:</strong> Practice applying statistical concepts and computing with application exercises during lecture, graded for completion</p></li>
-<li class="fragment"><p><strong>Perform:</strong> Put together what you’ve learned to analyze real-world data</p>
-<ul>
-<li class="fragment"><p>Lab assignments (first individual, later team-based)</p></li>
-<li class="fragment"><p>Homework assignments (individual)</p></li>
-<li class="fragment"><p>Two exams</p></li>
-<li class="fragment"><p>Final group project</p></li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="grading" class="slide level2">
-<h2>Grading</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Category</th>
-<th>Percentage</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Homework</td>
-<td>35%</td>
-</tr>
-<tr class="even">
-<td>Final project</td>
-<td>15%</td>
-</tr>
-<tr class="odd">
-<td>Lab</td>
-<td>15%</td>
-</tr>
-<tr class="even">
-<td>Exam 01</td>
-<td>15%</td>
-</tr>
-<tr class="odd">
-<td>Exam 02</td>
-<td>15%</td>
-</tr>
-<tr class="even">
-<td>Application Exercises</td>
-<td>2.5%</td>
-</tr>
-<tr class="odd">
-<td>Teamwork</td>
-<td>2.5%</td>
-</tr>
-</tbody>
-</table>
-<p>See the <a href="https://sta210-fa23.netlify.app/syllabus.html">syllabus</a> for details on how the final letter grade will be calculated.</p>
-</section>
-<section id="support" class="slide level2">
-<h2>Support</h2>
-<ul>
-<li>Attend office hours to meet with a member of the teaching team
-<ul>
-<li>Prof.&nbsp;Tackett’s office hours start Fri, Sep 1, 1 - 3pm</li>
-<li>Full office hours schedule starts Tue, Sep 5</li>
-</ul></li>
-<li>Ask and answer questions on course discussion forum</li>
-<li>Use email for questions regarding personal matters and/or grades</li>
-<li>See the <a href="https://sta210-fa23.netlify.app/support.html">Course Support</a> page for more details</li>
-</ul>
-</section>
-<section id="diversity-inclusion" class="slide level2">
-<h2>Diversity &amp; inclusion</h2>
-<div class="small">
-<p>It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.</p>
-<ul>
-<li><p>If you have a name that differs from those that appear in your official Duke records, please let me know.</p></li>
-<li><p>Please let me know your preferred pronouns, if you are comfortable sharing.</p></li>
-<li><p>If you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your advisers and deans are excellent resources.</p></li>
-<li><p>I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said or done in class (by anyone) that made you feel uncomfortable, please talk to me about it.</p></li>
-</ul>
-</div>
-</section>
-<section id="accessibility" class="slide level2">
-<h2>Accessibility</h2>
-<ul>
-<li><p>The <a href="https://access.duke.edu/students">Student Disability Access Office (SDAO)</a> is available to ensure that students are able to engage with their courses and related assignments.</p></li>
-<li><p>If you have documented accommodations from SDAO, please send the documentation as soon as possible.</p></li>
-<li><p>I am committed to making all course activities and materials accessible. If any course component is not accessible to you in any way, please don’t hesitate to let me know.</p></li>
-</ul>
-</section></section>
-<section>
-<section id="course-policies" class="title-slide slide level1 center">
-<h1>Course policies</h1>
-
-</section>
-<section id="covid-19-and-other-illness" class="slide level2">
-<h2>COVID-19 and other illness</h2>
-<ul>
-<li><p>Please do not come to class if you have tested positive for COVID-19, have possible symptoms and have not yet been tested, or have other illness.</p></li>
-<li><p>Lecture recordings are available for excused absences. See <a href="https://sta210-fa23.netlify.app/syllabus#lecture-recording-request">Lecture recording request</a> in the syllabus for more information and a link to the request form.</p></li>
-<li><p>Read and follow the university guidelines regarding COVID-19 at <a href="https://coronavirus.duke.edu/">coronavirus.duke.edu</a>.</p></li>
-</ul>
-</section>
-<section id="late-work-waivers-and-regrade-requests" class="slide level2">
-<h2>Late work, waivers, and regrade requests</h2>
-<ul>
-<li><p>We have policies! We will discuss them in detail when the first assignment is released.</p></li>
-<li><p>Read more about them in the <a href="https://sta210-fa23.netlify.app/syllabus.html#course-policies">Course policies</a> section of the syllabus and refer back to them as needed</p></li>
-<li><p>If you have questions, email <a href="mailto:%20sta210@duke.edu">sta210@duke.edu</a></p></li>
-</ul>
-</section>
-<section id="academic-integrity" class="slide level2">
-<h2>Academic integrity</h2>
-<blockquote>
-<p>To uphold the Duke Community Standard:</p>
-<ul>
-<li><p>I will not lie, cheat, or steal in my academic endeavors;</p></li>
-<li><p>I will conduct myself honorably in all my endeavors; and</p></li>
-<li><p>I will act if the Standard is compromised.</p></li>
-</ul>
-</blockquote>
-<p><br>
-By participating in this course, you are agreeing that all your work and conduct will be in accordance with the Duke Community Standard.</p>
-</section>
-<section id="collaboration-sharing-code" class="slide level2">
-<h2>Collaboration &amp; sharing code</h2>
-<ul>
-<li><p>We have policies! We will discuss them in detail when the first assignment is released.</p></li>
-<li><p>Read about them in the <a href="https://sta210-fa23.netlify.app/syllabus.html#academic-honesty">Academic honesty</a> section of the syllabus and refer to them as needed</p></li>
-</ul>
-</section>
-<section id="use-of-artificial-intelligence-ai" class="slide level2 midi">
-<h2>Use of artificial intelligence (AI)</h2>
-<ul>
-<li><p>You should treat AI tools, such as ChatGPT, the same as other online resources.</p></li>
-<li><p>You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.</p></li>
-<li><p>Unless instructed otherwise, AI is <u><strong>not</strong></u> permitted for writing narrative on assignments.</p></li>
-</ul>
 <div class="fragment">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><strong>Long term goals</strong>:</p>
+<p>✔️ Can the code be used for other data?</p>
+<p>✔️ Can you extend the code to do other things?</p>
 </div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>In general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content.</p>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="having-a-successful-semester-in-sta-210" class="title-slide slide level1 center">
-<h1>Having a successful semester in STA 210</h1>
-
 </section>
-<section id="five-tips-for-success" class="slide level2">
-<h2>Five tips for success</h2>
-<ol type="1">
-<li><p>Complete all the preparation work (readings and videos) before class.</p></li>
-<li><p>Ask questions.</p></li>
-<li><p>Do the homework and labs; get started on homework early when possible.</p></li>
-<li><p>Don’t procrastinate and don’t let a week pass by with lingering questions.</p></li>
-<li><p>Stay up-to-date on announcements on Ed Discussion and sent via email.</p></li>
-</ol>
-</section></section>
-<section id="questions" class="title-slide slide level1 center">
-<h1>Questions?</h1>
-<p>Raise your hand or post on Ed Discussion</p>
+<section id="why-is-reproducibility-important" class="slide level2">
+<h2>Why is reproducibility important?</h2>
 </section>
-
-<section>
-<section id="lets-look-at-some-data" class="title-slide slide level1 center">
-<h1>Let’s look at some data!</h1>
-
+<section id="when-things-go-wrong" class="slide level2">
+<h2>When things go wrong</h2>
+<p>[ Get examples from Timbers paper]</p>
 </section>
-<section id="application-exercise" class="slide level2">
-<h2>Application exercise</h2>
+<section id="toolkit" class="slide level2">
+<h2>Toolkit</h2>
+<ul>
+<li><p><strong>Scriptability</strong> <span class="math inline">\(\rightarrow\)</span> R</p></li>
+<li><p><strong>Literate programming</strong> (code, narrative, output in one place) <span class="math inline">\(\rightarrow\)</span> Quarto</p></li>
+<li><p><strong>Version control</strong> <span class="math inline">\(\rightarrow\)</span> Git / GitHub</p>
+<ul>
+<li><em>More on this in this week’s lab</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="what-are-r-and-rstudio" class="slide level2">
+<h2>What are R and RStudio?</h2>
+<ul>
+<li><p>R is a statistical programming language</p></li>
+<li><p>RStudio is a convenient interface for R (an integrated development environment, IDE)</p></li>
+</ul>
+
+<img data-src="images/03/r_vs_rstudio_1.png" class="r-stretch quarto-figure-center"><p>Source: <a href="https://moderndive.com/1-getting-started.html">Modern Dive</a></p>
+</section>
+<section id="rstudio-ide" class="slide level2">
+<h2>RStudio IDE</h2>
+
+<img data-src="images/03/rstudio-panes.png" class="r-stretch quarto-figure-center"></section>
+<section id="quarto" class="slide level2">
+<h2>Quarto</h2>
+<ul>
+<li><p>Fully reproducible reports – the analysis is run from the beginning each time you render</p></li>
+<li><p>Code goes in chunks and narrative goes outside of chunks</p></li>
+<li><p>Visual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)</p></li>
+</ul>
+</section>
+<section id="quarto-1" class="slide level2">
+<h2>Quarto</h2>
+
+<img data-src="images/03/quarto.png" class="r-stretch quarto-figure-center"></section>
+<section id="how-will-we-use-quarto" class="slide level2">
+<h2>How will we use Quarto?</h2>
+<ul>
+<li><p>Every application exercise and assignment is written in a Quarto document</p></li>
+<li><p>You’ll have a template Quarto document to start with</p></li>
+<li><p>The amount of scaffolding in the template will decrease over the semester</p></li>
+</ul>
+</section>
+<section id="application-exercise---maybe-update-this" class="slide level2">
+<h2>Application exercise - maybe update this?</h2>
+<p>[Can’t use R in class bc Thursday lab hasn’t gone yet]</p>
 <div class="appex">
-<p>📋 <a href="https://sta210-fa23.netlify.app/ae/ae-01-movies.html">AE 01 - Movie Budgets and Revenues</a></p>
+<p>📋 <a href="https://github.com/sta210-fa22/ae-02-bikeshare">github.com/sta210-fa22/ae-02-bikeshare</a></p>
 </div>
 </section></section>
-<section>
-<section id="this-week" class="title-slide slide level1 center">
-<h1>This week</h1>
-
-</section>
-<section id="for-this-week" class="slide level2">
-<h2>For this week…</h2>
+<section id="multivariable-relationships" class="title-slide slide level1 center">
+<h1>Multivariable relationships</h1>
 <ul>
-<li><p>Read the <a href="https://sta210-fa23.netlify.app/syllabus">syllabus</a></p></li>
-<li><p>See the <a href="https://sta210-fa23.netlify.app/schedule">course schedule</a> for an overview of the semester</p></li>
-<li><p>Labs start this week!</p>
-<ul>
-<li><p>Section 001: Labs on Tuesday</p></li>
-<li><p>Section 002: Labs on Thursday</p></li>
-</ul></li>
-<li><p>This week’s lab is focused on introductions and computing</p></li>
-<li><p>Wednesday’s lecture: The Big Picture</p></li>
+<li>Take the Fall 2021 Starbucks notes + update. Maybe use Ikea data?</li>
 </ul>
 
 
 <img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://sta210-fa23.netlify.app/schedule">🔗 STA 210 - Fall 2023 - Schedule</a></p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

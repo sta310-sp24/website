@@ -1,6 +1,6 @@
 ---
 title: "The big picture"
-subtitle: "Analyzing mulitvariable relationsihps + Reproducibility"
+subtitle: "Analyzing multivariable relationships + Reproducibility"
 author: "Prof. Maria Tackett"
 date: "2023-08-30"
 date-format: "MMM DD, YYYY"
@@ -117,7 +117,7 @@ What does it mean for an analysis to be reproducible?
 ## When things go wrong {.smallest}
 
 | Reproducibility error                                    | Consequence                                          | Source(s)                                                                                                       |
-|-----------------------------------------------|-----------------------------------|------------------------|
+|-------------------------------|-----------------------|------------------|
 | Limitations in Excel data formats                        | Loss of 16,000 COVID case records in the UK          | ([Kelion 2020](https://www.bbc.com/news/technology-54423988))                                                   |
 | Automatic formatting in Excel                            | Important genes disregarded in scientific studies    | ([Ziemann, Eren, and El-Osta 2016](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7)) |
 | Deletion of a cell caused rows to shift                  | Mix-up of which patient group received the treatment | ([Wallensteen et al. 2018](https://pubmed.ncbi.nlm.nih.gov/27373757/))                                          |
@@ -249,7 +249,7 @@ starbucks <- openintro::starbucks |>
 . . .
 
 -   `calories`, `bakery` are the **predictor variables**
-    -   variables used to account for variation in the outcome
+    -   variables used to account for variation in the response
     -   also known as *explanatory*, *independent*, or *input* variables
 
 ## Univariate exploratory data analysis
@@ -395,9 +395,9 @@ $${\small \hat{\text{carb}} = \hat{\beta}_0 + \hat{\beta}_1 ~\text{calories} + \
 -   **Inference:** Conclusion about the relationship between the response and predictor variables
 
 ::: question
--   What is an example of a **prediction** question that can be answered using the model of carb vs. calorie and bakery?
+-   What is an example of a **prediction** question that can be answered using the model of carb vs. calories and bakery?
 
--   What is an example of an **inference** question that can be answered using the model of carb vs. calorie and bakery?
+-   What is an example of an **inference** question that can be answered using the model of carb vs. calories and bakery?
 :::
 
 # Application exercise
@@ -420,8 +420,8 @@ $${\small \hat{\text{carb}} = \hat{\beta}_0 + \hat{\beta}_1 ~\text{calories} + \
 
     -   We can use exploratory data analysis to describe the relationship between two variables
 
-    -   We make an assumption about the relationsip between variables when doing linear regression
+    -   We make an assumption about the relationship between variables when doing linear regression
 
-    -   The two main objectives for fitting a linear regression model are s(1) prediction and (2) inference
+    -   The two main objectives for fitting a linear regression model are (1) prediction and (2) inference
 
 ## References

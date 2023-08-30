@@ -1530,7 +1530,7 @@
     "href": "slides/02-big-picture.html#terminology",
     "title": "The big picture",
     "section": "Terminology",
-    "text": "Terminology\n\ncarb is the response variable\n\nvariable whose variation we want to understand / variable we wish to predict\nalso known as outcome or dependent variable\n\n\n\n\ncalories, bakery are the predictor variables\n\nvariables used to account for variation in the outcome\nalso known as explanatory, independent, or input variables"
+    "text": "Terminology\n\ncarb is the response variable\n\nvariable whose variation we want to understand / variable we wish to predict\nalso known as outcome or dependent variable\n\n\n\n\ncalories, bakery are the predictor variables\n\nvariables used to account for variation in the response\nalso known as explanatory, independent, or input variables"
   },
   {
     "objectID": "slides/02-big-picture.html#univariate-exploratory-data-analysis",
@@ -1593,14 +1593,14 @@
     "href": "slides/02-big-picture.html#why-fit-a-model",
     "title": "The big picture",
     "section": "Why fit a model?",
-    "text": "Why fit a model?\n\nPrediction: Expected value of the response variable for given values of the predictor variables\nInference: Conclusion about the relationship between the response and predictor variables\n\n\n\nWhat is an example of a prediction question that can be answered using the model of carb vs. calorie and bakery?\nWhat is an example of an inference question that can be answered using the model of carb vs. calorie and bakery?"
+    "text": "Why fit a model?\n\nPrediction: Expected value of the response variable for given values of the predictor variables\nInference: Conclusion about the relationship between the response and predictor variables\n\n\n\nWhat is an example of a prediction question that can be answered using the model of carb vs. calories and bakery?\nWhat is an example of an inference question that can be answered using the model of carb vs. calories and bakery?"
   },
   {
     "objectID": "slides/02-big-picture.html#recap",
     "href": "slides/02-big-picture.html#recap",
     "title": "The big picture",
     "section": "Recap",
-    "text": "Recap\n\nReproducibility\n\nIt is best practice conduct all data analysis in a reproducible way\nWe will implement a reproducible workflow using R, Quarto, and git/GitHub\n\n\n\n\nMultivariable relationships\n\nWe can use exploratory data analysis to describe the relationship between two variables\nWe make an assumption about the relationsip between variables when doing linear regression\nThe two main objectives for fitting a linear regression model are s(1) prediction and (2) inference"
+    "text": "Recap\n\nReproducibility\n\nIt is best practice conduct all data analysis in a reproducible way\nWe will implement a reproducible workflow using R, Quarto, and git/GitHub\n\n\n\n\nMultivariable relationships\n\nWe can use exploratory data analysis to describe the relationship between two variables\nWe make an assumption about the relationship between variables when doing linear regression\nThe two main objectives for fitting a linear regression model are (1) prediction and (2) inference"
   },
   {
     "objectID": "slides/02-big-picture.html#references",

@@ -229,6 +229,8 @@ Provides a clear record of how the analysis methods evolved. This makes analysis
 
 ## Starbucks data
 
+<!-- change example, or at a minimum change bakery labels to "bakery vs. not bakery" instead of 0 and 1.-->
+
 ```{r data, echo  = F}
 starbucks <- openintro::starbucks |>
   mutate(bakery = factor(if_else(type == "bakery", 1, 0)))

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-09-05">
+<meta name="dcterms.date" content="2023-08-30">
 
 <title>STA 210 - Fall 2023 - AE 02: Bike rentals in Washington, DC</title>
 <style>
@@ -250,31 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
-  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   </ul></li>
-  <li><a href="#daily-counts-temperature-and-season" id="toc-daily-counts-temperature-and-season" class="nav-link" data-scroll-target="#daily-counts-temperature-and-season">Daily counts, temperature, and season</a>
-  <ul class="collapse">
-  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
-  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
-  <li><a href="#exercise-8" id="toc-exercise-8" class="nav-link" data-scroll-target="#exercise-8">Exercise 8</a></li>
-  <li><a href="#exercise-9" id="toc-exercise-9" class="nav-link" data-scroll-target="#exercise-9">Exercise 9</a></li>
-  </ul></li>
-  <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a>
-  <ul class="collapse">
-  <li><a href="#exercise-10" id="toc-exercise-10" class="nav-link" data-scroll-target="#exercise-10">Exercise 10</a></li>
-  <li><a href="#exercise-11" id="toc-exercise-11" class="nav-link" data-scroll-target="#exercise-11">Exercise 11</a></li>
-  <li><a href="#exercise-12" id="toc-exercise-12" class="nav-link" data-scroll-target="#exercise-12">Exercise 12</a></li>
-  <li><a href="#exercise-13" id="toc-exercise-13" class="nav-link" data-scroll-target="#exercise-13">Exercise 13</a></li>
-  <li><a href="#exercise-14" id="toc-exercise-14" class="nav-link" data-scroll-target="#exercise-14">Exercise 14</a></li>
-  </ul></li>
-  <li><a href="#synthesis" id="toc-synthesis" class="nav-link" data-scroll-target="#synthesis">Synthesis</a>
-  <ul class="collapse">
-  <li><a href="#exercise-15" id="toc-exercise-15" class="nav-link" data-scroll-target="#exercise-15">Exercise 15</a></li>
-  <li><a href="#exercise-16" id="toc-exercise-16" class="nav-link" data-scroll-target="#exercise-16">Exercise 16</a></li>
-  <li><a href="#exercise-17" id="toc-exercise-17" class="nav-link" data-scroll-target="#exercise-17">Exercise 17</a></li>
-  </ul></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/ae/ae-02-bikeshare.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -284,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">AE 02: Bike rentals in Washington, DC</h1>
-<p class="subtitle lead">Exploring and modeling relationships</p>
+<p class="subtitle lead">The big picture</p>
 </div>
 
 
@@ -295,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 5, 2022</p>
+      <p class="date">August 30, 2023</p>
     </div>
   </div>
   
@@ -315,13 +291,13 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Go to the <a href="https://github.com/sta210-fa22">course GitHub organization</a> and locate the repo titled <code>ae-01-bikehsare</code> to get started.</p>
-<p>This AE will <u>not</u> be counted as part of the Application Exercises portion of the final course grade.</p>
+<p>For this AE, you will discuss the questions in groups and submit answers on Ed Discussion. This AE does not count towards the Application Exercise grade.</p>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
@@ -343,133 +319,42 @@ Important
 <h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
 <p>Visualize the distribution of daily bike rentals and temperature as well as the relationship between these two variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikeshare, <span class="fu">aes</span>(<span class="at">x =</span> count)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">250</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bikeshare, <span class="fu">aes</span>(<span class="at">x =</span> count)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">250</span>) <span class="sc">+</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Daily bike rentals"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bikeshare, <span class="fu">aes</span>(<span class="at">x =</span> temp_orig)) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature (Celsius)"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bikeshare, <span class="fu">aes</span>(<span class="at">y =</span> count, <span class="at">x =</span> temp_orig)) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature (Celsius)"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Daily bike rentals"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">|</span> p2) <span class="sc">/</span> p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="ae-02-bikeshare_files/figure-html/bike-temp-viz-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikeshare, <span class="fu">aes</span>(<span class="at">y =</span> count, <span class="at">x =</span> temp_orig)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="ae-02-bikeshare_files/figure-html/bike-temp-viz-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="exercise-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>Describe the distribution of daily bike rentals and the distribution of temperature based on the visualizations created in Exercise 1. Include the shape, center, spread, and presence of any potential outliers.</p>
-<p>[Add your answer here]</p>
+<p>Describe the relationship between daily bike rentals and temperature. Comment on how we expect the number of bike rentals to change as the temperature increases.</p>
 </section>
 <section id="exercise-3" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>There appears to be one day with a very small number of bike rentals. What was the day? Why were the number of bike rentals so low on that day? <em>Hint: You can Google the date to figure out what was going on that day.</em></p>
-<p>[Add your answer here]</p>
-</section>
-<section id="exercise-4" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-4">Exercise 4</h3>
-<p>Describe the relationship between daily bike rentals and temperature based on the visualization created in Exercise 1. Comment on how we expect the number of bike rentals to change as the temperature increases.</p>
-<p>[Add your answer here]</p>
-</section>
-<section id="exercise-5" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-5">Exercise 5</h3>
 <p>Suppose you want to fit a model so you can use the temperature to predict the number of bike rentals. Would a model of the form</p>
 <p><span class="math display">\[\text{count} = \beta_0 + \beta_1 ~ \text{temp\_orig} + \epsilon\]</span></p>
-<p>be the best fit for the data? Why or why not?</p>
-<p>[Add your answer here]</p>
-</section>
-</section>
-<section id="daily-counts-temperature-and-season" class="level2">
-<h2 class="anchored" data-anchor-id="daily-counts-temperature-and-season">Daily counts, temperature, and season</h2>
-<section id="exercise-6" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-6">Exercise 6</h3>
-<p>In the raw data, seasons are coded as 1, 2, 3, 4 as numerical values, corresponding to winter, spring, summer, and fall respectively. Recode the <code>season</code> variable to make it a categorical variable (a factor) with levels corresponding to season names, making sure that the levels appear in a reasonable order in the variable (i.e., not alphabetical).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code developed during livecoding here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="exercise-7" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-7">Exercise 7</h3>
-<p>Next, let’s look at how the daily bike rentals differ by season. Let’s visualize the distribution of bike rentals by season using density plots. You can think of a density plot as a “smoothed out histogram”. Compare and contrast the distributions. Is this what you expected? Why or why not?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code developed during livecoding here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>[Add your answer here]</p>
-</section>
-<section id="exercise-8" class="level3" data-link="Exercise 8">
-<h3 data-link="Exercise 8" class="anchored" data-anchor-id="exercise-8">Exercise 8</h3>
-<p>We want to evaluate whether the relationship between temperature and daily bike rentals is the same for each season. To answer this question, first create a scatter plot of daily bike rentals vs.&nbsp;temperature faceted by season.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code developed during livecoding here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="exercise-9" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-9">Exercise 9</h3>
+<p>be an appropriate fit for the data? Why or why not?</p>
+<p>Put your group’s vote on Ed Discussion and briefly describe your reasoning in the comments.</p>
 <ul>
-<li>Which season appears to have the <strong>strongest</strong> relationship between temperature and daily bike rentals? Why do you think the relationship is strongest in this season?</li>
-<li>Which season appears to have the <strong>weakest</strong> relationship between temperature and daily bike rentals? Why do you think the relationship is weakest in this season?</li>
+<li><p>Section 001 (10:05am): <a href="https://edstem.org/us/courses/44523/discussion/3361086">edstem.org/us/courses/44523/discussion/3361086</a></p></li>
+<li><p>Section 002 (1:25pm): <a href="https://edstem.org/us/courses/44523/discussion/3361091">edstem.org/us/courses/44523/discussion/3361091</a></p></li>
 </ul>
-<p>[Add your answer here]</p>
-</section>
-</section>
-<section id="modeling" class="level2">
-<h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
-<section id="exercise-10" class="level3" data-link="Exercise 10">
-<h3 data-link="Exercise 10" class="anchored" data-anchor-id="exercise-10">Exercise 10</h3>
-<p>Filter your data for the season with the strongest apparent relationship between temperature and daily bike rentals.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code developed during livecoding here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="exercise-11" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-11">Exercise 11</h3>
-<p>Using the data you filtered in <a href="#exercise-10">Exercise 10</a>, fit a linear model for predicting daily bike rentals from temperature for this season.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code developed during livecoding here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="exercise-12" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-12">Exercise 12</h3>
-<p>Use the output to write out the estimated regression equation.</p>
-<p>[Add your answer here]</p>
-</section>
-<section id="exercise-13" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-13">Exercise 13</h3>
-<p>Interpret the slope in the context of the data.</p>
-<p>[Add your answer here]</p>
-</section>
-<section id="exercise-14" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-14">Exercise 14</h3>
-<p>Interpret the intercept in the context of the data.</p>
-<p>[Add your answer here]</p>
-</section>
-</section>
-<section id="synthesis" class="level2">
-<h2 class="anchored" data-anchor-id="synthesis">Synthesis</h2>
-<section id="exercise-15" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-15">Exercise 15</h3>
-<p>Suppose you work for a bike share company in Durham, NC, and they want to predict daily bike rentals in 2022. What is one reason you might recommend they use your analysis for this task? What is one reason you would recommend they not use your analysis for this task?</p>
-<p>[Add your answer here]</p>
-<hr>
-<p>The following exercises will be completed only if time permits.</p>
-</section>
-<section id="exercise-16" class="level3" data-link="Exercise 16">
-<h3 data-link="Exercise 16" class="anchored" data-anchor-id="exercise-16">Exercise 16</h3>
-<p>Pick another season. Based on the visualization in <a href="#exercise-8">Exercise 8</a>, would you expect the slope of the relationship between temperature and daily bike rentals to be smaller or larger than the slope of the model you’ve been working with so far? Explain your reasoning.</p>
-<p>[Add your answer here]</p>
-</section>
-<section id="exercise-17" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-17">Exercise 17</h3>
-<p>For this season you picked in <a href="#exercise-16">Exercise 16</a>, fit a linear model for predicting daily bike rentals from temperature. Note, you will need to filter your data for this season first. Use the output to write out the estimated regression equation and interpret the slope and the intercept of this model.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>[Add your answer here]</p>
-</section>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

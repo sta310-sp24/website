@@ -29,7 +29,26 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -321,8 +340,6 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -330,7 +347,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">The big picture</h1>
-  <p class="subtitle">Exploring mulitvariable relationsihps + Reproducibility</p>
+  <p class="subtitle">Analyzing mulitvariable relationsihps + Reproducibility</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -342,59 +359,44 @@ Prof.&nbsp;Maria Tackett
 
   <p class="date">Aug 30, 2023</p>
 </section>
-<section id="announcements---update" class="slide level2">
-<h2>Announcements - UPDATE</h2>
+<section id="announcements" class="slide level2 midi">
+<h2>Announcements</h2>
 <ul>
-<li><p><a href="https://sta210-fa22.netlify.app/computing-r-resources.html">R Resources</a> page updated on the course website</p></li>
-<li><p>Upcoming R workshops by Duke Center for Data and Visualization Sciences:</p>
+<li>Resources for extra R review
 <ul>
-<li><p><a href="https://urldefense.com/v3/__https://duke.libcal.com/event/9417980__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBTAP-19e$" title="https://urldefense.com/v3/__https://duke.libcal.com/event/9417980__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBTAP-19e$">​R for data science: getting started, EDA, data wrangling</a> <strong>- Thu, Sep 15 at 1pm</strong></p></li>
-<li><p><a href="https://urldefense.com/v3/__https://duke.libcal.com/event/9417981__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBYJ8b5Gy$" title="https://urldefense.com/v3/__https://duke.libcal.com/event/9417981__;!!OToaGQ!vb6glowcEQHXdyMEU-stpi2jCuIXR6ZsvaFiyV35PYP3tXbCy07HOi_5UM4XKfT3nRZLzMwfOUykBYJ8b5Gy$">R for data science: visualization, pivot, join, regression</a> <strong>- Thu, Sep 22 at 1pm</strong></p></li>
+<li><p><a href="https://learnr.numbat.space/">Learn R: An interactive introduction to data analysis R</a> (focus on Chapters 4 - 6)</p></li>
+<li><p>Duke Library Center for Data and Visualization Sciences workshops</p>
+<ul>
+<li><p>R for Lunch: data wrangling with dplyr (Fri, Sep 1, 12:30 - 1:30)</p></li>
+<li><p>R for Lunch: visualization with ggplot2 (Fri, Sep 8, 12:30 - 1:30)</p></li>
+<li><p>See the <a href="https://library.duke.edu/data/workshops">CDVS website</a> for more information and to register.</p></li>
 </ul></li>
-<li><p><a href="https://sta210-fa22.netlify.app/syllabus.html#class-recordings-request">Policy</a>on requesting class recordings</p></li>
-<li><p>See <a href="https://sta210-fa22.netlify.app/weeks/week-01.html">Week 01</a> for lecture notes, readings, AEs, and assignments</p></li>
+</ul></li>
+<li>Last day of in-person work for this class is Dec 7</li>
+<li>Next week’s readings posted later this week</li>
 </ul>
 </section>
-<section id="statistician-of-the-day" class="slide level2">
-<h2>Statistician of the Day</h2>
-<ul>
-<li><p>what this is</p></li>
-<li><p>goal</p></li>
-<li><p>How the statisticians are chosen</p></li>
-<li><p>You’ll get a chance to contribute</p></li>
-</ul>
-</section>
-<section id="statistician-of-the-day-1" class="slide level2">
-<h2>Statistician of the day</h2>
-</section>
-<section id="meet-your-neighbor" class="slide level2">
-<h2>Meet your neighbor</h2>
-<p>Take a few moments to meet or (reconnect with) your neighbor!</p>
-<ul>
-<li>Name</li>
-<li>Year</li>
-<li>Major</li>
-<li>A highlight or something that stood out in the first two days of class</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_24e434cc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
+<section>
+<section id="questions-from-last-class" class="title-slide slide level1 center">
+<h1>Questions from last class?</h1>
+
 </section>
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
 <ul>
-<li>List of topics for the data</li>
+<li>Data analysis life cycle</li>
+<li>Reproducible data analysis</li>
+<li>Analyzing multivariable relationships</li>
 </ul>
 </section>
 <section class="slide level2">
 
 
-<img data-src="images/02/data-analysis-life-cycle.png" class="r-stretch quarto-figure-center"><p class="caption">Data science life cycle from R for Data Science with modifications from The Art of Statistics: How to Learn from Data.</p></section>
+<img data-src="images/02/data-analysis-life-cycle.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://r4ds.hadley.nz/"><em>R for Data Science</em></a> with additions from <em>The Art of Statistics: How to Learn from Data</em>.</p></section>
+<section class="slide level2">
+
+
+<img data-src="images/02/whole-game.png" class="r-stretch quarto-figure-center"><p class="caption">Source:<a href="https://r4ds.hadley.nz/"><em>R for Data Science</em></a></p></section></section>
 <section>
 <section id="reproducibility" class="title-slide slide level1 center">
 <h1>Reproducibility</h1>
@@ -407,7 +409,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="fragment">
 <p><strong>Near term goals</strong>:</p>
-<p>✔️ Are the tables and figures reproducible from the code and data?</p>
+<p>✔️ Can the tables and figures be exactly reproduced from the code and data?</p>
 <p>✔️ Does the code actually do what you think it does?</p>
 <p>✔️ In addition to what was done, is it clear <em>why</em> it was done?</p>
 </div>
@@ -419,35 +421,96 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="why-is-reproducibility-important" class="slide level2">
 <h2>Why is reproducibility important?</h2>
+<ul>
+<li><p>Results produced are more reliable and trustworthy <span class="citation" data-cites="ostblom2022">(<a href="#/references" role="doc-biblioref" onclick="">Ostblom and Timbers 2022</a>)</span></p></li>
+<li><p>Facilitates more effective collaboration <span class="citation" data-cites="ostblom2022">(<a href="#/references" role="doc-biblioref" onclick="">Ostblom and Timbers 2022</a>)</span></p></li>
+<li><p>Contributing to science, which builds and organizes knowledge in terms of testable hypotheses <span class="citation" data-cites="alexander2023">(<a href="#/references" role="doc-biblioref" onclick="">Alexander 2023</a>)</span></p></li>
+<li><p>Possible to identify and correct errors or biases in the analysis process <span class="citation" data-cites="alexander2023">(<a href="#/references" role="doc-biblioref" onclick="">Alexander 2023</a>)</span></p></li>
+</ul>
 </section>
-<section id="when-things-go-wrong" class="slide level2">
+<section id="when-things-go-wrong" class="slide level2 smallest">
 <h2>When things go wrong</h2>
-<p>[ Get examples from Timbers paper]</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 24%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Reproducibility error</th>
+<th>Consequence</th>
+<th>Source(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Limitations in Excel data formats</td>
+<td>Loss of 16,000 COVID case records in the UK</td>
+<td>(Kelion 2020)</td>
+</tr>
+<tr class="even">
+<td>Automatic formatting in Excel</td>
+<td>Important genes disregarded in scientific studies</td>
+<td>(Zeeberg et al.&nbsp;2004; Ziemann, Eren, and El-Osta 2016)</td>
+</tr>
+<tr class="odd">
+<td>Deletion of a cell caused rows to shift</td>
+<td>Mix-up of which patient group received the treatment</td>
+<td>(Wallensteen et al.&nbsp;2018)</td>
+</tr>
+<tr class="even">
+<td>Using binary instead of explanatory labels</td>
+<td>Mix-up of the intervention with the control group</td>
+<td>(Aboumatar and Wise 2019)</td>
+</tr>
+<tr class="odd">
+<td>Using the same notation for missing data and zero values</td>
+<td>Paper retraction</td>
+<td>(Whitehouse et al.&nbsp;2021)</td>
+</tr>
+<tr class="even">
+<td>Incorrectly copying data in a spreadsheet</td>
+<td>Delay in the opening of a hospital</td>
+<td>(Picken 2020)</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <span class="citation" data-cites="ostblom2022">Ostblom and Timbers (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </section>
 <section id="toolkit" class="slide level2">
 <h2>Toolkit</h2>
 <ul>
 <li><p><strong>Scriptability</strong> <span class="math inline">\(\rightarrow\)</span> R</p></li>
 <li><p><strong>Literate programming</strong> (code, narrative, output in one place) <span class="math inline">\(\rightarrow\)</span> Quarto</p></li>
-<li><p><strong>Version control</strong> <span class="math inline">\(\rightarrow\)</span> Git / GitHub</p>
-<ul>
-<li><em>More on this in this week’s lab</em></li>
-</ul></li>
+<li><p><strong>Version control</strong> <span class="math inline">\(\rightarrow\)</span> Git / GitHub</p></li>
 </ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>You will start using these computing tools in Lab 01.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="what-are-r-and-rstudio" class="slide level2">
-<h2>What are R and RStudio?</h2>
+<section id="r-and-rstudio" class="slide level2">
+<h2>R and RStudio</h2>
 <ul>
 <li><p>R is a statistical programming language</p></li>
 <li><p>RStudio is a convenient interface for R (an integrated development environment, IDE)</p></li>
 </ul>
 
-<img data-src="images/03/r_vs_rstudio_1.png" class="r-stretch quarto-figure-center"><p>Source: <a href="https://moderndive.com/1-getting-started.html">Modern Dive</a></p>
-</section>
+<img data-src="images/03/r_vs_rstudio_1.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://moderndive.com/1-getting-started.html">Statistical Inference via Data Science</a></p></section>
 <section id="rstudio-ide" class="slide level2">
 <h2>RStudio IDE</h2>
 
-<img data-src="images/03/rstudio-panes.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/02/rstudio-panes.png" class="r-stretch quarto-figure-center"></section>
 <section id="quarto" class="slide level2">
 <h2>Quarto</h2>
 <ul>
@@ -467,25 +530,209 @@ Prof.&nbsp;Maria Tackett
 <li><p>You’ll have a template Quarto document to start with</p></li>
 <li><p>The amount of scaffolding in the template will decrease over the semester</p></li>
 </ul>
-</section>
-<section id="application-exercise---maybe-update-this" class="slide level2">
-<h2>Application exercise - maybe update this?</h2>
-<p>[Can’t use R in class bc Thursday lab hasn’t gone yet]</p>
-<div class="appex">
-<p>📋 <a href="https://github.com/sta210-fa22/ae-02-bikeshare">github.com/sta210-fa22/ae-02-bikeshare</a></p>
-</div>
 </section></section>
+<section>
+<section id="version-control-with-git-and-github" class="title-slide slide level1 center">
+<h1>Version control with git and GitHub</h1>
+
+</section>
+<section id="what-is-versioning" class="slide level2">
+<h2>What is versioning?</h2>
+<p><br></p>
+
+<img data-src="images/02/lego-steps.png" class="r-stretch quarto-figure-center"></section>
+<section id="what-is-versioning-1" class="slide level2">
+<h2>What is versioning?</h2>
+<p>with human readable messages</p>
+
+<img data-src="images/02/lego-steps-commit-messages.png" class="r-stretch quarto-figure-center"></section>
+<section id="why-do-we-need-version-control" class="slide level2">
+<h2>Why do we need version control?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/02/phd_comics_vc.gif"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Provides a clear record of how the analysis methods evolved. This makes analysis auditable and thus more trustworthy and reliable. <span class="citation" data-cites="ostblom2022">(<a href="#/references" role="doc-biblioref" onclick="">Ostblom and Timbers 2022</a>)</span></p>
+</div>
+</div>
+</section>
+<section id="git-and-github" class="slide level2">
+<h2>git and GitHub</h2>
+
+<img data-src="images/02/git-github.png" class="r-stretch quarto-figure-center"><ul>
+<li><strong>git</strong> is a version control system – like “Track Changes” features from Microsoft Word.</li>
+<li><strong>GitHub</strong> is the home for your git-based projects on the internet (like DropBox but much better).</li>
+<li>There are a lot of git commands and very few people know them all. 99% of the time you will use git to add, commit, push, and pull.</li>
+</ul>
+</section></section>
+<section>
 <section id="multivariable-relationships" class="title-slide slide level1 center">
 <h1>Multivariable relationships</h1>
+
+</section>
+<section id="carbohydrates-in-starbucks-food" class="slide level2">
+<h2>Carbohydrates in Starbucks food</h2>
 <ul>
-<li>Take the Fall 2021 Starbucks notes + update. Maybe use Ikea data?</li>
+<li><p>Starbucks often displays the total calories in their food items but not the other nutritional information.</p></li>
+<li><p>Carbohydrates are a body’s main fuel source. The Dietary Guidelines for America recommend that carbohydrates make up 45% to 65% of total daily calories.<sup>1</sup></p></li>
+<li><p>Our goal is to understand the relationship between the amount of carbohydrates and calories in Starbucks food items. We’d also like to assess if the relationship differs based on the type of food item (bakery, salad, sandwich, etc.)</p></li>
 </ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Source: <a href="https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/carbohydrates/art-20045705#:~:text=How%20many%20carbohydrates%20do%20you,grams%20of%20carbs%20a%20day.">Mayo Clinic</a></p></li></ol></aside></section>
+<section id="starbucks-data" class="slide level2">
+<h2>Starbucks data</h2>
+<ul>
+<li><strong>Observations</strong>: 77 Starbucks food items</li>
+<li><strong>Variables:</strong>
+<ul>
+<li><code>carb</code>: Total carbohydrates (in grams)</li>
+<li><code>calories</code>: Total calories</li>
+<li><code>bakery</code>: 1: bakery food item, 0: other food type</li>
+</ul></li>
+</ul>
+</section>
+<section id="terminology" class="slide level2">
+<h2>Terminology</h2>
+<ul>
+<li><code>carb</code> is the <strong>response variable</strong>
+<ul>
+<li>variable whose variation we want to understand / variable we wish to predict</li>
+<li>also known as <em>outcome</em> or <em>dependent</em> variable</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><code>calories</code>, <code>bakery</code> are the <strong>predictor variables</strong>
+<ul>
+<li>variables used to account for variation in the outcome</li>
+<li>also known as <em>explanatory</em>, <em>independent</em>, or <em>input</em> variables</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="univariate-exploratory-data-analysis" class="slide level2">
+<h2>Univariate exploratory data analysis</h2>
+
+<img data-src="02-big-picture_files/figure-revealjs/univariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<section id="bivariate-exploratory-data-analysis" class="slide level2">
+<h2>Bivariate exploratory data analysis</h2>
+
+<img data-src="02-big-picture_files/figure-revealjs/bivariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<section id="function-between-response-and-predictors" class="slide level2">
+<h2>Function between response and predictors</h2>
+<div class="goal">
+<p><span class="math display">\[\text{carb} = f(\text{calories}, \text{bakery}) + \epsilon\]</span></p>
+</div>
+<ul>
+<li><strong>Goal</strong>: Determine <span class="math inline">\(f\)</span></li>
+<li>How do we determine <span class="math inline">\(f\)</span>?
+<ul>
+<li>Make an assumption about the functional form <span class="math inline">\(f\)</span> (parametric model)</li>
+<li>Use the data to fit a model based on that form</li>
+</ul></li>
+</ul>
+</section>
+<section id="determine-f" class="slide level2">
+<h2>Determine <span class="math inline">\(f\)</span></h2>
+<ol type="1">
+<li>Choose the functional form of <span class="math inline">\(f\)</span>, i.e., <strong>choose the appropriate model given the response variable</strong></li>
+</ol>
+<ul>
+<li>Suppose <span class="math inline">\(f\)</span> takes the form of a linear model<br>
+<span class="math display">\[y = f(\mathbf{X}) = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p + \epsilon\]</span></li>
+</ul>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Use the data to fit (or train) the model, i.e, <strong>estimate the model parameters,</strong> <span class="math inline">\(\beta_0, \beta_1, \ldots, \beta_p\)</span></li>
+</ol>
+</div>
+</section>
+<section id="carb-vs.-calories" class="slide level2">
+<h2>Carb vs.&nbsp;Calories</h2>
+
+<img data-src="02-big-picture_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \epsilon\]</span></p>
+</section>
+<section id="carb-vs.-calories-bakery" class="slide level2">
+<h2>Carb vs.&nbsp;Calories + Bakery</h2>
+
+<img data-src="02-big-picture_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \epsilon\]</span></p>
+</section>
+<section id="carb-vs.-calories-bakery-with-interaction" class="slide level2">
+<h2>Carb vs.&nbsp;Calories + Bakery (with interaction)</h2>
+
+<img data-src="02-big-picture_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[{\small \text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \beta_3 ~ \text{calories} \times \text{bakery}  + \epsilon}\]</span></p>
+</section>
+<section id="statistical-model-vs.-regression-equation" class="slide level2 midi">
+<h2>Statistical model vs.&nbsp;regression equation</h2>
+<p><strong>Statistical model (also known as data-generating model)</strong></p>
+<p><span class="math display">\[{\small \text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \beta_3 ~ \text{calories} \times \text{bakery}  + \epsilon}\]</span></p>
+<p>Models the process for generating values of the response in the population (function + error)</p>
+<p><br></p>
+<div class="fragment">
+<p><strong>Regression equation</strong></p>
+<p>Estimate of the function using the sample data</p>
+<p><span class="math display">\[{\small \hat{\text{carb}} = \hat{\beta}_0 + \hat{\beta}_1 ~\text{calories} + \hat{\beta}_2 ~\text{bakery} + \hat{\beta}_3 ~ \text{calories} \times \text{bakery}}\]</span></p>
+</div>
+</section>
+<section id="why-fit-a-model" class="slide level2">
+<h2>Why fit a model?</h2>
+<ul>
+<li><p><strong>Prediction:</strong> Expected value of the response variable for given values of the predictor variables</p></li>
+<li><p><strong>Inference:</strong> Conclusion about the relationship between the response and predictor variables</p></li>
+</ul>
+<div class="question">
+<ul>
+<li><p>What is an example of a <strong>prediction</strong> question that can be answered using the model of carb vs.&nbsp;calorie and bakery?</p></li>
+<li><p>What is an example of an <strong>inference</strong> question that can be answered using the model of carb vs.&nbsp;calorie and bakery?</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="application-exercise" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<div class="appex">
+<p>📋 <a href="https://sta210-fa23.netlify.app/ae/ae-02-bikeshare.html">sta210-fa23.netlify.app/ae/ae-02-bikeshare</a></p>
+</div>
+</section>
+<section id="recap" class="slide level2 midi">
+<h2>Recap</h2>
+<ul>
+<li><p><strong>Reproducibility</strong></p>
+<ul>
+<li><p>It is best practice conduct all data analysis in a reproducible way</p></li>
+<li><p>We will implement a reproducible workflow using R, Quarto, and git/GitHub</p></li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong>Multivariable relationships</strong></p>
+<ul>
+<li><p>We can use exploratory data analysis to describe the relationship between two variables</p></li>
+<li><p>We make an assumption about the relationsip between variables when doing linear regression</p></li>
+<li><p>The two main objectives for fitting a linear regression model are s(1) prediction and (2) inference</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 
 <img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://sta210-fa23.netlify.app/schedule">🔗 STA 210 - Fall 2023 - Schedule</a></p>
 </div>
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alexander2023" class="csl-entry" role="listitem">
+Alexander, Rohan. 2023. <span>“Telling Stories with Data,”</span> June. <a href="https://doi.org/10.1201/9781003229407">https://doi.org/10.1201/9781003229407</a>.
+</div>
+<div id="ref-ostblom2022" class="csl-entry" role="listitem">
+Ostblom, Joel, and Tiffany Timbers. 2022. <span>“Opinionated Practices for Teaching Reproducibility: Motivation, Guided Instruction and Practice.”</span> <em>Journal of Statistics and Data Science Education</em> 30 (3): 241–50. <a href="https://doi.org/10.1080/26939169.2022.2074922">https://doi.org/10.1080/26939169.2022.2074922</a>.
+</div>
+</div>
+</section></section>
+
     </div>
   </div>
 
@@ -699,6 +946,44 @@ Prof.&nbsp;Maria Tackett
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

@@ -863,9 +863,23 @@
   {
     "objectID": "prepare/week-02.html",
     "href": "prepare/week-02.html",
-    "title": "Week 02",
+    "title": "Sep 06 lecture",
     "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nNo AEs due this week\nLab 01:\n\ndue Mon, Sep 12, 11:59pm (Thu labs)\ndue Tue, Sep 13, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Introduction to Modern Statistics (IMS), Ch 7: Linear regression with a single predictor\nSep 05 & 07\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 SLR: Fitting models in R with tidymodels\nSep 05\n\n\n💻 SLR: Prediction + model evaluation\nSep 07\n\n\n💻 Lab 01\nSep 08 & 09\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 02 - Bike rentals in Washigton, DC\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Lab 01\nMon, Sep 12, 11:59pm (Thu labs)\nTue, Sep 13, 11:59pm (Fri labs)\n\n\n📝 Statistics experience\nFri, Dec 09, 11:59pm"
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regresion"
+  },
+  {
+    "objectID": "prepare/week-02.html#assigned-reading",
+    "href": "prepare/week-02.html#assigned-reading",
+    "title": "Sep 06 lecture",
+    "section": "",
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regresion"
+  },
+  {
+    "objectID": "prepare/week-02.html#additional-resources-optional",
+    "href": "prepare/week-02.html#additional-resources-optional",
+    "title": "Sep 06 lecture",
+    "section": "Additional resources (optional)",
+    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
   },
   {
     "objectID": "prepare/week-01.html",
@@ -1523,7 +1537,7 @@
     "href": "slides/02-big-picture.html#starbucks-data",
     "title": "The big picture",
     "section": "Starbucks data",
-    "text": "Starbucks data\n\nObservations: 77 Starbucks food items\nVariables:\n\ncarb: Total carbohydrates (in grams)\ncalories: Total calories\nbakery: 1: bakery food item, 0: other food type"
+    "text": "Starbucks data\n\n\nObservations: 77 Starbucks food items\nVariables:\n\ncarb: Total carbohydrates (in grams)\ncalories: Total calories\nbakery: 1: bakery food item, 0: other food type"
   },
   {
     "objectID": "slides/02-big-picture.html#terminology",
@@ -1537,14 +1551,14 @@
     "href": "slides/02-big-picture.html#univariate-exploratory-data-analysis",
     "title": "The big picture",
     "section": "Univariate exploratory data analysis",
-    "text": "Univariate exploratory data analysis"
+    "text": "Univariate exploratory data analysis\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
   },
   {
     "objectID": "slides/02-big-picture.html#bivariate-exploratory-data-analysis",
     "href": "slides/02-big-picture.html#bivariate-exploratory-data-analysis",
     "title": "The big picture",
     "section": "Bivariate exploratory data analysis",
-    "text": "Bivariate exploratory data analysis"
+    "text": "Bivariate exploratory data analysis\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/02-big-picture.html#function-between-response-and-predictors",
@@ -1565,7 +1579,7 @@
     "href": "slides/02-big-picture.html#carb-vs.-calories",
     "title": "The big picture",
     "section": "Carb vs. Calories",
-    "text": "Carb vs. Calories\n\n\\[\\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\epsilon\\]"
+    "text": "Carb vs. Calories\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[\\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\epsilon\\]"
   },
   {
     "objectID": "slides/02-big-picture.html#carb-vs.-calories-bakery",
@@ -1579,7 +1593,7 @@
     "href": "slides/02-big-picture.html#carb-vs.-calories-bakery-with-interaction",
     "title": "The big picture",
     "section": "Carb vs. Calories + Bakery (with interaction)",
-    "text": "Carb vs. Calories + Bakery (with interaction)\n\n\\[{\\small \\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\beta_3 ~ \\text{calories} \\times \\text{bakery}  + \\epsilon}\\]"
+    "text": "Carb vs. Calories + Bakery (with interaction)\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[{\\small \\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\beta_3 ~ \\text{calories} \\times \\text{bakery}  + \\epsilon}\\]"
   },
   {
     "objectID": "slides/02-big-picture.html#statistical-model-vs.-regression-equation",

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sep 05 - 09">
-<meta name="description" content="Lab 01, Statistics experience assigned">
 
-<title>STA 210 - Fall 2023 - Week 02</title>
+<title>STA 210 - Fall 2023 - Sep 06 lecture</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 02</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Sep 06 lecture</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,132 +207,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prepare" id="toc-prepare" class="nav-link active" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#participate" id="toc-participate" class="nav-link" data-scroll-target="#participate">Participate</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
-  <li><a href="#perform" id="toc-perform" class="nav-link" data-scroll-target="#perform">Perform</a></li>
+  <li><a href="#assigned-reading" id="toc-assigned-reading" class="nav-link active" data-scroll-target="#assigned-reading">Assigned reading</a></li>
+  <li><a href="#additional-resources-optional" id="toc-additional-resources-optional" class="nav-link" data-scroll-target="#additional-resources-optional">Additional resources (optional)</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/prepare/week-02.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header">
-<h1 class="title display-7">Week 02</h1>
-<p class="subtitle lead">SLR: Tidymodels + Model evaluation</p>
-<p class="author">Sep 05 - 09</p>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sep 06 lecture</h1>
+<p class="subtitle lead">Simple linear regression</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 </header>
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Due dates:</strong></p>
-<ul>
-<li>No AEs due this week</li>
-<li>Lab 01:
-<ul>
-<li>due Mon, Sep 12, 11:59pm (Thu labs)</li>
-<li>due Tue, Sep 13, 11:59pm (Fri labs)</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<section id="prepare" class="level1">
-<h1>Prepare</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Reading</th>
-<th>Corresponding lecture</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>📖 Introduction to Modern Statistics (IMS), Ch 7: <a href="https://openintro-ims.netlify.app/model-slr.html">Linear regression with a single predictor</a></td>
-<td>Sep 05 &amp; 07</td>
-</tr>
-</tbody>
-</table>
+<section id="assigned-reading" class="level2">
+<h2 class="anchored" data-anchor-id="assigned-reading">Assigned reading</h2>
+<p>📖 STA 210 Notes: <a href="https://introregression.netlify.app/04-slr">Ch 1: Simple linear regresion</a></p>
 </section>
-<section id="participate" class="level1">
-<h1>Participate</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Date</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>💻 <a href="../slides/03-slr-tidymodels.qmd">SLR: Fitting models in R with tidymodels</a></td>
-<td>Sep 05</td>
-</tr>
-<tr class="even">
-<td>💻 <a href="../slides/04-slr-evaluation.qmd">SLR: Prediction + model evaluation</a></td>
-<td>Sep 07</td>
-</tr>
-<tr class="odd">
-<td>💻 <a href="../slides/lab-01.qmd">Lab 01</a></td>
-<td>Sep 08 &amp; 09</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="practice" class="level1">
-<h1>Practice</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>📋 <a href="../ae/ae-02-bikeshare.html">AE 02 - Bike rentals in Washigton, DC</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="perform" class="level1">
-<h1>Perform</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Due date</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>📝 <a href="../labs/lab-01.qmd">Lab 01</a></td>
-<td><p>Mon, Sep 12, 11:59pm (Thu labs)</p>
-<p>Tue, Sep 13, 11:59pm (Fri labs)</p></td>
-</tr>
-<tr class="even">
-<td>📝 Statistics experience</td>
-<td>Fri, Dec 09, 11:59pm</td>
-</tr>
-</tbody>
-</table>
+<section id="additional-resources-optional" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources-optional">Additional resources (optional)</h2>
+<p>📖 Introduction to Modern Statistics (IMS) <a href="https://openintro-ims.netlify.app/model-slr">Ch 7: Linear regression with a single predictor</a></p>
 
 
 </section>

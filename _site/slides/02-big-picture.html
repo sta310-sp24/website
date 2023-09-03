@@ -580,6 +580,7 @@ Prof.&nbsp;Maria Tackett
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Source: <a href="https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/carbohydrates/art-20045705#:~:text=How%20many%20carbohydrates%20do%20you,grams%20of%20carbs%20a%20day.">Mayo Clinic</a></p></li></ol></aside></section>
 <section id="starbucks-data" class="slide level2">
 <h2>Starbucks data</h2>
+<!-- change example, or at a minimum change bakery labels to "bakery vs. not bakery" instead of 0 and 1.-->
 <ul>
 <li><strong>Observations</strong>: 77 Starbucks food items</li>
 <li><strong>Variables:</strong>
@@ -611,12 +612,23 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="univariate-exploratory-data-analysis" class="slide level2">
 <h2>Univariate exploratory data analysis</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
 
-<img data-src="02-big-picture_files/figure-revealjs/univariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+</div>
+<img data-src="02-big-picture_files/figure-html/univariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="bivariate-exploratory-data-analysis" class="slide level2">
 <h2>Bivariate exploratory data analysis</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 
-<img data-src="02-big-picture_files/figure-revealjs/bivariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+</div>
+<img data-src="02-big-picture_files/figure-html/bivariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="function-between-response-and-predictors" class="slide level2">
 <h2>Function between response and predictors</h2>
 <div class="goal">
@@ -648,18 +660,28 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="carb-vs.-calories" class="slide level2">
 <h2>Carb vs.&nbsp;Calories</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 
-<img data-src="02-big-picture_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \epsilon\]</span></p>
+</div>
+<img data-src="02-big-picture_files/figure-html/unnamed-chunk-2-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \epsilon\]</span></p>
 </section>
 <section id="carb-vs.-calories-bakery" class="slide level2">
 <h2>Carb vs.&nbsp;Calories + Bakery</h2>
 
-<img data-src="02-big-picture_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \epsilon\]</span></p>
+<img data-src="02-big-picture_files/figure-html/unnamed-chunk-4-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \epsilon\]</span></p>
 </section>
 <section id="carb-vs.-calories-bakery-with-interaction" class="slide level2">
 <h2>Carb vs.&nbsp;Calories + Bakery (with interaction)</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 
-<img data-src="02-big-picture_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[{\small \text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \beta_3 ~ \text{calories} \times \text{bakery}  + \epsilon}\]</span></p>
+</div>
+<img data-src="02-big-picture_files/figure-html/unnamed-chunk-5-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[{\small \text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \beta_3 ~ \text{calories} \times \text{bakery}  + \epsilon}\]</span></p>
 </section>
 <section id="statistical-model-vs.-regression-equation" class="slide level2 midi">
 <h2>Statistical model vs.&nbsp;regression equation</h2>
@@ -942,44 +964,6 @@ Ostblom, Joel, and Tiffany Timbers. 2022. <span>“Opinionated Practices for Tea
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

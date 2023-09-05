@@ -25,11 +25,15 @@ knitr:
 
 ## Do you have the `lab-01` repo?
 
--   Go to the GitHub course organization: [https://github.com/sta210-fa22](https://github.com/sta210-fa23){.uri}
+-   Go to the GitHub course organization: <https://github.com/sta210-fa23>
 
 -   You should see a repo with the prefix **`lab-01-`** followed by your GitHub username
 
--   If you do not have this repo, please let your TA know!
+-   If you do not have this repo
+
+    -   [Click here](https://classroom.github.com/a/5kU1kpeo) to create your lab-01 repo, AND
+
+    -   Go to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, [click here](https://forms.office.com/r/S1eSDTjB6M) to (re)submit your GitHub username.
 
 ## Demo
 
@@ -41,17 +45,17 @@ knitr:
 
 -   Render document and produce PDF
 
--   Update name in YAML
+-   Update name in YAML in the Quarto doc
 
     -   Render, commit, push changes to GitHub
 
     -   See updates in your GitHub repo
 
--   Add a R code chunk
+-   Add an R code chunk to the Quarto doc
 
 ## Tips for working on lab
 
--   You do not have to finish the lab in class, they will always be due the following **Friday (Tuesday labs) or Sunday (Thursday labs)**. One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when a TA can help you on the spot and leave the narrative writing until later.
+-   You do not have to finish the lab in class, they will always be due **Friday (Tuesday labs) or Sunday (Thursday labs)**. One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when a TA can help you on the spot and leave the narrative writing until later.
 
 -   Do not pressure each other to finish early (particularly once you start working on teams); use the time wisely to really learn the material and produce a quality report.
 
@@ -59,12 +63,20 @@ knitr:
 
 -   Make sure all your final changes have been pushed to your GitHub repo
 
--   Submit the PDF of your responses to [**Gradescope**](https://www.gradescope.com/)
+Submit the PDF of your responses to [**Gradescope**](https://www.gradescope.com/)
 
-    -   You can access Gradescope through Sakai or the course website
+-   You can access Gradescope through Sakai or the course website
 
-    -   Login using your Duke NetID credentials
+-   Login using your Duke NetID credentials
 
-    -   See Lab 01 instructions for details on submitting an assignment on Gradescope
+-   See Lab 01 instructions for details on submitting an assignment on Gradescope
 
-\
+## Lab 01: Access to public parks
+
+-   Today's lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.
+
+-   There are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.
+
+-   There are points for having a neatly formatted document and implementing a reproducible workflow. See the Workflow & Formatting section in the Lab 01 instructions.
+
+🔗 [sta210-fa23.netlify.app/labs/lab-01.html](https://sta210-fa23.netlify.app/labs/lab-01.html)

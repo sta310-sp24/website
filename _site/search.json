@@ -291,28 +291,35 @@
     "href": "slides/lab-01.html#do-you-have-the-lab-01-repo",
     "title": "Lab 01",
     "section": "Do you have the lab-01 repo?",
-    "text": "Do you have the lab-01 repo?\n\nGo to the GitHub course organization: https://github.com/sta210-fa22\nYou should see a repo with the prefix lab-01- followed by your GitHub username\nIf you do not have this repo, please let your TA know!"
+    "text": "Do you have the lab-01 repo?\n\nGo to the GitHub course organization: https://github.com/sta210-fa23\nYou should see a repo with the prefix lab-01- followed by your GitHub username\nIf you do not have this repo\n\nClick here to create your lab-01 repo, AND\nGo to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, click here to (re)submit your GitHub username."
   },
   {
     "objectID": "slides/lab-01.html#demo",
     "href": "slides/lab-01.html#demo",
     "title": "Lab 01",
     "section": "Demo",
-    "text": "Demo\nFollow along as your TA demonstrates the following:\n\nConfigure Git using SSH\nClone repo (using SSH) and start new project in RStudio\nRender document and produce PDF\nUpdate name in YAML\n\nRender, commit, push changes to GitHub\nSee updates in your GitHub repo\n\nAdd a R code chunk"
+    "text": "Demo\nFollow along as your TA demonstrates the following:\n\nConfigure Git using SSH\nClone repo (using SSH) and start new project in RStudio\nRender document and produce PDF\nUpdate name in YAML in the Quarto doc\n\nRender, commit, push changes to GitHub\nSee updates in your GitHub repo\n\nAdd an R code chunk to the Quarto doc"
   },
   {
     "objectID": "slides/lab-01.html#tips-for-working-on-lab",
     "href": "slides/lab-01.html#tips-for-working-on-lab",
     "title": "Lab 01",
     "section": "Tips for working on lab",
-    "text": "Tips for working on lab\n\nYou do not have to finish the lab in class, they will always be due the following Friday (Tuesday labs) or Sunday (Thursday labs). One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when a TA can help you on the spot and leave the narrative writing until later.\nDo not pressure each other to finish early (particularly once you start working on teams); use the time wisely to really learn the material and produce a quality report."
+    "text": "Tips for working on lab\n\nYou do not have to finish the lab in class, they will always be due Friday (Tuesday labs) or Sunday (Thursday labs). One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when a TA can help you on the spot and leave the narrative writing until later.\nDo not pressure each other to finish early (particularly once you start working on teams); use the time wisely to really learn the material and produce a quality report."
   },
   {
     "objectID": "slides/lab-01.html#when-youre-done-with-lab",
     "href": "slides/lab-01.html#when-youre-done-with-lab",
     "title": "Lab 01",
     "section": "When you’re done with lab",
-    "text": "When you’re done with lab\n\nMake sure all your final changes have been pushed to your GitHub repo\nSubmit the PDF of your responses to Gradescope\n\nYou can access Gradescope through Sakai or the course website\nLogin using your Duke NetID credentials\nSee Lab 01 instructions for details on submitting an assignment on Gradescope\n\n\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "text": "When you’re done with lab\n\nMake sure all your final changes have been pushed to your GitHub repo\n\nSubmit the PDF of your responses to Gradescope\n\nYou can access Gradescope through Sakai or the course website\nLogin using your Duke NetID credentials\nSee Lab 01 instructions for details on submitting an assignment on Gradescope"
+  },
+  {
+    "objectID": "slides/lab-01.html#lab-01-access-to-public-parks",
+    "href": "slides/lab-01.html#lab-01-access-to-public-parks",
+    "title": "Lab 01",
+    "section": "Lab 01: Access to public parks",
+    "text": "Lab 01: Access to public parks\n\nToday’s lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.\nThere are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.\nThere are points for having a neatly formatted document and implementing a reproducible workflow. See the Workflow & Formatting section in the Lab 01 instructions.\n\n🔗 sta210-fa23.netlify.app/labs/lab-01.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "computing-access.html",

@@ -68,4 +68,4 @@ countdown::countdown(minutes  = 6)
 
 The rest of the today's lab is focused on setting up the computing for the course and completing the class survey. Click the link below for the Lab 00 instructions.
 
-🔗 [sta210-fa23.netlify.app/labs/lab-00.html](sta210-fa23.netlify.app/labs/lab-00.html)
+🔗 [sta210-fa23.netlify.app/labs/lab-00.html](https://sta210-fa23.netlify.app/labs/lab-00.html)

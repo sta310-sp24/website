@@ -351,7 +351,7 @@ Sep 05 &amp; 07, 2023
 <li><p>You should see a repo with the prefix <strong><code>lab-01-</code></strong> followed by your GitHub username</p></li>
 <li><p>If you do not have this repo</p>
 <ul>
-<li><p><a href="https://classroom.github.com/a/5kU1kpeo">Click here</a> to create your lab-01 repo, AND</p></li>
+<li><p><a href="https://classroom.github.com/a/5kU1kpeo">Click</a><a href="https://classroom.github.com/a/5kU1kpeo">here</a> to create your lab-01 repo, AND</p></li>
 <li><p>Go to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, <a href="https://forms.office.com/r/S1eSDTjB6M">click here</a> to (re)submit your GitHub username.</p></li>
 </ul></li>
 </ul>
@@ -390,8 +390,8 @@ Sep 05 &amp; 07, 2023
 <li><p>See Lab 01 instructions for details on submitting an assignment on Gradescope</p></li>
 </ul>
 </section>
-<section id="lab-01-access-to-public-parks" class="slide level2">
-<h2>Lab 01: Access to public parks</h2>
+<section id="lab-01-park-access" class="slide level2">
+<h2>Lab 01: Park access</h2>
 <ul>
 <li><p>Today’s lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.</p></li>
 <li><p>There are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.</p></li>
@@ -617,44 +617,6 @@ Sep 05 &amp; 07, 2023
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

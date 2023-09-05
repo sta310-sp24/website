@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 210 - Fall 2023 - Lab 01: Access to public parks</title>
+<title>STA 210 - Fall 2023 - Lab 01: Park access</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,7 +127,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 01: Access to public parks</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 01: Park access</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -304,7 +304,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 01: Access to public parks</h1>
+<h1 class="title">Lab 01: Park access</h1>
 <p class="subtitle lead">Exploratory Data Analysis + Simple Linear Regression</p>
 </div>
 
@@ -330,7 +330,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Due:</p>
+<p>Due</p>
 <ul>
 <li>Friday, September 8, 11:59pm (Tuesday labs)</li>
 <li>Sunday, September 10, 11:59pm (Thursday labs)</li>
@@ -433,9 +433,9 @@ Note
 </div>
 <ul>
 <li><strong>Step 1</strong>: Type <code>credentials::ssh_setup_github()</code> into your console.</li>
-<li><strong>Step 2</strong>: R will ask “No SSH key found. Generate one now?” You should click 1 for yes.</li>
-<li><strong>Step 3</strong>: You will generate a key. It will begin with “ssh-rsa….” R will then ask “Would you like to open a browser now?” You should click 1 for yes.</li>
-<li><strong>Step 4</strong>: You may be asked to provide your username and password to log into GitHub. This would be the ones associated with your account that you set up. After entering this information, you should paste the key in and give it a name. You might name it in a way that indicates where the key will be used, e.g., <code>sta210</code>)</li>
+<li><strong>Step 2</strong>: R will ask “No SSH key found. Generate one now?” Click 1 for yes.</li>
+<li><strong>Step 3</strong>: You will generate a key. It will begin with “ssh-rsa….” R will then ask “Would you like to open a browser now?” Click 1 for yes.</li>
+<li><strong>Step 4</strong>: You may be asked to provide your username and password to log into GitHub. This would be the ones associated with your account that you set up. After entering this information, paste the key in and give it a name. You might name it in a way that indicates where the key will be used, e.g., <code>sta210</code>)</li>
 </ul>
 <p>You can find more detailed instructions <a href="https://github.com/DukeStatSci/github_auth_guide">here</a> if you’re interested.</p>
 </section>
@@ -460,21 +460,15 @@ Note
 <section id="clone-the-repo-start-new-rstudio-project" class="level2">
 <h2 class="anchored" data-anchor-id="clone-the-repo-start-new-rstudio-project">Clone the repo &amp; start new RStudio project</h2>
 <ul>
-<li>Go to the course organization at <a href="https://github.com/sta210-fa23">github.com/sta210-fa23</a> organization on GitHub. Click on the repo with the prefix <strong>lab-01-</strong>. It contains the starter documents you need to complete the lab.</li>
-</ul>
-<!-- -->
+<li>Go to the course organization at <a href="https://github.com/sta210-fa23">github.com/sta210-fa23</a> organization on GitHub. Click on the repo with the prefix <strong>lab-01-</strong>. It contains the starter documents you need to complete the lab.
 <ul>
+<li>If you do not see your lab-01 repo, <a href="https://classroom.github.com/a/5kU1kpeo">click here</a> to create your repo. Then, <a href="https://forms.office.com/r/S1eSDTjB6M">click here</a> to (re)submit your GitHub username.</li>
+</ul></li>
 <li>Click on the green <strong>CODE</strong> button, select <strong>Use SSH</strong> (this might already be selected by default, and if it is, you’ll see the text <strong>Clone with SSH</strong>). Click on the clipboard icon to copy the repo URL.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p>In RStudio, go to <em>File</em> <span class="math inline">\(\rightarrow\)</span> <em>New Project</em> <span class="math inline">\(\rightarrow\)</span> <em>Version Control</em> <span class="math inline">\(\rightarrow\)</span> <em>Git</em>.</p></li>
-<li><p>Copy and paste the URL of your assignment repo into the dialog box <em>Repository URL</em>. Again, please make sure to have <em>SSH</em> highlighted under <em>Clone</em> when you copy the address.</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Click <em>Create Project</em>, and the files from your GitHub repo will be displayed in the <em>Files</em> pane in RStudio.</p></li>
-<li><p>Click <em>lab-01.qmd</em> to open the template Quarto file. This is where you will write up your code and narrative for the lab.</p></li>
+<li>In RStudio, go to <em>File</em> <span class="math inline">\(\rightarrow\)</span> <em>New Project</em> <span class="math inline">\(\rightarrow\)</span> <em>Version Control</em> <span class="math inline">\(\rightarrow\)</span> <em>Git</em>.</li>
+<li>Copy and paste the URL of your assignment repo into the dialog box <em>Repository URL</em>. Again, please make sure to have <em>SSH</em> highlighted under <em>Clone</em> when you copy the address.</li>
+<li>Click <em>Create Project</em>, and the files from your GitHub repo will be displayed in the <em>Files</em> pane in RStudio.</li>
+<li>Click <em>lab-01.qmd</em> to open the template Quarto file. This is where you will write up your code and narrative for the lab.</li>
 </ul>
 </section>
 <section id="r-and-r-studio" class="level2">
@@ -500,7 +494,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Open the Quarto (.Rmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.</p>
+<p>Open the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.</p>
 </div>
 </div>
 </section>
@@ -531,21 +525,21 @@ Important
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<p>Today’s data is about access to parks and other public amenities in the 100 most populated cities in the United States. The data set was obtained from <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-06-22/readme.md">Tidy Tuesday</a> and was originally curated by the <a href="https://www.tpl.org/parks-and-an-equitable-recovery-parkscore-report">Trust for Public Land</a>. <strong>[UPDATE] ADD MORE BACKGROUND AN EXPLANATION OF “POINTS”</strong></p>
+<p>Today’s data is about access to parks and other public amenities in the 100 most populated cities in the United States. The data were collected by the <a href="https://www.tpl.org/parks-and-an-equitable-recovery-parkscore-report">Trust for Public Land</a>, a non-profit organization that advocates for equitable access to outdoor spaces. The data set we’ll use in this lab includes part of the data used for analysis in the 2021 special report <a href="https://www.tpl.org/parks-and-an-equitable-recovery-parkscore-report"><em>Parks and Equitable Recovery</em></a>; it was obtained from <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-06-22/readme.md">TidyTuesday</a>.</p>
 <p>Use the code below to load the data into R.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>parks <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/parks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This analysis will focus on the following variables:</p>
+<p>This lab will focus on the following variables:</p>
 <ul>
-<li><p><code>pct_near_park_points</code>: Percent of residents within a 10 minute walk to park points</p></li>
-<li><p><code>spend_per_resident_data</code>: Spending per resident in USD</p></li>
+<li><p><code>pct_near_park_points</code>: Points in the Trust for Public Land ParkScore index for the percent of residents within a 10 minute walk to park points. <a href="https://www.tpl.org/parkscore">Click here</a> to learn more about the ParkScore.</p></li>
+<li><p><code>spend_per_resident_data</code>: Spending per resident in US dollars.</p></li>
 </ul>
 <p><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-06-22/readme.md">Click here</a> for the full data dictionary.</p>
 </section>
 <section id="exercises" class="level1">
 <h1>Exercises</h1>
-<p><strong>[UPDATE] Goal</strong>: You are furnishing a new apartment and would like to use statistical analysis to get idea of how much the furniture will cost and how the cost may change based on the type and width.</p>
+<p><strong>Goal</strong>: One way to improve access to public parks is for cities to spend more money creating and maintaining parks for their residents. It’s unclear, however, how much spending impacts residents’ access to parks. The goal of this analysis is to examine the relationship between spending per resident and points in the ParkScore index for the percent of residents within a 10 minute walk to a park.</p>
 <hr>
 <p>Write all code and narrative in your Quarto file. Write all narrative in complete sentences. Throughout the assignment, you should periodically <strong>render</strong> your Quarto document to produce the updated PDF, <strong>commit</strong> the changes in the Git pane, and <strong>push</strong> the updated files to GitHub.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -563,7 +557,7 @@ Tip
 </div>
 <section id="exercise-1" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>Viewing a summary of the data is a useful starting point for data analysis, especially if there are a large number of observations or variables . Run the code below to use the <code>glimpse</code> function to see a summary of the <code>parks</code> data frame.</p>
+<p>Viewing a summary of the data is a useful starting point for data analysis, especially if there are a large number of observations or variables. Run the code below to use the <code>glimpse</code> function to see a summary of the <code>parks</code> data frame.</p>
 <p>How many observations (rows) are in <code>parks</code>? How many variables (columns)?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(parks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -578,23 +572,22 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In your `<code>lab-01.qmd`</code> document you’ll see that we already added the code required for the exercise as well as a sentence where you can fill in the blanks to report the answer. Use this format for the remaining exercises.</p>
+<p>In your <code>lab-01.qmd</code> document you’ll see that we already added the code required for the exercise as well as a sentence where you can fill in the blanks to report the answer. Use this format for the remaining exercises.</p>
 <p>Also note that the code chunk as a label: <code>glimpse-data</code>. It’s not required, but good practice and highly encouraged to label your code chunks using short meaningful names. (<em>Hint: Do not uses spaces in code chunk labels. Use <code>-</code> to separate multiple words.)</em></p>
 </div>
 </div>
 </section>
 <section id="exercise-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>The predictor variable for this analysis <code>spend_per_resident_data</code> is quantitative; however, from the glimpse of the data in Exercise 1, we see its data type is <code>chr</code> (character) in R.</p>
+<p>The predictor variable for this analysis <code>spend_per_resident_data</code> is quantitative; however, from the glimpse of the data in Exercise 1, we see its data type is <code>chr</code> (character) in R even though we would expect it to be <code>dbl</code> (double), the data type for numeric data.</p>
 <ul>
-<li>What data type would we expect a column of quantitative data to be?</li>
-<li>Why did <code>spend_per_resident_data</code> load into R as a <code>chr</code> variable type instead of what we would expect?</li>
-<li>In the next exercise, we will transform <code>spend_per_resident_data</code> so it is the correct data type for our analysis. Why do we need to ensure this column is the correct data type before proceeding with the rest of the analysis? Why can’t we leave it as a character?</li>
+<li>Why did <code>spend_per_resident_data</code> get read by R as a character data type instead of a double?</li>
+<li>Why do we need to convert <code>spend_per_resident_data</code> to a double data type? How might leaving it as a character variable hinder the analysis?</li>
 </ul>
 </section>
 <section id="exercise-3" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>Below is code below to transform <code>spend_per_resident_data</code> so that it is treated as quantitative data in R. Each line of code is numbered. Write a brief explanation about what each line of code does.</p>
+<p>Below is code below to convert <code>spend_per_resident_data</code> , so that it is correctly treated as quantitative data in R. Each line of code is numbered. Write a brief explanation of what each line of code does.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -610,21 +603,23 @@ Tip
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>parks <span class="ot">&lt;-</span> parks <span class="sc">|&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spend_per_resident_data =</span> <span class="fu">str_replace</span>(spend_per_resident_data,<span class="st">"$"</span>, <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spend_per_resident_data =</span> <span class="fu">as.numeric</span>(spend_per_resident_data))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spend_per_resident_data =</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(spend_per_resident_data,<span class="st">"$"</span>, <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spend_per_resident_data =</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">as.numeric</span>(spend_per_resident_data))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-6" data-code-lines="1">______</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">______</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-6" data-code-lines="2">______</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="2">______</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-6" data-code-lines="3">______</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="3">______</span>
 </dd>
 </dl>
 </div>
@@ -635,7 +630,7 @@ Tip
 </section>
 <section id="exercise-4" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-4">Exercise 4</h3>
-<p>We begin each regression analysis with exploratory data analysis (EDA) to help us “get to know” the data and examine the variable distributions and relationships between variables. We do this by visualizing the data and calculating summary statistics to describe the variables in our data set.</p>
+<p>Exploratory data analysis (EDA) helps us “get to know” the data and examine the variable distributions and relationships between variables. We do using visualizations and summary statistics to describe the distirbutions of the variables in our data set.</p>
 <p>When we make visualizations, we want them to be clear and suitable for a professional audience. This means that, at a minimum, each visualization should have <strong>an informative title</strong> and <strong>informative axis labels</strong>.</p>
 <p>Fill in the code below to visualize the distribution of <code>spend_per_resident_data</code> using a histogram.</p>
 <div class="cell">
@@ -645,7 +640,7 @@ Tip
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"_____"</span>, </span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"_____"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now fill in the code to calculate summary statistics for this variable using the <code>skim</code> function from the skimr R package <span class="citation" data-cites="skimr">(<a href="#ref-skimr" role="doc-biblioref">Waring et al. 2022</a>)</span>.</p>
+<p>Now fill in the code to calculate summary statistics for the variable using the <code>skim</code> function from the skimr R package <span class="citation" data-cites="skimr">(<a href="#ref-skimr" role="doc-biblioref">Waring et al. 2022</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parks <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>(_____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -653,13 +648,13 @@ Tip
 </section>
 <section id="exercise-5" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-5">Exercise 5</h3>
-<p>Use the visualization and summary statistics to describe the distribution of <code>spend_per_resident_data</code>. In your narrative, include description of the shape, center, spread, and the presence of apparent outliers or other interesting features.</p>
+<p>Use the visualization and summary statistics from the previous exercise to describe the distribution of <code>spend_per_resident_data</code>. In your narrative, include a description of the shape, center, spread, and the presence of apparent outliers or other interesting features.</p>
 </section>
 <section id="exercise-6" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-6">Exercise 6</h3>
 <p>Now let’s look at the distribution of the response variable <code>pct_near_park_points</code>.</p>
 <ul>
-<li><p>Make a visualization of its distribution and display a table of summary statistics. The visualization should have informative axis labels ans title.</p></li>
+<li><p>Visualize this distribution and calculate the summary statistics. The visualization should have an informative title and informative axis labels.</p></li>
 <li><p>Use the visualization and summary statistics to describe the distribution of <code>pct_near_park_points</code> . Recall from the previous exercise the components to include the description.</p></li>
 </ul>
 <div class="render-commit-push">
@@ -668,7 +663,7 @@ Tip
 </section>
 <section id="exercise-7" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-7">Exercise 7</h3>
-<p>In the previous two exercises, we looked at the distribution of the raw data (the data in its original form). The raw data range from year 2012 to 2020, so each row contains information about funding and public aneminies for each city in a given year. Therefore, there are multiple rows of data for each city. We would like to summarize the data, so there is just one row of information for each city. Fill in the code below to create a new data set called <code>parks_summary</code> that contains the mean spending per resident and mean points for residents within a 10-minute walk to a park.</p>
+<p>The <code>parks</code> data set ranges from the year 2012 to 2020, so each row contains information about funding and public aneminies for each city in a given year. Thus, there are multiple rows in <code>parks</code> for each city. We are going to summarize the data, so there is just one row in the data set for each city. Fill in the code below to create a new data frame called <code>parks_summary</code> that contains the mean spending per resident and mean points in the ParkScore index for the percent of residents within a 10-minute walk to a park.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>parks_summary <span class="ot">&lt;-</span> ____ <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">|&gt;</span></span>
@@ -692,7 +687,13 @@ Important
 </section>
 <section id="exercise-8" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-8">Exercise 8</h3>
-<p>Create a visualization of the relationship between the mean spending and mean points for the percentage of residents within a 10-minute walk to a park. Include informative axis labels and an informative title. Then calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables. The description should include the shape, direction, strength, presence of potential outliers, and other any other interesting features.</p>
+<ul>
+<li>Create a visualization of the relationship between <code>mean_spend</code> and <code>mean_pts_near</code>, and calculate the correlation between the two variables. Include an informative title and informative axis labels on the visualization.</li>
+</ul>
+<!-- -->
+<ul>
+<li>Use the visualization and correlation to describe the relationship between the two variables. Include the shape, direction, strength, presence of potential outliers, and other any other interesting features in the description.</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -713,21 +714,18 @@ Tip
 <section id="exercise-9" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-9">Exercise 9</h3>
 <ul>
-<li>Fit and display a linear regression model of the relationship between spending and points for residents within a 10-minute walk from a park. Use the tidymodels <span class="citation" data-cites="tidymodels">(<a href="#ref-tidymodels" role="doc-biblioref">Kuhn and Wickham 2020</a>)</span> syntax.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Interpret the slope in the context of the data.</p></li>
-<li><p>Does the intercept have a meaningful interpretation? If so, interpret the intercept in the context of the data. Otherwise briefly explain why not.</p></li>
+<li><p>Fit and display a linear regression model of the relationship between spending and points for residents within a 10-minute walk from a park. Use the tidymodels <span class="citation" data-cites="tidymodels">(<a href="#ref-tidymodels" role="doc-biblioref">Kuhn and Wickham 2020</a>)</span> syntax to fit the model. Display the model in a tidy way.</p></li>
+<li><p>Use the model to describe the impact of spending on park access in the 100 most populated cities. Be specific. Use interpretations of the relevant model coefficient(s) in your response.</p></li>
 </ul>
 </section>
 <section id="exercise-10" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-10">Exercise 10</h3>
-<p>In the CityLab article <a href="https://www.bloomberg.com/news/articles/2021-05-27/the-cities-where-people-of-color-can-walk-to-a-park">“The Inequality of American Parks”</a>, the authors state the following:</p>
+<p><em>Parks and an Equitable Recovery</em>, a special report by Trust for Public Land, begins with the following conclusion from their analysis:</p>
 <blockquote class="blockquote">
-<p><a href="https://www.tpl.org/parks-and-an-equitable-recovery-parkscore-report">New data from the Trust for Public Land</a> shows that in the 100 most populated U.S. cities, neighborhoods that are majority nonwhite have, on average, access to 44% less park acreage than majority white neighborhoods. Low-income communities have access to 42% less than high-income neighborhoods.</p>
+<p><br>
+<em>Our data shows major disparities in access to the outdoors. In the 100 most populated cities, neighborhoods where most residents identify as Black, Hispanic and Latinx, American Indian/Alaska Native or Asian American and Pacific Islander have access to an average of 44 percent less park acreage than predominantly white neighborhoods, and similar park space inequities exist in low-income neighborhoods across cities, highlighting the urgent need to center equity in park investment and planning.</em></p>
 </blockquote>
-<p>Are we able to assess this claim using the data available to us in <code>parks.csv</code>? If so, briefly describe how we might assess this claim using the data (e.g., what visualizations and/or summary statistics would you produce? What relationships between variables would you explore?) If not, briefly describe the additional data we would need in order to assess this claim.</p>
+<p>Would it be possible to reproduce the analysis results that led to this conclusion given the data we have in <code>parks.csv</code>? If so, briefly describe the steps we might take to reproduce the analysis? If not, briefly describe the additional data we need in order to reproduce the analysis.</p>
 <div class="render-commit-push">
 <p>You’re done and ready to submit your work! render, commit, and push all remaining changes. You can use the commit message “Done with Lab 1!”, and make sure you have pushed all the files to GitHub (your Git pane in RStudio should be empty) and that <u>all</u> documents are updated in your repo on GitHub. The PDF document you submit to Gradescope should be identical to the one in your GitHub repo.</p>
 </div>
@@ -755,7 +753,7 @@ Warning
 <ul>
 <li>Go to <a href="http://www.gradescope.com" class="uri">http://www.gradescope.com</a>and click <em>Log in</em> in the top right corner.</li>
 <li>Click <em>School Credentials</em> ➡️ <em>Duke NetID</em> and log in using your NetID credentials.</li>
-<li>Click on your <em>STA 210</em> course.</li>
+<li>Click on the <em>STA 210</em> course.</li>
 <li>Click on the assignment, and you’ll be prompted to submit it.</li>
 <li>Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).</li>
 <li>Select the first page of your .PDF submission to be associated with the <em>“Workflow &amp; formatting”</em> section.</li>
@@ -798,7 +796,7 @@ Waring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

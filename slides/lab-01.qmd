@@ -31,7 +31,7 @@ knitr:
 
 -   If you do not have this repo
 
-    -   [Click here](https://classroom.github.com/a/5kU1kpeo) to create your lab-01 repo, AND
+    -   [Click ](https://classroom.github.com/a/5kU1kpeo)[here](https://classroom.github.com/a/5kU1kpeo) to create your lab-01 repo, AND
 
     -   Go to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, [click here](https://forms.office.com/r/S1eSDTjB6M) to (re)submit your GitHub username.
 
@@ -71,7 +71,7 @@ Submit the PDF of your responses to [**Gradescope**](https://www.gradescope.com/
 
 -   See Lab 01 instructions for details on submitting an assignment on Gradescope
 
-## Lab 01: Access to public parks
+## Lab 01: Park access
 
 -   Today's lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.
 

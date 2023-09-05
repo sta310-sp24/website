@@ -291,7 +291,7 @@
     "href": "slides/lab-01.html#do-you-have-the-lab-01-repo",
     "title": "Lab 01",
     "section": "Do you have the lab-01 repo?",
-    "text": "Do you have the lab-01 repo?\n\nGo to the GitHub course organization: https://github.com/sta210-fa23\nYou should see a repo with the prefix lab-01- followed by your GitHub username\nIf you do not have this repo\n\nClick here to create your lab-01 repo, AND\nGo to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, click here to (re)submit your GitHub username."
+    "text": "Do you have the lab-01 repo?\n\nGo to the GitHub course organization: https://github.com/sta210-fa23\nYou should see a repo with the prefix lab-01- followed by your GitHub username\nIf you do not have this repo\n\nClickhere to create your lab-01 repo, AND\nGo to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, click here to (re)submit your GitHub username."
   },
   {
     "objectID": "slides/lab-01.html#demo",
@@ -315,11 +315,11 @@
     "text": "When you’re done with lab\n\nMake sure all your final changes have been pushed to your GitHub repo\n\nSubmit the PDF of your responses to Gradescope\n\nYou can access Gradescope through Sakai or the course website\nLogin using your Duke NetID credentials\nSee Lab 01 instructions for details on submitting an assignment on Gradescope"
   },
   {
-    "objectID": "slides/lab-01.html#lab-01-access-to-public-parks",
-    "href": "slides/lab-01.html#lab-01-access-to-public-parks",
+    "objectID": "slides/lab-01.html#lab-01-park-access",
+    "href": "slides/lab-01.html#lab-01-park-access",
     "title": "Lab 01",
-    "section": "Lab 01: Access to public parks",
-    "text": "Lab 01: Access to public parks\n\nToday’s lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.\nThere are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.\nThere are points for having a neatly formatted document and implementing a reproducible workflow. See the Workflow & Formatting section in the Lab 01 instructions.\n\n🔗 sta210-fa23.netlify.app/labs/lab-01.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "section": "Lab 01: Park access",
+    "text": "Lab 01: Park access\n\nToday’s lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.\nThere are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.\nThere are points for having a neatly formatted document and implementing a reproducible workflow. See the Workflow & Formatting section in the Lab 01 instructions.\n\n🔗 sta210-fa23.netlify.app/labs/lab-01.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "computing-access.html",
@@ -919,37 +919,37 @@
   {
     "objectID": "labs/lab-01.html",
     "href": "labs/lab-01.html",
-    "title": "Lab 01: Access to public parks",
+    "title": "Lab 01: Park access",
     "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
+    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
   },
   {
     "objectID": "labs/lab-01.html#learning-goals",
     "href": "labs/lab-01.html#learning-goals",
-    "title": "Lab 01: Access to public parks",
+    "title": "Lab 01: Park access",
     "section": "Learning goals",
     "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
   },
   {
     "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
     "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "title": "Lab 01: Access to public parks",
+    "title": "Lab 01: Park access",
     "section": "Clone the repo & start new RStudio project",
-    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\n\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\n\n\n\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\n\n\n\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
+    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
   },
   {
     "objectID": "labs/lab-01.html#r-and-r-studio",
     "href": "labs/lab-01.html#r-and-r-studio",
-    "title": "Lab 01: Access to public parks",
+    "title": "Lab 01: Park access",
     "section": "R and R Studio",
-    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.Rmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
+    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
   },
   {
     "objectID": "labs/lab-01.html#footnotes",
     "href": "labs/lab-01.html#footnotes",
-    "title": "Lab 01: Access to public parks",
+    "title": "Lab 01: Park access",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.↩︎"
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
   },
   {
     "objectID": "labs/lab-00.html",

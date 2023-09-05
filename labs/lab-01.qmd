@@ -206,14 +206,14 @@ Also note that the code chunk as a label: `glimpse-data`. It's not required, but
 
 ### Exercise 2
 
-The predictor variable for this analysis `spend_per_resident_data` is quantitative; however, from the glimpse of the data in Exercise 1, we see its data type is `chr` (character) in R even though we would expect it to be `dbl` (double), the data type for numeric data.
+The predictor variable for this analysis `spend_per_resident_data` is quantitative; however, from the glimpse of the data in Exercise 1, we see its data type is `chr` (character) in R. We would expect it to be `dbl` (double), the data type for numeric data.
 
--   Why did `spend_per_resident_data` get read by R as a character data type instead of a double?
--   Why do we need to convert `spend_per_resident_data` to a double data type? How might leaving it as a character variable hinder the analysis?
+-   Why did `spend_per_resident_data` get read by R as a character data type instead of a double? Be specific.
+-   Why do we need to convert `spend_per_resident_data` to a data type suitable for quantitative data? How might leaving it as a character variable hinder the analysis?
 
 ### Exercise 3
 
-Below is code below to convert `spend_per_resident_data` , so that it is correctly treated as quantitative data in R. Each line of code is numbered. Write a brief explanation of what each line of code does.
+Use the code below to convert `spend_per_resident_data` , so that it is correctly treated as quantitative data in R. Each line of code is numbered. Write a brief explanation of what each line of code does.
 
 ::: callout-tip
 See [Simple Linear Regression in R](https://introregression.netlify.app/04-slr#simple-linear-regression-in-r) for an example of explaining code line by line.
@@ -223,7 +223,7 @@ See [Simple Linear Regression in R](https://introregression.netlify.app/04-slr#s
 #| eval: false
 parks <- parks |>  # <1>
   mutate(spend_per_resident_data = 
-           str_replace(spend_per_resident_data,"$", "")) |> # <2>
+           str_replace(spend_per_resident_data,"\\$", "")) |> # <2>
   mutate(spend_per_resident_data = 
            as.numeric(spend_per_resident_data)) # <3>
 ```
@@ -238,7 +238,7 @@ This is a good place to render, commit, and push changes to your lab-01 repo on 
 
 ### Exercise 4
 
-Exploratory data analysis (EDA) helps us "get to know" the data and examine the variable distributions and relationships between variables. We do using visualizations and summary statistics to describe the distirbutions of the variables in our data set.
+Exploratory data analysis (EDA) helps us "get to know" the data and examine the variable distributions and relationships between variables. We do so using visualizations and summary statistics.
 
 When we make visualizations, we want them to be clear and suitable for a professional audience. This means that, at a minimum, each visualization should have **an informative title** and **informative axis labels**.
 
@@ -253,17 +253,24 @@ ggplot(data = ____, aes(x = ____)) +
        title = "_____")
 ```
 
-Now fill in the code to calculate summary statistics for the variable using the `skim` function from the skimr R package [@skimr].
+Then, fill in the code to calculate summary statistics for the variable using the `skim` function from the skimr R package [@skimr].
 
 ```{r}
 #| eval: false
 parks |>
-  skim(_____)
+  skim(____) |>
+  select(-skim_type, -skim_variable, -complete_rate,
+         - numeric.hist) |> #remove these columns from output
+  print(width = Inf) #print all columns
 ```
 
 ### Exercise 5
 
 Use the visualization and summary statistics from the previous exercise to describe the distribution of `spend_per_resident_data`. In your narrative, include a description of the shape, center, spread, and the presence of apparent outliers or other interesting features.
+
+::: callout-tip
+See [Univariate EDA](https://introregression.netlify.app/04-slr#univariate-eda) for an example.
+:::
 
 ### Exercise 6
 
@@ -279,7 +286,7 @@ This is another good place to render, commit, and push changes to your lab-01 re
 
 ### Exercise 7
 
-The `parks` data set ranges from the year 2012 to 2020, so each row contains information about funding and public aneminies for each city in a given year. Thus, there are multiple rows in `parks` for each city. We are going to summarize the data, so there is just one row in the data set for each city. Fill in the code below to create a new data frame called `parks_summary` that contains the mean spending per resident and mean points in the ParkScore index for the percent of residents within a 10-minute walk to a park.
+The `parks` data set ranges from the year 2012 to 2020, so each row contains information about funding and public amenities for each city in a given year. Thus, there are multiple rows in `parks` for each city. We are going to summarize the data, so there is just one row per city. Fill in the code below to create a new data frame called `parks_summary` that contains the mean spending per resident and mean points in the ParkScore index for the percent of residents within a 10-minute walk to a park.
 
 ```{r}
 #| eval: false
@@ -302,7 +309,7 @@ Use `parks_summary` for exercises 8 - 9.
 ```{=html}
 <!-- -->
 ```
--   Use the visualization and correlation to describe the relationship between the two variables. Include the shape, direction, strength, presence of potential outliers, and other any other interesting features in the description.
+-   Use the visualization and correlation to describe the relationship between the two variables. Include the shape, direction, strength, presence of potential outliers, and any other interesting features in the description.
 
 ::: callout-tip
 See [Bivariate EDA](https://introregression.netlify.app/04-slr#bivariate-eda) for an example.
@@ -314,18 +321,19 @@ This is a good place to render, commit, and push changes to your lab-01 repo on 
 
 ### Exercise 9
 
--   Fit and display a linear regression model of the relationship between spending and points for residents within a 10-minute walk from a park. Use the tidymodels [@tidymodels] syntax to fit the model. Display the model in a tidy way.
+-   Fit and display a linear regression model of the relationship between `mean_spend` and `mean_pts_near`. Use the tidymodels [@tidymodels] syntax and display the model in a tidy format.
 
--   Use the model to describe the impact of spending on park access in the 100 most populated cities. Be specific. Use interpretations of the relevant model coefficient(s) in your response.
+-   Interpret the slope in the context of the data.
+
+-   Interpret the intercept in the context of the data. Is the interpretation useful in practice for this data? Briefly explain.
 
 ### Exercise 10
 
-*Parks and an Equitable Recovery*, a special report by Trust for Public Land, begins with the following conclusion from their analysis:
+[*Parks and an Equitable Recovery*](https://www.tpl.org/parks-and-an-equitable-recovery-parkscore-report), a special report by Trust for Public Land, begins with the following conclusion from their analysis:
 
-> \
 > *Our data shows major disparities in access to the outdoors. In the 100 most populated cities, neighborhoods where most residents identify as Black, Hispanic and Latinx, American Indian/Alaska Native or Asian American and Pacific Islander have access to an average of 44 percent less park acreage than predominantly white neighborhoods, and similar park space inequities exist in low-income neighborhoods across cities, highlighting the urgent need to center equity in park investment and planning.*
 
-Would it be possible to reproduce the analysis results that led to this conclusion given the data we have in `parks.csv`? If so, briefly describe the steps we might take to reproduce the analysis? If not, briefly describe the additional data we need in order to reproduce the analysis.
+Would it be possible to reproduce the analysis results that led to this conclusion given the data we have in `parks.csv`? If so, briefly describe the steps we might take to reproduce the analysis. If not, briefly describe the additional data we need in order to reproduce the analysis.
 
 ::: render-commit-push
 You're done and ready to submit your work! render, commit, and push all remaining changes. You can use the commit message "Done with Lab 1!", and make sure you have pushed all the files to GitHub (your Git pane in RStudio should be empty) and that <u>all</u> documents are updated in your repo on GitHub. The PDF document you submit to Gradescope should be identical to the one in your GitHub repo.

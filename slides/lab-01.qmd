@@ -1,6 +1,6 @@
 ---
 title: "Lab 01"
-subtitle: "Exploratory data analysis + Simple Linear Regression"
+subtitle: "Exploratory data analysis + Simple linear regression"
 author: "Sep 05 & 07, 2023"
 footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"
@@ -31,7 +31,7 @@ knitr:
 
 -   If you do not have this repo
 
-    -   [Click ](https://classroom.github.com/a/5kU1kpeo)[here](https://classroom.github.com/a/5kU1kpeo) to create your lab-01 repo, AND
+    -   [Clickhere](https://classroom.github.com/a/5kU1kpeo) to create your lab-01 repo, AND
 
     -   Go to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, [click here](https://forms.office.com/r/S1eSDTjB6M) to (re)submit your GitHub username.
 

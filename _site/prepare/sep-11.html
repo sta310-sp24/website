@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sep 12 - 16">
-<meta name="description" content="Lab 02, HW 01, Statistics experience assigned">
 
-<title>STA 210 - Fall 2023 - Week 03</title>
+<title>STA 210 - Fall 2023 - September 11 lecture</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 03</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">September 11 lecture</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,146 +207,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prepare" id="toc-prepare" class="nav-link active" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#participate" id="toc-participate" class="nav-link" data-scroll-target="#participate">Participate</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
-  <li><a href="#perform" id="toc-perform" class="nav-link" data-scroll-target="#perform">Perform</a></li>
+  <li><a href="#assigned-reading" id="toc-assigned-reading" class="nav-link active" data-scroll-target="#assigned-reading">Assigned reading</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/prepare/week-03.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/prepare/sep-11.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header">
-<h1 class="title display-7">Week 03</h1>
-<p class="subtitle lead">SLR: Inference</p>
-<p class="author">Sep 12 - 16</p>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">September 11 lecture</h1>
+<p class="subtitle lead">Simple linear regression</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 </header>
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Due dates:</strong></p>
-<ul>
-<li>AE 03: due Thu, Sep 15 at 11:59pm (on GitHub)</li>
-<li>AE 04: due Sat, Sep 17 at 11:59pm (on GitHub)</li>
-<li>Lab 02:
-<ul>
-<li>due Mon, Sep 19, 11:59pm (Thu labs)</li>
-<li>due Tue, Sep 20, 11:59pm (Fri labs)</li>
-</ul></li>
-<li>HW 01: due Wed, Sep 21, 11:59pm</li>
-</ul>
-</div>
-</div>
-<section id="prepare" class="level1">
-<h1>Prepare</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Reading</th>
-<th>Corresponding lecture</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>📖 IMS, Sec 24.2: <a href="https://openintro-ims.netlify.app/inf-model-slr.html#randslope">Randomization test for the slope</a></td>
-<td>Sep 12</td>
-</tr>
-<tr class="even">
-<td>📖 IMS, Sec 24.3: <a href="https://openintro-ims.netlify.app/inf-model-slr.html#bootbeta1">Bootstrap confidence interval for the slope</a><br>
-📖 IMS, Sec 24.4: <a href="https://openintro-ims.netlify.app/inf-model-slr.html#mathslope">Mathematical model for testing the slope</a></td>
-<td>Sep 14</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="participate" class="level1">
-<h1>Participate</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Topic</th>
-<th>Date</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>💻 <a href="../slides/05-slr-sim-inference.qmd">SLR: Simulation-based inference</a> (bootstrap confidence intervals)</td>
-<td>Sep 12</td>
-</tr>
-<tr class="even">
-<td>💻 <a href="../slides/06-slr-sim-testing.qmd">SLR: Simulation-based inference (hypothesis testing)</a></td>
-<td>Sep 14</td>
-</tr>
-<tr class="odd">
-<td>💻 <a href="../slides/lab-02.qmd">Lab 02</a></td>
-<td>Sep 15 &amp; 16</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="practice" class="level1">
-<h1>Practice</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>📋 <a href="../ae/ae-03-bootstrap.html">AE 03: Bootstrap confidence intervals</a></td>
-</tr>
-<tr class="even">
-<td>📋 <a href="../ae/ae-04-sim-testing.html">AE 04: Simulation-based hypothesis testing</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="perform" class="level1">
-<h1>Perform</h1>
-<table class="table">
-<colgroup>
-<col style="width: 60%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Due date</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>📝 <a href="../labs/lab-02.qmd">Lab 02</a></td>
-<td><p>Mon, Sep 19, 11:59pm (Thu labs)</p>
-<p>Tue, Sep 20, 11:59pm (Fri labs)</p></td>
-</tr>
-<tr class="even">
-<td>📝 <a href="../hw/hw-01.qmd">HW 01</a></td>
-<td>Wed, Sep 21, 11:59pm</td>
-</tr>
-<tr class="odd">
-<td>📝 <a href="../hw/stats-experience.html">Statistics experience</a></td>
-<td>Fri, Dec 09, 11:59pm</td>
-</tr>
-</tbody>
-</table>
+<section id="assigned-reading" class="level2">
+<h2 class="anchored" data-anchor-id="assigned-reading">Assigned reading</h2>
+<p>📖 IMS, Sec 24.2: <a href="https://openintro-ims.netlify.app/inf-model-slr.html#randslope">Randomization test for the slope</a></p>
+<p>📖 IMS, Sec 24.3: <a href="https://openintro-ims.netlify.app/inf-model-slr.html#bootbeta1">Bootstrap confidence interval for the slope</a></p>
 
 
 </section>

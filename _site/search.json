@@ -903,32 +903,53 @@
     "text": "Important\n\n\n\n\nExam 02: Mon, Dec 05 (evening) - Thu, Dec 08 at 12pm (noon)\nTeam Feedback #2 due Tue, Dec 06, 11:59pm\nNo class Wed, Dec 07\n\nOnline exam office hours (Zoom link in Sakai)\n\nStatistics experience due Fri, Dec 09, 11:59pm\nProject written report due Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Exam 02 Review\nDec 05\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 16: Exam 02 Review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Exam 02\nMon, Dec 05 evening - Thu, Dec 08, 12pm (noon)\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
   },
   {
-    "objectID": "prepare/week-03.html",
-    "href": "prepare/week-03.html",
-    "title": "Week 03",
+    "objectID": "prepare/week-02.html",
+    "href": "prepare/week-02.html",
+    "title": "September 06 lecture",
     "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nAE 03: due Thu, Sep 15 at 11:59pm (on GitHub)\nAE 04: due Sat, Sep 17 at 11:59pm (on GitHub)\nLab 02:\n\ndue Mon, Sep 19, 11:59pm (Thu labs)\ndue Tue, Sep 20, 11:59pm (Fri labs)\n\nHW 01: due Wed, Sep 21, 11:59pm\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Sec 24.2: Randomization test for the slope\nSep 12\n\n\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope\n📖 IMS, Sec 24.4: Mathematical model for testing the slope\nSep 14\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 SLR: Simulation-based inference (bootstrap confidence intervals)\nSep 12\n\n\n💻 SLR: Simulation-based inference (hypothesis testing)\nSep 14\n\n\n💻 Lab 02\nSep 15 & 16\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 03: Bootstrap confidence intervals\n\n\n📋 AE 04: Simulation-based hypothesis testing\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Lab 02\nMon, Sep 19, 11:59pm (Thu labs)\nTue, Sep 20, 11:59pm (Fri labs)\n\n\n📝 HW 01\nWed, Sep 21, 11:59pm\n\n\n📝 Statistics experience\nFri, Dec 09, 11:59pm"
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
   },
   {
-    "objectID": "prepare/week-16.html",
-    "href": "prepare/week-16.html",
-    "title": "Week 16",
+    "objectID": "prepare/week-02.html#assigned-reading",
+    "href": "prepare/week-02.html#assigned-reading",
+    "title": "September 06 lecture",
     "section": "",
-    "text": "Prepare\nNo reading assignments.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo AEs.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project: Video presentation + slides\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Organized GitHub repo\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Presentation comments\ndue Fri, Dec 16, 11:59pm"
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
   },
   {
-    "objectID": "prepare/week-06.html",
-    "href": "prepare/week-06.html",
-    "title": "Week 06",
-    "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 05\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Feature engineering\nOct 03\n\n\n💻 Feature engineering: Model workflow\nOct 05\n\n\n💻 Lab 04\nOct 06 & 07\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 08: Feature engineering\n\n\n\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Lab 04\nThu, Oct 13, 11:59pm (Thu lab)\nFri, Oct 14, 11:59pm (Fri lab)"
+    "objectID": "prepare/week-02.html#additional-resources-optional",
+    "href": "prepare/week-02.html#additional-resources-optional",
+    "title": "September 06 lecture",
+    "section": "Additional resources (optional)",
+    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
   },
   {
-    "objectID": "prepare/week-13.html",
-    "href": "prepare/week-13.html",
-    "title": "Week 13",
+    "objectID": "prepare/week-12.html",
+    "href": "prepare/week-12.html",
+    "title": "Week 12",
     "section": "",
-    "text": "Important\n\n\n\n\nNo office hours Nov 21 - 25.\nNo class Nov 21 or Nov 23.\nNo labs Nov 24 - 25.\n\n🍁 Have a good Thanksgiving break! 🍁\n\n\n\nPrepare\nNo readings.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo application exercises.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+    "text": "Important\n\n\n\n\nAE 14: due Thu, Nov 17, 11:59pm\nHW 04: due Mon, Nov 21, 11:59pm\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chp 26: Inference for logistic regression\nNov 16\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 Logistic regression: Model comparison\nNov 14\n\n\n💻 Logistic Regression: Inference + conditions\nNov 16\n\n\n💻 Lab: Project analysis + write up\nNov 17 + 18\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 14: Logistic regression - Model Comparison\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 HW 04\ndue Mon, Nov 21, 11:59pm\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-07.html",
+    "href": "prepare/week-07.html",
+    "title": "Week 07",
+    "section": "",
+    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nProject topic ideas:\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations\nOct 12\n\n\n\n\n\nPractice\nNo Application Exercises this week.\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nProject topic ideas\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\n\n\n📝 HW 02\nWed, Oct 19, 11:59pm"
+  },
+  {
+    "objectID": "prepare/sep-11.html",
+    "href": "prepare/sep-11.html",
+    "title": "September 11 lecture",
+    "section": "",
+    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+  },
+  {
+    "objectID": "prepare/sep-11.html#assigned-reading",
+    "href": "prepare/sep-11.html#assigned-reading",
+    "title": "September 11 lecture",
+    "section": "",
+    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
   },
   {
     "objectID": "prepare/week-11.html",
@@ -1043,39 +1064,25 @@
     "text": "Important\n\n\n\nAnnouncements:\n\nNo labs this week - work on Exam 01\nNo TA office hours Wed - Fri\n\nProf. Tackett office hours Thu 10 - 11am\n\nNo Ed Discussion Wed - Fri\n\nDue dates:\n\nAE 06: due Thu, Sep 29, 11:59pm\nAE 07: due Sat, Oct 01, 11:59pm\nExam 01: Wed, Sep 28 - Fri, Sep 30 at 11:59pm\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 MLR: Types of predictors\nSep 26\n\n\n💻 Exam 01 review\nSep 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 06: Prediction for MLR\n\n\n📋 AE 07: Exam 01 review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Exam 01\nFri, Sep 30, 11:59pm"
   },
   {
-    "objectID": "prepare/week-07.html",
-    "href": "prepare/week-07.html",
-    "title": "Week 07",
+    "objectID": "prepare/week-13.html",
+    "href": "prepare/week-13.html",
+    "title": "Week 13",
     "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nProject topic ideas:\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations\nOct 12\n\n\n\n\n\nPractice\nNo Application Exercises this week.\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nProject topic ideas\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\n\n\n📝 HW 02\nWed, Oct 19, 11:59pm"
+    "text": "Important\n\n\n\n\nNo office hours Nov 21 - 25.\nNo class Nov 21 or Nov 23.\nNo labs Nov 24 - 25.\n\n🍁 Have a good Thanksgiving break! 🍁\n\n\n\nPrepare\nNo readings.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo application exercises.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
   },
   {
-    "objectID": "prepare/week-12.html",
-    "href": "prepare/week-12.html",
-    "title": "Week 12",
+    "objectID": "prepare/week-06.html",
+    "href": "prepare/week-06.html",
+    "title": "Week 06",
     "section": "",
-    "text": "Important\n\n\n\n\nAE 14: due Thu, Nov 17, 11:59pm\nHW 04: due Mon, Nov 21, 11:59pm\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chp 26: Inference for logistic regression\nNov 16\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 Logistic regression: Model comparison\nNov 14\n\n\n💻 Logistic Regression: Inference + conditions\nNov 16\n\n\n💻 Lab: Project analysis + write up\nNov 17 + 18\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 14: Logistic regression - Model Comparison\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 HW 04\ndue Mon, Nov 21, 11:59pm\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 05\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Feature engineering\nOct 03\n\n\n💻 Feature engineering: Model workflow\nOct 05\n\n\n💻 Lab 04\nOct 06 & 07\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 08: Feature engineering\n\n\n\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Lab 04\nThu, Oct 13, 11:59pm (Thu lab)\nFri, Oct 14, 11:59pm (Fri lab)"
   },
   {
-    "objectID": "prepare/week-02.html",
-    "href": "prepare/week-02.html",
-    "title": "Sep 06 lecture",
+    "objectID": "prepare/week-16.html",
+    "href": "prepare/week-16.html",
+    "title": "Week 16",
     "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regresion"
-  },
-  {
-    "objectID": "prepare/week-02.html#assigned-reading",
-    "href": "prepare/week-02.html#assigned-reading",
-    "title": "Sep 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regresion"
-  },
-  {
-    "objectID": "prepare/week-02.html#additional-resources-optional",
-    "href": "prepare/week-02.html#additional-resources-optional",
-    "title": "Sep 06 lecture",
-    "section": "Additional resources (optional)",
-    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
+    "text": "Prepare\nNo reading assignments.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo AEs.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project: Video presentation + slides\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Organized GitHub repo\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Presentation comments\ndue Fri, Dec 16, 11:59pm"
   },
   {
     "objectID": "prepare/week-01.html",

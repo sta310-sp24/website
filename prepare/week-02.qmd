@@ -1,11 +1,11 @@
 ---
-title: "Sep 06 lecture"
+title: "September 06 lecture"
 subtitle: "Simple linear regression"
 ---
 
 ## Assigned reading
 
-📖 STA 210 Notes: [Ch 1: Simple linear regresion](https://introregression.netlify.app/04-slr)
+📖 STA 210 Notes: [Ch 1: Simple linear regression](https://introregression.netlify.app/04-slr)
 
 ## Additional resources (optional)
 

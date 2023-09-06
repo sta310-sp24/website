@@ -39,7 +39,7 @@ bikeshare <- read_csv("data/dcbikeshare.csv")
 
 ### Exercise 1
 
-Below are visualizatons of the distributions of daily bike rentals and temperature as well as the relationship between these two variables.
+Below are visualizations of the distributions of daily bike rentals and temperature as well as the relationship between these two variables.
 
 ```{r bike-temp-viz}
 #| warning: false

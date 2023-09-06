@@ -386,7 +386,7 @@ r &= 0.7814
 <br>
 
 ::: small
-[Click here](https://introregression.netlify.app/98-appendix) for details on deriving the equations for slope and intercept.
+[Click ](https://introregression.netlify.app/98-appendix)[here](https://introregression.netlify.app/98-appendix) for details on deriving the equations for slope and intercept.
 :::
 
 ## Estimating the intercept
@@ -416,7 +416,7 @@ $$\large{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{X}}$$
 <br>
 
 ::: small
-[Click here](https://github.com/sta210-sp20/supplemental-notes/blob/master/slr-derivations.pdf) for details on deriving the equations for slope and intercept.
+[Click here](https://introregression.netlify.app/98-appendix) for details on deriving the equations for slope and intercept.
 :::
 
 ## Interpretation

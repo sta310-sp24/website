@@ -348,6 +348,8 @@ predict(movie_fit, new_movie)
 
 ::: appex
 📋 [github.com/sta210-fa22/ae-02-bikeshare](https://github.com/sta210-fa22/ae-02-bikeshare)
+
+![Close document tab](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAbElEQVR4Xs2RQQrAMAgEfZgf7W9LAguybljJpR3wEse5JOL3ZObDb4x1loDhHbBOFU6i2Ddnw2KNiXcdAXygJlwE8OFVBHDgKrLgSInN4WMe9iXiqIVsTMjH7z/GhNTEibOxQswcYIWYOR/zAjBJfiXh3jZ6AAAAAElFTkSuQmCC){alt="Close document tab"}
 :::
 
 ## Recap

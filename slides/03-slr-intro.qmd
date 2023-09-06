@@ -28,18 +28,6 @@ bibliography: references.bib
 
 ## Announcements
 
--   UPDATE
-
-## Statistician of the Day 
-
--   Explain what it is and why
-
--   How do we choose the statistican of the day?
-
--   you can do it for the statistics experience
-
-## Statistician of the Day: Someone? 
-
 # Questions? 
 
 # Join sta210-fa23 on GitHub
@@ -433,7 +421,7 @@ $$\large{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{X}}$$
 [Click here](https://github.com/sta210-sp20/supplemental-notes/blob/master/slr-derivations.pdf) for details on deriving the equations for slope and intercept.
 :::
 
-## Interpretation - UPDATE LINKS!
+## Interpretation
 
 ::: appex
 ::: midi
@@ -610,7 +598,7 @@ predict(movie_fit, new_movie)
 ## Application exercise
 
 ::: appex
-📋 [github.com/sta210-fa22/ae-02-bikeshare](https://github.com/sta210-fa23/ae-03-slr.html)
+📋 [github.com/sta210-fa23/ae-03-slr](https://github.com/sta210-fa23/ae-03-slr.html)
 :::
 
 # Wrap up

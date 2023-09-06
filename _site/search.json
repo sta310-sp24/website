@@ -291,14 +291,14 @@
     "href": "slides/03-slr-intro.html#topics",
     "title": "Simple Linear Regression",
     "section": "Topics",
-    "text": "Topics\n\n\nUse simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nEstimate the slope and intercept of the regression line using the least squares method.\nInterpret the slope and intercept of the regression line.\nPredict the response given a value of the predictor variable.\nDefin extrapolation and why we should avoid it.\nUse tidymodels to fit and summarize regression models in R."
+    "text": "Topics\n\n\nUse simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nEstimate the slope and intercept of the regression line using the least squares method.\nInterpret the slope and intercept of the regression line.\nPredict the response given a value of the predictor variable.\nUse tidymodels to fit and summarize regression models in R."
   },
   {
     "objectID": "slides/03-slr-intro.html#computation-set-up",
     "href": "slides/03-slr-intro.html#computation-set-up",
     "title": "Simple Linear Regression",
     "section": "Computation set up",
-    "text": "Computation set up\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
+    "text": "Computation set up\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\nlibrary(knitr)          # for formatting tables\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
   },
   {
     "objectID": "slides/03-slr-intro.html#movie-scores",
@@ -371,18 +371,18 @@
     "text": "Regression model\n\n\n\\[\n\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[5pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[5pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[5pt]\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#simple-linear-regression-1",
-    "href": "slides/03-slr-intro.html#simple-linear-regression-1",
+    "objectID": "slides/03-slr-intro.html#slr-statistical-model",
+    "href": "slides/03-slr-intro.html#slr-statistical-model",
     "title": "Simple Linear Regression",
-    "section": "Simple linear regression",
-    "text": "Simple linear regression\nWhen we have a quantitative response, \\(Y\\), and a single quantitative predictor, \\(X\\), we can use a simple linear regression model to describe the relationship between \\(Y\\) and \\(X\\). \\[\\Large{Y = \\mathbf{\\beta_0 + \\beta_1 X} + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error"
+    "section": "SLR: Statistical model",
+    "text": "SLR: Statistical model\nWhen we have a quantitative response, \\(Y\\), and a single quantitative predictor, \\(X\\), we can use a simple linear regression model to describe the relationship between \\(Y\\) and \\(X\\). \\[\\Large{Y = \\mathbf{\\beta_0 + \\beta_1 X} + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error"
   },
   {
-    "objectID": "slides/03-slr-intro.html#simple-linear-regression-2",
-    "href": "slides/03-slr-intro.html#simple-linear-regression-2",
+    "objectID": "slides/03-slr-intro.html#slr-regression-equation",
+    "href": "slides/03-slr-intro.html#slr-regression-equation",
     "title": "Simple Linear Regression",
-    "section": "Simple linear regression",
-    "text": "Simple linear regression\n\\[\\Large{\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X}\\]\n\n\\(\\hat{\\beta}_1\\): Estimated slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\hat{\\beta}_0\\): Estimated intercept of the relationship between \\(X\\) and \\(Y\\)\nNo error term!"
+    "section": "SLR: Regression equation",
+    "text": "SLR: Regression equation\n\\[\\Large{\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X}\\]\n\n\\(\\hat{\\beta}_1\\): Estimated slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\hat{\\beta}_0\\): Estimated intercept of the relationship between \\(X\\) and \\(Y\\)\nNo error term!"
   },
   {
     "objectID": "slides/03-slr-intro.html#choosing-values-for-hatbeta_1-and-hatbeta_0",
@@ -396,7 +396,7 @@
     "href": "slides/03-slr-intro.html#residuals",
     "title": "Simple Linear Regression",
     "section": "Residuals",
-    "text": "Residuals\n\n\\[\\text{residual} = \\text{observed} - \\text{predicted} = y - \\hat{y}\\]"
+    "text": "Residuals\n\n\\[\\text{residual} = \\text{observed} - \\text{predicted} = y_i - \\hat{y}_i\\]"
   },
   {
     "objectID": "slides/03-slr-intro.html#least-squares-line",
@@ -410,7 +410,7 @@
     "href": "slides/03-slr-intro.html#properties-of-least-squares-regression",
     "title": "Simple Linear Regression",
     "section": "Properties of least squares regression",
-    "text": "Properties of least squares regression\n\n\nThe regression line goes through the center of mass point, the coordinates corresponding to average \\(X\\) and average \\(Y\\): \\(\\hat{\\beta}_0 = \\bar{Y} - \\hat{\\beta}_1\\bar{X}\\)\nThe slope has the same sign as the correlation coefficient: \\(\\hat{\\beta}_1 = r \\frac{s_Y}{s_X}\\)\nThe sum of the residuals is zero: \\(\\sum_{i = 1}^n \\epsilon_i = 0\\)\nThe residuals and \\(X\\) values are uncorrelated"
+    "text": "Properties of least squares regression\n\n\nThe regression line goes through the center of mass point, the coordinates corresponding to average \\(X\\) and average \\(Y\\): \\(\\hat{\\beta}_0 = \\bar{Y} - \\hat{\\beta}_1\\bar{X}\\)\nThe slope has the same sign as the correlation coefficient: \\(\\hat{\\beta}_1 = r \\frac{s_Y}{s_X}\\)\nThe sum of the residuals is approximately zero: \\(\\sum_{i = 1}^n e_i \\approx 0\\)\nThe residuals and \\(X\\) values are uncorrelated"
   },
   {
     "objectID": "slides/03-slr-intro.html#estimating-the-slope",
@@ -448,18 +448,11 @@
     "text": "Making a prediction\nSuppose that a movie has a critics score of 70. According to this model, what is the movie’s predicted audience score?\n\\[\\begin{aligned}\n\\widehat{\\text{audience}} &= 32.3142 + 0.5187 \\times \\text{critics} \\\\\n&= 32.3142 + 0.5187 \\times 70 \\\\\n&= 68.6232\n\\end{aligned}\\]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#extrapolation",
-    "href": "slides/03-slr-intro.html#extrapolation",
-    "title": "Simple Linear Regression",
-    "section": "⚠️ Extrapolation",
-    "text": "⚠️ Extrapolation\n\nUsing the model to predict for values outside the range of the original data is extrapolation.\n\n\n\n\nSuppose that a movie has a critics score of 0. According to this model, what is the movie’s predicted audience score?"
-  },
-  {
     "objectID": "slides/03-slr-intro.html#tidymodels",
     "href": "slides/03-slr-intro.html#tidymodels",
     "title": "Simple Linear Regression",
     "section": "tidymodels",
-    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use tidymodels_prefer() to resolve common conflicts."
+    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use suppressPackageStartupMessages() to eliminate package startup messages"
   },
   {
     "objectID": "slides/03-slr-intro.html#why-tidymodels",
@@ -487,7 +480,7 @@
     "href": "slides/03-slr-intro.html#a-closer-look-at-the-regression-output",
     "title": "Simple Linear Regression",
     "section": "A closer look at the regression output",
-    "text": "A closer look at the regression output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is likely just due to rounding in the hand calculation."
+    "text": "A closer look at the regression output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is just due to rounding in the hand calculation."
   },
   {
     "objectID": "slides/03-slr-intro.html#the-regression-output",
@@ -495,6 +488,13 @@
     "title": "Simple Linear Regression",
     "section": "The regression output",
     "text": "The regression output\nWe’ll focus on the first column for now…\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() \n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   32.3      2.34        13.8 4.03e-28\n2 critics        0.519    0.0345      15.0 2.70e-31"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#format-output-with-kable",
+    "href": "slides/03-slr-intro.html#format-output-with-kable",
+    "title": "Simple Linear Regression",
+    "section": "Format output with kable",
+    "text": "Format output with kable\nUse the kable function from the knitr package to produce a table and specify number of significant digits\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n32.3155\n2.3425\n13.7953\n0\n\n\ncritics\n0.5187\n0.0345\n15.0281\n0"
   },
   {
     "objectID": "slides/03-slr-intro.html#prediction-1",
@@ -508,7 +508,7 @@
     "href": "slides/03-slr-intro.html#recap",
     "title": "Simple Linear Regression",
     "section": "Recap",
-    "text": "Recap\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nUsed the least squares method to estimate the slope and intercept.\nInterpreted the slope and intercept.\n\nSlope: For every one unit increase in \\(x\\), we expect y to change by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units\n\nPredicted the response given a value of the predictor variable.\nDefined extrapolation and why we should avoid it.\nUsed tidymodels to fit and summarize regression models in R.\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "text": "Recap\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nUsed the least squares method to estimate the slope and intercept.\nInterpreted the slope and intercept.\n\nSlope: For every one unit increase in \\(x\\), we expect y to change by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units\n\nPredicted the response given a value of the predictor variable.\nUsed tidymodels to fit and summarize regression models in R.\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "slides/lab-01.html#do-you-have-the-lab-01-repo",

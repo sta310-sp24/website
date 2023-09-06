@@ -424,7 +424,6 @@ Prof.&nbsp;Maria Tackett
 <li class="fragment"><p>Estimate the slope and intercept of the regression line using the least squares method.</p></li>
 <li class="fragment"><p>Interpret the slope and intercept of the regression line.</p></li>
 <li class="fragment"><p>Predict the response given a value of the predictor variable.</p></li>
-<li class="fragment"><p>Defin extrapolation and why we should avoid it.</p></li>
 <li class="fragment"><p>Use tidymodels to fit and summarize regression models in R.</p></li>
 </ul>
 </div>
@@ -436,18 +435,19 @@ Prof.&nbsp;Maria Tackett
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)       <span class="co"># for data wrangling</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidymodels)      <span class="co"># for modeling</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(fivethirtyeight) <span class="co"># for the fandango dataset</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># set default figure parameters for knitr</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="at">fig.width =</span> <span class="dv">8</span>,</span>
-<span id="cb1-12"><a href="#cb1-12"></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,</span>
-<span id="cb1-13"><a href="#cb1-13"></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,</span>
-<span id="cb1-14"><a href="#cb1-14"></a>  <span class="at">dpi =</span> <span class="dv">300</span>,</span>
-<span id="cb1-15"><a href="#cb1-15"></a>  <span class="at">out.width =</span> <span class="st">"80%"</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(knitr)          <span class="co"># for formatting tables</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># set default figure parameters for knitr</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="at">fig.width =</span> <span class="dv">8</span>,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,</span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="at">dpi =</span> <span class="dv">300</span>,</span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="at">out.width =</span> <span class="st">"80%"</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -614,12 +614,12 @@ $ fandango_difference        &lt;dbl&gt; 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
 </div>
 </section></section>
 <section>
-<section id="simple-linear-regression" class="title-slide slide level1 center">
-<h1>Simple linear regression</h1>
+<section id="simple-linear-regression-slr" class="title-slide slide level1 center">
+<h1>Simple linear regression (SLR)</h1>
 
 </section>
-<section id="simple-linear-regression-1" class="slide level2">
-<h2>Simple linear regression</h2>
+<section id="slr-statistical-model" class="slide level2">
+<h2>SLR: Statistical model</h2>
 <p>When we have a quantitative response, <span class="math inline">\(Y\)</span>, and a single quantitative predictor, <span class="math inline">\(X\)</span>, we can use a <strong>simple linear regression</strong> model to describe the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>. <span class="math display">\[\Large{Y = \mathbf{\beta_0 + \beta_1 X} + \epsilon}\]</span></p>
 <div class="fragment">
 <ul>
@@ -629,8 +629,8 @@ $ fandango_difference        &lt;dbl&gt; 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
 </ul>
 </div>
 </section>
-<section id="simple-linear-regression-2" class="slide level2">
-<h2>Simple linear regression</h2>
+<section id="slr-regression-equation" class="slide level2">
+<h2>SLR: Regression equation</h2>
 <p><span class="math display">\[\Large{\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 X}\]</span></p>
 <ul>
 <li><span class="math inline">\(\hat{\beta}_1\)</span>: Estimated slope of the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
@@ -645,7 +645,7 @@ $ fandango_difference        &lt;dbl&gt; 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
 <section id="residuals" class="slide level2">
 <h2>Residuals</h2>
 
-<img data-src="03-slr-intro_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{residual} = \text{observed} - \text{predicted} = y - \hat{y}\]</span></p>
+<img data-src="03-slr-intro_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{residual} = \text{observed} - \text{predicted} = y_i - \hat{y}_i\]</span></p>
 </section>
 <section id="least-squares-line" class="slide level2">
 <h2>Least squares line</h2>
@@ -673,7 +673,7 @@ $ fandango_difference        &lt;dbl&gt; 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
 <ul>
 <li class="fragment"><p>The regression line goes through the center of mass point, the coordinates corresponding to average <span class="math inline">\(X\)</span> and average <span class="math inline">\(Y\)</span>: <span class="math inline">\(\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{X}\)</span></p></li>
 <li class="fragment"><p>The slope has the same sign as the correlation coefficient: <span class="math inline">\(\hat{\beta}_1 = r \frac{s_Y}{s_X}\)</span></p></li>
-<li class="fragment"><p>The sum of the residuals is zero: <span class="math inline">\(\sum_{i = 1}^n \epsilon_i = 0\)</span></p></li>
+<li class="fragment"><p>The sum of the residuals is approximately zero: <span class="math inline">\(\sum_{i = 1}^n e_i \approx 0\)</span></p></li>
 <li class="fragment"><p>The residuals and <span class="math inline">\(X\)</span> values are uncorrelated</p></li>
 </ul>
 </div>
@@ -696,7 +696,7 @@ r &amp;= 0.7814
 </div>
 <p><br></p>
 <div class="small">
-<p><a href="https://github.com/sta210-sp20/supplemental-notes/blob/master/slr-derivations.pdf">Click here</a> for details on deriving the equations for slope and intercept.</p>
+<p><a href="https://introregression.netlify.app/98-appendix">Click here</a> for details on deriving the equations for slope and intercept.</p>
 </div>
 </section>
 <section id="estimating-the-intercept" class="slide level2">
@@ -737,7 +737,7 @@ r &amp;= 0.7814
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_00b7cbc0" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_17fbeaf1" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -770,18 +770,6 @@ r &amp;= 0.7814
 &amp;= 32.3142 + 0.5187 \times 70 \\
 &amp;= 68.6232
 \end{aligned}\]</span>
-</section>
-<section id="extrapolation" class="slide level2">
-<h2>⚠️ Extrapolation</h2>
-<div style="font-size: 0.80em;">
-<p>Using the model to predict for values outside the range of the original data is <strong>extrapolation</strong>.</p>
-</div>
-
-<img data-src="03-slr-intro_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:55.0%" class="r-stretch quarto-figure-center"><div class="fragment">
-<div style="font-size: 0.80em;">
-<p>Suppose that a movie has a critics score of 0. According to this model, what is the movie’s predicted audience score?</p>
-</div>
-</div>
 </section></section>
 <section>
 <section id="fitting-regression-models-with-tidymodels" class="title-slide slide level1 center">
@@ -815,7 +803,7 @@ r &amp;= 0.7814
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Use tidymodels_prefer() to resolve common conflicts.</code></pre>
+• Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
 </div>
 </div>
 </div>
@@ -905,7 +893,7 @@ Coefficients:
 <p><span class="math display">\[\widehat{\text{audience}} = 32.3155 + 0.5187 \times \text{critics}\]</span></p>
 <div class="fragment">
 <div class="smallest">
-<p><strong>Note:</strong> The intercept is off by a tiny bit from the hand-calculated intercept, this is likely just due to rounding in the hand calculation.</p>
+<p><strong>Note:</strong> The intercept is off by a tiny bit from the hand-calculated intercept, this is just due to rounding in the hand calculation.</p>
 </div>
 </div>
 </section>
@@ -926,14 +914,54 @@ Coefficients:
 </div>
 </div>
 </section>
+<section id="format-output-with-kable" class="slide level2">
+<h2>Format output with <code>kable</code></h2>
+<p>Use the <code>kable</code> function from the <a href="https://yihui.org/knitr/">knitr</a> package to produce a table and specify number of significant digits</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">fit</span>(audience <span class="sc">~</span> critics, <span class="at">data =</span> movie_scores) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">32.3155</td>
+<td style="text-align: right;">2.3425</td>
+<td style="text-align: right;">13.7953</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">critics</td>
+<td style="text-align: right;">0.5187</td>
+<td style="text-align: right;">0.0345</td>
+<td style="text-align: right;">15.0281</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 <section id="prediction-1" class="slide level2">
 <h2>Prediction</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|2|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># create a data frame for a new movie</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>new_movie <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">critics =</span> <span class="dv">70</span>)</span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># predict the outcome for a new movie</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="fu">predict</span>(movie_fit, new_movie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|2|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># create a data frame for a new movie</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>new_movie <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">critics =</span> <span class="dv">70</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co"># predict the outcome for a new movie</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="fu">predict</span>(movie_fit, new_movie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   .pred
@@ -970,7 +998,6 @@ Coefficients:
 <li class="fragment"><strong>Intercept</strong>: If <span class="math inline">\(x\)</span> is 0, then we expect <span class="math inline">\(y\)</span> to be <span class="math inline">\(\hat{\beta}_0\)</span> units</li>
 </ul></li>
 <li class="fragment"><p>Predicted the response given a value of the predictor variable.</p></li>
-<li class="fragment"><p>Defined extrapolation and why we should avoid it.</p></li>
 <li class="fragment"><p>Used tidymodels to fit and summarize regression models in R.</p></li>
 </ul>
 </div>

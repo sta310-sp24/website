@@ -459,7 +459,7 @@
     "href": "slides/03-slr-intro.html#tidymodels",
     "title": "Simple Linear Regression",
     "section": "tidymodels",
-    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use suppressPackageStartupMessages() to eliminate package startup messages"
+    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use tidymodels_prefer() to resolve common conflicts."
   },
   {
     "objectID": "slides/03-slr-intro.html#why-tidymodels",
@@ -502,13 +502,6 @@
     "title": "Simple Linear Regression",
     "section": "Prediction",
     "text": "Prediction\n\n# create a data frame for a new movie\nnew_movie &lt;- tibble(critics = 70)\n\n# predict the outcome for a new movie\npredict(movie_fit, new_movie)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  68.6"
-  },
-  {
-    "objectID": "slides/03-slr-intro.html#application-exercise",
-    "href": "slides/03-slr-intro.html#application-exercise",
-    "title": "Simple Linear Regression",
-    "section": "Application exercise",
-    "text": "Application exercise\n\n📋 github.com/sta210-fa23/ae-03-slr"
   },
   {
     "objectID": "slides/03-slr-intro.html#recap",
@@ -1453,7 +1446,7 @@
     "href": "ae/ae-03-slr.html",
     "title": "AE 03: Bike rentals in Washington, DC",
     "section": "",
-    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-03 repo to get started.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Saturday, September 9 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(patchwork)"
+    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-03 repo to get started. If you do not see an ae-03 repo, click here to create one.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Saturday, September 9 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(patchwork)"
   },
   {
     "objectID": "ae/ae-03-slr.html#data",

@@ -6,7 +6,7 @@ editor: visual
 ---
 
 ::: callout-important
-Go to the [course GitHub organization](https://github.com/sta210-fa23) and locate your `ae-03` repo to get started.
+Go to the [course GitHub organization](https://github.com/sta210-fa23) and locate your `ae-03` repo to get started. If you do not see an `ae-03` repo, [click here](https://classroom.github.com/a/HW9uN-iK) to create one.
 
 Render, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Saturday, September 9 at 11:59pm.
 :::

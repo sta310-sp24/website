@@ -247,7 +247,7 @@ Regardless of course delivery format, it is the responsibility of all students t
 
 The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. *Note that the lowest homework and lab assignment will be dropped to accommodate such circumstances.*
 
--   Homework and labs may be submitted up to 1 day late. There will be a 5% deduction for each 24-hour period the assignment is late.
+-   Homework and labs may be submitted up to 2 days late. There will be a 5% deduction for each 24-hour period the assignment is late.
 
 -   There is no late work is accepted for application exercises, since these are designed as in-class activities to help you prepare for labs and homework.
 

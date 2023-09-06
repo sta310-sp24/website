@@ -26,8 +26,6 @@ knitr:
 bibliography: references.bib
 ---
 
-## Announcements
-
 # Questions? 
 
 # Join sta210-fa23 on GitHub

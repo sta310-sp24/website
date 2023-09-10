@@ -386,7 +386,7 @@ r &= 0.7814
 <br>
 
 ::: small
-[Click ](https://introregression.netlify.app/98-appendix)[here](https://introregression.netlify.app/98-appendix) for details on deriving the equations for slope and intercept.
+[Clickhere](https://introregression.netlify.app/98-appendix) for details on deriving the equations for slope and intercept.
 :::
 
 ## Estimating the intercept

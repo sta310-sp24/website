@@ -1,6 +1,6 @@
 ---
-title: "HW: Statistics Experience"
-subtitle: "Due: Fri, Dec 09 at 11:59pm "
+title: "Statistics Experience"
+subtitle: "Due: Mon, Nov 20 at 11:59pm "
 editor: visual
 ---
 
@@ -10,11 +10,11 @@ You may submit the statistics experience assignment anytime between now and the 
 
 Each experience has two parts:
 
-1️⃣ Have a statistics experience
+1️⃣ Have a statistics experience.
 
-2️⃣ Make a slide summarizing on your experience
+2️⃣ Make a slide reflecting on your experience.
 
-**You must complete both parts to receive credit.**
+**You must complete both parts to receive credit. The statistics experience will count as a homework grade.**
 
 ## Part 1: Experience statistics outside of the classroom
 
@@ -42,7 +42,7 @@ Listen to a podcast or watch a video about statistics and data science. The podc
 
     -   [2020 conference](https://www.rstudio.com/resources/rstudioconf-2020/)
 
-This list is not exhaustive. You may listen to other podcasts or watch other statistics/data science videos not included on this list. Ask your professor if you are unsure whether a particular podcast or video will count towards the statistics experience.
+This list is not exhaustive. You may listen to other podcasts or watch other statistics/data science videos not included on this list. Ask Professor Tackett if you are unsure whether a particular podcast or video will count towards the statistics experience.
 
 ### Category 4: Participate in a data science competition or challenge
 
@@ -50,7 +50,7 @@ Participate in a statistics or data science competition. You can participate ind
 
 ### Category 5: Read a book on statistics/data science
 
-There are *a lot* of books about statistics, data science, and related topics. A few suggestions are below. If you decide to read a book that isn't on this list, ask your professor to make sure it counts toward the experience. Many of these books are available through Duke library.
+There are *a lot* of books about statistics, data science, and related topics. A few suggestions are below. If you decide to read a book that isn't on this list, ask Professor Tackett to make sure it counts toward the experience. Many of these books are available through Duke library.
 
 -   *Weapons of Math Destruction* by Cathy O'Neil
 -   *How Charts Lie: Getting Smarter about Visual Information* by Alberto Cairo
@@ -76,24 +76,39 @@ A few guidelines:
 
 ✅ Include the link to your GitHub repo in the slide summarizing your experience.
 
-### Category 7: Coding out loud
+### Category 7: CURV - connecting, uplifting, and recognizing voices
 
-Watch an episode of [Coding out loud](https://dukecct.github.io/coding-out-loud/) (either live or pre-recorded) and work through the project.
+[CURV](https://hardin47.github.io/CURV/) is a project by Dr. Jo Hardin at Pomona College to highlight statisticians and data scientists from groups who have been historically marginalized in the discipline. We will highlight some of the scholars in the CURV data base through the "Statistician of the Day" during lecture each week.
+
+There are two options for this statistics experience:
+
+1️⃣. Present the Statistician of the Day. Learn about one of the scholars in the CURV data base and present what you learn in class.
 
 A few guidelines:
 
-✅ Create a GitHub repo for your Coding out loud submission. Your repo should include
+-   Let Professor Tackett know at least one week in advance of when you'd like to present a Statistician of the Day. They will take place at the beginning of lectures on Mondays.
 
--   The Quarto file with all the code needed to reproduce your visualization.
--   A README that includes an image of your final visualization and a short summary (\~ 1 paragraph) about your visualization.
+-   Create 1 - 2 slides about the scholar.
 
-✅ The final product (visualuzation, table, etc.) should include features or customization that are beyond what was achieved in the Coding out loud episode.
+-   Present at the beginning of lecture for both lectures. If you are unable to attend the beginning of both lectures, you can present in-person during your lecture period and provide a short video for the other lecture period.
 
-✅ Include the link to your GitHub repo in the slide summarizing your experience.
+2️⃣ Contribute to the CURV data base. If there is a scholar you would like to suggest for the data base, submit your suggestion as an issue or pull request on the [CURV GitHub repo](https://github.com/hardin47/CURV/) and create a sample CURV page.
 
-## Part 2: Summarize your experience
+A few guidelines:
 
-Make one slide summarizing your experience. Submit the slide as a PDF on Gradescope.
+✅ Create a draft of the CURV page for your suggested scholar. For reference, [click here](https://hardin47.github.io/CURV/scholars/dubois.html) for the CURV page for W.E.B. Du Bois. The page must be created in a Quarto document.
+
+::: callout-tip
+You can find the Quarto documents for current scholars in the data base in the CURV GitHub repo. You can use one of these as a template to format your page.
+:::
+
+✅ Make a pull request to the CURV GitHub repo to add the `.qmd` file for your suggested scholar, [**OR**]{.underline} open an issue with a link to the `.qmd` file for your suggested scholar. You can ask a member of the teaching team if you have questions about how to do this.
+
+✅ Include the URL to your pull request or issue in your one-slide reflection.
+
+## Part 2: Reflect on your experience
+
+Make one slide summarizing and reflecting on your experience. Submit the slide as a PDF on Gradescope.
 
 Include the following on your slide:
 
@@ -106,4 +121,4 @@ Include the following on your slide:
 
 ## Submission
 
-Submit the reflection as a PDF under the **Statistics Experience** assignment on Gradescope by **Fri, Dec 09 at 11:59pm.** It must be submitted by the deadline on Gradescope to be considered for grading.
+Submit the reflection as a PDF under the **Statistics Experience** assignment on Gradescope by **Mon, Nov 20 at 11:59pm.** Standard homework late policy applies.

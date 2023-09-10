@@ -63,6 +63,9 @@ website:
           text: Instructions
         - href: project-tips.qmd
           text: Tips + resources
+      - href: stats-experience.qmd
+        text: Statistics experience
+        
 
 format:
   html:

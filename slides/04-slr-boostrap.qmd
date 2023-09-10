@@ -63,7 +63,7 @@ For more info: [sta210-fa23.netlify.app/stats-experience](https://sta210-fa23.ne
 
 ## Statistician of the day 
 
-## AE 03 
+## AE 03
 
 # Simulation-based inference
 

@@ -30,6 +30,9 @@ bibliography: references.bib
 #| include: false
 
 library(countdown)
+library(tidyverse)
+library(tidymodels)
+library(knitr)
 
 knitr::opts_chunk$set(
   fig.width = 8,
@@ -39,6 +42,7 @@ knitr::opts_chunk$set(
   out.width = "80%",
   fig.align = "center"
 )
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
 ```
 
 ### Tulane Health Policy Case Competition {.midi}
@@ -61,9 +65,77 @@ See website for more info: <https://sph.tulane.edu/tuhpcc>
 
 For more info: [sta210-fa23.netlify.app/stats-experience](https://sta210-fa23.netlify.app/stats-experience.html)
 
-## Statistician of the day 
+## <!--Statistician of the day=-->
 
-## AE 03
+## AE 03 Follow-up {.midi}
+
+**Goal:** Use simple linear regression to model the relationship between temperature and daily bike rentals in the **winter** season
+
+```{r}
+#| include: false
+
+
+winter <- read_csv("../ae/data/dcbikeshare.csv") |>
+  mutate(season = case_when(
+    season == 1 ~ "winter", 
+    season == 2 ~ "spring", 
+    season == 3 ~ "summer", 
+    season == 4 ~ "fall"
+  ), 
+  season = factor(season)) |>
+  filter(season == "winter")
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| out-width: "65%"
+
+ggplot(data = winter, aes(x = temp_orig, y = count)) + 
+  geom_point() + 
+  labs(x = "Temperature in Celsius", 
+       y = "Daily bike rentals", 
+       title = "Capital Bikeshare daily bike rentals vs. temperature", 
+       subtitle = "in winter months")
+```
+
+## AE 03 Follow-up
+
+**Statistical Model**:
+
+$$count = \beta_0 +\beta_1 ~ temp\_orig + \epsilon, \hspace{5mm} \epsilon \sim N(0, \sigma_{\epsilon}^2)$$
+
+. . .
+
+```{r}
+winter_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(count ~ temp_orig, data = winter)
+
+tidy(winter_fit) |> kable(digits = 3)
+```
+
+## AE 03 Follow-up
+
+Use the output to write out the estimated regression equation.
+
+$$
+\hat{count} =  -111.038 + 222.416 ~temp\_orig
+$$
+
+::: aside
+LaTex:
+
+\\\$\\\$\\hat{count} = -111.038 + 222.416 \~ temp\\\_orig\\\$\\\$
+:::
+
+::: callout-note
+## Your turn!
+
+-   Interpret the slope in the context of the data.
+
+-   Why is there no error term in the regression equation?
+:::
 
 # Simulation-based inference
 
@@ -547,10 +619,10 @@ df_boot_samples_100_hist +
 -   We are 95% confident that for each additional square foot, the model predicts the sale price of Duke Forest houses to be higher, on average, by `r dollar(lower)` to `r dollar(upper)`.
 :::
 
-## Application exercise
+# Application exercise
 
 ::: appex
-📋 [AE 03: Bootstrap confidence intervals](https://sta210-fa22.netlify.app/ae/ae-03-bootstrap.html)
+📋 [AE 04: Bootstrap confidence intervals](https://sta210-fa23.netlify.app/ae/ae-04-bootstrap.html)
 :::
 
 ## Computing the CI for the slope I

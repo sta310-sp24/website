@@ -1281,22 +1281,43 @@
     "text": "Statistics experience assignment\nGoal: Engage with statistics / data science outside the classroom and connect your experience with what you’re learning in the course.\nWhat: Have a statistics experience + create a slide reflecting on the experience. Counts as a homework grade.\nWhen: Must do the activity this semester. Reflection due Monday, November 20 at 11:59pm\nFor more info: sta210-fa23.netlify.app/stats-experience"
   },
   {
-    "objectID": "slides/04-slr-bootstrap.html#ae-03-follow-up",
-    "href": "slides/04-slr-bootstrap.html#ae-03-follow-up",
+    "objectID": "slides/04-slr-bootstrap.html#statistician-of-the-day",
+    "href": "slides/04-slr-bootstrap.html#statistician-of-the-day",
     "title": "SLR: Simulation-based inference",
-    "section": "AE 03 Follow-up",
-    "text": "AE 03 Follow-up\nGoal: Use simple linear regression to model the relationship between temperature and daily bike rentals in the winter season"
+    "section": "Statistician of the day",
+    "text": "Statistician of the day\nWhat: Each week, we will highlight a statisticians, data scientists, or other scholars from groups who have been historically marginalized in the field and whose work has made a significant impact.\nGoal: Learn about scholars you may not see in traditional textbooks and see the breadth of past and current work in the field.\nWho: Scholars are from the CURV (connecting, uplifting, and recognizing voices) database started by Dr. Jo Hardin at Pomona College\nParticipate: Present a Statistician of the Day or contribute to the CURV data base as your statistics experience"
+  },
+  {
+    "objectID": "slides/04-slr-bootstrap.html#w.e.b.-du-bois",
+    "href": "slides/04-slr-bootstrap.html#w.e.b.-du-bois",
+    "title": "SLR: Simulation-based inference",
+    "section": "W.E.B. Du Bois",
+    "text": "W.E.B. Du Bois\n\n\n\n\nDu Bois (1868 - 1963) was a sociologist who contributed to the field of data visualization through infographics related to the African American in the early twentieth century.\nIn 1900 Du Bois contributed approximately 60 data visualizations to an exhibit at the Exposition Universelle in Paris, an exhibit designed to illustrate the progress made by African Americans since the end of slavery (only 37 years prior, in 1863).\n\nSource: hardin47.github.io/CURV/scholars/dubois.html"
+  },
+  {
+    "objectID": "slides/04-slr-bootstrap.html#w.e.b.-du-bois-1",
+    "href": "slides/04-slr-bootstrap.html#w.e.b.-du-bois-1",
+    "title": "SLR: Simulation-based inference",
+    "section": "W.E.B. Du Bois",
+    "text": "W.E.B. Du Bois\n\n\nAt their core, the data visualizations advocate for African American progress.\nThey not only speak to the progress that had been made, but they centered many of the challenges that continued to exist at the time.\nThe set of visualizations demonstrate how powerfully a picture can tell 1000 words, as the information Du Bois used was primarily available from public records (e.g., census and other government reports).\n\n\n\n\nVisualization by W.E.B. Du Bois\n\n\nSource: hardin47.github.io/CURV/scholars/dubois.html"
   },
   {
     "objectID": "slides/04-slr-bootstrap.html#ae-03-follow-up-1",
     "href": "slides/04-slr-bootstrap.html#ae-03-follow-up-1",
     "title": "SLR: Simulation-based inference",
     "section": "AE 03 Follow-up",
-    "text": "AE 03 Follow-up\nStatistical Model:\n\\[count = \\beta_0 +\\beta_1 ~ temp\\_orig + \\epsilon, \\hspace{5mm} \\epsilon \\sim N(0, \\sigma_{\\epsilon}^2)\\]\n\n\nwinter_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(count ~ temp_orig, data = winter)\n\ntidy(winter_fit) |&gt; kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-111.038\n238.312\n-0.466\n0.642\n\n\ntemp_orig\n222.416\n18.459\n12.049\n0.000"
+    "text": "AE 03 Follow-up\nGoal: Use simple linear regression to model the relationship between temperature and daily bike rentals in the winter season"
   },
   {
     "objectID": "slides/04-slr-bootstrap.html#ae-03-follow-up-2",
     "href": "slides/04-slr-bootstrap.html#ae-03-follow-up-2",
+    "title": "SLR: Simulation-based inference",
+    "section": "AE 03 Follow-up",
+    "text": "AE 03 Follow-up\nStatistical Model:\n\\[count = \\beta_0 +\\beta_1 ~ temp\\_orig + \\epsilon, \\hspace{5mm} \\epsilon \\sim N(0, \\sigma_{\\epsilon}^2)\\]\n\n\nwinter_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(count ~ temp_orig, data = winter)\n\ntidy(winter_fit) |&gt; kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-111.038\n238.312\n-0.466\n0.642\n\n\ntemp_orig\n222.416\n18.459\n12.049\n0.000"
+  },
+  {
+    "objectID": "slides/04-slr-bootstrap.html#ae-03-follow-up-3",
+    "href": "slides/04-slr-bootstrap.html#ae-03-follow-up-3",
     "title": "SLR: Simulation-based inference",
     "section": "AE 03 Follow-up",
     "text": "AE 03 Follow-up\nUse the output to write out the estimated regression equation.\n\\[\n\\hat{count} =  -111.038 + 222.416 ~temp\\_orig\n\\]\n\n\n\n\n\n\n\nYour turn!\n\n\n\nInterpret the slope in the context of the data.\nWhy is there no error term in the regression equation?\n\n\n\n\n\nLaTex:\n\\$\\$\\hat{count} = -111.038 + 222.416 ~ temp\\_orig\\$\\$"

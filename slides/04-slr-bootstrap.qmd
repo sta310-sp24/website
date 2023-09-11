@@ -65,7 +65,53 @@ See website for more info: <https://sph.tulane.edu/tuhpcc>
 
 For more info: [sta210-fa23.netlify.app/stats-experience](https://sta210-fa23.netlify.app/stats-experience.html)
 
-## <!--Statistician of the day=-->
+## Statistician of the day {.midi}
+
+**What**: Each week, we will highlight a statisticians, data scientists, or other scholars from groups who have been historically marginalized in the field and whose work has made a significant impact.
+
+**Goal:** Learn about scholars you may not see in traditional textbooks and see the breadth of past and current work in the field.
+
+**Who:** Scholars are from the [CURV (connecting, uplifting, and recognizing voices)](https://hardin47.github.io/CURV/) database started by Dr. Jo Hardin at Pomona College
+
+**Participate:** Present a Statistician of the Day or contribute to the CURV data base as your statistics experience
+
+## W.E.B. Du Bois {.midi}
+
+::: columns
+::: {.column width="40%"}
+![](images/statistician-of-the-day/dubois.jpg)
+:::
+
+::: {.column width="60%"}
+*Du Bois (1868 - 1963) was a sociologist who contributed to the field of data visualization through infographics related to the African American in the early twentieth century.*
+
+*In 1900 Du Bois contributed approximately 60 data visualizations to an exhibit at the Exposition Universelle in Paris, an exhibit designed to illustrate the progress made by African Americans since the end of slavery (only 37 years prior, in 1863).*
+
+<br>
+
+Source: [hardin47.github.io/CURV/scholars/dubois.html](https://hardin47.github.io/CURV/scholars/dubois.html)
+:::
+:::
+
+## W.E.B. Du Bois {.midi}
+
+::: columns
+::: {.column width="50%"}
+*At their core, the data visualizations advocate for African American progress.*
+
+*They not only speak to the progress that had been made, but they centered many of the challenges that continued to exist at the time.*
+
+***The set of visualizations demonstrate how powerfully a picture can tell 1000 words, as the information Du Bois used was primarily available from public records (e.g., census and other government reports).***
+:::
+
+::: {.column width="50%"}
+![Visualization by W.E.B. Du Bois](images/statistician-of-the-day/income-expenditures-orig.jpeg){fig-align="center"}
+
+Source: [hardin47.github.io/CURV/scholars/dubois.html](https://hardin47.github.io/CURV/scholars/dubois.html)
+:::
+:::
+
+# AE 03 Follow-up
 
 ## AE 03 Follow-up {.midi}
 

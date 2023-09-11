@@ -125,8 +125,6 @@ get_confidence_interval(
 
 -   If we want to be very certain that we capture the population parameter, should we use a wider or a narrower interval? What drawbacks are associated with using a wider interval?
 
--   If we want to be very certain that we capture the population parameter, should we use a wider or a narrower interval? What drawbacks are associated with using a wider interval?
-
 ::: callout-important
 To submit the AE:
 

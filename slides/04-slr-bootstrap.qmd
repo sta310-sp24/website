@@ -1,7 +1,7 @@
 ---
 title: "SLR: Simulation-based inference"
 subtitle: "Bootstrap confidence intervals for the slope"
-date: "2023-09-10"
+date: "2023-09-11"
 date-format: "MMM DD, YYYY"
 footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"
@@ -96,7 +96,6 @@ Source: [hardin47.github.io/CURV/scholars/dubois.html](https://hardin47.github.i
 ## W.E.B. Du Bois {.midi}
 
 ::: columns
-
 ::: {.column width="30%"}
 ***The set of visualizations demonstrate how powerfully a picture can tell 1000 words, as the information Du Bois used was primarily available from public records (e.g., census and other government reports).***
 

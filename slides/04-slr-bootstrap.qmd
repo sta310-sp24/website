@@ -96,18 +96,15 @@ Source: [hardin47.github.io/CURV/scholars/dubois.html](https://hardin47.github.i
 ## W.E.B. Du Bois {.midi}
 
 ::: columns
-::: {.column width="50%"}
-*At their core, the data visualizations advocate for African American progress.*
 
-*They not only speak to the progress that had been made, but they centered many of the challenges that continued to exist at the time.*
-
+::: {.column width="30%"}
 ***The set of visualizations demonstrate how powerfully a picture can tell 1000 words, as the information Du Bois used was primarily available from public records (e.g., census and other government reports).***
-:::
-
-::: {.column width="50%"}
-![Visualization by W.E.B. Du Bois](images/statistician-of-the-day/income-expenditures-orig.jpeg){fig-align="center"}
 
 Source: [hardin47.github.io/CURV/scholars/dubois.html](https://hardin47.github.io/CURV/scholars/dubois.html)
+:::
+
+::: {.column width="70%"}
+![Visualization by W.E.B. Du Bois](images/statistician-of-the-day/income-expenditures-orig.jpeg){fig-align="center"}
 :::
 :::
 

@@ -75,7 +75,7 @@ Write all code and narrative in your Quarto file. Write all narrative in complet
 Make sure we can read all of your code in your PDF document. This means you will need to break up long lines of code. One way to help avoid long lines of code is is start a new line after every pipe (`|>`) and plus sign (`+`).
 :::
 
-### Exercise 1 
+### Exercise 1
 
 Fill in the code below to create a new data frame, `icecover_avg`, of the average ice duration by lake and year. How many observations (rows) are in `icecover_avg`? How many variables (columns)?
 

@@ -44,12 +44,14 @@ The following packages are used in the lab:
 library(tidyverse)
 library(tidymodels)
 library(knitr)
-# library(ltdersampler) # data package
+library(lterdatasampler) 
 ```
 
-# Data: Ice cover and air temperature - USE THE DATA PACKAGE?
+# Data: Ice cover and air temperature
 
-The datasets `wi-icecover.csv` and `wi-air-temperature.csv` contain information about ice cover and air temperature, respectively, at Lake Monona and Lake Mendota for days in 1885 through 2019. The data were obtained from the [`ntl_icecover`](https://lter.github.io/lterdatasampler/reference/ntl_icecover.html) and [`ntl_airtemp`](https://lter.github.io/lterdatasampler/reference/ntl_airtemp.html) data frames in the [lterdatasampler](https://lter.github.io/lterdatasampler/index.html) R package. The data were originally collected at a [US Long Term Ecological Research program (LTER) Network](https://lternet.edu/).
+The datasets [`ntl_icecover`](https://lter.github.io/lterdatasampler/reference/ntl_icecover.html) and [`ntl_airtemp`](https://lter.github.io/lterdatasampler/reference/ntl_airtemp.html) [lterdatasampler](https://lter.github.io/lterdatasampler/index.html) R package[^1] contain information about ice cover and air temperature, respectively, at Lake Monona and Lake Mendota for days in 1885 through 2019. The data were originally collected at a [US Long Term Ecological Research program (LTER) Network](https://lternet.edu/).
+
+[^1]: https://lter.github.io/lterdatasampler/index.html
 
 The primary variables for this analysis are
 
@@ -59,12 +61,7 @@ The primary variables for this analysis are
 
 -   `ice_duration`: a number denoting the number of days between the freeze and breakup dates of each lake
 
--   `ave_air_temp_adjusted`: a number denoting the air temperature in degrees Celsius, collected in Madison, WI and adjusted for biases\
-
-```{r}
-icecover <- read_csv("data/wi-icecover.csv")
-airtemp <- read_csv("data/wi-air-temperature.csv")
-```
+-   `ave_air_temp_adjusted`: a number denoting the air temperature in degrees Celsius, collected in Madison, WI and adjusted for biases
 
 # Exercises
 
@@ -78,28 +75,24 @@ Write all code and narrative in your Quarto file. Write all narrative in complet
 Make sure we can read all of your code in your PDF document. This means you will need to break up long lines of code. One way to help avoid long lines of code is is start a new line after every pipe (`|>`) and plus sign (`+`).
 :::
 
-### Exercise 1 - RENAME DATA FRAME?
+### Exercise 1 
 
 Fill in the code below to create a new data frame, `icecover_avg`, of the average ice duration by lake and year. How many observations (rows) are in `icecover_avg`? How many variables (columns)?
 
 ```{r}
-icecover_avg <- icecover |>
+icecover_avg <- ntl_icecover |>
   group_by(____, _____) |>
   summarise(avg_ice_duration = mean(_____))
 ```
 
 ### Exercise 2
 
--   Create a new data frame `airtemp_avg`, of the average air temperature by year.
+-   Use `ntl_airtemp` to create a new data frame `airtemp_avg` containing of the average air temperature by year.
 
--   \[ADD QUESTION ABOUT THE TYPE OF JOIN\]
-
--   Then, join `icecover_avg` and `airtemp_avg` to make a new data frame `ice_air_joined`. Remove the years that have missing data for the average annual air temperature or the average annual ice duration.\
-    \
-    The data frame `ice_air_joined` has 268 observations.
+-   Then, join `icecover_avg` and `airtemp_avg` to make a new data frame `ice_air_joined`. Remove the years that have missing data for the average annual air temperature or the average annual ice duration.
 
 ::: callout-important
-You will use `ice_air_joined` for the remainder of this lab.
+The data frame `ice_air_joined` has 268 observations. You will use `ice_air_joined` for the remainder of this lab.
 :::
 
 ### Exercise 3
@@ -198,6 +191,6 @@ To submit your assignment:
 | Component             | Points |
 |:----------------------|:-------|
 | Ex 1 - 10             | 47     |
-| Workflow & formatting | 3[^1]  |
+| Workflow & formatting | 3[^2]  |
 
-[^1]: The "Workflow & formatting" grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.
+[^2]: The "Workflow & formatting" grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.

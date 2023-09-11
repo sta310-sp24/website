@@ -255,10 +255,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#data-ice-cover-and-air-temperature---use-the-data-package" id="toc-data-ice-cover-and-air-temperature---use-the-data-package" class="nav-link" data-scroll-target="#data-ice-cover-and-air-temperature---use-the-data-package">Data: Ice cover and air temperature - USE THE DATA PACKAGE?</a></li>
+  <li><a href="#data-ice-cover-and-air-temperature" id="toc-data-ice-cover-and-air-temperature" class="nav-link" data-scroll-target="#data-ice-cover-and-air-temperature">Data: Ice cover and air temperature</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-1---rename-data-frame" id="toc-exercise-1---rename-data-frame" class="nav-link" data-scroll-target="#exercise-1---rename-data-frame">Exercise 1 - RENAME DATA FRAME?</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
@@ -340,24 +340,19 @@ Important
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ltdersampler) # data package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lterdatasampler) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="data-ice-cover-and-air-temperature---use-the-data-package" class="level1">
-<h1>Data: Ice cover and air temperature - USE THE DATA PACKAGE?</h1>
-<p>The datasets <code>wi-icecover.csv</code> and <code>wi-air-temperature.csv</code> contain information about ice cover and air temperature, respectively, at Lake Monona and Lake Mendota for days in 1885 through 2019. The data were obtained from the <a href="https://lter.github.io/lterdatasampler/reference/ntl_icecover.html"><code>ntl_icecover</code></a> and <a href="https://lter.github.io/lterdatasampler/reference/ntl_airtemp.html"><code>ntl_airtemp</code></a> data frames in the <a href="https://lter.github.io/lterdatasampler/index.html">lterdatasampler</a> R package. The data were originally collected at a <a href="https://lternet.edu/">US Long Term Ecological Research program (LTER) Network</a>.</p>
+<section id="data-ice-cover-and-air-temperature" class="level1">
+<h1>Data: Ice cover and air temperature</h1>
+<p>The datasets <a href="https://lter.github.io/lterdatasampler/reference/ntl_icecover.html"><code>ntl_icecover</code></a> and <a href="https://lter.github.io/lterdatasampler/reference/ntl_airtemp.html"><code>ntl_airtemp</code></a> <a href="https://lter.github.io/lterdatasampler/index.html">lterdatasampler</a> R package<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> contain information about ice cover and air temperature, respectively, at Lake Monona and Lake Mendota for days in 1885 through 2019. The data were originally collected at a <a href="https://lternet.edu/">US Long Term Ecological Research program (LTER) Network</a>.</p>
 <p>The primary variables for this analysis are</p>
 <ul>
 <li><p><code>year</code>: a number denoting the year of observation</p></li>
 <li><p><code>lakeid</code>: a factor denoting the lake name</p></li>
 <li><p><code>ice_duration</code>: a number denoting the number of days between the freeze and breakup dates of each lake</p></li>
-<li><p><code>ave_air_temp_adjusted</code>: a number denoting the air temperature in degrees Celsius, collected in Madison, WI and adjusted for biases<br>
-</p></li>
+<li><p><code>ave_air_temp_adjusted</code>: a number denoting the air temperature in degrees Celsius, collected in Madison, WI and adjusted for biases</p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>icecover <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/wi-icecover.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>airtemp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/wi-air-temperature.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="exercises" class="level1">
 <h1>Exercises</h1>
@@ -377,23 +372,20 @@ Tip
 <p>Make sure we can read all of your code in your PDF document. This means you will need to break up long lines of code. One way to help avoid long lines of code is is start a new line after every pipe (<code>|&gt;</code>) and plus sign (<code>+</code>).</p>
 </div>
 </div>
-<section id="exercise-1---rename-data-frame" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1---rename-data-frame">Exercise 1 - RENAME DATA FRAME?</h3>
+<section id="exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
 <p>Fill in the code below to create a new data frame, <code>icecover_avg</code>, of the average ice duration by lake and year. How many observations (rows) are in <code>icecover_avg</code>? How many variables (columns)?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>icecover_avg <span class="ot">&lt;-</span> icecover <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____, _____) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_ice_duration =</span> <span class="fu">mean</span>(_____))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>icecover_avg <span class="ot">&lt;-</span> ntl_icecover <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____, _____) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_ice_duration =</span> <span class="fu">mean</span>(_____))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
 <ul>
-<li><p>Create a new data frame <code>airtemp_avg</code>, of the average air temperature by year.</p></li>
-<li><p>[ADD QUESTION ABOUT THE TYPE OF JOIN]</p></li>
-<li><p>Then, join <code>icecover_avg</code> and <code>airtemp_avg</code> to make a new data frame <code>ice_air_joined</code>. Remove the years that have missing data for the average annual air temperature or the average annual ice duration.<br>
-<br>
-The data frame <code>ice_air_joined</code> has 268 observations.</p></li>
+<li><p>Use <code>ntl_airtemp</code> to create a new data frame <code>airtemp_avg</code> containing of the average air temperature by year.</p></li>
+<li><p>Then, join <code>icecover_avg</code> and <code>airtemp_avg</code> to make a new data frame <code>ice_air_joined</code>. Remove the years that have missing data for the average annual air temperature or the average annual ice duration.</p></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -405,7 +397,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You will use <code>ice_air_joined</code> for the remainder of this lab.</p>
+<p>The data frame <code>ice_air_joined</code> has 268 observations. You will use <code>ice_air_joined</code> for the remainder of this lab.</p>
 </div>
 </div>
 </section>
@@ -529,7 +521,7 @@ Warning
 </tr>
 <tr class="even">
 <td style="text-align: left;">Workflow &amp; formatting</td>
-<td style="text-align: left;">3<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+<td style="text-align: left;">3<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
 </tr>
 </tbody>
 </table>
@@ -541,7 +533,8 @@ Warning
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>https://lter.github.io/lterdatasampler/index.html<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

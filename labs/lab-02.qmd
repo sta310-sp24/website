@@ -191,7 +191,16 @@ To submit your assignment:
 
 | Component             | Points |
 |:----------------------|:-------|
-| Ex 1 - 10             | 47     |
-| Workflow & formatting | 3[^2]  |
+| Ex 1                  | 2      |
+| Ex 2                  | 4      |
+| Ex 3                  | 5      |
+| Ex 4                  | 5      |
+| Ex 5                  | 4      |
+| Ex 6                  | 5      |
+| Ex 7                  | 3      |
+| Ex 8                  | 6      |
+| Ex 9                  | 8      |
+| Ex 10                 | 4      |
+| Workflow & formatting | 4[^2]  |
 
-[^2]: The "Workflow & formatting" grade is to assess the reproducible workflow. This includes having at least 3 informative commit messages and updating the name and date in the YAML.
+[^2]: The "Workflow & formatting" grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.

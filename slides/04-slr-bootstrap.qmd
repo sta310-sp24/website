@@ -337,6 +337,8 @@ df_boot_samples_5 <- duke_forest |>
 
 ## Bootstrap sample 1
 
+<!-- Fix the scales for these slides, so the difference in slopes is easier to see-->
+
 ::: columns
 ::: {.column width="50%"}
 ```{r}

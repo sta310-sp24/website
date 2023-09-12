@@ -1,6 +1,6 @@
 ---
 title: "Lab 02: Ice duration and air temperature in Madison, WI"
-subtitle: "Inference for simple linear regression " 
+subtitle: "Bootstrap confidence interval for the slope"
 execute:
   freeze: auto
   echo: true
@@ -77,22 +77,22 @@ Make sure we can read all of your code in your PDF document. This means you will
 
 ### Exercise 1
 
-Fill in the code below to create a new data frame, `icecover_avg`, of the average ice duration by lake and year. How many observations (rows) are in `icecover_avg`? How many variables (columns)?
+Fill in the code below to create a new data frame, `icecover_avg`, of the average ice duration by lake then year. How many observations (rows) are in `icecover_avg`? How many variables (columns)?
 
 ```{r}
 icecover_avg <- ntl_icecover |>
   group_by(____, _____) |>
-  summarise(avg_ice_duration = mean(_____))
+  summarise(avg_ice_duration = mean(_____), .groups = "drop")
 ```
 
 ### Exercise 2
 
--   Use `ntl_airtemp` to create a new data frame `airtemp_avg` containing of the average air temperature by year.
+-   Use `ntl_airtemp` to create a new data frame `airtemp_avg` of the average air temperature by year.
 
 -   Then, join `icecover_avg` and `airtemp_avg` to make a new data frame `ice_air_joined`. Remove the years that have missing data for the average annual air temperature or the average annual ice duration.
 
 ::: callout-important
-The data frame `ice_air_joined` has 268 observations. You will use `ice_air_joined` for the remainder of this lab.
+You will use `ice_air_joined` for exercises 3 - 7.
 :::
 
 ### Exercise 3
@@ -105,7 +105,7 @@ Use the visualization and summary statistics to describe the distribution of `av
 
 Make a histogram of the distribution of `avg_air_temp`. Then make another visualization of the distribution of `avg_air_temp` using a different type of plot. Include informative axis labels and an informative title on both visualizations.
 
-What is one feature of the distribution that is more apparent in the histogram than in the other plot? What is one feature of the distribution that is more apparent in the other plot than in the histogram?
+What type of plot did you make? What is one feature of the distribution that is more apparent in the histogram than in the other plot? What is one feature of the distribution that is more apparent in the other plot than in the histogram?
 
 ::: render-commit-push
 This is a good place to render, commit, and push changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you've made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty.
@@ -125,7 +125,7 @@ Create a visualization of `avg_air_temp` versus `year`. Include informative axis
 
 ### Exercise 7
 
-Researchers would like to use a linear model to understand variability in the average ice duration based on the average air temperature. Write the form of the statistical model the researchers would like to estimate. Use mathematical notation and variable names (`avg_air_temp` and `avg_ice_duration`) in the equation.
+Researchers would like to use a linear model to understand variability in the average ice duration based on the average air temperature. **Their analysis will focus only on Lake Monona.** Write the form of the statistical model the researchers would like to estimate. Use mathematical notation and variable names (`avg_air_temp` and `avg_ice_duration`) in the equation.
 
 ::: callout-tip
 [Click here](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols) for a guide on writing mathematical symbols using LaTex. You will need to use a backslash (\\) before each underscore in the LaTex code. For example, `avg_air_temp` will be written as *avg\\\_air\\\_temp.*
@@ -137,7 +137,7 @@ This is a good place to render, commit, and push changes to your remote lab repo
 
 ### Exercise 8
 
-Fit and display the output of the regression model corresponding to the statistical model in the previous exercise. Use the `tidy` and `kable` functions to neatly display the model output using three decimal places.
+Fit and display the output of the regression model corresponding to the statistical model in the previous exercise. **As in the previous exercise, only observations from Lake Monona should be included in the analysis.** Use the `tidy` and `kable` functions to neatly display the model output using three decimal places.
 
 -   Write the equation of the fitted model. Use mathematical notation and variable names (`avg_air_temp` and `avg_ice_duration`) in the equation.
 
@@ -147,9 +147,10 @@ Fit and display the output of the regression model corresponding to the statisti
 
 ### Exercise 9
 
-Use bootstrapping to construct 95% confidence interval for the slope Follow these steps to accomplish this:
+Use bootstrapping to construct a 93% confidence interval for the slope for Lake Monona. Follow these steps to accomplish this:
 
--   First set a seed for simulating reproducibly. Use the seed `210`.
+-   First, set a seed for simulating reproducibly. Use the seed `210`.
+-   Save the value of slope estimated from the data.
 -   Then, simulate the bootstrap distribution of the slope using 1,000 bootstrap samples.
 -   Visualize the bootstrap distribution.
 -   Calculate the bounds of the confidence interval using the percentile method.
@@ -157,7 +158,7 @@ Use bootstrapping to construct 95% confidence interval for the slope Follow thes
 
 ## Exercise 10
 
-> There is a statistically significant linear relationship between average air temperature and average ice duration $(\beta_1 \neq 0)$.
+> There is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona $(\beta_1 \neq 0)$.
 
 Does the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.
 

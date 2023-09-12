@@ -1,6 +1,6 @@
 ---
 title: "Lab 02"
-subtitle: "Inference for Simple Linear Regression"
+subtitle: "Bootstrap confidence interval for the slope"
 author: "Sep 12 & 14, 2023"
 footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"

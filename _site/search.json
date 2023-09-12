@@ -984,7 +984,7 @@
     "href": "labs/lab-02.html#exercise-10",
     "title": "Lab 02: Ice duration and air temperature in Madison, WI",
     "section": "Exercise 10",
-    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
+    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
   },
   {
     "objectID": "labs/lab-02.html#footnotes",

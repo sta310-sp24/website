@@ -1,5 +1,5 @@
 ---
-title: "SLR: Randomization tests for the slope"
+title: "SLR: Randomization test for the slope"
 author: "Prof. Maria Tackett"
 date: "2022-09-13"
 date-format: "MMM DD, YYYY"
@@ -41,15 +41,19 @@ knitr::opts_chunk$set(
 
 ## Announcements - UPDATE
 
--   Lab 02 - ADD DATES!
+-   Lab 02 due
+
+    -   Friday, Sep 15 at 11:59pm (Tuesday labs)
+
+    -   Sunday, Sep 17 at 11:59pm (Thursday labs)
 
 -   HW 01
 
     -   Released later today (will get email when HW is available)
 
-    -   due Wed, Sep 21 at 11:59pm
+    -   due Wed, Sep 20 at 11:59pm
 
--   [Statistics experience](https://sta210-fa22.netlify.app/hw/stats-experience.html) - due Fri, Dec 09 at 11:59pm
+-   [Statistics experience](https://sta210-fa23.netlify.app/stats-experience.html) - due Mon, Nov 20 at 11:59pm
 
 ## Topics
 
@@ -95,7 +99,7 @@ ggplot(duke_forest, aes(x = area, y = price)) +
   scale_x_continuous(labels = label_number())
 ```
 
-## The regression model - UPDATE INTERPRETATIONs! {.smaller}
+## The regression model
 
 ```{r}
 
@@ -105,6 +109,7 @@ df_fit <- linear_reg() |>
 
 tidy(df_fit) |>
   kable(digits = 2)
+
 ```
 
 . . .
@@ -115,8 +120,7 @@ intercept <- tidy(df_fit) |> filter(term == "(Intercept)") |> pull(estimate) |> 
 slope <- tidy(df_fit) |> filter(term == "area") |> pull(estimate) |> round()
 ```
 
--   **Intercept:** Duke Forest houses that are 0 square feet are expected to sell, on average, for `r dollar(intercept)`.
--   **Slope:** For each additional square foot, the model predicts the sale price of Duke Forest houses to be higher, on average, by `r dollar(slope)`.
+**Slope:** For each additional square foot, we expect the sale price of Duke Forest houses to be higher by `r dollar(slope)`, on average.
 
 ## Inference for simple linear regression
 
@@ -276,8 +280,8 @@ $$
 
 ::: incremental
 -   Start with a null hypothesis, $H_0$ that represents the status quo
--   Set an alternative hypothesis, $H_A$ that represents the research question, i.e. what we're testing for
--   Conduct a hypothesis test under the assumption that the null hypothesis is true and calculate a **p-value** (probability of observed or more extreme outcome given that the null hypothesis is true)
+-   Set an alternative hypothesis, $H_A$ that represents the research question, i.e. claim we're testing
+-   Conduct a hypothesis test under the assumption that the null hypothesis is true and calculate a **p-value** (probability of getting the observed or a more extreme outcome given that the null hypothesis is true)
     -   if the test results suggest that the data do not provide convincing evidence for the alternative hypothesis, stick with the null hypothesis
     -   if they do, then reject the null hypothesis in favor of the alternative
 :::
@@ -403,7 +407,7 @@ ggplot(null_dist |> filter(term == "area"),
 # Application exercise
 
 ::: appex
-📋 [AE 04: Simulation-based hypothesis testing](https://sta210-fa22.netlify.app/ae/ae-04-sim-testing.html)
+📋 [AE 05: Randomization test for the slope](https://sta210-fa23.netlify.app/ae/ae-05-sim-testing.html)
 :::
 
 ## Permutation pipeline I
@@ -543,7 +547,6 @@ tidy(df_fit) |>
     -   CI: Bootstrap the observed sample to simulate the distribution of the slope
     -   HT: Permute the observed sample to simulate the distribution of the slope under the assumption that the null hypothesis is true
 -   Now we'll do these based on theoretical results, i.e., by using the Central Limit Theorem to define the distribution of the slope and use features (shape, center, spread) of this distribution to compute bounds of the confidence interval and the p-value for the hypothesis test
--   
 :::
 
 ## Mathematical representation of the model {.midi}
@@ -576,6 +579,7 @@ $$
 #| out.width: "100%"
 #| fig.align: "center"
 #| echo: false
+#| fig-cap: Graph reproduced from *Beyond Multiple Linear Regression*.
 
 # Code modified from https://stackoverflow.com/questions/31794876/ggplot2-how-to-curve-small-gaussian-densities-on-a-regression-line?rq=1
 # Modified based on BYSH: https://bookdown.org/roback/bookdown-bysh/ch-MLRreview.html#ordinary-least-squares-ols-assumptions

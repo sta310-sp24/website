@@ -407,8 +407,8 @@ Prof.&nbsp;Maria Tackett
 
   <p class="date">Sep 13, 2022</p>
 </section>
-<section id="announcements---update" class="slide level2">
-<h2>Announcements - UPDATE</h2>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
 <ul>
 <li><p>Lab 02 due</p>
 <ul>
@@ -456,7 +456,7 @@ Prof.&nbsp;Maria Tackett
 <section id="data-duke-forest-houses" class="slide level2">
 <h2>Data: Duke Forest houses</h2>
 
-<img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-1-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-1-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="the-regression-model" class="slide level2">
 <h2>The regression model</h2>
 <div class="cell" data-layout-align="center">
@@ -630,11 +630,11 @@ Explanatory: area (numeric)
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-8-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="compute-the-ci" class="slide level2">
 <h2>Compute the CI</h2>
 
-<img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-9-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="but-first" class="slide level2">
 <h2>But first…</h2>
 <div class="cell" data-layout-align="center">
@@ -782,10 +782,13 @@ H_A: \beta_1 \ne 0
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-13-1.png" style="width:100.0%"></p>
+<p><img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-13-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -796,15 +799,29 @@ H_A: \beta_1 \ne 0
 <section id="permutation-repeated" class="slide level2">
 <h2>Permutation, repeated</h2>
 <p>Repeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 
-<img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-14-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+</div>
+<img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-14-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="concluding-the-hypothesis-test" class="slide level2 smaller">
 <h2>Concluding the hypothesis test</h2>
 <div class="question">
 <p>Is the observed slope of <span class="math inline">\(\hat{\beta_1} = 159\)</span> (or an even more extreme slope) a likely outcome under the null hypothesis that <span class="math inline">\(\beta = 0\)</span>? What does this mean for our original question: “Do the data provide sufficient evidence that <span class="math inline">\(\beta_1\)</span> (the true slope for the population) is different from 0?”</p>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values (`geom_bar()`).</code></pre>
+</div>
 
-<img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-15-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section></section>
+</div>
+<img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-15-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section></section>
 <section>
 <section id="application-exercise" class="title-slide slide level1 center">
 <h1>Application exercise</h1>
@@ -815,10 +832,10 @@ H_A: \beta_1 \ne 0
 <section id="permutation-pipeline-i" class="slide level2">
 <h2>Permutation pipeline I</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="|1|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a>duke_forest <span class="sc">|&gt;</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|1|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>duke_forest <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response: price (numeric)
 Explanatory: area (numeric)
@@ -842,11 +859,11 @@ Explanatory: area (numeric)
 <section id="permutation-pipeline-ii" class="slide level2">
 <h2>Permutation pipeline II</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
-<span id="cb18-2"><a href="#cb18-2"></a></span>
-<span id="cb18-3"><a href="#cb18-3"></a>duke_forest <span class="sc">|&gt;</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>duke_forest <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response: price (numeric)
 Explanatory: area (numeric)
@@ -871,12 +888,12 @@ Null Hypothesis: independence
 <section id="permutation-pipeline-iii" class="slide level2">
 <h2>Permutation pipeline III</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
-<span id="cb20-2"><a href="#cb20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3"></a>duke_forest <span class="sc">|&gt;</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a>duke_forest <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response: price (numeric)
 Explanatory: area (numeric)
@@ -902,13 +919,13 @@ Null Hypothesis: independence
 <section id="permutation-pipeline-iv" class="slide level2">
 <h2>Permutation pipeline IV</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a></span>
-<span id="cb22-3"><a href="#cb22-3"></a>duke_forest <span class="sc">|&gt;</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="|7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
+<span id="cb26-2"><a href="#cb26-2"></a></span>
+<span id="cb26-3"><a href="#cb26-3"></a>duke_forest <span class="sc">|&gt;</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 3
 # Groups:   replicate [1,000]
@@ -931,43 +948,48 @@ Null Hypothesis: independence
 <section id="permutation-pipeline-v" class="slide level2">
 <h2>Permutation pipeline V</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
-<span id="cb24-2"><a href="#cb24-2"></a></span>
-<span id="cb24-3"><a href="#cb24-3"></a>null_dist <span class="ot">&lt;-</span> duke_forest <span class="sc">|&gt;</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a>  <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28" data-code-line-numbers="|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">set.seed</span>(<span class="dv">1125</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a>null_dist <span class="ot">&lt;-</span> duke_forest <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">specify</span>(price <span class="sc">~</span> area) <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="visualize-the-null-distribution" class="slide level2">
 <h2>Visualize the null distribution</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>null_dist <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"area"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>null_dist <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"area"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-21-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-21-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="reason-around-the-p-value" class="slide level2 smaller">
 <h2>Reason around the p-value</h2>
 <div class="question">
 <p>In a world where the there is no relationship between the area of a Duke Forest house and in its price (<span class="math inline">\(\beta_1 = 0\)</span>), what is the probability that we observe a sample of 98 houses where the slope fo the model predicting price from area is 159 or even more extreme?</p>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values (`geom_bar()`).</code></pre>
+</div>
 
-<img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-22-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+</div>
+<img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-22-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="compute-the-p-value" class="slide level2">
 <h2>Compute the p-value</h2>
 <div class="question">
 <p>What does this warning mean?</p>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">get_p_value</span>(</span>
-<span id="cb26-2"><a href="#cb26-2"></a>  null_dist,</span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="at">obs_stat =</span> obs_fit,</span>
-<span id="cb26-4"><a href="#cb26-4"></a>  <span class="at">direction =</span> <span class="st">"two-sided"</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">get_p_value</span>(</span>
+<span id="cb31-2"><a href="#cb31-2"></a>  null_dist,</span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="at">obs_stat =</span> obs_fit,</span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="at">direction =</span> <span class="st">"two-sided"</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Please be cautious in reporting a p-value of 0. This result is an
 approximation based on the number of `reps` chosen in the `generate()` step.
@@ -994,12 +1016,12 @@ See `?get_p_value()` for more information.</code></pre>
 <section id="the-regression-model-revisited" class="slide level2">
 <h2>The regression model, revisited</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>df_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">fit</span>(price <span class="sc">~</span> area, <span class="at">data =</span> duke_forest)</span>
-<span id="cb29-4"><a href="#cb29-4"></a></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="fu">tidy</span>(df_fit) <span class="sc">|&gt;</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>df_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">fit</span>(price <span class="sc">~</span> area, <span class="at">data =</span> duke_forest)</span>
+<span id="cb34-4"><a href="#cb34-4"></a></span>
+<span id="cb34-5"><a href="#cb34-5"></a><span class="fu">tidy</span>(df_fit) <span class="sc">|&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1072,10 +1094,13 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="05-slr-sim-testing_files/figure-revealjs/unnamed-chunk-25-1.png" style="width:100.0%"></p>
+<p><img data-src="05-slr-sim-testing_files/figure-html/unnamed-chunk-25-1.png" style="width:100.0%"></p>
 <figcaption>Graph reproduced from <em>Beyond Multiple Linear Regression</em>.</figcaption>
 </figure>
 </div>
@@ -1369,44 +1394,6 @@ SE_{\hat{\beta}_1} = \hat{\sigma}_\epsilon\sqrt{\frac{1}{(n-1)s_X^2}}
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

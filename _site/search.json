@@ -147,11 +147,11 @@
     "text": "Submission\nSubmit the reflection as a PDF under the Statistics Experience assignment on Gradescope by Mon, Nov 20 at 11:59pm. Standard homework late policy applies."
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#announcements---update",
-    "href": "slides/05-slr-sim-testing.html#announcements---update",
+    "objectID": "slides/05-slr-sim-testing.html#announcements",
+    "href": "slides/05-slr-sim-testing.html#announcements",
     "title": "SLR: Randomization test for the slope",
-    "section": "Announcements - UPDATE",
-    "text": "Announcements - UPDATE\n\nLab 02 due\n\nFriday, Sep 15 at 11:59pm (Tuesday labs)\nSunday, Sep 17 at 11:59pm (Thursday labs)\n\nHW 01\n\nReleased later today (will get email when HW is available)\ndue Wed, Sep 20 at 11:59pm\n\nStatistics experience - due Mon, Nov 20 at 11:59pm"
+    "section": "Announcements",
+    "text": "Announcements\n\nLab 02 due\n\nFriday, Sep 15 at 11:59pm (Tuesday labs)\nSunday, Sep 17 at 11:59pm (Thursday labs)\n\nHW 01\n\nReleased later today (will get email when HW is available)\ndue Wed, Sep 20 at 11:59pm\n\nStatistics experience - due Mon, Nov 20 at 11:59pm"
   },
   {
     "objectID": "slides/05-slr-sim-testing.html#topics",
@@ -298,21 +298,21 @@
     "href": "slides/05-slr-sim-testing.html#permutation-visualized",
     "title": "SLR: Randomization test for the slope",
     "section": "Permutation, visualized",
-    "text": "Permutation, visualized\n\n\n\nEach of the observed values for area (and for price) exist in both the observed data plot as well as the permuted price plot\nThe permutation removes the relationship between area and price"
+    "text": "Permutation, visualized\n\n\n\nEach of the observed values for area (and for price) exist in both the observed data plot as well as the permuted price plot\nThe permutation removes the relationship between area and price\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/05-slr-sim-testing.html#permutation-repeated",
     "href": "slides/05-slr-sim-testing.html#permutation-repeated",
     "title": "SLR: Randomization test for the slope",
     "section": "Permutation, repeated",
-    "text": "Permutation, repeated\nRepeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)"
+    "text": "Permutation, repeated\nRepeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/05-slr-sim-testing.html#concluding-the-hypothesis-test",
     "href": "slides/05-slr-sim-testing.html#concluding-the-hypothesis-test",
     "title": "SLR: Randomization test for the slope",
     "section": "Concluding the hypothesis test",
-    "text": "Concluding the hypothesis test\n\nIs the observed slope of \\(\\hat{\\beta_1} = 159\\) (or an even more extreme slope) a likely outcome under the null hypothesis that \\(\\beta = 0\\)? What does this mean for our original question: “Do the data provide sufficient evidence that \\(\\beta_1\\) (the true slope for the population) is different from 0?”"
+    "text": "Concluding the hypothesis test\n\nIs the observed slope of \\(\\hat{\\beta_1} = 159\\) (or an even more extreme slope) a likely outcome under the null hypothesis that \\(\\beta = 0\\)? What does this mean for our original question: “Do the data provide sufficient evidence that \\(\\beta_1\\) (the true slope for the population) is different from 0?”\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning: Removed 2 rows containing missing values (`geom_bar()`)."
   },
   {
     "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-i",
@@ -361,7 +361,7 @@
     "href": "slides/05-slr-sim-testing.html#reason-around-the-p-value",
     "title": "SLR: Randomization test for the slope",
     "section": "Reason around the p-value",
-    "text": "Reason around the p-value\n\nIn a world where the there is no relationship between the area of a Duke Forest house and in its price (\\(\\beta_1 = 0\\)), what is the probability that we observe a sample of 98 houses where the slope fo the model predicting price from area is 159 or even more extreme?"
+    "text": "Reason around the p-value\n\nIn a world where the there is no relationship between the area of a Duke Forest house and in its price (\\(\\beta_1 = 0\\)), what is the probability that we observe a sample of 98 houses where the slope fo the model predicting price from area is 159 or even more extreme?\n\n\n\nWarning: Removed 2 rows containing missing values (`geom_bar()`)."
   },
   {
     "objectID": "slides/05-slr-sim-testing.html#compute-the-p-value",
@@ -396,7 +396,7 @@
     "href": "slides/05-slr-sim-testing.html#mathematical-representation-visualized",
     "title": "SLR: Randomization test for the slope",
     "section": "Mathematical representation, visualized",
-    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n\n\n\nGraph reproduced from Beyond Multiple Linear Regression.\n\n\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
+    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\nGraph reproduced from Beyond Multiple Linear Regression.\n\n\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
   },
   {
     "objectID": "slides/05-slr-sim-testing.html#regression-standard-error",
@@ -1043,39 +1043,60 @@
     "text": "Important\n\n\n\n\nAE 10 due Thu, Oct 27, 11:59pm\nProject Proposal: due Fri, Nov 04: 11:59pm\n\nHW 03 moved to next week\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 10: Resampling for evaluating performance\nOct 24\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 MLR: Cross validation\nOct 24\n\n\n💻 MLR: Inference\nOct 26\n\n\n💻 MLR: Conditions\nOct 26\n\n\n💻 Lab: Project proposal\nOct 27 & 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 10: Cross validation\n\n\n📋 AE 11: MLR Inference + conditions\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project Proposal\ndue Fri, Nov 04, 11:59pm"
   },
   {
-    "objectID": "labs/lab-00.html",
-    "href": "labs/lab-00.html",
-    "title": "Lab 00: Getting started",
+    "objectID": "hw/hw-01.html",
+    "href": "hw/hw-01.html",
+    "title": "HW 01: Education & median income in US Counties",
     "section": "",
-    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
+    "text": "In this assignment, you will use simple linear regression to examine the association between between the percent of adults with a bachelor’s degree and the median household income for counties in the United States."
   },
   {
-    "objectID": "labs/lab-02.html",
-    "href": "labs/lab-02.html",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
+    "objectID": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "href": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 1: Exploratory data analysis",
+    "text": "Part 1: Exploratory data analysis\n\nExercise 1\nCreate a histogram of the distribution of the predictor variable bachelorsand calculate appropriate summary statistics. Use the visualization and summary statistics to describe the distribution. Include an informative title and axis labels on the plot.\n\n\nExercise 2\nLet’s view the data in another way. Use the code below to make a map of the United States with the color of the counties filled in based on the percent of residents 25 years old and older who have a Bachelor’s degree. Fill in title and axis labels.\nThen use the plot answer the following:\n\nWhat are 2 observations you have from the map?\nWhat is a feature that is apparent in the map that wasn’t as easily apparent from the histogram in the previous exercise? What is a feature that is apparent in the histogram that is not as easily apparent from the map?\n\n\ncounty_map_data &lt;- left_join(county_data_sample, map_data_sample)\n\nggplot(data = map_data_all) +\n  geom_polygon(aes(x = long, y = lat, group = group),\n    fill = \"lightgray\", color = \"white\"\n    ) +\n  geom_polygon(data = county_map_data, aes(x = long, y = lat, group = group,\n    fill = bachelors)\n    ) +\n  labs(\n    x = \"Longitude\",\n    y = \"Latitude\",\n    fill = \"___\",\n    title = \"___\"\n  ) +\n  scale_fill_viridis_c(labels = label_dollar()) +\n  coord_quickmap()\n\n\n\nExercise 3\nCreate a visualization of the relationship between bachelors and median_household_income and calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables.\n\n\n\n\n\n\nTip\n\n\n\nRecall the analysis objective stated at the beginning of the Exercises section.\n\n\n\nIf you haven’t yet done so, now is a good time to render your document and commit (with a meaningful commit message) and push all updates."
   },
   {
-    "objectID": "labs/lab-02.html#learning-goals",
-    "href": "labs/lab-02.html#learning-goals",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
+    "objectID": "hw/hw-01.html#part-2-modeling",
+    "href": "hw/hw-01.html#part-2-modeling",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 2: Modeling",
+    "text": "Part 2: Modeling\n\nExercise 4\nWe will use a linear regression model to better quantify the relationship between bachelors and median_household_income.\nWrite the form of the statistical model we will use for this task using mathematical notation. Use variable names (bachelors and median_household_income) in the equation for your model1.\n\n\nExercise 5\n\nFit the regression line corresponding to the statistical model in the previous exercise. Neatly display the model output using 3 digits.\nWrite the equation of the fitted model using mathematical notation. Use variable names (bachelors and median_household_income) in the equation.\n\n\n\nExercise 6\n\nInterpret the slope. The interpretation should be written in a way that is meaningful in the context of the data.\nIs it useful to interpret the intercept for this data? If so, write the interpretation in the context of the data. Otherwise, briefly explain why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
   },
   {
-    "objectID": "labs/lab-02.html#exercise-10",
-    "href": "labs/lab-02.html#exercise-10",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Exercise 10",
-    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
+    "objectID": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "href": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 3: Inference for the U.S.",
+    "text": "Part 3: Inference for the U.S.\nWe want to use the data from these 600 randomly selected counties to draw conclusions about the relationship between the percent of adults age 25 and older with a bachelor’s degree and median household income for the over 3,000 counties in the United States.\n\nExercise 7\n\nWhat is the population of interest? What is the sample?\nIs it reasonable to treat the sample in this analysis as representative of the population? Briefly explain why or why not.\n\n\n\nExercise 8\nConduct a hypothesis test for the slope to assess whether there is sufficient evidence of a linear relationship between the percent of adults age 25 and older with a bachelor’s degree and the median household income in a county. Use a randomization (permutation) test. In your response:\n\nState the null and alternative hypotheses in words and mathematical notation\nShow all relevant code and output used to conduct the test. Use set.seed(2023) and 1000 iterations to construct the appropriate distribution.\nState the conclusion in the context of the data.\n\n\n\nExercise 9\nNext, construct a 95% confidence interval for the slope using bootstrapping with set.seed(2023) and 1000 iterations.\n\nShow all relevant code and output used to calculate the interval.\nInterpret the confidence interval in the context of the data.\nIs the confidence interval consistent with the results of the test from the previous exercise. Briefly explain why or why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
   },
   {
-    "objectID": "labs/lab-02.html#footnotes",
-    "href": "labs/lab-02.html#footnotes",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "objectID": "hw/hw-01.html#reproducibility",
+    "href": "hw/hw-01.html#reproducibility",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nExercise 10\nYou are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.\n\nSource: Ostblom and Timbers (2022)\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nChoose one of the scenarios from the table and read the linked article discussing what went wrong. Then,\n\nBriefly describe what went wrong, i.e., what part of the process of was not reproducible and what error or impact that had.\nThen, describe how the researchers could make the process reproducible.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#submission",
+    "href": "hw/hw-01.html#submission",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Submission",
+    "text": "Submission\n\n\n\n\n\n\nWarning\n\n\n\nBefore you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.\nRemember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.\n\n\nTo submit your assignment:\n\nGo to http://www.gradescope.com and click Log in in the top right corner.\nClick School Credentials ➡️ Duke NetID and log in using your NetID credentials.\nClick on your STA 210 course.\nClick on the assignment, and you’ll be prompted to submit it.\nMark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).\nSelect the first page of your PDF submission to be associated with the “Workflow & formatting” section."
+  },
+  {
+    "objectID": "hw/hw-01.html#grading-50-points",
+    "href": "hw/hw-01.html#grading-50-points",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Grading (50 points)",
+    "text": "Grading (50 points)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n5\n\n\nEx 2\n5\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n4\n\n\nEx 6\n4\n\n\nEx 7\n3\n\n\nEx 8\n7\n\n\nEx 9\n7\n\n\nEx 10\n5\n\n\nWorkflow & formatting\n32"
+  },
+  {
+    "objectID": "hw/hw-01.html#footnotes",
+    "href": "hw/hw-01.html#footnotes",
+    "title": "HW 01: Education & median income in US Counties",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+    "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
   },
   {
     "objectID": "labs/lab-01.html",
@@ -1111,6 +1132,41 @@
     "title": "Lab 01: Park access",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-02.html",
+    "href": "labs/lab-02.html",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-02.html#learning-goals",
+    "href": "labs/lab-02.html#learning-goals",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-10",
+    "href": "labs/lab-02.html#exercise-10",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Exercise 10",
+    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab-02.html#footnotes",
+    "href": "labs/lab-02.html#footnotes",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-00.html",
+    "href": "labs/lab-00.html",
+    "title": "Lab 00: Getting started",
+    "section": "",
+    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
   },
   {
     "objectID": "prepare/week-08.html",

@@ -38,6 +38,8 @@ library(tidyverse) # for data wrangling
 library(tidymodels) # for modeling and inference
 library(knitr) # to neatly format tables
 library(scales) # to format visualizations
+
+# load other packages as needed
 ```
 
 # Data: US Counties
@@ -108,10 +110,10 @@ ggplot(data = map_data_all) +
   labs(
     x = "Longitude",
     y = "Latitude",
-    fill = "___",
-    title = "___"
+    fill = "_____",
+    title = "_____"
   ) +
-  scale_fill_viridis_c(labels = label_dollar()) +
+  scale_fill_viridis_c(labels = label_percent(scale = 1)) +
   coord_quickmap()
 ```
 
@@ -184,14 +186,14 @@ Next, construct a 95% confidence interval for the slope using bootstrapping with
 Now is a good time to render your document again if you haven't done so recently and commit (with a meaningful commit message) and push all updates.
 :::
 
-## Reproducibility 
+## Reproducibility
 
 ### Exercise 10
 
 You are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.
 
 | Reproducibility error                                    | Consequence                                          | Source(s)                                                                                                       |
-|-------------------|------------------|-----------------------------------|
+|-------------------|-------------------|----------------------------------|
 | Limitations in Excel data formats                        | Loss of 16,000 COVID case records in the UK          | ([Kelion 2020](https://www.bbc.com/news/technology-54423988))                                                   |
 | Automatic formatting in Excel                            | Important genes disregarded in scientific studies    | ([Ziemann, Eren, and El-Osta 2016](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7)) |
 | Deletion of a cell caused rows to shift                  | Mix-up of which patient group received the treatment | ([Wallensteen et al. 2018](https://pubmed.ncbi.nlm.nih.gov/27373757/))                                          |

@@ -180,7 +180,7 @@ Next, construct a 95% confidence interval for the slope using bootstrapping with
 
 -   Interpret the confidence interval in the context of the data.
 
--   Is the confidence interval consistent with the results of the test from the previous exercise. Briefly explain why or why not.
+-   Is the confidence interval consistent with the results of the test from the previous exercise? Briefly explain why or why not.
 
 ::: render-commit-push
 Now is a good time to render your document again if you haven't done so recently and commit (with a meaningful commit message) and push all updates.

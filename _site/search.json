@@ -147,431 +147,466 @@
     "text": "Submission\nSubmit the reflection as a PDF under the Statistics Experience assignment on Gradescope by Mon, Nov 20 at 11:59pm. Standard homework late policy applies."
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#announcements",
-    "href": "slides/05-slr-sim-testing.html#announcements",
-    "title": "SLR: Randomization test for the slope",
+    "objectID": "slides/08-slr-conditions.html#announcements",
+    "href": "slides/08-slr-conditions.html#announcements",
+    "title": "SLR: Conditions",
     "section": "Announcements",
-    "text": "Announcements\n\nLab 02 due\n\nFriday, Sep 15 at 11:59pm (Tuesday labs)\nSunday, Sep 17 at 11:59pm (Thursday labs)\n\nHW 01\n\nReleased later today (will get email when HW is available)\ndue Wed, Sep 20 at 11:59pm\n\nStatistics experience - due Mon, Nov 20 at 11:59pm"
+    "text": "Announcements\n\nHW 01: due TODAY at 11:59pm\nStatistics experience - due Fri, Dec 09 at 11:59pm\nAaditya’s office hours today: 1 - 2pm and 7 -8pm on Zoom (link in Sakai)\nSee Week 04 for this week’s activities.\nUpdated masking policy starting Sep 22\nLooking ahead: Exam 01: Sep 28 - 30"
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#topics",
-    "href": "slides/05-slr-sim-testing.html#topics",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Topics",
-    "text": "Topics\n\nEvaluate a claim about the slope using hypothesis testing\nDefine mathematical models to conduct inference for slope"
+    "objectID": "slides/08-slr-conditions.html#exam-01",
+    "href": "slides/08-slr-conditions.html#exam-01",
+    "title": "SLR: Conditions",
+    "section": "Exam 01",
+    "text": "Exam 01\n\nReleased Sep 28 late afternoon, due Sep 30 at 11:59pm.\n\nNo labs or office hours Sep 28 - 30\n\nCovers content Weeks 01 - 05\nConceptual questions + analysis problems\nWill receive exam through GitHub repo, use a reproducible workflow and submit on GitHub and Gradescope (like labs and HW)\nLecture recordings for Weeks 01 -05 available here until September 28 at 11:59pm.\nLab and HW solutions will be posted after the late submission deadlines.\nExam 01 review in class on September 28"
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#computational-setup",
-    "href": "slides/05-slr-sim-testing.html#computational-setup",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Computational setup",
-    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(tidymodels)  # for modeling\nlibrary(usdata)      # for the county_2019 dataset\nlibrary(openintro)   # for Duke Forest dataset\nlibrary(scales)      # for pretty axis labels\nlibrary(glue)        # for constructing character strings\nlibrary(knitr)       # for neatly formatted tables\nlibrary(kableExtra)  # also for neatly formatted tablesf\n\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))"
+    "objectID": "slides/08-slr-conditions.html#computational-set-up",
+    "href": "slides/08-slr-conditions.html#computational-set-up",
+    "title": "SLR: Conditions",
+    "section": "Computational set up",
+    "text": "Computational set up\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(tidymodels)  # for modeling\nlibrary(openintro)   # for the duke_forest dataset\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(kableExtra)  # also for pretty tables\nlibrary(patchwork)   # arrange plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#data-duke-forest-houses",
-    "href": "slides/05-slr-sim-testing.html#data-duke-forest-houses",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Data: Duke Forest houses",
-    "text": "Data: Duke Forest houses"
+    "objectID": "slides/08-slr-conditions.html#regression-model-revisited",
+    "href": "slides/08-slr-conditions.html#regression-model-revisited",
+    "title": "SLR: Conditions",
+    "section": "Regression model, revisited",
+    "text": "Regression model, revisited\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.325\n53302.463\n2.188\n0.031\n\n\narea\n159.483\n18.171\n8.777\n0.000"
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#the-regression-model",
-    "href": "slides/05-slr-sim-testing.html#the-regression-model",
-    "title": "SLR: Randomization test for the slope",
-    "section": "The regression model",
-    "text": "The regression model\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\nSlope: For each additional square foot, we expect the sale price of Duke Forest houses to be higher by $159, on average."
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#inference-for-simple-linear-regression",
-    "href": "slides/05-slr-sim-testing.html#inference-for-simple-linear-regression",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Inference for simple linear regression",
-    "text": "Inference for simple linear regression\n\nCalculate a confidence interval for the slope, \\(\\beta_1\\)\nConduct a hypothesis test for the slope, \\(\\beta_1\\)"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#sampling-is-natural",
-    "href": "slides/05-slr-sim-testing.html#sampling-is-natural",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Sampling is natural",
-    "text": "Sampling is natural\n\n\nWhen you taste a spoonful of soup and decide the spoonful you tasted isn’t salty enough, that’s exploratory analysis\nIf you generalize and conclude that your entire soup needs salt, that’s an inference\nFor your inference to be valid, the spoonful you tasted (the sample) needs to be representative of the entire pot (the population)"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#confidence-interval-via-bootstrapping",
-    "href": "slides/05-slr-sim-testing.html#confidence-interval-via-bootstrapping",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Confidence interval via bootstrapping",
-    "text": "Confidence interval via bootstrapping\n\nBootstrap new samples from the original sample\nFit models to each of the samples and estimate the slope\nUse features of the distribution of the bootstrapped slopes to construct a confidence interval"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-i",
-    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-i",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Bootstrapping pipeline I",
-    "text": "Bootstrapping pipeline I\n\nset.seed(210)\n\nduke_forest |&gt;\n  specify(price ~ area)\n\nResponse: price (numeric)\nExplanatory: area (numeric)\n# A tibble: 98 × 2\n     price  area\n     &lt;dbl&gt; &lt;dbl&gt;\n 1 1520000  6040\n 2 1030000  4475\n 3  420000  1745\n 4  680000  2091\n 5  428500  1772\n 6  456000  1950\n 7 1270000  3909\n 8  557450  2841\n 9  697500  3924\n10  650000  2173\n# ℹ 88 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-ii",
-    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-ii",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Bootstrapping pipeline II",
-    "text": "Bootstrapping pipeline II\n\nset.seed(210)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  generate(reps = 1000, type = \"bootstrap\")\n\nResponse: price (numeric)\nExplanatory: area (numeric)\n# A tibble: 98,000 × 3\n# Groups:   replicate [1,000]\n   replicate   price  area\n       &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1         1  290000  2414\n 2         1  285000  2108\n 3         1  265000  1300\n 4         1  416000  2949\n 5         1  541000  2740\n 6         1  525000  2256\n 7         1 1270000  3909\n 8         1  265000  1300\n 9         1  815000  3904\n10         1  535000  2937\n# ℹ 97,990 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iii",
-    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iii",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Bootstrapping pipeline III",
-    "text": "Bootstrapping pipeline III\n\nset.seed(210)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  generate(reps = 1000, type = \"bootstrap\") |&gt;\n  fit()\n\n# A tibble: 2,000 × 3\n# Groups:   replicate [1,000]\n   replicate term      estimate\n       &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;\n 1         1 intercept   80699.\n 2         1 area          168.\n 3         2 intercept  -18821.\n 4         2 area          205.\n 5         3 intercept  234297.\n 6         3 area          117.\n 7         4 intercept  134481.\n 8         4 area          150.\n 9         5 intercept   23861.\n10         5 area          190.\n# ℹ 1,990 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iv",
-    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iv",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Bootstrapping pipeline IV",
-    "text": "Bootstrapping pipeline IV\n\nset.seed(210)\n\nboot_dist &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  generate(reps = 1000, type = \"bootstrap\") |&gt;\n  fit()"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#visualize-the-bootstrap-distribution",
-    "href": "slides/05-slr-sim-testing.html#visualize-the-bootstrap-distribution",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Visualize the bootstrap distribution",
-    "text": "Visualize the bootstrap distribution\n\nboot_dist |&gt;\n  filter(term == \"area\") |&gt;\n  ggplot(aes(x = estimate)) +\n  geom_histogram(binwidth = 10)"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#compute-the-ci",
-    "href": "slides/05-slr-sim-testing.html#compute-the-ci",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Compute the CI",
-    "text": "Compute the CI"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#but-first",
-    "href": "slides/05-slr-sim-testing.html#but-first",
-    "title": "SLR: Randomization test for the slope",
-    "section": "But first…",
-    "text": "But first…\n\nobs_fit &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  fit()\n\nobs_fit\n\n# A tibble: 2 × 2\n  term      estimate\n  &lt;chr&gt;        &lt;dbl&gt;\n1 intercept  116652.\n2 area          159."
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#compute-95-confidence-interval",
-    "href": "slides/05-slr-sim-testing.html#compute-95-confidence-interval",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Compute 95% confidence interval",
-    "text": "Compute 95% confidence interval\n\nboot_dist |&gt;\n  get_confidence_interval(\n    point_estimate = obs_fit,\n    level = 0.95,\n    type = \"percentile\"\n  )\n\n# A tibble: 2 × 3\n  term      lower_ci upper_ci\n  &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;\n1 area          91.7     211.\n2 intercept -18290.   287711."
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#research-question-and-hypotheses",
-    "href": "slides/05-slr-sim-testing.html#research-question-and-hypotheses",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Research question and hypotheses",
-    "text": "Research question and hypotheses\n“Do the data provide sufficient evidence that \\(\\beta_1\\) (the true slope for the population) is different from 0?”\n\nNull hypothesis: there is no linear relationship between area and price\n\\[\nH_0: \\beta_1 = 0\n\\]\n\n\nAlternative hypothesis: there is a linear relationship between area and price\n\\[\nH_A: \\beta_1 \\ne 0\n\\]"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#hypothesis-testing-as-a-court-trial",
-    "href": "slides/05-slr-sim-testing.html#hypothesis-testing-as-a-court-trial",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Hypothesis testing as a court trial",
-    "text": "Hypothesis testing as a court trial\n\n\nNull hypothesis, \\(H_0\\): Defendant is innocent\nAlternative hypothesis, \\(H_A\\): Defendant is guilty\nPresent the evidence: Collect data\nJudge the evidence: “Could these data plausibly have happened by chance if the null hypothesis were true?”\n\nYes: Fail to reject \\(H_0\\)\nNo: Reject \\(H_0\\)"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#hypothesis-testing-framework",
-    "href": "slides/05-slr-sim-testing.html#hypothesis-testing-framework",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Hypothesis testing framework",
-    "text": "Hypothesis testing framework\n\n\nStart with a null hypothesis, \\(H_0\\) that represents the status quo\nSet an alternative hypothesis, \\(H_A\\) that represents the research question, i.e. claim we’re testing\nConduct a hypothesis test under the assumption that the null hypothesis is true and calculate a p-value (probability of getting the observed or a more extreme outcome given that the null hypothesis is true)\n\nif the test results suggest that the data do not provide convincing evidence for the alternative hypothesis, stick with the null hypothesis\nif they do, then reject the null hypothesis in favor of the alternative"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#quantify-the-variability-of-the-slope",
-    "href": "slides/05-slr-sim-testing.html#quantify-the-variability-of-the-slope",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Quantify the variability of the slope",
-    "text": "Quantify the variability of the slope\nfor testing\n\n\nTwo approaches:\n\nVia simulation\nVia mathematical models\n\nUse Randomization to quantify the variability of the slope for the purpose of testing, under the assumption that the null hypothesis is true:\n\nSimulate new samples from the original sample via permutation\nFit models to each of the samples and estimate the slope\nUse features of the distribution of the permuted slopes to conduct a hypothesis test"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-described",
-    "href": "slides/05-slr-sim-testing.html#permutation-described",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation, described",
-    "text": "Permutation, described\n\n\n\nUse permuting to simulate data under the assumption the null hypothesis is true and measure the natural variability in the data due to sampling, not due to variables being correlated\n\nPermute one variable to eliminate any existing relationship between the variables\n\nEach price value is randomly assigned to the area of a given house, i.e. area and price are no longer matched for a given house\n\n\n\n\n# A tibble: 98 × 3\n   price_Observed price_Permuted  area\n            &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;\n 1        1520000         342500  6040\n 2        1030000         750000  4475\n 3         420000         645000  1745\n 4         680000         697500  2091\n 5         428500         428500  1772\n 6         456000         481000  1950\n 7        1270000         610000  3909\n 8         557450         680000  2841\n 9         697500         485000  3924\n10         650000         105000  2173\n# ℹ 88 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-visualized",
-    "href": "slides/05-slr-sim-testing.html#permutation-visualized",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation, visualized",
-    "text": "Permutation, visualized\n\n\n\nEach of the observed values for area (and for price) exist in both the observed data plot as well as the permuted price plot\nThe permutation removes the relationship between area and price\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-repeated",
-    "href": "slides/05-slr-sim-testing.html#permutation-repeated",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation, repeated",
-    "text": "Permutation, repeated\nRepeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#concluding-the-hypothesis-test",
-    "href": "slides/05-slr-sim-testing.html#concluding-the-hypothesis-test",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Concluding the hypothesis test",
-    "text": "Concluding the hypothesis test\n\nIs the observed slope of \\(\\hat{\\beta_1} = 159\\) (or an even more extreme slope) a likely outcome under the null hypothesis that \\(\\beta = 0\\)? What does this mean for our original question: “Do the data provide sufficient evidence that \\(\\beta_1\\) (the true slope for the population) is different from 0?”\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning: Removed 2 rows containing missing values (`geom_bar()`)."
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-i",
-    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-i",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation pipeline I",
-    "text": "Permutation pipeline I\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area)\n\nResponse: price (numeric)\nExplanatory: area (numeric)\n# A tibble: 98 × 2\n     price  area\n     &lt;dbl&gt; &lt;dbl&gt;\n 1 1520000  6040\n 2 1030000  4475\n 3  420000  1745\n 4  680000  2091\n 5  428500  1772\n 6  456000  1950\n 7 1270000  3909\n 8  557450  2841\n 9  697500  3924\n10  650000  2173\n# ℹ 88 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-ii",
-    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-ii",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation pipeline II",
-    "text": "Permutation pipeline II\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\")\n\nResponse: price (numeric)\nExplanatory: area (numeric)\nNull Hypothesis: independence\n# A tibble: 98 × 2\n     price  area\n     &lt;dbl&gt; &lt;dbl&gt;\n 1 1520000  6040\n 2 1030000  4475\n 3  420000  1745\n 4  680000  2091\n 5  428500  1772\n 6  456000  1950\n 7 1270000  3909\n 8  557450  2841\n 9  697500  3924\n10  650000  2173\n# ℹ 88 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-iii",
-    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-iii",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation pipeline III",
-    "text": "Permutation pipeline III\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = 1000, type = \"permute\")\n\nResponse: price (numeric)\nExplanatory: area (numeric)\nNull Hypothesis: independence\n# A tibble: 98,000 × 3\n# Groups:   replicate [1,000]\n     price  area replicate\n     &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;\n 1  465000  6040         1\n 2  481000  4475         1\n 3 1020000  1745         1\n 4  520000  2091         1\n 5  592000  1772         1\n 6  650000  1950         1\n 7  473000  3909         1\n 8  705000  2841         1\n 9  785000  3924         1\n10  671500  2173         1\n# ℹ 97,990 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-iv",
-    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-iv",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation pipeline IV",
-    "text": "Permutation pipeline IV\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = 1000, type = \"permute\") |&gt;\n  fit()\n\n# A tibble: 2,000 × 3\n# Groups:   replicate [1,000]\n   replicate term       estimate\n       &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;\n 1         1 intercept 553355.  \n 2         1 area           2.35\n 3         2 intercept 635824.  \n 4         2 area         -27.3 \n 5         3 intercept 536072.  \n 6         3 area           8.57\n 7         4 intercept 598649.  \n 8         4 area         -13.9 \n 9         5 intercept 556202.  \n10         5 area           1.33\n# ℹ 1,990 more rows"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-v",
-    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-v",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Permutation pipeline V",
-    "text": "Permutation pipeline V\n\nset.seed(1125)\n\nnull_dist &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = 1000, type = \"permute\") |&gt;\n  fit()"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#visualize-the-null-distribution",
-    "href": "slides/05-slr-sim-testing.html#visualize-the-null-distribution",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Visualize the null distribution",
-    "text": "Visualize the null distribution\n\nnull_dist |&gt;\n  filter(term == \"area\") |&gt;\n  ggplot(aes(x = estimate)) +\n  geom_histogram(binwidth = 10, color = \"white\")"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#reason-around-the-p-value",
-    "href": "slides/05-slr-sim-testing.html#reason-around-the-p-value",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Reason around the p-value",
-    "text": "Reason around the p-value\n\nIn a world where the there is no relationship between the area of a Duke Forest house and in its price (\\(\\beta_1 = 0\\)), what is the probability that we observe a sample of 98 houses where the slope fo the model predicting price from area is 159 or even more extreme?\n\n\n\nWarning: Removed 2 rows containing missing values (`geom_bar()`)."
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#compute-the-p-value",
-    "href": "slides/05-slr-sim-testing.html#compute-the-p-value",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Compute the p-value",
-    "text": "Compute the p-value\n\nWhat does this warning mean?\n\n\nget_p_value(\n  null_dist,\n  obs_stat = obs_fit,\n  direction = \"two-sided\"\n)\n\nWarning: Please be cautious in reporting a p-value of 0. This result is an\napproximation based on the number of `reps` chosen in the `generate()` step.\nSee `?get_p_value()` for more information.\n\nWarning: Please be cautious in reporting a p-value of 0. This result is an\napproximation based on the number of `reps` chosen in the `generate()` step.\nSee `?get_p_value()` for more information.\n\n\n# A tibble: 2 × 2\n  term      p_value\n  &lt;chr&gt;       &lt;dbl&gt;\n1 area            0\n2 intercept       0"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#the-regression-model-revisited",
-    "href": "slides/05-slr-sim-testing.html#the-regression-model-revisited",
-    "title": "SLR: Randomization test for the slope",
-    "section": "The regression model, revisited",
-    "text": "The regression model, revisited\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.325\n53302.463\n2.188\n0.031\n\n\narea\n159.483\n18.171\n8.777\n0.000"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#inference-revisited",
-    "href": "slides/05-slr-sim-testing.html#inference-revisited",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Inference, revisited",
-    "text": "Inference, revisited\n\n\nEarlier we computed a confidence interval and conducted a hypothesis test via simulation:\n\nCI: Bootstrap the observed sample to simulate the distribution of the slope\nHT: Permute the observed sample to simulate the distribution of the slope under the assumption that the null hypothesis is true\n\nNow we’ll do these based on theoretical results, i.e., by using the Central Limit Theorem to define the distribution of the slope and use features (shape, center, spread) of this distribution to compute bounds of the confidence interval and the p-value for the hypothesis test"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#mathematical-representation-of-the-model",
-    "href": "slides/05-slr-sim-testing.html#mathematical-representation-of-the-model",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Mathematical representation of the model",
-    "text": "Mathematical representation of the model\n\\[\n\\begin{aligned}\nY &= Model + Error \\\\\n&= f(X) + \\epsilon \\\\\n&= \\mu_{Y|X} + \\epsilon \\\\\n&= \\beta_0 + \\beta_1 X + \\epsilon\n\\end{aligned}\n\\]\nwhere the errors are independent and normally distributed:\n\n\nindependent: Knowing the error term for one observation doesn’t tell you anything about the error term for another observation\nnormally distributed: \\(\\epsilon \\sim N(0, \\sigma_\\epsilon^2)\\)"
-  },
-  {
-    "objectID": "slides/05-slr-sim-testing.html#mathematical-representation-visualized",
-    "href": "slides/05-slr-sim-testing.html#mathematical-representation-visualized",
-    "title": "SLR: Randomization test for the slope",
+    "objectID": "slides/08-slr-conditions.html#mathematical-representation-visualized",
+    "href": "slides/08-slr-conditions.html#mathematical-representation-visualized",
+    "title": "SLR: Conditions",
     "section": "Mathematical representation, visualized",
-    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\nGraph reproduced from Beyond Multiple Linear Regression.\n\n\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
+    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]"
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#regression-standard-error",
-    "href": "slides/05-slr-sim-testing.html#regression-standard-error",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Regression standard error",
-    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error (the spread of the distribution of the response, for a given value of the predictor variable):\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\n\n\nWhy divide by \\(n - 2\\)?\nWhy do we care about the value of the regression standard error?"
+    "objectID": "slides/08-slr-conditions.html#model-conditions",
+    "href": "slides/08-slr-conditions.html#model-conditions",
+    "title": "SLR: Conditions",
+    "section": "Model conditions",
+    "text": "Model conditions\n\nLinearity: There is a linear relationship between the outcome and predictor variables\nConstant variance: The variability of the errors is equal for all values of the predictor variable, i.e. the errors are homeoscedastic\nNormality: The errors follow a normal distribution\nIndependence: The errors are independent from each other"
   },
   {
-    "objectID": "slides/05-slr-sim-testing.html#standard-error-of-hatbeta_1",
-    "href": "slides/05-slr-sim-testing.html#standard-error-of-hatbeta_1",
-    "title": "SLR: Randomization test for the slope",
-    "section": "Standard error of \\(\\hat{\\beta}_1\\)",
-    "text": "Standard error of \\(\\hat{\\beta}_1\\)\n\\[\nSE_{\\hat{\\beta}_1} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{(n-1)s_X^2}}\n\\]\n\nor…\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "objectID": "slides/08-slr-conditions.html#linearity",
+    "href": "slides/08-slr-conditions.html#linearity",
+    "title": "SLR: Conditions",
+    "section": "Linearity",
+    "text": "Linearity\n✅ The residuals vs. fitted values plot should show a random scatter of residuals (no distinguishable pattern or structure)"
   },
   {
-    "objectID": "slides/01-welcome.html#meet-prof.-tackett",
-    "href": "slides/01-welcome.html#meet-prof.-tackett",
-    "title": "Welcome to STA 210!",
-    "section": "Meet Prof. Tackett!",
-    "text": "Meet Prof. Tackett!\n\n\nEducation and career journey\n\nBS in Math and MS in Statistics from University of Tennessee\nStatistician at Capital One\nPhD in Statistics from University of Virginia\nAssistant Professor of the Practice, Department of Statistical Science at Duke\n\nWork focuses on statistics education and sense of belonging in introductory math and statistics classes\nCo-leader of the Bass Connections team Mental Health and the Justice System in Durham County\nMom of (almost) 8-month-old twins 🙂"
+    "objectID": "slides/08-slr-conditions.html#residuals-vs.-fitted-values-code",
+    "href": "slides/08-slr-conditions.html#residuals-vs.-fitted-values-code",
+    "title": "SLR: Conditions",
+    "section": "Residuals vs. fitted values (code)",
+    "text": "Residuals vs. fitted values (code)\n\ndf_aug &lt;- augment(df_fit$fit)\n\nggplot(df_aug, aes(x = .fitted, y = .resid)) +\n  geom_point() +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  ylim(-1000000, 1000000) +\n  labs(\n    x = \"Fitted value\", y = \"Residual\",\n    title = \"Residuals vs. fitted values\"\n  )"
   },
   {
-    "objectID": "slides/01-welcome.html#meet-the-teaching-assistants-tas",
-    "href": "slides/01-welcome.html#meet-the-teaching-assistants-tas",
-    "title": "Welcome to STA 210!",
-    "section": "Meet the Teaching Assistants (TAs)",
-    "text": "Meet the Teaching Assistants (TAs)\n\nSam Rosen (PhD): Head TA + Lab 01\nBethany Astor (MS): Lab 02\nJon Campbell (MS)\nDonald Cayton (MS): Lab 02\nAllison Li (UG)\nMitchelle Mojekwu (UG): Lab 04\nBen Thorpe (UG)\nLinxuan Wang (MS): Lab 03\nXiaojun Zheng (PhD): Lab 04"
+    "objectID": "slides/08-slr-conditions.html#non-linear-relationships",
+    "href": "slides/08-slr-conditions.html#non-linear-relationships",
+    "title": "SLR: Conditions",
+    "section": "Non-linear relationships",
+    "text": "Non-linear relationships"
   },
   {
-    "objectID": "slides/01-welcome.html#what-is-regression-analysis",
-    "href": "slides/01-welcome.html#what-is-regression-analysis",
-    "title": "Welcome to STA 210!",
-    "section": "What is regression analysis?",
-    "text": "What is regression analysis?\n\n\n“In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when the focus is on the relationship between a dependent variable and one or more independent variables (or ‘predictors’). More specifically, regression analysis helps one understand how the typical value of the dependent variable (or ‘criterion variable’) changes when any one of the independent variables is varied, while the other independent variables are held fixed.”\n\nSource: Wikipedia (previous definition)"
+    "objectID": "slides/08-slr-conditions.html#constant-variance",
+    "href": "slides/08-slr-conditions.html#constant-variance",
+    "title": "SLR: Conditions",
+    "section": "Constant variance",
+    "text": "Constant variance\n✅ The vertical spread of the residuals should be relatively constant across the plot"
   },
   {
-    "objectID": "slides/01-welcome.html#examples-of-regression-in-practice",
-    "href": "slides/01-welcome.html#examples-of-regression-in-practice",
-    "title": "Welcome to STA 210!",
-    "section": "Examples of regression in practice",
-    "text": "Examples of regression in practice\n\nNew Yorkers Will Pay $56 A Month To Trim A Minute Off Their Commute\nHow FiveThirtyEight’s 2020 Presidential Forecast Works — And What’s Different Because Of COVID-19\nEffect of Forensic Evidence on Criminal Justice Case Processing\nWhy it’s so freaking hard to make a good COVID-19 model (from March 2020)"
+    "objectID": "slides/08-slr-conditions.html#non-constant-variance",
+    "href": "slides/08-slr-conditions.html#non-constant-variance",
+    "title": "SLR: Conditions",
+    "section": "Non-constant variance",
+    "text": "Non-constant variance"
   },
   {
-    "objectID": "slides/01-welcome.html#course-faq",
-    "href": "slides/01-welcome.html#course-faq",
-    "title": "Welcome to STA 210!",
-    "section": "Course FAQ",
-    "text": "Course FAQ\nQ - What background is assumed for the course?\nA - Introductory statistics or probability course at Duke\n\nQ - Will we be doing computing?\nA - Yes. We will use the computing language R for analysis, Quarto for writing up results, and GitHub for version control and collaboration\n\n\nQ - Will we learn the mathematical theory of regression?\nA - Yes and No. The course is primarily focused on application; however, we will discuss some of the mathematics of simple linear regression. There a 0.5-credit course STA 211: Mathematics of Regression to take simultaneously or after this course to dive into more of the mathematics."
+    "objectID": "slides/08-slr-conditions.html#normality",
+    "href": "slides/08-slr-conditions.html#normality",
+    "title": "SLR: Conditions",
+    "section": "Normality",
+    "text": "Normality"
   },
   {
-    "objectID": "slides/01-welcome.html#course-learning-objectives",
-    "href": "slides/01-welcome.html#course-learning-objectives",
-    "title": "Welcome to STA 210!",
-    "section": "Course learning objectives",
-    "text": "Course learning objectives\nBy the end of the semester, you will be able to…\n\nanalyze real-world data to answer questions about multivariable relationships.\nuse R to fit and evaluate linear and logistic regression models.\nassess whether a proposed model is appropriate and describe its limitations.\nuse Quarto to write reproducible reports and GitHub for version control and collaboration.\neffectively communicate statistical results through writing and oral presentations."
+    "objectID": "slides/08-slr-conditions.html#independence",
+    "href": "slides/08-slr-conditions.html#independence",
+    "title": "SLR: Conditions",
+    "section": "Independence",
+    "text": "Independence\n\nWe can often check the independence assumption based on the context of the data and how the observations were collected\nIf the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected\n\n\n✅ If this is a random sample of Duke Houses, the error for one house does not tell us anything about the error for another use"
   },
   {
-    "objectID": "slides/01-welcome.html#course-topics",
-    "href": "slides/01-welcome.html#course-topics",
-    "title": "Welcome to STA 210!",
-    "section": "Course topics",
-    "text": "Course topics\n\n\nUnit 1: Quantitative Response Variable\n\nSimple Linear Regression\nMultiple Linear Regression\n\n\nUnit 2: Categorical Response Variable\n\nLogistic Regression\nMultinomial logistic regression\n\n\nUnit 3: Looking Ahead\n\nSpecial topics\nPresenting statistical results"
+    "objectID": "slides/08-slr-conditions.html#recap",
+    "href": "slides/08-slr-conditions.html#recap",
+    "title": "SLR: Conditions",
+    "section": "Recap",
+    "text": "Recap\nUsed residual plots to check conditions for SLR:\n\n\n\n\nLinearity\nConstant variance\n\n\n\n\n\nNormality\nIndependence\n\n\n\n\n\n\nWhich of these conditions are required for fitting a SLR? Which for simulation-based inference for the slope for an SLR? Which for inference with mathematical models?\n\n\n\n\n03:00\n\n\n\n\n\n\n🔗 Week 04"
   },
   {
-    "objectID": "slides/01-welcome.html#course-toolkit",
-    "href": "slides/01-welcome.html#course-toolkit",
-    "title": "Welcome to STA 210!",
-    "section": "Course toolkit",
-    "text": "Course toolkit\n\nCourse website: sta210-fa23.netlify.app\n\nCentral hub for the course!\nTour of the website\n\nSakai: sakai.duke.edu\n\nGradebook\nAnnouncements\nGradescope\nEd Discussion\n\nGitHub: github.com/sta210-fa23\n\nDistribute assignments\nPlatform for version control and collaboration"
+    "objectID": "slides/02-big-picture.html#announcements",
+    "href": "slides/02-big-picture.html#announcements",
+    "title": "The big picture",
+    "section": "Announcements",
+    "text": "Announcements\n\nResources for extra R review\n\nLearn R: An interactive introduction to data analysis R (focus on Chapters 4 - 6)\nDuke Library Center for Data and Visualization Sciences workshops\n\nR for Lunch: data wrangling with dplyr (Fri, Sep 1, 12:30 - 1:30)\nR for Lunch: visualization with ggplot2 (Fri, Sep 8, 12:30 - 1:30)\nSee the CDVS website for more information and to register.\n\n\nLast day of in-person work for this class is Dec 7\nLecture recordings request policy\nReadings for next week will be posted later this week"
   },
   {
-    "objectID": "slides/01-welcome.html#computing-toolkit",
-    "href": "slides/01-welcome.html#computing-toolkit",
-    "title": "Welcome to STA 210!",
-    "section": "Computing toolkit",
-    "text": "Computing toolkit\n\n\n\n\n\n\n\n\n\n\n\nAll analyses using R, a statistical programming language\nWrite reproducible reports in Quarto\nAccess RStudio through STA 210 Docker Containers\n\n\n\n\n\n\n\n\n\n\n\n\nAccess assignments\nFacilitates version control and collaboration\nAll work in STA 210 course organization"
+    "objectID": "slides/02-big-picture.html#topics",
+    "href": "slides/02-big-picture.html#topics",
+    "title": "The big picture",
+    "section": "Topics",
+    "text": "Topics\n\nData analysis life cycle\nReproducible data analysis\nAnalyzing multivariable relationships"
   },
   {
-    "objectID": "slides/01-welcome.html#prepare-participate-practice-perform",
-    "href": "slides/01-welcome.html#prepare-participate-practice-perform",
-    "title": "Welcome to STA 210!",
-    "section": "Prepare, Participate, Practice, Perform",
-    "text": "Prepare, Participate, Practice, Perform\n\n\n\nPrepare: Introduce new content and prepare for lectures by completing the readings (and sometimes watching the videos)\nParticipate: Attend and actively participate in lectures and labs, office hours, team meetings\nPractice: Practice applying statistical concepts and computing with application exercises during lecture, graded for completion\nPerform: Put together what you’ve learned to analyze real-world data\n\nLab assignments (first individual, later team-based)\nHomework assignments (individual)\nTwo exams\nFinal group project"
+    "objectID": "slides/02-big-picture.html#reproducibility-checklist",
+    "href": "slides/02-big-picture.html#reproducibility-checklist",
+    "title": "The big picture",
+    "section": "Reproducibility checklist",
+    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n\nNear term goals:\n✔️ Can the tables and figures be exactly reproduced from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n\n\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
   },
   {
-    "objectID": "slides/01-welcome.html#grading",
-    "href": "slides/01-welcome.html#grading",
-    "title": "Welcome to STA 210!",
-    "section": "Grading",
-    "text": "Grading\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n35%\n\n\nFinal project\n15%\n\n\nLab\n15%\n\n\nExam 01\n15%\n\n\nExam 02\n15%\n\n\nApplication Exercises\n2.5%\n\n\nTeamwork\n2.5%\n\n\n\nSee the syllabus for details on how the final letter grade will be calculated."
+    "objectID": "slides/02-big-picture.html#why-is-reproducibility-important",
+    "href": "slides/02-big-picture.html#why-is-reproducibility-important",
+    "title": "The big picture",
+    "section": "Why is reproducibility important?",
+    "text": "Why is reproducibility important?\n\nResults produced are more reliable and trustworthy (Ostblom and Timbers 2022)\nFacilitates more effective collaboration (Ostblom and Timbers 2022)\nContributing to science, which builds and organizes knowledge in terms of testable hypotheses (Alexander 2023)\nPossible to identify and correct errors or biases in the analysis process (Alexander 2023)"
   },
   {
-    "objectID": "slides/01-welcome.html#support",
-    "href": "slides/01-welcome.html#support",
-    "title": "Welcome to STA 210!",
-    "section": "Support",
-    "text": "Support\n\nAttend office hours to meet with a member of the teaching team\n\nProf. Tackett’s office hours start Fri, Sep 1, 1 - 3pm\nFull office hours schedule starts Tue, Sep 5\n\nAsk and answer questions on course discussion forum\nUse email for questions regarding personal matters and/or grades\nSee the Course Support page for more details"
+    "objectID": "slides/02-big-picture.html#when-things-go-wrong",
+    "href": "slides/02-big-picture.html#when-things-go-wrong",
+    "title": "The big picture",
+    "section": "When things go wrong",
+    "text": "When things go wrong\n\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nSource: Ostblom and Timbers (2022)"
   },
   {
-    "objectID": "slides/01-welcome.html#diversity-inclusion",
-    "href": "slides/01-welcome.html#diversity-inclusion",
-    "title": "Welcome to STA 210!",
-    "section": "Diversity & inclusion",
-    "text": "Diversity & inclusion\n\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.\n\nIf you have a name that differs from those that appear in your official Duke records, please let me know.\nPlease let me know your preferred pronouns, if you are comfortable sharing.\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your advisers and deans are excellent resources.\nI (like many people) am still in the process of learning about diverse perspectives and identities. If something was said or done in class (by anyone) that made you feel uncomfortable, please talk to me about it."
+    "objectID": "slides/02-big-picture.html#toolkit",
+    "href": "slides/02-big-picture.html#toolkit",
+    "title": "The big picture",
+    "section": "Toolkit",
+    "text": "Toolkit\n\nScriptability \\(\\rightarrow\\) R\nLiterate programming (code, narrative, output in one place) \\(\\rightarrow\\) Quarto\nVersion control \\(\\rightarrow\\) Git / GitHub\n\n\n\n\n\n\n\nNote\n\n\nYou will start using these computing tools in Lab 01."
   },
   {
-    "objectID": "slides/01-welcome.html#accessibility",
-    "href": "slides/01-welcome.html#accessibility",
-    "title": "Welcome to STA 210!",
-    "section": "Accessibility",
-    "text": "Accessibility\n\nThe Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments.\nIf you have documented accommodations from SDAO, please send the documentation as soon as possible.\nI am committed to making all course activities and materials accessible. If any course component is not accessible to you in any way, please don’t hesitate to let me know."
+    "objectID": "slides/02-big-picture.html#r-and-rstudio",
+    "href": "slides/02-big-picture.html#r-and-rstudio",
+    "title": "The big picture",
+    "section": "R and RStudio",
+    "text": "R and RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\nSource: Statistical Inference via Data Science"
   },
   {
-    "objectID": "slides/01-welcome.html#covid-19-and-other-illness",
-    "href": "slides/01-welcome.html#covid-19-and-other-illness",
-    "title": "Welcome to STA 210!",
-    "section": "COVID-19 and other illness",
-    "text": "COVID-19 and other illness\n\nPlease do not come to class if you have tested positive for COVID-19, have possible symptoms and have not yet been tested, or have other illness.\nLecture recordings are available for excused absences. See Lecture recording request in the syllabus for more information and a link to the request form.\nRead and follow the university guidelines regarding COVID-19 at coronavirus.duke.edu."
+    "objectID": "slides/02-big-picture.html#rstudio-ide",
+    "href": "slides/02-big-picture.html#rstudio-ide",
+    "title": "The big picture",
+    "section": "RStudio IDE",
+    "text": "RStudio IDE"
   },
   {
-    "objectID": "slides/01-welcome.html#late-work-waivers-and-regrade-requests",
-    "href": "slides/01-welcome.html#late-work-waivers-and-regrade-requests",
-    "title": "Welcome to STA 210!",
-    "section": "Late work, waivers, and regrade requests",
-    "text": "Late work, waivers, and regrade requests\n\nWe have policies! We will discuss them in detail when the first assignment is released.\nRead more about them in the Course policies section of the syllabus and refer back to them as needed\nIf you have questions, email sta210@duke.edu"
+    "objectID": "slides/02-big-picture.html#quarto",
+    "href": "slides/02-big-picture.html#quarto",
+    "title": "The big picture",
+    "section": "Quarto",
+    "text": "Quarto\n\nFully reproducible reports – the analysis is run from the beginning each time you render\nCode goes in chunks and narrative goes outside of chunks\nVisual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)"
   },
   {
-    "objectID": "slides/01-welcome.html#academic-integrity",
-    "href": "slides/01-welcome.html#academic-integrity",
-    "title": "Welcome to STA 210!",
-    "section": "Academic integrity",
-    "text": "Academic integrity\n\nTo uphold the Duke Community Standard:\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised.\n\n\n\nBy participating in this course, you are agreeing that all your work and conduct will be in accordance with the Duke Community Standard."
+    "objectID": "slides/02-big-picture.html#quarto-1",
+    "href": "slides/02-big-picture.html#quarto-1",
+    "title": "The big picture",
+    "section": "Quarto",
+    "text": "Quarto"
   },
   {
-    "objectID": "slides/01-welcome.html#collaboration-sharing-code",
-    "href": "slides/01-welcome.html#collaboration-sharing-code",
-    "title": "Welcome to STA 210!",
-    "section": "Collaboration & sharing code",
-    "text": "Collaboration & sharing code\n\nWe have policies! We will discuss them in detail when the first assignment is released.\nRead about them in the Academic honesty section of the syllabus and refer to them as needed"
+    "objectID": "slides/02-big-picture.html#how-will-we-use-quarto",
+    "href": "slides/02-big-picture.html#how-will-we-use-quarto",
+    "title": "The big picture",
+    "section": "How will we use Quarto?",
+    "text": "How will we use Quarto?\n\nEvery application exercise and assignment is written in a Quarto document\nYou’ll have a template Quarto document to start with\nThe amount of scaffolding in the template will decrease over the semester"
   },
   {
-    "objectID": "slides/01-welcome.html#use-of-artificial-intelligence-ai",
-    "href": "slides/01-welcome.html#use-of-artificial-intelligence-ai",
-    "title": "Welcome to STA 210!",
-    "section": "Use of artificial intelligence (AI)",
-    "text": "Use of artificial intelligence (AI)\n\nYou should treat AI tools, such as ChatGPT, the same as other online resources.\nThere are two guiding principles that govern how you can use AI in this course:1\n\n(1) Cognitive dimension: Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.\n(2) Ethical dimension: Students using AI should be transparent about their use and make sure it aligns with academic integrity.\n\n\nThese guiding principles are based on Course Policies related to ChatGPT and other AI Tools developed by Joel Gladd, Ph.D.↩︎"
+    "objectID": "slides/02-big-picture.html#what-is-versioning",
+    "href": "slides/02-big-picture.html#what-is-versioning",
+    "title": "The big picture",
+    "section": "What is versioning?",
+    "text": "What is versioning?"
   },
   {
-    "objectID": "slides/01-welcome.html#use-of-artificial-intelligence-ai-1",
-    "href": "slides/01-welcome.html#use-of-artificial-intelligence-ai-1",
-    "title": "Welcome to STA 210!",
-    "section": "Use of artificial intelligence (AI)",
-    "text": "Use of artificial intelligence (AI)\n✅ AI tools for code: You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.\n❌ No AI tools for narrative: Unless instructed otherwise, AI is not permitted for writing narrative on assignments.\n\n\n\n\n\n\nImportant\n\n\nIn general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content."
+    "objectID": "slides/02-big-picture.html#what-is-versioning-1",
+    "href": "slides/02-big-picture.html#what-is-versioning-1",
+    "title": "The big picture",
+    "section": "What is versioning?",
+    "text": "What is versioning?\nwith human readable messages"
   },
   {
-    "objectID": "slides/01-welcome.html#five-tips-for-success",
-    "href": "slides/01-welcome.html#five-tips-for-success",
-    "title": "Welcome to STA 210!",
-    "section": "Five tips for success",
-    "text": "Five tips for success\n\nComplete all the preparation work (readings and videos) before class.\nAsk questions.\nDo the homework and labs; get started on homework early when possible.\nDon’t procrastinate and don’t let a week pass by with lingering questions.\nStay up-to-date on announcements on Ed Discussion and sent via email."
+    "objectID": "slides/02-big-picture.html#why-do-we-need-version-control",
+    "href": "slides/02-big-picture.html#why-do-we-need-version-control",
+    "title": "The big picture",
+    "section": "Why do we need version control?",
+    "text": "Why do we need version control?\n\n\n\n\n\n\n\n\nProvides a clear record of how the analysis methods evolved. This makes analysis auditable and thus more trustworthy and reliable. (Ostblom and Timbers 2022)"
   },
   {
-    "objectID": "slides/01-welcome.html#application-exercise",
-    "href": "slides/01-welcome.html#application-exercise",
-    "title": "Welcome to STA 210!",
+    "objectID": "slides/02-big-picture.html#git-and-github",
+    "href": "slides/02-big-picture.html#git-and-github",
+    "title": "The big picture",
+    "section": "git and GitHub",
+    "text": "git and GitHub\n\n\ngit is a version control system – like “Track Changes” features from Microsoft Word.\nGitHub is the home for your git-based projects on the internet (like DropBox but much better).\nThere are a lot of git commands and very few people know them all. 99% of the time you will use git to add, commit, push, and pull."
+  },
+  {
+    "objectID": "slides/02-big-picture.html#carbohydrates-in-starbucks-food",
+    "href": "slides/02-big-picture.html#carbohydrates-in-starbucks-food",
+    "title": "The big picture",
+    "section": "Carbohydrates in Starbucks food",
+    "text": "Carbohydrates in Starbucks food\n\nStarbucks often displays the total calories in their food items but not the other nutritional information.\nCarbohydrates are a body’s main fuel source. The Dietary Guidelines for America recommend that carbohydrates make up 45% to 65% of total daily calories.1\nOur goal is to understand the relationship between the amount of carbohydrates and calories in Starbucks food items. We’d also like to assess if the relationship differs based on the type of food item (bakery, salad, sandwich, etc.)\n\nSource: Mayo Clinic"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#starbucks-data",
+    "href": "slides/02-big-picture.html#starbucks-data",
+    "title": "The big picture",
+    "section": "Starbucks data",
+    "text": "Starbucks data\n\n\nObservations: 77 Starbucks food items\nVariables:\n\ncarb: Total carbohydrates (in grams)\ncalories: Total calories\nbakery: 1: bakery food item, 0: other food type"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#terminology",
+    "href": "slides/02-big-picture.html#terminology",
+    "title": "The big picture",
+    "section": "Terminology",
+    "text": "Terminology\n\ncarb is the response variable\n\nvariable whose variation we want to understand / variable we wish to predict\nalso known as outcome or dependent variable\n\n\n\n\ncalories, bakery are the predictor variables\n\nvariables used to account for variation in the response\nalso known as explanatory, independent, or input variables"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#univariate-exploratory-data-analysis",
+    "href": "slides/02-big-picture.html#univariate-exploratory-data-analysis",
+    "title": "The big picture",
+    "section": "Univariate exploratory data analysis",
+    "text": "Univariate exploratory data analysis\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "slides/02-big-picture.html#bivariate-exploratory-data-analysis",
+    "href": "slides/02-big-picture.html#bivariate-exploratory-data-analysis",
+    "title": "The big picture",
+    "section": "Bivariate exploratory data analysis",
+    "text": "Bivariate exploratory data analysis\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#function-between-response-and-predictors",
+    "href": "slides/02-big-picture.html#function-between-response-and-predictors",
+    "title": "The big picture",
+    "section": "Function between response and predictors",
+    "text": "Function between response and predictors\n\n\\[\\text{carb} = f(\\text{calories}, \\text{bakery}) + \\epsilon\\]\n\n\nGoal: Determine \\(f\\)\nHow do we determine \\(f\\)?\n\nMake an assumption about the functional form \\(f\\) (parametric model)\nUse the data to fit a model based on that form"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#determine-f",
+    "href": "slides/02-big-picture.html#determine-f",
+    "title": "The big picture",
+    "section": "Determine \\(f\\)",
+    "text": "Determine \\(f\\)\n\nChoose the functional form of \\(f\\), i.e., choose the appropriate model given the response variable\n\n\nSuppose \\(f\\) takes the form of a linear model\n\\[y = f(\\mathbf{X}) = \\beta_0 + \\beta_1 x_1 + \\dots + \\beta_p x_p + \\epsilon\\]\n\n\n\nUse the data to fit (or train) the model, i.e, estimate the model parameters, \\(\\beta_0, \\beta_1, \\ldots, \\beta_p\\)"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#carb-vs.-calories",
+    "href": "slides/02-big-picture.html#carb-vs.-calories",
+    "title": "The big picture",
+    "section": "Carb vs. Calories",
+    "text": "Carb vs. Calories\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[\\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\epsilon\\]"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#carb-vs.-calories-bakery",
+    "href": "slides/02-big-picture.html#carb-vs.-calories-bakery",
+    "title": "The big picture",
+    "section": "Carb vs. Calories + Bakery",
+    "text": "Carb vs. Calories + Bakery\n\n\\[\\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\epsilon\\]"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#carb-vs.-calories-bakery-with-interaction",
+    "href": "slides/02-big-picture.html#carb-vs.-calories-bakery-with-interaction",
+    "title": "The big picture",
+    "section": "Carb vs. Calories + Bakery (with interaction)",
+    "text": "Carb vs. Calories + Bakery (with interaction)\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[{\\small \\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\beta_3 ~ \\text{calories} \\times \\text{bakery}  + \\epsilon}\\]"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#statistical-model-vs.-regression-equation",
+    "href": "slides/02-big-picture.html#statistical-model-vs.-regression-equation",
+    "title": "The big picture",
+    "section": "Statistical model vs. regression equation",
+    "text": "Statistical model vs. regression equation\nStatistical model (also known as data-generating model)\n\\[{\\small \\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\beta_3 ~ \\text{calories} \\times \\text{bakery}  + \\epsilon}\\]\nModels the process for generating values of the response in the population (function + error)\n\n\nRegression equation\nEstimate of the function using the sample data\n\\[{\\small \\hat{\\text{carb}} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~\\text{calories} + \\hat{\\beta}_2 ~\\text{bakery} + \\hat{\\beta}_3 ~ \\text{calories} \\times \\text{bakery}}\\]"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#why-fit-a-model",
+    "href": "slides/02-big-picture.html#why-fit-a-model",
+    "title": "The big picture",
+    "section": "Why fit a model?",
+    "text": "Why fit a model?\n\nPrediction: Expected value of the response variable for given values of the predictor variables\nInference: Conclusion about the relationship between the response and predictor variables\n\n\n\nWhat is an example of a prediction question that can be answered using the model of carb vs. calories and bakery?\nWhat is an example of an inference question that can be answered using the model of carb vs. calories and bakery?"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#recap",
+    "href": "slides/02-big-picture.html#recap",
+    "title": "The big picture",
+    "section": "Recap",
+    "text": "Recap\n\nReproducibility\n\nIt is best practice conduct all data analysis in a reproducible way\nWe will implement a reproducible workflow using R, Quarto, and git/GitHub\n\n\n\n\nMultivariable relationships\n\nWe can use exploratory data analysis to describe the relationship between two variables\nWe make an assumption about the relationship between variables when doing linear regression\nThe two main objectives for fitting a linear regression model are (1) prediction and (2) inference"
+  },
+  {
+    "objectID": "slides/02-big-picture.html#references",
+    "href": "slides/02-big-picture.html#references",
+    "title": "The big picture",
+    "section": "References",
+    "text": "References\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule\n\n\n\nAlexander, Rohan. 2023. “Telling Stories with Data,” June. https://doi.org/10.1201/9781003229407.\n\n\nOstblom, Joel, and Tiffany Timbers. 2022. “Opinionated Practices for Teaching Reproducibility: Motivation, Guided Instruction and Practice.” Journal of Statistics and Data Science Education 30 (3): 241–50. https://doi.org/10.1080/26939169.2022.2074922."
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#announcements",
+    "href": "slides/03-slr-tidymodels.html#announcements",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Announcements",
+    "text": "Announcements\n\nNo office hours today. Office hours start Tuesday, September 6. Click here for full schedule\nCheck your email for an email to join the course GitHub organization. You will receive one by Tuesday, September 6.\nSee Week 02 for this week’s activities."
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#topics",
+    "href": "slides/03-slr-tidymodels.html#topics",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Topics",
+    "text": "Topics\n\nIntroduce the computing toolkit - RStudio and GitHub\nUse tidymodels to fit and summarize regression models in R\nComplete an application exercise on exploratory data analysis and modeling"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#computational-setup",
+    "href": "slides/03-slr-tidymodels.html#computational-setup",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Computational setup",
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#reproducibility-checklist",
+    "href": "slides/03-slr-tidymodels.html#reproducibility-checklist",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Reproducibility checklist",
+    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n\nNear term goals:\n✔️ Are the tables and figures reproducible from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n\n\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#toolkit",
+    "href": "slides/03-slr-tidymodels.html#toolkit",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Toolkit",
+    "text": "Toolkit\n\nScriptability \\(\\rightarrow\\) R\nLiterate programming (code, narrative, output in one place) \\(\\rightarrow\\) Quarto\nVersion control \\(\\rightarrow\\) Git / GitHub\n\nMore on this in this week’s lab"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
+    "href": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "What are R and RStudio?",
+    "text": "What are R and RStudio?\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\nSource: Modern Dive"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#rstudio-ide",
+    "href": "slides/03-slr-tidymodels.html#rstudio-ide",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "RStudio IDE",
+    "text": "RStudio IDE"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#quarto",
+    "href": "slides/03-slr-tidymodels.html#quarto",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Quarto",
+    "text": "Quarto\n\nFully reproducible reports – the analysis is run from the beginning each time you render\nCode goes in chunks and narrative goes outside of chunks\nVisual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#quarto-1",
+    "href": "slides/03-slr-tidymodels.html#quarto-1",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Quarto",
+    "text": "Quarto"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
+    "href": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "How will we use Quarto?",
+    "text": "How will we use Quarto?\n\nEvery application exercise and assignment is written in a Quarto document\nYou’ll have a template Quarto document to start with\nThe amount of scaffolding in the template will decrease over the semester"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#application-exercise",
+    "href": "slides/03-slr-tidymodels.html#application-exercise",
+    "title": "SLR: Fitting models in R with tidymodels",
     "section": "Application exercise",
-    "text": "Application exercise\n\n📋 AE 01 - Movie Budgets and Revenues"
+    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare"
   },
   {
-    "objectID": "slides/01-welcome.html#for-this-week",
-    "href": "slides/01-welcome.html#for-this-week",
-    "title": "Welcome to STA 210!",
-    "section": "For this week…",
-    "text": "For this week…\n\nRead the syllabus\nSee the course schedule for an overview of the semester\nLabs start this week!\n\nSection 001: Labs on Tuesday\nSection 002: Labs on Thursday\n\nThis week’s lab is focused on introductions and computing\nWednesday’s lecture: The Big Picture\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "objectID": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
+    "href": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Recap of last lecture",
+    "text": "Recap of last lecture\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative outcome variable.\nUsed the least squares method to estimate the slope and intercept.\nWe interpreted the slope and intercept.\n\n\nSlope: For every one unit increase in \\(x\\), we expect y to be higher/lower by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units.\n\n\nPredicted the response given a value of the predictor variable.\nDefined extrapolation and why we should avoid it."
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#movie-ratings",
+    "href": "slides/03-slr-tidymodels.html#movie-ratings",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Movie ratings",
+    "text": "Movie ratings\n\n\n\nData behind the FiveThirtyEight story Be Suspicious Of Online Movie Ratings, Especially Fandango’s\nIn the fivethirtyeight package: fandango\nContains every film that has at least 30 fan reviews on Fandango, an IMDb score, Rotten Tomatoes critic and user ratings, and Metacritic critic and user scores"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#data-prep",
+    "href": "slides/03-slr-tidymodels.html#data-prep",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Data prep",
+    "text": "Data prep\n\nRename Rotten Tomatoes columns as critics and audience\nRename the dataset as movie_scores\n\n\nmovie_scores &lt;- fandango |&gt;\n  rename(\n    critics = rottentomatoes, \n    audience = rottentomatoes_user\n  )"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#tidymodels",
+    "href": "slides/03-slr-tidymodels.html#tidymodels",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "tidymodels",
+    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use suppressPackageStartupMessages() to eliminate package startup messages"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#why-tidymodels",
+    "href": "slides/03-slr-tidymodels.html#why-tidymodels",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Why tidymodels?",
+    "text": "Why tidymodels?\n\nConsistent syntax for different model types (linear, logistic, random forest, Bayesian, etc.)\nStreamline modeling workflow\n\nSplit data into train and test sets\nTransform and create new variables\nAssess model performance\nUse model for prediction and inference"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#step-1-specify-model",
+    "href": "slides/03-slr-tidymodels.html#step-1-specify-model",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Step 1: Specify model",
+    "text": "Step 1: Specify model\n\nlinear_reg()\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
+    "href": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Step 2: Set model fitting engine",
+    "text": "Step 2: Set model fitting engine\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") # lm: linear model\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
+    "href": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "A closer look at model output",
+    "text": "A closer look at model output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is likely just due to rounding in the hand calculation."
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#the-regression-output",
+    "href": "slides/03-slr-tidymodels.html#the-regression-output",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "The regression output",
+    "text": "The regression output\nWe’ll focus on the first column for now…\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() \n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   32.3      2.34        13.8 4.03e-28\n2 critics        0.519    0.0345      15.0 2.70e-31"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#prediction",
+    "href": "slides/03-slr-tidymodels.html#prediction",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Prediction",
+    "text": "Prediction\n\n# create a data frame for a new movie\nnew_movie &lt;- tibble(critics = 70)\n\n# predict the outcome for a new movie\npredict(movie_fit, new_movie)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  68.6"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#application-exercise-1",
+    "href": "slides/03-slr-tidymodels.html#application-exercise-1",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Application exercise",
+    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare\n\n\n\nClose document tab"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#recap",
+    "href": "slides/03-slr-tidymodels.html#recap",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Recap",
+    "text": "Recap\n\nIntroduced the computing toolkit - RStudio and GitHub\nUsed tidymodels to fit and summarize regression models in R\nCompleted an application exercise on exploratory data analysis and modeling\n\n\n\n\n🔗 Week 02"
   },
   {
     "objectID": "slides/03-slr-intro.html#topics",
@@ -1715,368 +1750,655 @@
     "text": "Today’s lab\nThe rest of the today’s lab is focused on setting up the computing for the course and completing the class survey. Click the link below for the Lab 00 instructions.\n🔗 sta210-fa23.netlify.app/labs/lab-00.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#announcements",
-    "href": "slides/03-slr-tidymodels.html#announcements",
-    "title": "SLR: Fitting models in R with tidymodels",
+    "objectID": "slides/06-slr-math-models.html#announcements",
+    "href": "slides/06-slr-math-models.html#announcements",
+    "title": "SLR: Mathematical models for inference",
     "section": "Announcements",
-    "text": "Announcements\n\nNo office hours today. Office hours start Tuesday, September 6. Click here for full schedule\nCheck your email for an email to join the course GitHub organization. You will receive one by Tuesday, September 6.\nSee Week 02 for this week’s activities."
+    "text": "Announcements\n\nHW 01: due Wed, Sep 20 at 11:59pm\n\nQuestions?\n\nStatistics experience - due Mon, Nov 20 at 11:59pm"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#topics",
-    "href": "slides/03-slr-tidymodels.html#topics",
-    "title": "SLR: Fitting models in R with tidymodels",
+    "objectID": "slides/06-slr-math-models.html#course-policy-reminders",
+    "href": "slides/06-slr-math-models.html#course-policy-reminders",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Course policy reminders",
+    "text": "Course policy reminders\n\nLate work\n\nHW and labs accepted up to 2 days late.\n5% deduction for each 24-hour period the assignment is late.\n\nOne time late waiver\n\nCan use on HW and individual labs\n\nLowest HW and lowest lab grade dropped at the end of the semester."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#course-policy-reminders-1",
+    "href": "slides/06-slr-math-models.html#course-policy-reminders-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Course policy reminders",
+    "text": "Course policy reminders\n\nRegrade requests\n\nOpened 1 day after assignment is returned and due within 1 week\nOnly submit regrade if there is an error in the grading not to dispute points\nProf. Tackett or Sam the Head TA will regrade the entire exercise being disputed, which could result in a lower grade\n\n\n\n\n\n\n\nTip\n\n\nSee the posted solutions and ask during office hours before submitting a regrade request"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#statistician-of-the-day",
+    "href": "slides/06-slr-math-models.html#statistician-of-the-day",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Statistician of the day",
+    "text": "Statistician of the day"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#topics",
+    "href": "slides/06-slr-math-models.html#topics",
+    "title": "SLR: Mathematical models for inference",
     "section": "Topics",
-    "text": "Topics\n\nIntroduce the computing toolkit - RStudio and GitHub\nUse tidymodels to fit and summarize regression models in R\nComplete an application exercise on exploratory data analysis and modeling"
+    "text": "Topics\n\nDefine mathematical models to conduct inference for the slope\nUse mathematical models to\n\ncalculate confidence interval for the slope\nconduct a hypothesis test for the slope"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#computational-setup",
-    "href": "slides/03-slr-tidymodels.html#computational-setup",
-    "title": "SLR: Fitting models in R with tidymodels",
+    "objectID": "slides/06-slr-math-models.html#computational-setup",
+    "href": "slides/06-slr-math-models.html#computational-setup",
+    "title": "SLR: Mathematical models for inference",
     "section": "Computational setup",
-    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(tidymodels)  # for modeling\nlibrary(openintro)   # for the duke_forest dataset\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(kableExtra)  # also for pretty tables\nlibrary(patchwork)   # arrange plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#reproducibility-checklist",
-    "href": "slides/03-slr-tidymodels.html#reproducibility-checklist",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Reproducibility checklist",
-    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n\nNear term goals:\n✔️ Are the tables and figures reproducible from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n\n\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
+    "objectID": "slides/06-slr-math-models.html#the-regression-model-revisited",
+    "href": "slides/06-slr-math-models.html#the-regression-model-revisited",
+    "title": "SLR: Mathematical models for inference",
+    "section": "The regression model, revisited",
+    "text": "The regression model, revisited\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.325\n53302.463\n2.188\n0.031\n\n\narea\n159.483\n18.171\n8.777\n0.000"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#toolkit",
-    "href": "slides/03-slr-tidymodels.html#toolkit",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Toolkit",
-    "text": "Toolkit\n\nScriptability \\(\\rightarrow\\) R\nLiterate programming (code, narrative, output in one place) \\(\\rightarrow\\) Quarto\nVersion control \\(\\rightarrow\\) Git / GitHub\n\nMore on this in this week’s lab"
+    "objectID": "slides/06-slr-math-models.html#inference-revisited",
+    "href": "slides/06-slr-math-models.html#inference-revisited",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Inference, revisited",
+    "text": "Inference, revisited\n\n\nEarlier we computed a confidence interval and conducted a hypothesis test via simulation:\n\nCI: Bootstrap the observed sample to simulate the distribution of the slope\nHT: Permute the observed sample to simulate the distribution of the slope under the assumption that the null hypothesis is true\n\nNow we’ll do these based on theoretical results, i.e., by using the Central Limit Theorem to define the distribution of the slope and use features (shape, center, spread) of this distribution to compute bounds of the confidence interval and the p-value for the hypothesis test"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
-    "href": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "What are R and RStudio?",
-    "text": "What are R and RStudio?\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\nSource: Modern Dive"
+    "objectID": "slides/06-slr-math-models.html#mathematical-representation-of-the-model",
+    "href": "slides/06-slr-math-models.html#mathematical-representation-of-the-model",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Mathematical representation of the model",
+    "text": "Mathematical representation of the model\n\\[\n\\begin{aligned}\nY &= Model + Error \\\\\n&= f(X) + \\epsilon \\\\\n&= \\mu_{Y|X} + \\epsilon \\\\\n&= \\beta_0 + \\beta_1 X + \\epsilon\n\\end{aligned}\n\\]\nwhere the errors are independent and normally distributed:\n\n\nindependent: Knowing the error term for one observation doesn’t tell you anything about the error term for another observation\nnormally distributed: \\(\\epsilon \\sim N(0, \\sigma_\\epsilon^2)\\)"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#rstudio-ide",
-    "href": "slides/03-slr-tidymodels.html#rstudio-ide",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "RStudio IDE",
-    "text": "RStudio IDE"
+    "objectID": "slides/06-slr-math-models.html#mathematical-representation-visualized",
+    "href": "slides/06-slr-math-models.html#mathematical-representation-visualized",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Mathematical representation, visualized",
+    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n\nSource: Introduction to the Practice of Statistics (5th ed)\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#quarto",
-    "href": "slides/03-slr-tidymodels.html#quarto",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Quarto",
-    "text": "Quarto\n\nFully reproducible reports – the analysis is run from the beginning each time you render\nCode goes in chunks and narrative goes outside of chunks\nVisual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)"
+    "objectID": "slides/06-slr-math-models.html#regression-standard-error",
+    "href": "slides/06-slr-math-models.html#regression-standard-error",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Regression standard error",
+    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\n\n\nWhy divide by \\(n - 2\\)?\nWhy do we care about the value of the regression standard error?"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#quarto-1",
-    "href": "slides/03-slr-tidymodels.html#quarto-1",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Quarto",
-    "text": "Quarto"
+    "objectID": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
+    "href": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Standard error of \\(\\hat{\\beta}_1\\)",
+    "text": "Standard error of \\(\\hat{\\beta}_1\\)\nThe standard error of \\(\\hat{\\beta}_1\\), \\(SE_{\\hat{\\beta}_1}\\), quantifies the sampling variability in the estimated slopes\n\\[\nSE_{\\hat{\\beta}_1} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{(n-1)s_X^2}}\n\\]\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
-    "href": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "How will we use Quarto?",
-    "text": "How will we use Quarto?\n\nEvery application exercise and assignment is written in a Quarto document\nYou’ll have a template Quarto document to start with\nThe amount of scaffolding in the template will decrease over the semester"
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-for-the-slope",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-for-the-slope",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test for the slope",
+    "text": "Hypothesis test for the slope\nHypotheses: \\(H_0: \\beta_1 = 0\\) vs. \\(H_A: \\beta_1 \\ne 0\\)\n\nTest statistic: Number of standard errors the estimate is away from the null\n\\[\nT = \\frac{\\text{Estimate - Null}}{\\text{Standard error}} \\\\\n\\]\n\n\np-value: Probability of observing a test statistic at least as extreme (in the direction of the alternative hypothesis) from the null value as the one observed\n\\[\np-value = P(|t| &gt; |\\text{test statistic}|),\n\\]\ncalculated from a \\(t\\) distribution with \\(n - 2\\) degrees of freedom"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#application-exercise",
-    "href": "slides/03-slr-tidymodels.html#application-exercise",
-    "title": "SLR: Fitting models in R with tidymodels",
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-test-statistic",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-test-statistic",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: Test statistic",
+    "text": "Hypothesis test: Test statistic\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\nT = \\frac{\\hat{\\beta}_1 - 0}{SE_{\\hat{\\beta}_1}} = \\frac{159.48 - 0}{18.17} = 8.78\n\\]\n\nExplain what the test statistic means in the context of the data."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-p-value",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-p-value",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: p-value",
+    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: p-value",
+    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\nA more exact p-value\n\n2 * pt(q = 18.17, df = 96, lower.tail = FALSE)\n\n[1] 7.83237e-33\n\n\n\nExplain what the p-value means in the context of the data."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#understanding-the-p-value",
+    "href": "slides/06-slr-math-models.html#understanding-the-p-value",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Understanding the p-value",
+    "text": "Understanding the p-value\n\n\n\nMagnitude of p-value\nInterpretation\n\n\n\n\np-value &lt; 0.01\nstrong evidence against \\(H_0\\)\n\n\n0.01 &lt; p-value &lt; 0.05\nmoderate evidence against \\(H_0\\)\n\n\n0.05 &lt; p-value &lt; 0.1\nweak evidence against \\(H_0\\)\n\n\np-value &gt; 0.1\neffectively no evidence against \\(H_0\\)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThese are general guidelines. The strength of evidence depends on the context of the problem."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-conclusion-in-context",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-conclusion-in-context",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: Conclusion, in context",
+    "text": "Hypothesis test: Conclusion, in context\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\nThe data provide convincing evidence that the population slope \\(\\beta_1\\) is different from 0.\nThe data provide convincing evidence of a linear relationship between area and price of houses in Duke Forest."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#confidence-interval-for-the-slope",
+    "href": "slides/06-slr-math-models.html#confidence-interval-for-the-slope",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Confidence interval for the slope",
+    "text": "Confidence interval for the slope\n\\[\n\\text{Estimate} \\pm \\text{ (critical value) } \\times \\text{SE}\n\\]\n\n\\[\n\\hat{\\beta}_1 \\pm t^* \\times SE_{\\hat{\\beta}_1}\n\\]\nwhere \\(t^*\\) is calculated from a \\(t\\) distribution with \\(n-2\\) degrees of freedom"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#confidence-interval-critical-value",
+    "href": "slides/06-slr-math-models.html#confidence-interval-critical-value",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Confidence interval: Critical value",
+    "text": "Confidence interval: Critical value\n\n\n\n\n# confidence level: 95%\nqt(0.975, df = nrow(duke_forest) - 2)\n\n[1] 1.984984\n\n\n\n\n\n# confidence level: 90%\nqt(0.95, df = nrow(duke_forest) - 2)\n\n[1] 1.660881\n\n\n\n\n\n# confidence level: 99%\nqt(0.995, df = nrow(duke_forest) - 2)\n\n[1] 2.628016"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#ci-for-the-slope-calculation",
+    "href": "slides/06-slr-math-models.html#ci-for-the-slope-calculation",
+    "title": "SLR: Mathematical models for inference",
+    "section": "95% CI for the slope: Calculation",
+    "text": "95% CI for the slope: Calculation\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\\hat{\\beta}_1 = 159.48 \\hspace{15mm} t^* = 1.98 \\hspace{15mm} SE_{\\hat{\\beta}_1} = 18.17\\]\n\n\\[\n159.48 \\pm 1.98 \\times 18.17 = (123.50, 195.46)\n\\]"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#ci-for-the-slope-computation",
+    "href": "slides/06-slr-math-models.html#ci-for-the-slope-computation",
+    "title": "SLR: Mathematical models for inference",
+    "section": "95% CI for the slope: Computation",
+    "text": "95% CI for the slope: Computation\n\ntidy(df_fit, conf.int = TRUE, conf.level = 0.95) |&gt; \n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n10847.77\n222456.88\n\n\narea\n159.48\n18.17\n8.78\n0.00\n123.41\n195.55"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#intervals-for-predictions-1",
+    "href": "slides/06-slr-math-models.html#intervals-for-predictions-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Intervals for predictions",
+    "text": "Intervals for predictions\n\nSuppose we want to answer the question “What is the predicted sale price of a Duke Forest house that is 2,800 square feet?”\nWe said reporting a single estimate for the slope is not wise, and we should report a plausible range instead\nSimilarly, reporting a single prediction for a new value is not wise, and we should report a plausible range instead"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#two-types-of-predictions",
+    "href": "slides/06-slr-math-models.html#two-types-of-predictions",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Two types of predictions",
+    "text": "Two types of predictions\n\nPrediction for the mean: “What is the average predicted sale price of Duke Forest houses that are 2,800 square feet?”\nPrediction for an individual observation: “What is the predicted sale price of a Duke Forest house that is 2,800 square feet?”\n\n\n\nWhich would you expect to be more variable? The average prediction or the prediction for an individual observation? Based on your answer, how would you expect the widths of plausible ranges for these two predictions to compare?"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#uncertainty-in-predictions",
+    "href": "slides/06-slr-math-models.html#uncertainty-in-predictions",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Uncertainty in predictions",
+    "text": "Uncertainty in predictions\nConfidence interval for the mean outcome: \\[\\large{\\hat{y} \\pm t_{n-2}^* \\times \\color{purple}{\\mathbf{SE}_{\\hat{\\boldsymbol{\\mu}}}}}\\]\n\nPrediction interval for an individual observation: \\[\\large{\\hat{y} \\pm t_{n-2}^* \\times \\color{purple}{\\mathbf{SE_{\\hat{y}}}}}\\]"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#standard-errors",
+    "href": "slides/06-slr-math-models.html#standard-errors",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Standard errors",
+    "text": "Standard errors\nStandard error of the mean outcome: \\[SE_{\\hat{\\mu}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]\n\nStandard error of an individual outcome: \\[SE_{\\hat{y}} = \\hat{\\sigma}_\\epsilon\\sqrt{1 + \\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#standard-errors-1",
+    "href": "slides/06-slr-math-models.html#standard-errors-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Standard errors",
+    "text": "Standard errors\nStandard error of the mean outcome: \\[SE_{\\hat{\\mu}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]\nStandard error of an individual outcome: \\[SE_{\\hat{y}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\mathbf{\\color{purple}{\\Large{1}}} + \\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#confidence-interval",
+    "href": "slides/06-slr-math-models.html#confidence-interval",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Confidence interval",
+    "text": "Confidence interval\nThe 95% confidence interval for the mean outcome:\n\nnew_house &lt;- tibble(area = 2800)\n\npredict(df_fit, new_data = new_house, type = \"conf_int\", level = 0.95) |&gt;\n  kable()\n\n\n\n\n.pred_lower\n.pred_upper\n\n\n\n\n529351\n597060.1\n\n\n\n\n\n\n\n\nWe are 95% confident that mean sale price of Duke Forest houses that are 2,800 square feet is between $529,351 and $597,060."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#prediction-interval",
+    "href": "slides/06-slr-math-models.html#prediction-interval",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Prediction interval",
+    "text": "Prediction interval\nThe 95% prediction interval for an individual outcome:\n\npredict(df_fit, new_data = new_house, type = \"pred_int\", level = 0.95) |&gt;\n  kable()\n\n\n\n\n.pred_lower\n.pred_upper\n\n\n\n\n226438.3\n899972.7\n\n\n\n\n\n\n\n\nWe are 95% confident that predicted sale price of a Duke Forest house that is 2,800 square feet is between $226,438 and $899,973."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#comparing-intervals",
+    "href": "slides/06-slr-math-models.html#comparing-intervals",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Comparing intervals",
+    "text": "Comparing intervals"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#extrapolation",
+    "href": "slides/06-slr-math-models.html#extrapolation",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Extrapolation",
+    "text": "Extrapolation\nUsing the model to predict for values outside the range of the original data is extrapolation.\n\n\n\n\nCalculate the prediction interval for the sale price of a “tiny house” in Duke Forest that is 225 square feet.\n\n\n\n\n\n\n\n\n\n\n\nNo, thanks!"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#extrapolation-1",
+    "href": "slides/06-slr-math-models.html#extrapolation-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Extrapolation",
+    "text": "Extrapolation\n\nWhy do we want to avoid extrapolation?\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+  },
+  {
+    "objectID": "slides/01-welcome.html#meet-prof.-tackett",
+    "href": "slides/01-welcome.html#meet-prof.-tackett",
+    "title": "Welcome to STA 210!",
+    "section": "Meet Prof. Tackett!",
+    "text": "Meet Prof. Tackett!\n\n\nEducation and career journey\n\nBS in Math and MS in Statistics from University of Tennessee\nStatistician at Capital One\nPhD in Statistics from University of Virginia\nAssistant Professor of the Practice, Department of Statistical Science at Duke\n\nWork focuses on statistics education and sense of belonging in introductory math and statistics classes\nCo-leader of the Bass Connections team Mental Health and the Justice System in Durham County\nMom of (almost) 8-month-old twins 🙂"
+  },
+  {
+    "objectID": "slides/01-welcome.html#meet-the-teaching-assistants-tas",
+    "href": "slides/01-welcome.html#meet-the-teaching-assistants-tas",
+    "title": "Welcome to STA 210!",
+    "section": "Meet the Teaching Assistants (TAs)",
+    "text": "Meet the Teaching Assistants (TAs)\n\nSam Rosen (PhD): Head TA + Lab 01\nBethany Astor (MS): Lab 02\nJon Campbell (MS)\nDonald Cayton (MS): Lab 02\nAllison Li (UG)\nMitchelle Mojekwu (UG): Lab 04\nBen Thorpe (UG)\nLinxuan Wang (MS): Lab 03\nXiaojun Zheng (PhD): Lab 04"
+  },
+  {
+    "objectID": "slides/01-welcome.html#what-is-regression-analysis",
+    "href": "slides/01-welcome.html#what-is-regression-analysis",
+    "title": "Welcome to STA 210!",
+    "section": "What is regression analysis?",
+    "text": "What is regression analysis?\n\n\n“In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables. It includes many techniques for modeling and analyzing several variables, when the focus is on the relationship between a dependent variable and one or more independent variables (or ‘predictors’). More specifically, regression analysis helps one understand how the typical value of the dependent variable (or ‘criterion variable’) changes when any one of the independent variables is varied, while the other independent variables are held fixed.”\n\nSource: Wikipedia (previous definition)"
+  },
+  {
+    "objectID": "slides/01-welcome.html#examples-of-regression-in-practice",
+    "href": "slides/01-welcome.html#examples-of-regression-in-practice",
+    "title": "Welcome to STA 210!",
+    "section": "Examples of regression in practice",
+    "text": "Examples of regression in practice\n\nNew Yorkers Will Pay $56 A Month To Trim A Minute Off Their Commute\nHow FiveThirtyEight’s 2020 Presidential Forecast Works — And What’s Different Because Of COVID-19\nEffect of Forensic Evidence on Criminal Justice Case Processing\nWhy it’s so freaking hard to make a good COVID-19 model (from March 2020)"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-faq",
+    "href": "slides/01-welcome.html#course-faq",
+    "title": "Welcome to STA 210!",
+    "section": "Course FAQ",
+    "text": "Course FAQ\nQ - What background is assumed for the course?\nA - Introductory statistics or probability course at Duke\n\nQ - Will we be doing computing?\nA - Yes. We will use the computing language R for analysis, Quarto for writing up results, and GitHub for version control and collaboration\n\n\nQ - Will we learn the mathematical theory of regression?\nA - Yes and No. The course is primarily focused on application; however, we will discuss some of the mathematics of simple linear regression. There a 0.5-credit course STA 211: Mathematics of Regression to take simultaneously or after this course to dive into more of the mathematics."
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-learning-objectives",
+    "href": "slides/01-welcome.html#course-learning-objectives",
+    "title": "Welcome to STA 210!",
+    "section": "Course learning objectives",
+    "text": "Course learning objectives\nBy the end of the semester, you will be able to…\n\nanalyze real-world data to answer questions about multivariable relationships.\nuse R to fit and evaluate linear and logistic regression models.\nassess whether a proposed model is appropriate and describe its limitations.\nuse Quarto to write reproducible reports and GitHub for version control and collaboration.\neffectively communicate statistical results through writing and oral presentations."
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-topics",
+    "href": "slides/01-welcome.html#course-topics",
+    "title": "Welcome to STA 210!",
+    "section": "Course topics",
+    "text": "Course topics\n\n\nUnit 1: Quantitative Response Variable\n\nSimple Linear Regression\nMultiple Linear Regression\n\n\nUnit 2: Categorical Response Variable\n\nLogistic Regression\nMultinomial logistic regression\n\n\nUnit 3: Looking Ahead\n\nSpecial topics\nPresenting statistical results"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-toolkit",
+    "href": "slides/01-welcome.html#course-toolkit",
+    "title": "Welcome to STA 210!",
+    "section": "Course toolkit",
+    "text": "Course toolkit\n\nCourse website: sta210-fa23.netlify.app\n\nCentral hub for the course!\nTour of the website\n\nSakai: sakai.duke.edu\n\nGradebook\nAnnouncements\nGradescope\nEd Discussion\n\nGitHub: github.com/sta210-fa23\n\nDistribute assignments\nPlatform for version control and collaboration"
+  },
+  {
+    "objectID": "slides/01-welcome.html#computing-toolkit",
+    "href": "slides/01-welcome.html#computing-toolkit",
+    "title": "Welcome to STA 210!",
+    "section": "Computing toolkit",
+    "text": "Computing toolkit\n\n\n\n\n\n\n\n\n\n\n\nAll analyses using R, a statistical programming language\nWrite reproducible reports in Quarto\nAccess RStudio through STA 210 Docker Containers\n\n\n\n\n\n\n\n\n\n\n\n\nAccess assignments\nFacilitates version control and collaboration\nAll work in STA 210 course organization"
+  },
+  {
+    "objectID": "slides/01-welcome.html#prepare-participate-practice-perform",
+    "href": "slides/01-welcome.html#prepare-participate-practice-perform",
+    "title": "Welcome to STA 210!",
+    "section": "Prepare, Participate, Practice, Perform",
+    "text": "Prepare, Participate, Practice, Perform\n\n\n\nPrepare: Introduce new content and prepare for lectures by completing the readings (and sometimes watching the videos)\nParticipate: Attend and actively participate in lectures and labs, office hours, team meetings\nPractice: Practice applying statistical concepts and computing with application exercises during lecture, graded for completion\nPerform: Put together what you’ve learned to analyze real-world data\n\nLab assignments (first individual, later team-based)\nHomework assignments (individual)\nTwo exams\nFinal group project"
+  },
+  {
+    "objectID": "slides/01-welcome.html#grading",
+    "href": "slides/01-welcome.html#grading",
+    "title": "Welcome to STA 210!",
+    "section": "Grading",
+    "text": "Grading\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n35%\n\n\nFinal project\n15%\n\n\nLab\n15%\n\n\nExam 01\n15%\n\n\nExam 02\n15%\n\n\nApplication Exercises\n2.5%\n\n\nTeamwork\n2.5%\n\n\n\nSee the syllabus for details on how the final letter grade will be calculated."
+  },
+  {
+    "objectID": "slides/01-welcome.html#support",
+    "href": "slides/01-welcome.html#support",
+    "title": "Welcome to STA 210!",
+    "section": "Support",
+    "text": "Support\n\nAttend office hours to meet with a member of the teaching team\n\nProf. Tackett’s office hours start Fri, Sep 1, 1 - 3pm\nFull office hours schedule starts Tue, Sep 5\n\nAsk and answer questions on course discussion forum\nUse email for questions regarding personal matters and/or grades\nSee the Course Support page for more details"
+  },
+  {
+    "objectID": "slides/01-welcome.html#diversity-inclusion",
+    "href": "slides/01-welcome.html#diversity-inclusion",
+    "title": "Welcome to STA 210!",
+    "section": "Diversity & inclusion",
+    "text": "Diversity & inclusion\n\nIt is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students’ learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.\n\nIf you have a name that differs from those that appear in your official Duke records, please let me know.\nPlease let me know your preferred pronouns, if you are comfortable sharing.\nIf you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your advisers and deans are excellent resources.\nI (like many people) am still in the process of learning about diverse perspectives and identities. If something was said or done in class (by anyone) that made you feel uncomfortable, please talk to me about it."
+  },
+  {
+    "objectID": "slides/01-welcome.html#accessibility",
+    "href": "slides/01-welcome.html#accessibility",
+    "title": "Welcome to STA 210!",
+    "section": "Accessibility",
+    "text": "Accessibility\n\nThe Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments.\nIf you have documented accommodations from SDAO, please send the documentation as soon as possible.\nI am committed to making all course activities and materials accessible. If any course component is not accessible to you in any way, please don’t hesitate to let me know."
+  },
+  {
+    "objectID": "slides/01-welcome.html#covid-19-and-other-illness",
+    "href": "slides/01-welcome.html#covid-19-and-other-illness",
+    "title": "Welcome to STA 210!",
+    "section": "COVID-19 and other illness",
+    "text": "COVID-19 and other illness\n\nPlease do not come to class if you have tested positive for COVID-19, have possible symptoms and have not yet been tested, or have other illness.\nLecture recordings are available for excused absences. See Lecture recording request in the syllabus for more information and a link to the request form.\nRead and follow the university guidelines regarding COVID-19 at coronavirus.duke.edu."
+  },
+  {
+    "objectID": "slides/01-welcome.html#late-work-waivers-and-regrade-requests",
+    "href": "slides/01-welcome.html#late-work-waivers-and-regrade-requests",
+    "title": "Welcome to STA 210!",
+    "section": "Late work, waivers, and regrade requests",
+    "text": "Late work, waivers, and regrade requests\n\nWe have policies! We will discuss them in detail when the first assignment is released.\nRead more about them in the Course policies section of the syllabus and refer back to them as needed\nIf you have questions, email sta210@duke.edu"
+  },
+  {
+    "objectID": "slides/01-welcome.html#academic-integrity",
+    "href": "slides/01-welcome.html#academic-integrity",
+    "title": "Welcome to STA 210!",
+    "section": "Academic integrity",
+    "text": "Academic integrity\n\nTo uphold the Duke Community Standard:\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised.\n\n\n\nBy participating in this course, you are agreeing that all your work and conduct will be in accordance with the Duke Community Standard."
+  },
+  {
+    "objectID": "slides/01-welcome.html#collaboration-sharing-code",
+    "href": "slides/01-welcome.html#collaboration-sharing-code",
+    "title": "Welcome to STA 210!",
+    "section": "Collaboration & sharing code",
+    "text": "Collaboration & sharing code\n\nWe have policies! We will discuss them in detail when the first assignment is released.\nRead about them in the Academic honesty section of the syllabus and refer to them as needed"
+  },
+  {
+    "objectID": "slides/01-welcome.html#use-of-artificial-intelligence-ai",
+    "href": "slides/01-welcome.html#use-of-artificial-intelligence-ai",
+    "title": "Welcome to STA 210!",
+    "section": "Use of artificial intelligence (AI)",
+    "text": "Use of artificial intelligence (AI)\n\nYou should treat AI tools, such as ChatGPT, the same as other online resources.\nThere are two guiding principles that govern how you can use AI in this course:1\n\n(1) Cognitive dimension: Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.\n(2) Ethical dimension: Students using AI should be transparent about their use and make sure it aligns with academic integrity.\n\n\nThese guiding principles are based on Course Policies related to ChatGPT and other AI Tools developed by Joel Gladd, Ph.D.↩︎"
+  },
+  {
+    "objectID": "slides/01-welcome.html#use-of-artificial-intelligence-ai-1",
+    "href": "slides/01-welcome.html#use-of-artificial-intelligence-ai-1",
+    "title": "Welcome to STA 210!",
+    "section": "Use of artificial intelligence (AI)",
+    "text": "Use of artificial intelligence (AI)\n✅ AI tools for code: You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.\n❌ No AI tools for narrative: Unless instructed otherwise, AI is not permitted for writing narrative on assignments.\n\n\n\n\n\n\nImportant\n\n\nIn general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content."
+  },
+  {
+    "objectID": "slides/01-welcome.html#five-tips-for-success",
+    "href": "slides/01-welcome.html#five-tips-for-success",
+    "title": "Welcome to STA 210!",
+    "section": "Five tips for success",
+    "text": "Five tips for success\n\nComplete all the preparation work (readings and videos) before class.\nAsk questions.\nDo the homework and labs; get started on homework early when possible.\nDon’t procrastinate and don’t let a week pass by with lingering questions.\nStay up-to-date on announcements on Ed Discussion and sent via email."
+  },
+  {
+    "objectID": "slides/01-welcome.html#application-exercise",
+    "href": "slides/01-welcome.html#application-exercise",
+    "title": "Welcome to STA 210!",
     "section": "Application exercise",
-    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare"
+    "text": "Application exercise\n\n📋 AE 01 - Movie Budgets and Revenues"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
-    "href": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Recap of last lecture",
-    "text": "Recap of last lecture\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative outcome variable.\nUsed the least squares method to estimate the slope and intercept.\nWe interpreted the slope and intercept.\n\n\nSlope: For every one unit increase in \\(x\\), we expect y to be higher/lower by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units.\n\n\nPredicted the response given a value of the predictor variable.\nDefined extrapolation and why we should avoid it."
+    "objectID": "slides/01-welcome.html#for-this-week",
+    "href": "slides/01-welcome.html#for-this-week",
+    "title": "Welcome to STA 210!",
+    "section": "For this week…",
+    "text": "For this week…\n\nRead the syllabus\nSee the course schedule for an overview of the semester\nLabs start this week!\n\nSection 001: Labs on Tuesday\nSection 002: Labs on Thursday\n\nThis week’s lab is focused on introductions and computing\nWednesday’s lecture: The Big Picture\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#movie-ratings",
-    "href": "slides/03-slr-tidymodels.html#movie-ratings",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Movie ratings",
-    "text": "Movie ratings\n\n\n\nData behind the FiveThirtyEight story Be Suspicious Of Online Movie Ratings, Especially Fandango’s\nIn the fivethirtyeight package: fandango\nContains every film that has at least 30 fan reviews on Fandango, an IMDb score, Rotten Tomatoes critic and user ratings, and Metacritic critic and user scores"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#data-prep",
-    "href": "slides/03-slr-tidymodels.html#data-prep",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Data prep",
-    "text": "Data prep\n\nRename Rotten Tomatoes columns as critics and audience\nRename the dataset as movie_scores\n\n\nmovie_scores &lt;- fandango |&gt;\n  rename(\n    critics = rottentomatoes, \n    audience = rottentomatoes_user\n  )"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#tidymodels",
-    "href": "slides/03-slr-tidymodels.html#tidymodels",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "tidymodels",
-    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use suppressPackageStartupMessages() to eliminate package startup messages"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#why-tidymodels",
-    "href": "slides/03-slr-tidymodels.html#why-tidymodels",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Why tidymodels?",
-    "text": "Why tidymodels?\n\nConsistent syntax for different model types (linear, logistic, random forest, Bayesian, etc.)\nStreamline modeling workflow\n\nSplit data into train and test sets\nTransform and create new variables\nAssess model performance\nUse model for prediction and inference"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#step-1-specify-model",
-    "href": "slides/03-slr-tidymodels.html#step-1-specify-model",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Step 1: Specify model",
-    "text": "Step 1: Specify model\n\nlinear_reg()\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
-    "href": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Step 2: Set model fitting engine",
-    "text": "Step 2: Set model fitting engine\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") # lm: linear model\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
-    "href": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "A closer look at model output",
-    "text": "A closer look at model output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is likely just due to rounding in the hand calculation."
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#the-regression-output",
-    "href": "slides/03-slr-tidymodels.html#the-regression-output",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "The regression output",
-    "text": "The regression output\nWe’ll focus on the first column for now…\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() \n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   32.3      2.34        13.8 4.03e-28\n2 critics        0.519    0.0345      15.0 2.70e-31"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#prediction",
-    "href": "slides/03-slr-tidymodels.html#prediction",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Prediction",
-    "text": "Prediction\n\n# create a data frame for a new movie\nnew_movie &lt;- tibble(critics = 70)\n\n# predict the outcome for a new movie\npredict(movie_fit, new_movie)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  68.6"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#application-exercise-1",
-    "href": "slides/03-slr-tidymodels.html#application-exercise-1",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Application exercise",
-    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare\n\n\n\nClose document tab"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#recap",
-    "href": "slides/03-slr-tidymodels.html#recap",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Recap",
-    "text": "Recap\n\nIntroduced the computing toolkit - RStudio and GitHub\nUsed tidymodels to fit and summarize regression models in R\nCompleted an application exercise on exploratory data analysis and modeling\n\n\n\n\n🔗 Week 02"
-  },
-  {
-    "objectID": "slides/02-big-picture.html#announcements",
-    "href": "slides/02-big-picture.html#announcements",
-    "title": "The big picture",
+    "objectID": "slides/05-slr-sim-testing.html#announcements",
+    "href": "slides/05-slr-sim-testing.html#announcements",
+    "title": "SLR: Randomization test for the slope",
     "section": "Announcements",
-    "text": "Announcements\n\nResources for extra R review\n\nLearn R: An interactive introduction to data analysis R (focus on Chapters 4 - 6)\nDuke Library Center for Data and Visualization Sciences workshops\n\nR for Lunch: data wrangling with dplyr (Fri, Sep 1, 12:30 - 1:30)\nR for Lunch: visualization with ggplot2 (Fri, Sep 8, 12:30 - 1:30)\nSee the CDVS website for more information and to register.\n\n\nLast day of in-person work for this class is Dec 7\nLecture recordings request policy\nReadings for next week will be posted later this week"
+    "text": "Announcements\n\nLab 02 due\n\nFriday, Sep 15 at 11:59pm (Tuesday labs)\nSunday, Sep 17 at 11:59pm (Thursday labs)\n\nHW 01\n\nReleased later today (will get email when HW is available)\ndue Wed, Sep 20 at 11:59pm\n\nStatistics experience - due Mon, Nov 20 at 11:59pm"
   },
   {
-    "objectID": "slides/02-big-picture.html#topics",
-    "href": "slides/02-big-picture.html#topics",
-    "title": "The big picture",
+    "objectID": "slides/05-slr-sim-testing.html#topics",
+    "href": "slides/05-slr-sim-testing.html#topics",
+    "title": "SLR: Randomization test for the slope",
     "section": "Topics",
-    "text": "Topics\n\nData analysis life cycle\nReproducible data analysis\nAnalyzing multivariable relationships"
+    "text": "Topics\n\nEvaluate a claim about the slope using hypothesis testing\nDefine mathematical models to conduct inference for slope"
   },
   {
-    "objectID": "slides/02-big-picture.html#reproducibility-checklist",
-    "href": "slides/02-big-picture.html#reproducibility-checklist",
-    "title": "The big picture",
-    "section": "Reproducibility checklist",
-    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n\nNear term goals:\n✔️ Can the tables and figures be exactly reproduced from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n\n\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
+    "objectID": "slides/05-slr-sim-testing.html#computational-setup",
+    "href": "slides/05-slr-sim-testing.html#computational-setup",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Computational setup",
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(tidymodels)  # for modeling\nlibrary(usdata)      # for the county_2019 dataset\nlibrary(openintro)   # for Duke Forest dataset\nlibrary(scales)      # for pretty axis labels\nlibrary(glue)        # for constructing character strings\nlibrary(knitr)       # for neatly formatted tables\nlibrary(kableExtra)  # also for neatly formatted tablesf\n\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))"
   },
   {
-    "objectID": "slides/02-big-picture.html#why-is-reproducibility-important",
-    "href": "slides/02-big-picture.html#why-is-reproducibility-important",
-    "title": "The big picture",
-    "section": "Why is reproducibility important?",
-    "text": "Why is reproducibility important?\n\nResults produced are more reliable and trustworthy (Ostblom and Timbers 2022)\nFacilitates more effective collaboration (Ostblom and Timbers 2022)\nContributing to science, which builds and organizes knowledge in terms of testable hypotheses (Alexander 2023)\nPossible to identify and correct errors or biases in the analysis process (Alexander 2023)"
+    "objectID": "slides/05-slr-sim-testing.html#data-duke-forest-houses",
+    "href": "slides/05-slr-sim-testing.html#data-duke-forest-houses",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Data: Duke Forest houses",
+    "text": "Data: Duke Forest houses"
   },
   {
-    "objectID": "slides/02-big-picture.html#when-things-go-wrong",
-    "href": "slides/02-big-picture.html#when-things-go-wrong",
-    "title": "The big picture",
-    "section": "When things go wrong",
-    "text": "When things go wrong\n\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nSource: Ostblom and Timbers (2022)"
+    "objectID": "slides/05-slr-sim-testing.html#the-regression-model",
+    "href": "slides/05-slr-sim-testing.html#the-regression-model",
+    "title": "SLR: Randomization test for the slope",
+    "section": "The regression model",
+    "text": "The regression model\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\nSlope: For each additional square foot, we expect the sale price of Duke Forest houses to be higher by $159, on average."
   },
   {
-    "objectID": "slides/02-big-picture.html#toolkit",
-    "href": "slides/02-big-picture.html#toolkit",
-    "title": "The big picture",
-    "section": "Toolkit",
-    "text": "Toolkit\n\nScriptability \\(\\rightarrow\\) R\nLiterate programming (code, narrative, output in one place) \\(\\rightarrow\\) Quarto\nVersion control \\(\\rightarrow\\) Git / GitHub\n\n\n\n\n\n\n\nNote\n\n\nYou will start using these computing tools in Lab 01."
+    "objectID": "slides/05-slr-sim-testing.html#inference-for-simple-linear-regression",
+    "href": "slides/05-slr-sim-testing.html#inference-for-simple-linear-regression",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Inference for simple linear regression",
+    "text": "Inference for simple linear regression\n\nCalculate a confidence interval for the slope, \\(\\beta_1\\)\nConduct a hypothesis test for the slope, \\(\\beta_1\\)"
   },
   {
-    "objectID": "slides/02-big-picture.html#r-and-rstudio",
-    "href": "slides/02-big-picture.html#r-and-rstudio",
-    "title": "The big picture",
-    "section": "R and RStudio",
-    "text": "R and RStudio\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\nSource: Statistical Inference via Data Science"
+    "objectID": "slides/05-slr-sim-testing.html#sampling-is-natural",
+    "href": "slides/05-slr-sim-testing.html#sampling-is-natural",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Sampling is natural",
+    "text": "Sampling is natural\n\n\nWhen you taste a spoonful of soup and decide the spoonful you tasted isn’t salty enough, that’s exploratory analysis\nIf you generalize and conclude that your entire soup needs salt, that’s an inference\nFor your inference to be valid, the spoonful you tasted (the sample) needs to be representative of the entire pot (the population)"
   },
   {
-    "objectID": "slides/02-big-picture.html#rstudio-ide",
-    "href": "slides/02-big-picture.html#rstudio-ide",
-    "title": "The big picture",
-    "section": "RStudio IDE",
-    "text": "RStudio IDE"
+    "objectID": "slides/05-slr-sim-testing.html#confidence-interval-via-bootstrapping",
+    "href": "slides/05-slr-sim-testing.html#confidence-interval-via-bootstrapping",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Confidence interval via bootstrapping",
+    "text": "Confidence interval via bootstrapping\n\nBootstrap new samples from the original sample\nFit models to each of the samples and estimate the slope\nUse features of the distribution of the bootstrapped slopes to construct a confidence interval"
   },
   {
-    "objectID": "slides/02-big-picture.html#quarto",
-    "href": "slides/02-big-picture.html#quarto",
-    "title": "The big picture",
-    "section": "Quarto",
-    "text": "Quarto\n\nFully reproducible reports – the analysis is run from the beginning each time you render\nCode goes in chunks and narrative goes outside of chunks\nVisual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)"
+    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-i",
+    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-i",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Bootstrapping pipeline I",
+    "text": "Bootstrapping pipeline I\n\nset.seed(210)\n\nduke_forest |&gt;\n  specify(price ~ area)\n\nResponse: price (numeric)\nExplanatory: area (numeric)\n# A tibble: 98 × 2\n     price  area\n     &lt;dbl&gt; &lt;dbl&gt;\n 1 1520000  6040\n 2 1030000  4475\n 3  420000  1745\n 4  680000  2091\n 5  428500  1772\n 6  456000  1950\n 7 1270000  3909\n 8  557450  2841\n 9  697500  3924\n10  650000  2173\n# ℹ 88 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#quarto-1",
-    "href": "slides/02-big-picture.html#quarto-1",
-    "title": "The big picture",
-    "section": "Quarto",
-    "text": "Quarto"
+    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-ii",
+    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-ii",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Bootstrapping pipeline II",
+    "text": "Bootstrapping pipeline II\n\nset.seed(210)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  generate(reps = 1000, type = \"bootstrap\")\n\nResponse: price (numeric)\nExplanatory: area (numeric)\n# A tibble: 98,000 × 3\n# Groups:   replicate [1,000]\n   replicate   price  area\n       &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1         1  290000  2414\n 2         1  285000  2108\n 3         1  265000  1300\n 4         1  416000  2949\n 5         1  541000  2740\n 6         1  525000  2256\n 7         1 1270000  3909\n 8         1  265000  1300\n 9         1  815000  3904\n10         1  535000  2937\n# ℹ 97,990 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#how-will-we-use-quarto",
-    "href": "slides/02-big-picture.html#how-will-we-use-quarto",
-    "title": "The big picture",
-    "section": "How will we use Quarto?",
-    "text": "How will we use Quarto?\n\nEvery application exercise and assignment is written in a Quarto document\nYou’ll have a template Quarto document to start with\nThe amount of scaffolding in the template will decrease over the semester"
+    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iii",
+    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iii",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Bootstrapping pipeline III",
+    "text": "Bootstrapping pipeline III\n\nset.seed(210)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  generate(reps = 1000, type = \"bootstrap\") |&gt;\n  fit()\n\n# A tibble: 2,000 × 3\n# Groups:   replicate [1,000]\n   replicate term      estimate\n       &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;\n 1         1 intercept   80699.\n 2         1 area          168.\n 3         2 intercept  -18821.\n 4         2 area          205.\n 5         3 intercept  234297.\n 6         3 area          117.\n 7         4 intercept  134481.\n 8         4 area          150.\n 9         5 intercept   23861.\n10         5 area          190.\n# ℹ 1,990 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#what-is-versioning",
-    "href": "slides/02-big-picture.html#what-is-versioning",
-    "title": "The big picture",
-    "section": "What is versioning?",
-    "text": "What is versioning?"
+    "objectID": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iv",
+    "href": "slides/05-slr-sim-testing.html#bootstrapping-pipeline-iv",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Bootstrapping pipeline IV",
+    "text": "Bootstrapping pipeline IV\n\nset.seed(210)\n\nboot_dist &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  generate(reps = 1000, type = \"bootstrap\") |&gt;\n  fit()"
   },
   {
-    "objectID": "slides/02-big-picture.html#what-is-versioning-1",
-    "href": "slides/02-big-picture.html#what-is-versioning-1",
-    "title": "The big picture",
-    "section": "What is versioning?",
-    "text": "What is versioning?\nwith human readable messages"
+    "objectID": "slides/05-slr-sim-testing.html#visualize-the-bootstrap-distribution",
+    "href": "slides/05-slr-sim-testing.html#visualize-the-bootstrap-distribution",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Visualize the bootstrap distribution",
+    "text": "Visualize the bootstrap distribution\n\nboot_dist |&gt;\n  filter(term == \"area\") |&gt;\n  ggplot(aes(x = estimate)) +\n  geom_histogram(binwidth = 10)"
   },
   {
-    "objectID": "slides/02-big-picture.html#why-do-we-need-version-control",
-    "href": "slides/02-big-picture.html#why-do-we-need-version-control",
-    "title": "The big picture",
-    "section": "Why do we need version control?",
-    "text": "Why do we need version control?\n\n\n\n\n\n\n\n\nProvides a clear record of how the analysis methods evolved. This makes analysis auditable and thus more trustworthy and reliable. (Ostblom and Timbers 2022)"
+    "objectID": "slides/05-slr-sim-testing.html#compute-the-ci",
+    "href": "slides/05-slr-sim-testing.html#compute-the-ci",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Compute the CI",
+    "text": "Compute the CI"
   },
   {
-    "objectID": "slides/02-big-picture.html#git-and-github",
-    "href": "slides/02-big-picture.html#git-and-github",
-    "title": "The big picture",
-    "section": "git and GitHub",
-    "text": "git and GitHub\n\n\ngit is a version control system – like “Track Changes” features from Microsoft Word.\nGitHub is the home for your git-based projects on the internet (like DropBox but much better).\nThere are a lot of git commands and very few people know them all. 99% of the time you will use git to add, commit, push, and pull."
+    "objectID": "slides/05-slr-sim-testing.html#but-first",
+    "href": "slides/05-slr-sim-testing.html#but-first",
+    "title": "SLR: Randomization test for the slope",
+    "section": "But first…",
+    "text": "But first…\n\nobs_fit &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  fit()\n\nobs_fit\n\n# A tibble: 2 × 2\n  term      estimate\n  &lt;chr&gt;        &lt;dbl&gt;\n1 intercept  116652.\n2 area          159."
   },
   {
-    "objectID": "slides/02-big-picture.html#carbohydrates-in-starbucks-food",
-    "href": "slides/02-big-picture.html#carbohydrates-in-starbucks-food",
-    "title": "The big picture",
-    "section": "Carbohydrates in Starbucks food",
-    "text": "Carbohydrates in Starbucks food\n\nStarbucks often displays the total calories in their food items but not the other nutritional information.\nCarbohydrates are a body’s main fuel source. The Dietary Guidelines for America recommend that carbohydrates make up 45% to 65% of total daily calories.1\nOur goal is to understand the relationship between the amount of carbohydrates and calories in Starbucks food items. We’d also like to assess if the relationship differs based on the type of food item (bakery, salad, sandwich, etc.)\n\nSource: Mayo Clinic"
+    "objectID": "slides/05-slr-sim-testing.html#compute-95-confidence-interval",
+    "href": "slides/05-slr-sim-testing.html#compute-95-confidence-interval",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Compute 95% confidence interval",
+    "text": "Compute 95% confidence interval\n\nboot_dist |&gt;\n  get_confidence_interval(\n    point_estimate = obs_fit,\n    level = 0.95,\n    type = \"percentile\"\n  )\n\n# A tibble: 2 × 3\n  term      lower_ci upper_ci\n  &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;\n1 area          91.7     211.\n2 intercept -18290.   287711."
   },
   {
-    "objectID": "slides/02-big-picture.html#starbucks-data",
-    "href": "slides/02-big-picture.html#starbucks-data",
-    "title": "The big picture",
-    "section": "Starbucks data",
-    "text": "Starbucks data\n\n\nObservations: 77 Starbucks food items\nVariables:\n\ncarb: Total carbohydrates (in grams)\ncalories: Total calories\nbakery: 1: bakery food item, 0: other food type"
+    "objectID": "slides/05-slr-sim-testing.html#research-question-and-hypotheses",
+    "href": "slides/05-slr-sim-testing.html#research-question-and-hypotheses",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Research question and hypotheses",
+    "text": "Research question and hypotheses\n“Do the data provide sufficient evidence that \\(\\beta_1\\) (the true slope for the population) is different from 0?”\n\nNull hypothesis: there is no linear relationship between area and price\n\\[\nH_0: \\beta_1 = 0\n\\]\n\n\nAlternative hypothesis: there is a linear relationship between area and price\n\\[\nH_A: \\beta_1 \\ne 0\n\\]"
   },
   {
-    "objectID": "slides/02-big-picture.html#terminology",
-    "href": "slides/02-big-picture.html#terminology",
-    "title": "The big picture",
-    "section": "Terminology",
-    "text": "Terminology\n\ncarb is the response variable\n\nvariable whose variation we want to understand / variable we wish to predict\nalso known as outcome or dependent variable\n\n\n\n\ncalories, bakery are the predictor variables\n\nvariables used to account for variation in the response\nalso known as explanatory, independent, or input variables"
+    "objectID": "slides/05-slr-sim-testing.html#hypothesis-testing-as-a-court-trial",
+    "href": "slides/05-slr-sim-testing.html#hypothesis-testing-as-a-court-trial",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Hypothesis testing as a court trial",
+    "text": "Hypothesis testing as a court trial\n\n\nNull hypothesis, \\(H_0\\): Defendant is innocent\nAlternative hypothesis, \\(H_A\\): Defendant is guilty\nPresent the evidence: Collect data\nJudge the evidence: “Could these data plausibly have happened by chance if the null hypothesis were true?”\n\nYes: Fail to reject \\(H_0\\)\nNo: Reject \\(H_0\\)"
   },
   {
-    "objectID": "slides/02-big-picture.html#univariate-exploratory-data-analysis",
-    "href": "slides/02-big-picture.html#univariate-exploratory-data-analysis",
-    "title": "The big picture",
-    "section": "Univariate exploratory data analysis",
-    "text": "Univariate exploratory data analysis\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+    "objectID": "slides/05-slr-sim-testing.html#hypothesis-testing-framework",
+    "href": "slides/05-slr-sim-testing.html#hypothesis-testing-framework",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Hypothesis testing framework",
+    "text": "Hypothesis testing framework\n\n\nStart with a null hypothesis, \\(H_0\\) that represents the status quo\nSet an alternative hypothesis, \\(H_A\\) that represents the research question, i.e. claim we’re testing\nConduct a hypothesis test under the assumption that the null hypothesis is true and calculate a p-value (probability of getting the observed or a more extreme outcome given that the null hypothesis is true)\n\nif the test results suggest that the data do not provide convincing evidence for the alternative hypothesis, stick with the null hypothesis\nif they do, then reject the null hypothesis in favor of the alternative"
   },
   {
-    "objectID": "slides/02-big-picture.html#bivariate-exploratory-data-analysis",
-    "href": "slides/02-big-picture.html#bivariate-exploratory-data-analysis",
-    "title": "The big picture",
-    "section": "Bivariate exploratory data analysis",
-    "text": "Bivariate exploratory data analysis\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+    "objectID": "slides/05-slr-sim-testing.html#quantify-the-variability-of-the-slope",
+    "href": "slides/05-slr-sim-testing.html#quantify-the-variability-of-the-slope",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Quantify the variability of the slope",
+    "text": "Quantify the variability of the slope\nfor testing\n\n\nTwo approaches:\n\nVia simulation\nVia mathematical models\n\nUse Randomization to quantify the variability of the slope for the purpose of testing, under the assumption that the null hypothesis is true:\n\nSimulate new samples from the original sample via permutation\nFit models to each of the samples and estimate the slope\nUse features of the distribution of the permuted slopes to conduct a hypothesis test"
   },
   {
-    "objectID": "slides/02-big-picture.html#function-between-response-and-predictors",
-    "href": "slides/02-big-picture.html#function-between-response-and-predictors",
-    "title": "The big picture",
-    "section": "Function between response and predictors",
-    "text": "Function between response and predictors\n\n\\[\\text{carb} = f(\\text{calories}, \\text{bakery}) + \\epsilon\\]\n\n\nGoal: Determine \\(f\\)\nHow do we determine \\(f\\)?\n\nMake an assumption about the functional form \\(f\\) (parametric model)\nUse the data to fit a model based on that form"
+    "objectID": "slides/05-slr-sim-testing.html#permutation-described",
+    "href": "slides/05-slr-sim-testing.html#permutation-described",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation, described",
+    "text": "Permutation, described\n\n\n\nUse permuting to simulate data under the assumption the null hypothesis is true and measure the natural variability in the data due to sampling, not due to variables being correlated\n\nPermute one variable to eliminate any existing relationship between the variables\n\nEach price value is randomly assigned to the area of a given house, i.e. area and price are no longer matched for a given house\n\n\n\n\n# A tibble: 98 × 3\n   price_Observed price_Permuted  area\n            &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;\n 1        1520000         342500  6040\n 2        1030000         750000  4475\n 3         420000         645000  1745\n 4         680000         697500  2091\n 5         428500         428500  1772\n 6         456000         481000  1950\n 7        1270000         610000  3909\n 8         557450         680000  2841\n 9         697500         485000  3924\n10         650000         105000  2173\n# ℹ 88 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#determine-f",
-    "href": "slides/02-big-picture.html#determine-f",
-    "title": "The big picture",
-    "section": "Determine \\(f\\)",
-    "text": "Determine \\(f\\)\n\nChoose the functional form of \\(f\\), i.e., choose the appropriate model given the response variable\n\n\nSuppose \\(f\\) takes the form of a linear model\n\\[y = f(\\mathbf{X}) = \\beta_0 + \\beta_1 x_1 + \\dots + \\beta_p x_p + \\epsilon\\]\n\n\n\nUse the data to fit (or train) the model, i.e, estimate the model parameters, \\(\\beta_0, \\beta_1, \\ldots, \\beta_p\\)"
+    "objectID": "slides/05-slr-sim-testing.html#permutation-visualized",
+    "href": "slides/05-slr-sim-testing.html#permutation-visualized",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation, visualized",
+    "text": "Permutation, visualized\n\n\n\nEach of the observed values for area (and for price) exist in both the observed data plot as well as the permuted price plot\nThe permutation removes the relationship between area and price\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
-    "objectID": "slides/02-big-picture.html#carb-vs.-calories",
-    "href": "slides/02-big-picture.html#carb-vs.-calories",
-    "title": "The big picture",
-    "section": "Carb vs. Calories",
-    "text": "Carb vs. Calories\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[\\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\epsilon\\]"
+    "objectID": "slides/05-slr-sim-testing.html#permutation-repeated",
+    "href": "slides/05-slr-sim-testing.html#permutation-repeated",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation, repeated",
+    "text": "Permutation, repeated\nRepeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
-    "objectID": "slides/02-big-picture.html#carb-vs.-calories-bakery",
-    "href": "slides/02-big-picture.html#carb-vs.-calories-bakery",
-    "title": "The big picture",
-    "section": "Carb vs. Calories + Bakery",
-    "text": "Carb vs. Calories + Bakery\n\n\\[\\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\epsilon\\]"
+    "objectID": "slides/05-slr-sim-testing.html#concluding-the-hypothesis-test",
+    "href": "slides/05-slr-sim-testing.html#concluding-the-hypothesis-test",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Concluding the hypothesis test",
+    "text": "Concluding the hypothesis test\n\nIs the observed slope of \\(\\hat{\\beta_1} = 159\\) (or an even more extreme slope) a likely outcome under the null hypothesis that \\(\\beta = 0\\)? What does this mean for our original question: “Do the data provide sufficient evidence that \\(\\beta_1\\) (the true slope for the population) is different from 0?”\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning: Removed 2 rows containing missing values (`geom_bar()`)."
   },
   {
-    "objectID": "slides/02-big-picture.html#carb-vs.-calories-bakery-with-interaction",
-    "href": "slides/02-big-picture.html#carb-vs.-calories-bakery-with-interaction",
-    "title": "The big picture",
-    "section": "Carb vs. Calories + Bakery (with interaction)",
-    "text": "Carb vs. Calories + Bakery (with interaction)\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[{\\small \\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\beta_3 ~ \\text{calories} \\times \\text{bakery}  + \\epsilon}\\]"
+    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-i",
+    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-i",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation pipeline I",
+    "text": "Permutation pipeline I\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area)\n\nResponse: price (numeric)\nExplanatory: area (numeric)\n# A tibble: 98 × 2\n     price  area\n     &lt;dbl&gt; &lt;dbl&gt;\n 1 1520000  6040\n 2 1030000  4475\n 3  420000  1745\n 4  680000  2091\n 5  428500  1772\n 6  456000  1950\n 7 1270000  3909\n 8  557450  2841\n 9  697500  3924\n10  650000  2173\n# ℹ 88 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#statistical-model-vs.-regression-equation",
-    "href": "slides/02-big-picture.html#statistical-model-vs.-regression-equation",
-    "title": "The big picture",
-    "section": "Statistical model vs. regression equation",
-    "text": "Statistical model vs. regression equation\nStatistical model (also known as data-generating model)\n\\[{\\small \\text{carb} = \\beta_0 + \\beta_1 ~\\text{calories} + \\beta_2 ~\\text{bakery} + \\beta_3 ~ \\text{calories} \\times \\text{bakery}  + \\epsilon}\\]\nModels the process for generating values of the response in the population (function + error)\n\n\nRegression equation\nEstimate of the function using the sample data\n\\[{\\small \\hat{\\text{carb}} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~\\text{calories} + \\hat{\\beta}_2 ~\\text{bakery} + \\hat{\\beta}_3 ~ \\text{calories} \\times \\text{bakery}}\\]"
+    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-ii",
+    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-ii",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation pipeline II",
+    "text": "Permutation pipeline II\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\")\n\nResponse: price (numeric)\nExplanatory: area (numeric)\nNull Hypothesis: independence\n# A tibble: 98 × 2\n     price  area\n     &lt;dbl&gt; &lt;dbl&gt;\n 1 1520000  6040\n 2 1030000  4475\n 3  420000  1745\n 4  680000  2091\n 5  428500  1772\n 6  456000  1950\n 7 1270000  3909\n 8  557450  2841\n 9  697500  3924\n10  650000  2173\n# ℹ 88 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#why-fit-a-model",
-    "href": "slides/02-big-picture.html#why-fit-a-model",
-    "title": "The big picture",
-    "section": "Why fit a model?",
-    "text": "Why fit a model?\n\nPrediction: Expected value of the response variable for given values of the predictor variables\nInference: Conclusion about the relationship between the response and predictor variables\n\n\n\nWhat is an example of a prediction question that can be answered using the model of carb vs. calories and bakery?\nWhat is an example of an inference question that can be answered using the model of carb vs. calories and bakery?"
+    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-iii",
+    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-iii",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation pipeline III",
+    "text": "Permutation pipeline III\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = 1000, type = \"permute\")\n\nResponse: price (numeric)\nExplanatory: area (numeric)\nNull Hypothesis: independence\n# A tibble: 98,000 × 3\n# Groups:   replicate [1,000]\n     price  area replicate\n     &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;\n 1  465000  6040         1\n 2  481000  4475         1\n 3 1020000  1745         1\n 4  520000  2091         1\n 5  592000  1772         1\n 6  650000  1950         1\n 7  473000  3909         1\n 8  705000  2841         1\n 9  785000  3924         1\n10  671500  2173         1\n# ℹ 97,990 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#recap",
-    "href": "slides/02-big-picture.html#recap",
-    "title": "The big picture",
-    "section": "Recap",
-    "text": "Recap\n\nReproducibility\n\nIt is best practice conduct all data analysis in a reproducible way\nWe will implement a reproducible workflow using R, Quarto, and git/GitHub\n\n\n\n\nMultivariable relationships\n\nWe can use exploratory data analysis to describe the relationship between two variables\nWe make an assumption about the relationship between variables when doing linear regression\nThe two main objectives for fitting a linear regression model are (1) prediction and (2) inference"
+    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-iv",
+    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-iv",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation pipeline IV",
+    "text": "Permutation pipeline IV\n\nset.seed(1125)\n\nduke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = 1000, type = \"permute\") |&gt;\n  fit()\n\n# A tibble: 2,000 × 3\n# Groups:   replicate [1,000]\n   replicate term       estimate\n       &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;\n 1         1 intercept 553355.  \n 2         1 area           2.35\n 3         2 intercept 635824.  \n 4         2 area         -27.3 \n 5         3 intercept 536072.  \n 6         3 area           8.57\n 7         4 intercept 598649.  \n 8         4 area         -13.9 \n 9         5 intercept 556202.  \n10         5 area           1.33\n# ℹ 1,990 more rows"
   },
   {
-    "objectID": "slides/02-big-picture.html#references",
-    "href": "slides/02-big-picture.html#references",
-    "title": "The big picture",
-    "section": "References",
-    "text": "References\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule\n\n\n\nAlexander, Rohan. 2023. “Telling Stories with Data,” June. https://doi.org/10.1201/9781003229407.\n\n\nOstblom, Joel, and Tiffany Timbers. 2022. “Opinionated Practices for Teaching Reproducibility: Motivation, Guided Instruction and Practice.” Journal of Statistics and Data Science Education 30 (3): 241–50. https://doi.org/10.1080/26939169.2022.2074922."
+    "objectID": "slides/05-slr-sim-testing.html#permutation-pipeline-v",
+    "href": "slides/05-slr-sim-testing.html#permutation-pipeline-v",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Permutation pipeline V",
+    "text": "Permutation pipeline V\n\nset.seed(1125)\n\nnull_dist &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = 1000, type = \"permute\") |&gt;\n  fit()"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#visualize-the-null-distribution",
+    "href": "slides/05-slr-sim-testing.html#visualize-the-null-distribution",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Visualize the null distribution",
+    "text": "Visualize the null distribution\n\nnull_dist |&gt;\n  filter(term == \"area\") |&gt;\n  ggplot(aes(x = estimate)) +\n  geom_histogram(binwidth = 10, color = \"white\")"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#reason-around-the-p-value",
+    "href": "slides/05-slr-sim-testing.html#reason-around-the-p-value",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Reason around the p-value",
+    "text": "Reason around the p-value\n\nIn a world where the there is no relationship between the area of a Duke Forest house and in its price (\\(\\beta_1 = 0\\)), what is the probability that we observe a sample of 98 houses where the slope fo the model predicting price from area is 159 or even more extreme?\n\n\n\nWarning: Removed 2 rows containing missing values (`geom_bar()`)."
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#compute-the-p-value",
+    "href": "slides/05-slr-sim-testing.html#compute-the-p-value",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Compute the p-value",
+    "text": "Compute the p-value\n\nWhat does this warning mean?\n\n\nget_p_value(\n  null_dist,\n  obs_stat = obs_fit,\n  direction = \"two-sided\"\n)\n\nWarning: Please be cautious in reporting a p-value of 0. This result is an\napproximation based on the number of `reps` chosen in the `generate()` step.\nSee `?get_p_value()` for more information.\n\nWarning: Please be cautious in reporting a p-value of 0. This result is an\napproximation based on the number of `reps` chosen in the `generate()` step.\nSee `?get_p_value()` for more information.\n\n\n# A tibble: 2 × 2\n  term      p_value\n  &lt;chr&gt;       &lt;dbl&gt;\n1 area            0\n2 intercept       0"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#the-regression-model-revisited",
+    "href": "slides/05-slr-sim-testing.html#the-regression-model-revisited",
+    "title": "SLR: Randomization test for the slope",
+    "section": "The regression model, revisited",
+    "text": "The regression model, revisited\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.325\n53302.463\n2.188\n0.031\n\n\narea\n159.483\n18.171\n8.777\n0.000"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#inference-revisited",
+    "href": "slides/05-slr-sim-testing.html#inference-revisited",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Inference, revisited",
+    "text": "Inference, revisited\n\n\nEarlier we computed a confidence interval and conducted a hypothesis test via simulation:\n\nCI: Bootstrap the observed sample to simulate the distribution of the slope\nHT: Permute the observed sample to simulate the distribution of the slope under the assumption that the null hypothesis is true\n\nNow we’ll do these based on theoretical results, i.e., by using the Central Limit Theorem to define the distribution of the slope and use features (shape, center, spread) of this distribution to compute bounds of the confidence interval and the p-value for the hypothesis test"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#mathematical-representation-of-the-model",
+    "href": "slides/05-slr-sim-testing.html#mathematical-representation-of-the-model",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Mathematical representation of the model",
+    "text": "Mathematical representation of the model\n\\[\n\\begin{aligned}\nY &= Model + Error \\\\\n&= f(X) + \\epsilon \\\\\n&= \\mu_{Y|X} + \\epsilon \\\\\n&= \\beta_0 + \\beta_1 X + \\epsilon\n\\end{aligned}\n\\]\nwhere the errors are independent and normally distributed:\n\n\nindependent: Knowing the error term for one observation doesn’t tell you anything about the error term for another observation\nnormally distributed: \\(\\epsilon \\sim N(0, \\sigma_\\epsilon^2)\\)"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#mathematical-representation-visualized",
+    "href": "slides/05-slr-sim-testing.html#mathematical-representation-visualized",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Mathematical representation, visualized",
+    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\nGraph reproduced from Beyond Multiple Linear Regression.\n\n\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#regression-standard-error",
+    "href": "slides/05-slr-sim-testing.html#regression-standard-error",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Regression standard error",
+    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error (the spread of the distribution of the response, for a given value of the predictor variable):\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\n\n\nWhy divide by \\(n - 2\\)?\nWhy do we care about the value of the regression standard error?"
+  },
+  {
+    "objectID": "slides/05-slr-sim-testing.html#standard-error-of-hatbeta_1",
+    "href": "slides/05-slr-sim-testing.html#standard-error-of-hatbeta_1",
+    "title": "SLR: Randomization test for the slope",
+    "section": "Standard error of \\(\\hat{\\beta}_1\\)",
+    "text": "Standard error of \\(\\hat{\\beta}_1\\)\n\\[\nSE_{\\hat{\\beta}_1} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{(n-1)s_X^2}}\n\\]\n\nor…\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "links.html",

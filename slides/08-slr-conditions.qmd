@@ -1,0 +1,397 @@
+---
+title: "SLR: Conditions"
+author: "Prof. Maria Tackett"
+date: "2022-09-21"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 Week 04](https://sta210-fa22.netlify.app/weeks/week-04.html)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: true
+    incremental: false 
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+---
+
+```{r setup}
+#| include: false
+
+library(countdown)
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%",
+  fig.align = "center"
+)
+```
+
+## Announcements
+
+-   HW 01: due TODAY at 11:59pm
+
+-   [Statistics experience](https://sta210-fa22.netlify.app/hw/stats-experience.html) - due Fri, Dec 09 at 11:59pm
+
+-   Aaditya's office hours today: 1 - 2pm and 7 -8pm on Zoom (link in Sakai)
+
+-   See [Week 04](https://sta210-fa22.netlify.app/weeks/week-04.html) for this week's activities.
+
+-   Updated masking policy starting Sep 22
+
+-   Looking ahead: Exam 01: Sep 28 - 30
+
+## Exam 01 {.midi}
+
+-   Released Sep 28 late afternoon, due Sep 30 at 11:59pm.
+
+    -   No labs or office hours Sep 28 - 30
+
+-   Covers content Weeks 01 - 05
+
+-   Conceptual questions + analysis problems
+
+-   Will receive exam through GitHub repo, use a reproducible workflow and submit on GitHub and Gradescope (like labs and HW)
+
+-   Lecture recordings for Weeks 01 -05 available [here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/EfXF6q4ev7dNq53PBcDetSgBrNry2EB85vWv2xrUzGahbg?e=i3gLl6) until September 28 at 11:59pm.
+
+-   Lab and HW solutions will be posted after the late submission deadlines.
+
+-   Exam 01 review in class on September 28
+
+## Computational set up
+
+```{r packages}
+#| echo: true
+#| message: false
+
+# load packages
+library(tidyverse)   # for data wrangling and visualization
+library(tidymodels)  # for modeling
+library(openintro)   # for the duke_forest dataset
+library(scales)      # for pretty axis labels
+library(knitr)       # for pretty tables
+library(kableExtra)  # also for pretty tables
+library(patchwork)   # arrange plots
+
+# set default theme and larger font size for ggplot2
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 20))
+```
+
+## Regression model, revisited
+
+```{r}
+#| echo: true
+df_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(price ~ area, data = duke_forest)
+
+tidy(df_fit) |>
+  kable(digits = 3)
+```
+
+## Mathematical representation, visualized {.midi}
+
+$$
+Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
+$$
+
+```{r}
+#| out.width: "100%"
+#| fig.align: "center"
+#| echo: false
+
+# Code modified from https://stackoverflow.com/questions/31794876/ggplot2-how-to-curve-small-gaussian-densities-on-a-regression-line?rq=1
+# Modified based on BYSH: https://bookdown.org/roback/bookdown-bysh/ch-MLRreview.html#ordinary-least-squares-ols-assumptions
+set.seed(0)
+dat <- data.frame(
+  x = (x <- runif(10000, 0, 50)),
+  y = rnorm(10000, 10 * x, 100)
+)
+## breaks: where you want to compute densities
+breaks <- seq(0, max(dat$x), len = 5)
+dat$section <- cut(dat$x, breaks)
+## Get the residuals
+dat$res <- residuals(lm(y ~ x, data = dat))
+## Compute densities for each section, and flip the axes, and add means of sections
+## Note: the densities need to be scaled in relation to the section size (2000 here)
+dens <- do.call(rbind, lapply(split(dat, dat$section), function(x) {
+  d <- density(x$res, n = 50)
+  res <- data.frame(x = max(x$x) - d$y * 2000, y = d$x + mean(x$y))
+  res <- res[order(res$y), ]
+  ## Get some data for normal lines as well
+  xs <- seq(min(x$res), max(x$res), len = 50)
+  res <- rbind(res, data.frame(
+    y = xs + mean(x$y),
+    x = max(x$x) - 2000 * dnorm(xs, 0, sd(x$res))
+  ))
+  res$type <- rep(c("empirical", "normal"), each = 50)
+  res
+}))
+dens$section <- rep(levels(dat$section), each = 100)
+dens <- dens |>
+  filter(type == "normal")
+
+ggplot(dat, aes(x, y)) +
+  geom_point(alpha = 0.05, size = 0.2) +
+  geom_smooth(method = "lm", fill = NA, se = FALSE, color = "steelblue") +
+  geom_path(data = dens, aes(x, y, group = interaction(section)), color = "#8F2D56", lwd = 1.1) +
+  geom_vline(xintercept = breaks, lty = 2, color = "grey") +
+  labs(
+    x = "x",
+    y = "y"
+  ) +
+  theme(
+    axis.title = element_text(size = 16),
+    axis.ticks = element_blank(),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank()
+  )
+```
+
+## Model conditions
+
+1.  **Linearity:** There is a linear relationship between the outcome and predictor variables
+2.  **Constant variance:** The variability of the errors is equal for all values of the predictor variable, i.e. the errors are homeoscedastic
+3.  **Normality:** The errors follow a normal distribution
+4.  **Independence:** The errors are independent from each other
+
+## Linearity
+
+✅ The residuals vs. fitted values plot should show a random scatter of residuals (no distinguishable pattern or structure)
+
+```{r res-vs-fit}
+#| echo: false
+df_aug <- augment(df_fit$fit)
+
+ggplot(df_aug, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  ylim(-1000000, 1000000) +
+  labs(
+    x = "Fitted value", y = "Residual",
+    title = "Residuals vs. fitted values"
+  )
+```
+
+## Residuals vs. fitted values (code)
+
+```{r}
+#| echo: true
+#| ref.label: "res-vs-fit"
+#| fig.show: "hide"
+```
+
+## Non-linear relationships
+
+```{r}
+#| echo: false
+set.seed(1234)
+
+n = 100
+
+df <- tibble(
+  x = -49:50,
+  e_curved = rnorm(n, 0, 150),
+  y_curved = x^2 + e_curved,
+  e_slight_curve = sort(rbeta(n, 5, 1) * 200) + rnorm(n, 0, 5),
+  y_slight_curve = x + e_slight_curve,
+  x_fan = seq(0, 3.99, 4 / n),
+  y_fan = c(rnorm(n / 8, 3, 1), rnorm(n / 8, 3.5, 2), rnorm(n / 8, 4, 2.5), rnorm(n / 8, 4.5, 3), rnorm(n / 4, 5, 4), rnorm((n / 4) + 2, 6, 5))
+)
+```
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| out.width: "100%"
+#| fig.asp: 1.2
+#| echo: false
+
+p1 <- ggplot(df, aes(x = x, y = y_curved)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "#8F2D56") +
+  labs(
+    x = "X", y = "Y",
+    title = "Observed data + model"
+    )
+
+curved_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(y_curved ~ x, data = df)
+
+curved_aug <- augment(curved_fit$fit)
+
+p2 <- ggplot(curved_aug, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Fitted value", y = "Residual",
+    title = "Residuals vs. fitted values"
+  ) +
+  ylim(-2000, 2000)
+
+p1 / p2 +
+  plot_annotation(title = "Obviously curved")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| out.width: "100%"
+#| fig.asp: 1.2
+#| echo: false
+
+p1 <- ggplot(df, aes(x = x, y = y_slight_curve)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "#8F2D56") +
+  labs(
+    x = "X", y = "Y",
+    title = "Observed data + model"
+    )
+
+slight_curve_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(y_slight_curve ~ x, data = df)
+
+slight_curve_aug <- augment(slight_curve_fit$fit)
+
+p2 <- ggplot(slight_curve_aug, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Fitted value", y = "Residual",
+    title = "Residuals vs. fitted values"
+  )
+
+p1 / p2 +
+  plot_annotation(title = "Not so obviously curved")
+```
+:::
+:::
+
+## Constant variance
+
+✅ The vertical spread of the residuals should be relatively constant across the plot
+
+```{r}
+#| ref.label: "res-vs-fit"
+#| echo: false
+```
+
+## Non-constant variance
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| out.width: "100%"
+#| echo: false
+ggplot(df, aes(x = x_fan, y = y_fan)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "#8F2D56") +
+  labs(
+    x = "X", y = "Y",
+    title = "Observed data + model"
+    )
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| out.width: "100%"
+#| echo: false
+
+fan_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(y_fan ~ x_fan, data = df)
+
+fan_aug <- augment(fan_fit$fit)
+
+ggplot(fan_aug, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Fitted value", y = "Residual",
+    title = "Residuals vs. fitted values"
+  ) +
+  ylim(-15, 15)
+```
+:::
+:::
+
+## Normality
+
+```{r}
+#| echo: false
+
+ggplot(df_aug, aes(x = .resid)) +
+  geom_histogram(aes(y = ..density..), binwidth = 100000, color = "white") +
+  geom_function(
+    #geom = "line",
+    fun = dnorm,
+    args = list(
+      mean = mean(df_aug$.resid), 
+      sd = sd(df_aug$.resid)
+      ),
+    lwd = 2,
+    col = "#8F2D5690"
+  ) +
+  labs(
+    x = "Residual",
+    y = "Density",
+    title = "Histogram of residuals"
+  )
+```
+
+## Independence
+
+-   We can often check the independence assumption based on the context of the data and how the observations were collected
+
+-   If the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected
+
+. . .
+
+✅ If this is a random sample of Duke Houses, the error for one house does not tell us anything about the error for another use
+
+## Recap
+
+Used residual plots to check conditions for SLR:
+
+::: columns
+::: {.column width="50%"}
+::: nonincremental
+-   Linearity
+-   Constant variance
+:::
+:::
+
+::: {.column width="50%"}
+::: nonincremental
+-   Normality
+-   Independence
+:::
+:::
+:::
+
+. . .
+
+::: question
+Which of these conditions are required for fitting a SLR? Which for simulation-based inference for the slope for an SLR? Which for inference with mathematical models?
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 3, font_size = "2em")
+```

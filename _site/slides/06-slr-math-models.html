@@ -456,8 +456,39 @@ Prof.&nbsp;Maria Tackett
 </div></li>
 </ul>
 </section>
-<section id="statistician-of-the-day" class="slide level2">
-<h2>Statistician of the day</h2>
+<section id="statistician-of-the-day-regina-nuzzo" class="slide level2 small">
+<h2>Statistician of the day: Regina Nuzzo</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/statistician-of-the-day/nuzzo.jpg" alt="Picture of Regina Nuzzo"></p>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<p><em>Dr.&nbsp;Nuzzo received her PhD in Statistics from Stanford University and is now Professor of Science, Technology, &amp; Mathematics at <a href="https://gallaudet.edu/">Gallaudet University</a>. Dr.&nbsp;Nuzzo teaches statistics using American Sign Language.</em></p>
+<p><em>Her work has appeared in Nature, Los Angeles Times, New York Times, Reader's Digest, New Scientist, and Scientific American. Primarily, she works to help lay-audiences understand science and statistics in particular. She earned the American Statistical Association's 2014 Excellence in Statistical Reporting Award for her article on p-values in Nature. Her work led to the <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108">ASA's statement on p-values</a>.</em></p>
+<p>Source: <a href="https://hardin47.github.io/CURV/scholars/nuzzo.html">hardin47.github.io/CURV/scholars/nuzzo</a><br>
+</p>
+</div>
+</div>
+</section>
+<section id="regina-nuzzo" class="slide level2 midi">
+<h2>Regina Nuzzo</h2>
+<p>From <a href="https://www.nih.gov/about-nih/what-we-do/science-health-public-trust/perspectives/science-health-public-trust/tips-communicating-statistical-significance">"Tips for Communicating Statistical Significance."</a></p>
+<p><em>“That we use p-values to alert us to surprising data results, not to give a final answer on anything. (Or at least that's what we should be doing). And that results can get flagged as "statistically surprising" with a small p-value for a number of reasons”</em></p>
+<ol type="1">
+<li><p><em>There was a fluke.</em></p></li>
+<li><p><em>Something was violated.</em></p></li>
+<li><p><em>There was a real but tiny relationship.</em></p></li>
+<li><p><em>There was a relationship that is worth more study.</em></p></li>
+</ol>
+<p><em>Or any combination of the above.</em></p>
+</section>
+<section>
+<section id="mathematical-models-for-inference" class="title-slide slide level1 center">
+<h1>Mathematical models for inference</h1>
+
 </section>
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
@@ -569,7 +600,7 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/06/regression.png"></p>
-<figcaption>Source: <em>Introduction to the Practice of Statistics (5th ed)</em></figcaption>
+<figcaption>Image source: <em>Introduction to the Practice of Statistics (5th ed)</em></figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:30%;">
@@ -585,15 +616,15 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 </section>
 <section id="regression-standard-error" class="slide level2">
 <h2>Regression standard error</h2>
-<p>Once we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line</p>
+<p>Once we fit the model, we can use the residuals to estimate the <strong>regression standard error</strong>, the average distance between the observed values and the regression line</p>
 <p><span class="math display">\[
 \hat{\sigma}_\epsilon = \sqrt{\frac{\sum_\limits{i=1}^n(y_i - \hat{y}_i)^2}{n-2}} = \sqrt{\frac{\sum_\limits{i=1}^ne_i^2}{n-2}}
 \]</span></p>
 <div class="fragment">
 <div class="question">
+<p>Why divide by <span class="math inline">\(n - 2\)</span>?</p>
 <div>
 <ol type="1">
-<li>Why divide by <span class="math inline">\(n - 2\)</span>?</li>
 <li>Why do we care about the value of the regression standard error?</li>
 </ol>
 </div>
@@ -602,7 +633,7 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 </section>
 <section id="standard-error-of-hatbeta_1" class="slide level2">
 <h2>Standard error of <span class="math inline">\(\hat{\beta}_1\)</span></h2>
-<p>The <strong>standard error of</strong> <span class="math inline">\(\hat{\beta}_1\)</span>, <span class="math inline">\(SE_{\hat{\beta}_1}\)</span>, quantifies the sampling variability in the estimated slopes</p>
+<p>The <strong>standard error of</strong> <span class="math inline">\(\hat{\beta}_1\)</span> quantifies the sampling variability in the estimated slopes</p>
 <p><span class="math display">\[
 SE_{\hat{\beta}_1} = \hat{\sigma}_\epsilon\sqrt{\frac{1}{(n-1)s_X^2}}
 \]</span></p>
@@ -641,7 +672,7 @@ SE_{\hat{\beta}_1} = \hat{\sigma}_\epsilon\sqrt{\frac{1}{(n-1)s_X^2}}
 </div>
 </div>
 </div>
-</section>
+</section></section>
 <section>
 <section id="mathematical-models-for-inference-for-beta_1" class="title-slide slide level1 center">
 <h1>Mathematical models for inference for <span class="math inline">\(\beta_1\)</span></h1>
@@ -703,7 +734,8 @@ p-value = P(|t| &gt; |\text{test statistic}|),
 T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.78
 \]</span></p>
 <div class="question">
-<p>Explain what the test statistic means in the context of the data.</p>
+<p>Select the best interpretation of the test statistic on Ed Discussion.<br>
+[<a href="https://edstem.org/us/courses/44523/discussion/scheduled/438012">10:05am lecture</a>] [<a href="https://edstem.org/us/courses/44523/discussion/scheduled/438014">1:25pm lecture</a>]</p>
 </div>
 </section>
 <section id="hypothesis-test-p-value" class="slide level2">
@@ -786,7 +818,8 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
 </div>
 </div>
 <div class="question">
-<p>Explain what the p-value means in the context of the data.</p>
+<p>Select the meaning of the p-value on Ed Discussion.</p>
+<p>[<a href="https://edstem.org/us/courses/44523/discussion/scheduled/438023">10:05am lecture</a>][<a href="https://edstem.org/us/courses/44523/discussion/scheduled/438024">1:25pm lecture</a>]</p>
 </div>
 </section>
 <section id="understanding-the-p-value" class="slide level2">

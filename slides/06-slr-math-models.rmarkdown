@@ -41,6 +41,7 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 ## Announcements
 
 -   HW 01: due Wed, Sep 20 at 11:59pm
@@ -120,6 +121,7 @@ From [\"Tips for Communicating Statistical Significance.\"](https://www.nih.gov/
 
 ## Computational setup
 
+
 ```{r packages}
 #| echo: true
 #| message: false
@@ -137,7 +139,9 @@ library(patchwork)   # arrange plots
 ggplot2::theme_set(ggplot2::theme_bw(base_size = 20))
 ```
 
+
 ## The regression model, revisited
+
 
 ```{r}
 #| echo: true
@@ -148,6 +152,7 @@ df_fit <- linear_reg() |>
 tidy(df_fit) |>
   kable(digits = 3)
 ```
+
 
 ## Inference, revisited {.midi}
 
@@ -223,12 +228,14 @@ $$
 
 . . .
 
+
 ```{r}
 #| echo: false
 tidy(df_fit) |>
   kable(digits = 2) |>
   row_spec(2, background = "#D9E3E4")
 ```
+
 
 # Mathematical models for inference for $\beta_1$
 
@@ -256,12 +263,14 @@ calculated from a $t$ distribution with $n - 2$ degrees of freedom
 
 ## Hypothesis test: Test statistic
 
+
 ```{r}
 #| echo: false
 tidy(df_fit) |>
   kable(digits = 2) |>
   row_spec(2, background = "#D9E3E4")
 ```
+
 
 $$
 T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.78
@@ -273,6 +282,7 @@ Select the best interpretation of the test statistic on Ed Discussion. \
 :::
 
 ## Hypothesis test: p-value
+
 
 ```{r}
 #| echo: false
@@ -286,7 +296,9 @@ tidy(df_fit) |>
 normTail(L = -8.78, U = 8.78, df = nrow(duke_forest) - 2, xlim = c(-9,9), col = "#D9E3E4")
 ```
 
+
 ## Hypothesis test: p-value 
+
 
 ```{r}
 #| echo: false
@@ -295,11 +307,14 @@ tidy(df_fit) |>
   row_spec(2, background = "#D9E3E4")
 ```
 
+
 **A more exact p-value**
+
 
 ```{r}
 2 * pt(q = 18.17, df = 96, lower.tail = FALSE)
 ```
+
 
 ::: question
 Select the meaning of the p-value on Ed Discussion.
@@ -322,12 +337,14 @@ These are general guidelines. The strength of evidence depends on the context of
 
 ## Hypothesis test: Conclusion, in context
 
+
 ```{r}
 #| echo: false
 tidy(df_fit) |>
   kable(digits = 2) |>
   row_spec(2, background = "#D9E3E4")
 ```
+
 
 -   The data provide convincing evidence that the population slope $\beta_1$ is different from 0.
 -   The data provide convincing evidence of a linear relationship between area and price of houses in Duke Forest.
@@ -351,30 +368,37 @@ where $t^*$ is calculated from a $t$ distribution with $n-2$ degrees of freedom
 ::: columns
 ::: {.column width="60%"}
 ::: {.fragment fragment-index="1"}
+
 ```{r}
 #| echo: true
 
 # confidence level: 95%
 qt(0.975, df = nrow(duke_forest) - 2)
 ```
+
 :::
 
 ::: {.fragment fragment-index="2"}
+
 ```{r}
 # confidence level: 90%
 qt(0.95, df = nrow(duke_forest) - 2)
 ```
+
 :::
 
 ::: {.fragment fragment-index="3"}
+
 ```{r}
 # confidence level: 99%
 qt(0.995, df = nrow(duke_forest) - 2)
 ```
+
 :::
 :::
 
 ::: {.column width="40%"}
+
 ```{r}
 #| out.width: "100%"
 #| echo: false
@@ -382,10 +406,12 @@ qt(0.995, df = nrow(duke_forest) - 2)
 normTail(M = c(-1.984984, 1.984984), df = nrow(duke_forest) - 2, col = "#D9E3E4")
 text(x = 0, y = 0.04, labels = "95%", cex = 2, col = "#5B888C")
 ```
+
 :::
 :::
 
 ## 95% CI for the slope: Calculation
+
 
 ```{r}
 #| echo: false
@@ -393,6 +419,7 @@ tidy(df_fit) |>
   kable(digits = 2) |>
   row_spec(2, background = "#D9E3E4")
 ```
+
 
 $$\hat{\beta}_1 = 159.48 \hspace{15mm} t^* = 1.98 \hspace{15mm} SE_{\hat{\beta}_1} = 18.17$$
 
@@ -404,12 +431,14 @@ $$
 
 ## 95% CI for the slope: Computation
 
+
 ```{r}
 #| echo: true
 
 tidy(df_fit, conf.int = TRUE, conf.level = 0.95) |> 
   kable(digits = 2)
 ```
+
 
 # Intervals for predictions
 
@@ -418,6 +447,7 @@ tidy(df_fit, conf.int = TRUE, conf.level = 0.95) |>
 -   Suppose we want to answer the question *"What is the predicted sale price of a Duke Forest house that is 2,800 square feet?"*
 -   We said reporting a single estimate for the slope is not wise, and we should report a plausible range instead
 -   Similarly, reporting a single prediction for a new value is not wise, and we should report a plausible range instead
+
 
 ```{r}
 #| fig.width: 10
@@ -459,6 +489,7 @@ ggplot(duke_forest, aes(x = area, y = price)) +
     )
 ```
 
+
 ## Two types of predictions
 
 1.  Prediction for the mean: "What is the average predicted sale price of Duke Forest houses that are 2,800 square feet?"
@@ -497,6 +528,7 @@ Which would you expect to be more variable? The average prediction or the predic
 
 The 95% **confidence interval** for the *mean* outcome:
 
+
 ```{r}
 #| echo: true
 new_house <- tibble(area = 2800)
@@ -510,6 +542,7 @@ predict(df_fit, new_data = new_house, type = "conf_int", level = 0.95) |>
 new_house_ci <- predict(df_fit, new_data = new_house, type = "conf_int", level = 0.95)
 ```
 
+
 . . .
 
 We are 95% confident that mean sale price of Duke Forest houses that are 2,800 square feet is between `r dollar(new_house_ci$.pred_lower)` and `r dollar(new_house_ci$.pred_upper)`.
@@ -517,6 +550,7 @@ We are 95% confident that mean sale price of Duke Forest houses that are 2,800 s
 ## Prediction interval
 
 The 95% **prediction interval** for an *individual* outcome:
+
 
 ```{r}
 #| echo: true
@@ -529,11 +563,13 @@ predict(df_fit, new_data = new_house, type = "pred_int", level = 0.95) |>
 new_house_pi <- predict(df_fit, new_data = new_house, type = "pred_int", level = 0.95)
 ```
 
+
 . . .
 
 We are 95% confident that predicted sale price of a Duke Forest house that is 2,800 square feet is between `r dollar(new_house_pi$.pred_lower)` and `r dollar(new_house_pi$.pred_upper)`.
 
 ## Comparing intervals
+
 
 ```{r}
 #| out.width: "100%"
@@ -575,6 +611,7 @@ ggplot(duke_forest, aes(x = area, y = price)) +
   )
 ```
 
+
 ## Extrapolation
 
 Using the model to predict for values outside the range of the original data is **extrapolation**.
@@ -602,3 +639,4 @@ Calculate the prediction interval for the sale price of a "tiny house" in Duke F
 ::: question
 Why do we want to avoid extrapolation?
 :::
+

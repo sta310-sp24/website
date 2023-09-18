@@ -1771,11 +1771,18 @@
     "text": "Course policy reminders\n\nRegrade requests\n\nOpened 1 day after assignment is returned and due within 1 week\nOnly submit regrade if there is an error in the grading not to dispute points\nProf. Tackett or Sam the Head TA will regrade the entire exercise being disputed, which could result in a lower grade\n\n\n\n\n\n\n\nTip\n\n\nSee the posted solutions and ask during office hours before submitting a regrade request"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#statistician-of-the-day",
-    "href": "slides/06-slr-math-models.html#statistician-of-the-day",
+    "objectID": "slides/06-slr-math-models.html#statistician-of-the-day-regina-nuzzo",
+    "href": "slides/06-slr-math-models.html#statistician-of-the-day-regina-nuzzo",
     "title": "SLR: Mathematical models for inference",
-    "section": "Statistician of the day",
-    "text": "Statistician of the day"
+    "section": "Statistician of the day: Regina Nuzzo",
+    "text": "Statistician of the day: Regina Nuzzo\n\n\n\n\n\n\n\n\nDr. Nuzzo received her PhD in Statistics from Stanford University and is now Professor of Science, Technology, & Mathematics at Gallaudet University. Dr. Nuzzo teaches statistics using American Sign Language.\nHer work has appeared in Nature, Los Angeles Times, New York Times, Reader's Digest, New Scientist, and Scientific American. Primarily, she works to help lay-audiences understand science and statistics in particular. She earned the American Statistical Association's 2014 Excellence in Statistical Reporting Award for her article on p-values in Nature. Her work led to the ASA's statement on p-values.\nSource: hardin47.github.io/CURV/scholars/nuzzo"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#regina-nuzzo",
+    "href": "slides/06-slr-math-models.html#regina-nuzzo",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Regina Nuzzo",
+    "text": "Regina Nuzzo\nFrom \"Tips for Communicating Statistical Significance.\"\n“That we use p-values to alert us to surprising data results, not to give a final answer on anything. (Or at least that's what we should be doing). And that results can get flagged as \"statistically surprising\" with a small p-value for a number of reasons”\n\nThere was a fluke.\nSomething was violated.\nThere was a real but tiny relationship.\nThere was a relationship that is worth more study.\n\nOr any combination of the above."
   },
   {
     "objectID": "slides/06-slr-math-models.html#topics",
@@ -1817,21 +1824,21 @@
     "href": "slides/06-slr-math-models.html#mathematical-representation-visualized",
     "title": "SLR: Mathematical models for inference",
     "section": "Mathematical representation, visualized",
-    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n\nSource: Introduction to the Practice of Statistics (5th ed)\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
+    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n\nImage source: Introduction to the Practice of Statistics (5th ed)\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
   },
   {
     "objectID": "slides/06-slr-math-models.html#regression-standard-error",
     "href": "slides/06-slr-math-models.html#regression-standard-error",
     "title": "SLR: Mathematical models for inference",
     "section": "Regression standard error",
-    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\n\n\nWhy divide by \\(n - 2\\)?\nWhy do we care about the value of the regression standard error?"
+    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\nWhy divide by \\(n - 2\\)?\n\n\nWhy do we care about the value of the regression standard error?"
   },
   {
     "objectID": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
     "href": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
     "title": "SLR: Mathematical models for inference",
     "section": "Standard error of \\(\\hat{\\beta}_1\\)",
-    "text": "Standard error of \\(\\hat{\\beta}_1\\)\nThe standard error of \\(\\hat{\\beta}_1\\), \\(SE_{\\hat{\\beta}_1}\\), quantifies the sampling variability in the estimated slopes\n\\[\nSE_{\\hat{\\beta}_1} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{(n-1)s_X^2}}\n\\]\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
+    "text": "Standard error of \\(\\hat{\\beta}_1\\)\nThe standard error of \\(\\hat{\\beta}_1\\) quantifies the sampling variability in the estimated slopes\n\\[\nSE_{\\hat{\\beta}_1} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{(n-1)s_X^2}}\n\\]\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
   },
   {
     "objectID": "slides/06-slr-math-models.html#hypothesis-test-for-the-slope",
@@ -1845,7 +1852,7 @@
     "href": "slides/06-slr-math-models.html#hypothesis-test-test-statistic",
     "title": "SLR: Mathematical models for inference",
     "section": "Hypothesis test: Test statistic",
-    "text": "Hypothesis test: Test statistic\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\nT = \\frac{\\hat{\\beta}_1 - 0}{SE_{\\hat{\\beta}_1}} = \\frac{159.48 - 0}{18.17} = 8.78\n\\]\n\nExplain what the test statistic means in the context of the data."
+    "text": "Hypothesis test: Test statistic\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\nT = \\frac{\\hat{\\beta}_1 - 0}{SE_{\\hat{\\beta}_1}} = \\frac{159.48 - 0}{18.17} = 8.78\n\\]\n\nSelect the best interpretation of the test statistic on Ed Discussion.\n[10:05am lecture] [1:25pm lecture]"
   },
   {
     "objectID": "slides/06-slr-math-models.html#hypothesis-test-p-value",
@@ -1859,7 +1866,7 @@
     "href": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
     "title": "SLR: Mathematical models for inference",
     "section": "Hypothesis test: p-value",
-    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\nA more exact p-value\n\n2 * pt(q = 18.17, df = 96, lower.tail = FALSE)\n\n[1] 7.83237e-33\n\n\n\nExplain what the p-value means in the context of the data."
+    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\nA more exact p-value\n\n2 * pt(q = 18.17, df = 96, lower.tail = FALSE)\n\n[1] 7.83237e-33\n\n\n\nSelect the meaning of the p-value on Ed Discussion.\n[10:05am lecture][1:25pm lecture]"
   },
   {
     "objectID": "slides/06-slr-math-models.html#understanding-the-p-value",

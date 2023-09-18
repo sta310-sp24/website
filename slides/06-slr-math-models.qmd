@@ -298,7 +298,7 @@ tidy(df_fit) |>
 **A more exact p-value**
 
 ```{r}
-2 * pt(q = 18.17, df = 96, lower.tail = FALSE)
+2 * pt(q = 8.78, df = 96, lower.tail = FALSE)
 ```
 
 ::: question

@@ -1866,7 +1866,7 @@
     "href": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
     "title": "SLR: Mathematical models for inference",
     "section": "Hypothesis test: p-value",
-    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\nA more exact p-value\n\n2 * pt(q = 18.17, df = 96, lower.tail = FALSE)\n\n[1] 7.83237e-33\n\n\n\nSelect the meaning of the p-value on Ed Discussion.\n[10:05am lecture][1:25pm lecture]"
+    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\nA more exact p-value\n\n2 * pt(q = 8.78, df = 96, lower.tail = FALSE)\n\n[1] 6.19602e-14\n\n\n\nSelect the meaning of the p-value on Ed Discussion.\n[10:05am lecture][1:25pm lecture]"
   },
   {
     "objectID": "slides/06-slr-math-models.html#understanding-the-p-value",

@@ -868,529 +868,60 @@
     "text": "Lab 01: Park access\n\nToday’s lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.\nThere are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.\nThere are points for having a neatly formatted document and implementing a reproducible workflow. See the Workflow & Formatting section in the Lab 01 instructions.\n\n🔗 sta210-fa23.netlify.app/labs/lab-01.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
-    "objectID": "slides/lab-02.html#reminders",
-    "href": "slides/lab-02.html#reminders",
-    "title": "Lab 02",
+    "objectID": "slides/lab-03.html#reminders",
+    "href": "slides/lab-03.html#reminders",
+    "title": "Lab 03",
     "section": "Reminders",
-    "text": "Reminders\n\n\nSelect the pages corresponding to each exercise when you when you submit the assignment on Gradescope.\n\nClick here for written and video instructions on submitting an assignment and marking pages on Gradescope.\n\nIn your write up:\n\nWrite all narrative in complete sentences.\nInclude an informative title and axis labels on graphs.\nWrite responses in the context of the data.\nDescribe distribution using shape, center, spread, and potential outliers. Describe relationships between variables using strength, direction, and shape."
+    "text": "Reminders\nMake sure to do the following as you complete the assignment:\n\nWrite all narrative in complete sentences.\nUse informative axis titles and labels on all graphs.\nImplement version control in your reproducible workflow.\n\nThroughout the assignment periodically render your Quarto document to produce the updated PDF, commit the changes in the Git pane, and push the updated files to GitHub.\nBenchmark: Push changes to GitHub at least three times as you work on the assignment."
   },
   {
-    "objectID": "slides/lab-02.html#axis-labels-and-titles",
-    "href": "slides/lab-02.html#axis-labels-and-titles",
-    "title": "Lab 02",
-    "section": "Axis labels and titles",
-    "text": "Axis labels and titles\n\nBelow is a graph of association between flipper length in millimeters and body mass in grams of three species of penguins in Palmer Station, Antarctica. What are informative title and axis labels for this graph?"
-  },
-  {
-    "objectID": "slides/lab-02.html#code-style",
-    "href": "slides/lab-02.html#code-style",
-    "title": "Lab 02",
-    "section": "Code style",
-    "text": "Code style\nWhich code chunk would you rather read?\n\n# code chunk 1\npenguins|&gt;filter(!is.na(flipper_length_mm))|&gt;group_by(species)|&gt;summarise(min=min(flipper_length_mm),mean=mean(flipper_length_mm),sd=sd(flipper_length_mm),max=max(flipper_length_mm),n=n())\n\n\n\n\n# code chunk 2\npenguins |&gt; \n  filter(!is.na(flipper_length_mm)) |&gt; \n  group_by(species) |&gt; \n  summarise(min = min(flipper_length_mm), \n            mean = mean(flipper_length_mm), \n            max = max(flipper_length_mm),\n            n = n())"
-  },
-  {
-    "objectID": "slides/lab-02.html#code-style-contd",
-    "href": "slides/lab-02.html#code-style-contd",
-    "title": "Lab 02",
-    "section": "Code style cont’d",
-    "text": "Code style cont’d\nMake code easier to read and debug by\n\nPutting each element on a different line (start a new line after + and |&gt;)\nPutting spaces before and after operators (+, -, *, =, |&gt; )\nIn general, avoiding long lines of code, i.e. lines longer than 120 characters.\n\nSee the Tidyverse Style Guide for more tips on code styling."
-  },
-  {
-    "objectID": "slides/lab-02.html#todays-lab",
-    "href": "slides/lab-02.html#todays-lab",
-    "title": "Lab 02",
+    "objectID": "slides/lab-03.html#todays-lab",
+    "href": "slides/lab-03.html#todays-lab",
+    "title": "Lab 03",
     "section": "Today’s lab",
-    "text": "Today’s lab\n\nRemember to use a reproducible workflow with regular commits (and informative commit messages).\nPush all updated files after each commit! The Git pane should be clear after each Render -&gt; Commit -&gt; Push.\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "text": "Today’s lab\n\nFocused on mathematical inference for simple linear regression and checking model conditions.\n\nWe will talk about model conditions in the September 20 lecture.\n\nRemember to mark all pages in your Gradescope submission. The first page should be marked for the “Workflow & formatting” and “Reproducible report” sections.\nUse lectures and application exercises as reference as you complete the lab.\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
-    "objectID": "computing-access.html",
-    "href": "computing-access.html",
-    "title": "Computing access",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "STA 210: Regression Analysis",
     "section": "",
-    "text": "To access computing resources for the introductory data science courses offered by the Duke University Department of Statistical Science, go to the Duke Container Manager website, cmgr.oit.duke.edu/containers.\nIf this is your first time accessing the containers, click on reserve STA210 on the Reservations available menu on the right. You only need to do this once, and when you do, you’ll see this container moved to the My reservations menu on the left.\nNext, click on STA210 under My reservations to access the RStudio instance you’ll use for the course."
+    "text": "Learn approaches for analyzing multivariate data sets, emphasizing analysis of variance, linear regression, and logistic regression. Learn techniques for checking the appropriateness of proposed models, such as residual analyses and case influence diagnostics, and techniques for selecting models. Gain experience dealing with the challenges that arise in practice through assignments that utilize real-world data. This class emphasizes data analysis over mathematical theory."
   },
   {
-    "objectID": "project-instructions.html",
-    "href": "project-instructions.html",
-    "title": "Final project",
+    "objectID": "index.html#teaching-assistants",
+    "href": "index.html#teaching-assistants",
+    "title": "STA 210: Regression Analysis",
+    "section": "Teaching assistants",
+    "text": "Teaching assistants\n\n\n\n\n\n\nClick here for schedule of office hours.\n\n\n\n\n\n\nName\nRole\n\n\n\n\n\nSam Rosen\nHead TA\nLab 01: Tue 10:05 - 11:20am\n\n\nBethany Astor\nTA\nLab 02: Tue 11:45am - 1pm\n\n\nJon Campbell\nTA\n\n\n\nDonald Cayton\nTA\nLab 02: Tue 11:45am - 1pm\n\n\nAllison Li\nTA\n\n\n\nMitchelle Mojekwu\nTA\nLab 04: Thu 11:45am - 1pm\n\n\nBen Thorpe\nTA\n\n\n\nLinxuan Wang\nTA\nLab 03: Thu 10:05 - 11:20am\n\n\nXiaojun Zheng\nTA\nLab 04: Thu 11:45am - 1pm"
+  },
+  {
+    "objectID": "computing-r-resources.html",
+    "href": "computing-r-resources.html",
+    "title": "Resources for learning R",
     "section": "",
-    "text": "Instructions will be posted when the project is assigned.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n, visualizations and summary statistics to describe the following: –&gt;"
+    "text": "R for Data Science by Hadley Wickham & Garrett Grolemund\nTidy Modeling with R by Max Kuhn & Julia Silge"
   },
   {
-    "objectID": "ae/ae-02-bikeshare.html",
-    "href": "ae/ae-02-bikeshare.html",
-    "title": "AE 02: Bike rentals in Washington, DC",
+    "objectID": "computing-r-resources.html#books-free-online",
+    "href": "computing-r-resources.html#books-free-online",
+    "title": "Resources for learning R",
     "section": "",
-    "text": "Important\n\n\n\nFor this AE, you will discuss the questions in groups and submit answers on Ed Discussion. This AE does not count towards the Application Exercise grade.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(patchwork)"
+    "text": "R for Data Science by Hadley Wickham & Garrett Grolemund\nTidy Modeling with R by Max Kuhn & Julia Silge"
   },
   {
-    "objectID": "ae/ae-02-bikeshare.html#data",
-    "href": "ae/ae-02-bikeshare.html#data",
-    "title": "AE 02: Bike rentals in Washington, DC",
-    "section": "Data",
-    "text": "Data\nOur dataset contains daily rentals from the Capital Bikeshare in Washington, DC in 2011 and 2012. It was obtained from the dcbikeshare data set in the dsbox R package.\nWe will focus on the following variables in the analysis:\n\ncount: total bike rentals\ntemp_orig: Temperature in degrees Celsius\nseason: 1 - winter, 2 - spring, 3 - summer, 4 - fall\n\nClick here for the full list of variables and definitions.\n\nbikeshare &lt;- read_csv(\"data/dcbikeshare.csv\")"
+    "objectID": "computing-r-resources.html#rstudio-primers",
+    "href": "computing-r-resources.html#rstudio-primers",
+    "title": "Resources for learning R",
+    "section": "RStudio Primers",
+    "text": "RStudio Primers\nTutorials most relevant to this course:\n\nThe Basics\nWork with Data\nVisualize Data\nTidy your Data\n\nClick here for full list of tutorials."
   },
   {
-    "objectID": "ae/ae-02-bikeshare.html#daily-counts-and-temperature",
-    "href": "ae/ae-02-bikeshare.html#daily-counts-and-temperature",
-    "title": "AE 02: Bike rentals in Washington, DC",
-    "section": "Daily counts and temperature",
-    "text": "Daily counts and temperature\n\nExercise 1\nVisualize the distribution of daily bike rentals and temperature as well as the relationship between these two variables.\n\np1 &lt;- ggplot(bikeshare, aes(x = count)) +\n  geom_histogram(binwidth = 250) + \n  labs(x = \"Daily bike rentals\")\n\np2 &lt;- ggplot(bikeshare, aes(x = temp_orig)) +\n  geom_histogram() + \n  labs(x = \"Temperature (Celsius)\")\n\np3 &lt;- ggplot(bikeshare, aes(y = count, x = temp_orig)) +\n  geom_point() + \n  labs(x = \"Temperature (Celsius)\", \n       y = \"Daily bike rentals\")\n\n(p1 | p2) / p3\n\n\n\n\n\n\nExercise 2\nDescribe the relationship between daily bike rentals and temperature. Comment on how we expect the number of bike rentals to change as the temperature increases.\n\n\nExercise 3\nSuppose you want to fit a model so you can use the temperature to predict the number of bike rentals. Would a model of the form\n\\[\\text{count} = \\beta_0 + \\beta_1 ~ \\text{temp\\_orig} + \\epsilon\\]\nbe an appropriate fit for the data? Why or why not?\nPut your group’s vote on Ed Discussion and briefly describe your reasoning in the comments.\n\nSection 001 (10:05am): edstem.org/us/courses/44523/discussion/3361086\nSection 002 (1:25pm): edstem.org/us/courses/44523/discussion/3361091"
-  },
-  {
-    "objectID": "ae/ae-03-slr.html",
-    "href": "ae/ae-03-slr.html",
-    "title": "AE 03: Bike rentals in Washington, DC",
-    "section": "",
-    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-03 repo to get started. If you do not see an ae-03 repo, click here to create one.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Saturday, September 9 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(patchwork)"
-  },
-  {
-    "objectID": "ae/ae-03-slr.html#data",
-    "href": "ae/ae-03-slr.html#data",
-    "title": "AE 03: Bike rentals in Washington, DC",
-    "section": "Data",
-    "text": "Data\nOur data set contains daily rentals from the Capital Bikeshare in Washington, DC in 2011 and 2012. It was obtained from the dcbikeshare data set in the dsbox R package.\nWe will focus on the following variables in the analysis:\n\ncount: total bike rentals\ntemp_orig: Temperature in degrees Celsius\nseason: 1 - winter, 2 - spring, 3 - summer, 4 - fall\n\nClick here for the full list of variables and definitions.\n\nbikeshare &lt;- read_csv(\"data/dcbikeshare.csv\")"
-  },
-  {
-    "objectID": "ae/ae-03-slr.html#exercises",
-    "href": "ae/ae-03-slr.html#exercises",
-    "title": "AE 03: Bike rentals in Washington, DC",
-    "section": "Exercises",
-    "text": "Exercises\n\nExercise 1\nBelow are visualizations of the distributions of daily bike rentals and temperature as well as the relationship between these two variables.\n\np1 &lt;- ggplot(bikeshare, aes(x = count)) +\n  geom_histogram(binwidth = 250) + \n  labs(x = \"Daily bike rentals\")\n\np2 &lt;- ggplot(bikeshare, aes(x = temp_orig)) +\n  geom_histogram() + \n  labs(x = \"Temperature (Celsius)\")\n\np3 &lt;- ggplot(bikeshare, aes(y = count, x = temp_orig)) +\n  geom_point() + \n  labs(x = \"Temperature (Celsius)\", \n       y = \"Daily bike rentals\")\n\n(p1 | p2) / p3\n\n\n\n\n\n\n\n\n\n\nThere appears to be one day with a very small number of bike rentals. What was the day? Why were the number of bike rentals so low on that day? Hint: You can Google the date to figure out what was going on that day.\n\n\n\n[Add your answer here]\n\n\nExercise 2\n\n\n\n\n\n\nIn the raw data, seasons are coded as 1, 2, 3, 4 as numerical values, corresponding to winter, spring, summer, and fall respectively. Recode the season variable to make it a categorical variable (a factor) with levels corresponding to season names, making sure that the levels appear in a reasonable order in the variable (i.e., not alphabetical).\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 3\n\n\n\n\n\n\nWe want to evaluate whether the relationship between temperature and daily bike rentals is the same for each season. To answer this question, first create a scatter plot of daily bike rentals vs. temperature faceted by season.\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 4\n\n\n\n\n\n\n\nWhich season appears to have the strongest relationship between temperature and daily bike rentals? Why do you think the relationship is strongest in this season?\nWhich season appears to have the weakest relationship between temperature and daily bike rentals? Why do you think the relationship is weakest in this season?\n\n\n\n\n[Add your answer here]\n\n\nExercise 5\n\n\n\n\n\n\nFilter your data for the season with the strongest apparent relationship between temperature and daily bike rentals.\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 6\n\n\n\n\n\n\nUsing the subset of the data from Exercise 5, fit a linear model for predicting daily bike rentals from temperature for this season.\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 7\n\n\n\n\n\n\nUse the output to write out the estimated regression equation.\n\n\n\n[Add your answer here]\n\n\nExercise 8\n\n\n\n\n\n\nInterpret the slope in the context of the data.\n\n\n\n[Add your answer here]\n\n\nExercise 9\n\n\n\n\n\n\nInterpret the intercept in the context of the data.\n\n\n\n[Add your answer here]\n\n\nExercise 10\n\n\n\n\n\n\nSuppose you work for a bike share company in Durham, NC, and they want to predict daily bike rentals in 2024. What is one reason you might recommend they use your analysis for this task? What is one reason you would recommend they not use your analysis for this task?\n\n\n\n[Add your answer here]\n\n\n\n\n\n\n\nImportant\n\n\n\nTo submit the AE:\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-03- repo on GitHub. (You do not submit AEs on Gradescope)."
-  },
-  {
-    "objectID": "ae/ae-04-bootstrap.html",
-    "href": "ae/ae-04-bootstrap.html",
-    "title": "AE 04: Bootstrap confidence intervals",
-    "section": "",
-    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-04 repo to get started.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Thursday, September 14 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(openintro)\nlibrary(knitr)"
-  },
-  {
-    "objectID": "ae/ae-04-bootstrap.html#data",
-    "href": "ae/ae-04-bootstrap.html#data",
-    "title": "AE 04: Bootstrap confidence intervals",
-    "section": "Data",
-    "text": "Data\nThe data are on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020. It was originally scraped from Zillow, and can be found in the duke_forest data set in the openintro R package.\n\nglimpse(duke_forest)\n\nRows: 98\nColumns: 13\n$ address    &lt;chr&gt; \"1 Learned Pl, Durham, NC 27705\", \"1616 Pinecrest Rd, Durha…\n$ price      &lt;dbl&gt; 1520000, 1030000, 420000, 680000, 428500, 456000, 1270000, …\n$ bed        &lt;dbl&gt; 3, 5, 2, 4, 4, 3, 5, 4, 4, 3, 4, 4, 3, 5, 4, 5, 3, 4, 4, 3,…\n$ bath       &lt;dbl&gt; 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 3.0, 5.0, 2.0, 3.0, 3.0,…\n$ area       &lt;dbl&gt; 6040, 4475, 1745, 2091, 1772, 1950, 3909, 2841, 3924, 2173,…\n$ type       &lt;chr&gt; \"Single Family\", \"Single Family\", \"Single Family\", \"Single …\n$ year_built &lt;dbl&gt; 1972, 1969, 1959, 1961, 2020, 2014, 1968, 1973, 1972, 1964,…\n$ heating    &lt;chr&gt; \"Other, Gas\", \"Forced air, Gas\", \"Forced air, Gas\", \"Heat p…\n$ cooling    &lt;fct&gt; central, central, central, central, central, central, centr…\n$ parking    &lt;chr&gt; \"0 spaces\", \"Carport, Covered\", \"Garage - Attached, Covered…\n$ lot        &lt;dbl&gt; 0.97, 1.38, 0.51, 0.84, 0.16, 0.45, 0.94, 0.79, 0.53, 0.73,…\n$ hoa        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ url        &lt;chr&gt; \"https://www.zillow.com/homedetails/1-Learned-Pl-Durham-NC-…"
-  },
-  {
-    "objectID": "ae/ae-04-bootstrap.html#exploratory-data-analysis",
-    "href": "ae/ae-04-bootstrap.html#exploratory-data-analysis",
-    "title": "AE 04: Bootstrap confidence intervals",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(alpha = 0.7) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    title = \"Price and area of houses in Duke Forest\"\n  ) +\n  scale_y_continuous(labels = label_dollar())"
-  },
-  {
-    "objectID": "ae/ae-04-bootstrap.html#model",
-    "href": "ae/ae-04-bootstrap.html#model",
-    "title": "AE 04: Bootstrap confidence intervals",
-    "section": "Model",
-    "text": "Model\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
-  },
-  {
-    "objectID": "ae/ae-04-bootstrap.html#bootstrap-confidence-interval",
-    "href": "ae/ae-04-bootstrap.html#bootstrap-confidence-interval",
-    "title": "AE 04: Bootstrap confidence intervals",
-    "section": "Bootstrap confidence interval",
-    "text": "Bootstrap confidence interval\n\n1. Calculate the observed fit (slope)\n\nobserved_fit &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  fit()\n\nobserved_fit\n\n# A tibble: 2 × 2\n  term      estimate\n  &lt;chr&gt;        &lt;dbl&gt;\n1 intercept  116652.\n2 area          159.\n\n\n\n\n2. Take n bootstrap samples and fit models to each one.\nFill in the code, then set eval: true .\n\nn = 100\nset.seed(091222)\n\nboot_fits &lt;- ______ |&gt;\n  specify(______) |&gt;\n  generate(reps = ____, type = \"bootstrap\") |&gt;\n  fit()\n\nboot_fits\n\n\nWhy do we set a seed before taking the bootstrap samples?\nMake a histogram of the bootstrap samples to visualize the bootstrap distribution.\n\n# Code for histogram\n\n\n\n\n3. Compute the 95% confidence interval as the middle 95% of the bootstrap distribution\nFill in the code, then set eval: true .\n\nget_confidence_interval(\n  boot_fits, \n  point_estimate = _____, \n  level = ____,\n  type = \"percentile\"\n)"
-  },
-  {
-    "objectID": "ae/ae-04-bootstrap.html#changing-confidence-level",
-    "href": "ae/ae-04-bootstrap.html#changing-confidence-level",
-    "title": "AE 04: Bootstrap confidence intervals",
-    "section": "Changing confidence level",
-    "text": "Changing confidence level\n\nModify the code from Step 3 to create a 90% confidence interval.\n\n# Paste code for 90% confidence interval\n\n\n\nModify the code from Step 3 to create a 99% confidence interval.\n\n# Paste code for 90% confidence interval\n\n\nWhich confidence level produces the most accurate confidence interval (90%, 95%, 99%)? Explain\nWhich confidence level produces the most precise confidence interval (90%, 95%, 99%)? Explain\nIf we want to be very certain that we capture the population parameter, should we use a wider or a narrower interval? What drawbacks are associated with using a wider interval?\n\n\n\n\n\n\n\nImportant\n\n\n\nTo submit the AE:\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-04 repo on GitHub. (You do not submit AEs on Gradescope)."
-  },
-  {
-    "objectID": "prepare/week-15.html",
-    "href": "prepare/week-15.html",
-    "title": "Week 15",
-    "section": "",
-    "text": "Important\n\n\n\n\nExam 02: Mon, Dec 05 (evening) - Thu, Dec 08 at 12pm (noon)\nTeam Feedback #2 due Tue, Dec 06, 11:59pm\nNo class Wed, Dec 07\n\nOnline exam office hours (Zoom link in Sakai)\n\nStatistics experience due Fri, Dec 09, 11:59pm\nProject written report due Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Exam 02 Review\nDec 05\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 16: Exam 02 Review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Exam 02\nMon, Dec 05 evening - Thu, Dec 08, 12pm (noon)\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-02.html",
-    "href": "prepare/week-02.html",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#assigned-reading",
-    "href": "prepare/week-02.html#assigned-reading",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#additional-resources-optional",
-    "href": "prepare/week-02.html#additional-resources-optional",
-    "title": "September 06 lecture",
-    "section": "Additional resources (optional)",
-    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
-  },
-  {
-    "objectID": "prepare/week-12.html",
-    "href": "prepare/week-12.html",
-    "title": "Week 12",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 14: due Thu, Nov 17, 11:59pm\nHW 04: due Mon, Nov 21, 11:59pm\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chp 26: Inference for logistic regression\nNov 16\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 Logistic regression: Model comparison\nNov 14\n\n\n💻 Logistic Regression: Inference + conditions\nNov 16\n\n\n💻 Lab: Project analysis + write up\nNov 17 + 18\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 14: Logistic regression - Model Comparison\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 HW 04\ndue Mon, Nov 21, 11:59pm\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-07.html",
-    "href": "prepare/week-07.html",
-    "title": "Week 07",
-    "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nProject topic ideas:\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations\nOct 12\n\n\n\n\n\nPractice\nNo Application Exercises this week.\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nProject topic ideas\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\n\n\n📝 HW 02\nWed, Oct 19, 11:59pm"
-  },
-  {
-    "objectID": "prepare/sep-13.html",
-    "href": "prepare/sep-13.html",
-    "title": "September 13 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/sep-13.html#assigned-reading",
-    "href": "prepare/sep-13.html#assigned-reading",
-    "title": "September 13 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/week-05.html",
-    "href": "prepare/week-05.html",
-    "title": "Week 05",
-    "section": "",
-    "text": "Important\n\n\n\nAnnouncements:\n\nNo labs this week - work on Exam 01\nNo TA office hours Wed - Fri\n\nProf. Tackett office hours Thu 10 - 11am\n\nNo Ed Discussion Wed - Fri\n\nDue dates:\n\nAE 06: due Thu, Sep 29, 11:59pm\nAE 07: due Sat, Oct 01, 11:59pm\nExam 01: Wed, Sep 28 - Fri, Sep 30 at 11:59pm\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 MLR: Types of predictors\nSep 26\n\n\n💻 Exam 01 review\nSep 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 06: Prediction for MLR\n\n\n📋 AE 07: Exam 01 review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Exam 01\nFri, Sep 30, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-10.html",
-    "href": "prepare/week-10.html",
-    "title": "Week 10",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 12 due Thu, Nov 03, 11:59pm\nAE 13 due Sat, Nov 05, 11:59pm\nProject Proposal due Fri, Nov 04: 11:59pm\nHW 03 due Mon, Nov 07, 11:59pm\nLab 06:\n\ndue Mon, Nov 07, 11:59pm (Thu labs)\ndue Tue, Nov 08, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chap 9: Logistic Regression\nNov 02\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 MLR: Conditions\nOct 31\n\n\n💻 Logistic Regression: Introduction\nNov 02\n\n\n💻 Lab 06\nNov 03 - 04\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 12: Multiple Linear Regression Review\n\n\n📋 AE 13: Logistic Regression Intro\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project Proposal\ndue Fri, Nov 04, 11:59pm\n\n\n📝 HW 03\ndue Mon, Nov 07, 11:59pm\n\n\n📝 Lab 06\n\ndue Mon, Nov 07, 11:59pm (Thu labs)\ndue Tue, Nov 08, 11:59pm (Fri labs)\n\n\n\n📝 Statistics Experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-09.html",
-    "href": "prepare/week-09.html",
-    "title": "Week 09",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 10 due Thu, Oct 27, 11:59pm\nProject Proposal: due Fri, Nov 04: 11:59pm\n\nHW 03 moved to next week\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 10: Resampling for evaluating performance\nOct 24\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 MLR: Cross validation\nOct 24\n\n\n💻 MLR: Inference\nOct 26\n\n\n💻 MLR: Conditions\nOct 26\n\n\n💻 Lab: Project proposal\nOct 27 & 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 10: Cross validation\n\n\n📋 AE 11: MLR Inference + conditions\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project Proposal\ndue Fri, Nov 04, 11:59pm"
-  },
-  {
-    "objectID": "hw/hw-01.html",
-    "href": "hw/hw-01.html",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "",
-    "text": "In this assignment, you will use simple linear regression to examine the association between between the percent of adults with a bachelor’s degree and the median household income for counties in the United States."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-1-exploratory-data-analysis",
-    "href": "hw/hw-01.html#part-1-exploratory-data-analysis",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 1: Exploratory data analysis",
-    "text": "Part 1: Exploratory data analysis\n\nExercise 1\nCreate a histogram of the distribution of the predictor variable bachelorsand calculate appropriate summary statistics. Use the visualization and summary statistics to describe the distribution. Include an informative title and axis labels on the plot.\n\n\nExercise 2\nLet’s view the data in another way. Use the code below to make a map of the United States with the color of the counties filled in based on the percent of residents 25 years old and older who have a Bachelor’s degree. Fill in title and axis labels.\nThen use the plot answer the following:\n\nWhat are 2 observations you have from the map?\nWhat is a feature that is apparent in the map that wasn’t as easily apparent from the histogram in the previous exercise? What is a feature that is apparent in the histogram that is not as easily apparent from the map?\n\n\ncounty_map_data &lt;- left_join(county_data_sample, map_data_sample)\n\nggplot(data = map_data_all) +\n  geom_polygon(aes(x = long, y = lat, group = group),\n    fill = \"lightgray\", color = \"white\"\n    ) +\n  geom_polygon(data = county_map_data, aes(x = long, y = lat, group = group,\n    fill = bachelors)\n    ) +\n  labs(\n    x = \"Longitude\",\n    y = \"Latitude\",\n    fill = \"_____\",\n    title = \"_____\"\n  ) +\n  scale_fill_viridis_c(labels = label_percent(scale = 1)) +\n  coord_quickmap()\n\n\n\nExercise 3\nCreate a visualization of the relationship between bachelors and median_household_income and calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables.\n\n\n\n\n\n\nTip\n\n\n\nRecall the analysis objective stated at the beginning of the Exercises section.\n\n\n\nIf you haven’t yet done so, now is a good time to render your document and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-2-modeling",
-    "href": "hw/hw-01.html#part-2-modeling",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 2: Modeling",
-    "text": "Part 2: Modeling\n\nExercise 4\nWe will use a linear regression model to better quantify the relationship between bachelors and median_household_income.\nWrite the form of the statistical model we will use for this task using mathematical notation. Use variable names (bachelors and median_household_income) in the equation for your model1.\n\n\nExercise 5\n\nFit the regression line corresponding to the statistical model in the previous exercise. Neatly display the model output using 3 digits.\nWrite the equation of the fitted model using mathematical notation. Use variable names (bachelors and median_household_income) in the equation.\n\n\n\nExercise 6\n\nInterpret the slope. The interpretation should be written in a way that is meaningful in the context of the data.\nIs it useful to interpret the intercept for this data? If so, write the interpretation in the context of the data. Otherwise, briefly explain why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-3-inference-for-the-u.s.",
-    "href": "hw/hw-01.html#part-3-inference-for-the-u.s.",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 3: Inference for the U.S.",
-    "text": "Part 3: Inference for the U.S.\nWe want to use the data from these 600 randomly selected counties to draw conclusions about the relationship between the percent of adults age 25 and older with a bachelor’s degree and median household income for the over 3,000 counties in the United States.\n\nExercise 7\n\nWhat is the population of interest? What is the sample?\nIs it reasonable to treat the sample in this analysis as representative of the population? Briefly explain why or why not.\n\n\n\nExercise 8\nConduct a hypothesis test for the slope to assess whether there is sufficient evidence of a linear relationship between the percent of adults age 25 and older with a bachelor’s degree and the median household income in a county. Use a randomization (permutation) test. In your response:\n\nState the null and alternative hypotheses in words and mathematical notation\nShow all relevant code and output used to conduct the test. Use set.seed(2023) and 1000 iterations to construct the appropriate distribution.\nState the conclusion in the context of the data.\n\n\n\nExercise 9\nNext, construct a 95% confidence interval for the slope using bootstrapping with set.seed(2023) and 1000 iterations.\n\nShow all relevant code and output used to calculate the interval.\nInterpret the confidence interval in the context of the data.\nIs the confidence interval consistent with the results of the test from the previous exercise? Briefly explain why or why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#reproducibility",
-    "href": "hw/hw-01.html#reproducibility",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Reproducibility",
-    "text": "Reproducibility\n\nExercise 10\nYou are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.\n\nSource: Ostblom and Timbers (2022)\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nChoose one of the scenarios from the table and read the linked article discussing what went wrong. Then,\n\nBriefly describe what went wrong, i.e., what part of the process of was not reproducible and what error or impact that had.\nThen, describe how the researchers could make the process reproducible.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#submission",
-    "href": "hw/hw-01.html#submission",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Submission",
-    "text": "Submission\n\n\n\n\n\n\nWarning\n\n\n\nBefore you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.\nRemember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.\n\n\nTo submit your assignment:\n\nGo to http://www.gradescope.com and click Log in in the top right corner.\nClick School Credentials ➡️ Duke NetID and log in using your NetID credentials.\nClick on your STA 210 course.\nClick on the assignment, and you’ll be prompted to submit it.\nMark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).\nSelect the first page of your PDF submission to be associated with the “Workflow & formatting” section."
-  },
-  {
-    "objectID": "hw/hw-01.html#grading-50-points",
-    "href": "hw/hw-01.html#grading-50-points",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Grading (50 points)",
-    "text": "Grading (50 points)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n5\n\n\nEx 2\n5\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n4\n\n\nEx 6\n4\n\n\nEx 7\n3\n\n\nEx 8\n7\n\n\nEx 9\n7\n\n\nEx 10\n5\n\n\nWorkflow & formatting\n32"
-  },
-  {
-    "objectID": "hw/hw-01.html#footnotes",
-    "href": "hw/hw-01.html#footnotes",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-01.html",
-    "href": "labs/lab-01.html",
-    "title": "Lab 01: Park access",
-    "section": "",
-    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-01.html#learning-goals",
-    "href": "labs/lab-01.html#learning-goals",
-    "title": "Lab 01: Park access",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
-  },
-  {
-    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "title": "Lab 01: Park access",
-    "section": "Clone the repo & start new RStudio project",
-    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
-  },
-  {
-    "objectID": "labs/lab-01.html#r-and-r-studio",
-    "href": "labs/lab-01.html#r-and-r-studio",
-    "title": "Lab 01: Park access",
-    "section": "R and R Studio",
-    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
-  },
-  {
-    "objectID": "labs/lab-01.html#footnotes",
-    "href": "labs/lab-01.html#footnotes",
-    "title": "Lab 01: Park access",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-02.html",
-    "href": "labs/lab-02.html",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-02.html#learning-goals",
-    "href": "labs/lab-02.html#learning-goals",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
-  },
-  {
-    "objectID": "labs/lab-02.html#exercise-10",
-    "href": "labs/lab-02.html#exercise-10",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Exercise 10",
-    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
-  },
-  {
-    "objectID": "labs/lab-02.html#footnotes",
-    "href": "labs/lab-02.html#footnotes",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-03.html",
-    "href": "labs/lab-03.html",
-    "title": "Lab 03: Coffee grades",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-03.html#learning-goals",
-    "href": "labs/lab-03.html#learning-goals",
-    "title": "Lab 03: Coffee grades",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
-  },
-  {
-    "objectID": "labs/lab-03.html#packages",
-    "href": "labs/lab-03.html#packages",
-    "title": "Lab 03: Coffee grades",
-    "section": "Packages",
-    "text": "Packages\nThe following packages are used in the lab.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)"
-  },
-  {
-    "objectID": "labs/lab-03.html#the-data",
-    "href": "labs/lab-03.html#the-data",
-    "title": "Lab 03: Coffee grades",
-    "section": "The Data",
-    "text": "The Data\nThe dataset for this lab comes from the Coffee Quality Database and was obtained from the #TidyTuesday GitHub repo. It includes information about the origin, producer, measures of various characteristics, and the quality measure for over 1,000 coffees. The coffees can be reasonably be treated as a random sample.\nThis lab will focus on the following variables:\n\naroma: Aroma grade, 0 (worst aroma) - 10 (best aroma)\nflavor: Flavor grade, 0 (worst flavor) - 10 (best flavor)\n\nClick here for the definitions of all variables in the data set. Click here for more details about how these measures are obtained.\n\ncoffee &lt;- read_csv(\"data/coffee-grades.csv\")"
-  },
-  {
-    "objectID": "labs/lab-03.html#grading-50-pts",
-    "href": "labs/lab-03.html#grading-50-pts",
-    "title": "Lab 03: Coffee grades",
-    "section": "Grading (50 pts)",
-    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1 - 10\n45\n\n\nWorkflow & formatting\n31\n\n\nReproducible report\n22"
-  },
-  {
-    "objectID": "labs/lab-03.html#footnotes",
-    "href": "labs/lab-03.html#footnotes",
-    "title": "Lab 03: Coffee grades",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow. This includes implementing version control with at least at least 3 informative commit messages and having a neatly formatted PDF document that is easily readable with an updated name and date.↩︎\nThis means we will be able to render the .qmd file in your GitHub repo and exactly reproduce the .pdf file in the Github repo and on Gradescope.↩︎"
-  },
-  {
-    "objectID": "labs/lab-00.html",
-    "href": "labs/lab-00.html",
-    "title": "Lab 00: Getting started",
-    "section": "",
-    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
-  },
-  {
-    "objectID": "prepare/week-08.html",
-    "href": "prepare/week-08.html",
-    "title": "Week 08",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 09 due Sat, Oct 22, 11:59pm\nLab 05:\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25 11:59pm (Fri lab)\n\n\n\n\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 19\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations: Log-transformed predictor\nOct 17\n\n\n💻 Model comparison\nOct 19\n\n\n💻 Lab 05\nOct 20 - 21\n\n\n\n\n\nPractice\n📋 AE 09: Model comparison\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nLab 05\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25, 11:59pm (Fri lab)"
-  },
-  {
-    "objectID": "prepare/week-04.html",
-    "href": "prepare/week-04.html",
-    "title": "Week 04",
-    "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nAE 05: due Sat, Sep 24, 11:59pm\nHW 01: due Wed, Sep 21, 11:59pm\nLab 03:\n\ndue Mon, Sep 26, 11:59pm (Thu labs)\ndue Tue, Sep 27, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Sec 24.4: Mathematical model for testing the slope\n📖 IMS, Sec 24.5: Mathematical model, interval for the slope\n📖 IMS, Sec 24.6: Checking model conditions\n📖 IMS, Sec 24.7: Chapter review\nSep 19\n\n\n📖 IMS, Sec 8.2: Many predictors in a model\nSep 21\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 SLR: Mathematical models for inference\nSep 19\n\n\n💻 SLR: Model conditions\nSep 21\n\n\n💻 Multiple linear regression\nSep 21\n\n\n💻 Lab 03\nSep 22 & 23\n\n\n\n\n\nPractice\n\n\n\n\n\n\nAE 05: Multiple linear regression\n\n\n\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 HW 01\nWed, Sep 21, 11:59pm\n\n\n📝 Lab 03\nMon, Sep 26, 11:59pm (Thu labs)\nTue, Sep 27, 11:59pm (Fri labs)\n\n\n📝 Statistics experience\nFri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-11.html",
-    "href": "prepare/week-11.html",
-    "title": "Week 11",
-    "section": "",
-    "text": "Important\n\n\n\n\nLab 07\n\ndue Mon, Nov 14, 11:59pm (Thu labs)\ndue Tue, Nov 15, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chap 9: Logistic Regression\nNov 07 & Nov 09\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Logistic regression: Odds ratios\nNov 07\n\n\n💻 Logistic regression: Prediction + classification\nNov 09\n\n\n\n\n\nPractice\nNo AEs this week.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Lab 07\n\ndue Mon, Nov 14, 11:59pm (Thu labs)\ndue Tue, Nov 15, 11:59pm (Fri labs)\n\n\n\n📝 Statistics Experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/sep-11.html",
-    "href": "prepare/sep-11.html",
-    "title": "September 11 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/sep-11.html#assigned-reading",
-    "href": "prepare/sep-11.html#assigned-reading",
-    "title": "September 11 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/week-13.html",
-    "href": "prepare/week-13.html",
-    "title": "Week 13",
-    "section": "",
-    "text": "Important\n\n\n\n\nNo office hours Nov 21 - 25.\nNo class Nov 21 or Nov 23.\nNo labs Nov 24 - 25.\n\n🍁 Have a good Thanksgiving break! 🍁\n\n\n\nPrepare\nNo readings.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo application exercises.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-06.html",
-    "href": "prepare/week-06.html",
-    "title": "Week 06",
-    "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 05\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Feature engineering\nOct 03\n\n\n💻 Feature engineering: Model workflow\nOct 05\n\n\n💻 Lab 04\nOct 06 & 07\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 08: Feature engineering\n\n\n\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Lab 04\nThu, Oct 13, 11:59pm (Thu lab)\nFri, Oct 14, 11:59pm (Fri lab)"
-  },
-  {
-    "objectID": "prepare/week-16.html",
-    "href": "prepare/week-16.html",
-    "title": "Week 16",
-    "section": "",
-    "text": "Prepare\nNo reading assignments.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo AEs.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project: Video presentation + slides\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Organized GitHub repo\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Presentation comments\ndue Fri, Dec 16, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-01.html",
-    "href": "prepare/week-01.html",
-    "title": "Week 01",
-    "section": "",
-    "text": "Prepare\n\n\n\n\n\n\n📖 Syllabus\n\n\n📖 Course support\n\n\n📖 Introduction to Modern Statistics (IMS), Ch 7: Linear regression with a single predictor\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Welcome to STA 210!\nAug 29\n\n\n💻 Simple Linear Regression\nAug 31\n\n\n💻 Lab 00\nSep 01 & 02\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 01-Movie Budgets\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Complete STA 210 Student Survey\ndue Fri, Sep 02 at 11:59pm\n\n\n📝 Reserve STA 210 RStudio Docker Container\nMon, Sep 05 at the beginning of class"
-  },
-  {
-    "objectID": "prepare/week-14.html",
-    "href": "prepare/week-14.html",
-    "title": "Week 14",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 15 due Sat, Dec 03, 11:59pm\nTeam Feedback #2 due Tue, Dec 06, 11:59pm\nLooking ahead\n\nExam 02: Dec 05 (evening) - Dec 08, 12pm (noon)\n\nClick here for all lecture recordings\n\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Beyond Multiple Linear Regression, Chapter 7: Correlated Data (optional)\nNov 28\n\n\n📖 Beyond Multiple Linear Regression, Chapter 8:Introduction to Multilevel Models (optional)\nNov 28 & Nov 30\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Introduction to Multilevel Models\nNov 28\n\n\n💻 Fitting Multilevel Models\nNov 30\n\n\n💻 Lab: Written report\nDec 01 & 02\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 15: Introduction to Multilevel Models\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "ae/ae-05-sim-testing.html",
-    "href": "ae/ae-05-sim-testing.html",
-    "title": "AE 05: Randomization test for the slope",
-    "section": "",
-    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-05 repo to get started.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Saturday, September 16 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(openintro)\nlibrary(knitr)"
-  },
-  {
-    "objectID": "ae/ae-05-sim-testing.html#data",
-    "href": "ae/ae-05-sim-testing.html#data",
-    "title": "AE 05: Randomization test for the slope",
-    "section": "Data",
-    "text": "Data\nThe data are on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020. It was originally scraped from Zillow, and can be found in the duke_forest data set in the openintro R package.\n\nglimpse(duke_forest)\n\nRows: 98\nColumns: 13\n$ address    &lt;chr&gt; \"1 Learned Pl, Durham, NC 27705\", \"1616 Pinecrest Rd, Durha…\n$ price      &lt;dbl&gt; 1520000, 1030000, 420000, 680000, 428500, 456000, 1270000, …\n$ bed        &lt;dbl&gt; 3, 5, 2, 4, 4, 3, 5, 4, 4, 3, 4, 4, 3, 5, 4, 5, 3, 4, 4, 3,…\n$ bath       &lt;dbl&gt; 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 3.0, 5.0, 2.0, 3.0, 3.0,…\n$ area       &lt;dbl&gt; 6040, 4475, 1745, 2091, 1772, 1950, 3909, 2841, 3924, 2173,…\n$ type       &lt;chr&gt; \"Single Family\", \"Single Family\", \"Single Family\", \"Single …\n$ year_built &lt;dbl&gt; 1972, 1969, 1959, 1961, 2020, 2014, 1968, 1973, 1972, 1964,…\n$ heating    &lt;chr&gt; \"Other, Gas\", \"Forced air, Gas\", \"Forced air, Gas\", \"Heat p…\n$ cooling    &lt;fct&gt; central, central, central, central, central, central, centr…\n$ parking    &lt;chr&gt; \"0 spaces\", \"Carport, Covered\", \"Garage - Attached, Covered…\n$ lot        &lt;dbl&gt; 0.97, 1.38, 0.51, 0.84, 0.16, 0.45, 0.94, 0.79, 0.53, 0.73,…\n$ hoa        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ url        &lt;chr&gt; \"https://www.zillow.com/homedetails/1-Learned-Pl-Durham-NC-…"
-  },
-  {
-    "objectID": "ae/ae-05-sim-testing.html#exploratory-data-analysis",
-    "href": "ae/ae-05-sim-testing.html#exploratory-data-analysis",
-    "title": "AE 05: Randomization test for the slope",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(alpha = 0.7) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    title = \"Price and area of houses in Duke Forest\"\n  ) +\n  scale_y_continuous(labels = label_dollar())"
-  },
-  {
-    "objectID": "ae/ae-05-sim-testing.html#model",
-    "href": "ae/ae-05-sim-testing.html#model",
-    "title": "AE 05: Randomization test for the slope",
-    "section": "Model",
-    "text": "Model\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
-  },
-  {
-    "objectID": "ae/ae-05-sim-testing.html#hypothesis-test",
-    "href": "ae/ae-05-sim-testing.html#hypothesis-test",
-    "title": "AE 05: Randomization test for the slope",
-    "section": "Hypothesis test",
-    "text": "Hypothesis test\n\n\n\n\n\n\nTip\n\n\n\nFor code chunks with fill-in-the-blank code, change code chunk option to #| eval: true once you’ve filled in the code.\n\n\n\nState the null and alternative hypotheses\n[Add hypotheses in mathematical notation]\n\n\nGenerate null distribution using permutation\nFill in the code, then set eval: true .\n\nn = 100\nset.seed(09132023)\n\nnull_dist &lt;- _____ |&gt;\n  specify(______) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = _____, type = \"permute\") |&gt;\n  fit()\n\n\n\nVisualize distribution\n\n# Code for histogram of null distribution\n\n\n\nCalculate the p-value.\n\n# get observed fit \nobserved_fit &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  fit()\n\n# calculate p-value\nget_p_value(\n  ____,\n  obs_stat = ____,\n  direction = \"two-sided\"\n)\n\n\nWhat does the warning message mean?\n\n\n\nState conclusion\n[Write your conclusion in the context of the data.]\n\n\n\n\n\n\nImportant\n\n\n\nTo submit the AE:\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-05 repo on GitHub. (You do not submit AEs on Gradescope)."
-  },
-  {
-    "objectID": "ae/ae-01-movies.html",
-    "href": "ae/ae-01-movies.html",
-    "title": "AE 01: Movie Budgets and Revenues",
-    "section": "",
-    "text": "Important\n\n\n\nFor this AE, you will discuss the questions in groups and submit answers on Ed Discussion. This AE does not count towards the Application Exercise grade.\nWe will look at the relationship between budget and revenue for movies made in the United States in 1986 to 2020. The dataset is created based on data from the Internet Movie Database (IMDB).\nlibrary(readr)\nlibrary(tidyverse)\nlibrary(viridis)\nlibrary(DT)"
-  },
-  {
-    "objectID": "ae/ae-01-movies.html#data",
-    "href": "ae/ae-01-movies.html#data",
-    "title": "AE 01: Movie Budgets and Revenues",
-    "section": "Data",
-    "text": "Data\nThe movies data set includes basic information about each movie including budget, genre, movie studio, director, etc. A full list of the variables may be found here.\n\nmovies &lt;- read_csv(\"https://raw.githubusercontent.com/danielgrijalva/movie-stats/master/movies.csv\")\n\nView the first 10 rows of data.\n\nmovies |&gt;\n  slice(1:10)\n\n# A tibble: 10 × 15\n   name   rating genre  year released score  votes director writer star  country\n   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  \n 1 The S… R      Drama  1980 June 13…   8.4 9.27e5 Stanley… Steph… Jack… United…\n 2 The B… R      Adve…  1980 July 2,…   5.8 6.5 e4 Randal … Henry… Broo… United…\n 3 Star … PG     Acti…  1980 June 20…   8.7 1.20e6 Irvin K… Leigh… Mark… United…\n 4 Airpl… PG     Come…  1980 July 2,…   7.7 2.21e5 Jim Abr… Jim A… Robe… United…\n 5 Caddy… R      Come…  1980 July 25…   7.3 1.08e5 Harold … Brian… Chev… United…\n 6 Frida… R      Horr…  1980 May 9, …   6.4 1.23e5 Sean S.… Victo… Bets… United…\n 7 The B… R      Acti…  1980 June 20…   7.9 1.88e5 John La… Dan A… John… United…\n 8 Ragin… R      Biog…  1980 Decembe…   8.2 3.30e5 Martin … Jake … Robe… United…\n 9 Super… PG     Acti…  1980 June 19…   6.8 1.01e5 Richard… Jerry… Gene… United…\n10 The L… R      Biog…  1980 May 16,…   7   1   e4 Walter … Bill … Davi… United…\n# ℹ 4 more variables: budget &lt;dbl&gt;, gross &lt;dbl&gt;, company &lt;chr&gt;, runtime &lt;dbl&gt;"
-  },
-  {
-    "objectID": "ae/ae-01-movies.html#analysis",
-    "href": "ae/ae-01-movies.html#analysis",
-    "title": "AE 01: Movie Budgets and Revenues",
-    "section": "Analysis",
-    "text": "Analysis\nWe begin by looking at how the average gross revenue (gross) has changed over time. Since we want to visualize the results, we will choose a few genres of interest for the analysis.\n\ngenre_list &lt;- c(\"Comedy\", \"Action\", \"Animation\", \"Horror\")\n\n\nmovies |&gt;\n  filter(genre %in% genre_list) |&gt; \n  group_by(genre,year) |&gt;\n  summarise(avg_gross = mean(gross)) |&gt;\n  ggplot(mapping = aes(x = year, y = avg_gross, color=genre)) +\n    geom_point() + \n    geom_line() +\n    ylab(\"Average Gross Revenue (in US Dollars)\") +\n    ggtitle(\"Gross Revenue Over Time\") +\n    scale_color_viridis_d()\n\n\n\n\n\n\n\n\n\n\nWhat do you observe from the plot?\n\n\n\nNext, let’s see the relationship between a movie’s budget and its gross revenue.\n\nmovies |&gt;\n  filter(genre %in% genre_list, budget &gt; 0) |&gt; \n  ggplot(mapping = aes(x=log(budget), y = log(gross), color=genre)) +\n  geom_point() +\n  geom_smooth(method=\"lm\",se=FALSE) + \n  xlab(\"Log-transformed Budget\")+\n  ylab(\"Log-transformed Gross Revenue\") +\n  facet_wrap(~ genre) + \n  scale_color_viridis_d()"
-  },
-  {
-    "objectID": "ae/ae-01-movies.html#exercises",
-    "href": "ae/ae-01-movies.html#exercises",
-    "title": "AE 01: Movie Budgets and Revenues",
-    "section": "Exercises",
-    "text": "Exercises\n\nSuppose we fit a regression model for each genre that uses budget to predict gross revenue. What are the signs of the correlation between budget and gross and the slope in each regression equation?\nSuppose we fit the regression model from the previous question. Which genre would you expect to have the smallest residuals, on average (residual = observed revenue - predicted revenue)?\nPost your response on ED Discussion.\n\nSection 001 (10:05am lecture)\nSection 002 (1:25pm lecture)\n\n[Time permitting] Discuss the following: Notice in the graph above that budget and gross are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)? Post your group’s response in the AE 01 Movie Budgets comments on Ed Discussion."
-  },
-  {
-    "objectID": "ae/ae-01-movies.html#references",
-    "href": "ae/ae-01-movies.html#references",
-    "title": "AE 01: Movie Budgets and Revenues",
-    "section": "References",
-    "text": "References\n\ngithub.com/danielgrijalva/movie-stats\nInternet Movie Database"
-  },
-  {
-    "objectID": "ae/ae-01-movies.html#appendix",
-    "href": "ae/ae-01-movies.html#appendix",
-    "title": "AE 01: Movie Budgets and Revenues",
-    "section": "Appendix",
-    "text": "Appendix\nBelow is a list of genres in the data set:\n\nmovies |&gt; \n  arrange(genre) |&gt; \n  select(genre) |&gt;\n  distinct() |&gt;\n  datatable()"
+    "objectID": "computing-r-resources.html#additional-resources",
+    "href": "computing-r-resources.html#additional-resources",
+    "title": "Resources for learning R",
+    "section": "Additional resources",
+    "text": "Additional resources\n\nRStudio Cheatsheets\nR Fun workshops and videos by Duke Center for Data and Visualization Sciences."
   },
   {
     "objectID": "support.html",
@@ -1463,46 +994,529 @@
     "text": "Assistance with Zoom or Sakai\nFor technical help with Sakai or Zoom, contact the Duke OIT Service Desk at oit.duke.edu/help. You can also access the self-service help documentation for Zoom here and for Sakai here.\nNote that we will be making minimal use of Sakai in this course (primarily for announcements and grade book). All assignment submission and discussion will take place on GitHub instead.\nZoom will be used for online office hours as well as as a backup option should we need to hold the course online instead of in person."
   },
   {
-    "objectID": "computing-r-resources.html",
-    "href": "computing-r-resources.html",
-    "title": "Resources for learning R",
+    "objectID": "ae/ae-01-movies.html",
+    "href": "ae/ae-01-movies.html",
+    "title": "AE 01: Movie Budgets and Revenues",
     "section": "",
-    "text": "R for Data Science by Hadley Wickham & Garrett Grolemund\nTidy Modeling with R by Max Kuhn & Julia Silge"
+    "text": "Important\n\n\n\nFor this AE, you will discuss the questions in groups and submit answers on Ed Discussion. This AE does not count towards the Application Exercise grade.\nWe will look at the relationship between budget and revenue for movies made in the United States in 1986 to 2020. The dataset is created based on data from the Internet Movie Database (IMDB).\nlibrary(readr)\nlibrary(tidyverse)\nlibrary(viridis)\nlibrary(DT)"
   },
   {
-    "objectID": "computing-r-resources.html#books-free-online",
-    "href": "computing-r-resources.html#books-free-online",
-    "title": "Resources for learning R",
+    "objectID": "ae/ae-01-movies.html#data",
+    "href": "ae/ae-01-movies.html#data",
+    "title": "AE 01: Movie Budgets and Revenues",
+    "section": "Data",
+    "text": "Data\nThe movies data set includes basic information about each movie including budget, genre, movie studio, director, etc. A full list of the variables may be found here.\n\nmovies &lt;- read_csv(\"https://raw.githubusercontent.com/danielgrijalva/movie-stats/master/movies.csv\")\n\nView the first 10 rows of data.\n\nmovies |&gt;\n  slice(1:10)\n\n# A tibble: 10 × 15\n   name   rating genre  year released score  votes director writer star  country\n   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  \n 1 The S… R      Drama  1980 June 13…   8.4 9.27e5 Stanley… Steph… Jack… United…\n 2 The B… R      Adve…  1980 July 2,…   5.8 6.5 e4 Randal … Henry… Broo… United…\n 3 Star … PG     Acti…  1980 June 20…   8.7 1.20e6 Irvin K… Leigh… Mark… United…\n 4 Airpl… PG     Come…  1980 July 2,…   7.7 2.21e5 Jim Abr… Jim A… Robe… United…\n 5 Caddy… R      Come…  1980 July 25…   7.3 1.08e5 Harold … Brian… Chev… United…\n 6 Frida… R      Horr…  1980 May 9, …   6.4 1.23e5 Sean S.… Victo… Bets… United…\n 7 The B… R      Acti…  1980 June 20…   7.9 1.88e5 John La… Dan A… John… United…\n 8 Ragin… R      Biog…  1980 Decembe…   8.2 3.30e5 Martin … Jake … Robe… United…\n 9 Super… PG     Acti…  1980 June 19…   6.8 1.01e5 Richard… Jerry… Gene… United…\n10 The L… R      Biog…  1980 May 16,…   7   1   e4 Walter … Bill … Davi… United…\n# ℹ 4 more variables: budget &lt;dbl&gt;, gross &lt;dbl&gt;, company &lt;chr&gt;, runtime &lt;dbl&gt;"
+  },
+  {
+    "objectID": "ae/ae-01-movies.html#analysis",
+    "href": "ae/ae-01-movies.html#analysis",
+    "title": "AE 01: Movie Budgets and Revenues",
+    "section": "Analysis",
+    "text": "Analysis\nWe begin by looking at how the average gross revenue (gross) has changed over time. Since we want to visualize the results, we will choose a few genres of interest for the analysis.\n\ngenre_list &lt;- c(\"Comedy\", \"Action\", \"Animation\", \"Horror\")\n\n\nmovies |&gt;\n  filter(genre %in% genre_list) |&gt; \n  group_by(genre,year) |&gt;\n  summarise(avg_gross = mean(gross)) |&gt;\n  ggplot(mapping = aes(x = year, y = avg_gross, color=genre)) +\n    geom_point() + \n    geom_line() +\n    ylab(\"Average Gross Revenue (in US Dollars)\") +\n    ggtitle(\"Gross Revenue Over Time\") +\n    scale_color_viridis_d()\n\n\n\n\n\n\n\n\n\n\nWhat do you observe from the plot?\n\n\n\nNext, let’s see the relationship between a movie’s budget and its gross revenue.\n\nmovies |&gt;\n  filter(genre %in% genre_list, budget &gt; 0) |&gt; \n  ggplot(mapping = aes(x=log(budget), y = log(gross), color=genre)) +\n  geom_point() +\n  geom_smooth(method=\"lm\",se=FALSE) + \n  xlab(\"Log-transformed Budget\")+\n  ylab(\"Log-transformed Gross Revenue\") +\n  facet_wrap(~ genre) + \n  scale_color_viridis_d()"
+  },
+  {
+    "objectID": "ae/ae-01-movies.html#exercises",
+    "href": "ae/ae-01-movies.html#exercises",
+    "title": "AE 01: Movie Budgets and Revenues",
+    "section": "Exercises",
+    "text": "Exercises\n\nSuppose we fit a regression model for each genre that uses budget to predict gross revenue. What are the signs of the correlation between budget and gross and the slope in each regression equation?\nSuppose we fit the regression model from the previous question. Which genre would you expect to have the smallest residuals, on average (residual = observed revenue - predicted revenue)?\nPost your response on ED Discussion.\n\nSection 001 (10:05am lecture)\nSection 002 (1:25pm lecture)\n\n[Time permitting] Discuss the following: Notice in the graph above that budget and gross are log-transformed. Why are the log-transformed values of the variables displayed rather than the original values (in U.S. dollars)? Post your group’s response in the AE 01 Movie Budgets comments on Ed Discussion."
+  },
+  {
+    "objectID": "ae/ae-01-movies.html#references",
+    "href": "ae/ae-01-movies.html#references",
+    "title": "AE 01: Movie Budgets and Revenues",
+    "section": "References",
+    "text": "References\n\ngithub.com/danielgrijalva/movie-stats\nInternet Movie Database"
+  },
+  {
+    "objectID": "ae/ae-01-movies.html#appendix",
+    "href": "ae/ae-01-movies.html#appendix",
+    "title": "AE 01: Movie Budgets and Revenues",
+    "section": "Appendix",
+    "text": "Appendix\nBelow is a list of genres in the data set:\n\nmovies |&gt; \n  arrange(genre) |&gt; \n  select(genre) |&gt;\n  distinct() |&gt;\n  datatable()"
+  },
+  {
+    "objectID": "ae/ae-05-sim-testing.html",
+    "href": "ae/ae-05-sim-testing.html",
+    "title": "AE 05: Randomization test for the slope",
     "section": "",
-    "text": "R for Data Science by Hadley Wickham & Garrett Grolemund\nTidy Modeling with R by Max Kuhn & Julia Silge"
+    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-05 repo to get started.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Saturday, September 16 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(openintro)\nlibrary(knitr)"
   },
   {
-    "objectID": "computing-r-resources.html#rstudio-primers",
-    "href": "computing-r-resources.html#rstudio-primers",
-    "title": "Resources for learning R",
-    "section": "RStudio Primers",
-    "text": "RStudio Primers\nTutorials most relevant to this course:\n\nThe Basics\nWork with Data\nVisualize Data\nTidy your Data\n\nClick here for full list of tutorials."
+    "objectID": "ae/ae-05-sim-testing.html#data",
+    "href": "ae/ae-05-sim-testing.html#data",
+    "title": "AE 05: Randomization test for the slope",
+    "section": "Data",
+    "text": "Data\nThe data are on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020. It was originally scraped from Zillow, and can be found in the duke_forest data set in the openintro R package.\n\nglimpse(duke_forest)\n\nRows: 98\nColumns: 13\n$ address    &lt;chr&gt; \"1 Learned Pl, Durham, NC 27705\", \"1616 Pinecrest Rd, Durha…\n$ price      &lt;dbl&gt; 1520000, 1030000, 420000, 680000, 428500, 456000, 1270000, …\n$ bed        &lt;dbl&gt; 3, 5, 2, 4, 4, 3, 5, 4, 4, 3, 4, 4, 3, 5, 4, 5, 3, 4, 4, 3,…\n$ bath       &lt;dbl&gt; 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 3.0, 5.0, 2.0, 3.0, 3.0,…\n$ area       &lt;dbl&gt; 6040, 4475, 1745, 2091, 1772, 1950, 3909, 2841, 3924, 2173,…\n$ type       &lt;chr&gt; \"Single Family\", \"Single Family\", \"Single Family\", \"Single …\n$ year_built &lt;dbl&gt; 1972, 1969, 1959, 1961, 2020, 2014, 1968, 1973, 1972, 1964,…\n$ heating    &lt;chr&gt; \"Other, Gas\", \"Forced air, Gas\", \"Forced air, Gas\", \"Heat p…\n$ cooling    &lt;fct&gt; central, central, central, central, central, central, centr…\n$ parking    &lt;chr&gt; \"0 spaces\", \"Carport, Covered\", \"Garage - Attached, Covered…\n$ lot        &lt;dbl&gt; 0.97, 1.38, 0.51, 0.84, 0.16, 0.45, 0.94, 0.79, 0.53, 0.73,…\n$ hoa        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ url        &lt;chr&gt; \"https://www.zillow.com/homedetails/1-Learned-Pl-Durham-NC-…"
   },
   {
-    "objectID": "computing-r-resources.html#additional-resources",
-    "href": "computing-r-resources.html#additional-resources",
-    "title": "Resources for learning R",
-    "section": "Additional resources",
-    "text": "Additional resources\n\nRStudio Cheatsheets\nR Fun workshops and videos by Duke Center for Data and Visualization Sciences."
+    "objectID": "ae/ae-05-sim-testing.html#exploratory-data-analysis",
+    "href": "ae/ae-05-sim-testing.html#exploratory-data-analysis",
+    "title": "AE 05: Randomization test for the slope",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(alpha = 0.7) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    title = \"Price and area of houses in Duke Forest\"\n  ) +\n  scale_y_continuous(labels = label_dollar())"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "STA 210: Regression Analysis",
+    "objectID": "ae/ae-05-sim-testing.html#model",
+    "href": "ae/ae-05-sim-testing.html#model",
+    "title": "AE 05: Randomization test for the slope",
+    "section": "Model",
+    "text": "Model\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
+  },
+  {
+    "objectID": "ae/ae-05-sim-testing.html#hypothesis-test",
+    "href": "ae/ae-05-sim-testing.html#hypothesis-test",
+    "title": "AE 05: Randomization test for the slope",
+    "section": "Hypothesis test",
+    "text": "Hypothesis test\n\n\n\n\n\n\nTip\n\n\n\nFor code chunks with fill-in-the-blank code, change code chunk option to #| eval: true once you’ve filled in the code.\n\n\n\nState the null and alternative hypotheses\n[Add hypotheses in mathematical notation]\n\n\nGenerate null distribution using permutation\nFill in the code, then set eval: true .\n\nn = 100\nset.seed(09132023)\n\nnull_dist &lt;- _____ |&gt;\n  specify(______) |&gt;\n  hypothesize(null = \"independence\") |&gt;\n  generate(reps = _____, type = \"permute\") |&gt;\n  fit()\n\n\n\nVisualize distribution\n\n# Code for histogram of null distribution\n\n\n\nCalculate the p-value.\n\n# get observed fit \nobserved_fit &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  fit()\n\n# calculate p-value\nget_p_value(\n  ____,\n  obs_stat = ____,\n  direction = \"two-sided\"\n)\n\n\nWhat does the warning message mean?\n\n\n\nState conclusion\n[Write your conclusion in the context of the data.]\n\n\n\n\n\n\nImportant\n\n\n\nTo submit the AE:\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-05 repo on GitHub. (You do not submit AEs on Gradescope)."
+  },
+  {
+    "objectID": "prepare/week-14.html",
+    "href": "prepare/week-14.html",
+    "title": "Week 14",
     "section": "",
-    "text": "Learn approaches for analyzing multivariate data sets, emphasizing analysis of variance, linear regression, and logistic regression. Learn techniques for checking the appropriateness of proposed models, such as residual analyses and case influence diagnostics, and techniques for selecting models. Gain experience dealing with the challenges that arise in practice through assignments that utilize real-world data. This class emphasizes data analysis over mathematical theory."
+    "text": "Important\n\n\n\n\nAE 15 due Sat, Dec 03, 11:59pm\nTeam Feedback #2 due Tue, Dec 06, 11:59pm\nLooking ahead\n\nExam 02: Dec 05 (evening) - Dec 08, 12pm (noon)\n\nClick here for all lecture recordings\n\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Beyond Multiple Linear Regression, Chapter 7: Correlated Data (optional)\nNov 28\n\n\n📖 Beyond Multiple Linear Regression, Chapter 8:Introduction to Multilevel Models (optional)\nNov 28 & Nov 30\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Introduction to Multilevel Models\nNov 28\n\n\n💻 Fitting Multilevel Models\nNov 30\n\n\n💻 Lab: Written report\nDec 01 & 02\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 15: Introduction to Multilevel Models\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
   },
   {
-    "objectID": "index.html#teaching-assistants",
-    "href": "index.html#teaching-assistants",
-    "title": "STA 210: Regression Analysis",
-    "section": "Teaching assistants",
-    "text": "Teaching assistants\n\n\n\n\n\n\nClick here for schedule of office hours.\n\n\n\n\n\n\nName\nRole\n\n\n\n\n\nSam Rosen\nHead TA\nLab 01: Tue 10:05 - 11:20am\n\n\nBethany Astor\nTA\nLab 02: Tue 11:45am - 1pm\n\n\nJon Campbell\nTA\n\n\n\nDonald Cayton\nTA\nLab 02: Tue 11:45am - 1pm\n\n\nAllison Li\nTA\n\n\n\nMitchelle Mojekwu\nTA\nLab 04: Thu 11:45am - 1pm\n\n\nBen Thorpe\nTA\n\n\n\nLinxuan Wang\nTA\nLab 03: Thu 10:05 - 11:20am\n\n\nXiaojun Zheng\nTA\nLab 04: Thu 11:45am - 1pm"
+    "objectID": "prepare/week-01.html",
+    "href": "prepare/week-01.html",
+    "title": "Week 01",
+    "section": "",
+    "text": "Prepare\n\n\n\n\n\n\n📖 Syllabus\n\n\n📖 Course support\n\n\n📖 Introduction to Modern Statistics (IMS), Ch 7: Linear regression with a single predictor\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Welcome to STA 210!\nAug 29\n\n\n💻 Simple Linear Regression\nAug 31\n\n\n💻 Lab 00\nSep 01 & 02\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 01-Movie Budgets\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Complete STA 210 Student Survey\ndue Fri, Sep 02 at 11:59pm\n\n\n📝 Reserve STA 210 RStudio Docker Container\nMon, Sep 05 at the beginning of class"
+  },
+  {
+    "objectID": "prepare/week-16.html",
+    "href": "prepare/week-16.html",
+    "title": "Week 16",
+    "section": "",
+    "text": "Prepare\nNo reading assignments.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo AEs.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project: Video presentation + slides\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Organized GitHub repo\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Presentation comments\ndue Fri, Dec 16, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-06.html",
+    "href": "prepare/week-06.html",
+    "title": "Week 06",
+    "section": "",
+    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 05\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Feature engineering\nOct 03\n\n\n💻 Feature engineering: Model workflow\nOct 05\n\n\n💻 Lab 04\nOct 06 & 07\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 08: Feature engineering\n\n\n\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Lab 04\nThu, Oct 13, 11:59pm (Thu lab)\nFri, Oct 14, 11:59pm (Fri lab)"
+  },
+  {
+    "objectID": "prepare/week-13.html",
+    "href": "prepare/week-13.html",
+    "title": "Week 13",
+    "section": "",
+    "text": "Important\n\n\n\n\nNo office hours Nov 21 - 25.\nNo class Nov 21 or Nov 23.\nNo labs Nov 24 - 25.\n\n🍁 Have a good Thanksgiving break! 🍁\n\n\n\nPrepare\nNo readings.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo application exercises.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+  },
+  {
+    "objectID": "prepare/sep-11.html",
+    "href": "prepare/sep-11.html",
+    "title": "September 11 lecture",
+    "section": "",
+    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+  },
+  {
+    "objectID": "prepare/sep-11.html#assigned-reading",
+    "href": "prepare/sep-11.html#assigned-reading",
+    "title": "September 11 lecture",
+    "section": "",
+    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+  },
+  {
+    "objectID": "prepare/week-11.html",
+    "href": "prepare/week-11.html",
+    "title": "Week 11",
+    "section": "",
+    "text": "Important\n\n\n\n\nLab 07\n\ndue Mon, Nov 14, 11:59pm (Thu labs)\ndue Tue, Nov 15, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chap 9: Logistic Regression\nNov 07 & Nov 09\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Logistic regression: Odds ratios\nNov 07\n\n\n💻 Logistic regression: Prediction + classification\nNov 09\n\n\n\n\n\nPractice\nNo AEs this week.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Lab 07\n\ndue Mon, Nov 14, 11:59pm (Thu labs)\ndue Tue, Nov 15, 11:59pm (Fri labs)\n\n\n\n📝 Statistics Experience\ndue Fri, Dec 09, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-04.html",
+    "href": "prepare/week-04.html",
+    "title": "Week 04",
+    "section": "",
+    "text": "Important\n\n\n\nDue dates:\n\nAE 05: due Sat, Sep 24, 11:59pm\nHW 01: due Wed, Sep 21, 11:59pm\nLab 03:\n\ndue Mon, Sep 26, 11:59pm (Thu labs)\ndue Tue, Sep 27, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Sec 24.4: Mathematical model for testing the slope\n📖 IMS, Sec 24.5: Mathematical model, interval for the slope\n📖 IMS, Sec 24.6: Checking model conditions\n📖 IMS, Sec 24.7: Chapter review\nSep 19\n\n\n📖 IMS, Sec 8.2: Many predictors in a model\nSep 21\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 SLR: Mathematical models for inference\nSep 19\n\n\n💻 SLR: Model conditions\nSep 21\n\n\n💻 Multiple linear regression\nSep 21\n\n\n💻 Lab 03\nSep 22 & 23\n\n\n\n\n\nPractice\n\n\n\n\n\n\nAE 05: Multiple linear regression\n\n\n\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 HW 01\nWed, Sep 21, 11:59pm\n\n\n📝 Lab 03\nMon, Sep 26, 11:59pm (Thu labs)\nTue, Sep 27, 11:59pm (Fri labs)\n\n\n📝 Statistics experience\nFri, Dec 09, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-08.html",
+    "href": "prepare/week-08.html",
+    "title": "Week 08",
+    "section": "",
+    "text": "Important\n\n\n\n\nAE 09 due Sat, Oct 22, 11:59pm\nLab 05:\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25 11:59pm (Fri lab)\n\n\n\n\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 19\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations: Log-transformed predictor\nOct 17\n\n\n💻 Model comparison\nOct 19\n\n\n💻 Lab 05\nOct 20 - 21\n\n\n\n\n\nPractice\n📋 AE 09: Model comparison\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nLab 05\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25, 11:59pm (Fri lab)"
+  },
+  {
+    "objectID": "labs/lab-00.html",
+    "href": "labs/lab-00.html",
+    "title": "Lab 00: Getting started",
+    "section": "",
+    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
+  },
+  {
+    "objectID": "labs/lab-03.html",
+    "href": "labs/lab-03.html",
+    "title": "Lab 03: Coffee grades",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-03.html#learning-goals",
+    "href": "labs/lab-03.html#learning-goals",
+    "title": "Lab 03: Coffee grades",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
+  },
+  {
+    "objectID": "labs/lab-03.html#packages",
+    "href": "labs/lab-03.html#packages",
+    "title": "Lab 03: Coffee grades",
+    "section": "Packages",
+    "text": "Packages\nThe following packages are used in the lab.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)"
+  },
+  {
+    "objectID": "labs/lab-03.html#the-data",
+    "href": "labs/lab-03.html#the-data",
+    "title": "Lab 03: Coffee grades",
+    "section": "The Data",
+    "text": "The Data\nThe dataset for this lab comes from the Coffee Quality Database and was obtained from the #TidyTuesday GitHub repo. It includes information about the origin, producer, measures of various characteristics, and the quality measure for over 1,000 coffees. The coffees can be reasonably be treated as a random sample.\nThis lab will focus on the following variables:\n\naroma: Aroma grade, 0 (worst aroma) - 10 (best aroma)\nflavor: Flavor grade, 0 (worst flavor) - 10 (best flavor)\n\nClick here for the definitions of all variables in the data set. Click here for more details about how these measures are obtained.\n\ncoffee &lt;- read_csv(\"data/coffee-grades.csv\")"
+  },
+  {
+    "objectID": "labs/lab-03.html#grading-50-pts",
+    "href": "labs/lab-03.html#grading-50-pts",
+    "title": "Lab 03: Coffee grades",
+    "section": "Grading (50 pts)",
+    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1 - 10\n45\n\n\nWorkflow & formatting\n31\n\n\nReproducible report\n22"
+  },
+  {
+    "objectID": "labs/lab-03.html#footnotes",
+    "href": "labs/lab-03.html#footnotes",
+    "title": "Lab 03: Coffee grades",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow. This includes implementing version control with at least at least 3 informative commit messages and having a neatly formatted PDF document that is easily readable with an updated name and date.↩︎\nThis means we will be able to render the .qmd file in your GitHub repo and exactly reproduce the .pdf file in the Github repo and on Gradescope.↩︎"
+  },
+  {
+    "objectID": "labs/lab-02.html",
+    "href": "labs/lab-02.html",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-02.html#learning-goals",
+    "href": "labs/lab-02.html#learning-goals",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-10",
+    "href": "labs/lab-02.html#exercise-10",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Exercise 10",
+    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab-02.html#footnotes",
+    "href": "labs/lab-02.html#footnotes",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-01.html",
+    "href": "labs/lab-01.html",
+    "title": "Lab 01: Park access",
+    "section": "",
+    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-01.html#learning-goals",
+    "href": "labs/lab-01.html#learning-goals",
+    "title": "Lab 01: Park access",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
+  },
+  {
+    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "title": "Lab 01: Park access",
+    "section": "Clone the repo & start new RStudio project",
+    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
+  },
+  {
+    "objectID": "labs/lab-01.html#r-and-r-studio",
+    "href": "labs/lab-01.html#r-and-r-studio",
+    "title": "Lab 01: Park access",
+    "section": "R and R Studio",
+    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
+  },
+  {
+    "objectID": "labs/lab-01.html#footnotes",
+    "href": "labs/lab-01.html#footnotes",
+    "title": "Lab 01: Park access",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "hw/hw-01.html",
+    "href": "hw/hw-01.html",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "",
+    "text": "In this assignment, you will use simple linear regression to examine the association between between the percent of adults with a bachelor’s degree and the median household income for counties in the United States."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "href": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 1: Exploratory data analysis",
+    "text": "Part 1: Exploratory data analysis\n\nExercise 1\nCreate a histogram of the distribution of the predictor variable bachelorsand calculate appropriate summary statistics. Use the visualization and summary statistics to describe the distribution. Include an informative title and axis labels on the plot.\n\n\nExercise 2\nLet’s view the data in another way. Use the code below to make a map of the United States with the color of the counties filled in based on the percent of residents 25 years old and older who have a Bachelor’s degree. Fill in title and axis labels.\nThen use the plot answer the following:\n\nWhat are 2 observations you have from the map?\nWhat is a feature that is apparent in the map that wasn’t as easily apparent from the histogram in the previous exercise? What is a feature that is apparent in the histogram that is not as easily apparent from the map?\n\n\ncounty_map_data &lt;- left_join(county_data_sample, map_data_sample)\n\nggplot(data = map_data_all) +\n  geom_polygon(aes(x = long, y = lat, group = group),\n    fill = \"lightgray\", color = \"white\"\n    ) +\n  geom_polygon(data = county_map_data, aes(x = long, y = lat, group = group,\n    fill = bachelors)\n    ) +\n  labs(\n    x = \"Longitude\",\n    y = \"Latitude\",\n    fill = \"_____\",\n    title = \"_____\"\n  ) +\n  scale_fill_viridis_c(labels = label_percent(scale = 1)) +\n  coord_quickmap()\n\n\n\nExercise 3\nCreate a visualization of the relationship between bachelors and median_household_income and calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables.\n\n\n\n\n\n\nTip\n\n\n\nRecall the analysis objective stated at the beginning of the Exercises section.\n\n\n\nIf you haven’t yet done so, now is a good time to render your document and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-2-modeling",
+    "href": "hw/hw-01.html#part-2-modeling",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 2: Modeling",
+    "text": "Part 2: Modeling\n\nExercise 4\nWe will use a linear regression model to better quantify the relationship between bachelors and median_household_income.\nWrite the form of the statistical model we will use for this task using mathematical notation. Use variable names (bachelors and median_household_income) in the equation for your model1.\n\n\nExercise 5\n\nFit the regression line corresponding to the statistical model in the previous exercise. Neatly display the model output using 3 digits.\nWrite the equation of the fitted model using mathematical notation. Use variable names (bachelors and median_household_income) in the equation.\n\n\n\nExercise 6\n\nInterpret the slope. The interpretation should be written in a way that is meaningful in the context of the data.\nIs it useful to interpret the intercept for this data? If so, write the interpretation in the context of the data. Otherwise, briefly explain why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "href": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 3: Inference for the U.S.",
+    "text": "Part 3: Inference for the U.S.\nWe want to use the data from these 600 randomly selected counties to draw conclusions about the relationship between the percent of adults age 25 and older with a bachelor’s degree and median household income for the over 3,000 counties in the United States.\n\nExercise 7\n\nWhat is the population of interest? What is the sample?\nIs it reasonable to treat the sample in this analysis as representative of the population? Briefly explain why or why not.\n\n\n\nExercise 8\nConduct a hypothesis test for the slope to assess whether there is sufficient evidence of a linear relationship between the percent of adults age 25 and older with a bachelor’s degree and the median household income in a county. Use a randomization (permutation) test. In your response:\n\nState the null and alternative hypotheses in words and mathematical notation\nShow all relevant code and output used to conduct the test. Use set.seed(2023) and 1000 iterations to construct the appropriate distribution.\nState the conclusion in the context of the data.\n\n\n\nExercise 9\nNext, construct a 95% confidence interval for the slope using bootstrapping with set.seed(2023) and 1000 iterations.\n\nShow all relevant code and output used to calculate the interval.\nInterpret the confidence interval in the context of the data.\nIs the confidence interval consistent with the results of the test from the previous exercise? Briefly explain why or why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#reproducibility",
+    "href": "hw/hw-01.html#reproducibility",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nExercise 10\nYou are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.\n\nSource: Ostblom and Timbers (2022)\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nChoose one of the scenarios from the table and read the linked article discussing what went wrong. Then,\n\nBriefly describe what went wrong, i.e., what part of the process of was not reproducible and what error or impact that had.\nThen, describe how the researchers could make the process reproducible.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#submission",
+    "href": "hw/hw-01.html#submission",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Submission",
+    "text": "Submission\n\n\n\n\n\n\nWarning\n\n\n\nBefore you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.\nRemember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.\n\n\nTo submit your assignment:\n\nGo to http://www.gradescope.com and click Log in in the top right corner.\nClick School Credentials ➡️ Duke NetID and log in using your NetID credentials.\nClick on your STA 210 course.\nClick on the assignment, and you’ll be prompted to submit it.\nMark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).\nSelect the first page of your PDF submission to be associated with the “Workflow & formatting” section."
+  },
+  {
+    "objectID": "hw/hw-01.html#grading-50-points",
+    "href": "hw/hw-01.html#grading-50-points",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Grading (50 points)",
+    "text": "Grading (50 points)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n5\n\n\nEx 2\n5\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n4\n\n\nEx 6\n4\n\n\nEx 7\n3\n\n\nEx 8\n7\n\n\nEx 9\n7\n\n\nEx 10\n5\n\n\nWorkflow & formatting\n32"
+  },
+  {
+    "objectID": "hw/hw-01.html#footnotes",
+    "href": "hw/hw-01.html#footnotes",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "prepare/week-09.html",
+    "href": "prepare/week-09.html",
+    "title": "Week 09",
+    "section": "",
+    "text": "Important\n\n\n\n\nAE 10 due Thu, Oct 27, 11:59pm\nProject Proposal: due Fri, Nov 04: 11:59pm\n\nHW 03 moved to next week\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 10: Resampling for evaluating performance\nOct 24\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 MLR: Cross validation\nOct 24\n\n\n💻 MLR: Inference\nOct 26\n\n\n💻 MLR: Conditions\nOct 26\n\n\n💻 Lab: Project proposal\nOct 27 & 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 10: Cross validation\n\n\n📋 AE 11: MLR Inference + conditions\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project Proposal\ndue Fri, Nov 04, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-10.html",
+    "href": "prepare/week-10.html",
+    "title": "Week 10",
+    "section": "",
+    "text": "Important\n\n\n\n\nAE 12 due Thu, Nov 03, 11:59pm\nAE 13 due Sat, Nov 05, 11:59pm\nProject Proposal due Fri, Nov 04: 11:59pm\nHW 03 due Mon, Nov 07, 11:59pm\nLab 06:\n\ndue Mon, Nov 07, 11:59pm (Thu labs)\ndue Tue, Nov 08, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chap 9: Logistic Regression\nNov 02\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 MLR: Conditions\nOct 31\n\n\n💻 Logistic Regression: Introduction\nNov 02\n\n\n💻 Lab 06\nNov 03 - 04\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 12: Multiple Linear Regression Review\n\n\n📋 AE 13: Logistic Regression Intro\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project Proposal\ndue Fri, Nov 04, 11:59pm\n\n\n📝 HW 03\ndue Mon, Nov 07, 11:59pm\n\n\n📝 Lab 06\n\ndue Mon, Nov 07, 11:59pm (Thu labs)\ndue Tue, Nov 08, 11:59pm (Fri labs)\n\n\n\n📝 Statistics Experience\ndue Fri, Dec 09, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-05.html",
+    "href": "prepare/week-05.html",
+    "title": "Week 05",
+    "section": "",
+    "text": "Important\n\n\n\nAnnouncements:\n\nNo labs this week - work on Exam 01\nNo TA office hours Wed - Fri\n\nProf. Tackett office hours Thu 10 - 11am\n\nNo Ed Discussion Wed - Fri\n\nDue dates:\n\nAE 06: due Thu, Sep 29, 11:59pm\nAE 07: due Sat, Oct 01, 11:59pm\nExam 01: Wed, Sep 28 - Fri, Sep 30 at 11:59pm\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 MLR: Types of predictors\nSep 26\n\n\n💻 Exam 01 review\nSep 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 06: Prediction for MLR\n\n\n📋 AE 07: Exam 01 review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Exam 01\nFri, Sep 30, 11:59pm"
+  },
+  {
+    "objectID": "prepare/sep-13.html",
+    "href": "prepare/sep-13.html",
+    "title": "September 13 lecture",
+    "section": "",
+    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+  },
+  {
+    "objectID": "prepare/sep-13.html#assigned-reading",
+    "href": "prepare/sep-13.html#assigned-reading",
+    "title": "September 13 lecture",
+    "section": "",
+    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+  },
+  {
+    "objectID": "prepare/week-07.html",
+    "href": "prepare/week-07.html",
+    "title": "Week 07",
+    "section": "",
+    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nProject topic ideas:\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations\nOct 12\n\n\n\n\n\nPractice\nNo Application Exercises this week.\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nProject topic ideas\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\n\n\n📝 HW 02\nWed, Oct 19, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-12.html",
+    "href": "prepare/week-12.html",
+    "title": "Week 12",
+    "section": "",
+    "text": "Important\n\n\n\n\nAE 14: due Thu, Nov 17, 11:59pm\nHW 04: due Mon, Nov 21, 11:59pm\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chp 26: Inference for logistic regression\nNov 16\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 Logistic regression: Model comparison\nNov 14\n\n\n💻 Logistic Regression: Inference + conditions\nNov 16\n\n\n💻 Lab: Project analysis + write up\nNov 17 + 18\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 14: Logistic regression - Model Comparison\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 HW 04\ndue Mon, Nov 21, 11:59pm\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+  },
+  {
+    "objectID": "prepare/week-02.html",
+    "href": "prepare/week-02.html",
+    "title": "September 06 lecture",
+    "section": "",
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
+  },
+  {
+    "objectID": "prepare/week-02.html#assigned-reading",
+    "href": "prepare/week-02.html#assigned-reading",
+    "title": "September 06 lecture",
+    "section": "",
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
+  },
+  {
+    "objectID": "prepare/week-02.html#additional-resources-optional",
+    "href": "prepare/week-02.html#additional-resources-optional",
+    "title": "September 06 lecture",
+    "section": "Additional resources (optional)",
+    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
+  },
+  {
+    "objectID": "prepare/week-15.html",
+    "href": "prepare/week-15.html",
+    "title": "Week 15",
+    "section": "",
+    "text": "Important\n\n\n\n\nExam 02: Mon, Dec 05 (evening) - Thu, Dec 08 at 12pm (noon)\nTeam Feedback #2 due Tue, Dec 06, 11:59pm\nNo class Wed, Dec 07\n\nOnline exam office hours (Zoom link in Sakai)\n\nStatistics experience due Fri, Dec 09, 11:59pm\nProject written report due Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Exam 02 Review\nDec 05\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 16: Exam 02 Review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Exam 02\nMon, Dec 05 evening - Thu, Dec 08, 12pm (noon)\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+  },
+  {
+    "objectID": "ae/ae-04-bootstrap.html",
+    "href": "ae/ae-04-bootstrap.html",
+    "title": "AE 04: Bootstrap confidence intervals",
+    "section": "",
+    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-04 repo to get started.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Thursday, September 14 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(openintro)\nlibrary(knitr)"
+  },
+  {
+    "objectID": "ae/ae-04-bootstrap.html#data",
+    "href": "ae/ae-04-bootstrap.html#data",
+    "title": "AE 04: Bootstrap confidence intervals",
+    "section": "Data",
+    "text": "Data\nThe data are on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020. It was originally scraped from Zillow, and can be found in the duke_forest data set in the openintro R package.\n\nglimpse(duke_forest)\n\nRows: 98\nColumns: 13\n$ address    &lt;chr&gt; \"1 Learned Pl, Durham, NC 27705\", \"1616 Pinecrest Rd, Durha…\n$ price      &lt;dbl&gt; 1520000, 1030000, 420000, 680000, 428500, 456000, 1270000, …\n$ bed        &lt;dbl&gt; 3, 5, 2, 4, 4, 3, 5, 4, 4, 3, 4, 4, 3, 5, 4, 5, 3, 4, 4, 3,…\n$ bath       &lt;dbl&gt; 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 3.0, 5.0, 2.0, 3.0, 3.0,…\n$ area       &lt;dbl&gt; 6040, 4475, 1745, 2091, 1772, 1950, 3909, 2841, 3924, 2173,…\n$ type       &lt;chr&gt; \"Single Family\", \"Single Family\", \"Single Family\", \"Single …\n$ year_built &lt;dbl&gt; 1972, 1969, 1959, 1961, 2020, 2014, 1968, 1973, 1972, 1964,…\n$ heating    &lt;chr&gt; \"Other, Gas\", \"Forced air, Gas\", \"Forced air, Gas\", \"Heat p…\n$ cooling    &lt;fct&gt; central, central, central, central, central, central, centr…\n$ parking    &lt;chr&gt; \"0 spaces\", \"Carport, Covered\", \"Garage - Attached, Covered…\n$ lot        &lt;dbl&gt; 0.97, 1.38, 0.51, 0.84, 0.16, 0.45, 0.94, 0.79, 0.53, 0.73,…\n$ hoa        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ url        &lt;chr&gt; \"https://www.zillow.com/homedetails/1-Learned-Pl-Durham-NC-…"
+  },
+  {
+    "objectID": "ae/ae-04-bootstrap.html#exploratory-data-analysis",
+    "href": "ae/ae-04-bootstrap.html#exploratory-data-analysis",
+    "title": "AE 04: Bootstrap confidence intervals",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(alpha = 0.7) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    title = \"Price and area of houses in Duke Forest\"\n  ) +\n  scale_y_continuous(labels = label_dollar())"
+  },
+  {
+    "objectID": "ae/ae-04-bootstrap.html#model",
+    "href": "ae/ae-04-bootstrap.html#model",
+    "title": "AE 04: Bootstrap confidence intervals",
+    "section": "Model",
+    "text": "Model\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
+  },
+  {
+    "objectID": "ae/ae-04-bootstrap.html#bootstrap-confidence-interval",
+    "href": "ae/ae-04-bootstrap.html#bootstrap-confidence-interval",
+    "title": "AE 04: Bootstrap confidence intervals",
+    "section": "Bootstrap confidence interval",
+    "text": "Bootstrap confidence interval\n\n1. Calculate the observed fit (slope)\n\nobserved_fit &lt;- duke_forest |&gt;\n  specify(price ~ area) |&gt;\n  fit()\n\nobserved_fit\n\n# A tibble: 2 × 2\n  term      estimate\n  &lt;chr&gt;        &lt;dbl&gt;\n1 intercept  116652.\n2 area          159.\n\n\n\n\n2. Take n bootstrap samples and fit models to each one.\nFill in the code, then set eval: true .\n\nn = 100\nset.seed(091222)\n\nboot_fits &lt;- ______ |&gt;\n  specify(______) |&gt;\n  generate(reps = ____, type = \"bootstrap\") |&gt;\n  fit()\n\nboot_fits\n\n\nWhy do we set a seed before taking the bootstrap samples?\nMake a histogram of the bootstrap samples to visualize the bootstrap distribution.\n\n# Code for histogram\n\n\n\n\n3. Compute the 95% confidence interval as the middle 95% of the bootstrap distribution\nFill in the code, then set eval: true .\n\nget_confidence_interval(\n  boot_fits, \n  point_estimate = _____, \n  level = ____,\n  type = \"percentile\"\n)"
+  },
+  {
+    "objectID": "ae/ae-04-bootstrap.html#changing-confidence-level",
+    "href": "ae/ae-04-bootstrap.html#changing-confidence-level",
+    "title": "AE 04: Bootstrap confidence intervals",
+    "section": "Changing confidence level",
+    "text": "Changing confidence level\n\nModify the code from Step 3 to create a 90% confidence interval.\n\n# Paste code for 90% confidence interval\n\n\n\nModify the code from Step 3 to create a 99% confidence interval.\n\n# Paste code for 90% confidence interval\n\n\nWhich confidence level produces the most accurate confidence interval (90%, 95%, 99%)? Explain\nWhich confidence level produces the most precise confidence interval (90%, 95%, 99%)? Explain\nIf we want to be very certain that we capture the population parameter, should we use a wider or a narrower interval? What drawbacks are associated with using a wider interval?\n\n\n\n\n\n\n\nImportant\n\n\n\nTo submit the AE:\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-04 repo on GitHub. (You do not submit AEs on Gradescope)."
+  },
+  {
+    "objectID": "ae/ae-03-slr.html",
+    "href": "ae/ae-03-slr.html",
+    "title": "AE 03: Bike rentals in Washington, DC",
+    "section": "",
+    "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-03 repo to get started. If you do not see an ae-03 repo, click here to create one.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Saturday, September 9 at 11:59pm.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(patchwork)"
+  },
+  {
+    "objectID": "ae/ae-03-slr.html#data",
+    "href": "ae/ae-03-slr.html#data",
+    "title": "AE 03: Bike rentals in Washington, DC",
+    "section": "Data",
+    "text": "Data\nOur data set contains daily rentals from the Capital Bikeshare in Washington, DC in 2011 and 2012. It was obtained from the dcbikeshare data set in the dsbox R package.\nWe will focus on the following variables in the analysis:\n\ncount: total bike rentals\ntemp_orig: Temperature in degrees Celsius\nseason: 1 - winter, 2 - spring, 3 - summer, 4 - fall\n\nClick here for the full list of variables and definitions.\n\nbikeshare &lt;- read_csv(\"data/dcbikeshare.csv\")"
+  },
+  {
+    "objectID": "ae/ae-03-slr.html#exercises",
+    "href": "ae/ae-03-slr.html#exercises",
+    "title": "AE 03: Bike rentals in Washington, DC",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1\nBelow are visualizations of the distributions of daily bike rentals and temperature as well as the relationship between these two variables.\n\np1 &lt;- ggplot(bikeshare, aes(x = count)) +\n  geom_histogram(binwidth = 250) + \n  labs(x = \"Daily bike rentals\")\n\np2 &lt;- ggplot(bikeshare, aes(x = temp_orig)) +\n  geom_histogram() + \n  labs(x = \"Temperature (Celsius)\")\n\np3 &lt;- ggplot(bikeshare, aes(y = count, x = temp_orig)) +\n  geom_point() + \n  labs(x = \"Temperature (Celsius)\", \n       y = \"Daily bike rentals\")\n\n(p1 | p2) / p3\n\n\n\n\n\n\n\n\n\n\nThere appears to be one day with a very small number of bike rentals. What was the day? Why were the number of bike rentals so low on that day? Hint: You can Google the date to figure out what was going on that day.\n\n\n\n[Add your answer here]\n\n\nExercise 2\n\n\n\n\n\n\nIn the raw data, seasons are coded as 1, 2, 3, 4 as numerical values, corresponding to winter, spring, summer, and fall respectively. Recode the season variable to make it a categorical variable (a factor) with levels corresponding to season names, making sure that the levels appear in a reasonable order in the variable (i.e., not alphabetical).\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 3\n\n\n\n\n\n\nWe want to evaluate whether the relationship between temperature and daily bike rentals is the same for each season. To answer this question, first create a scatter plot of daily bike rentals vs. temperature faceted by season.\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 4\n\n\n\n\n\n\n\nWhich season appears to have the strongest relationship between temperature and daily bike rentals? Why do you think the relationship is strongest in this season?\nWhich season appears to have the weakest relationship between temperature and daily bike rentals? Why do you think the relationship is weakest in this season?\n\n\n\n\n[Add your answer here]\n\n\nExercise 5\n\n\n\n\n\n\nFilter your data for the season with the strongest apparent relationship between temperature and daily bike rentals.\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 6\n\n\n\n\n\n\nUsing the subset of the data from Exercise 5, fit a linear model for predicting daily bike rentals from temperature for this season.\n\n\n\n\n# add code developed during livecoding here\n\n\n\nExercise 7\n\n\n\n\n\n\nUse the output to write out the estimated regression equation.\n\n\n\n[Add your answer here]\n\n\nExercise 8\n\n\n\n\n\n\nInterpret the slope in the context of the data.\n\n\n\n[Add your answer here]\n\n\nExercise 9\n\n\n\n\n\n\nInterpret the intercept in the context of the data.\n\n\n\n[Add your answer here]\n\n\nExercise 10\n\n\n\n\n\n\nSuppose you work for a bike share company in Durham, NC, and they want to predict daily bike rentals in 2024. What is one reason you might recommend they use your analysis for this task? What is one reason you would recommend they not use your analysis for this task?\n\n\n\n[Add your answer here]\n\n\n\n\n\n\n\nImportant\n\n\n\nTo submit the AE:\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-03- repo on GitHub. (You do not submit AEs on Gradescope)."
+  },
+  {
+    "objectID": "ae/ae-02-bikeshare.html",
+    "href": "ae/ae-02-bikeshare.html",
+    "title": "AE 02: Bike rentals in Washington, DC",
+    "section": "",
+    "text": "Important\n\n\n\nFor this AE, you will discuss the questions in groups and submit answers on Ed Discussion. This AE does not count towards the Application Exercise grade.\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(patchwork)"
+  },
+  {
+    "objectID": "ae/ae-02-bikeshare.html#data",
+    "href": "ae/ae-02-bikeshare.html#data",
+    "title": "AE 02: Bike rentals in Washington, DC",
+    "section": "Data",
+    "text": "Data\nOur dataset contains daily rentals from the Capital Bikeshare in Washington, DC in 2011 and 2012. It was obtained from the dcbikeshare data set in the dsbox R package.\nWe will focus on the following variables in the analysis:\n\ncount: total bike rentals\ntemp_orig: Temperature in degrees Celsius\nseason: 1 - winter, 2 - spring, 3 - summer, 4 - fall\n\nClick here for the full list of variables and definitions.\n\nbikeshare &lt;- read_csv(\"data/dcbikeshare.csv\")"
+  },
+  {
+    "objectID": "ae/ae-02-bikeshare.html#daily-counts-and-temperature",
+    "href": "ae/ae-02-bikeshare.html#daily-counts-and-temperature",
+    "title": "AE 02: Bike rentals in Washington, DC",
+    "section": "Daily counts and temperature",
+    "text": "Daily counts and temperature\n\nExercise 1\nVisualize the distribution of daily bike rentals and temperature as well as the relationship between these two variables.\n\np1 &lt;- ggplot(bikeshare, aes(x = count)) +\n  geom_histogram(binwidth = 250) + \n  labs(x = \"Daily bike rentals\")\n\np2 &lt;- ggplot(bikeshare, aes(x = temp_orig)) +\n  geom_histogram() + \n  labs(x = \"Temperature (Celsius)\")\n\np3 &lt;- ggplot(bikeshare, aes(y = count, x = temp_orig)) +\n  geom_point() + \n  labs(x = \"Temperature (Celsius)\", \n       y = \"Daily bike rentals\")\n\n(p1 | p2) / p3\n\n\n\n\n\n\nExercise 2\nDescribe the relationship between daily bike rentals and temperature. Comment on how we expect the number of bike rentals to change as the temperature increases.\n\n\nExercise 3\nSuppose you want to fit a model so you can use the temperature to predict the number of bike rentals. Would a model of the form\n\\[\\text{count} = \\beta_0 + \\beta_1 ~ \\text{temp\\_orig} + \\epsilon\\]\nbe an appropriate fit for the data? Why or why not?\nPut your group’s vote on Ed Discussion and briefly describe your reasoning in the comments.\n\nSection 001 (10:05am): edstem.org/us/courses/44523/discussion/3361086\nSection 002 (1:25pm): edstem.org/us/courses/44523/discussion/3361091"
+  },
+  {
+    "objectID": "project-instructions.html",
+    "href": "project-instructions.html",
+    "title": "Final project",
+    "section": "",
+    "text": "Instructions will be posted when the project is assigned.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n, visualizations and summary statistics to describe the following: –&gt;"
+  },
+  {
+    "objectID": "computing-access.html",
+    "href": "computing-access.html",
+    "title": "Computing access",
+    "section": "",
+    "text": "To access computing resources for the introductory data science courses offered by the Duke University Department of Statistical Science, go to the Duke Container Manager website, cmgr.oit.duke.edu/containers.\nIf this is your first time accessing the containers, click on reserve STA210 on the Reservations available menu on the right. You only need to do this once, and when you do, you’ll see this container moved to the My reservations menu on the left.\nNext, click on STA210 under My reservations to access the RStudio instance you’ll use for the course."
+  },
+  {
+    "objectID": "slides/lab-02.html#reminders",
+    "href": "slides/lab-02.html#reminders",
+    "title": "Lab 02",
+    "section": "Reminders",
+    "text": "Reminders\n\n\nSelect the pages corresponding to each exercise when you when you submit the assignment on Gradescope.\n\nClick here for written and video instructions on submitting an assignment and marking pages on Gradescope.\n\nIn your write up:\n\nWrite all narrative in complete sentences.\nInclude an informative title and axis labels on graphs.\nWrite responses in the context of the data.\nDescribe distribution using shape, center, spread, and potential outliers. Describe relationships between variables using strength, direction, and shape."
+  },
+  {
+    "objectID": "slides/lab-02.html#axis-labels-and-titles",
+    "href": "slides/lab-02.html#axis-labels-and-titles",
+    "title": "Lab 02",
+    "section": "Axis labels and titles",
+    "text": "Axis labels and titles\n\nBelow is a graph of association between flipper length in millimeters and body mass in grams of three species of penguins in Palmer Station, Antarctica. What are informative title and axis labels for this graph?"
+  },
+  {
+    "objectID": "slides/lab-02.html#code-style",
+    "href": "slides/lab-02.html#code-style",
+    "title": "Lab 02",
+    "section": "Code style",
+    "text": "Code style\nWhich code chunk would you rather read?\n\n# code chunk 1\npenguins|&gt;filter(!is.na(flipper_length_mm))|&gt;group_by(species)|&gt;summarise(min=min(flipper_length_mm),mean=mean(flipper_length_mm),sd=sd(flipper_length_mm),max=max(flipper_length_mm),n=n())\n\n\n\n\n# code chunk 2\npenguins |&gt; \n  filter(!is.na(flipper_length_mm)) |&gt; \n  group_by(species) |&gt; \n  summarise(min = min(flipper_length_mm), \n            mean = mean(flipper_length_mm), \n            max = max(flipper_length_mm),\n            n = n())"
+  },
+  {
+    "objectID": "slides/lab-02.html#code-style-contd",
+    "href": "slides/lab-02.html#code-style-contd",
+    "title": "Lab 02",
+    "section": "Code style cont’d",
+    "text": "Code style cont’d\nMake code easier to read and debug by\n\nPutting each element on a different line (start a new line after + and |&gt;)\nPutting spaces before and after operators (+, -, *, =, |&gt; )\nIn general, avoiding long lines of code, i.e. lines longer than 120 characters.\n\nSee the Tidyverse Style Guide for more tips on code styling."
+  },
+  {
+    "objectID": "slides/lab-02.html#todays-lab",
+    "href": "slides/lab-02.html#todays-lab",
+    "title": "Lab 02",
+    "section": "Today’s lab",
+    "text": "Today’s lab\n\nRemember to use a reproducible workflow with regular commits (and informative commit messages).\nPush all updated files after each commit! The Git pane should be clear after each Render -&gt; Commit -&gt; Push.\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "slides/04-slr-bootstrap.html#statistics-experience-assignment",

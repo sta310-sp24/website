@@ -206,11 +206,9 @@ $$
 . . .
 
 ::: question
-Why divide by $n - 2$?
+1.  Why divide by $n - 2$?
 
-::: nonincremental
-1.  Why do we care about the value of the regression standard error?
-:::
+2.  Why do we care about the value of the regression standard error?
 :::
 
 ## Standard error of $\hat{\beta}_1$

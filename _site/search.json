@@ -1197,6 +1197,48 @@
     "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
   },
   {
+    "objectID": "labs/lab-03.html",
+    "href": "labs/lab-03.html",
+    "title": "Lab 03: Coffee grades",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-03.html#learning-goals",
+    "href": "labs/lab-03.html#learning-goals",
+    "title": "Lab 03: Coffee grades",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
+  },
+  {
+    "objectID": "labs/lab-03.html#packages",
+    "href": "labs/lab-03.html#packages",
+    "title": "Lab 03: Coffee grades",
+    "section": "Packages",
+    "text": "Packages\nThe following packages are used in the lab.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)"
+  },
+  {
+    "objectID": "labs/lab-03.html#the-data",
+    "href": "labs/lab-03.html#the-data",
+    "title": "Lab 03: Coffee grades",
+    "section": "The Data",
+    "text": "The Data\nThe dataset for this lab comes from the Coffee Quality Database and was obtained from the #TidyTuesday GitHub repo. It includes information about the origin, producer, measures of various characteristics, and the quality measure for over 1,000 coffees. The coffees can be reasonably be treated as a random sample.\nThis lab will focus on the following variables:\n\naroma: Aroma grade, 0 (worst aroma) - 10 (best aroma)\nflavor: Flavor grade, 0 (worst flavor) - 10 (best flavor)\n\nClick here for the definitions of all variables in the data set. Click here for more details about how these measures are obtained.\n\ncoffee &lt;- read_csv(\"data/coffee-grades.csv\")"
+  },
+  {
+    "objectID": "labs/lab-03.html#grading-50-pts",
+    "href": "labs/lab-03.html#grading-50-pts",
+    "title": "Lab 03: Coffee grades",
+    "section": "Grading (50 pts)",
+    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1 - 10\n45\n\n\nWorkflow & formatting\n31\n\n\nReproducible report\n22"
+  },
+  {
+    "objectID": "labs/lab-03.html#footnotes",
+    "href": "labs/lab-03.html#footnotes",
+    "title": "Lab 03: Coffee grades",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow. This includes implementing version control with at least at least 3 informative commit messages and having a neatly formatted PDF document that is easily readable with an updated name and date.↩︎\nThis means we will be able to render the .qmd file in your GitHub repo and exactly reproduce the .pdf file in the Github repo and on Gradescope.↩︎"
+  },
+  {
     "objectID": "labs/lab-00.html",
     "href": "labs/lab-00.html",
     "title": "Lab 00: Getting started",
@@ -1831,7 +1873,7 @@
     "href": "slides/06-slr-math-models.html#regression-standard-error",
     "title": "SLR: Mathematical models for inference",
     "section": "Regression standard error",
-    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\nWhy divide by \\(n - 2\\)?\n\n\nWhy do we care about the value of the regression standard error?"
+    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\n\nWhy divide by \\(n - 2\\)?\nWhy do we care about the value of the regression standard error?"
   },
   {
     "objectID": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",

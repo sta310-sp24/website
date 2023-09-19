@@ -253,11 +253,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning goals</a></li>
   </ul></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
-  <ul class="collapse">
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
-  </ul></li>
+  <li><a href="#data-coffee-grades" id="toc-data-coffee-grades" class="nav-link" data-scroll-target="#data-coffee-grades">Data: Coffee grades</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
@@ -334,8 +332,9 @@ Important
 <li><p>Go to the <a href="https://www.github.com/sta210-fa23">sta210-fa23</a> organization on GitHub. Click on the repo with the prefix <strong>lab-03</strong>. It contains the starter documents you need to complete the lab.</p></li>
 <li><p>Clone the repo and start a new project in RStudio. See the <a href="../labs/lab-01.html">Lab 01 instructions</a> for details on cloning a repo, starting a new project in R, and configuring git.</p></li>
 </ul>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+</section>
+<section id="packages" class="level1">
+<h1>Packages</h1>
 <p>The following packages are used in the lab.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -343,8 +342,8 @@ Important
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="the-data" class="level2">
-<h2 class="anchored" data-anchor-id="the-data">The Data</h2>
+<section id="data-coffee-grades" class="level1">
+<h1>Data: Coffee grades</h1>
 <p>The dataset for this lab comes from the <a href="https://github.com/jldbc/coffee-quality-database">Coffee Quality Database</a> and was obtained from the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md">#TidyTuesday GitHub repo</a>. It includes information about the origin, producer, measures of various characteristics, and the quality measure for over 1,000 coffees. The coffees can be reasonably be treated as a random sample.</p>
 <p>This lab will focus on the following variables:</p>
 <ul>
@@ -355,7 +354,6 @@ Important
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>coffee <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/coffee-grades.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 </section>
 <section id="exercises" class="level1">
 <h1>Exercises</h1>
@@ -386,7 +384,7 @@ Important
 </section>
 <section id="exercise-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>Fit the linear model using aroma grade to understand variability in the flavor grade. Neatly display the model using three digits, and include the <strong>95%</strong> confidence interval for the model coefficients in the output.</p>
+<p>Fit the linear model using aroma grade to understand variability in the flavor grade. Neatly display the model using three digits and include the <strong>95%</strong> confidence interval for the model coefficients in the output.</p>
 </section>
 <section id="exercise-3" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
@@ -424,7 +422,7 @@ Important
 <ul>
 <li><p>Calculate the 95% confidence interval for the mean flavor grade for coffees with aroma grade of 7.5. Interpret this value in the context of the data.</p></li>
 <li><p>One coffee produced by the Ethiopia Commodity Exchange has an aroma of 7.5. Calculate the the 95% prediction interval for the flavor grade for this coffee. Interpret this value in the context of the data.</p></li>
-<li><p>How do the predictions compare? How do the intervals compare? If there are differences in the predictions and/or intervals, briefly explain why.</p></li>
+<li><p>How do the predicted values compare? How do the intervals compare? If there are differences in the predictions and/or intervals, briefly explain why.</p></li>
 </ul>
 </section>
 <section id="exercise-8" class="level3">

@@ -33,7 +33,7 @@ By the end of the lab you will...
 
 -   Clone the repo and start a new project in RStudio. See the [Lab 01 instructions](lab-01.qmd) for details on cloning a repo, starting a new project in R, and configuring git.
 
-## Packages
+# Packages
 
 The following packages are used in the lab.
 
@@ -43,7 +43,7 @@ library(tidymodels)
 library(knitr)
 ```
 
-## The Data
+# Data: Coffee grades
 
 The dataset for this lab comes from the [Coffee Quality Database](https://github.com/jldbc/coffee-quality-database) and was obtained from the [#TidyTuesday GitHub repo](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md). It includes information about the origin, producer, measures of various characteristics, and the quality measure for over 1,000 coffees. The coffees can be reasonably be treated as a random sample.
 
@@ -79,7 +79,7 @@ Visualize the relationship between the aroma and flavor grades. Write two observ
 
 ### Exercise 2
 
-Fit the linear model using aroma grade to understand variability in the flavor grade. Neatly display the model using three digits, and include the **95%** confidence interval for the model coefficients in the output.
+Fit the linear model using aroma grade to understand variability in the flavor grade. Neatly display the model using three digits and include the **95%** confidence interval for the model coefficients in the output.
 
 ### Exercise 3
 
@@ -117,7 +117,7 @@ Do the data provide evidence of a statistically significant linear relationship 
 
 -   One coffee produced by the Ethiopia Commodity Exchange has an aroma of 7.5. Calculate the the 95% prediction interval for the flavor grade for this coffee. Interpret this value in the context of the data.
 
--   How do the predictions compare? How do the intervals compare? If there are differences in the predictions and/or intervals, briefly explain why.
+-   How do the predicted values compare? How do the intervals compare? If there are differences in the predictions and/or intervals, briefly explain why.
 
 ### Exercise 8
 

@@ -1162,20 +1162,6 @@
     "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
   },
   {
-    "objectID": "labs/lab-03.html#packages",
-    "href": "labs/lab-03.html#packages",
-    "title": "Lab 03: Coffee grades",
-    "section": "Packages",
-    "text": "Packages\nThe following packages are used in the lab.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)"
-  },
-  {
-    "objectID": "labs/lab-03.html#the-data",
-    "href": "labs/lab-03.html#the-data",
-    "title": "Lab 03: Coffee grades",
-    "section": "The Data",
-    "text": "The Data\nThe dataset for this lab comes from the Coffee Quality Database and was obtained from the #TidyTuesday GitHub repo. It includes information about the origin, producer, measures of various characteristics, and the quality measure for over 1,000 coffees. The coffees can be reasonably be treated as a random sample.\nThis lab will focus on the following variables:\n\naroma: Aroma grade, 0 (worst aroma) - 10 (best aroma)\nflavor: Flavor grade, 0 (worst flavor) - 10 (best flavor)\n\nClick here for the definitions of all variables in the data set. Click here for more details about how these measures are obtained.\n\ncoffee &lt;- read_csv(\"data/coffee-grades.csv\")"
-  },
-  {
     "objectID": "labs/lab-03.html#grading-50-pts",
     "href": "labs/lab-03.html#grading-50-pts",
     "title": "Lab 03: Coffee grades",

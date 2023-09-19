@@ -397,7 +397,7 @@ Important
 </section>
 <section id="exercise-4" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-4">Exercise 4</h3>
-<p>Input the model name in the code below to calculate the regression standard error. State the definition of this value in the context of the data.</p>
+<p>Input the model name in the code below to calculate the regression standard error, <span class="math inline">\(\hat{\sigma}_\epsilon\)</span>. State the definition of this value in the context of the data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(____)<span class="sc">$</span>sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -422,8 +422,8 @@ Important
 <section id="exercise-7" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-7">Exercise 7</h3>
 <ul>
-<li><p>Calculate the 95% confidence interval for the mean flavor grade for coffees with aroma grade of 7.5.</p></li>
-<li><p>One coffee produced by the Ethiopia Commodity Exchange has an aroma of 7.5. Calculate the the 95% prediction interval for the flavor grade for this coffee.</p></li>
+<li><p>Calculate the 95% confidence interval for the mean flavor grade for coffees with aroma grade of 7.5. Interpret this value in the context of the data.</p></li>
+<li><p>One coffee produced by the Ethiopia Commodity Exchange has an aroma of 7.5. Calculate the the 95% prediction interval for the flavor grade for this coffee. Interpret this value in the context of the data.</p></li>
 <li><p>How do the predictions compare? How do the intervals compare? If there are differences in the predictions and/or intervals, briefly explain why.</p></li>
 </ul>
 </section>
@@ -431,7 +431,8 @@ Important
 <h3 class="anchored" data-anchor-id="exercise-8">Exercise 8</h3>
 <p>We’d like to check the model conditions to assess the reliability of the inferential results. To do so, we will create a data frame called <code>coffee_aug</code> that includes the residuals and predicted values from the model. Input the name of your model in the code below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>coffee_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(_____<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>coffee_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(_____<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Make a scatterplot of the residuals (<code>.resid</code>) vs.&nbsp;fitted values (<code>.fitted</code>). Use <a href="https://ggplot2.tidyverse.org/reference/geom_abline.html"><code>geom_hline()</code></a> to add a horizontal dotted line at <span class="math inline">\(residuals = 0\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -526,16 +527,48 @@ Warning
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Ex 1 - 10</td>
-<td style="text-align: left;">45</td>
+<td style="text-align: left;">Ex 1</td>
+<td style="text-align: left;">4</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Workflow &amp; formatting</td>
-<td style="text-align: left;">3<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+<td style="text-align: left;">Ex 2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Reproducible report</td>
-<td style="text-align: left;">2<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
+<td style="text-align: left;">Ex 3</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ex 4</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ex 5</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ex 6</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ex 7</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ex 8</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ex 9</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ex 10</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Workflow &amp; formatting</td>
+<td style="text-align: left;">3<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
 </tr>
 </tbody>
 </table>
@@ -548,8 +581,7 @@ Warning
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow. This includes implementing version control with at least at least 3 informative commit messages and having a neatly formatted PDF document that is easily readable with an updated name and date.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>This means we will be able to render the .qmd file in your GitHub repo and exactly reproduce the .pdf file in the Github repo and on Gradescope.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

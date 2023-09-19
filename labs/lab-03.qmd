@@ -89,7 +89,7 @@ Fit the linear model using aroma grade to understand variability in the flavor g
 
 ### Exercise 4
 
-Input the model name in the code below to calculate the regression standard error. State the definition of this value in the context of the data.
+Input the model name in the code below to calculate the regression standard error, $\hat{\sigma}_\epsilon$. State the definition of this value in the context of the data.
 
 ```{r}
 #| eval: false
@@ -113,9 +113,9 @@ Do the data provide evidence of a statistically significant linear relationship 
 
 ### Exercise 7
 
--   Calculate the 95% confidence interval for the mean flavor grade for coffees with aroma grade of 7.5.
+-   Calculate the 95% confidence interval for the mean flavor grade for coffees with aroma grade of 7.5. Interpret this value in the context of the data.
 
--   One coffee produced by the Ethiopia Commodity Exchange has an aroma of 7.5. Calculate the the 95% prediction interval for the flavor grade for this coffee.
+-   One coffee produced by the Ethiopia Commodity Exchange has an aroma of 7.5. Calculate the the 95% prediction interval for the flavor grade for this coffee. Interpret this value in the context of the data.
 
 -   How do the predictions compare? How do the intervals compare? If there are differences in the predictions and/or intervals, briefly explain why.
 
@@ -124,13 +124,14 @@ Do the data provide evidence of a statistically significant linear relationship 
 We'd like to check the model conditions to assess the reliability of the inferential results. To do so, we will create a data frame called `coffee_aug` that includes the residuals and predicted values from the model. Input the name of your model in the code below.
 
 ```{r}
+#|eval: false
 coffee_aug <- augment(_____$fit)
 ```
 
 Make a scatterplot of the residuals (`.resid`) vs. fitted values (`.fitted`). Use [`geom_hline()`](https://ggplot2.tidyverse.org/reference/geom_abline.html) to add a horizontal dotted line at $residuals = 0$.
 
 ::: callout-note
-The **linearity condition** is satisfied if there is random scatter of the residuals (no distinguishable pattern or structure) in the plot of residuals vs. fitted values. \
+The **linearity condition** is satisfied if there is random scatter of the residuals (no distinguishable pattern or structure) in the plot of residuals vs. fitted values.\
 \
 The **constant variance** condition is satisfied if the vertical spread of the residuals is relatively across the plot.
 :::
@@ -178,10 +179,16 @@ To submit your assignment:
 
 | Component             | Points |
 |:----------------------|:-------|
-| Ex 1 - 10             | 45     |
+| Ex 1                  | 4      |
+| Ex 2                  | 3      |
+| Ex 3                  | 4      |
+| Ex 4                  | 3      |
+| Ex 5                  | 8      |
+| Ex 6                  | 5      |
+| Ex 7                  | 8      |
+| Ex 8                  | 6      |
+| Ex 9                  | 4      |
+| Ex 10                 | 2      |
 | Workflow & formatting | 3[^1]  |
-| Reproducible report   | 2[^2]  |
 
-[^1]: The "Workflow & formatting" grade is to assess the reproducible workflow. This includes implementing version control with at least at least 3 informative commit messages and having a neatly formatted PDF document that is easily readable with an updated name and date.
-
-[^2]: This means we will be able to render the .qmd file in your GitHub repo and exactly reproduce the .pdf file in the Github repo and on Gradescope.
+[^1]: The "Workflow & formatting" grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.

@@ -45,6 +45,6 @@ Make sure to do the following as you complete the assignment:
 
     -   We will talk about model conditions in the September 20 lecture.
 
--   Remember to mark all pages in your Gradescope submission. The first page should be marked for the "Workflow & formatting" and "Reproducible report" sections.
+-   Remember to mark all pages in your Gradescope submission. The first page should be marked for the "Workflow & formatting" section.
 
 -   Use lectures and application exercises as reference as you complete the lab.\

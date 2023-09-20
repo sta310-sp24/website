@@ -325,7 +325,6 @@ ggplot(df_aug, aes(x = .resid)) +
 ::: columns
 ::: {.column width="50%"}
 ```{r}
-#| echo: false
 #| code-fold: true
 ggplot(df_aug, aes(x = .resid)) +
   geom_histogram(binwidth = 50000, color = "white")  +

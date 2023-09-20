@@ -249,7 +249,7 @@
     "href": "slides/07-slr-conditions-eval.html#check-normality-using-a-qq-plot",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Check normality using a QQ-plot",
-    "text": "Check normality using a QQ-plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(df_aug, aes(sample = .resid)) +\n  stat_qq()+\n  stat_qq_line() + \n  labs(x = \"Theoretical quantile\", \n       y = \"Observed quantile\", \n       title = \"Normal QQ-plot of residuals\")\n\n\n\n\n\n\n\n\n\n\n\n\nAssess whether residuals lie along the diagonal line of the Quantile-quantile plot (QQ-plot).\nIf so, the residuals are normally distributed."
+    "text": "Check normality using a QQ-plot\n\n\n\n\nCode\nggplot(df_aug, aes(x = .resid)) +\n  geom_histogram(binwidth = 50000, color = \"white\")  +\n  labs(\n    x = \"Residual\",\n    y = \"Count\",\n    title = \"Histogram of residuals\"\n  )\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(df_aug, aes(sample = .resid)) +\n  stat_qq()+\n  stat_qq_line() + \n  labs(x = \"Theoretical quantile\", \n       y = \"Observed quantile\", \n       title = \"Normal QQ-plot of residuals\")\n\n\n\n\n\n\n\n\n\n\n\n\nAssess whether residuals lie along the diagonal line of the Quantile-quantile plot (QQ-plot).\nIf so, the residuals are normally distributed."
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#normality-2",

@@ -426,6 +426,11 @@ Prof.&nbsp;Maria Tackett
 </ul></li>
 </ul>
 </section>
+<section>
+<section id="questions-from-last-class" class="title-slide slide level1 center">
+<h1>Questions from last class?</h1>
+
+</section>
 <section id="computational-set-up" class="slide level2">
 <h2>Computational set up</h2>
 <div class="cell" data-layout-align="center">
@@ -490,20 +495,31 @@ Prof.&nbsp;Maria Tackett
 Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 \]</span></p>
 
-<img data-src="images/06/regression.png" class="r-stretch quarto-figure-center"><p class="caption">Image source: <em>Introduction to the Practice of Statistics (5th ed)</em></p></section>
-<section id="model-conditions" class="slide level2">
+<img data-src="images/06/regression.png" class="r-stretch quarto-figure-center"><p class="caption">Image source: <em>Introduction to the Practice of Statistics (5th ed)</em></p></section></section>
+<section>
+<section id="model-conditions" class="title-slide slide level1 center">
+<h1>Model conditions</h1>
+
+</section>
+<section id="model-conditions-1" class="slide level2">
 <h2>Model conditions</h2>
 <ol type="1">
 <li><strong>Linearity:</strong> There is a linear relationship between the outcome and predictor variables</li>
-<li><strong>Constant variance:</strong> The variability of the errors is equal for all values of the predictor variable, i.e.&nbsp;the errors are homeoscedastic</li>
-<li><strong>Normality:</strong> The errors follow a normal distribution
-<ol type="1">
-<li>Condition can be relaxed if sample size is sufficiently large <span class="math inline">\((n &gt; 30)\)</span></li>
-</ol></li>
+<li><strong>Constant variance:</strong> The variability of the errors is equal for all values of the predictor variable</li>
+<li><strong>Normality:</strong> The errors follow a normal distribution</li>
 <li><strong>Independence:</strong> The errors are independent from each other</li>
 </ol>
 </section>
 <section id="linearity" class="slide level2">
+<h2>Linearity</h2>
+<ul>
+<li><p>If the linear model, <span class="math inline">\(\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1x_i\)</span> adequately describes the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then the residuals should reflect random (chance) error</p></li>
+<li><p>To assess this, we can look at a plot of the residuals vs.&nbsp;the fitted values</p></li>
+<li><p><strong>Linearity satisfied</strong> if there is no distinguishable pattern in the residuals plot, i.e.&nbsp;the residuals should be randomly scattered</p></li>
+<li><p>A non-random pattern (e.g.&nbsp;a parabola) suggests a linear model does not adequately describe the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
+</ul>
+</section>
+<section id="linearity-1" class="slide level2">
 <h2>Linearity</h2>
 <p>✅ The residuals vs.&nbsp;fitted values plot should show a random scatter of residuals (no distinguishable pattern or structure)</p>
 
@@ -551,6 +567,15 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 </section>
 <section id="constant-variance" class="slide level2">
 <h2>Constant variance</h2>
+<ul>
+<li><p>If the spread of the distribution of <span class="math inline">\(Y\)</span> is equal for all values of <span class="math inline">\(X\)</span>then the spread of the residuals should be approximately equal for each value of <span class="math inline">\(X\)</span></p></li>
+<li><p>To assess this, we can look at a plot of the residuals vs.&nbsp;the fitted values</p></li>
+<li><p><strong>Constant variance satisfied</strong> if the vertical spread of the residuals is approximately equal as you move from left to right (i.e.&nbsp;there is no “fan” pattern)</p></li>
+<li><p>A fan pattern suggests the constant variance assumption is not satisfied and transformation or some other remedy is required (more on this later in the semester)</p></li>
+</ul>
+</section>
+<section id="constant-variance-1" class="slide level2">
+<h2>Constant variance</h2>
 <p>✅ The vertical spread of the residuals should be relatively constant across the plot</p>
 
 <img data-src="07-slr-conditions-eval_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
@@ -581,6 +606,18 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 </div>
 </section>
 <section id="normality" class="slide level2">
+<h2>Normality</h2>
+<ul>
+<li><p>The linear model assumes that the distribution of <span class="math inline">\(Y\)</span> is Normal for every value of <span class="math inline">\(X\)</span></p></li>
+<li><p>This is impossible to check in practice, so we will look at the overall distribution of the residuals to assess if the normality assumption is satisified</p></li>
+<li><p><strong>Normaltiy satisified</strong> if a histogram of the residuals is approximately normal</p>
+<ul>
+<li>Can also check that a normal QQ-plot falls along a diagonal line</li>
+</ul></li>
+<li><p>Most inferential methods for regression are robust to some departures from normality, so we can proceed with inference if the sample size is sufficiently large, <span class="math inline">\(n &gt; 30\)</span></p></li>
+</ul>
+</section>
+<section id="normality-1" class="slide level2">
 <h2>Normality</h2>
 
 <img data-src="07-slr-conditions-eval_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
@@ -623,17 +660,21 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 </div>
 </div>
 </section>
-<section id="normality-1" class="slide level2">
+<section id="normality-2" class="slide level2">
 <h2>Normality</h2>
 
-<img data-src="07-slr-conditions-eval_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p>❌ The residuals do not appear to follow a normal distribution, because the points veer from the diagonal line, so normality is not satisfied.</p>
+<img data-src="07-slr-conditions-eval_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p>❌ The residuals do not appear to follow a normal distribution, because the points do not lie on the diagonal line, so normality is not satisfied.</p>
 <p>✅ The sample size <span class="math inline">\(n = 98 &gt; 30\)</span>, so the sample size is large enough to relax this condition and proceed with inference.</p>
 </section>
 <section id="independence" class="slide level2">
 <h2>Independence</h2>
 <ul>
 <li><p>We can often check the independence assumption based on the context of the data and how the observations were collected</p></li>
-<li><p>If the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected</p></li>
+<li><p>Two common violations of the independence assumption:</p>
+<ul>
+<li><p><strong>Serial Effect</strong>: If the data were collected over time, plot the residuals in time order to see if there is a pattern (serial correlation)</p></li>
+<li><p><strong>Cluster Effect</strong>: If there are subgroups represented in the data that are not accounted for in the model (e.g., type of house), you can color the points in the residual plots by group to see if the model systematically over or under predicts for a particular subgroup</p></li>
+</ul></li>
 </ul>
 <div class="fragment">
 <p>✅ If this is a random sample of Duke Forest Houses, the error for one house does not tell us anything about the error for another house.</p>
@@ -665,17 +706,165 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_32bb2a73" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_011a10d4" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section id="comparing-inferential-methods" class="slide level2">
+<h2>Comparing inferential methods</h2>
+<div class="question">
+<ul>
+<li><p>What are the advantages of using simulation-based inference methods? What are the advantages of using inference methods based on mathematical models?</p></li>
+<li><p>Under what scenario(s) would you prefer to use simulation-based methods? Under what scenario(s) would you prefer to use methods based on mathematical models?</p></li>
+</ul>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="countdown" id="timer_38a2cb9f" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section></section>
+<section id="application-exercise" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<div class="appex">
+<p>📋 <a href="https://sta210-fa23.netlify.app/ae/ae-06-conditions.html">sta210-fa23.netlify.app/ae/ae-06-conditions</a></p>
+</div>
+</section>
+
+<section>
+<section id="model-evaluation" class="title-slide slide level1 center">
+<h1>Model evaluation</h1>
+
+</section>
+<section id="two-statistics" class="slide level2 small">
+<h2>Two statistics</h2>
+<div>
+<ul>
+<li class="fragment"><p><strong>R-squared</strong>, <span class="math inline">\(R^2\)</span> : Percentage of variability in the outcome explained by the regression model (in the context of SLR, the predictor)</p>
+<p><span class="math display">\[
+R^2 = Cor(x,y)^2 = Cor(y, \hat{y})^2
+\]</span></p></li>
+<li class="fragment"><p><strong>Root mean square error, RMSE</strong>: A measure of the average error (average difference between observed and predicted values of the outcome)</p>
+<p><span class="math display">\[
+RMSE = \sqrt{\frac{\sum_{i = 1}^n (y_i - \hat{y}_i)^2}{n}}
+\]</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="question">
+<p>What indicates a good model fit? Higher or lower <span class="math inline">\(R^2\)</span>? Higher or lower RMSE?</p>
+</div>
+</div>
+</section>
+<section id="r2" class="slide level2">
+<h2><span class="math inline">\(R^2\)</span></h2>
+<div>
+<ul>
+<li class="fragment"><p>Ranges between 0 (terrible predictor) and 1 (perfect predictor)</p></li>
+<li class="fragment"><p>Has no units</p></li>
+<li class="fragment"><p>Calculate with <code>rsq()</code> using the augmented data:</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">rsq</span>(df_aug, <span class="at">truth =</span> price, <span class="at">estimate =</span> .fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rsq     standard       0.445</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="interpreting-r2" class="slide level2 smaller">
+<h2>Interpreting <span class="math inline">\(R^2\)</span></h2>
+<div class="poll">
+<p>🗳️ <strong>Vote on Ed Discussion</strong></p>
+<div class="midi">
+<div class="poll">
+<p>The <span class="math inline">\(R^2\)</span> of the model for price from area of houses in Duke Forest is 44.5%. Which of the following is the correct interpretation of this value?</p>
+</div>
+<ol type="1">
+<li>Area correctly predicts 44.5% of price for houses in Duke Forest.</li>
+<li>44.5% of the variability in price for houses in Duke Forest can be explained by area.</li>
+<li>44.5% of the variability in area for houses in Duke Forest can be explained by price</li>
+<li>44.5% of the time price for houses in Duke Forest can be predicted by area.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="alternative-approach-for-r2" class="slide level2">
+<h2>Alternative approach for <span class="math inline">\(R^2\)</span></h2>
+<p>Alternatively, use <code>glance()</code> to construct a single row summary of the model fit, including <span class="math inline">\(R^2\)</span>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">glance</span>(df_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared   sigma statistic  p.value    df logLik   AIC   BIC
+      &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0.445         0.439 168798.      77.0 6.29e-14     1 -1318. 2641. 2649.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">glance</span>(df_fit)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4451945</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="rmse" class="slide level2">
+<h2>RMSE</h2>
+<div>
+<ul>
+<li class="fragment"><p>Ranges between 0 (perfect predictor) and infinity (terrible predictor)</p></li>
+<li class="fragment"><p>Same units as the response variable</p></li>
+<li class="fragment"><p>Calculate with <code>rmse()</code> using the augmented data:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">rmse</span>(df_aug, <span class="at">truth =</span> price, <span class="at">estimate =</span> .fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rmse    standard     167067.</code></pre>
+</div>
+</div></li>
+<li class="fragment"><p>The value of RMSE is not very meaningful on its own, but it’s useful for comparing across models (more on this when we get to regression with multiple predictors)</p></li>
+</ul>
+</div>
+</section>
+<section id="obtaining-r2-and-rmse" class="slide level2">
+<h2>Obtaining <span class="math inline">\(R^2\)</span> and RMSE</h2>
+<div>
+<ul>
+<li class="fragment"><p>Use <code>rsq()</code> and <code>rmse()</code>, respectively</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">rsq</span>(df_aug, <span class="at">truth =</span> price, <span class="at">estimate =</span> .fitted)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">rmse</span>(df_aug, <span class="at">truth =</span> price, <span class="at">estimate =</span> .fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li class="fragment"><p>First argument: data frame containing <code>truth</code> and <code>estimate</code> columns</p></li>
+<li class="fragment"><p>Second argument: name of the column containing <code>truth</code> (observed outcome)</p></li>
+<li class="fragment"><p>Third argument: name of the column containing <code>estimate</code> (predicted outcome)</p></li>
+</ul>
+</div>
+</section></section>
+<section id="application-exercise-1" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<div class="appex">
+<p>📋 <a href="https://sta210-fa23.netlify.app/ae/ae-06-conditions.html">sta210-fa23.netlify.app/ae/ae-06-conditions</a></p>
 </div>
 
-<p><img src="../images/logo.png" class="slide-logo"></p>
-<div class="footer footer-default">
+
+<img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://sta210-fa23.netlify.app/schedule">🔗 STA 210 - Fall 2023 - Schedule</a></p>
-</div>
 </div>
 </section>
     </div>

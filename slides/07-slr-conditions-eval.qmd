@@ -61,6 +61,8 @@ knitr::opts_chunk$set(
 
     -   More about the exam next week
 
+# Questions from last class?
+
 ## Computational set up
 
 ```{r packages}
@@ -426,4 +428,129 @@ countdown(minutes = 2, font_size = "2em")
 countdown(minutes = 2, font_size = "2em")
 ```
 
+# Application exercise
+
+::: appex
+📋 [sta210-fa23.netlify.app/ae/ae-06-conditions](https://sta210-fa23.netlify.app/ae/ae-06-conditions.html)
+:::
+
 # Model evaluation 
+
+## Two statistics {.small}
+
+::: incremental
+-   **R-squared**, $R^2$ : Percentage of variability in the outcome explained by the regression model (in the context of SLR, the predictor)
+
+    $$
+    R^2 = Cor(x,y)^2 = Cor(y, \hat{y})^2
+    $$
+
+-   **Root mean square error, RMSE**: A measure of the average error (average difference between observed and predicted values of the outcome)
+
+    $$
+    RMSE = \sqrt{\frac{\sum_{i = 1}^n (y_i - \hat{y}_i)^2}{n}}
+    $$
+:::
+
+. . .
+
+::: question
+What indicates a good model fit? Higher or lower $R^2$? Higher or lower RMSE?
+:::
+
+## $R^2$
+
+::: incremental
+-   Ranges between 0 (terrible predictor) and 1 (perfect predictor)
+
+-   Has no units
+
+-   Calculate with `rsq()` using the augmented data:
+
+```{r}
+#| echo: true
+rsq(df_aug, truth = price, estimate = .fitted)
+```
+:::
+
+## Interpreting $R^2$ {.smaller}
+
+```{r}
+#| echo: false
+df_fit_rsq <- round(glance(df_fit)$r.squared * 100, 1)
+```
+
+::: poll
+🗳️ **Vote on Ed Discussion**
+
+::: midi
+::: poll
+The $R^2$ of the model for price from area of houses in Duke Forest is `r df_fit_rsq`%. Which of the following is the correct interpretation of this value?
+:::
+
+1.  Area correctly predicts `r df_fit_rsq`% of price for houses in Duke Forest.
+2.  `r df_fit_rsq`% of the variability in price for houses in Duke Forest can be explained by area.
+3.  `r df_fit_rsq`% of the variability in area for houses in Duke Forest can be explained by price
+4.  `r df_fit_rsq`% of the time price for houses in Duke Forest can be predicted by area.
+:::
+:::
+
+## Alternative approach for $R^2$
+
+Alternatively, use `glance()` to construct a single row summary of the model fit, including $R^2$:
+
+```{r}
+#| echo: true
+
+glance(df_fit)
+```
+
+. . .
+
+```{r}
+glance(df_fit)$r.squared
+```
+
+## RMSE
+
+::: incremental
+-   Ranges between 0 (perfect predictor) and infinity (terrible predictor)
+
+-   Same units as the response variable
+
+-   Calculate with `rmse()` using the augmented data:
+
+    ```{r}
+    #| echo: true
+
+    rmse(df_aug, truth = price, estimate = .fitted)
+    ```
+
+-   The value of RMSE is not very meaningful on its own, but it's useful for comparing across models (more on this when we get to regression with multiple predictors)
+:::
+
+## Obtaining $R^2$ and RMSE
+
+::: incremental
+-   Use `rsq()` and `rmse()`, respectively
+
+    ```{r}
+    #| echo: true
+    #| eval: false
+
+    rsq(df_aug, truth = price, estimate = .fitted)
+    rmse(df_aug, truth = price, estimate = .fitted)
+    ```
+
+-   First argument: data frame containing `truth` and `estimate` columns
+
+-   Second argument: name of the column containing `truth` (observed outcome)
+
+-   Third argument: name of the column containing `estimate` (predicted outcome)
+:::
+
+# Application exercise
+
+::: appex
+📋 [sta210-fa23.netlify.app/ae/ae-06-conditions](https://sta210-fa23.netlify.app/ae/ae-06-conditions.html)
+:::

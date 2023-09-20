@@ -111,7 +111,7 @@ $$
 3.  **Normality:** The errors follow a normal distribution
 4.  **Independence:** The errors are independent from each other
 
-## Linearity 
+## Linearity
 
 -   If the linear model, $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1x_i$ adequately describes the relationship between $X$ and $Y$, then the residuals should reflect random (chance) error
 
@@ -247,7 +247,7 @@ p1 / p2 +
 
 ## Constant variance
 
-✅ The vertical spread of the residuals should be relatively constant across the plot
+✅ The vertical spread of the residuals is relatively constant across the plot
 
 ```{r}
 #| ref.label: "res-vs-fit"
@@ -294,19 +294,19 @@ ggplot(fan_aug, aes(x = .fitted, y = .resid)) +
 :::
 :::
 
-## Normality 
+## Normality {.midi}
 
 -   The linear model assumes that the distribution of $Y$ is Normal for every value of $X$
 
--   This is impossible to check in practice, so we will look at the overall distribution of the residuals to assess if the normality assumption is satisified
+-   This is impossible to check in practice, so we will look at the overall distribution of the residuals to assess if the normality assumption is satisfied
 
--   **Normaltiy satisified** if a histogram of the residuals is approximately normal
+-   **Normality satisfied** if a histogram of the residuals is approximately normal
 
-    -   Can also check that a normal QQ-plot falls along a diagonal line
+    -   Can also check that the points on a normal QQ-plot falls along a diagonal line
 
 -   Most inferential methods for regression are robust to some departures from normality, so we can proceed with inference if the sample size is sufficiently large, $n > 30$
 
-## Normality 
+## Normality
 
 ```{r}
 #| echo: false
@@ -323,9 +323,10 @@ ggplot(df_aug, aes(x = .resid)) +
 ## Check normality using a QQ-plot
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="50%"}
 ```{r}
 #| echo: false
+#| code-fold: true
 ggplot(df_aug, aes(x = .resid)) +
   geom_histogram(binwidth = 50000, color = "white")  +
   labs(
@@ -335,6 +336,11 @@ ggplot(df_aug, aes(x = .resid)) +
   )
 ```
 
+```         
+```
+:::
+
+::: {.column width="50%"}
 ```{r}
 #| code-fold: true
 ggplot(df_aug, aes(sample = .resid)) +
@@ -345,15 +351,13 @@ ggplot(df_aug, aes(sample = .resid)) +
        title = "Normal QQ-plot of residuals")
 ```
 :::
+:::
 
-::: {.column width="40%"}
 -   Assess whether residuals lie along the diagonal line of the Quantile-quantile plot (QQ-plot).
 
 -   If so, the residuals are normally distributed.
-:::
-:::
 
-## Normality 
+## Normality
 
 ```{r}
 #| echo: false
@@ -370,7 +374,7 @@ ggplot(df_aug, aes(sample = .resid)) +
 
 ✅ The sample size $n = 98 > 30$, so the sample size is large enough to relax this condition and proceed with inference.
 
-## Independence
+## Independence {.midi}
 
 -   We can often check the independence assumption based on the context of the data and how the observations were collected
 
@@ -380,9 +384,17 @@ ggplot(df_aug, aes(sample = .resid)) +
 
     -   **Cluster Effect**: If there are subgroups represented in the data that are not accounted for in the model (e.g., type of house), you can color the points in the residual plots by group to see if the model systematically over or under predicts for a particular subgroup
 
-. . .
+## Independence {.nonincremental}
 
-✅ If this is a random sample of Duke Forest Houses, the error for one house does not tell us anything about the error for another house.
+Recall the description of the data:
+
+> -   Data on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020
+>
+> -   Scraped from Zillow
+
+<br>
+
+✅ Based on the information we have, we can reasonably treat this as a random sample of Duke Forest Houses and assume the error for one house does not tell us anything about the error for another house.
 
 ## Recap
 
@@ -407,12 +419,14 @@ Used residual plots to check conditions for SLR:
 . . .
 
 ::: question
-Which of these conditions are required for fitting a SLR? Which for simulation-based inference for the slope for an SLR? Which for inference with mathematical models?
+Which of these conditions are required for fitting a SLR? Which for simulation-based inference for the slope for an SLR? Which for inference with mathematical models?\
+
+Ed Discussion \[[Section 001](https://edstem.org/us/courses/44523/discussion/439750)\]\[[Section 002](https://edstem.org/us/courses/44523/discussion/439753)\]
 :::
 
 ```{r}
 #| echo: false
-countdown(minutes = 2, font_size = "2em")
+countdown(minutes = 3, font_size = "2em")
 ```
 
 ## Comparing inferential methods
@@ -434,7 +448,7 @@ countdown(minutes = 2, font_size = "2em")
 📋 [sta210-fa23.netlify.app/ae/ae-06-conditions](https://sta210-fa23.netlify.app/ae/ae-06-conditions.html)
 :::
 
-# Model evaluation 
+# Model evaluation
 
 ## Two statistics {.small}
 
@@ -481,7 +495,7 @@ df_fit_rsq <- round(glance(df_fit)$r.squared * 100, 1)
 ```
 
 ::: poll
-🗳️ **Vote on Ed Discussion**
+🗳️ **Discussion**
 
 ::: midi
 ::: poll
@@ -504,6 +518,8 @@ Alternatively, use `glance()` to construct a single row summary of the model fit
 
 glance(df_fit)
 ```
+
+<br>
 
 . . .
 

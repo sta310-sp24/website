@@ -3,6 +3,9 @@ title: "AE 06: Conditions and model evaluation"
 subtitle: "Songs on Spotify"
 date: "Sep 20, 2022"
 editor: visual
+execute: 
+  warning: false
+  message: false
 ---
 
 ::: callout-important

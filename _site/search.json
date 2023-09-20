@@ -221,7 +221,7 @@
     "href": "slides/07-slr-conditions-eval.html#constant-variance-1",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Constant variance",
-    "text": "Constant variance\n✅ The vertical spread of the residuals should be relatively constant across the plot"
+    "text": "Constant variance\n✅ The vertical spread of the residuals is relatively constant across the plot"
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#non-constant-variance",
@@ -235,7 +235,7 @@
     "href": "slides/07-slr-conditions-eval.html#normality",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Normality",
-    "text": "Normality\n\nThe linear model assumes that the distribution of \\(Y\\) is Normal for every value of \\(X\\)\nThis is impossible to check in practice, so we will look at the overall distribution of the residuals to assess if the normality assumption is satisified\nNormaltiy satisified if a histogram of the residuals is approximately normal\n\nCan also check that a normal QQ-plot falls along a diagonal line\n\nMost inferential methods for regression are robust to some departures from normality, so we can proceed with inference if the sample size is sufficiently large, \\(n &gt; 30\\)"
+    "text": "Normality\n\nThe linear model assumes that the distribution of \\(Y\\) is Normal for every value of \\(X\\)\nThis is impossible to check in practice, so we will look at the overall distribution of the residuals to assess if the normality assumption is satisfied\nNormality satisfied if a histogram of the residuals is approximately normal\n\nCan also check that the points on a normal QQ-plot falls along a diagonal line\n\nMost inferential methods for regression are robust to some departures from normality, so we can proceed with inference if the sample size is sufficiently large, \\(n &gt; 30\\)"
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#normality-1",
@@ -249,7 +249,7 @@
     "href": "slides/07-slr-conditions-eval.html#check-normality-using-a-qq-plot",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Check normality using a QQ-plot",
-    "text": "Check normality using a QQ-plot\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(df_aug, aes(sample = .resid)) +\n  stat_qq()+\n  stat_qq_line() + \n  labs(x = \"Theoretical quantile\", \n       y = \"Observed quantile\", \n       title = \"Normal QQ-plot of residuals\")\n\n\n\n\n\n\n\n\n\n\n\nAssess whether residuals lie along the diagonal line of the Quantile-quantile plot (QQ-plot).\nIf so, the residuals are normally distributed."
+    "text": "Check normality using a QQ-plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(df_aug, aes(sample = .resid)) +\n  stat_qq()+\n  stat_qq_line() + \n  labs(x = \"Theoretical quantile\", \n       y = \"Observed quantile\", \n       title = \"Normal QQ-plot of residuals\")\n\n\n\n\n\n\n\n\n\n\n\n\nAssess whether residuals lie along the diagonal line of the Quantile-quantile plot (QQ-plot).\nIf so, the residuals are normally distributed."
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#normality-2",
@@ -263,14 +263,21 @@
     "href": "slides/07-slr-conditions-eval.html#independence",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Independence",
-    "text": "Independence\n\nWe can often check the independence assumption based on the context of the data and how the observations were collected\nTwo common violations of the independence assumption:\n\nSerial Effect: If the data were collected over time, plot the residuals in time order to see if there is a pattern (serial correlation)\nCluster Effect: If there are subgroups represented in the data that are not accounted for in the model (e.g., type of house), you can color the points in the residual plots by group to see if the model systematically over or under predicts for a particular subgroup\n\n\n\n✅ If this is a random sample of Duke Forest Houses, the error for one house does not tell us anything about the error for another house."
+    "text": "Independence\n\nWe can often check the independence assumption based on the context of the data and how the observations were collected\nTwo common violations of the independence assumption:\n\nSerial Effect: If the data were collected over time, plot the residuals in time order to see if there is a pattern (serial correlation)\nCluster Effect: If there are subgroups represented in the data that are not accounted for in the model (e.g., type of house), you can color the points in the residual plots by group to see if the model systematically over or under predicts for a particular subgroup"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#independence-1",
+    "href": "slides/07-slr-conditions-eval.html#independence-1",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Independence",
+    "text": "Independence\nRecall the description of the data:\n\nData on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020\nScraped from Zillow\n\n\n✅ Based on the information we have, we can reasonably treat this as a random sample of Duke Forest Houses and assume the error for one house does not tell us anything about the error for another house."
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#recap",
     "href": "slides/07-slr-conditions-eval.html#recap",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Recap",
-    "text": "Recap\nUsed residual plots to check conditions for SLR:\n\n\n\n\nLinearity\nConstant variance\n\n\n\n\n\nNormality\nIndependence\n\n\n\n\n\n\nWhich of these conditions are required for fitting a SLR? Which for simulation-based inference for the slope for an SLR? Which for inference with mathematical models?\n\n\n\n\n−+\n02:00"
+    "text": "Recap\nUsed residual plots to check conditions for SLR:\n\n\n\n\nLinearity\nConstant variance\n\n\n\n\n\nNormality\nIndependence\n\n\n\n\n\n\nWhich of these conditions are required for fitting a SLR? Which for simulation-based inference for the slope for an SLR? Which for inference with mathematical models?\n\nEd Discussion [Section 001][Section 002]\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#comparing-inferential-methods",
@@ -298,14 +305,14 @@
     "href": "slides/07-slr-conditions-eval.html#interpreting-r2",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Interpreting \\(R^2\\)",
-    "text": "Interpreting \\(R^2\\)\n\n🗳️ Vote on Ed Discussion\n\n\nThe \\(R^2\\) of the model for price from area of houses in Duke Forest is 44.5%. Which of the following is the correct interpretation of this value?\n\n\nArea correctly predicts 44.5% of price for houses in Duke Forest.\n44.5% of the variability in price for houses in Duke Forest can be explained by area.\n44.5% of the variability in area for houses in Duke Forest can be explained by price\n44.5% of the time price for houses in Duke Forest can be predicted by area."
+    "text": "Interpreting \\(R^2\\)\n\n🗳️ Discussion\n\n\nThe \\(R^2\\) of the model for price from area of houses in Duke Forest is 44.5%. Which of the following is the correct interpretation of this value?\n\n\nArea correctly predicts 44.5% of price for houses in Duke Forest.\n44.5% of the variability in price for houses in Duke Forest can be explained by area.\n44.5% of the variability in area for houses in Duke Forest can be explained by price\n44.5% of the time price for houses in Duke Forest can be predicted by area."
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#alternative-approach-for-r2",
     "href": "slides/07-slr-conditions-eval.html#alternative-approach-for-r2",
     "title": "SLR: Conditions + Model evaluation",
     "section": "Alternative approach for \\(R^2\\)",
-    "text": "Alternative approach for \\(R^2\\)\nAlternatively, use glance() to construct a single row summary of the model fit, including \\(R^2\\):\n\nglance(df_fit)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared   sigma statistic  p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.445         0.439 168798.      77.0 6.29e-14     1 -1318. 2641. 2649.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\nglance(df_fit)$r.squared\n\n[1] 0.4451945"
+    "text": "Alternative approach for \\(R^2\\)\nAlternatively, use glance() to construct a single row summary of the model fit, including \\(R^2\\):\n\nglance(df_fit)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared   sigma statistic  p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.445         0.439 168798.      77.0 6.29e-14     1 -1318. 2641. 2649.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\n\nglance(df_fit)$r.squared\n\n[1] 0.4451945"
   },
   {
     "objectID": "slides/07-slr-conditions-eval.html#rmse",
@@ -1334,7 +1341,7 @@
     "href": "ae/ae-06-conditions.html#data",
     "title": "AE 06: Conditions and model evaluation",
     "section": "Data",
-    "text": "Data\nThe data set for this assignment is a subset from the Spotify Songs Tidy Tuesday data set. The data were originally obtained from Spotify using the spotifyr R package.\nIt contains numerous characteristics for each song. You can see the full list of variables and definitions here. This analysis will focus specifically on the following variables:\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ntrack_id\ncharacter\nSong unique ID\n\n\ntrack_name\ncharacter\nSong Name\n\n\ntrack_artist\ncharacter\nSong Artist\n\n\ntrack_popularity\ndouble\nSong Popularity (0-100) where higher is better\n\n\nenergy\ndouble\nEnergy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.\n\n\nvalence\ndouble\nA measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).\n\n\n\n\nspotify &lt;- read_csv(\"data/spotify-popular.csv\")\n\nAre high energy songs more positive? To answer this question, we’ll analyze data on some of the most popular songs on Spotify, i.e. those with track_popularity &gt;= 80. We’ll use linear regression to fit a model to predict a song’s positiveness (valence) based on its energy level (energy).\nBelow are plots as part of the exploratory data analysis.\n\np1 &lt;- ggplot(data = spotify, aes(x = valence)) + \n  geom_histogram() + \n  labs(title = \"Distribution of Valence\", \n       subtitle = \" for Popular songs on Spotify\", \n       x = \"Valence\")\n\np2 &lt;- ggplot(data = spotify, aes(x = energy)) + \n  geom_histogram() + \n  labs(title = \"Distribution of Energy\", \n       subtitle = \"for Popular songs on Spotify\", \n       x = \"Energy\")\np1 + p2\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\nggplot(data = spotify, aes(x = energy, y = valence)) + \n  geom_point() + \n  labs(title = \"Valence vs. Energy\", \n       subtitle = \"Popular songs on Spotify\", \n       x = \"Energy\", \n       y = \"Valence\")"
+    "text": "Data\nThe data set for this assignment is a subset from the Spotify Songs Tidy Tuesday data set. The data were originally obtained from Spotify using the spotifyr R package.\nIt contains numerous characteristics for each song. You can see the full list of variables and definitions here. This analysis will focus specifically on the following variables:\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ntrack_id\ncharacter\nSong unique ID\n\n\ntrack_name\ncharacter\nSong Name\n\n\ntrack_artist\ncharacter\nSong Artist\n\n\ntrack_popularity\ndouble\nSong Popularity (0-100) where higher is better\n\n\nenergy\ndouble\nEnergy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.\n\n\nvalence\ndouble\nA measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).\n\n\n\n\nspotify &lt;- read_csv(\"data/spotify-popular.csv\")\n\nAre high energy songs more positive? To answer this question, we’ll analyze data on some of the most popular songs on Spotify, i.e. those with track_popularity &gt;= 80. We’ll use linear regression to fit a model to predict a song’s positiveness (valence) based on its energy level (energy).\nBelow are plots as part of the exploratory data analysis.\n\np1 &lt;- ggplot(data = spotify, aes(x = valence)) + \n  geom_histogram() + \n  labs(title = \"Distribution of Valence\", \n       subtitle = \" for Popular songs on Spotify\", \n       x = \"Valence\")\n\np2 &lt;- ggplot(data = spotify, aes(x = energy)) + \n  geom_histogram() + \n  labs(title = \"Distribution of Energy\", \n       subtitle = \"for Popular songs on Spotify\", \n       x = \"Energy\")\np1 + p2\n\n\n\n\n\nggplot(data = spotify, aes(x = energy, y = valence)) + \n  geom_point() + \n  labs(title = \"Valence vs. Energy\", \n       subtitle = \"Popular songs on Spotify\", \n       x = \"Energy\", \n       y = \"Valence\")"
   },
   {
     "objectID": "ae/ae-06-conditions.html#exercise-1",

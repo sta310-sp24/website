@@ -84,7 +84,7 @@ knitr::opts_chunk$set(
 ::: {.column width="60%"}
 *Dr. Nuzzo received her PhD in Statistics from Stanford University and is now Professor of Science, Technology, & Mathematics at [Gallaudet University](https://gallaudet.edu/). Dr. Nuzzo teaches statistics using American Sign Language.*
 
-*Her work has appeared in Nature, Los Angeles Times, New York Times, Reader\'s Digest, New Scientist, and Scientific American. Primarily, she works to help lay-audiences understand science and statistics in particular. She earned the American Statistical Association\'s 2014 Excellence in Statistical Reporting Award for her article on p-values in Nature. Her work led to the [ASA\'s statement on p-values](https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108).*
+*Her work has appeared in Nature, Los Angeles Times, New York Times, Reader's Digest, New Scientist, and Scientific American. Primarily, she works to help lay-audiences understand science and statistics in particular. She earned the American Statistical Association's 2014 Excellence in Statistical Reporting Award for her article on p-values in Nature. Her work led to the [ASA's statement on p-values](https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108).*
 
 Source: [hardin47.github.io/CURV/scholars/nuzzo](https://hardin47.github.io/CURV/scholars/nuzzo.html)\
 :::
@@ -92,9 +92,9 @@ Source: [hardin47.github.io/CURV/scholars/nuzzo](https://hardin47.github.io/CURV
 
 ## Regina Nuzzo {.midi}
 
-From [\"Tips for Communicating Statistical Significance.\"](https://www.nih.gov/about-nih/what-we-do/science-health-public-trust/perspectives/science-health-public-trust/tips-communicating-statistical-significance)
+From ["Tips for Communicating Statistical Significance."](https://www.nih.gov/about-nih/what-we-do/science-health-public-trust/perspectives/science-health-public-trust/tips-communicating-statistical-significance)
 
-*"That we use p-values to alert us to surprising data results, not to give a final answer on anything. (Or at least that\'s what we should be doing). And that results can get flagged as \"statistically surprising\" with a small p-value for a number of reasons"*
+*"That we use p-values to alert us to surprising data results, not to give a final answer on anything. (Or at least that's what we should be doing). And that results can get flagged as "statistically surprising" with a small p-value for a number of reasons"*
 
 1.  *There was a fluke.*
 
@@ -183,7 +183,6 @@ Y|X \sim N(\beta_0 + \beta_1 X, \sigma_\epsilon^2)
 $$
 
 ::: columns
-
 ::: {.column width="70%"}
 ![Image source: *Introduction to the Practice of Statistics (5th ed)*](images/06/regression.png)
 :::
@@ -266,7 +265,7 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
 $$
 
 ::: question
-Select the best interpretation of the test statistic on Ed Discussion. \
+Select the best interpretation of the test statistic on Ed Discussion.\
 \[[10:05am lecture](https://edstem.org/us/courses/44523/discussion/scheduled/438012)\] \[[1:25pm lecture](https://edstem.org/us/courses/44523/discussion/scheduled/438014)\]
 :::
 
@@ -284,7 +283,7 @@ tidy(df_fit) |>
 normTail(L = -8.78, U = 8.78, df = nrow(duke_forest) - 2, xlim = c(-9,9), col = "#D9E3E4")
 ```
 
-## Hypothesis test: p-value 
+## Hypothesis test: p-value
 
 ```{r}
 #| echo: false
@@ -595,7 +594,7 @@ Calculate the prediction interval for the sale price of a "tiny house" in Duke F
 
 *No, thanks!*
 
-## Extrapolation 
+## Extrapolation
 
 ::: question
 Why do we want to avoid extrapolation?

@@ -2469,5 +2469,110 @@
     "title": "Computing troubleshooting",
     "section": "",
     "text": "If you’re having difficulty launching an RStudio session from your reserved container, go to status.oit.duke.edu and scroll down to Teaching and Learning Tools. Under this heading you’ll find an entry called Container Manager (CMGR Coursework Containers).\n\nIf the status shows something other than Operational, this means there is a known incident with the containers. Check back later to see if it’s been resolved. If there’s a deadline coming up soon, post on the course forum to let us know that there’s an issue. We can look into how quickly it might get resolved and decide on what to do about the deadline accordingly. Note: We don’t anticipate this to happen regularly, the systems are Operational a huge majority of the time!\nIf the status shows Operational, this means the system is expected to be working. Check your internet connection, if need be, restart your computer to ensure a fresh new connection. If your issue persists, post on the course forum with details on what you’ve tried and the errors you see (including verbatim errors and/or screenshots)."
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#announcements",
+    "href": "slides/07-slr-conditions-eval.html#announcements",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Announcements",
+    "text": "Announcements\n\nHW 01: due TODAY at 11:59pm\nLab 03:\n\ndue Fri at 11:59pm (Tue labs)\ndue Sun at 11:59pm (Thu labs)\n\nLooking ahead: Exam 01:\n\nClosed note in-class: Wed, Oct 4\nOpen note take-home: Wed, Oct 4 - Fri, Oct 6\n\nReleased after Section 002\n\nMore about the exam next week"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#computational-set-up",
+    "href": "slides/07-slr-conditions-eval.html#computational-set-up",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Computational set up",
+    "text": "Computational set up\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(tidymodels)  # for modeling\nlibrary(openintro)   # for the duke_forest dataset\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(kableExtra)  # also for pretty tables\nlibrary(patchwork)   # arrange plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#regression-model-revisited",
+    "href": "slides/07-slr-conditions-eval.html#regression-model-revisited",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Regression model, revisited",
+    "text": "Regression model, revisited\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.325\n53302.463\n2.188\n0.031\n\n\narea\n159.483\n18.171\n8.777\n0.000"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#mathematical-representation-visualized",
+    "href": "slides/07-slr-conditions-eval.html#mathematical-representation-visualized",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Mathematical representation, visualized",
+    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\nImage source: Introduction to the Practice of Statistics (5th ed)"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#model-conditions",
+    "href": "slides/07-slr-conditions-eval.html#model-conditions",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Model conditions",
+    "text": "Model conditions\n\nLinearity: There is a linear relationship between the outcome and predictor variables\nConstant variance: The variability of the errors is equal for all values of the predictor variable, i.e. the errors are homeoscedastic\nNormality: The errors follow a normal distribution\n\nCondition can be relaxed if sample size is sufficiently large \\((n &gt; 30)\\)\n\nIndependence: The errors are independent from each other"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#linearity",
+    "href": "slides/07-slr-conditions-eval.html#linearity",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Linearity",
+    "text": "Linearity\n✅ The residuals vs. fitted values plot should show a random scatter of residuals (no distinguishable pattern or structure)"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#residuals-vs.-fitted-values-code",
+    "href": "slides/07-slr-conditions-eval.html#residuals-vs.-fitted-values-code",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Residuals vs. fitted values (code)",
+    "text": "Residuals vs. fitted values (code)\n\ndf_aug &lt;- augment(df_fit$fit)\n\nggplot(df_aug, aes(x = .fitted, y = .resid)) +\n  geom_point() +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  ylim(-1000000, 1000000) +\n  labs(\n    x = \"Fitted value\", y = \"Residual\",\n    title = \"Residuals vs. fitted values\"\n  )"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#non-linear-relationships",
+    "href": "slides/07-slr-conditions-eval.html#non-linear-relationships",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Non-linear relationships",
+    "text": "Non-linear relationships"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#constant-variance",
+    "href": "slides/07-slr-conditions-eval.html#constant-variance",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Constant variance",
+    "text": "Constant variance\n✅ The vertical spread of the residuals should be relatively constant across the plot"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#non-constant-variance",
+    "href": "slides/07-slr-conditions-eval.html#non-constant-variance",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Non-constant variance",
+    "text": "Non-constant variance"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#normality",
+    "href": "slides/07-slr-conditions-eval.html#normality",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Normality",
+    "text": "Normality"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#independence",
+    "href": "slides/07-slr-conditions-eval.html#independence",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Independence",
+    "text": "Independence\n\nWe can often check the independence assumption based on the context of the data and how the observations were collected\nIf the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected\n\n\n✅ If this is a random sample of Duke Forest Houses, the error for one house does not tell us anything about the error for another house."
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#recap",
+    "href": "slides/07-slr-conditions-eval.html#recap",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Recap",
+    "text": "Recap\nUsed residual plots to check conditions for SLR:\n\n\n\n\nLinearity\nConstant variance\n\n\n\n\n\nNormality\nIndependence\n\n\n\n\n\n\nWhich of these conditions are required for fitting a SLR? Which for simulation-based inference for the slope for an SLR? Which for inference with mathematical models?\n\n\n\n\n−+\n03:00\n\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#check-normality-using-a-qq-plot",
+    "href": "slides/07-slr-conditions-eval.html#check-normality-using-a-qq-plot",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Check normality using a QQ-plot",
+    "text": "Check normality using a QQ-plot\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggplot(df_aug, aes(sample = .resid)) +\n  stat_qq()+\n  stat_qq_line() + \n  labs(x = \"Theoretical quantile\", \n       y = \"Observed quantile\", \n       title = \"Normal QQ-plot of residuals\")\n\n\n\n\n\n\n\n\n\n\n\nAssess whether residuals lie along the diagonal line of the Quantile-quantile plot (QQ-plot).\nIf so, the residuals are normally distributed."
+  },
+  {
+    "objectID": "slides/07-slr-conditions-eval.html#normality-1",
+    "href": "slides/07-slr-conditions-eval.html#normality-1",
+    "title": "SLR: Conditions + Model evaluation",
+    "section": "Normality",
+    "text": "Normality\n\n❌ The residuals do not appear to follow a normal distribution, because the points veer from the diagonal line, so normality is not satisfied.\n✅ The sample size \\(n = 98 &gt; 30\\), so the sample size is large enough to relax this condition and proceed with inference."
   }
 ]

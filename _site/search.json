@@ -1540,104 +1540,6 @@
     "text": "Important\n\n\n\n\nAE 09 due Sat, Oct 22, 11:59pm\nLab 05:\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25 11:59pm (Fri lab)\n\n\n\n\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 19\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations: Log-transformed predictor\nOct 17\n\n\n💻 Model comparison\nOct 19\n\n\n💻 Lab 05\nOct 20 - 21\n\n\n\n\n\nPractice\n📋 AE 09: Model comparison\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nLab 05\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25, 11:59pm (Fri lab)"
   },
   {
-    "objectID": "labs/lab-00.html",
-    "href": "labs/lab-00.html",
-    "title": "Lab 00: Getting started",
-    "section": "",
-    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
-  },
-  {
-    "objectID": "labs/lab-03.html",
-    "href": "labs/lab-03.html",
-    "title": "Lab 03: Coffee grades",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-03.html#learning-goals",
-    "href": "labs/lab-03.html#learning-goals",
-    "title": "Lab 03: Coffee grades",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
-  },
-  {
-    "objectID": "labs/lab-03.html#grading-50-pts",
-    "href": "labs/lab-03.html#grading-50-pts",
-    "title": "Lab 03: Coffee grades",
-    "section": "Grading (50 pts)",
-    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n4\n\n\nEx 2\n3\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n8\n\n\nEx 6\n5\n\n\nEx 7\n8\n\n\nEx 8\n6\n\n\nEx 9\n4\n\n\nEx 10\n2\n\n\nWorkflow & formatting\n31"
-  },
-  {
-    "objectID": "labs/lab-03.html#footnotes",
-    "href": "labs/lab-03.html#footnotes",
-    "title": "Lab 03: Coffee grades",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-02.html",
-    "href": "labs/lab-02.html",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-02.html#learning-goals",
-    "href": "labs/lab-02.html#learning-goals",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
-  },
-  {
-    "objectID": "labs/lab-02.html#exercise-10",
-    "href": "labs/lab-02.html#exercise-10",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Exercise 10",
-    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
-  },
-  {
-    "objectID": "labs/lab-02.html#footnotes",
-    "href": "labs/lab-02.html#footnotes",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-01.html",
-    "href": "labs/lab-01.html",
-    "title": "Lab 01: Park access",
-    "section": "",
-    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-01.html#learning-goals",
-    "href": "labs/lab-01.html#learning-goals",
-    "title": "Lab 01: Park access",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
-  },
-  {
-    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "title": "Lab 01: Park access",
-    "section": "Clone the repo & start new RStudio project",
-    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
-  },
-  {
-    "objectID": "labs/lab-01.html#r-and-r-studio",
-    "href": "labs/lab-01.html#r-and-r-studio",
-    "title": "Lab 01: Park access",
-    "section": "R and R Studio",
-    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
-  },
-  {
-    "objectID": "labs/lab-01.html#footnotes",
-    "href": "labs/lab-01.html#footnotes",
-    "title": "Lab 01: Park access",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
     "objectID": "hw/hw-01.html",
     "href": "hw/hw-01.html",
     "title": "HW 01: Education & median income in US Counties",
@@ -1692,6 +1594,188 @@
     "title": "HW 01: Education & median income in US Counties",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-01.html",
+    "href": "labs/lab-01.html",
+    "title": "Lab 01: Park access",
+    "section": "",
+    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-01.html#learning-goals",
+    "href": "labs/lab-01.html#learning-goals",
+    "title": "Lab 01: Park access",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
+  },
+  {
+    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "title": "Lab 01: Park access",
+    "section": "Clone the repo & start new RStudio project",
+    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
+  },
+  {
+    "objectID": "labs/lab-01.html#r-and-r-studio",
+    "href": "labs/lab-01.html#r-and-r-studio",
+    "title": "Lab 01: Park access",
+    "section": "R and R Studio",
+    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
+  },
+  {
+    "objectID": "labs/lab-01.html#footnotes",
+    "href": "labs/lab-01.html#footnotes",
+    "title": "Lab 01: Park access",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-02.html",
+    "href": "labs/lab-02.html",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-02.html#learning-goals",
+    "href": "labs/lab-02.html#learning-goals",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-10",
+    "href": "labs/lab-02.html#exercise-10",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Exercise 10",
+    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab-02.html#footnotes",
+    "href": "labs/lab-02.html#footnotes",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-03.html",
+    "href": "labs/lab-03.html",
+    "title": "Lab 03: Coffee grades",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-03.html#learning-goals",
+    "href": "labs/lab-03.html#learning-goals",
+    "title": "Lab 03: Coffee grades",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
+  },
+  {
+    "objectID": "labs/lab-03.html#grading-50-pts",
+    "href": "labs/lab-03.html#grading-50-pts",
+    "title": "Lab 03: Coffee grades",
+    "section": "Grading (50 pts)",
+    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n4\n\n\nEx 2\n3\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n8\n\n\nEx 6\n5\n\n\nEx 7\n8\n\n\nEx 8\n6\n\n\nEx 9\n4\n\n\nEx 10\n2\n\n\nWorkflow & formatting\n31"
+  },
+  {
+    "objectID": "labs/lab-03.html#footnotes",
+    "href": "labs/lab-03.html#footnotes",
+    "title": "Lab 03: Coffee grades",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-00.html",
+    "href": "labs/lab-00.html",
+    "title": "Lab 00: Getting started",
+    "section": "",
+    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
+  },
+  {
+    "objectID": "hw/hw-02.html",
+    "href": "hw/hw-02.html",
+    "title": "HW 02: Multiple linear regression",
+    "section": "",
+    "text": "In this analysis you will use simple and multiple linear regression to analyze relationships between variables in three different scenarios."
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-1",
+    "href": "hw/hw-02.html#exercise-1",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nOur eventual goal is to fit a model predicting body mass (which is more difficult to measure) from island, bill length, bill depth, flipper length, species, and sex.\nWe will start by preparing the data.\n\nUse the drop_na() function to remove any observations from the penguins data frame that has missing values. Your resulting data frame should have 333 observations.\n\n\n\n\n\n\n\nNote\n\n\n\nFor the purposes of this assignment, we will treat the missingness as random, i.e., this is still a representative sample even though we removed observations with missing values."
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-2",
+    "href": "hw/hw-02.html#exercise-2",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nUse the data to fit a model predicting body mass (which can be difficult to measure) from bill length. Fit the model in a way such that the intercept has a meaningful interpretation.\nNeatly display the model using 3 digits.\nWrite the estimated regression equation. Use the variable names in your equation.\nInterpret the slope in the context of the data.\nCalculate the \\(R^2\\) value."
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-3",
+    "href": "hw/hw-02.html#exercise-3",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nPlot the fitted values vs. the residual values for the model in the previous exercise.\nMake another plot of the histogram of the residuals.\nIs a linear regression appropriate? Why or why not?"
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-4",
+    "href": "hw/hw-02.html#exercise-4",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nThe p-value in Exercise 2 indicates statistical significance. Does this mean the model is a good fit for the data?"
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-5",
+    "href": "hw/hw-02.html#exercise-5",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\n\nNow, use the data to fit a model predicting body mass (which can be difficult to measure) from bill length, bill depth, flipper length, island, species, and sex. Only include main effects, i.e., no interaction terms, in this model.\nNeatly display the model using 3 digits.\nWrite the estimated regression equation. Use the variable names in your equation.\nCalculate the \\(R^2\\) value. Why is it larger than the previous one? Interpret this value in context of the data and the model.\n\n\n\n\n\n\n\nTip\n\n\n\nThe code for fitting multiple linear regression models is the same as simple linear regression. Use + to add multiple predictor variables to the model."
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-6",
+    "href": "hw/hw-02.html#exercise-6",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nPlot the fitted values vs. the residual values for the model in the previous exercise.\nMake another plot of the histogram of the residuals.\nIs a linear regression appropriate? Why or why not?"
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-7",
+    "href": "hw/hw-02.html#exercise-7",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nInterpret the intercept in the context of the data.\nInterpret the coefficient of sex in the context of the data.\nInterpret coefficient (slope) of bill length in the context of the data.\nIs the coefficient of bill length the same as in Exercise 2. Briefly explain why or why not?"
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-8",
+    "href": "hw/hw-02.html#exercise-8",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 8",
+    "text": "Exercise 8\n\nCalculate the residual for a female Gentoo penguin on the Biscoe island that weighs 4450 grams with the following body measurements: bill_length_mm = 43.2, bill_depth_mm = 14.5, flipper_length_mm = 208.\nDoes the model overpredict or underpredict this penguin’s mass?"
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-9",
+    "href": "hw/hw-02.html#exercise-9",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nFill in the starter code below to write the function predict_boots which takes a bootstrap sample, calculates \\(R^2\\) terms for the two models listed below. Set the seed to 29.\n\nModel 1: The model from Exercise 5. Model 2: The model from Exercise 5, without the island term.\nThe last line of the code runs the function predict_boots for 1000 iterations and saves the output as the object r_squared_diffs. Create a new variable that calculates the difference between the \\(R^2\\) values for the two models.\nMake a histogram of the differences.\nWhat do you notice about the histogram?\nWhich model is best for predicting body mass of a penguin?\n\n\nset.seed(29)\n\npredict_boots &lt;- function(i) {\n  # take a bootstrap sample\n  boot &lt;- penguins |&gt;\n    slice_sample(n = nrow(penguins), replace = TRUE) |&gt;\n    mutate(boot_samp = i)\n  \n  #fit the model with island to the bootstrap sample\n  fit_island &lt;- linear_reg() |&gt;\n    fit(_____, data = boot)\n  \n  # fit the model without island to the bootstrap sample\n  fit_no_island &lt;- linear_reg() |&gt;\n    fit(_______, data = boot)\n  \n  #save the rsq values for each model\n  tibble(\n    island_r2 = glance(fit_island)$r.squared,\n    no_island_r2 = glance(fit_no_island)$r.squared\n  )\n}\n\n# run the function 1000 times and save the differences between\nr_squared_diffs &lt;- map_df(1:1000, predict_boots)"
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-10",
+    "href": "hw/hw-02.html#exercise-10",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Exercise 10",
+    "text": "Exercise 10\n\nUse the model from the previous exercise without island, and set the seed to 210.\nFit the model to 1000 bootstrap samples.\nMake a scatterplot of the estimated coefficients for flipper length (y-axis) vs. bill length (x-axis).\nCalculate a 95% confidence interval for the difference between these coefficient values. Is there evidence that either bill length or flipper length has a larger influence on the model? Briefly explain.\n\n\n\n\n\n\n\nTip\n\n\n\nThe code for bootstrapping in multiple linear regression is the same as the code for simple linear regression."
+  },
+  {
+    "objectID": "hw/hw-02.html#footnotes",
+    "href": "hw/hw-02.html#footnotes",
+    "title": "HW 02: Multiple linear regression",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
   },
   {
     "objectID": "prepare/week-09.html",

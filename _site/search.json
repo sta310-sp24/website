@@ -1696,84 +1696,84 @@
   {
     "objectID": "hw/hw-02.html",
     "href": "hw/hw-02.html",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "",
     "text": "In this analysis you will use simple and multiple linear regression to analyze relationships between variables in three different scenarios."
   },
   {
     "objectID": "hw/hw-02.html#exercise-1",
     "href": "hw/hw-02.html#exercise-1",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 1",
     "text": "Exercise 1\nOur eventual goal is to fit a model predicting body mass (which is more difficult to measure) from island, bill length, bill depth, flipper length, species, and sex.\nWe will start by preparing the data.\n\nUse the drop_na() function to remove any observations from the penguins data frame that has missing values. Your resulting data frame should have 333 observations.\n\n\n\n\n\n\n\nNote\n\n\n\nFor the purposes of this assignment, we will treat the missingness as random, i.e., this is still a representative sample even though we removed observations with missing values."
   },
   {
     "objectID": "hw/hw-02.html#exercise-2",
     "href": "hw/hw-02.html#exercise-2",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 2",
     "text": "Exercise 2\n\nUse the data to fit a model predicting body mass (which can be difficult to measure) from bill length. Fit the model in a way such that the intercept has a meaningful interpretation.\nNeatly display the model using 3 digits.\nWrite the estimated regression equation. Use the variable names in your equation.\nInterpret the slope in the context of the data.\nCalculate the \\(R^2\\) value."
   },
   {
     "objectID": "hw/hw-02.html#exercise-3",
     "href": "hw/hw-02.html#exercise-3",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 3",
     "text": "Exercise 3\n\nPlot the fitted values vs. the residual values for the model in the previous exercise.\nMake another plot of the histogram of the residuals.\nIs a linear regression appropriate? Why or why not?"
   },
   {
     "objectID": "hw/hw-02.html#exercise-4",
     "href": "hw/hw-02.html#exercise-4",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 4",
     "text": "Exercise 4\n\nThe p-value in Exercise 2 indicates statistical significance. Does this mean the model is a good fit for the data?"
   },
   {
     "objectID": "hw/hw-02.html#exercise-5",
     "href": "hw/hw-02.html#exercise-5",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 5",
     "text": "Exercise 5\n\nNow, use the data to fit a model predicting body mass (which can be difficult to measure) from bill length, bill depth, flipper length, island, species, and sex. Only include main effects, i.e., no interaction terms, in this model.\nNeatly display the model using 3 digits.\nWrite the estimated regression equation. Use the variable names in your equation.\nCalculate the \\(R^2\\) value. Why is it larger than the previous one? Interpret this value in context of the data and the model.\n\n\n\n\n\n\n\nTip\n\n\n\nThe code for fitting multiple linear regression models is the same as simple linear regression. Use + to add multiple predictor variables to the model."
   },
   {
     "objectID": "hw/hw-02.html#exercise-6",
     "href": "hw/hw-02.html#exercise-6",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 6",
     "text": "Exercise 6\n\nPlot the fitted values vs. the residual values for the model in the previous exercise.\nMake another plot of the histogram of the residuals.\nIs a linear regression appropriate? Why or why not?"
   },
   {
     "objectID": "hw/hw-02.html#exercise-7",
     "href": "hw/hw-02.html#exercise-7",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 7",
     "text": "Exercise 7\n\nInterpret the intercept in the context of the data.\nInterpret the coefficient of sex in the context of the data.\nInterpret coefficient (slope) of bill length in the context of the data.\nIs the coefficient of bill length the same as in Exercise 2. Briefly explain why or why not?"
   },
   {
     "objectID": "hw/hw-02.html#exercise-8",
     "href": "hw/hw-02.html#exercise-8",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 8",
     "text": "Exercise 8\n\nCalculate the residual for a female Gentoo penguin on the Biscoe island that weighs 4450 grams with the following body measurements: bill_length_mm = 43.2, bill_depth_mm = 14.5, flipper_length_mm = 208.\nDoes the model overpredict or underpredict this penguin’s mass?"
   },
   {
     "objectID": "hw/hw-02.html#exercise-9",
     "href": "hw/hw-02.html#exercise-9",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 9",
     "text": "Exercise 9\nFill in the starter code below to write the function predict_boots which takes a bootstrap sample, calculates \\(R^2\\) terms for the two models listed below. Set the seed to 29.\n\nModel 1: The model from Exercise 5. Model 2: The model from Exercise 5, without the island term.\nThe last line of the code runs the function predict_boots for 1000 iterations and saves the output as the object r_squared_diffs. Create a new variable that calculates the difference between the \\(R^2\\) values for the two models.\nMake a histogram of the differences.\nWhat do you notice about the histogram?\nWhich model is best for predicting body mass of a penguin?\n\n\nset.seed(29)\n\npredict_boots &lt;- function(i) {\n  # take a bootstrap sample\n  boot &lt;- penguins |&gt;\n    slice_sample(n = nrow(penguins), replace = TRUE) |&gt;\n    mutate(boot_samp = i)\n  \n  #fit the model with island to the bootstrap sample\n  fit_island &lt;- linear_reg() |&gt;\n    fit(_____, data = boot)\n  \n  # fit the model without island to the bootstrap sample\n  fit_no_island &lt;- linear_reg() |&gt;\n    fit(_______, data = boot)\n  \n  #save the rsq values for each model\n  tibble(\n    island_r2 = glance(fit_island)$r.squared,\n    no_island_r2 = glance(fit_no_island)$r.squared\n  )\n}\n\n# run the function 1000 times and save the differences between\nr_squared_diffs &lt;- map_df(1:1000, predict_boots)"
   },
   {
     "objectID": "hw/hw-02.html#exercise-10",
     "href": "hw/hw-02.html#exercise-10",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Exercise 10",
     "text": "Exercise 10\n\nUse the model from the previous exercise without island, and set the seed to 210.\nFit the model to 1000 bootstrap samples.\nMake a scatterplot of the estimated coefficients for flipper length (y-axis) vs. bill length (x-axis).\nCalculate a 95% confidence interval for the difference between these coefficient values. Is there evidence that either bill length or flipper length has a larger influence on the model? Briefly explain.\n\n\n\n\n\n\n\nTip\n\n\n\nThe code for bootstrapping in multiple linear regression is the same as the code for simple linear regression."
   },
   {
     "objectID": "hw/hw-02.html#footnotes",
     "href": "hw/hw-02.html#footnotes",
-    "title": "HW 02: Multiple linear regression",
+    "title": "HW 02: Simple + Multiple linear regression",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
   },

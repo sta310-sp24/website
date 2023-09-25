@@ -1,5 +1,5 @@
 ---
-title: "HW 02: Multiple linear regression" 
+title: "HW 02: Palmer penguins"
 subtitle: "due Monday, October 2 at 11:59pm"
 editor: visual
 execute:

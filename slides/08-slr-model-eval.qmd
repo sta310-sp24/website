@@ -61,7 +61,31 @@ knitr::opts_chunk$set(
 
     -   Exam review: Mon, Oct 2
 
-## Statistician of the Day: Robert Santos
+## Statistician of the day: Robert Santos {.midi}
+
+::: columns
+::: {.column width="40%"}
+![](images/statistician-of-the-day/santos.jpg)
+:::
+
+::: {.column width="60%"}
+*Robert Santos received an MA in Statistics from the University of Michigan, Ann Arbor. He served as president of the American Statistical Association in 2021. As a survey researcher, he worked at National Opinion Research Center (NORC, University of Chicago) and the Urban Institute in Washington, DC.*
+
+*As a Mexican-American, he is the first non-white person to serve as the Director of the US Census Bureau (appointed by Joe Biden and approved by the US Senate in 2022).*
+
+Source: [hardin47.github.io/CURV/scholars/santos.html](https://hardin47.github.io/CURV/scholars/santos.html)
+:::
+:::
+
+## Robert Santos {.midi}
+
+*Santos is a survey researcher with much of his recent focus on the US Census. In particular, he has written extensively about miscounting particular groups of people in the Census and the relationship between race and ethnicity in surveys.*
+
+From his article "[Is It Time to Postpone the 2020 Census?](https://www.urban.org/urban-wire/it-time-postpone-2020-census)**"** (written during his time at the Urban Institute)
+
+> "This would create a worst-case scenario when it comes to political representation and allocation of federal resources...And the 2020 counts would then be baked in to population projections used to calibrate federal statistics and surveys, thus informing federal funds allocations and eligibility thresholds for the next 10 years.
+
+Related work: Interactive feature [Who's at Risk of Being Miscounted?](https://apps.urban.org/features/2020-census/)
 
 # Questions from last class?
 

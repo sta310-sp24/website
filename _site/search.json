@@ -2579,8 +2579,15 @@
     "objectID": "slides/08-slr-model-eval.html#statistician-of-the-day-robert-santos",
     "href": "slides/08-slr-model-eval.html#statistician-of-the-day-robert-santos",
     "title": "SLR: Model evaluation",
-    "section": "Statistician of the Day: Robert Santos",
-    "text": "Statistician of the Day: Robert Santos"
+    "section": "Statistician of the day: Robert Santos",
+    "text": "Statistician of the day: Robert Santos\n\n\n\n\nRobert Santos received an MA in Statistics from the University of Michigan, Ann Arbor. He served as president of the American Statistical Association in 2021. As a survey researcher, he worked at National Opinion Research Center (NORC, University of Chicago) and the Urban Institute in Washington, DC.\nAs a Mexican-American, he is the first non-white person to serve as the Director of the US Census Bureau (appointed by Joe Biden and approved by the US Senate in 2022).\nSource: hardin47.github.io/CURV/scholars/santos.html"
+  },
+  {
+    "objectID": "slides/08-slr-model-eval.html#robert-santos",
+    "href": "slides/08-slr-model-eval.html#robert-santos",
+    "title": "SLR: Model evaluation",
+    "section": "Robert Santos",
+    "text": "Robert Santos\nSantos is a survey researcher with much of his recent focus on the US Census. In particular, he has written extensively about miscounting particular groups of people in the Census and the relationship between race and ethnicity in surveys.\nFrom his article “Is It Time to Postpone the 2020 Census?“ (written during his time at the Urban Institute)\n\n“This would create a worst-case scenario when it comes to political representation and allocation of federal resources…And the 2020 counts would then be baked in to population projections used to calibrate federal statistics and surveys, thus informing federal funds allocations and eligibility thresholds for the next 10 years.\n\nRelated work: Interactive feature Who’s at Risk of Being Miscounted?"
   },
   {
     "objectID": "slides/08-slr-model-eval.html#computational-set-up",

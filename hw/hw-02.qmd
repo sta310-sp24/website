@@ -66,7 +66,7 @@ For the purposes of this assignment, we will treat the missingness as random, i.
 
 ## Exercise 2
 
--   Use the data to fit a model predicting body mass (which can be difficult to measure) from bill length. Fit the model in a way such that the intercept has a meaningful interpretation.
+-   Use the data to fit a model predicting body mass (which can be difficult to measure) from bill length.
 
 -   Neatly display the model using 3 digits.
 

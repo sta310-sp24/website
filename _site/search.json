@@ -1782,7 +1782,7 @@
     "href": "hw/hw-02.html#exercise-2",
     "title": "HW 02: Palmer penguins",
     "section": "Exercise 2",
-    "text": "Exercise 2\n\nUse the data to fit a model predicting body mass (which can be difficult to measure) from bill length. Fit the model in a way such that the intercept has a meaningful interpretation.\nNeatly display the model using 3 digits.\nWrite the estimated regression equation. Use the variable names in your equation.\nInterpret the slope in the context of the data.\nCalculate the \\(R^2\\) value."
+    "text": "Exercise 2\n\nUse the data to fit a model predicting body mass (which can be difficult to measure) from bill length.\nNeatly display the model using 3 digits.\nWrite the estimated regression equation. Use the variable names in your equation.\nInterpret the slope in the context of the data.\nCalculate the \\(R^2\\) value."
   },
   {
     "objectID": "hw/hw-02.html#exercise-3",
@@ -1908,7 +1908,7 @@
     "href": "labs/lab-04.html#footnotes",
     "title": "Lab 04: Alumni jobs",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nDon’t trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!↩︎\nThe \"Workflow & formatting\" grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.↩︎↩︎"
+    "text": "Footnotes\n\n\nDon’t trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.↩︎↩︎"
   },
   {
     "objectID": "labs/lab-01.html",

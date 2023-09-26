@@ -84,7 +84,7 @@ Today's data set is part of the [TidyTuesday College tuition, diversity, and pay
 The information in this data set was collected from the [PayScale College Salary Report](https://www.payscale.com/college-salary-report/bachelors).
 
 | variable                  | class     | description                                                                      |
-|:----------------|:----------------|:-------------------------------------|
+|:--------------------------|:----------|:---------------------------------------------------------------------------------|
 | rank                      | double    | Potential salary rank within state                                               |
 | name                      | character | Name of school                                                                   |
 | state_name                | character | state name                                                                       |
@@ -247,10 +247,10 @@ Remember -- you must turn in a PDF file to the Gradescope page before the submis
 
 -   Go to [http://www.gradescope.com](http://www.gradescope.com/) and log in using your NetID credentials.
 -   Click on your *STA 210* course.
--   Click on the assignment, and you\'ll be prompted to submit it.
--   Select all team members\' names, so they receive credit on the assignment. [Click here](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members) for video on adding team members to assignment on Gradescope.
--   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be \"checked\").
--   Select the first page of your PDF submission to be associated with the *\"Workflow & formatting\"* section.
+-   Click on the assignment, and you'll be prompted to submit it.
+-   Select all team members' names, so they receive credit on the assignment. [Click here](https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members) for video on adding team members to assignment on Gradescope.
+-   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be "checked").
+-   Select the first page of your PDF submission to be associated with the *"Workflow & formatting"* section.
 
 # Grading (50pts)
 
@@ -267,4 +267,4 @@ Remember -- you must turn in a PDF file to the Gradescope page before the submis
 | Complete team agreement | 5      |
 | Submitted team name     | 2      |
 
-[^2]: The \"Workflow & formatting\" grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.[↩︎](https://sta210-fa22.netlify.app/labs/lab-04#fnref2)
+[^2]: The "Workflow & formatting" grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.[↩︎](https://sta210-fa22.netlify.app/labs/lab-04#fnref2)

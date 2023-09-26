@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-09-25">
 
-<title>STA 210 - Fall 2023 - AE 07: Model evaluation</title>
+<title>STA 210 - Fall 2023 - Lab 04: Alumni jobs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">AE 07: Model evaluation</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 04: Alumni jobs</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -256,25 +255,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
-  <li><a href="#model-with-90-ci-for-coefficients" id="toc-model-with-90-ci-for-coefficients" class="nav-link" data-scroll-target="#model-with-90-ci-for-coefficients">Model with 90% CI for coefficients</a></li>
-  <li><a href="#create-augmented-data-frame" id="toc-create-augmented-data-frame" class="nav-link" data-scroll-target="#create-augmented-data-frame">Create augmented data frame</a></li>
-  <li><a href="#create-residual-plots" id="toc-create-residual-plots" class="nav-link" data-scroll-target="#create-residual-plots">Create residual plots</a></li>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#meet-your-team" id="toc-meet-your-team" class="nav-link" data-scroll-target="#meet-your-team">Meet your team!</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#workflow-using-git-and-github-as-a-team" id="toc-workflow-using-git-and-github-as-a-team" class="nav-link" data-scroll-target="#workflow-using-git-and-github-as-a-team">Workflow: Using Git and GitHub as a team</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#data-alumni-jobs" id="toc-data-alumni-jobs" class="nav-link" data-scroll-target="#data-alumni-jobs">Data: Alumni jobs</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  <li><a href="#evaluate-response-from-chatgpt" id="toc-evaluate-response-from-chatgpt" class="nav-link" data-scroll-target="#evaluate-response-from-chatgpt">Evaluate response from ChatGPT</a></li>
-  <li><a href="#to-submit-the-ae" id="toc-to-submit-the-ae" class="nav-link" data-scroll-target="#to-submit-the-ae">To submit the AE:</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
+  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
+  </ul></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping up</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading-50pts" id="toc-grading-50pts" class="nav-link" data-scroll-target="#grading-50pts">Grading (50pts)</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/ae/ae-07-model-eval.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/labs/lab-04.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AE 07: Model evaluation</h1>
-<p class="subtitle lead">Songs on Spotify</p>
+<h1 class="title">Lab 04: Alumni jobs</h1>
+<p class="subtitle lead">Collaborative workflows</p>
 </div>
 
 
@@ -282,12 +291,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 25, 2022</p>
-    </div>
-  </div>
   
     
   </div>
@@ -295,6 +298,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p>In today’s lab, you’ll use simple linear regression to analyze the relationship between the median early career salary and percent of alumni who perceive their job as making the world a better place for colleges and universities in the United States. You will also start working with your lab teams, write a team agreement, and be introduced to using GitHub for collaboration.</p>
+<section id="learning-goals" class="level1">
+<h1>Learning goals</h1>
+<p>By the end of the lab you will be able to…</p>
+<ul>
+<li>assess model conditions for simple linear regression.</li>
+<li>calculate and interpret predicted values from the model.</li>
+<li>assess model fit using <span class="math inline">\(R^2\)</span> and RMSE</li>
+<li>collaborate with others using a single Github repo</li>
+</ul>
+</section>
+<section id="meet-your-team" class="level1">
+<h1>Meet your team!</h1>
+<p><a href="https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/EYSH_1f6JnxClPeTx0PA6HgBLJLDwULnKRFboL_WTSv4dw?e=T5lze5"><strong>Click here</strong></a> to see the team assignments for STA 210. This will be your team for labs and the final project. Before you get started on the lab, complete the following:</p>
+<p>✅ Come up with a team name. You can’t use the same name as another team, so I encourage you to be creative! Your TA will get your team name by the end of lab.</p>
+<p>✅ Fill out the team agreement. This will help you figure out a plan for communication,and working together during labs and outside of lab times. You can find the team agreement in the GitHub repo <strong>team-agreement-[github_team_name]</strong>.</p>
+<ul>
+<li><p>Have <strong>one person</strong> from the team clone the repo and start a new RStudio project. This person will type the team’s responses as you discuss the sections of the agreement. No one else in the team should type at this point but should be contributing to the discussion.</p></li>
+<li><p>Be sure to push the completed agreement to GitHub. Each team member can refer to the document in this repo or download the PDF of the agreement for future reference. <em>You do <u>not</u> need to submit the agreement on Gradescope.</em></p></li>
+</ul>
+</section>
+<section id="getting-started" class="level1">
+<h1>Getting started</h1>
+<ul>
+<li>A repository has already been created for you and your teammates. Everyone in your team has access to the same repo.</li>
+<li>Go to the <a href="https://github.com/sta210-fa23">sta210-fa23</a> organization on GitHub. Click on the repo with the prefix <strong>lab-04</strong>. It contains the starter documents you need to complete the lab.</li>
+<li>Each person on the team should clone the repository and open a new project in RStudio. Throughout the lab, each person should get a chance to make commits and push to the repo.</li>
+<li><strong>Do not make any changes to the <code>.qmd</code> file until the instructions tell you do to so.</strong></li>
+</ul>
+</section>
+<section id="workflow-using-git-and-github-as-a-team" class="level1">
+<h1>Workflow: Using Git and GitHub as a team</h1>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -305,25 +340,49 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Go to the <a href="https://github.com/sta210-fa23">course GitHub organization</a> and locate your <code>ae-07</code> repo to get started.</p>
-<p>Render, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Thursday, September 28 at 11:59pm.</p>
+<p>Assign each person on your team a number 1 through 4. For teams of three, Team Member 1 can take on the role of Team Member 4.</p>
+<p>The following exercises must be done in order. <strong>Only one person should type in the <code>.qmd</code> file, commit, and push updates at a time.</strong> When it is not your turn to type, you should still share ideas and contribute to the team’s discussion.</p>
 </div>
 </div>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>⌨️ <strong>Team Member 1: Hands on the keyboard.</strong></p>
+<p>🙅🏽 All other team members: Hands off the keyboard until otherwise instructed!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</div>
+</div>
+</div>
+<p>Change the author to your team name and include each team member’s name in the <code>author</code> field of the YAML in the following format: <code>Team Name: Member 1, Member 2, Member 3, Member 4</code>.</p>
+<div class="render-commit-push">
+<p><strong>Team Member 1:</strong> Render the document and confirm that the changes are visible in the PDF. Then, commit (with an informative commit message) both the <code>.qmd</code> and PDF documents, and finally push the changes to GitHub.</p>
+</div>
+<div class="pull">
+<p><strong>Team Members 2, 3, 4:</strong> Once Team Member 1 is done rendering, committing, and pushing, confirm that the changes are visible on GitHub in your team’s lab repo. Then, in RStudio, click the <strong>Pull</strong> button in the Git pane to get the updated document. You should see the updated name in your <code>.qmd</code> file.</p>
+</div>
+</section>
+<section id="packages" class="level1">
+<h1>Packages</h1>
+<p>We’ll use the following packages in this lab.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co">#arrange plots in a grid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add more packages as needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>The data set for this assignment is a subset from the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md">Spotify Songs</a> Tidy Tuesday data set. The data were originally obtained from Spotify using the <strong>spotifyr</strong> R package.</p>
-<p>It contains numerous characteristics for each song. You can see the full list of variables and definitions <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md">here</a>. This analysis will focus specifically on the following variables:</p>
+</section>
+<section id="data-alumni-jobs" class="level1">
+<h1>Data: Alumni jobs</h1>
+<p>Today’s data set is part of the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-10/readme.md">TidyTuesday College tuition, diversity, and pay</a>.</p>
+<p>The information in this data set was collected from the <a href="https://www.payscale.com/college-salary-report/bachelors">PayScale College Salary Report</a>.</p>
 <table class="table">
 <colgroup>
-<col style="width: 4%">
-<col style="width: 2%">
-<col style="width: 92%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 52%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -334,185 +393,71 @@ Important
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">track_id</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">Song unique ID</td>
+<td style="text-align: left;">rank</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Potential salary rank within state</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">track_name</td>
+<td style="text-align: left;">name</td>
 <td style="text-align: left;">character</td>
-<td style="text-align: left;">Song Name</td>
+<td style="text-align: left;">Name of school</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">track_artist</td>
+<td style="text-align: left;">state_name</td>
 <td style="text-align: left;">character</td>
-<td style="text-align: left;">Song Artist</td>
+<td style="text-align: left;">state name</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">track_popularity</td>
+<td style="text-align: left;">early_career_pay</td>
 <td style="text-align: left;">double</td>
-<td style="text-align: left;">Song Popularity (0-100) where higher is better</td>
+<td style="text-align: left;">Median salary for alumni with 0 - 5 years experience (in US dollars)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">energy</td>
+<td style="text-align: left;">mid_career_pay</td>
 <td style="text-align: left;">double</td>
-<td style="text-align: left;">Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</td>
+<td style="text-align: left;">Median salary for alumni with 0 - 5 years experience (in US dollars)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">valence</td>
+<td style="text-align: left;">make_world_better_percent</td>
 <td style="text-align: left;">double</td>
-<td style="text-align: left;">A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g.&nbsp;happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g.&nbsp;sad, depressed, angry).</td>
+<td style="text-align: left;">Percent of alumni who think they are making the world a better place</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stem_percent</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Percent of degrees awarded in science, technology, engineering, or math subjects</td>
 </tr>
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spotify <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spotify-popular.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Are high energy songs more positive? To answer this question, we’ll analyze data on some of the most popular songs on Spotify, i.e.&nbsp;those with <code>track_popularity &gt;= 80</code>. We’ll use linear regression to fit a model to predict a song’s positiveness (<code>valence</code>) based on its energy level (<code>energy</code>).</p>
-<p>Below are plots as part of the exploratory data analysis.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> spotify, <span class="fu">aes</span>(<span class="at">x =</span> valence)) <span class="sc">+</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Valence"</span>, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">" for Popular songs on Spotify"</span>, </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Valence"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> spotify, <span class="fu">aes</span>(<span class="at">x =</span> energy)) <span class="sc">+</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Energy"</span>, </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"for Popular songs on Spotify"</span>, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Energy"</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="ae-07-model-eval_files/figure-html/univariate-eda-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> spotify, <span class="fu">aes</span>(<span class="at">x =</span> energy, <span class="at">y =</span> valence)) <span class="sc">+</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Valence vs. Energy"</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Popular songs on Spotify"</span>, </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Energy"</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Valence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="ae-07-model-eval_files/figure-html/bivariate-eda-1.png" class="img-fluid" width="672"></p>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>alumni <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/alumni-salaries.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="model-with-90-ci-for-coefficients" class="level2">
-<h2 class="anchored" data-anchor-id="model-with-90-ci-for-coefficients">Model with 90% CI for coefficients</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>spotify_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(valence <span class="sc">~</span> energy, <span class="at">data =</span> spotify)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(spotify_fit, <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">conf.level =</span> <span class="fl">0.9</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: right;">conf.low</th>
-<th style="text-align: right;">conf.high</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">0.121</td>
-<td style="text-align: right;">0.035</td>
-<td style="text-align: right;">3.401</td>
-<td style="text-align: right;">0.001</td>
-<td style="text-align: right;">0.062</td>
-<td style="text-align: right;">0.179</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">energy</td>
-<td style="text-align: right;">0.614</td>
-<td style="text-align: right;">0.054</td>
-<td style="text-align: right;">11.321</td>
-<td style="text-align: right;">0.000</td>
-<td style="text-align: right;">0.525</td>
-<td style="text-align: right;">0.703</td>
-</tr>
-</tbody>
-</table>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<p>Is there a relationship the typical early career pay for alumni and the percent of alumni who receive a STEM degree? To answer this question, we will use regression to predict the early career pay using the percent of STEM degrees.</p>
+<div class="render-commit-push">
+<p><strong>Team Member 1</strong>: Type the team’s responses to exercises 1 - 2.</p>
 </div>
-</div>
-</section>
-<section id="create-augmented-data-frame" class="level2">
-<h2 class="anchored" data-anchor-id="create-augmented-data-frame">Create augmented data frame</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>spotify_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(spotify_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="create-residual-plots" class="level2">
-<h2 class="anchored" data-anchor-id="create-residual-plots">Create residual plots</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> spotify_aug, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Residuals"</span>, </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Residuals vs. fitted"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="ae-07-model-eval_files/figure-html/resid-vs-fitted-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>resid_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> spotify_aug, <span class="fu">aes</span>(<span class="at">x =</span> .resid)) <span class="sc">+</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Residuals"</span>, </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribution of residuals"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>resid_qq <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> spotify_aug, <span class="fu">aes</span>(<span class="at">sample =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Theoretical quantiles"</span>,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Observed residuals"</span>, </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Normal QQ-plot"</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>resid_hist <span class="sc">+</span> resid_qq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="ae-07-model-eval_files/figure-html/resid-dist-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
 <section id="exercise-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<p>Assess the four model conditions. State whether the condition is satisfied and briefly explain your response.</p>
-<ul>
-<li>Linearity</li>
-<li>Constant variance</li>
-<li>Normality</li>
-<li>Independence</li>
-</ul>
+<p>Fit a linear model that can be used to predict the typical early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values.</p>
 </section>
 <section id="exercise-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<p>Calculate <span class="math inline">\(R^2\)</span> and interpret this value in the context of the data.</p>
+<p>Calculate the predicted values and residuals from your model and save these results in a data frame. Print the first five rows of the new data frame.</p>
+<div class="render-commit-push">
+<p><strong>Team Member 1</strong>: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.</p>
+</div>
+<div class="pull">
+<p><strong>All other team members</strong>: <strong>Pull</strong> to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercises 1- 2.</p>
+<p><strong>Team Member 2</strong>: It’s your turn! Type the team’s response to exercise 3.</p>
+</div>
 </section>
 <section id="exercise-3" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
-<p>Calculate RMSE and interpret this value in the context of the data.</p>
-</section>
-<section id="evaluate-response-from-chatgpt" class="level2">
-<h2 class="anchored" data-anchor-id="evaluate-response-from-chatgpt">Evaluate response from ChatGPT</h2>
-<p>I typed the following prompt into ChatGPT (“an AI powered language model”) <em>“How do you check the model conditions for simple linear regression?”</em></p>
-<p>The response from ChatGPT shown below would receive partial credit. For each condition, state whether it is (1) correct, (2) incorrect and if so, what is wrong, (3) incomplete and if so, what is missing.</p>
+<p>Before using the model for prediction, let’s check the model conditions. To figure out how to do so, we type the following prompt into ChatGPT (“an AI powered language model”) <em>“How do you check the model conditions for simple linear regression?”</em></p>
+<p>The response from ChatGPT shown below would receive partial credit. For each condition, state whether it is correct or incorrect/ incomplete. If it incorrect/incomplete, state what is wrong or missing, then write the correct response.</p>
 <blockquote class="blockquote">
 <p><em>In simple linear regression, you’re trying to establish a linear relationship between two variables: a dependent variable (Y) and an independent variable (X). The model conditions or assumptions for simple linear regression are important to check to ensure that your model is valid and reliable. Here are the key assumptions and how to check them:</em></p>
 <p><em>1. Linearity Assumption:</em></p>
@@ -537,22 +482,13 @@ Important
 </ul>
 <p><em>It’s important to note that these assumptions may not always hold perfectly in real-world data, and minor violations may not necessarily invalidate your model. However, if you detect significant violations of these assumptions, you may need to consider alternative modeling techniques or transformations of your data to address the issues.</em></p>
 </blockquote>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="render-commit-push">
+<p>✅ ⬆️ <strong>Team Member 2</strong>: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.</p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<div class="pull">
+<p><strong>All other team members</strong>: <strong>Pull</strong> to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 3.</p>
+<p><strong>Team Member 3</strong>: It’s your turn! Type the team’s response to exercises 4 - 5.</p>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You will start to think about the answer in class and come up with a final answer with your group in Lab 04.</p>
-</div>
-</div>
-</section>
-<section id="to-submit-the-ae" class="level2">
-<h2 class="anchored" data-anchor-id="to-submit-the-ae">To submit the AE:</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -563,17 +499,171 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>You can proceed assuming all the model conditions are satisfied.</p>
+</div>
+</div>
+</section>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
 <ul>
-<li>Render the document to produce the PDF with all of your work from today’s class.</li>
-<li>Push all your work to your <code>ae-07</code> repo on GitHub. (You do not submit AEs on Gradescope).</li>
+<li>31 percent of the alumni at Johns Hopkins University received a STEM degree. Calculate the predicted early career pay at this university and the appropriate 95% interval. Interpret the interval in the context of the data.</li>
+<li>The actual early career pay at this university is $67,200. Is this what you expected based on your analysis? Briefly explain your reasoning.</li>
 </ul>
+</section>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<p>Next, let’s consider how well the model fits the relationship between the early career pay and percent with a STEM degree.</p>
+<ul>
+<li><p>Calculate <span class="math inline">\(R^2\)</span> and interpret it in the context of the data.</p></li>
+<li><p>Calculate RMSE and interpret it in the context of the data.</p></li>
+</ul>
+<div class="render-commit-push">
+<p><strong>Team Member 3</strong>: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.</p>
+</div>
+<div class="pull">
+<p><strong>All other team members</strong>: <strong>Pull</strong> to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 4 - 5.</p>
+<p><strong>Team Member 4</strong>: It’s your turn! Type the team’s response to exercise 6.</p>
+</div>
+</section>
+<section id="exercise-6" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
+<p>Do you think the model is useful for understanding and predicting the typical early career pay for alumni at a university? Briefly explain your reasoning.</p>
+<div class="render-commit-push">
+<p><strong>Team Member 4</strong>: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.</p>
+</div>
+<div class="pull">
+<p><strong>All other team members</strong>: <strong>Pull</strong> to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 6.</p>
+<p><strong>Team Member 1</strong>: It’s your turn! Type the team’s response to exercise 7.</p>
+</div>
+</section>
+<section id="exercise-7" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-7">Exercise 7</h2>
+<p>Fit another model which predicts the typical early career pay using only the percentage of alumni that believe their career will make the world a better place.</p>
+<ul>
+<li>Neatly display this model with 3 digits.</li>
+<li>Which model do you think is better - this model or the model fit in Exercise 1? Explain your response showing any analysis used to make the decision.</li>
+</ul>
+<div class="render-commit-push">
+<p><strong>Team Member 1</strong>: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and the rest of the team can see the completed lab.</p>
+</div>
+<div class="pull">
+<p><strong>All other team members</strong>: <strong>Pull</strong> to get the updated documents from GitHub. Click on the .qmd file, and you should see the team’s completed lab!</p>
+</div>
+</section>
+</section>
+<section id="wrapping-up" class="level1">
+<h1>Wrapping up</h1>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>⌨️ Team Member 3: Hands on the keyboard. Make any edits as needed.</p>
+<p>🙅🏽 All other team members: Hands off the keyboard until otherwise instructed!</p>
+</div>
+</div>
+<div class="render-commit-push">
+<p><strong>Team Member 3:</strong> Render the document and confirm that the changes are visible in the PDF. Then, commit (with an informative commit message) both the .qmd and PDF documents, and finally push the changes to GitHub. Make sure to commit and push all changed files so that your Git pane is empty afterwards.</p>
+</div>
+<div class="pull">
+<p><strong>Team Members 1, 2, 4:</strong> Once Team Member 3 is done rendering, committing, and pushing, confirm that the changes are visible on GitHub in your team’s lab repo. Then, in RStudio, click the Pull button in the Git pane to get the updated document. You should see the final version of your .qmd file.</p>
+</div>
+</section>
+<section id="submission" class="level1">
+<h1>Submission</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.</p>
+<p>Remember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.</p>
+</div>
+</div>
+<p><strong>One team member submit the assignment:</strong></p>
+<ul>
+<li>Go to <a href="http://www.gradescope.com/">http://www.gradescope.com</a> and log in using your NetID credentials.</li>
+<li>Click on your <em>STA 210</em> course.</li>
+<li>Click on the assignment, and you'll be prompted to submit it.</li>
+<li>Select all team members' names, so they receive credit on the assignment. <a href="https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members">Click here</a> for video on adding team members to assignment on Gradescope.</li>
+<li>Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be "checked").</li>
+<li>Select the first page of your PDF submission to be associated with the <em>"Workflow &amp; formatting"</em> section.</li>
+</ul>
+</section>
+<section id="grading-50pts" class="level1">
+<h1>Grading (50pts)</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ex 1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ex 2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ex 3</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ex 4</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ex 5</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ex 6</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ex 7</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Workflow &amp; formatting</td>
+<td style="text-align: left;">4<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Complete team agreement</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Submitted team name</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Don’t trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The "Workflow &amp; formatting" grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.<a href="https://sta210-fa22.netlify.app/labs/lab-04#fnref2">↩︎</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

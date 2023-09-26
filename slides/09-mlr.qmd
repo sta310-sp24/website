@@ -1,7 +1,7 @@
 ---
 title: "Multiple linear regression (MLR)"
 author: "Prof. Maria Tackett"
-date: "2023-09-28"
+date: "2023-09-27"
 date-format: "MMM DD, YYYY"
 footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"

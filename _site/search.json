@@ -798,417 +798,578 @@
     "text": "References\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule\n\n\n\nAlexander, Rohan. 2023. “Telling Stories with Data,” June. https://doi.org/10.1201/9781003229407.\n\n\nOstblom, Joel, and Tiffany Timbers. 2022. “Opinionated Practices for Teaching Reproducibility: Motivation, Guided Instruction and Practice.” Journal of Statistics and Data Science Education 30 (3): 241–50. https://doi.org/10.1080/26939169.2022.2074922."
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#announcements",
-    "href": "slides/03-slr-tidymodels.html#announcements",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Announcements",
-    "text": "Announcements\n\nNo office hours today. Office hours start Tuesday, September 6. Click here for full schedule\nCheck your email for an email to join the course GitHub organization. You will receive one by Tuesday, September 6.\nSee Week 02 for this week’s activities."
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#topics",
-    "href": "slides/03-slr-tidymodels.html#topics",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Topics",
-    "text": "Topics\n\nIntroduce the computing toolkit - RStudio and GitHub\nUse tidymodels to fit and summarize regression models in R\nComplete an application exercise on exploratory data analysis and modeling"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#computational-setup",
-    "href": "slides/03-slr-tidymodels.html#computational-setup",
-    "title": "SLR: Fitting models in R with tidymodels",
+    "objectID": "slides/09-mlr.html#computational-setup",
+    "href": "slides/09-mlr.html#computational-setup",
+    "title": "Multiple linear regression (MLR)",
     "section": "Computational setup",
-    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(openintro)\nlibrary(patchwork)\nlibrary(knitr)\nlibrary(kableExtra)\nlibrary(colorblindr)\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#reproducibility-checklist",
-    "href": "slides/03-slr-tidymodels.html#reproducibility-checklist",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Reproducibility checklist",
-    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n\nNear term goals:\n✔️ Are the tables and figures reproducible from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n\n\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
+    "objectID": "slides/09-mlr.html#data-peer-to-peer-lender",
+    "href": "slides/09-mlr.html#data-peer-to-peer-lender",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Data: Peer-to-peer lender",
+    "text": "Data: Peer-to-peer lender\nToday’s data is a sample of 50 loans made through a peer-to-peer lending club. The data is in the loan50 data frame in the openintro R package.\n\n\n# A tibble: 50 × 4\n   annual_income debt_to_income verified_income interest_rate\n           &lt;dbl&gt;          &lt;dbl&gt; &lt;fct&gt;                   &lt;dbl&gt;\n 1         59000         0.558  Not Verified            10.9 \n 2         60000         1.31   Not Verified             9.92\n 3         75000         1.06   Verified                26.3 \n 4         75000         0.574  Not Verified             9.92\n 5        254000         0.238  Not Verified             9.43\n 6         67000         1.08   Source Verified          9.92\n 7         28800         0.0997 Source Verified         17.1 \n 8         80000         0.351  Not Verified             6.08\n 9         34000         0.698  Not Verified             7.97\n10         80000         0.167  Source Verified         12.6 \n# ℹ 40 more rows"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#toolkit",
-    "href": "slides/03-slr-tidymodels.html#toolkit",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Toolkit",
-    "text": "Toolkit\n\nScriptability \\(\\rightarrow\\) R\nLiterate programming (code, narrative, output in one place) \\(\\rightarrow\\) Quarto\nVersion control \\(\\rightarrow\\) Git / GitHub\n\nMore on this in this week’s lab"
+    "objectID": "slides/09-mlr.html#variables",
+    "href": "slides/09-mlr.html#variables",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Variables",
+    "text": "Variables\nPredictors:\n\n\nannual_income: Annual income\ndebt_to_income: Debt-to-income ratio, i.e. the percentage of a borrower’s total debt divided by their total income\nverified_income: Whether borrower’s income source and amount have been verified (Not Verified, Source Verified, Verified)\n\n\nOutcome: interest_rate: Interest rate for the loan"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
-    "href": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "What are R and RStudio?",
-    "text": "What are R and RStudio?\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\nSource: Modern Dive"
+    "objectID": "slides/09-mlr.html#outcome-interest_rate",
+    "href": "slides/09-mlr.html#outcome-interest_rate",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Outcome: interest_rate",
+    "text": "Outcome: interest_rate\n\n\n\n\n\n\nmin\nmedian\nmax\niqr\n\n\n\n\n5.31\n9.93\n26.3\n5.755"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#rstudio-ide",
-    "href": "slides/03-slr-tidymodels.html#rstudio-ide",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "RStudio IDE",
-    "text": "RStudio IDE"
+    "objectID": "slides/09-mlr.html#predictors",
+    "href": "slides/09-mlr.html#predictors",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Predictors",
+    "text": "Predictors"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#quarto",
-    "href": "slides/03-slr-tidymodels.html#quarto",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Quarto",
-    "text": "Quarto\n\nFully reproducible reports – the analysis is run from the beginning each time you render\nCode goes in chunks and narrative goes outside of chunks\nVisual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)"
+    "objectID": "slides/09-mlr.html#data-manipulation-1-rescale-income",
+    "href": "slides/09-mlr.html#data-manipulation-1-rescale-income",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Data manipulation 1: Rescale income",
+    "text": "Data manipulation 1: Rescale income\n\nloan50 &lt;- loan50 |&gt;\n  mutate(annual_income_th = annual_income / 1000)\n\nggplot(loan50, aes(x = annual_income_th)) +\n  geom_histogram(binwidth = 20) +\n  labs(title = \"Annual income (in $1000s)\", \n       x = \"\")"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#quarto-1",
-    "href": "slides/03-slr-tidymodels.html#quarto-1",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Quarto",
-    "text": "Quarto"
+    "objectID": "slides/09-mlr.html#outcome-vs.-predictors",
+    "href": "slides/09-mlr.html#outcome-vs.-predictors",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Outcome vs. predictors",
+    "text": "Outcome vs. predictors"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
-    "href": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "How will we use Quarto?",
-    "text": "How will we use Quarto?\n\nEvery application exercise and assignment is written in a Quarto document\nYou’ll have a template Quarto document to start with\nThe amount of scaffolding in the template will decrease over the semester"
+    "objectID": "slides/09-mlr.html#single-vs.-multiple-predictors",
+    "href": "slides/09-mlr.html#single-vs.-multiple-predictors",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Single vs. multiple predictors",
+    "text": "Single vs. multiple predictors\nSo far we’ve used a single predictor variable to understand variation in a quantitative response variable\n\nNow we want to use multiple predictor variables to understand variation in a quantitative response variable"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#application-exercise",
-    "href": "slides/03-slr-tidymodels.html#application-exercise",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Application exercise",
-    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare"
+    "objectID": "slides/09-mlr.html#multiple-linear-regression-mlr",
+    "href": "slides/09-mlr.html#multiple-linear-regression-mlr",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Multiple linear regression (MLR)",
+    "text": "Multiple linear regression (MLR)\nBased on the analysis goals, we will use a multiple linear regression model of the following form\n\\[\n\\begin{aligned}\\hat{\\text{interest_rate}} ~ =\n\\hat{\\beta}_0 & + \\hat{\\beta}_1 \\text{debt_to_income} \\\\ & + \\hat{\\beta}_2 \\text{verified_income} \\\\ &+ \\hat{\\beta}_3 \\text{annual_income_th}\n\\end{aligned}\n\\]\nSimilar to simple linear regression, this model assumes that at each combination of the predictor variables, the values interest_rate follow a Normal distribution."
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
-    "href": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Recap of last lecture",
-    "text": "Recap of last lecture\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative outcome variable.\nUsed the least squares method to estimate the slope and intercept.\nWe interpreted the slope and intercept.\n\n\nSlope: For every one unit increase in \\(x\\), we expect y to be higher/lower by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units.\n\n\nPredicted the response given a value of the predictor variable.\nDefined extrapolation and why we should avoid it."
+    "objectID": "slides/09-mlr.html#multiple-linear-regression-1",
+    "href": "slides/09-mlr.html#multiple-linear-regression-1",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nRecall: The simple linear regression model assumes\n\\[\nY|X\\sim N(\\beta_0 + \\beta_1 X, \\sigma_{\\epsilon}^2)\n\\]\n\nSimilarly: The multiple linear regression model assumes\n\\[\nY|X_1, X_2, \\ldots, X_p \\sim N(\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\dots + \\beta_p X_p, \\sigma_{\\epsilon}^2)\n\\]"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#movie-ratings",
-    "href": "slides/03-slr-tidymodels.html#movie-ratings",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Movie ratings",
-    "text": "Movie ratings\n\n\n\nData behind the FiveThirtyEight story Be Suspicious Of Online Movie Ratings, Especially Fandango’s\nIn the fivethirtyeight package: fandango\nContains every film that has at least 30 fan reviews on Fandango, an IMDb score, Rotten Tomatoes critic and user ratings, and Metacritic critic and user scores"
+    "objectID": "slides/09-mlr.html#multiple-linear-regression-2",
+    "href": "slides/09-mlr.html#multiple-linear-regression-2",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nAt any combination of the predictors, the mean value of the response \\(Y\\), is\n\\[\n\\mu_{Y|X_1, \\ldots, X_p} = \\beta_0 + \\beta_1 X_{1} + \\beta_2 X_2 + \\dots + \\beta_p X_p\n\\]\n\nUsing multiple linear regression, we can estimate the mean response for any combination of predictors\n\\[\n\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X_{1} + \\hat{\\beta}_2 X_2 + \\dots + \\hat{\\beta}_p X_{p}\n\\]"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#data-prep",
-    "href": "slides/03-slr-tidymodels.html#data-prep",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Data prep",
-    "text": "Data prep\n\nRename Rotten Tomatoes columns as critics and audience\nRename the dataset as movie_scores\n\n\nmovie_scores &lt;- fandango |&gt;\n  rename(\n    critics = rottentomatoes, \n    audience = rottentomatoes_user\n  )"
+    "objectID": "slides/09-mlr.html#model-fit",
+    "href": "slides/09-mlr.html#model-fit",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Model fit",
+    "text": "Model fit\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n10.726\n1.507\n7.116\n0.000\n\n\ndebt_to_income\n0.671\n0.676\n0.993\n0.326\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n\n\nannual_income_th\n-0.021\n0.011\n-1.804\n0.078"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#tidymodels",
-    "href": "slides/03-slr-tidymodels.html#tidymodels",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "tidymodels",
-    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use suppressPackageStartupMessages() to eliminate package startup messages"
+    "objectID": "slides/09-mlr.html#model-equation",
+    "href": "slides/09-mlr.html#model-equation",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Model equation",
+    "text": "Model equation\n\\[\n\\begin{align}\\hat{\\text{interest_rate}} =  10.726 &+0.671 \\times \\text{debt_to_income}\\\\\n&+ 2.211 \\times \\text{source_verified}\\\\  \n&+ 6.880 \\times \\text{verified}\\\\\n& -0.021 \\times \\text{annual_income_th}\n\\end{align}\n\\]"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#why-tidymodels",
-    "href": "slides/03-slr-tidymodels.html#why-tidymodels",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Why tidymodels?",
-    "text": "Why tidymodels?\n\nConsistent syntax for different model types (linear, logistic, random forest, Bayesian, etc.)\nStreamline modeling workflow\n\nSplit data into train and test sets\nTransform and create new variables\nAssess model performance\nUse model for prediction and inference"
+    "objectID": "slides/09-mlr.html#interpreting-hatbeta_j",
+    "href": "slides/09-mlr.html#interpreting-hatbeta_j",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Interpreting \\(\\hat{\\beta}_j\\)",
+    "text": "Interpreting \\(\\hat{\\beta}_j\\)\n\nThe estimated coefficient \\(\\hat{\\beta}_j\\) is the expected change in the mean of \\(y\\) when \\(x_j\\) increases by one unit, holding the values of all other predictor variables constant.\n\n\n\nExample: The estimated coefficient for debt_to_income is 0.671. This means for each point in an borrower’s debt-to-income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding all else constant."
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#step-1-specify-model",
-    "href": "slides/03-slr-tidymodels.html#step-1-specify-model",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Step 1: Specify model",
-    "text": "Step 1: Specify model\n\nlinear_reg()\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
-    "href": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Step 2: Set model fitting engine",
-    "text": "Step 2: Set model fitting engine\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") # lm: linear model\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
-    "href": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "A closer look at model output",
-    "text": "A closer look at model output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is likely just due to rounding in the hand calculation."
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#the-regression-output",
-    "href": "slides/03-slr-tidymodels.html#the-regression-output",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "The regression output",
-    "text": "The regression output\nWe’ll focus on the first column for now…\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() \n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   32.3      2.34        13.8 4.03e-28\n2 critics        0.519    0.0345      15.0 2.70e-31"
-  },
-  {
-    "objectID": "slides/03-slr-tidymodels.html#prediction",
-    "href": "slides/03-slr-tidymodels.html#prediction",
-    "title": "SLR: Fitting models in R with tidymodels",
+    "objectID": "slides/09-mlr.html#prediction",
+    "href": "slides/09-mlr.html#prediction",
+    "title": "Multiple linear regression (MLR)",
     "section": "Prediction",
-    "text": "Prediction\n\n# create a data frame for a new movie\nnew_movie &lt;- tibble(critics = 70)\n\n# predict the outcome for a new movie\npredict(movie_fit, new_movie)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  68.6"
+    "text": "Prediction\n\nWhat is the predicted interest rate for an borrower with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of $59,000?\n\n\n\n10.726 + 0.671 * 0.558 + 2.211 * 0 + 6.880 * 0 - 0.021 * 59\n\n[1] 9.861418\n\n\n\nThe predicted interest rate for an borrower with with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of $59,000 is 9.86%."
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#application-exercise-1",
-    "href": "slides/03-slr-tidymodels.html#application-exercise-1",
-    "title": "SLR: Fitting models in R with tidymodels",
-    "section": "Application exercise",
-    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare\n\n\n\nClose document tab"
+    "objectID": "slides/09-mlr.html#prediction-revisited",
+    "href": "slides/09-mlr.html#prediction-revisited",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Prediction, revisited",
+    "text": "Prediction, revisited\nJust like with simple linear regression, we can use the predict() function in R to calculate the appropriate intervals for our predicted values:\n\nnew_borrower &lt;- tibble(\n  debt_to_income  = 0.558, \n  verified_income = \"Not Verified\", \n  annual_income_th = 59\n)\n\npredict(int_fit, new_borrower)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  9.89"
   },
   {
-    "objectID": "slides/03-slr-tidymodels.html#recap",
-    "href": "slides/03-slr-tidymodels.html#recap",
-    "title": "SLR: Fitting models in R with tidymodels",
+    "objectID": "slides/09-mlr.html#confidence-interval-for-hatmu_y",
+    "href": "slides/09-mlr.html#confidence-interval-for-hatmu_y",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Confidence interval for \\(\\hat{\\mu}_y\\)",
+    "text": "Confidence interval for \\(\\hat{\\mu}_y\\)\n\nCalculate a 90% confidence interval for the estimated mean interest rate for borrowers with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of $59,000.\n\n\n\npredict(int_fit, new_borrower, type = \"conf_int\", level = 0.90)\n\n# A tibble: 1 × 2\n  .pred_lower .pred_upper\n        &lt;dbl&gt;       &lt;dbl&gt;\n1        8.16        11.6"
+  },
+  {
+    "objectID": "slides/09-mlr.html#prediction-interval-for-haty",
+    "href": "slides/09-mlr.html#prediction-interval-for-haty",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Prediction interval for \\(\\hat{y}\\)",
+    "text": "Prediction interval for \\(\\hat{y}\\)\n\nCalculate a 90% confidence interval for the predicted interest rate for an individual appllicant with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of $59,000.\n\n\n\npredict(int_fit, new_borrower, type = \"pred_int\", level = 0.90)\n\n# A tibble: 1 × 2\n  .pred_lower .pred_upper\n        &lt;dbl&gt;       &lt;dbl&gt;\n1        2.18        17.6"
+  },
+  {
+    "objectID": "slides/09-mlr.html#cautions",
+    "href": "slides/09-mlr.html#cautions",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Cautions",
+    "text": "Cautions\n\nDo not extrapolate! Because there are multiple predictor variables, there is the potential to extrapolate in many directions\nThe multiple regression model only shows association, not causality\n\nTo show causality, you must have a carefully designed experiment or carefully account for confounding variables in an observational study"
+  },
+  {
+    "objectID": "slides/09-mlr.html#interpreting-results",
+    "href": "slides/09-mlr.html#interpreting-results",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Interpreting results",
+    "text": "Interpreting results\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n10.726\n1.507\n7.116\n0.000\n7.690\n13.762\n\n\ndebt_to_income\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002\n\n\n\n\n\n\n\n\n\n\nDescribe the subset of borrowers who are expected to get an interest rate of 10.726% based on our model. Is this interpretation meaningful? Why or why not?"
+  },
+  {
+    "objectID": "slides/09-mlr.html#mean-centering",
+    "href": "slides/09-mlr.html#mean-centering",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Mean-centering",
+    "text": "Mean-centering\nIf we are interested in interpreting the intercept, we can mean-center the quantitative predictors in the model.\nWe can mean-center a quantitative predictor \\(X_j\\) using the following:\n\\[X_{j_{Cent}} = X_{j}- \\bar{X}_{j}\\]\n\nIf we mean-center all quantitative variables, then the intercept is interpreted as the expected value of the response variable when all quantitative variables are at their mean value."
+  },
+  {
+    "objectID": "slides/09-mlr.html#data-manipulation-2-mean-center-numeric-predictors",
+    "href": "slides/09-mlr.html#data-manipulation-2-mean-center-numeric-predictors",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Data manipulation 2: Mean-center numeric predictors",
+    "text": "Data manipulation 2: Mean-center numeric predictors\n\nloan50 &lt;- loan50 |&gt;\n  mutate(\n    debt_inc_cent = debt_to_income - mean(debt_to_income), \n    annual_income_th_cent = annual_income_th - mean(annual_income_th)\n    )"
+  },
+  {
+    "objectID": "slides/09-mlr.html#visualize-mean-centered-predictors",
+    "href": "slides/09-mlr.html#visualize-mean-centered-predictors",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Visualize mean-centered predictors",
+    "text": "Visualize mean-centered predictors"
+  },
+  {
+    "objectID": "slides/09-mlr.html#using-mean-centered-variables-in-the-model",
+    "href": "slides/09-mlr.html#using-mean-centered-variables-in-the-model",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Using mean-centered variables in the model",
+    "text": "Using mean-centered variables in the model\n\nHow do you expect the model to change if we use the debt_inc_cent and annual_income_cent in the model?\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n9.444\n0.977\n9.663\n0.000\n7.476\n11.413\n\n\ndebt_inc_cent\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th_cent\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002"
+  },
+  {
+    "objectID": "slides/09-mlr.html#original-vs.-mean-centered-model",
+    "href": "slides/09-mlr.html#original-vs.-mean-centered-model",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Original vs. mean-centered model",
+    "text": "Original vs. mean-centered model\n\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n10.726\n\n\ndebt_to_income\n0.671\n\n\nverified_incomeSource Verified\n2.211\n\n\nverified_incomeVerified\n6.880\n\n\nannual_income_th\n-0.021\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n9.444\n\n\ndebt_inc_cent\n0.671\n\n\nverified_incomeSource Verified\n2.211\n\n\nverified_incomeVerified\n6.880\n\n\nannual_income_th_cent\n-0.021"
+  },
+  {
+    "objectID": "slides/09-mlr.html#indicator-variables-1",
+    "href": "slides/09-mlr.html#indicator-variables-1",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Indicator variables",
+    "text": "Indicator variables\n\nSuppose there is a categorical variable with \\(K\\) categories (levels)\nWe can make \\(K\\) indicator variables - one indicator for each category\nAn indicator variable takes values 1 or 0\n\n1 if the observation belongs to that category\n0 if the observation does not belong to that category"
+  },
+  {
+    "objectID": "slides/09-mlr.html#data-manipulation-3-create-indicator-variables-for-verified_income",
+    "href": "slides/09-mlr.html#data-manipulation-3-create-indicator-variables-for-verified_income",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Data manipulation 3: Create indicator variables for verified_income",
+    "text": "Data manipulation 3: Create indicator variables for verified_income\n\nloan50 &lt;- loan50 |&gt;\n  mutate(\n    not_verified = if_else(verified_income == \"Not Verified\", 1, 0),\n    source_verified = if_else(verified_income == \"Source Verified\", 1, 0),\n    verified = if_else(verified_income == \"Verified\", 1, 0)\n  )\n\n\n\n\n# A tibble: 3 × 4\n  verified_income not_verified source_verified verified\n  &lt;fct&gt;                  &lt;dbl&gt;           &lt;dbl&gt;    &lt;dbl&gt;\n1 Not Verified               1               0        0\n2 Verified                   0               0        1\n3 Source Verified            0               1        0"
+  },
+  {
+    "objectID": "slides/09-mlr.html#indicators-in-the-model",
+    "href": "slides/09-mlr.html#indicators-in-the-model",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Indicators in the model",
+    "text": "Indicators in the model\n\nWe will use \\(K-1\\) of the indicator variables in the model.\nThe baseline is the category that doesn’t have a term in the model.\nThe coefficients of the indicator variables in the model are interpreted as the expected change in the response compared to the baseline, holding all other variables constant.\nThis approach is also called dummy coding.\n\n\n\nloan50 |&gt;\n  select(verified_income, source_verified, verified) |&gt;\n  slice(1, 3, 6)\n\n# A tibble: 3 × 3\n  verified_income source_verified verified\n  &lt;fct&gt;                     &lt;dbl&gt;    &lt;dbl&gt;\n1 Not Verified                  0        0\n2 Verified                      0        1\n3 Source Verified               1        0"
+  },
+  {
+    "objectID": "slides/09-mlr.html#interpreting-verified_income",
+    "href": "slides/09-mlr.html#interpreting-verified_income",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Interpreting verified_income",
+    "text": "Interpreting verified_income\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n9.444\n0.977\n9.663\n0.000\n7.476\n11.413\n\n\ndebt_inc_cent\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th_cent\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002\n\n\n\n\n\n\n\n\n\n\nThe baseline category is Not verified.\nPeople with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.\nPeople with verified income are expected to take a loan with an interest rate that is 6.880% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant."
+  },
+  {
+    "objectID": "slides/09-mlr.html#interaction-terms-1",
+    "href": "slides/09-mlr.html#interaction-terms-1",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Interaction terms",
+    "text": "Interaction terms\n\nSometimes the relationship between a predictor variable and the response depends on the value of another predictor variable.\nThis is an interaction effect.\nTo account for this, we can include interaction terms in the model."
+  },
+  {
+    "objectID": "slides/09-mlr.html#interest-rate-vs.-annual-income",
+    "href": "slides/09-mlr.html#interest-rate-vs.-annual-income",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Interest rate vs. annual income",
+    "text": "Interest rate vs. annual income\nThe lines are not parallel indicating there is an interaction effect. The slope of annual income differs based on the income verification."
+  },
+  {
+    "objectID": "slides/09-mlr.html#interaction-term-in-model",
+    "href": "slides/09-mlr.html#interaction-term-in-model",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Interaction term in model",
+    "text": "Interaction term in model\n\nint_cent_int_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(interest_rate ~ debt_inc_cent + verified_income + annual_income_th_cent + verified_income * annual_income_th_cent,\n      data = loan50)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n9.484\n0.989\n9.586\n0.000\n\n\ndebt_inc_cent\n0.691\n0.685\n1.009\n0.319\n\n\nverified_incomeSource Verified\n2.157\n1.418\n1.522\n0.135\n\n\nverified_incomeVerified\n7.181\n1.870\n3.840\n0.000\n\n\nannual_income_th_cent\n-0.007\n0.020\n-0.341\n0.735\n\n\nverified_incomeSource Verified:annual_income_th_cent\n-0.016\n0.026\n-0.643\n0.523\n\n\nverified_incomeVerified:annual_income_th_cent\n-0.032\n0.033\n-0.979\n0.333"
+  },
+  {
+    "objectID": "slides/09-mlr.html#interpreting-interaction-terms",
+    "href": "slides/09-mlr.html#interpreting-interaction-terms",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Interpreting interaction terms",
+    "text": "Interpreting interaction terms\n\nWhat the interaction means: The effect of annual income on the interest rate differs by -0.016 when the income is source verified compared to when it is not verified, holding all else constant.\nInterpreting annual_income for source verified: If the income is source verified, we expect the interest rate to decrease by 0.023% (-0.007 + -0.016) for each additional thousand dollars in annual income, holding all else constant."
+  },
+  {
+    "objectID": "slides/09-mlr.html#data-manipulation-4-create-interaction-variables",
+    "href": "slides/09-mlr.html#data-manipulation-4-create-interaction-variables",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Data manipulation 4: Create interaction variables",
+    "text": "Data manipulation 4: Create interaction variables\nDefining the interaction variable in the model formula as verified_income * annual_income_th_cent is an implicit data manipulation step as well\n\n\nRows: 50\nColumns: 9\n$ `(Intercept)`                                          &lt;dbl&gt; 1, 1, 1, 1, 1, …\n$ debt_inc_cent                                          &lt;dbl&gt; -0.16511719, 0.…\n$ annual_income_th_cent                                  &lt;dbl&gt; -27.17, -26.17,…\n$ `verified_incomeNot Verified`                          &lt;dbl&gt; 1, 1, 0, 1, 1, …\n$ `verified_incomeSource Verified`                       &lt;dbl&gt; 0, 0, 0, 0, 0, …\n$ verified_incomeVerified                                &lt;dbl&gt; 0, 0, 1, 0, 0, …\n$ `annual_income_th_cent:verified_incomeNot Verified`    &lt;dbl&gt; -27.17, -26.17,…\n$ `annual_income_th_cent:verified_incomeSource Verified` &lt;dbl&gt; 0.00, 0.00, 0.0…\n$ `annual_income_th_cent:verified_incomeVerified`        &lt;dbl&gt; 0.00, 0.00, -11…"
+  },
+  {
+    "objectID": "slides/09-mlr.html#recap",
+    "href": "slides/09-mlr.html#recap",
+    "title": "Multiple linear regression (MLR)",
     "section": "Recap",
-    "text": "Recap\n\nIntroduced the computing toolkit - RStudio and GitHub\nUsed tidymodels to fit and summarize regression models in R\nCompleted an application exercise on exploratory data analysis and modeling\n\n\n\n\n🔗 Week 02"
+    "text": "Recap\n\nMean-centering quantitative predictors\nUsing indicator variables for categorical predictors\nUsing interaction terms"
   },
   {
-    "objectID": "slides/03-slr-intro.html#topics",
-    "href": "slides/03-slr-intro.html#topics",
-    "title": "Simple Linear Regression",
+    "objectID": "slides/09-mlr.html#looking-backward",
+    "href": "slides/09-mlr.html#looking-backward",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Looking backward",
+    "text": "Looking backward\nData manipulation, with dplyr (from tidyverse):\n\nloan50 |&gt;\n  select(interest_rate, annual_income, debt_to_income, verified_income) |&gt;\n  mutate(\n    # 1. rescale income\n    annual_income_th = annual_income / 1000,\n    # 2. mean-center quantitative predictors\n    debt_inc_cent = debt_to_income - mean(debt_to_income),\n    annual_income_th_cent = annual_income_th - mean(annual_income_th),\n    # 3. create dummy variables for verified_income\n    source_verified = if_else(verified_income == \"Source Verified\", 1, 0),\n    verified = if_else(verified_income == \"Verified\", 1, 0),\n    # 4. create interaction variables\n    `annual_income_th_cent:verified_incomeSource Verified` = annual_income_th_cent * source_verified,\n    `annual_income_th_cent:verified_incomeVerified` = annual_income_th_cent * verified\n  )"
+  },
+  {
+    "objectID": "slides/09-mlr.html#looking-forward-after-exam-01",
+    "href": "slides/09-mlr.html#looking-forward-after-exam-01",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Looking forward (after Exam 01)",
+    "text": "Looking forward (after Exam 01)\nFeature engineering, with recipes (from tidymodels):\n\nloan_rec &lt;- recipe( ~ ., data = loan50) |&gt;\n  # 1. rescale income\n  step_mutate(annual_income_th = annual_income / 1000) |&gt;\n  # 2. mean-center quantitative predictors\n  step_center(all_numeric_predictors()) |&gt;\n  # 3. create dummy variables for verified_income\n  step_dummy(verified_income) |&gt;\n  # 4. create interaction variables\n  step_interact(terms = ~ annual_income_th:verified_income)"
+  },
+  {
+    "objectID": "slides/09-mlr.html#recipe",
+    "href": "slides/09-mlr.html#recipe",
+    "title": "Multiple linear regression (MLR)",
+    "section": "Recipe",
+    "text": "Recipe\n\nloan_rec\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#announcements",
+    "href": "slides/06-slr-math-models.html#announcements",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Announcements",
+    "text": "Announcements\n\nHW 01: due Wed, Sep 20 at 11:59pm\n\nQuestions?\n\nStatistics experience - due Mon, Nov 20 at 11:59pm"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#course-policy-reminders",
+    "href": "slides/06-slr-math-models.html#course-policy-reminders",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Course policy reminders",
+    "text": "Course policy reminders\n\nLate work\n\nHW and labs accepted up to 2 days late.\n5% deduction for each 24-hour period the assignment is late.\n\nOne time late waiver\n\nCan use on HW and individual labs\n\nLowest HW and lowest lab grade dropped at the end of the semester."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#course-policy-reminders-1",
+    "href": "slides/06-slr-math-models.html#course-policy-reminders-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Course policy reminders",
+    "text": "Course policy reminders\n\nRegrade requests\n\nOpened 1 day after assignment is returned and due within 1 week\nOnly submit regrade if there is an error in the grading not to dispute points\nProf. Tackett or Sam the Head TA will regrade the entire exercise being disputed, which could result in a lower grade\n\n\n\n\n\n\n\nTip\n\n\nSee the posted solutions and ask during office hours before submitting a regrade request"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#statistician-of-the-day-regina-nuzzo",
+    "href": "slides/06-slr-math-models.html#statistician-of-the-day-regina-nuzzo",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Statistician of the day: Regina Nuzzo",
+    "text": "Statistician of the day: Regina Nuzzo\n\n\n\n\n\n\n\n\nDr. Nuzzo received her PhD in Statistics from Stanford University and is now Professor of Science, Technology, & Mathematics at Gallaudet University. Dr. Nuzzo teaches statistics using American Sign Language.\nHer work has appeared in Nature, Los Angeles Times, New York Times, Reader’s Digest, New Scientist, and Scientific American. Primarily, she works to help lay-audiences understand science and statistics in particular. She earned the American Statistical Association’s 2014 Excellence in Statistical Reporting Award for her article on p-values in Nature. Her work led to the ASA’s statement on p-values.\nSource: hardin47.github.io/CURV/scholars/nuzzo"
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#regina-nuzzo",
+    "href": "slides/06-slr-math-models.html#regina-nuzzo",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Regina Nuzzo",
+    "text": "Regina Nuzzo\nFrom “Tips for Communicating Statistical Significance.”\n“That we use p-values to alert us to surprising data results, not to give a final answer on anything. (Or at least that’s what we should be doing). And that results can get flagged as”statistically surprising” with a small p-value for a number of reasons”\n\nThere was a fluke.\nSomething was violated.\nThere was a real but tiny relationship.\nThere was a relationship that is worth more study.\n\nOr any combination of the above."
+  },
+  {
+    "objectID": "slides/06-slr-math-models.html#topics",
+    "href": "slides/06-slr-math-models.html#topics",
+    "title": "SLR: Mathematical models for inference",
     "section": "Topics",
-    "text": "Topics\n\n\nUse simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nEstimate the slope and intercept of the regression line using the least squares method.\nInterpret the slope and intercept of the regression line.\nPredict the response given a value of the predictor variable.\nUse tidymodels to fit and summarize regression models in R."
+    "text": "Topics\n\nDefine mathematical models to conduct inference for the slope\nUse mathematical models to\n\ncalculate confidence interval for the slope\nconduct a hypothesis test for the slope"
   },
   {
-    "objectID": "slides/03-slr-intro.html#computation-set-up",
-    "href": "slides/03-slr-intro.html#computation-set-up",
-    "title": "Simple Linear Regression",
-    "section": "Computation set up",
-    "text": "Computation set up\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\nlibrary(knitr)          # for formatting tables\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
+    "objectID": "slides/06-slr-math-models.html#computational-setup",
+    "href": "slides/06-slr-math-models.html#computational-setup",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Computational setup",
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(tidymodels)  # for modeling\nlibrary(openintro)   # for the duke_forest dataset\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(kableExtra)  # also for pretty tables\nlibrary(patchwork)   # arrange plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
   },
   {
-    "objectID": "slides/03-slr-intro.html#movie-scores",
-    "href": "slides/03-slr-intro.html#movie-scores",
-    "title": "Simple Linear Regression",
-    "section": "Movie scores",
-    "text": "Movie scores\n\n\n\nData behind the FiveThirtyEight story Be Suspicious Of Online Movie Ratings, Especially Fandango’s\nIn the fivethirtyeight package: fandango\nContains every film released in 2014 and 2015 that has at least 30 fan reviews on Fandango, an IMDb score, Rotten Tomatoes critic and user ratings, and Metacritic critic and user scores"
+    "objectID": "slides/06-slr-math-models.html#the-regression-model-revisited",
+    "href": "slides/06-slr-math-models.html#the-regression-model-revisited",
+    "title": "SLR: Mathematical models for inference",
+    "section": "The regression model, revisited",
+    "text": "The regression model, revisited\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.325\n53302.463\n2.188\n0.031\n\n\narea\n159.483\n18.171\n8.777\n0.000"
   },
   {
-    "objectID": "slides/03-slr-intro.html#data-prep",
-    "href": "slides/03-slr-intro.html#data-prep",
-    "title": "Simple Linear Regression",
-    "section": "Data prep",
-    "text": "Data prep\n\nRename Rotten Tomatoes columns as critics and audience\nRename the dataset as movie_scores\n\n\nmovie_scores &lt;- fandango |&gt;\n  rename(critics = rottentomatoes, \n         audience = rottentomatoes_user)"
+    "objectID": "slides/06-slr-math-models.html#inference-revisited",
+    "href": "slides/06-slr-math-models.html#inference-revisited",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Inference, revisited",
+    "text": "Inference, revisited\n\n\nEarlier we computed a confidence interval and conducted a hypothesis test via simulation:\n\nCI: Bootstrap the observed sample to simulate the distribution of the slope\nHT: Permute the observed sample to simulate the distribution of the slope under the assumption that the null hypothesis is true\n\nNow we’ll do these based on theoretical results, i.e., by using the Central Limit Theorem to define the distribution of the slope and use features (shape, center, spread) of this distribution to compute bounds of the confidence interval and the p-value for the hypothesis test"
   },
   {
-    "objectID": "slides/03-slr-intro.html#data-overview",
-    "href": "slides/03-slr-intro.html#data-overview",
-    "title": "Simple Linear Regression",
-    "section": "Data overview",
-    "text": "Data overview\n\nglimpse(movie_scores)\n\nRows: 146\nColumns: 23\n$ film                       &lt;chr&gt; \"Avengers: Age of Ultron\", \"Cinderella\", \"A…\n$ year                       &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2…\n$ critics                    &lt;int&gt; 74, 85, 80, 18, 14, 63, 42, 86, 99, 89, 84,…\n$ audience                   &lt;int&gt; 86, 80, 90, 84, 28, 62, 53, 64, 82, 87, 77,…\n$ metacritic                 &lt;int&gt; 66, 67, 64, 22, 29, 50, 53, 81, 81, 80, 71,…\n$ metacritic_user            &lt;dbl&gt; 7.1, 7.5, 8.1, 4.7, 3.4, 6.8, 7.6, 6.8, 8.8…\n$ imdb                       &lt;dbl&gt; 7.8, 7.1, 7.8, 5.4, 5.1, 7.2, 6.9, 6.5, 7.4…\n$ fandango_stars             &lt;dbl&gt; 5.0, 5.0, 5.0, 5.0, 3.5, 4.5, 4.0, 4.0, 4.5…\n$ fandango_ratingvalue       &lt;dbl&gt; 4.5, 4.5, 4.5, 4.5, 3.0, 4.0, 3.5, 3.5, 4.0…\n$ rt_norm                    &lt;dbl&gt; 3.70, 4.25, 4.00, 0.90, 0.70, 3.15, 2.10, 4…\n$ rt_user_norm               &lt;dbl&gt; 4.30, 4.00, 4.50, 4.20, 1.40, 3.10, 2.65, 3…\n$ metacritic_norm            &lt;dbl&gt; 3.30, 3.35, 3.20, 1.10, 1.45, 2.50, 2.65, 4…\n$ metacritic_user_nom        &lt;dbl&gt; 3.55, 3.75, 4.05, 2.35, 1.70, 3.40, 3.80, 3…\n$ imdb_norm                  &lt;dbl&gt; 3.90, 3.55, 3.90, 2.70, 2.55, 3.60, 3.45, 3…\n$ rt_norm_round              &lt;dbl&gt; 3.5, 4.5, 4.0, 1.0, 0.5, 3.0, 2.0, 4.5, 5.0…\n$ rt_user_norm_round         &lt;dbl&gt; 4.5, 4.0, 4.5, 4.0, 1.5, 3.0, 2.5, 3.0, 4.0…\n$ metacritic_norm_round      &lt;dbl&gt; 3.5, 3.5, 3.0, 1.0, 1.5, 2.5, 2.5, 4.0, 4.0…\n$ metacritic_user_norm_round &lt;dbl&gt; 3.5, 4.0, 4.0, 2.5, 1.5, 3.5, 4.0, 3.5, 4.5…\n$ imdb_norm_round            &lt;dbl&gt; 4.0, 3.5, 4.0, 2.5, 2.5, 3.5, 3.5, 3.5, 3.5…\n$ metacritic_user_vote_count &lt;int&gt; 1330, 249, 627, 31, 88, 34, 17, 124, 62, 54…\n$ imdb_user_vote_count       &lt;int&gt; 271107, 65709, 103660, 3136, 19560, 39373, …\n$ fandango_votes             &lt;int&gt; 14846, 12640, 12055, 1793, 1021, 397, 252, …\n$ fandango_difference        &lt;dbl&gt; 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5…"
+    "objectID": "slides/06-slr-math-models.html#mathematical-representation-of-the-model",
+    "href": "slides/06-slr-math-models.html#mathematical-representation-of-the-model",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Mathematical representation of the model",
+    "text": "Mathematical representation of the model\n\\[\n\\begin{aligned}\nY &= Model + Error \\\\\n&= f(X) + \\epsilon \\\\\n&= \\mu_{Y|X} + \\epsilon \\\\\n&= \\beta_0 + \\beta_1 X + \\epsilon\n\\end{aligned}\n\\]\nwhere the errors are independent and normally distributed:\n\n\nindependent: Knowing the error term for one observation doesn’t tell you anything about the error term for another observation\nnormally distributed: \\(\\epsilon \\sim N(0, \\sigma_\\epsilon^2)\\)"
   },
   {
-    "objectID": "slides/03-slr-intro.html#movie-scores-data",
-    "href": "slides/03-slr-intro.html#movie-scores-data",
-    "title": "Simple Linear Regression",
-    "section": "Movie scores data",
-    "text": "Movie scores data\nThe data set contains the “Tomatometer” score (critics) and audience score (audience) for 146 movies rated on rottentomatoes.com."
+    "objectID": "slides/06-slr-math-models.html#mathematical-representation-visualized",
+    "href": "slides/06-slr-math-models.html#mathematical-representation-visualized",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Mathematical representation, visualized",
+    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n\nImage source: Introduction to the Practice of Statistics (5th ed)\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
   },
   {
-    "objectID": "slides/03-slr-intro.html#movie-ratings-data",
-    "href": "slides/03-slr-intro.html#movie-ratings-data",
-    "title": "Simple Linear Regression",
-    "section": "Movie ratings data",
-    "text": "Movie ratings data\nGoal: Fit a line to describe the relationship between the critics score and audience score.\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+    "objectID": "slides/06-slr-math-models.html#regression-standard-error",
+    "href": "slides/06-slr-math-models.html#regression-standard-error",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Regression standard error",
+    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\n\nWhy divide by \\(n - 2\\)?\nWhy do we care about the value of the regression standard error?"
   },
   {
-    "objectID": "slides/03-slr-intro.html#why-fit-a-line",
-    "href": "slides/03-slr-intro.html#why-fit-a-line",
-    "title": "Simple Linear Regression",
-    "section": "Why fit a line?",
-    "text": "Why fit a line?\nWe fit a line to accomplish one or both of the following:\n\n\nPrediction\n\nWhat is the audience score expected to be for an upcoming movie that received 35% from the critics?\n\n\n\n\nInference\n\nIs the critics score a useful predictor of the audience score? By how much is the audience score expected to change for each additional point in the critics score?"
+    "objectID": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
+    "href": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Standard error of \\(\\hat{\\beta}_1\\)",
+    "text": "Standard error of \\(\\hat{\\beta}_1\\)\nThe standard error of \\(\\hat{\\beta}_1\\) quantifies the sampling variability in the estimated slopes\n\\[\nSE_{\\hat{\\beta}_1} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{(n-1)s_X^2}}\n\\]\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
   },
   {
-    "objectID": "slides/03-slr-intro.html#terminology",
-    "href": "slides/03-slr-intro.html#terminology",
-    "title": "Simple Linear Regression",
-    "section": "Terminology",
-    "text": "Terminology\n\n\n\nResponse, Y: variable describing the outcome of interest\nPredictor, X: variable we use to help understand the variability in the response\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-for-the-slope",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-for-the-slope",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test for the slope",
+    "text": "Hypothesis test for the slope\nHypotheses: \\(H_0: \\beta_1 = 0\\) vs. \\(H_A: \\beta_1 \\ne 0\\)\n\nTest statistic: Number of standard errors the estimate is away from the null\n\\[\nT = \\frac{\\text{Estimate - Null}}{\\text{Standard error}} \\\\\n\\]\n\n\np-value: Probability of observing a test statistic at least as extreme (in the direction of the alternative hypothesis) from the null value as the one observed\n\\[\np-value = P(|t| &gt; |\\text{test statistic}|),\n\\]\ncalculated from a \\(t\\) distribution with \\(n - 2\\) degrees of freedom"
   },
   {
-    "objectID": "slides/03-slr-intro.html#regression-model",
-    "href": "slides/03-slr-intro.html#regression-model",
-    "title": "Simple Linear Regression",
-    "section": "Regression model",
-    "text": "Regression model\nA regression model is a function that describes the relationship between the response, \\(Y\\), and the predictor, \\(X\\).\n\\[\\begin{aligned} Y &= \\color{black}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{black}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{black}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon \\end{aligned}\\]"
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-test-statistic",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-test-statistic",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: Test statistic",
+    "text": "Hypothesis test: Test statistic\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\nT = \\frac{\\hat{\\beta}_1 - 0}{SE_{\\hat{\\beta}_1}} = \\frac{159.48 - 0}{18.17} = 8.78\n\\]\n\nSelect the best interpretation of the test statistic on Ed Discussion.\n[10:05am lecture] [1:25pm lecture]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#regression-model-1",
-    "href": "slides/03-slr-intro.html#regression-model-1",
-    "title": "Simple Linear Regression",
-    "section": "Regression model",
-    "text": "Regression model\n\n\n\\[\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon \\end{aligned}\\]\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\\(\\mu_{Y|X}\\) is the mean value of \\(Y\\) given a particular value of \\(X\\)."
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-p-value",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-p-value",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: p-value",
+    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
   },
   {
-    "objectID": "slides/03-slr-intro.html#regression-model-2",
-    "href": "slides/03-slr-intro.html#regression-model-2",
-    "title": "Simple Linear Regression",
-    "section": "Regression model",
-    "text": "Regression model\n\n\n\\[\n\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[5pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[5pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[5pt]\n\\end{aligned}\n\\]\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: p-value",
+    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\nA more exact p-value\n\n2 * pt(q = 8.78, df = 96, lower.tail = FALSE)\n\n[1] 6.19602e-14\n\n\n\nSelect the meaning of the p-value on Ed Discussion.\n[10:05am lecture][1:25pm lecture]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#slr-statistical-model",
-    "href": "slides/03-slr-intro.html#slr-statistical-model",
-    "title": "Simple Linear Regression",
-    "section": "SLR: Statistical model",
-    "text": "SLR: Statistical model\nWhen we have a quantitative response, \\(Y\\), and a single quantitative predictor, \\(X\\), we can use a simple linear regression model to describe the relationship between \\(Y\\) and \\(X\\). \\[\\Large{Y = \\mathbf{\\beta_0 + \\beta_1 X} + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error"
+    "objectID": "slides/06-slr-math-models.html#understanding-the-p-value",
+    "href": "slides/06-slr-math-models.html#understanding-the-p-value",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Understanding the p-value",
+    "text": "Understanding the p-value\n\n\n\nMagnitude of p-value\nInterpretation\n\n\n\n\np-value &lt; 0.01\nstrong evidence against \\(H_0\\)\n\n\n0.01 &lt; p-value &lt; 0.05\nmoderate evidence against \\(H_0\\)\n\n\n0.05 &lt; p-value &lt; 0.1\nweak evidence against \\(H_0\\)\n\n\np-value &gt; 0.1\neffectively no evidence against \\(H_0\\)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThese are general guidelines. The strength of evidence depends on the context of the problem."
   },
   {
-    "objectID": "slides/03-slr-intro.html#slr-regression-equation",
-    "href": "slides/03-slr-intro.html#slr-regression-equation",
-    "title": "Simple Linear Regression",
-    "section": "SLR: Regression equation",
-    "text": "SLR: Regression equation\n\\[\\Large{\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X}\\]\n\n\\(\\hat{\\beta}_1\\): Estimated slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\hat{\\beta}_0\\): Estimated intercept of the relationship between \\(X\\) and \\(Y\\)\nNo error term!"
+    "objectID": "slides/06-slr-math-models.html#hypothesis-test-conclusion-in-context",
+    "href": "slides/06-slr-math-models.html#hypothesis-test-conclusion-in-context",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Hypothesis test: Conclusion, in context",
+    "text": "Hypothesis test: Conclusion, in context\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\nThe data provide convincing evidence that the population slope \\(\\beta_1\\) is different from 0.\nThe data provide convincing evidence of a linear relationship between area and price of houses in Duke Forest."
   },
   {
-    "objectID": "slides/03-slr-intro.html#choosing-values-for-hatbeta_1-and-hatbeta_0",
-    "href": "slides/03-slr-intro.html#choosing-values-for-hatbeta_1-and-hatbeta_0",
-    "title": "Simple Linear Regression",
-    "section": "Choosing values for \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_0\\)",
-    "text": "Choosing values for \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_0\\)\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
+    "objectID": "slides/06-slr-math-models.html#confidence-interval-for-the-slope",
+    "href": "slides/06-slr-math-models.html#confidence-interval-for-the-slope",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Confidence interval for the slope",
+    "text": "Confidence interval for the slope\n\\[\n\\text{Estimate} \\pm \\text{ (critical value) } \\times \\text{SE}\n\\]\n\n\\[\n\\hat{\\beta}_1 \\pm t^* \\times SE_{\\hat{\\beta}_1}\n\\]\nwhere \\(t^*\\) is calculated from a \\(t\\) distribution with \\(n-2\\) degrees of freedom"
   },
   {
-    "objectID": "slides/03-slr-intro.html#residuals",
-    "href": "slides/03-slr-intro.html#residuals",
-    "title": "Simple Linear Regression",
-    "section": "Residuals",
-    "text": "Residuals\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[\\text{residual} = \\text{observed} - \\text{predicted} = y_i - \\hat{y}_i\\]"
+    "objectID": "slides/06-slr-math-models.html#confidence-interval-critical-value",
+    "href": "slides/06-slr-math-models.html#confidence-interval-critical-value",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Confidence interval: Critical value",
+    "text": "Confidence interval: Critical value\n\n\n\n\n# confidence level: 95%\nqt(0.975, df = nrow(duke_forest) - 2)\n\n[1] 1.984984\n\n\n\n\n\n# confidence level: 90%\nqt(0.95, df = nrow(duke_forest) - 2)\n\n[1] 1.660881\n\n\n\n\n\n# confidence level: 99%\nqt(0.995, df = nrow(duke_forest) - 2)\n\n[1] 2.628016"
   },
   {
-    "objectID": "slides/03-slr-intro.html#least-squares-line",
-    "href": "slides/03-slr-intro.html#least-squares-line",
-    "title": "Simple Linear Regression",
-    "section": "Least squares line",
-    "text": "Least squares line\n\nThe residual for the \\(i^{th}\\) observation is\n\n\\[e_i = \\text{observed} - \\text{predicted}\n= y_i - \\hat{y}_i\\]\n\nThe sum of squared residuals is\n\n\\[e^2_1 + e^2_2 + \\dots + e^2_n\\]\n\nThe least squares line is the one that minimizes the sum of squared residuals"
+    "objectID": "slides/06-slr-math-models.html#ci-for-the-slope-calculation",
+    "href": "slides/06-slr-math-models.html#ci-for-the-slope-calculation",
+    "title": "SLR: Mathematical models for inference",
+    "section": "95% CI for the slope: Calculation",
+    "text": "95% CI for the slope: Calculation\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\\hat{\\beta}_1 = 159.48 \\hspace{15mm} t^* = 1.98 \\hspace{15mm} SE_{\\hat{\\beta}_1} = 18.17\\]\n\n\\[\n159.48 \\pm 1.98 \\times 18.17 = (123.50, 195.46)\n\\]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#properties-of-least-squares-regression",
-    "href": "slides/03-slr-intro.html#properties-of-least-squares-regression",
-    "title": "Simple Linear Regression",
-    "section": "Properties of least squares regression",
-    "text": "Properties of least squares regression\n\n\nThe regression line goes through the center of mass point, the coordinates corresponding to average \\(X\\) and average \\(Y\\): \\(\\hat{\\beta}_0 = \\bar{Y} - \\hat{\\beta}_1\\bar{X}\\)\nThe slope has the same sign as the correlation coefficient: \\(\\hat{\\beta}_1 = r \\frac{s_Y}{s_X}\\)\nThe sum of the residuals is approximately zero: \\(\\sum_{i = 1}^n e_i \\approx 0\\)\nThe residuals and \\(X\\) values are uncorrelated"
+    "objectID": "slides/06-slr-math-models.html#ci-for-the-slope-computation",
+    "href": "slides/06-slr-math-models.html#ci-for-the-slope-computation",
+    "title": "SLR: Mathematical models for inference",
+    "section": "95% CI for the slope: Computation",
+    "text": "95% CI for the slope: Computation\n\ntidy(df_fit, conf.int = TRUE, conf.level = 0.95) |&gt; \n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n10847.77\n222456.88\n\n\narea\n159.48\n18.17\n8.78\n0.00\n123.41\n195.55"
   },
   {
-    "objectID": "slides/03-slr-intro.html#estimating-the-slope",
-    "href": "slides/03-slr-intro.html#estimating-the-slope",
-    "title": "Simple Linear Regression",
-    "section": "Estimating the slope",
-    "text": "Estimating the slope\n\\[\\large{\\hat{\\beta}_1 = r \\frac{s_Y}{s_X}}\\]\n\n\n\\[\\begin{aligned}\ns_X &= 30.1688 \\\\\ns_Y &=  20.0244 \\\\\nr &= 0.7814\n\\end{aligned}\\]\n\n\\[\\begin{aligned}\n\\hat{\\beta}_1 &= 0.7814 \\times \\frac{20.0244}{30.1688} \\\\\n&= 0.5187\\end{aligned}\\]\n\n\n\n\nClickhere for details on deriving the equations for slope and intercept."
+    "objectID": "slides/06-slr-math-models.html#intervals-for-predictions-1",
+    "href": "slides/06-slr-math-models.html#intervals-for-predictions-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Intervals for predictions",
+    "text": "Intervals for predictions\n\nSuppose we want to answer the question “What is the predicted sale price of a Duke Forest house that is 2,800 square feet?”\nWe said reporting a single estimate for the slope is not wise, and we should report a plausible range instead\nSimilarly, reporting a single prediction for a new value is not wise, and we should report a plausible range instead"
   },
   {
-    "objectID": "slides/03-slr-intro.html#estimating-the-intercept",
-    "href": "slides/03-slr-intro.html#estimating-the-intercept",
-    "title": "Simple Linear Regression",
-    "section": "Estimating the intercept",
-    "text": "Estimating the intercept\n\\[\\large{\\hat{\\beta}_0 = \\bar{Y} - \\hat{\\beta}_1\\bar{X}}\\]\n\n\n\\[\\begin{aligned}\n&\\bar{x} = 60.8493 \\\\\n&\\bar{y} = 63.8767 \\\\\n&\\hat{\\beta}_1 = 0.5187\n\\end{aligned}\\]\n\n\\[\\begin{aligned}\\hat{\\beta}_0 &= 63.8767 - 0.5187 \\times 60.8493 \\\\\n&= 32.3142\n\\end{aligned}\\]\n\n\n\n\nClick here for details on deriving the equations for slope and intercept."
+    "objectID": "slides/06-slr-math-models.html#two-types-of-predictions",
+    "href": "slides/06-slr-math-models.html#two-types-of-predictions",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Two types of predictions",
+    "text": "Two types of predictions\n\nPrediction for the mean: “What is the average predicted sale price of Duke Forest houses that are 2,800 square feet?”\nPrediction for an individual observation: “What is the predicted sale price of a Duke Forest house that is 2,800 square feet?”\n\n\n\nWhich would you expect to be more variable? The average prediction or the prediction for an individual observation? Based on your answer, how would you expect the widths of plausible ranges for these two predictions to compare?"
   },
   {
-    "objectID": "slides/03-slr-intro.html#interpretation",
-    "href": "slides/03-slr-intro.html#interpretation",
-    "title": "Simple Linear Regression",
-    "section": "Interpretation",
-    "text": "Interpretation\n\n\nPost your answers to the following questions on Ed Discussion:\n\nThe slope of the model for predicting audience score from critics score is 0.5187 . Which of the following is the best interpretation of this value?\n32.3142 is the predicted mean audience score for what type of movies?\n\n\n\n\nLink for Section 001 (10:05am lecture)\nLink for Section 002 (1:25pm lecture)\n\n\n\n\n−+\n03:00"
+    "objectID": "slides/06-slr-math-models.html#uncertainty-in-predictions",
+    "href": "slides/06-slr-math-models.html#uncertainty-in-predictions",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Uncertainty in predictions",
+    "text": "Uncertainty in predictions\nConfidence interval for the mean outcome: \\[\\large{\\hat{y} \\pm t_{n-2}^* \\times \\color{purple}{\\mathbf{SE}_{\\hat{\\boldsymbol{\\mu}}}}}\\]\n\nPrediction interval for an individual observation: \\[\\large{\\hat{y} \\pm t_{n-2}^* \\times \\color{purple}{\\mathbf{SE_{\\hat{y}}}}}\\]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#does-it-make-sense-to-interpret-the-intercept",
-    "href": "slides/03-slr-intro.html#does-it-make-sense-to-interpret-the-intercept",
-    "title": "Simple Linear Regression",
-    "section": "Does it make sense to interpret the intercept?",
-    "text": "Does it make sense to interpret the intercept?\n\n✅ The intercept is meaningful in the context of the data if\n\nthe predictor can feasibly take values equal to or near zero, or\nthere are values near zero in the observed data.\n\n\n\n🛑 Otherwise, the intercept may not be meaningful!"
+    "objectID": "slides/06-slr-math-models.html#standard-errors",
+    "href": "slides/06-slr-math-models.html#standard-errors",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Standard errors",
+    "text": "Standard errors\nStandard error of the mean outcome: \\[SE_{\\hat{\\mu}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]\n\nStandard error of an individual outcome: \\[SE_{\\hat{y}} = \\hat{\\sigma}_\\epsilon\\sqrt{1 + \\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#making-a-prediction",
-    "href": "slides/03-slr-intro.html#making-a-prediction",
-    "title": "Simple Linear Regression",
-    "section": "Making a prediction",
-    "text": "Making a prediction\nSuppose that a movie has a critics score of 70. According to this model, what is the movie’s predicted audience score?\n\\[\\begin{aligned}\n\\widehat{\\text{audience}} &= 32.3142 + 0.5187 \\times \\text{critics} \\\\\n&= 32.3142 + 0.5187 \\times 70 \\\\\n&= 68.6232\n\\end{aligned}\\]"
+    "objectID": "slides/06-slr-math-models.html#standard-errors-1",
+    "href": "slides/06-slr-math-models.html#standard-errors-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Standard errors",
+    "text": "Standard errors\nStandard error of the mean outcome: \\[SE_{\\hat{\\mu}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]\nStandard error of an individual outcome: \\[SE_{\\hat{y}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\mathbf{\\color{purple}{\\Large{1}}} + \\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]"
   },
   {
-    "objectID": "slides/03-slr-intro.html#tidymodels",
-    "href": "slides/03-slr-intro.html#tidymodels",
-    "title": "Simple Linear Regression",
-    "section": "tidymodels",
-    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Dig deeper into tidy modeling with R at https://www.tmwr.org"
+    "objectID": "slides/06-slr-math-models.html#confidence-interval",
+    "href": "slides/06-slr-math-models.html#confidence-interval",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Confidence interval",
+    "text": "Confidence interval\nThe 95% confidence interval for the mean outcome:\n\nnew_house &lt;- tibble(area = 2800)\n\npredict(df_fit, new_data = new_house, type = \"conf_int\", level = 0.95) |&gt;\n  kable()\n\n\n\n\n.pred_lower\n.pred_upper\n\n\n\n\n529351\n597060.1\n\n\n\n\n\n\n\n\nWe are 95% confident that mean sale price of Duke Forest houses that are 2,800 square feet is between $529,351 and $597,060."
   },
   {
-    "objectID": "slides/03-slr-intro.html#why-tidymodels",
-    "href": "slides/03-slr-intro.html#why-tidymodels",
-    "title": "Simple Linear Regression",
-    "section": "Why tidymodels?",
-    "text": "Why tidymodels?\n\nConsistent syntax for different model types (linear, logistic, random forest, Bayesian, etc.)\nStreamline modeling workflow\n\nSplit data into train and test sets\nTransform and create new variables\nAssess model performance\nUse model for prediction and inference"
+    "objectID": "slides/06-slr-math-models.html#prediction-interval",
+    "href": "slides/06-slr-math-models.html#prediction-interval",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Prediction interval",
+    "text": "Prediction interval\nThe 95% prediction interval for an individual outcome:\n\npredict(df_fit, new_data = new_house, type = \"pred_int\", level = 0.95) |&gt;\n  kable()\n\n\n\n\n.pred_lower\n.pred_upper\n\n\n\n\n226438.3\n899972.7\n\n\n\n\n\n\n\n\nWe are 95% confident that predicted sale price of a Duke Forest house that is 2,800 square feet is between $226,438 and $899,973."
   },
   {
-    "objectID": "slides/03-slr-intro.html#step-1-specify-model",
-    "href": "slides/03-slr-intro.html#step-1-specify-model",
-    "title": "Simple Linear Regression",
-    "section": "Step 1: Specify model",
-    "text": "Step 1: Specify model\n\nlinear_reg()\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+    "objectID": "slides/06-slr-math-models.html#comparing-intervals",
+    "href": "slides/06-slr-math-models.html#comparing-intervals",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Comparing intervals",
+    "text": "Comparing intervals"
   },
   {
-    "objectID": "slides/03-slr-intro.html#step-2-set-model-fitting-engine",
-    "href": "slides/03-slr-intro.html#step-2-set-model-fitting-engine",
-    "title": "Simple Linear Regression",
-    "section": "Step 2: Set model fitting engine",
-    "text": "Step 2: Set model fitting engine\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") # lm: linear model\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+    "objectID": "slides/06-slr-math-models.html#extrapolation",
+    "href": "slides/06-slr-math-models.html#extrapolation",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Extrapolation",
+    "text": "Extrapolation\nUsing the model to predict for values outside the range of the original data is extrapolation.\n\n\n\n\nCalculate the prediction interval for the sale price of a “tiny house” in Duke Forest that is 225 square feet.\n\n\n\n\n\n\n\n\n\n\n\nNo, thanks!"
   },
   {
-    "objectID": "slides/03-slr-intro.html#a-closer-look-at-the-regression-output",
-    "href": "slides/03-slr-intro.html#a-closer-look-at-the-regression-output",
-    "title": "Simple Linear Regression",
-    "section": "A closer look at the regression output",
-    "text": "A closer look at the regression output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is just due to rounding in the hand calculation."
+    "objectID": "slides/06-slr-math-models.html#extrapolation-1",
+    "href": "slides/06-slr-math-models.html#extrapolation-1",
+    "title": "SLR: Mathematical models for inference",
+    "section": "Extrapolation",
+    "text": "Extrapolation\n\nWhy do we want to avoid extrapolation?\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
-    "objectID": "slides/03-slr-intro.html#the-regression-output",
-    "href": "slides/03-slr-intro.html#the-regression-output",
-    "title": "Simple Linear Regression",
-    "section": "The regression output",
-    "text": "The regression output\nWe’ll focus on the first column for now…\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() \n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   32.3      2.34        13.8 4.03e-28\n2 critics        0.519    0.0345      15.0 2.70e-31"
+    "objectID": "slides/lab-04.html#goals",
+    "href": "slides/lab-04.html#goals",
+    "title": "Lab 04",
+    "section": "Goals",
+    "text": "Goals\n\nMeet your team!\nTeam agreement\nLab 04: Alumni jobs"
   },
   {
-    "objectID": "slides/03-slr-intro.html#format-output-with-kable",
-    "href": "slides/03-slr-intro.html#format-output-with-kable",
-    "title": "Simple Linear Regression",
-    "section": "Format output with kable",
-    "text": "Format output with kable\nUse the kable function from the knitr package to produce a table and specify number of significant digits\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n32.3155\n2.3425\n13.7953\n0\n\n\ncritics\n0.5187\n0.0345\n15.0281\n0"
+    "objectID": "slides/lab-04.html#meet-your-team",
+    "href": "slides/lab-04.html#meet-your-team",
+    "title": "Lab 04",
+    "section": "Meet your team!",
+    "text": "Meet your team!\n\nClick here to find your team.\nSit with your team."
   },
   {
-    "objectID": "slides/03-slr-intro.html#prediction-1",
-    "href": "slides/03-slr-intro.html#prediction-1",
-    "title": "Simple Linear Regression",
-    "section": "Prediction",
-    "text": "Prediction\n\n# create a data frame for a new movie\nnew_movie &lt;- tibble(critics = 70)\n\n# predict the outcome for a new movie\npredict(movie_fit, new_movie)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  68.6"
+    "objectID": "slides/lab-04.html#team-name-agreement",
+    "href": "slides/lab-04.html#team-name-agreement",
+    "title": "Lab 04",
+    "section": "Team name + agreement",
+    "text": "Team name + agreement\n\nCome up with a team name. You can’t have the same name as another group in the class, so be creative!\n\nYour TA will get your team name by the end of lab.\n\nFill out the team agreement. The goals of the agreement are to…\n\nGain a common understanding of the team’s goals and expectations for collaboration\nMake a plan for team communication\nMake a plan for working outside of lab"
   },
   {
-    "objectID": "slides/03-slr-intro.html#recap",
-    "href": "slides/03-slr-intro.html#recap",
-    "title": "Simple Linear Regression",
-    "section": "Recap",
-    "text": "Recap\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nUsed the least squares method to estimate the slope and intercept.\nInterpreted the slope and intercept.\n\nSlope: For every one unit increase in \\(x\\), we expect y to change by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units\n\nPredicted the response given a value of the predictor variable.\nUsed tidymodels to fit and summarize regression models in R.\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "objectID": "slides/lab-04.html#team-workflow",
+    "href": "slides/lab-04.html#team-workflow",
+    "title": "Lab 04",
+    "section": "Team workflow",
+    "text": "Team workflow\n\nOnly one team member should type at a time. There are markers in today’s lab to help you determine whose turn it is to type.\n\nEvery team member should still be engaged in discussion for all questions, even if it’s not your turn type.\n\nDon’t forget to pull to get your teammates’ updates before making changes to the .qmd file.\n\n\n\n\n\n\nImportant\n\n\nOnly one submission per team on Gradescope. Read the submission instructions carefully!"
   },
   {
-    "objectID": "slides/lab-00.html#meet-your-ta",
-    "href": "slides/lab-00.html#meet-your-ta",
-    "title": "Welcome to STA 210 Labs!",
-    "section": "Meet your TA!",
-    "text": "Meet your TA!"
+    "objectID": "slides/lab-04.html#team-workflow-in-action",
+    "href": "slides/lab-04.html#team-workflow-in-action",
+    "title": "Lab 04",
+    "section": "Team workflow, in action",
+    "text": "Team workflow, in action\n\nComplete the “Workflow: Using Git and GitHub as a team” section of the lab in your teams.\nRaise your hand if you have any questions about the workflow.\n\n\n\n\n−+\n05:00"
   },
   {
-    "objectID": "slides/lab-00.html#meet-each-other",
-    "href": "slides/lab-00.html#meet-each-other",
-    "title": "Welcome to STA 210 Labs!",
-    "section": "Meet each other!",
-    "text": "Meet each other!\n\n\nGet into groups of 4 - 5.\nIntroduce yourself - Name, year, major\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to today’s date.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (e.g., we’re all wearing socks)\nNot body parts (e.g., we all have a nose)\n\nReporter will share list with the class.\n\n\n\n\n\n−+\n06:00"
+    "objectID": "slides/lab-04.html#tips-for-working-on-a-team",
+    "href": "slides/lab-04.html#tips-for-working-on-a-team",
+    "title": "Lab 04",
+    "section": "Tips for working on a team",
+    "text": "Tips for working on a team\n\nDo not pressure each other to finish early; use the time wisely to really learn the material and produce a quality report.\nThe labs are structured to help you learn the steps of a data analysis. Do not split up the lab among the team members; work on it together in its entirety.\nEveryone has something to contribute! Use the lab groups as an opportunity to share ideas and learn from each other.\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
-    "objectID": "slides/lab-00.html#what-to-expect-in-lab",
-    "href": "slides/lab-00.html#what-to-expect-in-lab",
-    "title": "Welcome to STA 210 Labs!",
-    "section": "What to expect in lab",
-    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual for the first few weeks, but in teams for the rest of the semester)\nLab instructions will be posted on the course website\nStart each lab by finding your assignment repo in the course GitHub organization\n\nMore on the computing tools during lecture"
+    "objectID": "slides/lab-01.html#do-you-have-the-lab-01-repo",
+    "href": "slides/lab-01.html#do-you-have-the-lab-01-repo",
+    "title": "Lab 01",
+    "section": "Do you have the lab-01 repo?",
+    "text": "Do you have the lab-01 repo?\n\nGo to the GitHub course organization: https://github.com/sta210-fa23\nYou should see a repo with the prefix lab-01- followed by your GitHub username\nIf you do not have this repo\n\nClickhere to create your lab-01 repo, AND\nGo to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, click here to (re)submit your GitHub username."
   },
   {
-    "objectID": "slides/lab-00.html#todays-lab",
-    "href": "slides/lab-00.html#todays-lab",
-    "title": "Welcome to STA 210 Labs!",
-    "section": "Today’s lab",
-    "text": "Today’s lab\nThe rest of the today’s lab is focused on setting up the computing for the course and completing the class survey. Click the link below for the Lab 00 instructions.\n🔗 sta210-fa23.netlify.app/labs/lab-00.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "objectID": "slides/lab-01.html#demo",
+    "href": "slides/lab-01.html#demo",
+    "title": "Lab 01",
+    "section": "Demo",
+    "text": "Demo\nFollow along as your TA demonstrates the following:\n\nConfigure Git using SSH\nClone repo (using SSH) and start new project in RStudio\nRender document and produce PDF\nUpdate name in YAML in the Quarto doc\n\nRender, commit, push changes to GitHub\nSee updates in your GitHub repo\n\nAdd an R code chunk to the Quarto doc"
+  },
+  {
+    "objectID": "slides/lab-01.html#tips-for-working-on-lab",
+    "href": "slides/lab-01.html#tips-for-working-on-lab",
+    "title": "Lab 01",
+    "section": "Tips for working on lab",
+    "text": "Tips for working on lab\n\nYou do not have to finish the lab in class, they will always be due Friday (Tuesday labs) or Sunday (Thursday labs). One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when a TA can help you on the spot and leave the narrative writing until later.\nDo not pressure each other to finish early (particularly once you start working on teams); use the time wisely to really learn the material and produce a quality report."
+  },
+  {
+    "objectID": "slides/lab-01.html#when-youre-done-with-lab",
+    "href": "slides/lab-01.html#when-youre-done-with-lab",
+    "title": "Lab 01",
+    "section": "When you’re done with lab",
+    "text": "When you’re done with lab\n\nMake sure all your final changes have been pushed to your GitHub repo\n\nSubmit the PDF of your responses to Gradescope\n\nYou can access Gradescope through Sakai or the course website\nLogin using your Duke NetID credentials\nSee Lab 01 instructions for details on submitting an assignment on Gradescope"
+  },
+  {
+    "objectID": "slides/lab-01.html#lab-01-park-access",
+    "href": "slides/lab-01.html#lab-01-park-access",
+    "title": "Lab 01",
+    "section": "Lab 01: Park access",
+    "text": "Lab 01: Park access\n\nToday’s lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.\nThere are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.\nThere are points for having a neatly formatted document and implementing a reproducible workflow. See the Workflow & Formatting section in the Lab 01 instructions.\n\n🔗 sta210-fa23.netlify.app/labs/lab-01.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
     "objectID": "slides/04-slr-bootstrap.html#statistics-experience-assignment",
@@ -2387,312 +2548,676 @@
     "text": "Today’s lab\n\nFocused on mathematical inference for simple linear regression and checking model conditions.\n\nWe will talk about model conditions in the September 20 lecture.\n\nRemember to mark all pages in your Gradescope submission. The first page should be marked for the “Workflow & formatting” section.\nUse lectures and application exercises as reference as you complete the lab.\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },
   {
-    "objectID": "slides/lab-01.html#do-you-have-the-lab-01-repo",
-    "href": "slides/lab-01.html#do-you-have-the-lab-01-repo",
-    "title": "Lab 01",
-    "section": "Do you have the lab-01 repo?",
-    "text": "Do you have the lab-01 repo?\n\nGo to the GitHub course organization: https://github.com/sta210-fa23\nYou should see a repo with the prefix lab-01- followed by your GitHub username\nIf you do not have this repo\n\nClickhere to create your lab-01 repo, AND\nGo to the course organization and accept the invite in the banner at the top of the page. If you do not see the invite, click here to (re)submit your GitHub username."
-  },
-  {
-    "objectID": "slides/lab-01.html#demo",
-    "href": "slides/lab-01.html#demo",
-    "title": "Lab 01",
-    "section": "Demo",
-    "text": "Demo\nFollow along as your TA demonstrates the following:\n\nConfigure Git using SSH\nClone repo (using SSH) and start new project in RStudio\nRender document and produce PDF\nUpdate name in YAML in the Quarto doc\n\nRender, commit, push changes to GitHub\nSee updates in your GitHub repo\n\nAdd an R code chunk to the Quarto doc"
-  },
-  {
-    "objectID": "slides/lab-01.html#tips-for-working-on-lab",
-    "href": "slides/lab-01.html#tips-for-working-on-lab",
-    "title": "Lab 01",
-    "section": "Tips for working on lab",
-    "text": "Tips for working on lab\n\nYou do not have to finish the lab in class, they will always be due Friday (Tuesday labs) or Sunday (Thursday labs). One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when a TA can help you on the spot and leave the narrative writing until later.\nDo not pressure each other to finish early (particularly once you start working on teams); use the time wisely to really learn the material and produce a quality report."
-  },
-  {
-    "objectID": "slides/lab-01.html#when-youre-done-with-lab",
-    "href": "slides/lab-01.html#when-youre-done-with-lab",
-    "title": "Lab 01",
-    "section": "When you’re done with lab",
-    "text": "When you’re done with lab\n\nMake sure all your final changes have been pushed to your GitHub repo\n\nSubmit the PDF of your responses to Gradescope\n\nYou can access Gradescope through Sakai or the course website\nLogin using your Duke NetID credentials\nSee Lab 01 instructions for details on submitting an assignment on Gradescope"
-  },
-  {
-    "objectID": "slides/lab-01.html#lab-01-park-access",
-    "href": "slides/lab-01.html#lab-01-park-access",
-    "title": "Lab 01",
-    "section": "Lab 01: Park access",
-    "text": "Lab 01: Park access\n\nToday’s lab focuses on exploratory data analysis and simple linear regression. Read the lab instructions carefully.\nThere are markers throughout suggesting when to render, commit, and push changes to GitHub. These are to help you start using version control in your workflow.\nThere are points for having a neatly formatted document and implementing a reproducible workflow. See the Workflow & Formatting section in the Lab 01 instructions.\n\n🔗 sta210-fa23.netlify.app/labs/lab-01.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
-  },
-  {
-    "objectID": "slides/lab-04.html#goals",
-    "href": "slides/lab-04.html#goals",
-    "title": "Lab 04",
-    "section": "Goals",
-    "text": "Goals\n\nMeet your team!\nTeam agreement\nLab 04: Alumni jobs"
-  },
-  {
-    "objectID": "slides/lab-04.html#meet-your-team",
-    "href": "slides/lab-04.html#meet-your-team",
-    "title": "Lab 04",
-    "section": "Meet your team!",
-    "text": "Meet your team!\n\nClick here to find your team.\nSit with your team."
-  },
-  {
-    "objectID": "slides/lab-04.html#team-name-agreement",
-    "href": "slides/lab-04.html#team-name-agreement",
-    "title": "Lab 04",
-    "section": "Team name + agreement",
-    "text": "Team name + agreement\n\nCome up with a team name. You can’t have the same name as another group in the class, so be creative!\n\nYour TA will get your team name by the end of lab.\n\nFill out the team agreement. The goals of the agreement are to…\n\nGain a common understanding of the team’s goals and expectations for collaboration\nMake a plan for team communication\nMake a plan for working outside of lab"
-  },
-  {
-    "objectID": "slides/lab-04.html#team-workflow",
-    "href": "slides/lab-04.html#team-workflow",
-    "title": "Lab 04",
-    "section": "Team workflow",
-    "text": "Team workflow\n\nOnly one team member should type at a time. There are markers in today’s lab to help you determine whose turn it is to type.\n\nEvery team member should still be engaged in discussion for all questions, even if it’s not your turn type.\n\nDon’t forget to pull to get your teammates’ updates before making changes to the .qmd file.\n\n\n\n\n\n\nImportant\n\n\nOnly one submission per team on Gradescope. Read the submission instructions carefully!"
-  },
-  {
-    "objectID": "slides/lab-04.html#team-workflow-in-action",
-    "href": "slides/lab-04.html#team-workflow-in-action",
-    "title": "Lab 04",
-    "section": "Team workflow, in action",
-    "text": "Team workflow, in action\n\nComplete the “Workflow: Using Git and GitHub as a team” section of the lab in your teams.\nRaise your hand if you have any questions about the workflow.\n\n\n\n\n−+\n05:00"
-  },
-  {
-    "objectID": "slides/lab-04.html#tips-for-working-on-a-team",
-    "href": "slides/lab-04.html#tips-for-working-on-a-team",
-    "title": "Lab 04",
-    "section": "Tips for working on a team",
-    "text": "Tips for working on a team\n\nDo not pressure each other to finish early; use the time wisely to really learn the material and produce a quality report.\nThe labs are structured to help you learn the steps of a data analysis. Do not split up the lab among the team members; work on it together in its entirety.\nEveryone has something to contribute! Use the lab groups as an opportunity to share ideas and learn from each other.\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
-  },
-  {
-    "objectID": "slides/06-slr-math-models.html#announcements",
-    "href": "slides/06-slr-math-models.html#announcements",
-    "title": "SLR: Mathematical models for inference",
+    "objectID": "slides/09-mlr-predictors.html#announcements",
+    "href": "slides/09-mlr-predictors.html#announcements",
+    "title": "MLR: Types of predictors",
     "section": "Announcements",
-    "text": "Announcements\n\nHW 01: due Wed, Sep 20 at 11:59pm\n\nQuestions?\n\nStatistics experience - due Mon, Nov 20 at 11:59pm"
+    "text": "Announcements\n\nLab 03 due\n\nToday at 11:59pm (Thursday labs)\nTue, Sep 27 at 11:59pm (Friday labs)\n\nExam 01: Sep 28 - 30\n\nExam 01 review on Sep 28\nVideos for Weeks 01 - 05 available until Sep 28 at 11:59pm\n\nSee Week 05 for this week’s activities."
   },
   {
-    "objectID": "slides/06-slr-math-models.html#course-policy-reminders",
-    "href": "slides/06-slr-math-models.html#course-policy-reminders",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Course policy reminders",
-    "text": "Course policy reminders\n\nLate work\n\nHW and labs accepted up to 2 days late.\n5% deduction for each 24-hour period the assignment is late.\n\nOne time late waiver\n\nCan use on HW and individual labs\n\nLowest HW and lowest lab grade dropped at the end of the semester."
-  },
-  {
-    "objectID": "slides/06-slr-math-models.html#course-policy-reminders-1",
-    "href": "slides/06-slr-math-models.html#course-policy-reminders-1",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Course policy reminders",
-    "text": "Course policy reminders\n\nRegrade requests\n\nOpened 1 day after assignment is returned and due within 1 week\nOnly submit regrade if there is an error in the grading not to dispute points\nProf. Tackett or Sam the Head TA will regrade the entire exercise being disputed, which could result in a lower grade\n\n\n\n\n\n\n\nTip\n\n\nSee the posted solutions and ask during office hours before submitting a regrade request"
-  },
-  {
-    "objectID": "slides/06-slr-math-models.html#statistician-of-the-day-regina-nuzzo",
-    "href": "slides/06-slr-math-models.html#statistician-of-the-day-regina-nuzzo",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Statistician of the day: Regina Nuzzo",
-    "text": "Statistician of the day: Regina Nuzzo\n\n\n\n\n\n\n\n\nDr. Nuzzo received her PhD in Statistics from Stanford University and is now Professor of Science, Technology, & Mathematics at Gallaudet University. Dr. Nuzzo teaches statistics using American Sign Language.\nHer work has appeared in Nature, Los Angeles Times, New York Times, Reader’s Digest, New Scientist, and Scientific American. Primarily, she works to help lay-audiences understand science and statistics in particular. She earned the American Statistical Association’s 2014 Excellence in Statistical Reporting Award for her article on p-values in Nature. Her work led to the ASA’s statement on p-values.\nSource: hardin47.github.io/CURV/scholars/nuzzo"
-  },
-  {
-    "objectID": "slides/06-slr-math-models.html#regina-nuzzo",
-    "href": "slides/06-slr-math-models.html#regina-nuzzo",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Regina Nuzzo",
-    "text": "Regina Nuzzo\nFrom “Tips for Communicating Statistical Significance.”\n“That we use p-values to alert us to surprising data results, not to give a final answer on anything. (Or at least that’s what we should be doing). And that results can get flagged as”statistically surprising” with a small p-value for a number of reasons”\n\nThere was a fluke.\nSomething was violated.\nThere was a real but tiny relationship.\nThere was a relationship that is worth more study.\n\nOr any combination of the above."
-  },
-  {
-    "objectID": "slides/06-slr-math-models.html#topics",
-    "href": "slides/06-slr-math-models.html#topics",
-    "title": "SLR: Mathematical models for inference",
+    "objectID": "slides/09-mlr-predictors.html#topics",
+    "href": "slides/09-mlr-predictors.html#topics",
+    "title": "MLR: Types of predictors",
     "section": "Topics",
-    "text": "Topics\n\nDefine mathematical models to conduct inference for the slope\nUse mathematical models to\n\ncalculate confidence interval for the slope\nconduct a hypothesis test for the slope"
+    "text": "Topics\n\nPrediction for multiple linear regression\nTypes of predictors for multiple linear regression\nMean-centering quantitative predictors\nUsing indicator variables for categorical predictors\nUsing interaction terms"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#computational-setup",
-    "href": "slides/06-slr-math-models.html#computational-setup",
-    "title": "SLR: Mathematical models for inference",
+    "objectID": "slides/09-mlr-predictors.html#computational-setup",
+    "href": "slides/09-mlr-predictors.html#computational-setup",
+    "title": "MLR: Types of predictors",
     "section": "Computational setup",
-    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)   # for data wrangling and visualization\nlibrary(tidymodels)  # for modeling\nlibrary(openintro)   # for the duke_forest dataset\nlibrary(scales)      # for pretty axis labels\nlibrary(knitr)       # for pretty tables\nlibrary(kableExtra)  # also for pretty tables\nlibrary(patchwork)   # arrange plots\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(openintro)\nlibrary(patchwork)\nlibrary(knitr)\nlibrary(kableExtra)\nlibrary(colorblindr)\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#the-regression-model-revisited",
-    "href": "slides/06-slr-math-models.html#the-regression-model-revisited",
-    "title": "SLR: Mathematical models for inference",
-    "section": "The regression model, revisited",
-    "text": "The regression model, revisited\n\ndf_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(price ~ area, data = duke_forest)\n\ntidy(df_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.325\n53302.463\n2.188\n0.031\n\n\narea\n159.483\n18.171\n8.777\n0.000"
+    "objectID": "slides/09-mlr-predictors.html#the-data",
+    "href": "slides/09-mlr-predictors.html#the-data",
+    "title": "MLR: Types of predictors",
+    "section": "The data",
+    "text": "The data\n\nlevittown &lt;- read_csv(here::here(\"slides/data/homeprices.csv\"))\nlevittown\n\n# A tibble: 85 × 7\n   bedrooms bathrooms living_area lot_size year_built property_tax sale_price\n      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;\n 1        4       1          1380     6000       1948         8360     350000\n 2        4       2          1761     7400       1951         5754     360000\n 3        4       2          1564     6000       1948         8982     350000\n 4        5       2          2904     9898       1949        11664     375000\n 5        5       2.5        1942     7788       1948         8120     370000\n 6        4       2          1830     6000       1948         8197     335000\n 7        4       1          1585     6000       1948         6223     295000\n 8        4       1           941     6800       1951         2448     250000\n 9        4       1.5        1481     6000       1948         9087     299990\n10        3       2          1630     5998       1948         9430     375000\n# … with 75 more rows"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#inference-revisited",
-    "href": "slides/06-slr-math-models.html#inference-revisited",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Inference, revisited",
-    "text": "Inference, revisited\n\n\nEarlier we computed a confidence interval and conducted a hypothesis test via simulation:\n\nCI: Bootstrap the observed sample to simulate the distribution of the slope\nHT: Permute the observed sample to simulate the distribution of the slope under the assumption that the null hypothesis is true\n\nNow we’ll do these based on theoretical results, i.e., by using the Central Limit Theorem to define the distribution of the slope and use features (shape, center, spread) of this distribution to compute bounds of the confidence interval and the p-value for the hypothesis test"
+    "objectID": "slides/09-mlr-predictors.html#variables",
+    "href": "slides/09-mlr-predictors.html#variables",
+    "title": "MLR: Types of predictors",
+    "section": "Variables",
+    "text": "Variables\nPredictors:\n\n\nbedrooms: Number of bedrooms\nbathrooms: Number of bathrooms\nliving_area: Total living area of the house (in square feet)\nlot_size: Total area of the lot (in square feet)\nyear_built: Year the house was built\nproperty_tax: Annual property taxes (in USD)\n\n\nResponse: sale_price: Sales price (in USD)"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#mathematical-representation-of-the-model",
-    "href": "slides/06-slr-math-models.html#mathematical-representation-of-the-model",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Mathematical representation of the model",
-    "text": "Mathematical representation of the model\n\\[\n\\begin{aligned}\nY &= Model + Error \\\\\n&= f(X) + \\epsilon \\\\\n&= \\mu_{Y|X} + \\epsilon \\\\\n&= \\beta_0 + \\beta_1 X + \\epsilon\n\\end{aligned}\n\\]\nwhere the errors are independent and normally distributed:\n\n\nindependent: Knowing the error term for one observation doesn’t tell you anything about the error term for another observation\nnormally distributed: \\(\\epsilon \\sim N(0, \\sigma_\\epsilon^2)\\)"
+    "objectID": "slides/09-mlr-predictors.html#model-fit",
+    "href": "slides/09-mlr-predictors.html#model-fit",
+    "title": "MLR: Types of predictors",
+    "section": "Model fit",
+    "text": "Model fit\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-7148818.957\n3820093.694\n-1.871\n0.065\n\n\nbedrooms\n-12291.011\n9346.727\n-1.315\n0.192\n\n\nbathrooms\n51699.236\n13094.170\n3.948\n0.000\n\n\nliving_area\n65.903\n15.979\n4.124\n0.000\n\n\nlot_size\n-0.897\n4.194\n-0.214\n0.831\n\n\nyear_built\n3760.898\n1962.504\n1.916\n0.059\n\n\nproperty_tax\n1.476\n2.832\n0.521\n0.604"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#mathematical-representation-visualized",
-    "href": "slides/06-slr-math-models.html#mathematical-representation-visualized",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Mathematical representation, visualized",
-    "text": "Mathematical representation, visualized\n\\[\nY|X \\sim N(\\beta_0 + \\beta_1 X, \\sigma_\\epsilon^2)\n\\]\n\n\n\n\n\nImage source: Introduction to the Practice of Statistics (5th ed)\n\n\n\n\nMean: \\(\\beta_0 + \\beta_1 X\\), the predicted value based on the regression model\nVariance: \\(\\sigma_\\epsilon^2\\), constant across the range of \\(X\\)\n\nHow do we estimate \\(\\sigma_\\epsilon^2\\)?"
+    "objectID": "slides/09-mlr-predictors.html#prediction-1",
+    "href": "slides/09-mlr-predictors.html#prediction-1",
+    "title": "MLR: Types of predictors",
+    "section": "Prediction",
+    "text": "Prediction\n\nWhat is the predicted sale price for a house in Levittown, NY with 3 bedrooms, 1 bathroom, 1,050 square feet of living area, 6,000 square foot lot size, built in 1948 with $6,306 in property taxes?\n\n\n\n-7148818.957 - 12291.011 * 3 + 51699.236 * 1 + \n  65.903 * 1050 - 0.897 * 6000 + 3760.898 * 1948 + \n  1.476 * 6306\n\n[1] 265360.4\n\n\n\nThe predicted sale price for a house in Levittown, NY with 3 bedrooms, 1 bathroom, 1050 square feet of living area, 6000 square foot lot size, built in 1948 with $6306 in property taxes is $265,360."
   },
   {
-    "objectID": "slides/06-slr-math-models.html#regression-standard-error",
-    "href": "slides/06-slr-math-models.html#regression-standard-error",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Regression standard error",
-    "text": "Regression standard error\nOnce we fit the model, we can use the residuals to estimate the regression standard error, the average distance between the observed values and the regression line\n\\[\n\\hat{\\sigma}_\\epsilon = \\sqrt{\\frac{\\sum_\\limits{i=1}^n(y_i - \\hat{y}_i)^2}{n-2}} = \\sqrt{\\frac{\\sum_\\limits{i=1}^ne_i^2}{n-2}}\n\\]\n\n\n\nWhy divide by \\(n - 2\\)?\nWhy do we care about the value of the regression standard error?"
+    "objectID": "slides/09-mlr-predictors.html#prediction-revisit",
+    "href": "slides/09-mlr-predictors.html#prediction-revisit",
+    "title": "MLR: Types of predictors",
+    "section": "Prediction, revisit",
+    "text": "Prediction, revisit\nJust like with simple linear regression, we can use the predict() function in R to calculate the appropriate intervals for our predicted values:\n\nnew_house &lt;- tibble(\n  bedrooms = 3, bathrooms = 1, \n  living_area = 1050, lot_size = 6000, \n  year_built = 1948, property_tax = 6306\n  )\n\npredict(price_fit, new_house)\n\n# A tibble: 1 × 1\n    .pred\n    &lt;dbl&gt;\n1 265360."
   },
   {
-    "objectID": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
-    "href": "slides/06-slr-math-models.html#standard-error-of-hatbeta_1",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Standard error of \\(\\hat{\\beta}_1\\)",
-    "text": "Standard error of \\(\\hat{\\beta}_1\\)\nThe standard error of \\(\\hat{\\beta}_1\\) quantifies the sampling variability in the estimated slopes\n\\[\nSE_{\\hat{\\beta}_1} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{(n-1)s_X^2}}\n\\]\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
+    "objectID": "slides/09-mlr-predictors.html#confidence-interval-for-hatmu_y",
+    "href": "slides/09-mlr-predictors.html#confidence-interval-for-hatmu_y",
+    "title": "MLR: Types of predictors",
+    "section": "Confidence interval for \\(\\hat{\\mu}_y\\)",
+    "text": "Confidence interval for \\(\\hat{\\mu}_y\\)\n\nCalculate a 95% confidence interval for the estimated mean price of houses in Levittown, NY with 3 bedrooms, 1 bathroom, 1050 square feet of living area, 6000 square foot lot size, built in 1948 with $6306 in property taxes.\n\n\n\npredict(price_fit, new_house, type = \"conf_int\", level = 0.95)\n\n# A tibble: 1 × 2\n  .pred_lower .pred_upper\n        &lt;dbl&gt;       &lt;dbl&gt;\n1     238482.     292239."
   },
   {
-    "objectID": "slides/06-slr-math-models.html#hypothesis-test-for-the-slope",
-    "href": "slides/06-slr-math-models.html#hypothesis-test-for-the-slope",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Hypothesis test for the slope",
-    "text": "Hypothesis test for the slope\nHypotheses: \\(H_0: \\beta_1 = 0\\) vs. \\(H_A: \\beta_1 \\ne 0\\)\n\nTest statistic: Number of standard errors the estimate is away from the null\n\\[\nT = \\frac{\\text{Estimate - Null}}{\\text{Standard error}} \\\\\n\\]\n\n\np-value: Probability of observing a test statistic at least as extreme (in the direction of the alternative hypothesis) from the null value as the one observed\n\\[\np-value = P(|t| &gt; |\\text{test statistic}|),\n\\]\ncalculated from a \\(t\\) distribution with \\(n - 2\\) degrees of freedom"
+    "objectID": "slides/09-mlr-predictors.html#prediction-interval-for-haty",
+    "href": "slides/09-mlr-predictors.html#prediction-interval-for-haty",
+    "title": "MLR: Types of predictors",
+    "section": "Prediction interval for \\(\\hat{y}\\)",
+    "text": "Prediction interval for \\(\\hat{y}\\)\n\nCalculate a 95% prediction interval for an individual house in Levittown, NY with 3 bedrooms, 1 bathroom, 1050 square feet of living area, 6000 square foot lot size, built in 1948 with $6306 in property taxes.\n\n\n\npredict(price_fit, new_house, type = \"pred_int\", level = 0.95)\n\n# A tibble: 1 × 2\n  .pred_lower .pred_upper\n        &lt;dbl&gt;       &lt;dbl&gt;\n1     167277.     363444."
   },
   {
-    "objectID": "slides/06-slr-math-models.html#hypothesis-test-test-statistic",
-    "href": "slides/06-slr-math-models.html#hypothesis-test-test-statistic",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Hypothesis test: Test statistic",
-    "text": "Hypothesis test: Test statistic\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\nT = \\frac{\\hat{\\beta}_1 - 0}{SE_{\\hat{\\beta}_1}} = \\frac{159.48 - 0}{18.17} = 8.78\n\\]\n\nSelect the best interpretation of the test statistic on Ed Discussion.\n[10:05am lecture] [1:25pm lecture]"
+    "objectID": "slides/09-mlr-predictors.html#cautions",
+    "href": "slides/09-mlr-predictors.html#cautions",
+    "title": "MLR: Types of predictors",
+    "section": "Cautions",
+    "text": "Cautions\n\nDo not extrapolate! Because there are multiple predictor variables, there is the potential to extrapolate in many directions\nThe multiple regression model only shows association, not causality\n\nTo show causality, you must have a carefully designed experiment or carefully account for confounding variables in an observational study"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#hypothesis-test-p-value",
-    "href": "slides/06-slr-math-models.html#hypothesis-test-p-value",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Hypothesis test: p-value",
-    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00"
+    "objectID": "slides/09-mlr-predictors.html#data-peer-to-peer-lender",
+    "href": "slides/09-mlr-predictors.html#data-peer-to-peer-lender",
+    "title": "MLR: Types of predictors",
+    "section": "Data: Peer-to-peer lender",
+    "text": "Data: Peer-to-peer lender\nToday’s data is a sample of 50 loans made through a peer-to-peer lending club. The data is in the loan50 data frame in the openintro R package.\n\n\n# A tibble: 50 × 4\n   annual_income debt_to_income verified_income interest_rate\n           &lt;dbl&gt;          &lt;dbl&gt; &lt;fct&gt;                   &lt;dbl&gt;\n 1         59000         0.558  Not Verified            10.9 \n 2         60000         1.31   Not Verified             9.92\n 3         75000         1.06   Verified                26.3 \n 4         75000         0.574  Not Verified             9.92\n 5        254000         0.238  Not Verified             9.43\n 6         67000         1.08   Source Verified          9.92\n 7         28800         0.0997 Source Verified         17.1 \n 8         80000         0.351  Not Verified             6.08\n 9         34000         0.698  Not Verified             7.97\n10         80000         0.167  Source Verified         12.6 \n# … with 40 more rows"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
-    "href": "slides/06-slr-math-models.html#hypothesis-test-p-value-1",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Hypothesis test: p-value",
-    "text": "Hypothesis test: p-value\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\nA more exact p-value\n\n2 * pt(q = 8.78, df = 96, lower.tail = FALSE)\n\n[1] 6.19602e-14\n\n\n\nSelect the meaning of the p-value on Ed Discussion.\n[10:05am lecture][1:25pm lecture]"
+    "objectID": "slides/09-mlr-predictors.html#variables-1",
+    "href": "slides/09-mlr-predictors.html#variables-1",
+    "title": "MLR: Types of predictors",
+    "section": "Variables",
+    "text": "Variables\nPredictors:\n\n\nannual_income: Annual income\ndebt_to_income: Debt-to-income ratio, i.e. the percentage of a borrower’s total debt divided by their total income\nverified_income: Whether borrower’s income source and amount have been verified (Not Verified, Source Verified, Verified)\n\n\nOutcome: interest_rate: Interest rate for the loan"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#understanding-the-p-value",
-    "href": "slides/06-slr-math-models.html#understanding-the-p-value",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Understanding the p-value",
-    "text": "Understanding the p-value\n\n\n\nMagnitude of p-value\nInterpretation\n\n\n\n\np-value &lt; 0.01\nstrong evidence against \\(H_0\\)\n\n\n0.01 &lt; p-value &lt; 0.05\nmoderate evidence against \\(H_0\\)\n\n\n0.05 &lt; p-value &lt; 0.1\nweak evidence against \\(H_0\\)\n\n\np-value &gt; 0.1\neffectively no evidence against \\(H_0\\)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThese are general guidelines. The strength of evidence depends on the context of the problem."
+    "objectID": "slides/09-mlr-predictors.html#outcome-interest_rate",
+    "href": "slides/09-mlr-predictors.html#outcome-interest_rate",
+    "title": "MLR: Types of predictors",
+    "section": "Outcome: interest_rate",
+    "text": "Outcome: interest_rate\n\n\n\n\n\n\nmin\nmedian\nmax\niqr\n\n\n\n\n5.31\n9.93\n26.3\n5.755"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#hypothesis-test-conclusion-in-context",
-    "href": "slides/06-slr-math-models.html#hypothesis-test-conclusion-in-context",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Hypothesis test: Conclusion, in context",
-    "text": "Hypothesis test: Conclusion, in context\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\nThe data provide convincing evidence that the population slope \\(\\beta_1\\) is different from 0.\nThe data provide convincing evidence of a linear relationship between area and price of houses in Duke Forest."
+    "objectID": "slides/09-mlr-predictors.html#predictors",
+    "href": "slides/09-mlr-predictors.html#predictors",
+    "title": "MLR: Types of predictors",
+    "section": "Predictors",
+    "text": "Predictors"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#confidence-interval-for-the-slope",
-    "href": "slides/06-slr-math-models.html#confidence-interval-for-the-slope",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Confidence interval for the slope",
-    "text": "Confidence interval for the slope\n\\[\n\\text{Estimate} \\pm \\text{ (critical value) } \\times \\text{SE}\n\\]\n\n\\[\n\\hat{\\beta}_1 \\pm t^* \\times SE_{\\hat{\\beta}_1}\n\\]\nwhere \\(t^*\\) is calculated from a \\(t\\) distribution with \\(n-2\\) degrees of freedom"
+    "objectID": "slides/09-mlr-predictors.html#data-manipulation-1-rescale-income",
+    "href": "slides/09-mlr-predictors.html#data-manipulation-1-rescale-income",
+    "title": "MLR: Types of predictors",
+    "section": "Data manipulation 1: Rescale income",
+    "text": "Data manipulation 1: Rescale income\n\nloan50 &lt;- loan50 |&gt;\n  mutate(annual_income_th = annual_income / 1000)\n\nggplot(loan50, aes(x = annual_income_th)) +\n  geom_histogram(binwidth = 20) +\n  labs(title = \"Annual income (in $1000s)\", \n       x = \"\")"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#confidence-interval-critical-value",
-    "href": "slides/06-slr-math-models.html#confidence-interval-critical-value",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Confidence interval: Critical value",
-    "text": "Confidence interval: Critical value\n\n\n\n\n# confidence level: 95%\nqt(0.975, df = nrow(duke_forest) - 2)\n\n[1] 1.984984\n\n\n\n\n\n# confidence level: 90%\nqt(0.95, df = nrow(duke_forest) - 2)\n\n[1] 1.660881\n\n\n\n\n\n# confidence level: 99%\nqt(0.995, df = nrow(duke_forest) - 2)\n\n[1] 2.628016"
+    "objectID": "slides/09-mlr-predictors.html#outcome-vs.-predictors",
+    "href": "slides/09-mlr-predictors.html#outcome-vs.-predictors",
+    "title": "MLR: Types of predictors",
+    "section": "Outcome vs. predictors",
+    "text": "Outcome vs. predictors"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#ci-for-the-slope-calculation",
-    "href": "slides/06-slr-math-models.html#ci-for-the-slope-calculation",
-    "title": "SLR: Mathematical models for inference",
-    "section": "95% CI for the slope: Calculation",
-    "text": "95% CI for the slope: Calculation\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n\n\narea\n159.48\n18.17\n8.78\n0.00\n\n\n\n\n\n\n\n\\[\\hat{\\beta}_1 = 159.48 \\hspace{15mm} t^* = 1.98 \\hspace{15mm} SE_{\\hat{\\beta}_1} = 18.17\\]\n\n\\[\n159.48 \\pm 1.98 \\times 18.17 = (123.50, 195.46)\n\\]"
+    "objectID": "slides/09-mlr-predictors.html#fit-regression-model",
+    "href": "slides/09-mlr-predictors.html#fit-regression-model",
+    "title": "MLR: Types of predictors",
+    "section": "Fit regression model",
+    "text": "Fit regression model\n\nint_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(interest_rate ~ debt_to_income + verified_income  + annual_income_th,\n      data = loan50)"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#ci-for-the-slope-computation",
-    "href": "slides/06-slr-math-models.html#ci-for-the-slope-computation",
-    "title": "SLR: Mathematical models for inference",
-    "section": "95% CI for the slope: Computation",
-    "text": "95% CI for the slope: Computation\n\ntidy(df_fit, conf.int = TRUE, conf.level = 0.95) |&gt; \n  kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n116652.33\n53302.46\n2.19\n0.03\n10847.77\n222456.88\n\n\narea\n159.48\n18.17\n8.78\n0.00\n123.41\n195.55"
+    "objectID": "slides/09-mlr-predictors.html#summarize-model-results",
+    "href": "slides/09-mlr-predictors.html#summarize-model-results",
+    "title": "MLR: Types of predictors",
+    "section": "Summarize model results",
+    "text": "Summarize model results\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n10.726\n1.507\n7.116\n0.000\n7.690\n13.762\n\n\ndebt_to_income\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002\n\n\n\n\n\n\n\n\n\n\nDescribe the subset of borrowers who are expected to get an interest rate of 10.726% based on our model. Is this interpretation meaningful? Why or why not?"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#intervals-for-predictions-1",
-    "href": "slides/06-slr-math-models.html#intervals-for-predictions-1",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Intervals for predictions",
-    "text": "Intervals for predictions\n\nSuppose we want to answer the question “What is the predicted sale price of a Duke Forest house that is 2,800 square feet?”\nWe said reporting a single estimate for the slope is not wise, and we should report a plausible range instead\nSimilarly, reporting a single prediction for a new value is not wise, and we should report a plausible range instead"
+    "objectID": "slides/09-mlr-predictors.html#mean-centering",
+    "href": "slides/09-mlr-predictors.html#mean-centering",
+    "title": "MLR: Types of predictors",
+    "section": "Mean-centering",
+    "text": "Mean-centering\nIf we are interested in interpreting the intercept, we can mean-center the quantitative predictors in the model.\nWe can mean-center a quantitative predictor \\(X_j\\) using the following:\n\\[X_{j_{Cent}} = X_{j}- \\bar{X}_{j}\\]\n\nIf we mean-center all quantitative variables, then the intercept is interpreted as the expected value of the response variable when all quantitative variables are at their mean value."
   },
   {
-    "objectID": "slides/06-slr-math-models.html#two-types-of-predictions",
-    "href": "slides/06-slr-math-models.html#two-types-of-predictions",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Two types of predictions",
-    "text": "Two types of predictions\n\nPrediction for the mean: “What is the average predicted sale price of Duke Forest houses that are 2,800 square feet?”\nPrediction for an individual observation: “What is the predicted sale price of a Duke Forest house that is 2,800 square feet?”\n\n\n\nWhich would you expect to be more variable? The average prediction or the prediction for an individual observation? Based on your answer, how would you expect the widths of plausible ranges for these two predictions to compare?"
+    "objectID": "slides/09-mlr-predictors.html#data-manipulation-2-mean-center-numeric-predictors",
+    "href": "slides/09-mlr-predictors.html#data-manipulation-2-mean-center-numeric-predictors",
+    "title": "MLR: Types of predictors",
+    "section": "Data manipulation 2: Mean-center numeric predictors",
+    "text": "Data manipulation 2: Mean-center numeric predictors\n\nloan50 &lt;- loan50 |&gt;\n  mutate(\n    debt_inc_cent = debt_to_income - mean(debt_to_income), \n    annual_income_th_cent = annual_income_th - mean(annual_income_th)\n    )"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#uncertainty-in-predictions",
-    "href": "slides/06-slr-math-models.html#uncertainty-in-predictions",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Uncertainty in predictions",
-    "text": "Uncertainty in predictions\nConfidence interval for the mean outcome: \\[\\large{\\hat{y} \\pm t_{n-2}^* \\times \\color{purple}{\\mathbf{SE}_{\\hat{\\boldsymbol{\\mu}}}}}\\]\n\nPrediction interval for an individual observation: \\[\\large{\\hat{y} \\pm t_{n-2}^* \\times \\color{purple}{\\mathbf{SE_{\\hat{y}}}}}\\]"
+    "objectID": "slides/09-mlr-predictors.html#visualize-mean-centered-predictors",
+    "href": "slides/09-mlr-predictors.html#visualize-mean-centered-predictors",
+    "title": "MLR: Types of predictors",
+    "section": "Visualize mean-centered predictors",
+    "text": "Visualize mean-centered predictors"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#standard-errors",
-    "href": "slides/06-slr-math-models.html#standard-errors",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Standard errors",
-    "text": "Standard errors\nStandard error of the mean outcome: \\[SE_{\\hat{\\mu}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]\n\nStandard error of an individual outcome: \\[SE_{\\hat{y}} = \\hat{\\sigma}_\\epsilon\\sqrt{1 + \\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]"
+    "objectID": "slides/09-mlr-predictors.html#using-mean-centered-variables-in-the-model",
+    "href": "slides/09-mlr-predictors.html#using-mean-centered-variables-in-the-model",
+    "title": "MLR: Types of predictors",
+    "section": "Using mean-centered variables in the model",
+    "text": "Using mean-centered variables in the model\n\nHow do you expect the model to change if we use the debt_inc_cent and annual_income_cent in the model?\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n9.444\n0.977\n9.663\n0.000\n7.476\n11.413\n\n\ndebt_inc_cent\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th_cent\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#standard-errors-1",
-    "href": "slides/06-slr-math-models.html#standard-errors-1",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Standard errors",
-    "text": "Standard errors\nStandard error of the mean outcome: \\[SE_{\\hat{\\mu}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]\nStandard error of an individual outcome: \\[SE_{\\hat{y}} = \\hat{\\sigma}_\\epsilon\\sqrt{\\mathbf{\\color{purple}{\\Large{1}}} + \\frac{1}{n} + \\frac{(x-\\bar{x})^2}{\\sum\\limits_{i=1}^n(x_i - \\bar{x})^2}}\\]"
+    "objectID": "slides/09-mlr-predictors.html#original-vs.-mean-centered-model",
+    "href": "slides/09-mlr-predictors.html#original-vs.-mean-centered-model",
+    "title": "MLR: Types of predictors",
+    "section": "Original vs. mean-centered model",
+    "text": "Original vs. mean-centered model\n\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n10.726\n\n\ndebt_to_income\n0.671\n\n\nverified_incomeSource Verified\n2.211\n\n\nverified_incomeVerified\n6.880\n\n\nannual_income_th\n-0.021\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n9.444\n\n\ndebt_inc_cent\n0.671\n\n\nverified_incomeSource Verified\n2.211\n\n\nverified_incomeVerified\n6.880\n\n\nannual_income_th_cent\n-0.021"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#confidence-interval",
-    "href": "slides/06-slr-math-models.html#confidence-interval",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Confidence interval",
-    "text": "Confidence interval\nThe 95% confidence interval for the mean outcome:\n\nnew_house &lt;- tibble(area = 2800)\n\npredict(df_fit, new_data = new_house, type = \"conf_int\", level = 0.95) |&gt;\n  kable()\n\n\n\n\n.pred_lower\n.pred_upper\n\n\n\n\n529351\n597060.1\n\n\n\n\n\n\n\n\nWe are 95% confident that mean sale price of Duke Forest houses that are 2,800 square feet is between $529,351 and $597,060."
+    "objectID": "slides/09-mlr-predictors.html#indicator-variables-1",
+    "href": "slides/09-mlr-predictors.html#indicator-variables-1",
+    "title": "MLR: Types of predictors",
+    "section": "Indicator variables",
+    "text": "Indicator variables\n\nSuppose there is a categorical variable with \\(K\\) categories (levels)\nWe can make \\(K\\) indicator variables - one indicator for each category\nAn indicator variable takes values 1 or 0\n\n1 if the observation belongs to that category\n0 if the observation does not belong to that category"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#prediction-interval",
-    "href": "slides/06-slr-math-models.html#prediction-interval",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Prediction interval",
-    "text": "Prediction interval\nThe 95% prediction interval for an individual outcome:\n\npredict(df_fit, new_data = new_house, type = \"pred_int\", level = 0.95) |&gt;\n  kable()\n\n\n\n\n.pred_lower\n.pred_upper\n\n\n\n\n226438.3\n899972.7\n\n\n\n\n\n\n\n\nWe are 95% confident that predicted sale price of a Duke Forest house that is 2,800 square feet is between $226,438 and $899,973."
+    "objectID": "slides/09-mlr-predictors.html#data-manipulation-3-create-indicator-variables-for-verified_income",
+    "href": "slides/09-mlr-predictors.html#data-manipulation-3-create-indicator-variables-for-verified_income",
+    "title": "MLR: Types of predictors",
+    "section": "Data manipulation 3: Create indicator variables for verified_income",
+    "text": "Data manipulation 3: Create indicator variables for verified_income\n\nloan50 &lt;- loan50 |&gt;\n  mutate(\n    not_verified = if_else(verified_income == \"Not Verified\", 1, 0),\n    source_verified = if_else(verified_income == \"Source Verified\", 1, 0),\n    verified = if_else(verified_income == \"Verified\", 1, 0)\n  )\n\n\n\n\n# A tibble: 3 × 4\n  verified_income not_verified source_verified verified\n  &lt;fct&gt;                  &lt;dbl&gt;           &lt;dbl&gt;    &lt;dbl&gt;\n1 Not Verified               1               0        0\n2 Verified                   0               0        1\n3 Source Verified            0               1        0"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#comparing-intervals",
-    "href": "slides/06-slr-math-models.html#comparing-intervals",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Comparing intervals",
-    "text": "Comparing intervals"
+    "objectID": "slides/09-mlr-predictors.html#indicators-in-the-model",
+    "href": "slides/09-mlr-predictors.html#indicators-in-the-model",
+    "title": "MLR: Types of predictors",
+    "section": "Indicators in the model",
+    "text": "Indicators in the model\n\nWe will use \\(K-1\\) of the indicator variables in the model.\nThe baseline is the category that doesn’t have a term in the model.\nThe coefficients of the indicator variables in the model are interpreted as the expected change in the response compared to the baseline, holding all other variables constant.\nThis approach is also called dummy coding.\n\n\n\nloan50 |&gt;\n  select(verified_income, source_verified, verified) |&gt;\n  slice(1, 3, 6)\n\n# A tibble: 3 × 3\n  verified_income source_verified verified\n  &lt;fct&gt;                     &lt;dbl&gt;    &lt;dbl&gt;\n1 Not Verified                  0        0\n2 Verified                      0        1\n3 Source Verified               1        0"
   },
   {
-    "objectID": "slides/06-slr-math-models.html#extrapolation",
-    "href": "slides/06-slr-math-models.html#extrapolation",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Extrapolation",
-    "text": "Extrapolation\nUsing the model to predict for values outside the range of the original data is extrapolation.\n\n\n\n\nCalculate the prediction interval for the sale price of a “tiny house” in Duke Forest that is 225 square feet.\n\n\n\n\n\n\n\n\n\n\n\nNo, thanks!"
+    "objectID": "slides/09-mlr-predictors.html#interpreting-verified_income",
+    "href": "slides/09-mlr-predictors.html#interpreting-verified_income",
+    "title": "MLR: Types of predictors",
+    "section": "Interpreting verified_income",
+    "text": "Interpreting verified_income\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n9.444\n0.977\n9.663\n0.000\n7.476\n11.413\n\n\ndebt_inc_cent\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th_cent\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002\n\n\n\n\n\n\n\n\n\n\nThe baseline category is Not verified.\nPeople with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.\nPeople with verified income are expected to take a loan with an interest rate that is 6.880% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant."
   },
   {
-    "objectID": "slides/06-slr-math-models.html#extrapolation-1",
-    "href": "slides/06-slr-math-models.html#extrapolation-1",
-    "title": "SLR: Mathematical models for inference",
-    "section": "Extrapolation",
-    "text": "Extrapolation\n\nWhy do we want to avoid extrapolation?\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "objectID": "slides/09-mlr-predictors.html#interaction-terms-1",
+    "href": "slides/09-mlr-predictors.html#interaction-terms-1",
+    "title": "MLR: Types of predictors",
+    "section": "Interaction terms",
+    "text": "Interaction terms\n\nSometimes the relationship between a predictor variable and the response depends on the value of another predictor variable.\nThis is an interaction effect.\nTo account for this, we can include interaction terms in the model."
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#interest-rate-vs.-annual-income",
+    "href": "slides/09-mlr-predictors.html#interest-rate-vs.-annual-income",
+    "title": "MLR: Types of predictors",
+    "section": "Interest rate vs. annual income",
+    "text": "Interest rate vs. annual income\nThe lines are not parallel indicating there is an interaction effect. The slope of annual income differs based on the income verification."
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#interaction-term-in-model",
+    "href": "slides/09-mlr-predictors.html#interaction-term-in-model",
+    "title": "MLR: Types of predictors",
+    "section": "Interaction term in model",
+    "text": "Interaction term in model\n\nint_cent_int_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(interest_rate ~ debt_inc_cent + verified_income + annual_income_th_cent + verified_income * annual_income_th_cent,\n      data = loan50)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n9.484\n0.989\n9.586\n0.000\n\n\ndebt_inc_cent\n0.691\n0.685\n1.009\n0.319\n\n\nverified_incomeSource Verified\n2.157\n1.418\n1.522\n0.135\n\n\nverified_incomeVerified\n7.181\n1.870\n3.840\n0.000\n\n\nannual_income_th_cent\n-0.007\n0.020\n-0.341\n0.735\n\n\nverified_incomeSource Verified:annual_income_th_cent\n-0.016\n0.026\n-0.643\n0.523\n\n\nverified_incomeVerified:annual_income_th_cent\n-0.032\n0.033\n-0.979\n0.333"
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#interpreting-interaction-terms",
+    "href": "slides/09-mlr-predictors.html#interpreting-interaction-terms",
+    "title": "MLR: Types of predictors",
+    "section": "Interpreting interaction terms",
+    "text": "Interpreting interaction terms\n\nWhat the interaction means: The effect of annual income on the interest rate differs by -0.016 when the income is source verified compared to when it is not verified, holding all else constant.\nInterpreting annual_income for source verified: If the income is source verified, we expect the interest rate to decrease by 0.023% (-0.007 + -0.016) for each additional thousand dollars in annual income, holding all else constant."
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#data-manipulation-4-create-interaction-variables",
+    "href": "slides/09-mlr-predictors.html#data-manipulation-4-create-interaction-variables",
+    "title": "MLR: Types of predictors",
+    "section": "Data manipulation 4: Create interaction variables",
+    "text": "Data manipulation 4: Create interaction variables\nDefining the interaction variable in the model formula as verified_income * annual_income_th_cent is an implicit data manipulation step as well\n\n\nRows: 50\nColumns: 9\n$ `(Intercept)`                                          &lt;dbl&gt; 1, 1, 1, 1, 1, …\n$ debt_inc_cent                                          &lt;dbl&gt; -0.16511719, 0.…\n$ annual_income_th_cent                                  &lt;dbl&gt; -27.17, -26.17,…\n$ `verified_incomeNot Verified`                          &lt;dbl&gt; 1, 1, 0, 1, 1, …\n$ `verified_incomeSource Verified`                       &lt;dbl&gt; 0, 0, 0, 0, 0, …\n$ verified_incomeVerified                                &lt;dbl&gt; 0, 0, 1, 0, 0, …\n$ `annual_income_th_cent:verified_incomeNot Verified`    &lt;dbl&gt; -27.17, -26.17,…\n$ `annual_income_th_cent:verified_incomeSource Verified` &lt;dbl&gt; 0.00, 0.00, 0.0…\n$ `annual_income_th_cent:verified_incomeVerified`        &lt;dbl&gt; 0.00, 0.00, -11…"
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#recap",
+    "href": "slides/09-mlr-predictors.html#recap",
+    "title": "MLR: Types of predictors",
+    "section": "Recap",
+    "text": "Recap\n\nMean-centering quantitative predictors\nUsing indicator variables for categorical predictors\nUsing interaction terms"
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#looking-backward",
+    "href": "slides/09-mlr-predictors.html#looking-backward",
+    "title": "MLR: Types of predictors",
+    "section": "Looking backward",
+    "text": "Looking backward\nData manipulation, with dplyr (from tidyverse):\n\nloan50 |&gt;\n  select(interest_rate, annual_income, debt_to_income, verified_income) |&gt;\n  mutate(\n    # 1. rescale income\n    annual_income_th = annual_income / 1000,\n    # 2. mean-center quantitative predictors\n    debt_inc_cent = debt_to_income - mean(debt_to_income),\n    annual_income_th_cent = annual_income_th - mean(annual_income_th),\n    # 3. create dummy variables for verified_income\n    source_verified = if_else(verified_income == \"Source Verified\", 1, 0),\n    verified = if_else(verified_income == \"Verified\", 1, 0),\n    # 4. create interaction variables\n    `annual_income_th_cent:verified_incomeSource Verified` = annual_income_th_cent * source_verified,\n    `annual_income_th_cent:verified_incomeVerified` = annual_income_th_cent * verified\n  )"
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#looking-forward",
+    "href": "slides/09-mlr-predictors.html#looking-forward",
+    "title": "MLR: Types of predictors",
+    "section": "Looking forward",
+    "text": "Looking forward\nFeature engineering, with recipes (from tidymodels):\n\nloan_rec &lt;- recipe( ~ ., data = loan50) |&gt;\n  # 1. rescale income\n  step_mutate(annual_income_th = annual_income / 1000) |&gt;\n  # 2. mean-center quantitative predictors\n  step_center(all_numeric_predictors()) |&gt;\n  # 3. create dummy variables for verified_income\n  step_dummy(verified_income) |&gt;\n  # 4. create interaction variables\n  step_interact(terms = ~ annual_income_th:verified_income)"
+  },
+  {
+    "objectID": "slides/09-mlr-predictors.html#recipe",
+    "href": "slides/09-mlr-predictors.html#recipe",
+    "title": "MLR: Types of predictors",
+    "section": "Recipe",
+    "text": "Recipe\n\nloan_rec\n\nRecipe\n\nInputs:\n\n      role #variables\n predictor         24\n\nOperations:\n\nVariable mutation for annual_income / 1000\nCentering for all_numeric_predictors()\nDummy variables from verified_income\nInteractions with annual_income_th:verified_income\n\n\n\n\n\n🔗 Week 05"
+  },
+  {
+    "objectID": "slides/lab-00.html#meet-your-ta",
+    "href": "slides/lab-00.html#meet-your-ta",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "Meet your TA!",
+    "text": "Meet your TA!"
+  },
+  {
+    "objectID": "slides/lab-00.html#meet-each-other",
+    "href": "slides/lab-00.html#meet-each-other",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "Meet each other!",
+    "text": "Meet each other!\n\n\nGet into groups of 4 - 5.\nIntroduce yourself - Name, year, major\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to today’s date.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (e.g., we’re all wearing socks)\nNot body parts (e.g., we all have a nose)\n\nReporter will share list with the class.\n\n\n\n\n\n−+\n06:00"
+  },
+  {
+    "objectID": "slides/lab-00.html#what-to-expect-in-lab",
+    "href": "slides/lab-00.html#what-to-expect-in-lab",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "What to expect in lab",
+    "text": "What to expect in lab\n\nIntroduction to the lab assignment (~ 5 - 10 minutes)\nWork on the lab assignment (individual for the first few weeks, but in teams for the rest of the semester)\nLab instructions will be posted on the course website\nStart each lab by finding your assignment repo in the course GitHub organization\n\nMore on the computing tools during lecture"
+  },
+  {
+    "objectID": "slides/lab-00.html#todays-lab",
+    "href": "slides/lab-00.html#todays-lab",
+    "title": "Welcome to STA 210 Labs!",
+    "section": "Today’s lab",
+    "text": "Today’s lab\nThe rest of the today’s lab is focused on setting up the computing for the course and completing the class survey. Click the link below for the Lab 00 instructions.\n🔗 sta210-fa23.netlify.app/labs/lab-00.html\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#topics",
+    "href": "slides/03-slr-intro.html#topics",
+    "title": "Simple Linear Regression",
+    "section": "Topics",
+    "text": "Topics\n\n\nUse simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nEstimate the slope and intercept of the regression line using the least squares method.\nInterpret the slope and intercept of the regression line.\nPredict the response given a value of the predictor variable.\nUse tidymodels to fit and summarize regression models in R."
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#computation-set-up",
+    "href": "slides/03-slr-intro.html#computation-set-up",
+    "title": "Simple Linear Regression",
+    "section": "Computation set up",
+    "text": "Computation set up\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\nlibrary(knitr)          # for formatting tables\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#movie-scores",
+    "href": "slides/03-slr-intro.html#movie-scores",
+    "title": "Simple Linear Regression",
+    "section": "Movie scores",
+    "text": "Movie scores\n\n\n\nData behind the FiveThirtyEight story Be Suspicious Of Online Movie Ratings, Especially Fandango’s\nIn the fivethirtyeight package: fandango\nContains every film released in 2014 and 2015 that has at least 30 fan reviews on Fandango, an IMDb score, Rotten Tomatoes critic and user ratings, and Metacritic critic and user scores"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#data-prep",
+    "href": "slides/03-slr-intro.html#data-prep",
+    "title": "Simple Linear Regression",
+    "section": "Data prep",
+    "text": "Data prep\n\nRename Rotten Tomatoes columns as critics and audience\nRename the dataset as movie_scores\n\n\nmovie_scores &lt;- fandango |&gt;\n  rename(critics = rottentomatoes, \n         audience = rottentomatoes_user)"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#data-overview",
+    "href": "slides/03-slr-intro.html#data-overview",
+    "title": "Simple Linear Regression",
+    "section": "Data overview",
+    "text": "Data overview\n\nglimpse(movie_scores)\n\nRows: 146\nColumns: 23\n$ film                       &lt;chr&gt; \"Avengers: Age of Ultron\", \"Cinderella\", \"A…\n$ year                       &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2…\n$ critics                    &lt;int&gt; 74, 85, 80, 18, 14, 63, 42, 86, 99, 89, 84,…\n$ audience                   &lt;int&gt; 86, 80, 90, 84, 28, 62, 53, 64, 82, 87, 77,…\n$ metacritic                 &lt;int&gt; 66, 67, 64, 22, 29, 50, 53, 81, 81, 80, 71,…\n$ metacritic_user            &lt;dbl&gt; 7.1, 7.5, 8.1, 4.7, 3.4, 6.8, 7.6, 6.8, 8.8…\n$ imdb                       &lt;dbl&gt; 7.8, 7.1, 7.8, 5.4, 5.1, 7.2, 6.9, 6.5, 7.4…\n$ fandango_stars             &lt;dbl&gt; 5.0, 5.0, 5.0, 5.0, 3.5, 4.5, 4.0, 4.0, 4.5…\n$ fandango_ratingvalue       &lt;dbl&gt; 4.5, 4.5, 4.5, 4.5, 3.0, 4.0, 3.5, 3.5, 4.0…\n$ rt_norm                    &lt;dbl&gt; 3.70, 4.25, 4.00, 0.90, 0.70, 3.15, 2.10, 4…\n$ rt_user_norm               &lt;dbl&gt; 4.30, 4.00, 4.50, 4.20, 1.40, 3.10, 2.65, 3…\n$ metacritic_norm            &lt;dbl&gt; 3.30, 3.35, 3.20, 1.10, 1.45, 2.50, 2.65, 4…\n$ metacritic_user_nom        &lt;dbl&gt; 3.55, 3.75, 4.05, 2.35, 1.70, 3.40, 3.80, 3…\n$ imdb_norm                  &lt;dbl&gt; 3.90, 3.55, 3.90, 2.70, 2.55, 3.60, 3.45, 3…\n$ rt_norm_round              &lt;dbl&gt; 3.5, 4.5, 4.0, 1.0, 0.5, 3.0, 2.0, 4.5, 5.0…\n$ rt_user_norm_round         &lt;dbl&gt; 4.5, 4.0, 4.5, 4.0, 1.5, 3.0, 2.5, 3.0, 4.0…\n$ metacritic_norm_round      &lt;dbl&gt; 3.5, 3.5, 3.0, 1.0, 1.5, 2.5, 2.5, 4.0, 4.0…\n$ metacritic_user_norm_round &lt;dbl&gt; 3.5, 4.0, 4.0, 2.5, 1.5, 3.5, 4.0, 3.5, 4.5…\n$ imdb_norm_round            &lt;dbl&gt; 4.0, 3.5, 4.0, 2.5, 2.5, 3.5, 3.5, 3.5, 3.5…\n$ metacritic_user_vote_count &lt;int&gt; 1330, 249, 627, 31, 88, 34, 17, 124, 62, 54…\n$ imdb_user_vote_count       &lt;int&gt; 271107, 65709, 103660, 3136, 19560, 39373, …\n$ fandango_votes             &lt;int&gt; 14846, 12640, 12055, 1793, 1021, 397, 252, …\n$ fandango_difference        &lt;dbl&gt; 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5…"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#movie-scores-data",
+    "href": "slides/03-slr-intro.html#movie-scores-data",
+    "title": "Simple Linear Regression",
+    "section": "Movie scores data",
+    "text": "Movie scores data\nThe data set contains the “Tomatometer” score (critics) and audience score (audience) for 146 movies rated on rottentomatoes.com."
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#movie-ratings-data",
+    "href": "slides/03-slr-intro.html#movie-ratings-data",
+    "title": "Simple Linear Regression",
+    "section": "Movie ratings data",
+    "text": "Movie ratings data\nGoal: Fit a line to describe the relationship between the critics score and audience score.\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#why-fit-a-line",
+    "href": "slides/03-slr-intro.html#why-fit-a-line",
+    "title": "Simple Linear Regression",
+    "section": "Why fit a line?",
+    "text": "Why fit a line?\nWe fit a line to accomplish one or both of the following:\n\n\nPrediction\n\nWhat is the audience score expected to be for an upcoming movie that received 35% from the critics?\n\n\n\n\nInference\n\nIs the critics score a useful predictor of the audience score? By how much is the audience score expected to change for each additional point in the critics score?"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#terminology",
+    "href": "slides/03-slr-intro.html#terminology",
+    "title": "Simple Linear Regression",
+    "section": "Terminology",
+    "text": "Terminology\n\n\n\nResponse, Y: variable describing the outcome of interest\nPredictor, X: variable we use to help understand the variability in the response\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#regression-model",
+    "href": "slides/03-slr-intro.html#regression-model",
+    "title": "Simple Linear Regression",
+    "section": "Regression model",
+    "text": "Regression model\nA regression model is a function that describes the relationship between the response, \\(Y\\), and the predictor, \\(X\\).\n\\[\\begin{aligned} Y &= \\color{black}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{black}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{black}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon \\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#regression-model-1",
+    "href": "slides/03-slr-intro.html#regression-model-1",
+    "title": "Simple Linear Regression",
+    "section": "Regression model",
+    "text": "Regression model\n\n\n\\[\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon \\end{aligned}\\]\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\\(\\mu_{Y|X}\\) is the mean value of \\(Y\\) given a particular value of \\(X\\)."
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#regression-model-2",
+    "href": "slides/03-slr-intro.html#regression-model-2",
+    "title": "Simple Linear Regression",
+    "section": "Regression model",
+    "text": "Regression model\n\n\n\\[\n\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[5pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[5pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[5pt]\n\\end{aligned}\n\\]\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#slr-statistical-model",
+    "href": "slides/03-slr-intro.html#slr-statistical-model",
+    "title": "Simple Linear Regression",
+    "section": "SLR: Statistical model",
+    "text": "SLR: Statistical model\nWhen we have a quantitative response, \\(Y\\), and a single quantitative predictor, \\(X\\), we can use a simple linear regression model to describe the relationship between \\(Y\\) and \\(X\\). \\[\\Large{Y = \\mathbf{\\beta_0 + \\beta_1 X} + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#slr-regression-equation",
+    "href": "slides/03-slr-intro.html#slr-regression-equation",
+    "title": "Simple Linear Regression",
+    "section": "SLR: Regression equation",
+    "text": "SLR: Regression equation\n\\[\\Large{\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X}\\]\n\n\\(\\hat{\\beta}_1\\): Estimated slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\hat{\\beta}_0\\): Estimated intercept of the relationship between \\(X\\) and \\(Y\\)\nNo error term!"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#choosing-values-for-hatbeta_1-and-hatbeta_0",
+    "href": "slides/03-slr-intro.html#choosing-values-for-hatbeta_1-and-hatbeta_0",
+    "title": "Simple Linear Regression",
+    "section": "Choosing values for \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_0\\)",
+    "text": "Choosing values for \\(\\hat{\\beta}_1\\) and \\(\\hat{\\beta}_0\\)\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#residuals",
+    "href": "slides/03-slr-intro.html#residuals",
+    "title": "Simple Linear Regression",
+    "section": "Residuals",
+    "text": "Residuals\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\\[\\text{residual} = \\text{observed} - \\text{predicted} = y_i - \\hat{y}_i\\]"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#least-squares-line",
+    "href": "slides/03-slr-intro.html#least-squares-line",
+    "title": "Simple Linear Regression",
+    "section": "Least squares line",
+    "text": "Least squares line\n\nThe residual for the \\(i^{th}\\) observation is\n\n\\[e_i = \\text{observed} - \\text{predicted}\n= y_i - \\hat{y}_i\\]\n\nThe sum of squared residuals is\n\n\\[e^2_1 + e^2_2 + \\dots + e^2_n\\]\n\nThe least squares line is the one that minimizes the sum of squared residuals"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#properties-of-least-squares-regression",
+    "href": "slides/03-slr-intro.html#properties-of-least-squares-regression",
+    "title": "Simple Linear Regression",
+    "section": "Properties of least squares regression",
+    "text": "Properties of least squares regression\n\n\nThe regression line goes through the center of mass point, the coordinates corresponding to average \\(X\\) and average \\(Y\\): \\(\\hat{\\beta}_0 = \\bar{Y} - \\hat{\\beta}_1\\bar{X}\\)\nThe slope has the same sign as the correlation coefficient: \\(\\hat{\\beta}_1 = r \\frac{s_Y}{s_X}\\)\nThe sum of the residuals is approximately zero: \\(\\sum_{i = 1}^n e_i \\approx 0\\)\nThe residuals and \\(X\\) values are uncorrelated"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#estimating-the-slope",
+    "href": "slides/03-slr-intro.html#estimating-the-slope",
+    "title": "Simple Linear Regression",
+    "section": "Estimating the slope",
+    "text": "Estimating the slope\n\\[\\large{\\hat{\\beta}_1 = r \\frac{s_Y}{s_X}}\\]\n\n\n\\[\\begin{aligned}\ns_X &= 30.1688 \\\\\ns_Y &=  20.0244 \\\\\nr &= 0.7814\n\\end{aligned}\\]\n\n\\[\\begin{aligned}\n\\hat{\\beta}_1 &= 0.7814 \\times \\frac{20.0244}{30.1688} \\\\\n&= 0.5187\\end{aligned}\\]\n\n\n\n\nClickhere for details on deriving the equations for slope and intercept."
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#estimating-the-intercept",
+    "href": "slides/03-slr-intro.html#estimating-the-intercept",
+    "title": "Simple Linear Regression",
+    "section": "Estimating the intercept",
+    "text": "Estimating the intercept\n\\[\\large{\\hat{\\beta}_0 = \\bar{Y} - \\hat{\\beta}_1\\bar{X}}\\]\n\n\n\\[\\begin{aligned}\n&\\bar{x} = 60.8493 \\\\\n&\\bar{y} = 63.8767 \\\\\n&\\hat{\\beta}_1 = 0.5187\n\\end{aligned}\\]\n\n\\[\\begin{aligned}\\hat{\\beta}_0 &= 63.8767 - 0.5187 \\times 60.8493 \\\\\n&= 32.3142\n\\end{aligned}\\]\n\n\n\n\nClick here for details on deriving the equations for slope and intercept."
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#interpretation",
+    "href": "slides/03-slr-intro.html#interpretation",
+    "title": "Simple Linear Regression",
+    "section": "Interpretation",
+    "text": "Interpretation\n\n\nPost your answers to the following questions on Ed Discussion:\n\nThe slope of the model for predicting audience score from critics score is 0.5187 . Which of the following is the best interpretation of this value?\n32.3142 is the predicted mean audience score for what type of movies?\n\n\n\n\nLink for Section 001 (10:05am lecture)\nLink for Section 002 (1:25pm lecture)\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#does-it-make-sense-to-interpret-the-intercept",
+    "href": "slides/03-slr-intro.html#does-it-make-sense-to-interpret-the-intercept",
+    "title": "Simple Linear Regression",
+    "section": "Does it make sense to interpret the intercept?",
+    "text": "Does it make sense to interpret the intercept?\n\n✅ The intercept is meaningful in the context of the data if\n\nthe predictor can feasibly take values equal to or near zero, or\nthere are values near zero in the observed data.\n\n\n\n🛑 Otherwise, the intercept may not be meaningful!"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#making-a-prediction",
+    "href": "slides/03-slr-intro.html#making-a-prediction",
+    "title": "Simple Linear Regression",
+    "section": "Making a prediction",
+    "text": "Making a prediction\nSuppose that a movie has a critics score of 70. According to this model, what is the movie’s predicted audience score?\n\\[\\begin{aligned}\n\\widehat{\\text{audience}} &= 32.3142 + 0.5187 \\times \\text{critics} \\\\\n&= 32.3142 + 0.5187 \\times 70 \\\\\n&= 68.6232\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#tidymodels",
+    "href": "slides/03-slr-intro.html#tidymodels",
+    "title": "Simple Linear Regression",
+    "section": "tidymodels",
+    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Dig deeper into tidy modeling with R at https://www.tmwr.org"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#why-tidymodels",
+    "href": "slides/03-slr-intro.html#why-tidymodels",
+    "title": "Simple Linear Regression",
+    "section": "Why tidymodels?",
+    "text": "Why tidymodels?\n\nConsistent syntax for different model types (linear, logistic, random forest, Bayesian, etc.)\nStreamline modeling workflow\n\nSplit data into train and test sets\nTransform and create new variables\nAssess model performance\nUse model for prediction and inference"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#step-1-specify-model",
+    "href": "slides/03-slr-intro.html#step-1-specify-model",
+    "title": "Simple Linear Regression",
+    "section": "Step 1: Specify model",
+    "text": "Step 1: Specify model\n\nlinear_reg()\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#step-2-set-model-fitting-engine",
+    "href": "slides/03-slr-intro.html#step-2-set-model-fitting-engine",
+    "title": "Simple Linear Regression",
+    "section": "Step 2: Set model fitting engine",
+    "text": "Step 2: Set model fitting engine\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") # lm: linear model\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#a-closer-look-at-the-regression-output",
+    "href": "slides/03-slr-intro.html#a-closer-look-at-the-regression-output",
+    "title": "Simple Linear Regression",
+    "section": "A closer look at the regression output",
+    "text": "A closer look at the regression output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is just due to rounding in the hand calculation."
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#the-regression-output",
+    "href": "slides/03-slr-intro.html#the-regression-output",
+    "title": "Simple Linear Regression",
+    "section": "The regression output",
+    "text": "The regression output\nWe’ll focus on the first column for now…\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() \n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   32.3      2.34        13.8 4.03e-28\n2 critics        0.519    0.0345      15.0 2.70e-31"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#format-output-with-kable",
+    "href": "slides/03-slr-intro.html#format-output-with-kable",
+    "title": "Simple Linear Regression",
+    "section": "Format output with kable",
+    "text": "Format output with kable\nUse the kable function from the knitr package to produce a table and specify number of significant digits\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n32.3155\n2.3425\n13.7953\n0\n\n\ncritics\n0.5187\n0.0345\n15.0281\n0"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#prediction-1",
+    "href": "slides/03-slr-intro.html#prediction-1",
+    "title": "Simple Linear Regression",
+    "section": "Prediction",
+    "text": "Prediction\n\n# create a data frame for a new movie\nnew_movie &lt;- tibble(critics = 70)\n\n# predict the outcome for a new movie\npredict(movie_fit, new_movie)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  68.6"
+  },
+  {
+    "objectID": "slides/03-slr-intro.html#recap",
+    "href": "slides/03-slr-intro.html#recap",
+    "title": "Simple Linear Regression",
+    "section": "Recap",
+    "text": "Recap\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative response variable.\nUsed the least squares method to estimate the slope and intercept.\nInterpreted the slope and intercept.\n\nSlope: For every one unit increase in \\(x\\), we expect y to change by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units\n\nPredicted the response given a value of the predictor variable.\nUsed tidymodels to fit and summarize regression models in R.\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#announcements",
+    "href": "slides/03-slr-tidymodels.html#announcements",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Announcements",
+    "text": "Announcements\n\nNo office hours today. Office hours start Tuesday, September 6. Click here for full schedule\nCheck your email for an email to join the course GitHub organization. You will receive one by Tuesday, September 6.\nSee Week 02 for this week’s activities."
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#topics",
+    "href": "slides/03-slr-tidymodels.html#topics",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Topics",
+    "text": "Topics\n\nIntroduce the computing toolkit - RStudio and GitHub\nUse tidymodels to fit and summarize regression models in R\nComplete an application exercise on exploratory data analysis and modeling"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#computational-setup",
+    "href": "slides/03-slr-tidymodels.html#computational-setup",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Computational setup",
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)       # for data wrangling\nlibrary(tidymodels)      # for modeling\nlibrary(fivethirtyeight) # for the fandango dataset\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#reproducibility-checklist",
+    "href": "slides/03-slr-tidymodels.html#reproducibility-checklist",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Reproducibility checklist",
+    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n\nNear term goals:\n✔️ Are the tables and figures reproducible from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n\n\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#toolkit",
+    "href": "slides/03-slr-tidymodels.html#toolkit",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Toolkit",
+    "text": "Toolkit\n\nScriptability \\(\\rightarrow\\) R\nLiterate programming (code, narrative, output in one place) \\(\\rightarrow\\) Quarto\nVersion control \\(\\rightarrow\\) Git / GitHub\n\nMore on this in this week’s lab"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
+    "href": "slides/03-slr-tidymodels.html#what-are-r-and-rstudio",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "What are R and RStudio?",
+    "text": "What are R and RStudio?\n\nR is a statistical programming language\nRStudio is a convenient interface for R (an integrated development environment, IDE)\n\n\n\nSource: Modern Dive"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#rstudio-ide",
+    "href": "slides/03-slr-tidymodels.html#rstudio-ide",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "RStudio IDE",
+    "text": "RStudio IDE"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#quarto",
+    "href": "slides/03-slr-tidymodels.html#quarto",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Quarto",
+    "text": "Quarto\n\nFully reproducible reports – the analysis is run from the beginning each time you render\nCode goes in chunks and narrative goes outside of chunks\nVisual editor to make document editing experience similar to a word processor (Google docs, Word, Pages, etc.)"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#quarto-1",
+    "href": "slides/03-slr-tidymodels.html#quarto-1",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Quarto",
+    "text": "Quarto"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
+    "href": "slides/03-slr-tidymodels.html#how-will-we-use-quarto",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "How will we use Quarto?",
+    "text": "How will we use Quarto?\n\nEvery application exercise and assignment is written in a Quarto document\nYou’ll have a template Quarto document to start with\nThe amount of scaffolding in the template will decrease over the semester"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#application-exercise",
+    "href": "slides/03-slr-tidymodels.html#application-exercise",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Application exercise",
+    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
+    "href": "slides/03-slr-tidymodels.html#recap-of-last-lecture",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Recap of last lecture",
+    "text": "Recap of last lecture\n\n\nUsed simple linear regression to describe the relationship between a quantitative predictor and quantitative outcome variable.\nUsed the least squares method to estimate the slope and intercept.\nWe interpreted the slope and intercept.\n\n\nSlope: For every one unit increase in \\(x\\), we expect y to be higher/lower by \\(\\hat{\\beta}_1\\) units, on average.\nIntercept: If \\(x\\) is 0, then we expect \\(y\\) to be \\(\\hat{\\beta}_0\\) units.\n\n\nPredicted the response given a value of the predictor variable.\nDefined extrapolation and why we should avoid it."
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#movie-ratings",
+    "href": "slides/03-slr-tidymodels.html#movie-ratings",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Movie ratings",
+    "text": "Movie ratings\n\n\n\nData behind the FiveThirtyEight story Be Suspicious Of Online Movie Ratings, Especially Fandango’s\nIn the fivethirtyeight package: fandango\nContains every film that has at least 30 fan reviews on Fandango, an IMDb score, Rotten Tomatoes critic and user ratings, and Metacritic critic and user scores"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#data-prep",
+    "href": "slides/03-slr-tidymodels.html#data-prep",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Data prep",
+    "text": "Data prep\n\nRename Rotten Tomatoes columns as critics and audience\nRename the dataset as movie_scores\n\n\nmovie_scores &lt;- fandango |&gt;\n  rename(\n    critics = rottentomatoes, \n    audience = rottentomatoes_user\n  )"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#tidymodels",
+    "href": "slides/03-slr-tidymodels.html#tidymodels",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "tidymodels",
+    "text": "tidymodels\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\n\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.0 ──\n\n\n✔ broom        1.0.5     ✔ rsample      1.1.1\n✔ dials        1.2.0     ✔ tune         1.1.1\n✔ infer        1.0.4     ✔ workflows    1.1.3\n✔ modeldata    1.1.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.0     ✔ yardstick    1.2.0\n✔ recipes      1.0.6     \n\n\n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Use suppressPackageStartupMessages() to eliminate package startup messages"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#why-tidymodels",
+    "href": "slides/03-slr-tidymodels.html#why-tidymodels",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Why tidymodels?",
+    "text": "Why tidymodels?\n\nConsistent syntax for different model types (linear, logistic, random forest, Bayesian, etc.)\nStreamline modeling workflow\n\nSplit data into train and test sets\nTransform and create new variables\nAssess model performance\nUse model for prediction and inference"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#step-1-specify-model",
+    "href": "slides/03-slr-tidymodels.html#step-1-specify-model",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Step 1: Specify model",
+    "text": "Step 1: Specify model\n\nlinear_reg()\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
+    "href": "slides/03-slr-tidymodels.html#step-2-set-model-fitting-engine",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Step 2: Set model fitting engine",
+    "text": "Step 2: Set model fitting engine\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") # lm: linear model\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
+    "href": "slides/03-slr-tidymodels.html#a-closer-look-at-model-output",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "A closer look at model output",
+    "text": "A closer look at model output\n\nmovie_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores)\n\nmovie_fit\n\nparsnip model object\n\n\nCall:\nstats::lm(formula = audience ~ critics, data = data)\n\nCoefficients:\n(Intercept)      critics  \n    32.3155       0.5187  \n\n\n\\[\\widehat{\\text{audience}} = 32.3155 + 0.5187 \\times \\text{critics}\\]\n\n\nNote: The intercept is off by a tiny bit from the hand-calculated intercept, this is likely just due to rounding in the hand calculation."
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#the-regression-output",
+    "href": "slides/03-slr-tidymodels.html#the-regression-output",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "The regression output",
+    "text": "The regression output\nWe’ll focus on the first column for now…\n\nlinear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(audience ~ critics, data = movie_scores) |&gt;\n  tidy() \n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   32.3      2.34        13.8 4.03e-28\n2 critics        0.519    0.0345      15.0 2.70e-31"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#prediction",
+    "href": "slides/03-slr-tidymodels.html#prediction",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Prediction",
+    "text": "Prediction\n\n# create a data frame for a new movie\nnew_movie &lt;- tibble(critics = 70)\n\n# predict the outcome for a new movie\npredict(movie_fit, new_movie)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  68.6"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#application-exercise-1",
+    "href": "slides/03-slr-tidymodels.html#application-exercise-1",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Application exercise",
+    "text": "Application exercise\n\n📋 github.com/sta210-fa22/ae-02-bikeshare\n\n\n\nClose document tab"
+  },
+  {
+    "objectID": "slides/03-slr-tidymodels.html#recap",
+    "href": "slides/03-slr-tidymodels.html#recap",
+    "title": "SLR: Fitting models in R with tidymodels",
+    "section": "Recap",
+    "text": "Recap\n\nIntroduced the computing toolkit - RStudio and GitHub\nUsed tidymodels to fit and summarize regression models in R\nCompleted an application exercise on exploratory data analysis and modeling\n\n\n\n\n🔗 Week 02"
   },
   {
     "objectID": "slides/01-welcome.html#meet-prof.-tackett",

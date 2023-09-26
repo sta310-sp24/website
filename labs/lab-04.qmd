@@ -93,7 +93,7 @@ Today's data set is part of the [TidyTuesday College tuition, diversity, and pay
 The information in this data set was collected from the [PayScale College Salary Report](https://www.payscale.com/college-salary-report/bachelors).
 
 | variable                  | class     | description                                                                      |
-|:-------------|:-------------|:-------------------------------------------|
+|:--------------------------|:----------|:---------------------------------------------------------------------------------|
 | rank                      | double    | Potential salary rank within state                                               |
 | name                      | character | Name of school                                                                   |
 | state_name                | character | state name                                                                       |

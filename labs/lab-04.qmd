@@ -9,6 +9,13 @@ execute:
   message: false
 ---
 
+::: callout-important
+Due:
+
+-   Friday, September 29, 11:59pm (Tuesday labs)
+-   Sunday, October 1, 11:59pm (Thursday labs)
+:::
+
 In today's lab, you'll use simple linear regression to analyze the relationship between the median early career salary and percent of alumni who perceive their job as making the world a better place for colleges and universities in the United States. You will also start working with your lab teams, write a team agreement, and be introduced to using GitHub for collaboration.
 
 # Learning goals

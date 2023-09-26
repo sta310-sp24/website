@@ -1859,7 +1859,7 @@
     "href": "labs/lab-04.html#exercise-1",
     "title": "Lab 04: Alumni jobs",
     "section": "Exercise 1",
-    "text": "Exercise 1\nFit a linear model that can be used to predict the typical early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values."
+    "text": "Exercise 1\nFit a linear model that can be used to predict the typical (median) early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values."
   },
   {
     "objectID": "labs/lab-04.html#exercise-2",

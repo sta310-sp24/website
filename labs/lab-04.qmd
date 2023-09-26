@@ -59,6 +59,8 @@ Change the author to your team name and include each team member's name in the `
 
 ::: render-commit-push
 **Team Member 1:** Render the document and confirm that the changes are visible in the PDF. Then, commit (with an informative commit message) both the `.qmd` and PDF documents, and finally push the changes to GitHub.
+
+<br>
 :::
 
 ::: pull
@@ -84,7 +86,7 @@ Today's data set is part of the [TidyTuesday College tuition, diversity, and pay
 The information in this data set was collected from the [PayScale College Salary Report](https://www.payscale.com/college-salary-report/bachelors).
 
 | variable                  | class     | description                                                                      |
-|:--------------------------|:----------|:---------------------------------------------------------------------------------|
+|:-------------|:-------------|:-------------------------------------------|
 | rank                      | double    | Potential salary rank within state                                               |
 | name                      | character | Name of school                                                                   |
 | state_name                | character | state name                                                                       |
@@ -103,11 +105,13 @@ Is there a relationship the typical early career pay for alumni and the percent 
 
 ::: render-commit-push
 **Team Member 1**: Type the team's responses to exercises 1 - 2.
+
+<br>
 :::
 
 ## Exercise 1
 
-Fit a linear model that can be used to predict the typical early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values.
+Fit a linear model that can be used to predict the typical (median) early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values.
 
 ## Exercise 2
 

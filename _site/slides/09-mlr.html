@@ -407,6 +407,20 @@ Prof.&nbsp;Maria Tackett
 
   <p class="date">Sep 27, 2023</p>
 </section>
+<section id="announcements" class="slide level2 midi">
+<h2>Announcements</h2>
+<ul>
+<li>HW 02 due Mon, Oct 2 at 11:59pm.</li>
+<li>All lecture recordings available until Wed, Oct 4 at 9am.
+<ul>
+<li><a href="https://docs.google.com/spreadsheets/d/1dUD4SOpM79BL2kdvue9I2TP-ibcdxfpOIkHkMreYx64/edit?usp=sharing">Click here</a> for link to videos. You can also find the link in the navigation bar of the course website.</li>
+</ul></li>
+<li>Lab groups start this week. You will get your assigned group when you go to lab.</li>
+<li>Submit questions about SLR by Thu, Sep 28. These questions will be used to make the Exam Review. <a href="https://sta210-fa23.netlify.app/slides/08-slr-model-eval#/questions-about-slr">Click here</a> for more info.</li>
+<li>Exam 01: Wed, Oct 4 (in-class + take-home)</li>
+<li>Exam 01 review: Mon, Oct 2</li>
+</ul>
+</section>
 <section id="computational-setup" class="slide level2">
 <h2>Computational setup</h2>
 <div class="cell">
@@ -1141,6 +1155,8 @@ Y|X_1, X_2, \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \be
 <li class="fragment">People with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.</li>
 </ul>
 </div>
+</div>
+<div class="fragment">
 <div class="question">
 <p>Interpret the coefficient of <code>Verified</code> in the context of the data.</p>
 </div>
@@ -1323,6 +1339,42 @@ $ `annual_income_th_cent:verified_incomeVerified`        &lt;dbl&gt; 0.00, 0.00,
 <h2>Recipe</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>loan_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Recipe ──────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Inputs </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Number of variables by role</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>predictor: 24</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Operations </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Variable mutation for: annual_income / 1000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Centering for: all_numeric_predictors()</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Dummy variables from: verified_income</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Interactions with: annual_income_th:verified_income</code></pre>
+</div>
 </div>
 
 

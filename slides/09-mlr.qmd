@@ -26,6 +26,16 @@ knitr:
 bibliography: references.bib
 ---
 
+## Announcements {.midi}
+
+-   HW 02 due Mon, Oct 2 at 11:59pm.
+-   All lecture recordings available until Wed, Oct 4 at 9am.
+    -   [Click here](https://docs.google.com/spreadsheets/d/1dUD4SOpM79BL2kdvue9I2TP-ibcdxfpOIkHkMreYx64/edit?usp=sharing) for link to videos. You can also find the link in the navigation bar of the course website.
+-   Lab groups start this week. You will get your assigned group when you go to lab.
+-   Submit questions about SLR by Thu, Sep 28. These questions will be used to make the Exam Review. [Click here](https://sta210-fa23.netlify.app/slides/08-slr-model-eval#/questions-about-slr) for more info.
+-   Exam 01: Wed, Oct 4 (in-class + take-home)
+-   Exam 01 review: Mon, Oct 2
+
 ## Computational setup
 
 ```{r packages}
@@ -494,6 +504,8 @@ tidy(int_cent_fit, conf.int  = T) |>
 -   People with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.
 :::
 
+. . .
+
 ::: question
 Interpret the coefficient of `Verified` in the context of the data.
 :::
@@ -636,6 +648,8 @@ loan_rec <- recipe( ~ ., data = loan50) |>
 ```{r}
 #| echo: true
 #| eval: true
+#| message: true
+#| warning: true
 
 loan_rec
 ```

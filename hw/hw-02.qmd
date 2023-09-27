@@ -82,7 +82,7 @@ For the purposes of this assignment, we will treat the missingness as random, i.
 
 -   Make another plot of the histogram of the residuals.
 
--   Is a linear regression appropriate? Why or why not?
+-   Is inference for linear regression appropriate? Why or why not?
 
 ## Exercise 4
 

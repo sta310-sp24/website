@@ -108,7 +108,7 @@ The code for fitting multiple linear regression models is the same as simple lin
 
 -   Make another plot of the histogram of the residuals.
 
--   Is a linear regression appropriate? Why or why not?
+-   Is inference for linear regression appropriate? Why or why not?
 
 ## Exercise 7
 

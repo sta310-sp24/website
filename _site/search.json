@@ -1964,7 +1964,7 @@
     "href": "hw/hw-02.html#exercise-6",
     "title": "HW 02: Palmer penguins",
     "section": "Exercise 6",
-    "text": "Exercise 6\n\nPlot the fitted values vs. the residual values for the model in the previous exercise.\nMake another plot of the histogram of the residuals.\nIs a linear regression appropriate? Why or why not?"
+    "text": "Exercise 6\n\nPlot the fitted values vs. the residual values for the model in the previous exercise.\nMake another plot of the histogram of the residuals.\nIs inference for linear regression appropriate? Why or why not?"
   },
   {
     "objectID": "hw/hw-02.html#exercise-7",

@@ -248,7 +248,7 @@ $$
 We will talk about why there are two terms in the model for `verified_income` shortly!
 :::
 
-## Interpreting $\hat{\beta}_j$ 
+## Interpreting $\hat{\beta}_j$
 
 -   The estimated coefficient $\hat{\beta}_j$ is the expected change in the mean of $y$ when $x_j$ increases by one unit, <i>holding the values of all other predictor variables constant</i>.
 
@@ -256,7 +256,7 @@ We will talk about why there are two terms in the model for `verified_income` sh
 
 -   **Example:** The estimated coefficient for `debt_to_income` is 0.671. This means for each point in an borrower's debt to income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding annual income and income verification constant.
 
-## Prediction 
+## Prediction
 
 ::: question
 What is the predicted interest rate for an borrower with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of \$59,000?
@@ -270,8 +270,6 @@ What is the predicted interest rate for an borrower with an debt-to-income ratio
 10.726 + 0.671 * 0.558 + 2.211 * 0 + 6.880 * 0 - 0.021 * 59
 
 ```
-
-
 
 . . .
 

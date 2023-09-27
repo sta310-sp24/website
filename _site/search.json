@@ -886,14 +886,14 @@
     "href": "slides/09-mlr.html#model-equation",
     "title": "Multiple linear regression (MLR)",
     "section": "Model equation",
-    "text": "Model equation\n\\[\n\\begin{align}\\hat{\\text{interest_rate}} =  10.726 &+0.671 \\times \\text{debt_to_income}\\\\\n&+ 2.211 \\times \\text{source_verified}\\\\  \n&+ 6.880 \\times \\text{verified}\\\\\n& -0.021 \\times \\text{annual_income_th}\n\\end{align}\n\\]"
+    "text": "Model equation\n\\[\n\\begin{align}\\hat{\\text{interest_rate}} =  10.726 &+0.671 \\times \\text{debt_to_income}\\\\\n&+ 2.211 \\times \\text{source_verified}\\\\  \n&+ 6.880 \\times \\text{verified}\\\\\n& -0.021 \\times \\text{annual_income_th}\n\\end{align}\n\\]\n\n\n\n\n\n\nNote\n\n\nWe will talk about why there are two terms in the model for verified_income shortly!"
   },
   {
     "objectID": "slides/09-mlr.html#interpreting-hatbeta_j",
     "href": "slides/09-mlr.html#interpreting-hatbeta_j",
     "title": "Multiple linear regression (MLR)",
     "section": "Interpreting \\(\\hat{\\beta}_j\\)",
-    "text": "Interpreting \\(\\hat{\\beta}_j\\)\n\nThe estimated coefficient \\(\\hat{\\beta}_j\\) is the expected change in the mean of \\(y\\) when \\(x_j\\) increases by one unit, holding the values of all other predictor variables constant.\n\n\n\nExample: The estimated coefficient for debt_to_income is 0.671. This means for each point in an borrower’s debt-to-income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding all else constant."
+    "text": "Interpreting \\(\\hat{\\beta}_j\\)\n\nThe estimated coefficient \\(\\hat{\\beta}_j\\) is the expected change in the mean of \\(y\\) when \\(x_j\\) increases by one unit, holding the values of all other predictor variables constant.\n\n\n\nExample: The estimated coefficient for debt_to_income is 0.671. This means for each point in an borrower’s debt to income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding annual income and income verification constant."
   },
   {
     "objectID": "slides/09-mlr.html#prediction",
@@ -907,7 +907,7 @@
     "href": "slides/09-mlr.html#prediction-revisited",
     "title": "Multiple linear regression (MLR)",
     "section": "Prediction, revisited",
-    "text": "Prediction, revisited\nJust like with simple linear regression, we can use the predict() function in R to calculate the appropriate intervals for our predicted values:\n\nnew_borrower &lt;- tibble(\n  debt_to_income  = 0.558, \n  verified_income = \"Not Verified\", \n  annual_income_th = 59\n)\n\npredict(int_fit, new_borrower)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  9.89"
+    "text": "Prediction, revisited\nJust like with simple linear regression, we can use the predict() function in R to calculate the appropriate intervals for our predicted values:\n\nnew_borrower &lt;- tibble(\n  debt_to_income  = 0.558, \n  verified_income = \"Not Verified\", \n  annual_income_th = 59\n)\n\npredict(int_fit, new_borrower)\n\n# A tibble: 1 × 1\n  .pred\n  &lt;dbl&gt;\n1  9.89\n\n\n\n\n\n\n\n\nNote\n\n\nDifference in predicted value due to rounding the coefficients on the previous slide."
   },
   {
     "objectID": "slides/09-mlr.html#confidence-interval-for-hatmu_y",
@@ -998,7 +998,7 @@
     "href": "slides/09-mlr.html#interpreting-verified_income",
     "title": "Multiple linear regression (MLR)",
     "section": "Interpreting verified_income",
-    "text": "Interpreting verified_income\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n9.444\n0.977\n9.663\n0.000\n7.476\n11.413\n\n\ndebt_inc_cent\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th_cent\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002\n\n\n\n\n\n\n\n\n\n\nThe baseline category is Not verified.\nPeople with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.\nPeople with verified income are expected to take a loan with an interest rate that is 6.880% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant."
+    "text": "Interpreting verified_income\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n9.444\n0.977\n9.663\n0.000\n7.476\n11.413\n\n\ndebt_inc_cent\n0.671\n0.676\n0.993\n0.326\n-0.690\n2.033\n\n\nverified_incomeSource Verified\n2.211\n1.399\n1.581\n0.121\n-0.606\n5.028\n\n\nverified_incomeVerified\n6.880\n1.801\n3.820\n0.000\n3.253\n10.508\n\n\nannual_income_th_cent\n-0.021\n0.011\n-1.804\n0.078\n-0.043\n0.002\n\n\n\n\n\n\n\n\n\n\nThe baseline category is Not verified.\nPeople with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.\n\n\n\nInterpret the coefficient of Verified in the context of the data."
   },
   {
     "objectID": "slides/09-mlr.html#interaction-terms-1",
@@ -1040,7 +1040,7 @@
     "href": "slides/09-mlr.html#recap",
     "title": "Multiple linear regression (MLR)",
     "section": "Recap",
-    "text": "Recap\n\nMean-centering quantitative predictors\nUsing indicator variables for categorical predictors\nUsing interaction terms"
+    "text": "Recap\n\nIntroduced multiple linear regression\nInterpreted coefficients in the multiple linear regression model\nCalculated predictions and associated intervals for multiple linear regression models\nMean-centered quantitative predictors\nUsed indicator variables for categorical predictors\nUsed interaction terms"
   },
   {
     "objectID": "slides/09-mlr.html#looking-backward",

@@ -625,19 +625,32 @@ Y|X_1, X_2, \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \be
 &amp; -0.021 \times \text{annual_income_th}
 \end{align}
 \]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>We will talk about why there are two terms in the model for <code>verified_income</code> shortly!</p>
+</div>
+</div>
+</div>
 </section>
-<section id="interpreting-hatbeta_j" class="slide level2 smaller">
+<section id="interpreting-hatbeta_j" class="slide level2">
 <h2>Interpreting <span class="math inline">\(\hat{\beta}_j\)</span></h2>
 <ul>
 <li>The estimated coefficient <span class="math inline">\(\hat{\beta}_j\)</span> is the expected change in the mean of <span class="math inline">\(y\)</span> when <span class="math inline">\(x_j\)</span> increases by one unit, <i>holding the values of all other predictor variables constant</i>.</li>
 </ul>
 <div class="fragment">
 <ul>
-<li><strong>Example:</strong> The estimated coefficient for <code>debt_to_income</code> is 0.671. This means for each point in an borrower’s debt-to-income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding all else constant.</li>
+<li><strong>Example:</strong> The estimated coefficient for <code>debt_to_income</code> is 0.671. This means for each point in an borrower’s debt to income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding annual income and income verification constant.</li>
 </ul>
 </div>
 </section>
-<section id="prediction" class="slide level2 smaller">
+<section id="prediction" class="slide level2">
 <h2>Prediction</h2>
 <div class="question">
 <p>What is the predicted interest rate for an borrower with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of $59,000?</p>
@@ -653,7 +666,7 @@ Y|X_1, X_2, \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \be
 <p>The predicted interest rate for an borrower with with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of $59,000 is 9.86%.</p>
 </div>
 </section>
-<section id="prediction-revisited" class="slide level2">
+<section id="prediction-revisited" class="slide level2 midi">
 <h2>Prediction, revisited</h2>
 <p>Just like with simple linear regression, we can use the <code>predict()</code> function in R to calculate the appropriate intervals for our predicted values:</p>
 <div class="cell">
@@ -669,6 +682,19 @@ Y|X_1, X_2, \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \be
   .pred
   &lt;dbl&gt;
 1  9.89</code></pre>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Difference in predicted value due to rounding the coefficients on the previous slide.</p>
+</div>
 </div>
 </div>
 </section>
@@ -1113,8 +1139,10 @@ Y|X_1, X_2, \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \be
 <ul>
 <li class="fragment">The baseline category is <code>Not verified</code>.</li>
 <li class="fragment">People with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.</li>
-<li class="fragment">People with verified income are expected to take a loan with an interest rate that is 6.880% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.</li>
 </ul>
+</div>
+<div class="question">
+<p>Interpret the coefficient of <code>Verified</code> in the context of the data.</p>
 </div>
 </div>
 </section></section>
@@ -1247,9 +1275,12 @@ $ `annual_income_th_cent:verified_incomeVerified`        &lt;dbl&gt; 0.00, 0.00,
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li><p>Mean-centering quantitative predictors</p></li>
-<li><p>Using indicator variables for categorical predictors</p></li>
-<li><p>Using interaction terms</p></li>
+<li><p>Introduced multiple linear regression</p></li>
+<li><p>Interpreted coefficients in the multiple linear regression model</p></li>
+<li><p>Calculated predictions and associated intervals for multiple linear regression models</p></li>
+<li><p>Mean-centered quantitative predictors</p></li>
+<li><p>Used indicator variables for categorical predictors</p></li>
+<li><p>Used interaction terms</p></li>
 </ul>
 </section>
 <section id="looking-backward" class="slide level2 midi">

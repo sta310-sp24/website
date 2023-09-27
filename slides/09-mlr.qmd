@@ -234,15 +234,19 @@ $$
 \end{align}
 $$
 
-## Interpreting $\hat{\beta}_j$ {.smaller}
+::: callout-note
+We will talk about why there are two terms in the model for `verified_income` shortly!
+:::
+
+## Interpreting $\hat{\beta}_j$ 
 
 -   The estimated coefficient $\hat{\beta}_j$ is the expected change in the mean of $y$ when $x_j$ increases by one unit, <i>holding the values of all other predictor variables constant</i>.
 
 . . .
 
--   **Example:** The estimated coefficient for `debt_to_income` is 0.671. This means for each point in an borrower's debt-to-income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding all else constant.
+-   **Example:** The estimated coefficient for `debt_to_income` is 0.671. This means for each point in an borrower's debt to income ratio, the interest rate on the loan is expected to be greater by 0.671%, holding annual income and income verification constant.
 
-## Prediction {.smaller}
+## Prediction 
 
 ::: question
 What is the predicted interest rate for an borrower with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of \$59,000?
@@ -254,13 +258,16 @@ What is the predicted interest rate for an borrower with an debt-to-income ratio
 #| echo: true
 
 10.726 + 0.671 * 0.558 + 2.211 * 0 + 6.880 * 0 - 0.021 * 59
+
 ```
+
+
 
 . . .
 
 The predicted interest rate for an borrower with with an debt-to-income ratio of 0.558, whose income is not verified, and who has an annual income of \$59,000 is `r round(10.726 + 0.671 * 0.558 + 2.211 * 0 + 6.880 * 0 - 0.021 * 59,2)`%.
 
-## Prediction, revisited
+## Prediction, revisited {.midi}
 
 Just like with simple linear regression, we can use the `predict()` function in R to calculate the appropriate intervals for our predicted values:
 
@@ -275,6 +282,10 @@ new_borrower <- tibble(
 
 predict(int_fit, new_borrower)
 ```
+
+::: callout-note
+Difference in predicted value due to rounding the coefficients on the previous slide.
+:::
 
 ## Confidence interval for $\hat{\mu}_y$
 
@@ -481,7 +492,10 @@ tidy(int_cent_fit, conf.int  = T) |>
 ::: incremental
 -   The baseline category is `Not verified`.
 -   People with source verified income are expected to take a loan with an interest rate that is 2.211% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.
--   People with verified income are expected to take a loan with an interest rate that is 6.880% higher, on average, than the rate on loans to those whose income is not verified, holding all else constant.
+:::
+
+::: question
+Interpret the coefficient of `Verified` in the context of the data.
 :::
 
 # Interaction terms
@@ -561,11 +575,17 @@ model_matrix(framed$terms, framed$data) |>
 
 ## Recap
 
--   Mean-centering quantitative predictors
+-   Introduced multiple linear regression
 
--   Using indicator variables for categorical predictors
+-   Interpreted coefficients in the multiple linear regression model
 
--   Using interaction terms
+-   Calculated predictions and associated intervals for multiple linear regression models
+
+-   Mean-centered quantitative predictors
+
+-   Used indicator variables for categorical predictors
+
+-   Used interaction terms
 
 ## Looking backward {.midi}
 
@@ -615,6 +635,7 @@ loan_rec <- recipe( ~ ., data = loan50) |>
 
 ```{r}
 #| echo: true
+#| eval: true
 
 loan_rec
 ```

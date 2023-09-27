@@ -138,7 +138,7 @@ Fill in the starter code below to write the function `predict_boots` which takes
 
 -   What do you notice about the histogram?
 
--   Which model is best for predicting body mass of a penguin?
+-   Which model is best for predicting body mass of a penguin? Briefly explain.
 
 ```{r}
 #| eval: false

@@ -76,7 +76,7 @@ Write the statistical model.
 
 ## Exercise 2
 
-The regression output with 90% CI for the coefficients is shown below.
+The regression output with 90% confidence intervals for the coefficients is shown below.
 
 ```{r}
 tips_fit <- linear_reg() |>
@@ -164,7 +164,7 @@ set.seed(1234)
 ## Exercise 7
 
 ::: {.callout-note appearance="simple" icon="false"}
-Check the relevant conditions for Exercises 5 and 6. Are there any violations in conditions that make you reconsider your inferential findings.
+Check the relevant conditions for Exercises 5 and 6. Are there any violations in conditions that make you reconsider your inferential findings?
 :::
 
 ```{r}
@@ -182,7 +182,7 @@ Now repeat Exercises 5 and 6 using approaches based on mathematical models. You 
 ## Exercise 9
 
 ::: callout-note
-Check the relevant conditions for Exercise 10. Are there any violations in conditions that make you reconsider your inferential findings? You can reference previous graphs / conditions and add any new code as needed.
+Check the relevant conditions for Exercise 8. Are there any violations in conditions that make you reconsider your inferential findings? You can reference previous graphs / conditions and add any new code as needed.
 :::
 
 ```{r}

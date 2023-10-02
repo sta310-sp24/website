@@ -35,7 +35,7 @@ bibliography: references.bib
 -   No office hours Wednesday - Friday
 -   Ed Discussion archived (no new posts) Wednesday - Friday
 
-## Exam 01  {.midi}
+## Exam 01 {.midi}
 
 -   15% of final course grade
 
@@ -103,3 +103,11 @@ bibliography: references.bib
 ::: appex
 📋 [sta210-fa23.netlify.app/ae/ae-08-exam-01-review](https://sta210-fa23.netlify.app/ae/ae-08-exam-01-review.html)
 :::
+
+-   Sit with your lab group.
+
+-   Put your group's response to your assigned exercise on Ed Discussion.
+
+    -   Section 001: [edstem.org/us/courses/44523/discussion/3542094](https://edstem.org/us/courses/44523/discussion/3542094)
+
+    -   Section 002: [edstem.org/us/courses/44523/discussion/3542095](https://edstem.org/us/courses/44523/discussion/3542095)

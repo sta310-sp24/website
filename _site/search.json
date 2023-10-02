@@ -2244,7 +2244,7 @@
     "href": "ae/ae-08-exam-01-review.html#exercise-2",
     "title": "AE 08: Exam 01 Review",
     "section": "Exercise 2",
-    "text": "Exercise 2\nThe regression output with 90% CI for the coefficients is shown below.\n\ntips_fit &lt;- linear_reg() |&gt;\n  fit(Tip ~ Party, data = tips)\n\ntidy(tips_fit, conf.int = TRUE, conf.level = 0.9) |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n0.383\n0.321\n1.195\n0.234\n-0.147\n0.913\n\n\nParty\n1.957\n0.118\n16.553\n0.000\n1.761\n2.152\n\n\n\n\n\n\nglance(tips_fit)$sigma\n\n[1] 2.082824\n\n\n\n\n\n\n\n\nWrite the regression equation.\n\n\n\n[add answer here]"
+    "text": "Exercise 2\nThe regression output with 90% confidence intervals for the coefficients is shown below.\n\ntips_fit &lt;- linear_reg() |&gt;\n  fit(Tip ~ Party, data = tips)\n\ntidy(tips_fit, conf.int = TRUE, conf.level = 0.9) |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n0.383\n0.321\n1.195\n0.234\n-0.147\n0.913\n\n\nParty\n1.957\n0.118\n16.553\n0.000\n1.761\n2.152\n\n\n\n\n\n\nglance(tips_fit)$sigma\n\n[1] 2.082824\n\n\n\n\n\n\n\n\nWrite the regression equation.\n\n\n\n[add answer here]"
   },
   {
     "objectID": "ae/ae-08-exam-01-review.html#exercise-3",
@@ -2279,7 +2279,7 @@
     "href": "ae/ae-08-exam-01-review.html#exercise-7",
     "title": "AE 08: Exam 01 Review",
     "section": "Exercise 7",
-    "text": "Exercise 7\n\n\n\n\n\n\nCheck the relevant conditions for Exercises 5 and 6. Are there any violations in conditions that make you reconsider your inferential findings.\n\n\n\n\n# add your code here"
+    "text": "Exercise 7\n\n\n\n\n\n\nCheck the relevant conditions for Exercises 5 and 6. Are there any violations in conditions that make you reconsider your inferential findings?\n\n\n\n\n# add your code here"
   },
   {
     "objectID": "ae/ae-08-exam-01-review.html#exercise-8",
@@ -2293,7 +2293,7 @@
     "href": "ae/ae-08-exam-01-review.html#exercise-9",
     "title": "AE 08: Exam 01 Review",
     "section": "Exercise 9",
-    "text": "Exercise 9\n\n\n\n\n\n\nNote\n\n\n\nCheck the relevant conditions for Exercise 10. Are there any violations in conditions that make you reconsider your inferential findings? You can reference previous graphs / conditions and add any new code as needed.\n\n\n\n# add your code here"
+    "text": "Exercise 9\n\n\n\n\n\n\nNote\n\n\n\nCheck the relevant conditions for Exercise 8. Are there any violations in conditions that make you reconsider your inferential findings? You can reference previous graphs / conditions and add any new code as needed.\n\n\n\n# add your code here"
   },
   {
     "objectID": "ae/ae-08-exam-01-review.html#exercise-10",

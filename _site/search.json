@@ -1680,39 +1680,25 @@
     "text": "Exercise 7\nCalculate RMSE and interpret this value in the context of the data.\n\n\n\n\n\n\nImportant\n\n\n\nTo submit the AE:\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-06 repo on GitHub. (You do not submit AEs on Gradescope)."
   },
   {
-    "objectID": "prepare/week-14.html",
-    "href": "prepare/week-14.html",
-    "title": "Week 14",
+    "objectID": "prepare/week-02.html",
+    "href": "prepare/week-02.html",
+    "title": "September 06 lecture",
     "section": "",
-    "text": "Important\n\n\n\n\nAE 15 due Sat, Dec 03, 11:59pm\nTeam Feedback #2 due Tue, Dec 06, 11:59pm\nLooking ahead\n\nExam 02: Dec 05 (evening) - Dec 08, 12pm (noon)\n\nClick here for all lecture recordings\n\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Beyond Multiple Linear Regression, Chapter 7: Correlated Data (optional)\nNov 28\n\n\n📖 Beyond Multiple Linear Regression, Chapter 8:Introduction to Multilevel Models (optional)\nNov 28 & Nov 30\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Introduction to Multilevel Models\nNov 28\n\n\n💻 Fitting Multilevel Models\nNov 30\n\n\n💻 Lab: Written report\nDec 01 & 02\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 15: Introduction to Multilevel Models\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
   },
   {
-    "objectID": "prepare/week-01.html",
-    "href": "prepare/week-01.html",
-    "title": "Week 01",
+    "objectID": "prepare/week-02.html#assigned-reading",
+    "href": "prepare/week-02.html#assigned-reading",
+    "title": "September 06 lecture",
     "section": "",
-    "text": "Prepare\n\n\n\n\n\n\n📖 Syllabus\n\n\n📖 Course support\n\n\n📖 Introduction to Modern Statistics (IMS), Ch 7: Linear regression with a single predictor\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Welcome to STA 210!\nAug 29\n\n\n💻 Simple Linear Regression\nAug 31\n\n\n💻 Lab 00\nSep 01 & 02\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 01-Movie Budgets\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Complete STA 210 Student Survey\ndue Fri, Sep 02 at 11:59pm\n\n\n📝 Reserve STA 210 RStudio Docker Container\nMon, Sep 05 at the beginning of class"
+    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
   },
   {
-    "objectID": "prepare/week-16.html",
-    "href": "prepare/week-16.html",
-    "title": "Week 16",
-    "section": "",
-    "text": "Prepare\nNo reading assignments.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo AEs.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project: Video presentation + slides\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Organized GitHub repo\ndue Wed, Dec 14, 11:59pm\n\n\n📝 Project: Presentation comments\ndue Fri, Dec 16, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-06.html",
-    "href": "prepare/week-06.html",
-    "title": "Week 06",
-    "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 05\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Feature engineering\nOct 03\n\n\n💻 Feature engineering: Model workflow\nOct 05\n\n\n💻 Lab 04\nOct 06 & 07\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 08: Feature engineering\n\n\n\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Lab 04\nThu, Oct 13, 11:59pm (Thu lab)\nFri, Oct 14, 11:59pm (Fri lab)"
-  },
-  {
-    "objectID": "prepare/week-13.html",
-    "href": "prepare/week-13.html",
-    "title": "Week 13",
-    "section": "",
-    "text": "Important\n\n\n\n\nNo office hours Nov 21 - 25.\nNo class Nov 21 or Nov 23.\nNo labs Nov 24 - 25.\n\n🍁 Have a good Thanksgiving break! 🍁\n\n\n\nPrepare\nNo readings.\n\n\nParticipate\nNo lecture slides.\n\n\nPractice\nNo application exercises.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
+    "objectID": "prepare/week-02.html#additional-resources-optional",
+    "href": "prepare/week-02.html#additional-resources-optional",
+    "title": "September 06 lecture",
+    "section": "Additional resources (optional)",
+    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
   },
   {
     "objectID": "prepare/sep-11.html",
@@ -1727,244 +1713,6 @@
     "title": "September 11 lecture",
     "section": "",
     "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/week-11.html",
-    "href": "prepare/week-11.html",
-    "title": "Week 11",
-    "section": "",
-    "text": "Important\n\n\n\n\nLab 07\n\ndue Mon, Nov 14, 11:59pm (Thu labs)\ndue Tue, Nov 15, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chap 9: Logistic Regression\nNov 07 & Nov 09\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Logistic regression: Odds ratios\nNov 07\n\n\n💻 Logistic regression: Prediction + classification\nNov 09\n\n\n\n\n\nPractice\nNo AEs this week.\n\n\nPerform\n\n\n\n\n\n\n\n📝 Lab 07\n\ndue Mon, Nov 14, 11:59pm (Thu labs)\ndue Tue, Nov 15, 11:59pm (Fri labs)\n\n\n\n📝 Statistics Experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-04.html",
-    "href": "prepare/week-04.html",
-    "title": "Week 04",
-    "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nAE 05: due Sat, Sep 24, 11:59pm\nHW 01: due Wed, Sep 21, 11:59pm\nLab 03:\n\ndue Mon, Sep 26, 11:59pm (Thu labs)\ndue Tue, Sep 27, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Sec 24.4: Mathematical model for testing the slope\n📖 IMS, Sec 24.5: Mathematical model, interval for the slope\n📖 IMS, Sec 24.6: Checking model conditions\n📖 IMS, Sec 24.7: Chapter review\nSep 19\n\n\n📖 IMS, Sec 8.2: Many predictors in a model\nSep 21\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 SLR: Mathematical models for inference\nSep 19\n\n\n💻 SLR: Model conditions\nSep 21\n\n\n💻 Multiple linear regression\nSep 21\n\n\n💻 Lab 03\nSep 22 & 23\n\n\n\n\n\nPractice\n\n\n\n\n\n\nAE 05: Multiple linear regression\n\n\n\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 HW 01\nWed, Sep 21, 11:59pm\n\n\n📝 Lab 03\nMon, Sep 26, 11:59pm (Thu labs)\nTue, Sep 27, 11:59pm (Fri labs)\n\n\n📝 Statistics experience\nFri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-08.html",
-    "href": "prepare/week-08.html",
-    "title": "Week 08",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 09 due Sat, Oct 22, 11:59pm\nLab 05:\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25 11:59pm (Fri lab)\n\n\n\n\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 8: Feature engineering with recipes\nOct 19\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations: Log-transformed predictor\nOct 17\n\n\n💻 Model comparison\nOct 19\n\n\n💻 Lab 05\nOct 20 - 21\n\n\n\n\n\nPractice\n📋 AE 09: Model comparison\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nLab 05\n\ndue Mon, Oct 24, 11:59pm (Thu lab)\ndue Tue, Oct 25, 11:59pm (Fri lab)"
-  },
-  {
-    "objectID": "hw/hw-01.html",
-    "href": "hw/hw-01.html",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "",
-    "text": "In this assignment, you will use simple linear regression to examine the association between between the percent of adults with a bachelor’s degree and the median household income for counties in the United States."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-1-exploratory-data-analysis",
-    "href": "hw/hw-01.html#part-1-exploratory-data-analysis",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 1: Exploratory data analysis",
-    "text": "Part 1: Exploratory data analysis\n\nExercise 1\nCreate a histogram of the distribution of the predictor variable bachelorsand calculate appropriate summary statistics. Use the visualization and summary statistics to describe the distribution. Include an informative title and axis labels on the plot.\n\n\nExercise 2\nLet’s view the data in another way. Use the code below to make a map of the United States with the color of the counties filled in based on the percent of residents 25 years old and older who have a Bachelor’s degree. Fill in title and axis labels.\nThen use the plot answer the following:\n\nWhat are 2 observations you have from the map?\nWhat is a feature that is apparent in the map that wasn’t as easily apparent from the histogram in the previous exercise? What is a feature that is apparent in the histogram that is not as easily apparent from the map?\n\n\ncounty_map_data &lt;- left_join(county_data_sample, map_data_sample)\n\nggplot(data = map_data_all) +\n  geom_polygon(aes(x = long, y = lat, group = group),\n    fill = \"lightgray\", color = \"white\"\n    ) +\n  geom_polygon(data = county_map_data, aes(x = long, y = lat, group = group,\n    fill = bachelors)\n    ) +\n  labs(\n    x = \"Longitude\",\n    y = \"Latitude\",\n    fill = \"_____\",\n    title = \"_____\"\n  ) +\n  scale_fill_viridis_c(labels = label_percent(scale = 1)) +\n  coord_quickmap()\n\n\n\nExercise 3\nCreate a visualization of the relationship between bachelors and median_household_income and calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables.\n\n\n\n\n\n\nTip\n\n\n\nRecall the analysis objective stated at the beginning of the Exercises section.\n\n\n\nIf you haven’t yet done so, now is a good time to render your document and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-2-modeling",
-    "href": "hw/hw-01.html#part-2-modeling",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 2: Modeling",
-    "text": "Part 2: Modeling\n\nExercise 4\nWe will use a linear regression model to better quantify the relationship between bachelors and median_household_income.\nWrite the form of the statistical model we will use for this task using mathematical notation. Use variable names (bachelors and median_household_income) in the equation for your model1.\n\n\nExercise 5\n\nFit the regression line corresponding to the statistical model in the previous exercise. Neatly display the model output using 3 digits.\nWrite the equation of the fitted model using mathematical notation. Use variable names (bachelors and median_household_income) in the equation.\n\n\n\nExercise 6\n\nInterpret the slope. The interpretation should be written in a way that is meaningful in the context of the data.\nIs it useful to interpret the intercept for this data? If so, write the interpretation in the context of the data. Otherwise, briefly explain why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-3-inference-for-the-u.s.",
-    "href": "hw/hw-01.html#part-3-inference-for-the-u.s.",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 3: Inference for the U.S.",
-    "text": "Part 3: Inference for the U.S.\nWe want to use the data from these 600 randomly selected counties to draw conclusions about the relationship between the percent of adults age 25 and older with a bachelor’s degree and median household income for the over 3,000 counties in the United States.\n\nExercise 7\n\nWhat is the population of interest? What is the sample?\nIs it reasonable to treat the sample in this analysis as representative of the population? Briefly explain why or why not.\n\n\n\nExercise 8\nConduct a hypothesis test for the slope to assess whether there is sufficient evidence of a linear relationship between the percent of adults age 25 and older with a bachelor’s degree and the median household income in a county. Use a randomization (permutation) test. In your response:\n\nState the null and alternative hypotheses in words and mathematical notation\nShow all relevant code and output used to conduct the test. Use set.seed(2023) and 1000 iterations to construct the appropriate distribution.\nState the conclusion in the context of the data.\n\n\n\nExercise 9\nNext, construct a 95% confidence interval for the slope using bootstrapping with set.seed(2023) and 1000 iterations.\n\nShow all relevant code and output used to calculate the interval.\nInterpret the confidence interval in the context of the data.\nIs the confidence interval consistent with the results of the test from the previous exercise? Briefly explain why or why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#reproducibility",
-    "href": "hw/hw-01.html#reproducibility",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Reproducibility",
-    "text": "Reproducibility\n\nExercise 10\nYou are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.\n\nSource: Ostblom and Timbers (2022)\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nChoose one of the scenarios from the table and read the linked article discussing what went wrong. Then,\n\nBriefly describe what went wrong, i.e., what part of the process of was not reproducible and what error or impact that had.\nThen, describe how the researchers could make the process reproducible.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#submission",
-    "href": "hw/hw-01.html#submission",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Submission",
-    "text": "Submission\n\n\n\n\n\n\nWarning\n\n\n\nBefore you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.\nRemember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.\n\n\nTo submit your assignment:\n\nGo to http://www.gradescope.com and click Log in in the top right corner.\nClick School Credentials ➡️ Duke NetID and log in using your NetID credentials.\nClick on your STA 210 course.\nClick on the assignment, and you’ll be prompted to submit it.\nMark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).\nSelect the first page of your PDF submission to be associated with the “Workflow & formatting” section."
-  },
-  {
-    "objectID": "hw/hw-01.html#grading-50-points",
-    "href": "hw/hw-01.html#grading-50-points",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Grading (50 points)",
-    "text": "Grading (50 points)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n5\n\n\nEx 2\n5\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n4\n\n\nEx 6\n4\n\n\nEx 7\n3\n\n\nEx 8\n7\n\n\nEx 9\n7\n\n\nEx 10\n5\n\n\nWorkflow & formatting\n32"
-  },
-  {
-    "objectID": "hw/hw-01.html#footnotes",
-    "href": "hw/hw-01.html#footnotes",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-00.html",
-    "href": "labs/lab-00.html",
-    "title": "Lab 00: Getting started",
-    "section": "",
-    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
-  },
-  {
-    "objectID": "labs/lab-03.html",
-    "href": "labs/lab-03.html",
-    "title": "Lab 03: Coffee grades",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-03.html#learning-goals",
-    "href": "labs/lab-03.html#learning-goals",
-    "title": "Lab 03: Coffee grades",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
-  },
-  {
-    "objectID": "labs/lab-03.html#grading-50-pts",
-    "href": "labs/lab-03.html#grading-50-pts",
-    "title": "Lab 03: Coffee grades",
-    "section": "Grading (50 pts)",
-    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n4\n\n\nEx 2\n3\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n8\n\n\nEx 6\n5\n\n\nEx 7\n8\n\n\nEx 8\n6\n\n\nEx 9\n4\n\n\nEx 10\n2\n\n\nWorkflow & formatting\n31"
-  },
-  {
-    "objectID": "labs/lab-03.html#footnotes",
-    "href": "labs/lab-03.html#footnotes",
-    "title": "Lab 03: Coffee grades",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-02.html",
-    "href": "labs/lab-02.html",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-02.html#learning-goals",
-    "href": "labs/lab-02.html#learning-goals",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
-  },
-  {
-    "objectID": "labs/lab-02.html#exercise-10",
-    "href": "labs/lab-02.html#exercise-10",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Exercise 10",
-    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
-  },
-  {
-    "objectID": "labs/lab-02.html#footnotes",
-    "href": "labs/lab-02.html#footnotes",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-01.html",
-    "href": "labs/lab-01.html",
-    "title": "Lab 01: Park access",
-    "section": "",
-    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-01.html#learning-goals",
-    "href": "labs/lab-01.html#learning-goals",
-    "title": "Lab 01: Park access",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
-  },
-  {
-    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "title": "Lab 01: Park access",
-    "section": "Clone the repo & start new RStudio project",
-    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
-  },
-  {
-    "objectID": "labs/lab-01.html#r-and-r-studio",
-    "href": "labs/lab-01.html#r-and-r-studio",
-    "title": "Lab 01: Park access",
-    "section": "R and R Studio",
-    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
-  },
-  {
-    "objectID": "labs/lab-01.html#footnotes",
-    "href": "labs/lab-01.html#footnotes",
-    "title": "Lab 01: Park access",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-04.html",
-    "href": "labs/lab-04.html",
-    "title": "Lab 04: Alumni jobs",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 29, 11:59pm (Tuesday labs)\nSunday, October 1, 11:59pm (Thursday labs)\nIn today’s lab, you’ll use simple linear regression to analyze the relationship between the median early career salary and percent of alumni who perceive their job as making the world a better place for colleges and universities in the United States. You will also start working with your lab teams, write a team agreement, and be introduced to using GitHub for collaboration."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-1",
-    "href": "labs/lab-04.html#exercise-1",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nFit a linear model that can be used to predict the typical (median) early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-2",
-    "href": "labs/lab-04.html#exercise-2",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Exercise 2",
-    "text": "Exercise 2\nCalculate the predicted values and residuals from your model and save these results in a data frame. Print the first five rows of the new data frame.\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercises 1- 2.\nTeam Member 2: It’s your turn! Type the team’s response to exercise 3."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-3",
-    "href": "labs/lab-04.html#exercise-3",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Exercise 3",
-    "text": "Exercise 3\nBefore using the model for prediction, let’s check the model conditions. To figure out how to do so, we type the following prompt into ChatGPT (“an AI powered language model”) “How do you check the model conditions for simple linear regression?”\nThe response from ChatGPT shown below would receive partial credit. For each condition, state whether it is correct or incorrect/ incomplete. If it incorrect/incomplete, state what is wrong or missing, then write the correct response.\n\nIn simple linear regression, you’re trying to establish a linear relationship between two variables: a dependent variable (Y) and an independent variable (X). The model conditions or assumptions for simple linear regression are important to check to ensure that your model is valid and reliable. Here are the key assumptions and how to check them:\n1. Linearity Assumption:\n\nAssumption: The relationship between the independent variable (X) and the dependent variable (Y) is linear.\nHow to Check: Create a scatterplot of Y against X. If the points roughly form a straight line, the linearity assumption is likely met.\n\n2. Independence Assumption:\n\nAssumption: The residuals (the differences between observed Y and predicted Y) are independent of each other.\nHow to Check: Plot the residuals against the independent variable (X) or the predicted values. Look for patterns or trends in the residuals. There should be no clear structure or autocorrelation in the residuals.\n\n3. Homoscedasticity [Constant variance] Assumption:\n\nAssumption: The variance of the residuals is constant across all levels of the independent variable.\nHow to Check: Plot the residuals against the predicted values or the independent variable (X). The spread of the residuals should remain roughly constant across the range of X.\n\n4. Normality Assumption:\n\nAssumption: The residuals follow a normal distribution.\nHow to Check: Create a histogram or a normal probability plot (Q-Q plot) of the residuals. If the residuals are approximately normally distributed, they should follow a bell-shaped curve in the histogram and lie along a straight line in the Q-Q plot.\n\nIt’s important to note that these assumptions may not always hold perfectly in real-world data, and minor violations may not necessarily invalidate your model. However, if you detect significant violations of these assumptions, you may need to consider alternative modeling techniques or transformations of your data to address the issues.\n\n\n✅ ⬆️ Team Member 2: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 3.\nTeam Member 3: It’s your turn! Type the team’s response to exercises 4 - 5.\n\n\n\n\n\n\n\nImportant\n\n\n\nYou can proceed assuming all the model conditions are satisfied."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-4",
-    "href": "labs/lab-04.html#exercise-4",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Exercise 4",
-    "text": "Exercise 4\n\n31 percent of the alumni at Johns Hopkins University received a STEM degree. Calculate the predicted early career pay at this university and the appropriate 95% interval. Interpret the interval in the context of the data.\nThe actual early career pay at this university is $67,200. Is this what you expected based on your analysis? Briefly explain your reasoning."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-5",
-    "href": "labs/lab-04.html#exercise-5",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Exercise 5",
-    "text": "Exercise 5\nNext, let’s consider how well the model fits the relationship between the early career pay and percent with a STEM degree.\n\nCalculate \\(R^2\\) and interpret it in the context of the data.\nCalculate RMSE and interpret it in the context of the data.\n\n\nTeam Member 3: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 4 - 5.\nTeam Member 4: It’s your turn! Type the team’s response to exercise 6."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-6",
-    "href": "labs/lab-04.html#exercise-6",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Exercise 6",
-    "text": "Exercise 6\nDo you think the model is useful for understanding and predicting the typical early career pay for alumni at a university? Briefly explain your reasoning.\n\nTeam Member 4: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 6.\nTeam Member 1: It’s your turn! Type the team’s response to exercise 7."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-7",
-    "href": "labs/lab-04.html#exercise-7",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Exercise 7",
-    "text": "Exercise 7\nFit another model which predicts the typical early career pay using only the percentage of alumni that believe their career will make the world a better place.\n\nNeatly display this model with 3 digits.\nWhich model do you think is better - this model or the model fit in Exercise 1? Explain your response showing any analysis used to make the decision.\n\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and the rest of the team can see the completed lab.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the team’s completed lab!"
-  },
-  {
-    "objectID": "labs/lab-04.html#footnotes",
-    "href": "labs/lab-04.html#footnotes",
-    "title": "Lab 04: Alumni jobs",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nDon’t trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.↩︎↩︎"
   },
   {
     "objectID": "hw/hw-02.html",
@@ -2051,25 +1799,235 @@
     "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
   },
   {
-    "objectID": "prepare/week-09.html",
-    "href": "prepare/week-09.html",
-    "title": "Week 09",
+    "objectID": "labs/lab-04.html",
+    "href": "labs/lab-04.html",
+    "title": "Lab 04: Alumni jobs",
     "section": "",
-    "text": "Important\n\n\n\n\nAE 10 due Thu, Oct 27, 11:59pm\nProject Proposal: due Fri, Nov 04: 11:59pm\n\nHW 03 moved to next week\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 Tidy Modeling in R - Chapter 10: Resampling for evaluating performance\nOct 24\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 MLR: Cross validation\nOct 24\n\n\n💻 MLR: Inference\nOct 26\n\n\n💻 MLR: Conditions\nOct 26\n\n\n💻 Lab: Project proposal\nOct 27 & 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 10: Cross validation\n\n\n📋 AE 11: MLR Inference + conditions\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project Proposal\ndue Fri, Nov 04, 11:59pm"
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 29, 11:59pm (Tuesday labs)\nSunday, October 1, 11:59pm (Thursday labs)\nIn today’s lab, you’ll use simple linear regression to analyze the relationship between the median early career salary and percent of alumni who perceive their job as making the world a better place for colleges and universities in the United States. You will also start working with your lab teams, write a team agreement, and be introduced to using GitHub for collaboration."
   },
   {
-    "objectID": "prepare/week-10.html",
-    "href": "prepare/week-10.html",
-    "title": "Week 10",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 12 due Thu, Nov 03, 11:59pm\nAE 13 due Sat, Nov 05, 11:59pm\nProject Proposal due Fri, Nov 04: 11:59pm\nHW 03 due Mon, Nov 07, 11:59pm\nLab 06:\n\ndue Mon, Nov 07, 11:59pm (Thu labs)\ndue Tue, Nov 08, 11:59pm (Fri labs)\n\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chap 9: Logistic Regression\nNov 02\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 MLR: Conditions\nOct 31\n\n\n💻 Logistic Regression: Introduction\nNov 02\n\n\n💻 Lab 06\nNov 03 - 04\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 12: Multiple Linear Regression Review\n\n\n📋 AE 13: Logistic Regression Intro\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Project Proposal\ndue Fri, Nov 04, 11:59pm\n\n\n📝 HW 03\ndue Mon, Nov 07, 11:59pm\n\n\n📝 Lab 06\n\ndue Mon, Nov 07, 11:59pm (Thu labs)\ndue Tue, Nov 08, 11:59pm (Fri labs)\n\n\n\n📝 Statistics Experience\ndue Fri, Dec 09, 11:59pm"
+    "objectID": "labs/lab-04.html#exercise-1",
+    "href": "labs/lab-04.html#exercise-1",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nFit a linear model that can be used to predict the typical (median) early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values."
   },
   {
-    "objectID": "prepare/week-05.html",
-    "href": "prepare/week-05.html",
-    "title": "Week 05",
+    "objectID": "labs/lab-04.html#exercise-2",
+    "href": "labs/lab-04.html#exercise-2",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nCalculate the predicted values and residuals from your model and save these results in a data frame. Print the first five rows of the new data frame.\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercises 1- 2.\nTeam Member 2: It’s your turn! Type the team’s response to exercise 3."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-3",
+    "href": "labs/lab-04.html#exercise-3",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nBefore using the model for prediction, let’s check the model conditions. To figure out how to do so, we type the following prompt into ChatGPT (“an AI powered language model”) “How do you check the model conditions for simple linear regression?”\nThe response from ChatGPT shown below would receive partial credit. For each condition, state whether it is correct or incorrect/ incomplete. If it incorrect/incomplete, state what is wrong or missing, then write the correct response.\n\nIn simple linear regression, you’re trying to establish a linear relationship between two variables: a dependent variable (Y) and an independent variable (X). The model conditions or assumptions for simple linear regression are important to check to ensure that your model is valid and reliable. Here are the key assumptions and how to check them:\n1. Linearity Assumption:\n\nAssumption: The relationship between the independent variable (X) and the dependent variable (Y) is linear.\nHow to Check: Create a scatterplot of Y against X. If the points roughly form a straight line, the linearity assumption is likely met.\n\n2. Independence Assumption:\n\nAssumption: The residuals (the differences between observed Y and predicted Y) are independent of each other.\nHow to Check: Plot the residuals against the independent variable (X) or the predicted values. Look for patterns or trends in the residuals. There should be no clear structure or autocorrelation in the residuals.\n\n3. Homoscedasticity [Constant variance] Assumption:\n\nAssumption: The variance of the residuals is constant across all levels of the independent variable.\nHow to Check: Plot the residuals against the predicted values or the independent variable (X). The spread of the residuals should remain roughly constant across the range of X.\n\n4. Normality Assumption:\n\nAssumption: The residuals follow a normal distribution.\nHow to Check: Create a histogram or a normal probability plot (Q-Q plot) of the residuals. If the residuals are approximately normally distributed, they should follow a bell-shaped curve in the histogram and lie along a straight line in the Q-Q plot.\n\nIt’s important to note that these assumptions may not always hold perfectly in real-world data, and minor violations may not necessarily invalidate your model. However, if you detect significant violations of these assumptions, you may need to consider alternative modeling techniques or transformations of your data to address the issues.\n\n\n✅ ⬆️ Team Member 2: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 3.\nTeam Member 3: It’s your turn! Type the team’s response to exercises 4 - 5.\n\n\n\n\n\n\n\nImportant\n\n\n\nYou can proceed assuming all the model conditions are satisfied."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-4",
+    "href": "labs/lab-04.html#exercise-4",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\n31 percent of the alumni at Johns Hopkins University received a STEM degree. Calculate the predicted early career pay at this university and the appropriate 95% interval. Interpret the interval in the context of the data.\nThe actual early career pay at this university is $67,200. Is this what you expected based on your analysis? Briefly explain your reasoning."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-5",
+    "href": "labs/lab-04.html#exercise-5",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nNext, let’s consider how well the model fits the relationship between the early career pay and percent with a STEM degree.\n\nCalculate \\(R^2\\) and interpret it in the context of the data.\nCalculate RMSE and interpret it in the context of the data.\n\n\nTeam Member 3: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 4 - 5.\nTeam Member 4: It’s your turn! Type the team’s response to exercise 6."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-6",
+    "href": "labs/lab-04.html#exercise-6",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nDo you think the model is useful for understanding and predicting the typical early career pay for alumni at a university? Briefly explain your reasoning.\n\nTeam Member 4: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 6.\nTeam Member 1: It’s your turn! Type the team’s response to exercise 7."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-7",
+    "href": "labs/lab-04.html#exercise-7",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nFit another model which predicts the typical early career pay using only the percentage of alumni that believe their career will make the world a better place.\n\nNeatly display this model with 3 digits.\nWhich model do you think is better - this model or the model fit in Exercise 1? Explain your response showing any analysis used to make the decision.\n\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and the rest of the team can see the completed lab.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the team’s completed lab!"
+  },
+  {
+    "objectID": "labs/lab-04.html#footnotes",
+    "href": "labs/lab-04.html#footnotes",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nDon’t trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.↩︎↩︎"
+  },
+  {
+    "objectID": "labs/lab-01.html",
+    "href": "labs/lab-01.html",
+    "title": "Lab 01: Park access",
     "section": "",
-    "text": "Important\n\n\n\nAnnouncements:\n\nNo labs this week - work on Exam 01\nNo TA office hours Wed - Fri\n\nProf. Tackett office hours Thu 10 - 11am\n\nNo Ed Discussion Wed - Fri\n\nDue dates:\n\nAE 06: due Thu, Sep 29, 11:59pm\nAE 07: due Sat, Oct 01, 11:59pm\nExam 01: Wed, Sep 28 - Fri, Sep 30 at 11:59pm\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 MLR: Types of predictors\nSep 26\n\n\n💻 Exam 01 review\nSep 28\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 06: Prediction for MLR\n\n\n📋 AE 07: Exam 01 review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\n📝 Exam 01\nFri, Sep 30, 11:59pm"
+    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-01.html#learning-goals",
+    "href": "labs/lab-01.html#learning-goals",
+    "title": "Lab 01: Park access",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
+  },
+  {
+    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "title": "Lab 01: Park access",
+    "section": "Clone the repo & start new RStudio project",
+    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
+  },
+  {
+    "objectID": "labs/lab-01.html#r-and-r-studio",
+    "href": "labs/lab-01.html#r-and-r-studio",
+    "title": "Lab 01: Park access",
+    "section": "R and R Studio",
+    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
+  },
+  {
+    "objectID": "labs/lab-01.html#footnotes",
+    "href": "labs/lab-01.html#footnotes",
+    "title": "Lab 01: Park access",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-02.html",
+    "href": "labs/lab-02.html",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-02.html#learning-goals",
+    "href": "labs/lab-02.html#learning-goals",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-10",
+    "href": "labs/lab-02.html#exercise-10",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Exercise 10",
+    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab-02.html#footnotes",
+    "href": "labs/lab-02.html#footnotes",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-03.html",
+    "href": "labs/lab-03.html",
+    "title": "Lab 03: Coffee grades",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-03.html#learning-goals",
+    "href": "labs/lab-03.html#learning-goals",
+    "title": "Lab 03: Coffee grades",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
+  },
+  {
+    "objectID": "labs/lab-03.html#grading-50-pts",
+    "href": "labs/lab-03.html#grading-50-pts",
+    "title": "Lab 03: Coffee grades",
+    "section": "Grading (50 pts)",
+    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n4\n\n\nEx 2\n3\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n8\n\n\nEx 6\n5\n\n\nEx 7\n8\n\n\nEx 8\n6\n\n\nEx 9\n4\n\n\nEx 10\n2\n\n\nWorkflow & formatting\n31"
+  },
+  {
+    "objectID": "labs/lab-03.html#footnotes",
+    "href": "labs/lab-03.html#footnotes",
+    "title": "Lab 03: Coffee grades",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-00.html",
+    "href": "labs/lab-00.html",
+    "title": "Lab 00: Getting started",
+    "section": "",
+    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
+  },
+  {
+    "objectID": "hw/hw-01.html",
+    "href": "hw/hw-01.html",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "",
+    "text": "In this assignment, you will use simple linear regression to examine the association between between the percent of adults with a bachelor’s degree and the median household income for counties in the United States."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "href": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 1: Exploratory data analysis",
+    "text": "Part 1: Exploratory data analysis\n\nExercise 1\nCreate a histogram of the distribution of the predictor variable bachelorsand calculate appropriate summary statistics. Use the visualization and summary statistics to describe the distribution. Include an informative title and axis labels on the plot.\n\n\nExercise 2\nLet’s view the data in another way. Use the code below to make a map of the United States with the color of the counties filled in based on the percent of residents 25 years old and older who have a Bachelor’s degree. Fill in title and axis labels.\nThen use the plot answer the following:\n\nWhat are 2 observations you have from the map?\nWhat is a feature that is apparent in the map that wasn’t as easily apparent from the histogram in the previous exercise? What is a feature that is apparent in the histogram that is not as easily apparent from the map?\n\n\ncounty_map_data &lt;- left_join(county_data_sample, map_data_sample)\n\nggplot(data = map_data_all) +\n  geom_polygon(aes(x = long, y = lat, group = group),\n    fill = \"lightgray\", color = \"white\"\n    ) +\n  geom_polygon(data = county_map_data, aes(x = long, y = lat, group = group,\n    fill = bachelors)\n    ) +\n  labs(\n    x = \"Longitude\",\n    y = \"Latitude\",\n    fill = \"_____\",\n    title = \"_____\"\n  ) +\n  scale_fill_viridis_c(labels = label_percent(scale = 1)) +\n  coord_quickmap()\n\n\n\nExercise 3\nCreate a visualization of the relationship between bachelors and median_household_income and calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables.\n\n\n\n\n\n\nTip\n\n\n\nRecall the analysis objective stated at the beginning of the Exercises section.\n\n\n\nIf you haven’t yet done so, now is a good time to render your document and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-2-modeling",
+    "href": "hw/hw-01.html#part-2-modeling",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 2: Modeling",
+    "text": "Part 2: Modeling\n\nExercise 4\nWe will use a linear regression model to better quantify the relationship between bachelors and median_household_income.\nWrite the form of the statistical model we will use for this task using mathematical notation. Use variable names (bachelors and median_household_income) in the equation for your model1.\n\n\nExercise 5\n\nFit the regression line corresponding to the statistical model in the previous exercise. Neatly display the model output using 3 digits.\nWrite the equation of the fitted model using mathematical notation. Use variable names (bachelors and median_household_income) in the equation.\n\n\n\nExercise 6\n\nInterpret the slope. The interpretation should be written in a way that is meaningful in the context of the data.\nIs it useful to interpret the intercept for this data? If so, write the interpretation in the context of the data. Otherwise, briefly explain why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "href": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 3: Inference for the U.S.",
+    "text": "Part 3: Inference for the U.S.\nWe want to use the data from these 600 randomly selected counties to draw conclusions about the relationship between the percent of adults age 25 and older with a bachelor’s degree and median household income for the over 3,000 counties in the United States.\n\nExercise 7\n\nWhat is the population of interest? What is the sample?\nIs it reasonable to treat the sample in this analysis as representative of the population? Briefly explain why or why not.\n\n\n\nExercise 8\nConduct a hypothesis test for the slope to assess whether there is sufficient evidence of a linear relationship between the percent of adults age 25 and older with a bachelor’s degree and the median household income in a county. Use a randomization (permutation) test. In your response:\n\nState the null and alternative hypotheses in words and mathematical notation\nShow all relevant code and output used to conduct the test. Use set.seed(2023) and 1000 iterations to construct the appropriate distribution.\nState the conclusion in the context of the data.\n\n\n\nExercise 9\nNext, construct a 95% confidence interval for the slope using bootstrapping with set.seed(2023) and 1000 iterations.\n\nShow all relevant code and output used to calculate the interval.\nInterpret the confidence interval in the context of the data.\nIs the confidence interval consistent with the results of the test from the previous exercise? Briefly explain why or why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#reproducibility",
+    "href": "hw/hw-01.html#reproducibility",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nExercise 10\nYou are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.\n\nSource: Ostblom and Timbers (2022)\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nChoose one of the scenarios from the table and read the linked article discussing what went wrong. Then,\n\nBriefly describe what went wrong, i.e., what part of the process of was not reproducible and what error or impact that had.\nThen, describe how the researchers could make the process reproducible.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#submission",
+    "href": "hw/hw-01.html#submission",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Submission",
+    "text": "Submission\n\n\n\n\n\n\nWarning\n\n\n\nBefore you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.\nRemember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.\n\n\nTo submit your assignment:\n\nGo to http://www.gradescope.com and click Log in in the top right corner.\nClick School Credentials ➡️ Duke NetID and log in using your NetID credentials.\nClick on your STA 210 course.\nClick on the assignment, and you’ll be prompted to submit it.\nMark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).\nSelect the first page of your PDF submission to be associated with the “Workflow & formatting” section."
+  },
+  {
+    "objectID": "hw/hw-01.html#grading-50-points",
+    "href": "hw/hw-01.html#grading-50-points",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Grading (50 points)",
+    "text": "Grading (50 points)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n5\n\n\nEx 2\n5\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n4\n\n\nEx 6\n4\n\n\nEx 7\n3\n\n\nEx 8\n7\n\n\nEx 9\n7\n\n\nEx 10\n5\n\n\nWorkflow & formatting\n32"
+  },
+  {
+    "objectID": "hw/hw-01.html#footnotes",
+    "href": "hw/hw-01.html#footnotes",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "prepare/oct-09.html",
+    "href": "prepare/oct-09.html",
+    "title": "October 09 lecture",
+    "section": "",
+    "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
+  },
+  {
+    "objectID": "prepare/oct-09.html#assigned-reading",
+    "href": "prepare/oct-09.html#assigned-reading",
+    "title": "October 09 lecture",
+    "section": "",
+    "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
   },
   {
     "objectID": "prepare/sep-13.html",
@@ -2084,48 +2042,6 @@
     "title": "September 13 lecture",
     "section": "",
     "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/week-07.html",
-    "href": "prepare/week-07.html",
-    "title": "Week 07",
-    "section": "",
-    "text": "Important\n\n\n\nDue dates:\n\nLab 04:\n\ndue Thu, Oct 13, 11:59pm (Thu lab)\ndue Fri, Oct 14, 11:59pm (Fri lab)\n\nProject topic ideas:\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\nHW 02:\n\ndue Wed, Oct 19, 11:59pm\n\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Variable transformations\nOct 12\n\n\n\n\n\nPractice\nNo Application Exercises this week.\n\n\nPerform\n\n\n\n\n\n\n\nAssignment\nDue date\n\n\n\n\nProject topic ideas\n\ndue Mon, Oct 17, 11:59pm (Thu lab)\ndue Tue, Oct 18, 11:59pm (Fri lab)\n\n\n\n📝 HW 02\nWed, Oct 19, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-12.html",
-    "href": "prepare/week-12.html",
-    "title": "Week 12",
-    "section": "",
-    "text": "Important\n\n\n\n\nAE 14: due Thu, Nov 17, 11:59pm\nHW 04: due Mon, Nov 21, 11:59pm\n\n\n\n\nPrepare\n\n\n\n\n\n\n\nReading\nCorresponding lecture\n\n\n\n\n📖 IMS, Chp 26: Inference for logistic regression\nNov 16\n\n\n\n\n\nParticipate\n\n\n\n\n\n\n\n💻 Logistic regression: Model comparison\nNov 14\n\n\n💻 Logistic Regression: Inference + conditions\nNov 16\n\n\n💻 Lab: Project analysis + write up\nNov 17 + 18\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 14: Logistic regression - Model Comparison\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 HW 04\ndue Mon, Nov 21, 11:59pm\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
-  },
-  {
-    "objectID": "prepare/week-02.html",
-    "href": "prepare/week-02.html",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#assigned-reading",
-    "href": "prepare/week-02.html#assigned-reading",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#additional-resources-optional",
-    "href": "prepare/week-02.html#additional-resources-optional",
-    "title": "September 06 lecture",
-    "section": "Additional resources (optional)",
-    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
-  },
-  {
-    "objectID": "prepare/week-15.html",
-    "href": "prepare/week-15.html",
-    "title": "Week 15",
-    "section": "",
-    "text": "Important\n\n\n\n\nExam 02: Mon, Dec 05 (evening) - Thu, Dec 08 at 12pm (noon)\nTeam Feedback #2 due Tue, Dec 06, 11:59pm\nNo class Wed, Dec 07\n\nOnline exam office hours (Zoom link in Sakai)\n\nStatistics experience due Fri, Dec 09, 11:59pm\nProject written report due Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n\n\nPrepare\nNo readings this week.\n\n\nParticipate\n\n\n\n\n\n\n\nTopic\nDate\n\n\n\n\n💻 Exam 02 Review\nDec 05\n\n\n\n\n\nPractice\n\n\n\n\n\n\n📋 AE 16: Exam 02 Review\n\n\n\n\n\nPerform\n\n\n\n\n\n\n\n📝 Exam 02\nMon, Dec 05 evening - Thu, Dec 08, 12pm (noon)\n\n\n📝 Project written report\ndue Fri, Dec 09, 11:59pm (accepted until Sun, Dec 11, 11:59pm)\n\n\n📝 Statistics experience\ndue Fri, Dec 09, 11:59pm"
   },
   {
     "objectID": "ae/ae-04-bootstrap.html",

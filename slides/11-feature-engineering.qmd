@@ -54,7 +54,7 @@ knitr::opts_chunk$set(
 
 ::: columns
 ::: {.column width="50%"}
-*Dr. Rafael Irizarry is a Professor of Biostatistics at the Harvard T.H. Chan School of Public Health and Professor of Biostatistics and Computational Biology at the Dana-Farber Cancer Institute. He earned a Bachelor of Science degree in Mathematics from the University of Puerto Rico at Rio Piedras and a PhD from the University of California, Berkeley in Statistics. Dr. Irizarry's work is highly cited, and he has been given many prestigious awards including the Presidents\' Award given by the Committee of Presidents of Statistical Societies.*
+*Dr. Rafael Irizarry is a Professor of Biostatistics at the Harvard T.H. Chan School of Public Health and Professor of Biostatistics and Computational Biology at the Dana-Farber Cancer Institute. He earned a Bachelor of Science degree in Mathematics from the University of Puerto Rico at Rio Piedras and a PhD from the University of California, Berkeley in Statistics. Dr. Irizarry's work is highly cited, and he has been given many prestigious awards including the Presidents' Award given by the Committee of Presidents of Statistical Societies.*
 :::
 
 ::: {.column width="50%"}
@@ -682,14 +682,14 @@ What feature will not end up in the final model? Why is it not included?
 
 ## Working with recipes
 
--   When building recipes you in a pipeline, you don\'t get to see the effect of the recipe on your data, which can be unsettling
+-   When building recipes you in a pipeline, you don't get to see the effect of the recipe on your data, which can be unsettling
 
 -   You can take a peek at what will happen when you ultimately apply the recipe to your data at the time of fitting the model
 
 -   This requires two functions: `prep()` to train the recipe and `bake()` to apply it to your data
 
 ::: callout-note
-This is optional, we\'ll show the results for demonstrative purposes. It doesn\'t need to be part of your modeling pipeline, but it can be assuring to see the effects of the recipe steps as you build the recipe.
+This is optional, we'll show the results for demonstrative purposes. It doesn't need to be part of your modeling pipeline, but it can be assuring to see the effects of the recipe steps as you build the recipe.
 :::
 
 # Application exercise

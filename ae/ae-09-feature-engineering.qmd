@@ -1,5 +1,5 @@
 ---
-title: "AE 09: Feature Engineering with recipes"
+title: "AE 09: Feature engineering with recipes"
 subtitle: "Peer-to-peer lender"
 date: "Oct 09, 2023"
 editor: visual
@@ -25,17 +25,17 @@ The data for this AE is from the `loan50` data set in the **openintro** R packag
 
 **Predictors**
 
--   `annual_income`: Annual income
+-   `annual_income`: Annual income (in US dollars)
 -   `debt_to_income`: Debt-to-income ratio, i.e. the percentage of a borrower's total debt divided by their total income
 -   `verified_income`: Whether borrower's income source and amount have been verified (`Not Verified`, `Source Verified`, `Verified`)
 
 **Response**
 
--   `interest_rate`: Interest rate for the loan
+-   `interest_rate`: Interest rate for the loan (0- 100)
 
 ## Analysis goal
 
-The goals of this analysis are to build a recipe for fitting a linear regression model on the training data that has the following features:
+The goals of this analysis are to build a recipe to fit a linear regression model on the training data that has the following features:
 
 -   `annual_income` rescaled to thousands of dollars
 -   Mean-centered quantitative variables
@@ -79,7 +79,8 @@ Remove `#| eval: false` from the code chunk.
 #| eval: false 
 
 # use original variables when specifying recipe
-loan_rec <-  recipe(interest_rate ~ annaul_income + debt_to_income + verified_income, data = loan_train) |>
+loan_rec <-  recipe(interest_rate ~ annaul_income + debt_to_income + verified_income, 
+                    data = loan_train) |>
   # add recipe steps
   
 ```
@@ -92,9 +93,7 @@ loan_rec
 
 ## Check recipe using `prep()` and `bake()`
 
-::: callout-note
 Remove #\| eval: false from the code chunk
-:::
 
 ```{r}
 #| eval: false

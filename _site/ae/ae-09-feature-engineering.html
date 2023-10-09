@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-10-09">
 
-<title>STA 210 - Fall 2023 - AE 09: Feature Engineering with recipes</title>
+<title>STA 210 - Fall 2023 - AE 09: Feature engineering with recipes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">AE 09: Feature Engineering with recipes</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">AE 09: Feature engineering with recipes</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AE 09: Feature Engineering with recipes</h1>
+<h1 class="title">AE 09: Feature engineering with recipes</h1>
 <p class="subtitle lead">Peer-to-peer lender</p>
 </div>
 
@@ -309,18 +309,18 @@ Important
 <p>The data for this AE is from the <code>loan50</code> data set in the <strong>openintro</strong> R package. We will focus on the following variables:</p>
 <p><strong>Predictors</strong></p>
 <ul>
-<li><code>annual_income</code>: Annual income</li>
+<li><code>annual_income</code>: Annual income (in US dollars)</li>
 <li><code>debt_to_income</code>: Debt-to-income ratio, i.e.&nbsp;the percentage of a borrower’s total debt divided by their total income</li>
 <li><code>verified_income</code>: Whether borrower’s income source and amount have been verified (<code>Not Verified</code>, <code>Source Verified</code>, <code>Verified</code>)</li>
 </ul>
 <p><strong>Response</strong></p>
 <ul>
-<li><code>interest_rate</code>: Interest rate for the loan</li>
+<li><code>interest_rate</code>: Interest rate for the loan (0- 100)</li>
 </ul>
 </section>
 <section id="analysis-goal" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-goal">Analysis goal</h2>
-<p>The goals of this analysis are to build a recipe for fitting a linear regression model on the training data that has the following features:</p>
+<p>The goals of this analysis are to build a recipe to fit a linear regression model on the training data that has the following features:</p>
 <ul>
 <li><code>annual_income</code> rescaled to thousands of dollars</li>
 <li>Mean-centered quantitative variables</li>
@@ -376,8 +376,9 @@ Important
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use original variables when specifying recipe</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>loan_rec <span class="ot">&lt;-</span>  <span class="fu">recipe</span>(interest_rate <span class="sc">~</span> annaul_income <span class="sc">+</span> debt_to_income <span class="sc">+</span> verified_income, <span class="at">data =</span> loan_train) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add recipe steps</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>loan_rec <span class="ot">&lt;-</span>  <span class="fu">recipe</span>(interest_rate <span class="sc">~</span> annaul_income <span class="sc">+</span> debt_to_income <span class="sc">+</span> verified_income, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> loan_train) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add recipe steps</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>loan_rec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -385,19 +386,7 @@ Important
 </section>
 <section id="check-recipe-using-prep-and-bake" class="level2">
 <h2 class="anchored" data-anchor-id="check-recipe-using-prep-and-bake">Check recipe using <code>prep()</code> and <code>bake()</code></h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>Remove #| eval: false from the code chunk</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># determine required parameters to be estimated</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>loan_rec_trained <span class="ot">&lt;-</span> <span class="fu">prep</span>(loan_rec)</span>

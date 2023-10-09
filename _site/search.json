@@ -158,7 +158,7 @@
     "href": "slides/11-feature-engineering.html#statistician-of-the-day-rafael-irizarry",
     "title": "Feature engineering",
     "section": "Statistician of the day: Rafael Irizarry",
-    "text": "Statistician of the day: Rafael Irizarry\n\n\nDr. Rafael Irizarry is a Professor of Biostatistics at the Harvard T.H. Chan School of Public Health and Professor of Biostatistics and Computational Biology at the Dana-Farber Cancer Institute. He earned a Bachelor of Science degree in Mathematics from the University of Puerto Rico at Rio Piedras and a PhD from the University of California, Berkeley in Statistics. Dr. Irizarry’s work is highly cited, and he has been given many prestigious awards including the Presidents' Award given by the Committee of Presidents of Statistical Societies.\n\n\n\n\n\n\n\n\nSource: hardin47.github.io/CURV/scholars/irizarry"
+    "text": "Statistician of the day: Rafael Irizarry\n\n\nDr. Rafael Irizarry is a Professor of Biostatistics at the Harvard T.H. Chan School of Public Health and Professor of Biostatistics and Computational Biology at the Dana-Farber Cancer Institute. He earned a Bachelor of Science degree in Mathematics from the University of Puerto Rico at Rio Piedras and a PhD from the University of California, Berkeley in Statistics. Dr. Irizarry’s work is highly cited, and he has been given many prestigious awards including the Presidents’ Award given by the Committee of Presidents of Statistical Societies.\n\n\n\n\n\n\n\n\nSource: hardin47.github.io/CURV/scholars/irizarry"
   },
   {
     "objectID": "slides/11-feature-engineering.html#work-on-impacts-of-hurricane-maria",
@@ -445,7 +445,7 @@
     "href": "slides/11-feature-engineering.html#working-with-recipes",
     "title": "Feature engineering",
     "section": "Working with recipes",
-    "text": "Working with recipes\n\nWhen building recipes you in a pipeline, you don't get to see the effect of the recipe on your data, which can be unsettling\nYou can take a peek at what will happen when you ultimately apply the recipe to your data at the time of fitting the model\nThis requires two functions: prep() to train the recipe and bake() to apply it to your data\n\n\n\n\n\n\n\nNote\n\n\nThis is optional, we'll show the results for demonstrative purposes. It doesn't need to be part of your modeling pipeline, but it can be assuring to see the effects of the recipe steps as you build the recipe."
+    "text": "Working with recipes\n\nWhen building recipes you in a pipeline, you don’t get to see the effect of the recipe on your data, which can be unsettling\nYou can take a peek at what will happen when you ultimately apply the recipe to your data at the time of fitting the model\nThis requires two functions: prep() to train the recipe and bake() to apply it to your data\n\n\n\n\n\n\n\nNote\n\n\nThis is optional, we’ll show the results for demonstrative purposes. It doesn’t need to be part of your modeling pipeline, but it can be assuring to see the effects of the recipe steps as you build the recipe."
   },
   {
     "objectID": "slides/11-feature-engineering.html#recap",
@@ -2466,49 +2466,49 @@
   {
     "objectID": "ae/ae-09-feature-engineering.html",
     "href": "ae/ae-09-feature-engineering.html",
-    "title": "AE 09: Feature Engineering with recipes",
+    "title": "AE 09: Feature engineering with recipes",
     "section": "",
     "text": "Important\n\n\n\nGo to the course GitHub organization and locate your ae-09 repo to get started.\nRender, commit, and push your responses to GitHub by the end of class. The responses are due in your GitHub repo no later than Thursday, October 12 at 11:59pm."
   },
   {
     "objectID": "ae/ae-09-feature-engineering.html#packages-data",
     "href": "ae/ae-09-feature-engineering.html#packages-data",
-    "title": "AE 09: Feature Engineering with recipes",
+    "title": "AE 09: Feature engineering with recipes",
     "section": "Packages + data",
-    "text": "Packages + data\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)\n\nThe data for this AE is from the loan50 data set in the openintro R package. We will focus on the following variables:\nPredictors\n\nannual_income: Annual income\ndebt_to_income: Debt-to-income ratio, i.e. the percentage of a borrower’s total debt divided by their total income\nverified_income: Whether borrower’s income source and amount have been verified (Not Verified, Source Verified, Verified)\n\nResponse\n\ninterest_rate: Interest rate for the loan"
+    "text": "Packages + data\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(openintro)\n\nThe data for this AE is from the loan50 data set in the openintro R package. We will focus on the following variables:\nPredictors\n\nannual_income: Annual income (in US dollars)\ndebt_to_income: Debt-to-income ratio, i.e. the percentage of a borrower’s total debt divided by their total income\nverified_income: Whether borrower’s income source and amount have been verified (Not Verified, Source Verified, Verified)\n\nResponse\n\ninterest_rate: Interest rate for the loan (0- 100)"
   },
   {
     "objectID": "ae/ae-09-feature-engineering.html#analysis-goal",
     "href": "ae/ae-09-feature-engineering.html#analysis-goal",
-    "title": "AE 09: Feature Engineering with recipes",
+    "title": "AE 09: Feature engineering with recipes",
     "section": "Analysis goal",
-    "text": "Analysis goal\nThe goals of this analysis are to build a recipe for fitting a linear regression model on the training data that has the following features:\n\nannual_income rescaled to thousands of dollars\nMean-centered quantitative variables\nIndicator (dummy) variables for the categorical predictor\nInteraction term between rescaled annual_income and verified_income\n\nand (2) use prep() and bake() to check the recipe"
+    "text": "Analysis goal\nThe goals of this analysis are to build a recipe to fit a linear regression model on the training data that has the following features:\n\nannual_income rescaled to thousands of dollars\nMean-centered quantitative variables\nIndicator (dummy) variables for the categorical predictor\nInteraction term between rescaled annual_income and verified_income\n\nand (2) use prep() and bake() to check the recipe"
   },
   {
     "objectID": "ae/ae-09-feature-engineering.html#testtrain-split",
     "href": "ae/ae-09-feature-engineering.html#testtrain-split",
-    "title": "AE 09: Feature Engineering with recipes",
+    "title": "AE 09: Feature engineering with recipes",
     "section": "Test/train split",
     "text": "Test/train split\nFill in the code to split the data into 90% training, 10% testing.\n\n\n\n\n\n\nImportant\n\n\n\nRemove #| eval: false from the code chunk.\n\n\n\nset.seed(123)\n\nloans_split &lt;- initial_split(loan50, prop = _____)\nloan_train &lt;- training(_____)\nloan_test  &lt;- _____(loan_split)"
   },
   {
     "objectID": "ae/ae-09-feature-engineering.html#build-a-recipe",
     "href": "ae/ae-09-feature-engineering.html#build-a-recipe",
-    "title": "AE 09: Feature Engineering with recipes",
+    "title": "AE 09: Feature engineering with recipes",
     "section": "Build a recipe",
-    "text": "Build a recipe\n\nUse step_mutate() to create a new variable annual_income_th that is annual_income rescaled to thousands of dollars\nUse step_center() to mean-center quantitative variables\nUse step_dummy() to create indicator variables for the categorical predictor\nUse step_interact() to create interaction between annual_income_th and verified_income\n\n\n\n\n\n\n\nImportant\n\n\n\nRemove #| eval: false from the code chunk.\n\n\n\n# use original variables when specifying recipe\nloan_rec &lt;-  recipe(interest_rate ~ annaul_income + debt_to_income + verified_income, data = loan_train) |&gt;\n  # add recipe steps\n\n\nloan_rec"
+    "text": "Build a recipe\n\nUse step_mutate() to create a new variable annual_income_th that is annual_income rescaled to thousands of dollars\nUse step_center() to mean-center quantitative variables\nUse step_dummy() to create indicator variables for the categorical predictor\nUse step_interact() to create interaction between annual_income_th and verified_income\n\n\n\n\n\n\n\nImportant\n\n\n\nRemove #| eval: false from the code chunk.\n\n\n\n# use original variables when specifying recipe\nloan_rec &lt;-  recipe(interest_rate ~ annaul_income + debt_to_income + verified_income, \n                    data = loan_train) |&gt;\n  # add recipe steps\n\n\nloan_rec"
   },
   {
     "objectID": "ae/ae-09-feature-engineering.html#check-recipe-using-prep-and-bake",
     "href": "ae/ae-09-feature-engineering.html#check-recipe-using-prep-and-bake",
-    "title": "AE 09: Feature Engineering with recipes",
+    "title": "AE 09: Feature engineering with recipes",
     "section": "Check recipe using prep() and bake()",
-    "text": "Check recipe using prep() and bake()\n\n\n\n\n\n\nNote\n\n\n\nRemove #| eval: false from the code chunk\n\n\n\n# determine required parameters to be estimated\nloan_rec_trained &lt;- prep(loan_rec)\n\n# apply recipe computations to data\nbake(loan_rec_trained, loan_train) |&gt;\n  glimpse()"
+    "text": "Check recipe using prep() and bake()\nRemove #| eval: false from the code chunk\n\n# determine required parameters to be estimated\nloan_rec_trained &lt;- prep(loan_rec)\n\n# apply recipe computations to data\nbake(loan_rec_trained, loan_train) |&gt;\n  glimpse()"
   },
   {
     "objectID": "ae/ae-09-feature-engineering.html#to-submit-the-ae",
     "href": "ae/ae-09-feature-engineering.html#to-submit-the-ae",
-    "title": "AE 09: Feature Engineering with recipes",
+    "title": "AE 09: Feature engineering with recipes",
     "section": "To submit the AE",
     "text": "To submit the AE\n\n\n\n\n\n\nImportant\n\n\n\n\nRender the document to produce the PDF with all of your work from today’s class.\nPush all your work to your ae-09 repo on GitHub. (You do not submit AEs on Gradescope)."
   },

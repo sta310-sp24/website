@@ -50,7 +50,32 @@ knitr::opts_chunk$set(
 
     -   All other office hours on regular schedule
 
-## Statistician of the day
+## Statistician of the day: **Rafael Irizarry** {.small}
+
+::: columns
+::: {.column width="50%"}
+*Dr. Rafael Irizarry is a Professor of Biostatistics at the Harvard T.H. Chan School of Public Health and Professor of Biostatistics and Computational Biology at the Dana-Farber Cancer Institute. He earned a Bachelor of Science degree in Mathematics from the University of Puerto Rico at Rio Piedras and a PhD from the University of California, Berkeley in Statistics. Dr. Irizarry's work is highly cited, and he has been given many prestigious awards including the Presidents\' Award given by the Committee of Presidents of Statistical Societies.*
+:::
+
+::: {.column width="50%"}
+![](images/statistician-of-the-day/irizarry.jpg){fig-alt="Picture of Rafael Irizarry" fig-align="left" width="70%"}
+:::
+:::
+
+Source: [hardin47.github.io/CURV/scholars/irizarry](https://hardin47.github.io/CURV/scholars/irizarry.html)
+
+## Work on impacts of Hurricane Maria {.midi}
+
+-   Part of a team who used stratified sampling to survey residents in Puerto Rico about the impacts of the 2017 Hurricane Maria
+-   Estimated percent of population who lost access to services such as electricity and water and the association with remoteness
+-   Used confidence intervals to estimate deaths directly and indirectly attributable to the hurricane.
+    -   Their estimate was more than 70 times the official count
+
+**Article:** Kishore, N., Marqués, D., Mahmud, A., Kiang, M. V., Rodriguez, I., Fuller, A., \... & Buckee, C. O. (2018). [Mortality in Puerto Rico after Hurricane Maria](https://www.nejm.org/doi/full/10.1056/nejmsa1803972). *New England journal of medicine*, *379*(2), 162-170.
+
+**GitHub repo:** [github.com/c2-d2/pr_mort_official](https://github.com/c2-d2/pr_mort_official)
+
+# Categorical predictors, interactions, & feature engineering
 
 ## Topics
 

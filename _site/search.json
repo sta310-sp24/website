@@ -1472,28 +1472,28 @@
   {
     "objectID": "slides/lab-05.html#team-workflow",
     "href": "slides/lab-05.html#team-workflow",
-    "title": "Lab 04",
+    "title": "Lab 05",
     "section": "Team workflow",
     "text": "Team workflow\n\nOnly one team member should type at a time. There are no markers in today’s lab, but you should use a similar workflow as Lab 04.\n\nEvery team member should still be engaged in discussion for all questions, even if it’s not your turn type.\n\nDon’t forget to pull to get your teammates’ updates before making changes to the .qmd file.\n\n\n\n\n\n\nImportant\n\n\nOnly one submission per team on Gradescope. Carefully read the submission instructions at the end of the lab instructions."
   },
   {
     "objectID": "slides/lab-05.html#tips-for-working-on-a-team",
     "href": "slides/lab-05.html#tips-for-working-on-a-team",
-    "title": "Lab 04",
+    "title": "Lab 05",
     "section": "Tips for working on a team",
     "text": "Tips for working on a team\n\nDo not pressure each other to finish early; use the time wisely to really learn the material and produce a quality report.\nThe labs are structured to help you learn the steps of a data analysis. Do not split up the lab among the team members; work on it together in its entirety.\nEveryone has something to contribute! Use the lab groups as an opportunity to share ideas and learn from each other."
   },
   {
     "objectID": "slides/lab-05.html#sta-210-mid-semester-survey",
     "href": "slides/lab-05.html#sta-210-mid-semester-survey",
-    "title": "Lab 04",
+    "title": "Lab 05",
     "section": "STA 210 Mid Semester Survey",
     "text": "STA 210 Mid Semester Survey\nPlease take a few minutes to complete the STA 210 Mid Semester Survey.\n\nClick here to access the survey."
   },
   {
     "objectID": "slides/lab-05.html#resources-for-lab-04",
     "href": "slides/lab-05.html#resources-for-lab-04",
-    "title": "Lab 04",
+    "title": "Lab 05",
     "section": "Resources for Lab 04",
     "text": "Resources for Lab 04\n\nLecture notes:\n\nFeature engineering\nFeature engineering: Model workflow\n\nRecipes package function reference\nTidy Modeling in R - Chapter 8: Feature engineering with recipes\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
   },

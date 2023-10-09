@@ -165,7 +165,7 @@
     "href": "slides/11-feature-engineering.html#work-on-impacts-of-hurricane-maria",
     "title": "Feature engineering",
     "section": "Work on impacts of Hurricane Maria",
-    "text": "Work on impacts of Hurricane Maria\n\nPart of a team who used stratified sampling to survey residents in Puerto Rico about the impacts of the 2017 Hurricane Maria\nEstimated percent of population who lost access to services such as electricity and water and the association with remoteness\nUsed confidence intervals to estimate deaths directly and indirectly attributable to the hurricane.\n\nTheir estimate was more than 70 times the official count\n\n\nArticle: Kishore, N., Marqués, D., Mahmud, A., Kiang, M. V., Rodriguez, I., Fuller, A., ... & Buckee, C. O. (2018). Mortality in Puerto Rico after Hurricane Maria. New England journal of medicine, 379(2), 162-170.\nGitHub repo: github.com/c2-d2/pr_mort_official"
+    "text": "Work on impacts of Hurricane Maria\n\nPart of a team that used stratified sampling to survey residents in Puerto Rico about the impacts of the 2017 Hurricane Maria\nEstimated percent of population who lost access to services, such as electricity and water, and the association with remoteness\nUsed confidence intervals to estimate deaths that were directly and indirectly attributable to the hurricane\n\nTheir estimate was more than 70 times the official count\n\n\nArticle: Kishore, N., Marqués, D., Mahmud, A., Kiang, M. V., Rodriguez, I., Fuller, A., ... & Buckee, C. O. (2018). Mortality in Puerto Rico after Hurricane Maria. New England journal of medicine, 379(2), 162-170.\nGitHub repo: github.com/c2-d2/pr_mort_official"
   },
   {
     "objectID": "slides/11-feature-engineering.html#topics",
@@ -266,13 +266,6 @@
     "text": "Understanding the model\n\\[\n\\begin{aligned}\n\\hat{interest\\_rate} &= 9.484 + 0.691 \\times debt\\_inc\\_cent\\\\ &- 0.007 \\times annual\\_income\\_th\\_cent \\\\ &+ 2.157 \\times SourceVerified + 7.181 \\times Verified \\\\ &- 0.016 \\times annual\\_inc\\_th\\_cent \\times SourceVerified\\\\ &- 0.032 \\times annual\\_inc\\_th\\_cent \\times Verified\n\\end{aligned}\n\\]\n\n\nWhat is \\(p\\), the number of predictor terms in the model?\nWrite the equation of the model to predict interest rate for applicants with Not Verified income.\nWrite the equation of the model to predict interest rate for applicants with Verified income."
   },
   {
-    "objectID": "slides/11-feature-engineering.html#topics-1",
-    "href": "slides/11-feature-engineering.html#topics-1",
-    "title": "Feature engineering",
-    "section": "Topics",
-    "text": "Topics\n\n\nReview: Training and testing splits\nFeature engineering with recipes"
-  },
-  {
     "objectID": "slides/11-feature-engineering.html#the-office",
     "href": "slides/11-feature-engineering.html#the-office",
     "title": "Feature engineering",
@@ -354,7 +347,7 @@
     "href": "slides/11-feature-engineering.html#feature-engineering-1",
     "title": "Feature engineering",
     "section": "Feature engineering",
-    "text": "Feature engineering\n\nWe prefer simple (parsimonious) models when possible, but parsimony does not mean sacrificing accuracy (or predictive performance) in the interest of simplicity\nVariables that go into the model and how they are represented are just as critical to success of the model\nFeature engineering allows us to get creative with our predictors in an effort to make them more useful for our model (to increase its predictive performance)"
+    "text": "Feature engineering\n\nWe prefer simple (parsimonious) models when possible, but parsimony does not mean sacrificing accuracy (or predictive performance) in the interest of simplicity\nVariables that go into the model and how they are represented are just as critical to success of the model\nFeature engineering allows us to get creative with our predictors in an effort to make them more useful for our model (to increase its predictive performance and improve interpretability)"
   },
   {
     "objectID": "slides/11-feature-engineering.html#feature-engineering-with-dplyr",

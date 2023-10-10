@@ -2,27 +2,28 @@
 title: "Feature engineering"
 subtitle: "Model workflow"
 author: "Prof. Maria Tackett"
-date: "2022-10-05"
-date-format: "MMM DD, YYYY"
-footer: "[🔗 Week 06](https://sta210-fa22.netlify.app/weeks/week-06.html)"
+date: "2023-10-11"
+footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"
 format: 
   revealjs:
     theme: slides.scss
     multiplex: false
     transition: fade
-    slide-number: true
+    slide-number: false
     incremental: false 
     chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 execute:
   freeze: auto
   echo: true
-  warning: false
-  message: false
 knitr:
   opts_chunk: 
     R.options:      
     width: 200
+bibliography: references.bib
 ---
 
 ```{r}
@@ -36,14 +37,6 @@ knitr::opts_chunk$set(
 ```
 
 ## Announcements
-
--   [Click here](https://sakai.duke.edu/access/content/group/e6f58eb4-029a-4130-bfa3-e5555d967a43/ARC_Presentation_STATS210.pptx) for slides from presentation about the Academic Resource Center.
--   Group labs start this week.
--   Upcoming events:
-    -   [UConn Sports Analytics Symposium](https://statds.org/events/ucsas2022/): October 08 (online options available)
-
-    -   [Code for Good](https://sakai.duke.edu/access/content/group/e6f58eb4-029a-4130-bfa3-e5555d967a43/HackDuke%20Code%20for%20Good%202022%20Flyer%202.png) hosted by Hack Duke: October 22 - 23
--   Click here for [Week 06](../weeks/week-06.qmd) activities.
 
 ## Topics
 
@@ -419,7 +412,7 @@ tidy(office_fit) |> print(n = 21)
 ## Application exercise
 
 ::: appex
-📋 [AE 08: Feature engineering](https://sta210-fa22.netlify.app/ae/ae-08-feature-engineering.html)
+📋
 :::
 
 ## Make predictions for training data

@@ -68,7 +68,7 @@ The data from this lab comes from the the article FiveThirtyEight [*The Ultimate
 The data set contains the characteristics and win percentage from 85 candies in the experiment. The variables are
 
 | Variable           | Description                                                               |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | `chocolate`        | Does it contain chocolate?                                                |
 | `fruity`           | Is it fruit flavored?                                                     |
 | `caramel`          | Is there caramel in the candy?                                            |
@@ -199,21 +199,28 @@ See the [Function Reference](https://recipes.tidymodels.org/reference/index.html
 
 ### Exercise 8
 
-Calculate $R^2$ and RMSE on the training data for the models fit in Exercise 5 and Exercise 7.
+-   Consider the model from Exercise 5 "Model 1" and the model fit in Exercise 7 "Model 2". Use the `glance()` function to calculate $R^2$ for both of these models.
+
+-   Which model would you choose based on $R^2$? Briefly explain your choice.
 
 ### Exercise 9
 
-Consider the model from Exercise 5 "Model 1" and the model fit in Exercise 7 "Model 2". State the model you would select based on each of the criteria below. Briefly explain your response.
+We will use RMSE to evalulate the predictive performance of each model on the testing data.
 
--   $R^2$
+-   Use the code below to calculate predicted values and RMSE for Model 1 on the testing data. Then get the RMSE for Model 2 on the testing data.
 
--   RMSE
+```{r}
+predict_test1 <- predict(candy_fit, candy_test) |> 
+  bind_cols(candy_test)
+
+rmse1 <- rmse(predict_test1, truth = winpercent, estimate = .pred)
+```
+
+-   Which model would you choose based on RMSE on the testing data? Briefly explain your choice.
 
 ### Exercise 10
 
--   Use RMSE to evaluate the predictive performance of each model on the testing data. Which model would you choose based on RMSE on the testing data?
-
--   Use the model you selected to describe what generally makes a good candy, i.e., one with a high win percentage.
+-   Use the model you selected in Exercise 9 to describe what generally makes a good candy, i.e., one with a high win percentage.
 
 ## Submission
 

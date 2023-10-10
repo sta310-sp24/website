@@ -371,8 +371,8 @@ Important
 <p>The data set contains the characteristics and win percentage from 85 candies in the experiment. The variables are</p>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
+<col style="width: 26%">
+<col style="width: 73%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -570,21 +570,31 @@ Tip
 </section>
 <section id="exercise-8" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-8">Exercise 8</h3>
-<p>Calculate <span class="math inline">\(R^2\)</span> and RMSE on the training data for the models fit in Exercise 5 and Exercise 7.</p>
+<ul>
+<li><p>Consider the model from Exercise 5 “Model 1” and the model fit in Exercise 7 “Model 2”. Use the <code>glance()</code> function to calculate <span class="math inline">\(R^2\)</span> for both of these models.</p></li>
+<li><p>Which model would you choose based on <span class="math inline">\(R^2\)</span>? Briefly explain your choice.</p></li>
+</ul>
 </section>
 <section id="exercise-9" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-9">Exercise 9</h3>
-<p>Consider the model from Exercise 5 “Model 1” and the model fit in Exercise 7 “Model 2”. State the model you would select based on each of the criteria below. Briefly explain your response.</p>
+<p>We will use RMSE to evalulate the predictive performance of each model on the testing data.</p>
 <ul>
-<li><p><span class="math inline">\(R^2\)</span></p></li>
-<li><p>RMSE</p></li>
+<li>Use the code below to calculate predicted values and RMSE for Model 1 on the testing data. Then get the RMSE for Model 2 on the testing data.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>predict_test1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(candy_fit, candy_test) <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(candy_test)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>rmse1 <span class="ot">&lt;-</span> <span class="fu">rmse</span>(predict_test1, <span class="at">truth =</span> winpercent, <span class="at">estimate =</span> .pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Which model would you choose based on RMSE on the testing data? Briefly explain your choice.</li>
 </ul>
 </section>
 <section id="exercise-10" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-10">Exercise 10</h3>
 <ul>
-<li><p>Use RMSE to evaluate the predictive performance of each model on the testing data. Which model would you choose based on RMSE on the testing data?</p></li>
-<li><p>Use the model you selected to describe what generally makes a good candy, i.e., one with a high win percentage.</p></li>
+<li>Use the model you selected in Exercise 9 to describe what generally makes a good candy, i.e., one with a high win percentage.</li>
 </ul>
 </section>
 </section>

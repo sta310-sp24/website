@@ -58,7 +58,7 @@ Please take a few minutes to complete the STA 210 Mid Semester Survey.\
 -   Lecture notes:
 
     -   [Feature engineering](https://sta210-fa23.netlify.app/slides/11-feature-engineering.html#/title-slide)
-    -   [Feature engineering: Model workflow](https://sta210-fa22.netlify.app/slides/12-feature-engineering-pt2.html#/title-slide)
+    -   [Feature engineering: Model workflow](https://sta210-fa23.netlify.app/slides/12-feature-engineering-pt2.html#/title-slide)
 
 -   [Recipes package function reference](https://recipes.tidymodels.org/reference/index.html)
 

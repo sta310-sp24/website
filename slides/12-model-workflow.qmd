@@ -3,6 +3,7 @@ title: "Feature engineering"
 subtitle: "Model workflow"
 author: "Prof. Maria Tackett"
 date: "2023-10-11"
+date-format: "MMM DD, YYYY"
 footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"
 format: 
@@ -37,6 +38,16 @@ knitr::opts_chunk$set(
 ```
 
 ## Announcements
+
+-   Lab 05 due October 20
+
+-   Prof. Tackett will not have office hours on Friday
+
+    -   Email to schedule an appointment if you need to meet
+
+    -   All other office hours on regular schedule
+
+<center>🍁 Have a good Fall Break! 🍁</center>
 
 ## Topics
 
@@ -161,6 +172,7 @@ office_rec
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2"
+#| message: true
 
 office_rec <- office_rec |>
   update_role(title, new_role = "ID")
@@ -175,6 +187,7 @@ New features for day of week and month
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2"
+#| message: true
 
 office_rec <- office_rec |>
   step_date(air_date, features = c("dow", "month"))
@@ -200,10 +213,10 @@ This is optional, we'll show the results for demonstrative purposes. It doesn't 
 #| echo: true
 
 # determine required parameters to be estimated
-office_rec_trained <- prep(office_rec)
-
+office_rec |>
+  prep() |>
 # apply recipe computations to data
-bake(office_rec_trained, office_train) |>
+  bake(office_train) |>
   glimpse()
 ```
 
@@ -214,6 +227,7 @@ Identify holidays in `air_date`, then remove `air_date`
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2,3,4,5,6"
+#| message: true
 
 office_rec <- office_rec |>
   step_holiday(
@@ -230,8 +244,9 @@ office_rec
 ```{r}
 #| echo: true
 
-office_rec_trained <- prep(office_rec)
-bake(office_rec_trained, office_train) |>
+office_rec |>
+  prep() |>
+  bake(office_train) |>
   glimpse()
 ```
 
@@ -242,6 +257,7 @@ Convert `season` to factor
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2"
+#| message: true
 
 office_rec <- office_rec |>
   step_num2factor(season, levels = as.character(1:9))
@@ -254,8 +270,9 @@ office_rec
 ```{r}
 #| echo: true
 
-office_rec_trained <- prep(office_rec)
-bake(office_rec_trained, office_train) |>
+office_rec |>
+  prep() |>
+  bake(office_train) |>
   glimpse()
 ```
 
@@ -266,6 +283,7 @@ Convert all nominal (categorical) predictors to factors
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2"
+#| message: true
 
 office_rec <- office_rec |>
   step_dummy(all_nominal_predictors())
@@ -278,8 +296,11 @@ office_rec
 ```{r}
 #| echo: true
 
-office_rec_trained <- prep(office_rec)
-bake(office_rec_trained, office_train) |>
+# determine required parameters to be estimated
+office_rec |>
+  prep() |>
+# apply recipe computations to data
+  bake(office_train) |>
   glimpse()
 ```
 
@@ -290,6 +311,7 @@ Remove all predictors that contain only a single value
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2"
+#| message: true
 
 office_rec <- office_rec |>
   step_zv(all_predictors())
@@ -302,8 +324,9 @@ office_rec
 ```{r}
 #| echo: true
 
-office_rec_trained <- prep(office_rec)
-bake(office_rec_trained, office_train) |>
+office_rec |>
+  prep() |>
+  bake(office_train) |>
   glimpse()
 ```
 
@@ -337,6 +360,7 @@ office_rec <- recipe(imdb_rating ~ ., data = office_train) |>
 
 ```{r}
 #| echo: true
+#| message: true
 
 office_rec
 ```
@@ -344,6 +368,12 @@ office_rec
 ## Recipe workflow
 
 ![Artwork by [\@allison_horst](https://twitter.com/allison_horst)](images/12/recipes-workflow.png){fig-align="center"}
+
+# Application exercise
+
+::: appex
+📋 [sta210-fa23.netlify.app/ae/ae-10](https://sta210-fa23.netlify.app/ae/ae-10.html)
+:::
 
 # Building workflows
 
@@ -407,13 +437,13 @@ tidy(office_fit)
 tidy(office_fit) |> print(n = 21)
 ```
 
-# Evaluate model
-
-## Application exercise
+# Application exercise
 
 ::: appex
-📋
+📋 [sta210-fa23.netlify.app/ae/ae-10](https://sta210-fa23.netlify.app/ae/ae-10.html)
 :::
+
+# Evaluate model
 
 ## Make predictions for training data
 
@@ -555,3 +585,9 @@ rsq_test <- rsq(office_test_pred, truth = imdb_rating, estimate = .pred) |>
 -   It is not an independent piece of information; predicting the training set can only reflect what the model already knows.
 
 -   Suppose you give a class a test, then give them the answers, then provide the same test. The student scores on the second test do not accurately reflect what they know about the subject; these scores would probably be higher than their results on the first test.
+
+# Application exercise
+
+::: appex
+📋 [sta210-fa23.netlify.app/ae/ae-10](https://sta210-fa23.netlify.app/ae/ae-10.html)
+:::

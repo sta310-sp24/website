@@ -68,7 +68,7 @@ The data from this lab comes from the the article FiveThirtyEight [*The Ultimate
 The data set contains the characteristics and win percentage from 85 candies in the experiment. The variables are
 
 | Variable           | Description                                                               |
-|-------------------|-----------------------------------------------------|
+|--------------------|---------------------------------------------------------------------------|
 | `chocolate`        | Does it contain chocolate?                                                |
 | `fruity`           | Is it fruit flavored?                                                     |
 | `caramel`          | Is there caramel in the candy?                                            |

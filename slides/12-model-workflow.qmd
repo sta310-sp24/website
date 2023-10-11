@@ -220,7 +220,7 @@ office_rec |>
   glimpse()
 ```
 
-## Step 3: Add more features
+## Step 3: Add more features {.midi}
 
 Identify holidays in `air_date`, then remove `air_date`
 
@@ -372,7 +372,7 @@ office_rec
 # Application exercise
 
 ::: appex
-📋 [sta210-fa23.netlify.app/ae/ae-10](https://sta210-fa23.netlify.app/ae/ae-10.html)
+📋 [sta210-fa23.netlify.app/ae/ae-10-model-workflow](https://sta210-fa23.netlify.app/ae/ae-10-model-workflow)
 :::
 
 # Building workflows
@@ -440,7 +440,7 @@ tidy(office_fit) |> print(n = 21)
 # Application exercise
 
 ::: appex
-📋 [sta210-fa23.netlify.app/ae/ae-10](https://sta210-fa23.netlify.app/ae/ae-10.html)
+📋 [sta210-fa23.netlify.app/ae/ae-10-model-workflow](https://sta210-fa23.netlify.app/ae/ae-10-model-workflow.html)
 :::
 
 # Evaluate model
@@ -589,5 +589,5 @@ rsq_test <- rsq(office_test_pred, truth = imdb_rating, estimate = .pred) |>
 # Application exercise
 
 ::: appex
-📋 [sta210-fa23.netlify.app/ae/ae-10](https://sta210-fa23.netlify.app/ae/ae-10.html)
+📋 [sta210-fa23.netlify.app/ae/ae-10-model-workflow](https://sta210-fa23.netlify.app/ae/ae-10-model-workflow.html)
 :::

@@ -348,7 +348,7 @@ Important
 <ul>
 <li><code>annual_income</code> rescaled to thousands of dollars
 <ul>
-<li>Remove the original <code>annual_income</code> from the model</li>
+<li>Do not include the original variable <code>annual_income</code> in the model</li>
 </ul></li>
 <li>Mean-centered quantitative variables</li>
 <li>Indicator (dummy) variables for the categorical predictor</li>
@@ -361,8 +361,9 @@ Important
 <p>Make <code>Verified</code> the baseline level for the model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>loan50 <span class="ot">&lt;-</span> loan50 <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">verified_income =</span> <span class="fu">factor</span>(verified_income, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Verified"</span>, <span class="st">"Not Verified"</span>, </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                                              <span class="st">"Source Verified"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">verified_income =</span> <span class="fu">factor</span>(verified_income,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Verified"</span>, <span class="st">"Not Verified"</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"Source Verified"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="testtrain-split" class="level2">
@@ -380,6 +381,7 @@ Important
 <h2 class="anchored" data-anchor-id="build-and-troubleshoot-recipe">Build (and troubleshoot) recipe</h2>
 <ul>
 <li><p>Use <code>step_mutate()</code> to create a new variable <code>annual_income_th</code> that is <code>annual_income</code> rescaled to thousands of dollars</p></li>
+<li><p>Use <code>step_rm()</code> to remove <code>annual_income</code> from the model</p></li>
 <li><p>Use <code>step_center()</code> to mean-center quantitative variables</p></li>
 <li><p>Use <code>step_dummy()</code> to create indicator variables for the categorical predictor</p></li>
 <li><p>Use <code>step_interact()</code> to create interaction between <code>annual_income_th</code> and <code>verified_income</code></p></li>
@@ -438,12 +440,12 @@ predictor: 3</code></pre>
 </div>
 <section id="check-recipe-using-prep-and-bake" class="level3">
 <h3 class="anchored" data-anchor-id="check-recipe-using-prep-and-bake">Check recipe using <code>prep()</code> and <code>bake()</code></h3>
+<p>Once you’ve corrected the code, remove <code>#| eval: false</code> before rendering the document.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># determine required parameters to be estimated</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>loan_rec <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(loan_train) <span class="sc">|&gt;</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>loan_rec <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(loan_train) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>In which step do we have an error?</p></li>
@@ -481,19 +483,7 @@ Computational engine: lm </code></pre>
 </section>
 <section id="fit-model-to-training-data" class="level3">
 <h3 class="anchored" data-anchor-id="fit-model-to-training-data">Fit model to training data</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>Remove <code>#| eval: false</code> before rendering the document.</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>loan_fit <span class="ot">&lt;-</span> loan_wflow <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> loan_train)</span>
@@ -507,19 +497,7 @@ Note
 <h2 class="anchored" data-anchor-id="evaluate-model-on-training-data">Evaluate model on training data</h2>
 <section id="make-predictions" class="level3">
 <h3 class="anchored" data-anchor-id="make-predictions">Make predictions</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>Fill in the code and remove <code>#| eval: false</code> before rendering the document.</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>loan_train_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(loan_fit, ______) <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(_____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -527,38 +505,14 @@ Note
 </section>
 <section id="calculate-r2" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-r2">Calculate <span class="math inline">\(R^2\)</span></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>Fill in the code and remove <code>#| eval: false</code> before rendering the document.</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsq</span>(loan_train_pred, <span class="at">truth =</span> _____, <span class="at">estimate =</span> _____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calculate-rmse" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-rmse">Calculate RMSE</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>Fill in the code and remove <code>#| eval: false</code> before rendering the document.</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rmse</span>(______, ________, ________)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -588,7 +542,7 @@ Note
 <section id="calculate-r2-1" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-r2-1">Calculate <span class="math inline">\(R^2\)</span></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fill in code to calculate $R^2$ for testing data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fill in code to calculate R-sq for testing data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calculate-rmse-1" class="level3">

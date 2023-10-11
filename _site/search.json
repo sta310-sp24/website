@@ -1871,14 +1871,14 @@
   {
     "objectID": "prepare/oct-09.html",
     "href": "prepare/oct-09.html",
-    "title": "October 09 lecture",
+    "title": "October 09 & 11 lectures",
     "section": "",
     "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
   },
   {
     "objectID": "prepare/oct-09.html#assigned-reading",
     "href": "prepare/oct-09.html#assigned-reading",
-    "title": "October 09 lecture",
+    "title": "October 09 & 11 lectures",
     "section": "",
     "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
   },
@@ -2307,14 +2307,14 @@
     "href": "ae/ae-10-model-workflow.html#analysis-goal",
     "title": "AE 10: Model workflow",
     "section": "Analysis goal",
-    "text": "Analysis goal\nThe goals of this analysis are to build a recipe to fit a linear regression model on the training data that has the following features:\n\nannual_income rescaled to thousands of dollars\n\nRemove the original annual_income from the model\n\nMean-centered quantitative variables\nIndicator (dummy) variables for the categorical predictor\nInteraction term between rescaled annual_income and verified_income\n\nand (2) use prep() and bake() to check the recipe"
+    "text": "Analysis goal\nThe goals of this analysis are to build a recipe to fit a linear regression model on the training data that has the following features:\n\nannual_income rescaled to thousands of dollars\n\nDo not include the original variable annual_income in the model\n\nMean-centered quantitative variables\nIndicator (dummy) variables for the categorical predictor\nInteraction term between rescaled annual_income and verified_income\n\nand (2) use prep() and bake() to check the recipe"
   },
   {
     "objectID": "ae/ae-10-model-workflow.html#relevel-verified_income",
     "href": "ae/ae-10-model-workflow.html#relevel-verified_income",
     "title": "AE 10: Model workflow",
     "section": "Relevel verified_income",
-    "text": "Relevel verified_income\nMake Verified the baseline level for the model.\n\nloan50 &lt;- loan50 |&gt;\n  mutate(verified_income = factor(verified_income, levels = c(\"Verified\", \"Not Verified\", \n                                                              \"Source Verified\")))"
+    "text": "Relevel verified_income\nMake Verified the baseline level for the model.\n\nloan50 &lt;- loan50 |&gt;\n  mutate(verified_income = factor(verified_income,\n                                  levels = c(\"Verified\", \"Not Verified\", \n                                             \"Source Verified\")))"
   },
   {
     "objectID": "ae/ae-10-model-workflow.html#testtrain-split",
@@ -2328,28 +2328,28 @@
     "href": "ae/ae-10-model-workflow.html#build-and-troubleshoot-recipe",
     "title": "AE 10: Model workflow",
     "section": "Build (and troubleshoot) recipe",
-    "text": "Build (and troubleshoot) recipe\n\nUse step_mutate() to create a new variable annual_income_th that is annual_income rescaled to thousands of dollars\nUse step_center() to mean-center quantitative variables\nUse step_dummy() to create indicator variables for the categorical predictor\nUse step_interact() to create interaction between annual_income_th and verified_income\n\n\nloan_rec &lt;-  recipe(interest_rate ~ annual_income + debt_to_income + verified_income, \n                    data = loan_train) |&gt;\n  step_mutate(annual_income_th = annual_income / 1000) |&gt;\n  step_rm(annual_income) |&gt;\n  step_center(all_numeric_predictors()) |&gt;\n  step_dummy(all_nominal_predictors()) |&gt;\n  step_interact(terms = ~ annual_income_th:verified_income) \n\n\nloan_rec\n\n\n\n\n── Recipe ──────────────────────────────────────────────────────────────────────\n\n\n\n\n\n── Inputs \n\n\nNumber of variables by role\n\n\noutcome:   1\npredictor: 3\n\n\n\n\n\n── Operations \n\n\n• Variable mutation for: annual_income / 1000\n\n\n• Variables removed: annual_income\n\n\n• Centering for: all_numeric_predictors()\n\n\n• Dummy variables from: all_nominal_predictors()\n\n\n• Interactions with: annual_income_th:verified_income\n\n\n\nCheck recipe using prep() and bake()\n\n# determine required parameters to be estimated\nloan_rec |&gt;\n  prep() |&gt;\n  bake(loan_train) |&gt;\n  glimpse()\n\n\nIn which step do we have an error?\nClick here to access the recipes reference page. Find the reference page for the relevant step_ function.\nSee the examples at the bottom of the reference page. Which model most closely aligns the interaction we’re trying to create?\nUse example to help you fix the code. Then, use prep() and bake() to see the updated results."
+    "text": "Build (and troubleshoot) recipe\n\nUse step_mutate() to create a new variable annual_income_th that is annual_income rescaled to thousands of dollars\nUse step_rm() to remove annual_income from the model\nUse step_center() to mean-center quantitative variables\nUse step_dummy() to create indicator variables for the categorical predictor\nUse step_interact() to create interaction between annual_income_th and verified_income\n\n\nloan_rec &lt;-  recipe(interest_rate ~ annual_income + debt_to_income + verified_income, \n                    data = loan_train) |&gt;\n  step_mutate(annual_income_th = annual_income / 1000) |&gt;\n  step_rm(annual_income) |&gt;\n  step_center(all_numeric_predictors()) |&gt;\n  step_dummy(all_nominal_predictors()) |&gt;\n  step_interact(terms = ~ annual_income_th:verified_income) \n\n\nloan_rec\n\n\n\n\n── Recipe ──────────────────────────────────────────────────────────────────────\n\n\n\n\n\n── Inputs \n\n\nNumber of variables by role\n\n\noutcome:   1\npredictor: 3\n\n\n\n\n\n── Operations \n\n\n• Variable mutation for: annual_income / 1000\n\n\n• Variables removed: annual_income\n\n\n• Centering for: all_numeric_predictors()\n\n\n• Dummy variables from: all_nominal_predictors()\n\n\n• Interactions with: annual_income_th:verified_income\n\n\n\nCheck recipe using prep() and bake()\nOnce you’ve corrected the code, remove #| eval: false before rendering the document.\n\nloan_rec |&gt;\n  prep() |&gt;\n  bake(loan_train) |&gt;\n  glimpse()\n\n\nIn which step do we have an error?\nClick here to access the recipes reference page. Find the reference page for the relevant step_ function.\nSee the examples at the bottom of the reference page. Which model most closely aligns the interaction we’re trying to create?\nUse example to help you fix the code. Then, use prep() and bake() to see the updated results."
   },
   {
     "objectID": "ae/ae-10-model-workflow.html#workflows-and-model-fitting",
     "href": "ae/ae-10-model-workflow.html#workflows-and-model-fitting",
     "title": "AE 10: Model workflow",
     "section": "Workflows and model fitting",
-    "text": "Workflows and model fitting\n\nSpecify model\n\nloan_spec &lt;- linear_reg() |&gt;\n  set_engine(\"lm\")\n\nloan_spec\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm \n\n\n\n\nBuild workflow\n\nloan_wflow &lt;- workflow() |&gt;\n  add_model(loan_spec) |&gt;\n  add_recipe(loan_rec)\n\nloan_wflow\n\n\n\nFit model to training data\n\n\n\n\n\n\nNote\n\n\n\nRemove #| eval: false before rendering the document.\n\n\n\nloan_fit &lt;- loan_wflow |&gt;\n  fit(data = loan_train)\n\ntidy(loan_fit) |&gt;\n  kable(digits = 3)"
+    "text": "Workflows and model fitting\n\nSpecify model\n\nloan_spec &lt;- linear_reg() |&gt;\n  set_engine(\"lm\")\n\nloan_spec\n\nLinear Regression Model Specification (regression)\n\nComputational engine: lm \n\n\n\n\nBuild workflow\n\nloan_wflow &lt;- workflow() |&gt;\n  add_model(loan_spec) |&gt;\n  add_recipe(loan_rec)\n\nloan_wflow\n\n\n\nFit model to training data\nRemove #| eval: false before rendering the document.\n\nloan_fit &lt;- loan_wflow |&gt;\n  fit(data = loan_train)\n\ntidy(loan_fit) |&gt;\n  kable(digits = 3)"
   },
   {
     "objectID": "ae/ae-10-model-workflow.html#evaluate-model-on-training-data",
     "href": "ae/ae-10-model-workflow.html#evaluate-model-on-training-data",
     "title": "AE 10: Model workflow",
     "section": "Evaluate model on training data",
-    "text": "Evaluate model on training data\n\nMake predictions\n\n\n\n\n\n\nNote\n\n\n\nFill in the code and remove #| eval: false before rendering the document.\n\n\n\nloan_train_pred &lt;- predict(loan_fit, ______) |&gt;\n  bind_cols(_____)\n\n\n\nCalculate \\(R^2\\)\n\n\n\n\n\n\nNote\n\n\n\nFill in the code and remove #| eval: false before rendering the document.\n\n\n\nrsq(loan_train_pred, truth = _____, estimate = _____)\n\n\n\nCalculate RMSE\n\n\n\n\n\n\nNote\n\n\n\nFill in the code and remove #| eval: false before rendering the document.\n\n\n\nrmse(______, ________, ________)\n\n\nIs this RMSE considered high or low? Hint: Consider the range of the response variable to answer this question.\n\nloan_train |&gt;\n  summarise(min = min(interest_rate), max = max(interest_rate))\n\n# A tibble: 1 × 2\n    min   max\n  &lt;dbl&gt; &lt;dbl&gt;\n1  5.31  26.3"
+    "text": "Evaluate model on training data\n\nMake predictions\nFill in the code and remove #| eval: false before rendering the document.\n\nloan_train_pred &lt;- predict(loan_fit, ______) |&gt;\n  bind_cols(_____)\n\n\n\nCalculate \\(R^2\\)\nFill in the code and remove #| eval: false before rendering the document.\n\nrsq(loan_train_pred, truth = _____, estimate = _____)\n\n\n\nCalculate RMSE\nFill in the code and remove #| eval: false before rendering the document.\n\nrmse(______, ________, ________)\n\n\nIs this RMSE considered high or low? Hint: Consider the range of the response variable to answer this question.\n\nloan_train |&gt;\n  summarise(min = min(interest_rate), max = max(interest_rate))\n\n# A tibble: 1 × 2\n    min   max\n  &lt;dbl&gt; &lt;dbl&gt;\n1  5.31  26.3"
   },
   {
     "objectID": "ae/ae-10-model-workflow.html#evaluate-model-on-testing-data",
     "href": "ae/ae-10-model-workflow.html#evaluate-model-on-testing-data",
     "title": "AE 10: Model workflow",
     "section": "Evaluate model on testing data",
-    "text": "Evaluate model on testing data\n\nMake predictions\n\n# fill in code to make predictions from testing data\n\n\n\nCalculate \\(R^2\\)\n\n# fill in code to calculate $R^2$ for testing data\n\n\n\nCalculate RMSE\n\n# fill in code to calculate RMSE for testing data"
+    "text": "Evaluate model on testing data\n\nMake predictions\n\n# fill in code to make predictions from testing data\n\n\n\nCalculate \\(R^2\\)\n\n# fill in code to calculate R-sq for testing data\n\n\n\nCalculate RMSE\n\n# fill in code to calculate RMSE for testing data"
   },
   {
     "objectID": "ae/ae-10-model-workflow.html#compare-training-and-testing-data-results",

@@ -1,5 +1,5 @@
 ---
-title: "October 09 lecture"
+title: "October 09 & 11 lectures"
 subtitle: "Feature engineering"
 ---
 

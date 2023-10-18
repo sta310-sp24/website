@@ -413,14 +413,14 @@ Prof.&nbsp;Maria Tackett
 <li><p>See Ed Discussion for upcoming events and internship opportunities</p></li>
 <li><p>Statistics Experience due Mon, Nov 20 at 11:59pm</p></li>
 <li><p>Please submit <a href="https://duke.qualtrics.com/jfe/form/SV_86XWKdUFjvStYmW">mid-semester feedback</a> by Friday</p></li>
-<li><p>Prof.&nbsp;Tackett office hours Fridays 1:30 - 3:30pm</p></li>
+<li><p>Prof.&nbsp;Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester</p></li>
 </ul>
 </section>
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
 <div>
 <ul>
-<li>ANOVA for Multiple Linear Regression and sum of squares</li>
+<li>ANOVA for multiple linear regression and sum of squares</li>
 <li>Comparing models with <span class="math inline">\(R^2\)</span> vs.&nbsp;<span class="math inline">\(R^2_{adj}\)</span></li>
 <li>Comparing models with AIC and BIC</li>
 <li>Occam’s razor and parsimony</li>
@@ -967,7 +967,7 @@ R^2 = \frac{SS_{Model}}{SS_{Total}} = 1 - \frac{SS_{Error}}{SS_{Total}} = 1 - \f
 <ul>
 <li><strong>Adjusted</strong> <span class="math inline">\(R^2\)</span>: measure that includes a penalty for unnecessary predictor variables</li>
 <li>Similar to <span class="math inline">\(R^2\)</span>, it is a measure of the amount of variation in the response that is explained by the regression model</li>
-<li>Differs from <span class="math inline">\(R^2\)</span> by using the mean squares rather than sums of squares and therefore adjusting for the number of predictor variables</li>
+<li>Differs from <span class="math inline">\(R^2\)</span> by using the mean squares (sumsq/df) rather than sums of squares and therefore adjusting for the number of predictor variables</li>
 </ul>
 </section>
 <section id="r2-and-adjusted-r2" class="slide level2">
@@ -1036,10 +1036,11 @@ R^2 = \frac{SS_{Model}}{SS_{Total}} = 1 - \frac{SS_{Error}}{SS_{Total}} = 1 - \f
 <div class="question">
 <ol type="1">
 <li>Why did we not use the full <code>recipe()</code> workflow to fit Model 1 or Model 2?</li>
-<li>Which model would we choose based on �2?</li>
-<li>Which model would we choose based on Adjusted �2?</li>
-<li>Which statistic should we use to choose the final model - �2 or Adjusted �2? Why?</li>
+<li>Which model would we choose based on <span class="math inline">\(R^2\)</span>?</li>
+<li>Which model would we choose based on Adjusted <span class="math inline">\(R^2\)</span>?</li>
+<li>Which statistic should we use to choose the final model - <span class="math inline">\(R^2\)</span> or Adjusted <span class="math inline">\(R^2\)</span>? Why?</li>
 </ol>
+<p>Vote on Ed Discussion [<a href="https://edstem.org/us/courses/44523/discussion/462744">10:05am lecture</a>][<a href="https://edstem.org/us/courses/44523/discussion/462751">1:25pm lecture</a>]</p>
 </div>
 </section>
 <section id="aic-bic" class="slide level2">
@@ -1272,23 +1273,42 @@ R^2 = \frac{SS_{Model}}{SS_{Total}} = 1 - \frac{SS_{Error}}{SS_{Total}} = 1 - \f
 <span id="cb18-2"><a href="#cb18-2"></a>                    <span class="at">data =</span> tips_train)</span>
 <span id="cb18-3"><a href="#cb18-3"></a></span>
 <span id="cb18-4"><a href="#cb18-4"></a>tips_rec1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Recipe ──────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Inputs </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Number of variables by role</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>outcome:   1
+predictor: 3</code></pre>
+</div>
 </div>
 </section>
 <section id="to-get-started-2" class="slide level2 midi">
 <h2>To get started…</h2>
 <p><strong>Specify model</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>tips_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>tips_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><strong>Create workflow</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>tips_wflow1 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">add_model</span>(tips_spec) <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">add_recipe</span>(tips_rec1)</span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a>tips_wflow1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>tips_wflow1 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">add_model</span>(tips_spec) <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">add_recipe</span>(tips_rec1)</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a>tips_wflow1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>══ Workflow ════════════════════════════════════════════════════════════════════
 Preprocessor: Recipe
@@ -1314,8 +1334,8 @@ Computational engine: lm </code></pre>
 <section id="tips-split-training-data" class="slide level2">
 <h2>Tips: Split training data</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(tips_train, <span class="at">v =</span> <span class="dv">3</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>folds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(tips_train, <span class="at">v =</span> <span class="dv">3</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a>folds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#  3-fold cross-validation 
 # A tibble: 3 × 2
@@ -1340,10 +1360,10 @@ Computational engine: lm </code></pre>
 <section id="tips-fit-resamples" class="slide level2 midi">
 <h2>Tips: Fit resamples</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>tips_fit_rs1 <span class="ot">&lt;-</span> tips_wflow1 <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">fit_resamples</span>(folds)</span>
-<span id="cb24-3"><a href="#cb24-3"></a></span>
-<span id="cb24-4"><a href="#cb24-4"></a>tips_fit_rs1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>tips_fit_rs1 <span class="ot">&lt;-</span> tips_wflow1 <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">fit_resamples</span>(folds)</span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a>tips_fit_rs1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Resampling results
 # 3-fold cross-validation 
@@ -1366,8 +1386,8 @@ Computational engine: lm </code></pre>
 <section id="collect-r2-and-rmse-from-cv" class="slide level2">
 <h2>Collect <span class="math inline">\(R^2\)</span> and RMSE from CV</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Produces summary across all CV</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">collect_metrics</span>(tips_fit_rs1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Produces summary across all CV</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">collect_metrics</span>(tips_fit_rs1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   .metric .estimator  mean     n std_err .config             
@@ -1382,9 +1402,9 @@ Computational engine: lm </code></pre>
 <section id="deeper-look-into-r2-and-rmse" class="slide level2">
 <h2>Deeper look into <span class="math inline">\(R^2\)</span> and RMSE</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>cv_metrics1 <span class="ot">&lt;-</span> <span class="fu">collect_metrics</span>(tips_fit_rs1, <span class="at">summarize =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb28-2"><a href="#cb28-2"></a></span>
-<span id="cb28-3"><a href="#cb28-3"></a>cv_metrics1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>cv_metrics1 <span class="ot">&lt;-</span> <span class="fu">collect_metrics</span>(tips_fit_rs1, <span class="at">summarize =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb34-2"><a href="#cb34-2"></a></span>
+<span id="cb34-3"><a href="#cb34-3"></a>cv_metrics1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   id    .metric .estimator .estimate .config             
@@ -1401,10 +1421,10 @@ Computational engine: lm </code></pre>
 <section id="better-tabulation-of-r2-and-rmse-from-cv" class="slide level2">
 <h2>Better tabulation of <span class="math inline">\(R^2\)</span> and RMSE from CV</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>cv_metrics1 <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">mutate</span>(<span class="at">.estimate =</span> <span class="fu">round</span>(.estimate, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> id, <span class="at">names_from =</span> .metric, <span class="at">values_from =</span> .estimate) <span class="sc">|&gt;</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Fold"</span>, <span class="st">"RMSE"</span>, <span class="st">"R-squared"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>cv_metrics1 <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">mutate</span>(<span class="at">.estimate =</span> <span class="fu">round</span>(.estimate, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> id, <span class="at">names_from =</span> .metric, <span class="at">values_from =</span> .estimate) <span class="sc">|&gt;</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Fold"</span>, <span class="st">"RMSE"</span>, <span class="st">"R-squared"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1443,14 +1463,14 @@ Computational engine: lm </code></pre>
 <div class="column" style="width:50%;">
 <p>Cross validation RMSE stats:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>cv_metrics1 <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">"rmse"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb31-4"><a href="#cb31-4"></a>    <span class="at">min =</span> <span class="fu">min</span>(.estimate),</span>
-<span id="cb31-5"><a href="#cb31-5"></a>    <span class="at">max =</span> <span class="fu">max</span>(.estimate),</span>
-<span id="cb31-6"><a href="#cb31-6"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(.estimate),</span>
-<span id="cb31-7"><a href="#cb31-7"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(.estimate)</span>
-<span id="cb31-8"><a href="#cb31-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>cv_metrics1 <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">"rmse"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb37-4"><a href="#cb37-4"></a>    <span class="at">min =</span> <span class="fu">min</span>(.estimate),</span>
+<span id="cb37-5"><a href="#cb37-5"></a>    <span class="at">max =</span> <span class="fu">max</span>(.estimate),</span>
+<span id="cb37-6"><a href="#cb37-6"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(.estimate),</span>
+<span id="cb37-7"><a href="#cb37-7"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(.estimate)</span>
+<span id="cb37-8"><a href="#cb37-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
     min   max  mean    sd
@@ -1461,13 +1481,13 @@ Computational engine: lm </code></pre>
 </div><div class="column" style="width:50%;">
 <p>Training data tips:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>tips_train <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb33-3"><a href="#cb33-3"></a>    <span class="at">min =</span> <span class="fu">min</span>(Tip),</span>
-<span id="cb33-4"><a href="#cb33-4"></a>    <span class="at">max =</span> <span class="fu">max</span>(Tip),</span>
-<span id="cb33-5"><a href="#cb33-5"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(Tip),</span>
-<span id="cb33-6"><a href="#cb33-6"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(Tip)</span>
-<span id="cb33-7"><a href="#cb33-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>tips_train <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb39-3"><a href="#cb39-3"></a>    <span class="at">min =</span> <span class="fu">min</span>(Tip),</span>
+<span id="cb39-4"><a href="#cb39-4"></a>    <span class="at">max =</span> <span class="fu">max</span>(Tip),</span>
+<span id="cb39-5"><a href="#cb39-5"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(Tip),</span>
+<span id="cb39-6"><a href="#cb39-6"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(Tip)</span>
+<span id="cb39-7"><a href="#cb39-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
     min   max  mean    sd
@@ -1481,18 +1501,18 @@ Computational engine: lm </code></pre>
 <section id="calculate-r2_adj-aic-and-bic-for-each-fold" class="slide level2 midi">
 <h2>Calculate <span class="math inline">\(R^2_{Adj}\)</span>, AIC, and BIC for each fold</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Function to get Adj R-sq, AIC, BIC</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a>calc_model_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">glance</span>(<span class="fu">extract_fit_parsnip</span>(x)) <span class="sc">|&gt;</span></span>
-<span id="cb35-4"><a href="#cb35-4"></a>    <span class="fu">select</span>(adj.r.squared, AIC, BIC)</span>
-<span id="cb35-5"><a href="#cb35-5"></a>}</span>
-<span id="cb35-6"><a href="#cb35-6"></a></span>
-<span id="cb35-7"><a href="#cb35-7"></a><span class="co"># Fit model and calculate statistics for each fold</span></span>
-<span id="cb35-8"><a href="#cb35-8"></a>tips_fit_rs1 <span class="ot">&lt;-</span>tips_wflow1 <span class="sc">|&gt;</span></span>
-<span id="cb35-9"><a href="#cb35-9"></a>  <span class="fu">fit_resamples</span>(<span class="at">resamples =</span> folds, </span>
-<span id="cb35-10"><a href="#cb35-10"></a>                <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">extract =</span> calc_model_stats))</span>
-<span id="cb35-11"><a href="#cb35-11"></a></span>
-<span id="cb35-12"><a href="#cb35-12"></a>tips_fit_rs1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Function to get Adj R-sq, AIC, BIC</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>calc_model_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">glance</span>(<span class="fu">extract_fit_parsnip</span>(x)) <span class="sc">|&gt;</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a>    <span class="fu">select</span>(adj.r.squared, AIC, BIC)</span>
+<span id="cb41-5"><a href="#cb41-5"></a>}</span>
+<span id="cb41-6"><a href="#cb41-6"></a></span>
+<span id="cb41-7"><a href="#cb41-7"></a><span class="co"># Fit model and calculate statistics for each fold</span></span>
+<span id="cb41-8"><a href="#cb41-8"></a>tips_fit_rs1 <span class="ot">&lt;-</span>tips_wflow1 <span class="sc">|&gt;</span></span>
+<span id="cb41-9"><a href="#cb41-9"></a>  <span class="fu">fit_resamples</span>(<span class="at">resamples =</span> folds, </span>
+<span id="cb41-10"><a href="#cb41-10"></a>                <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">extract =</span> calc_model_stats))</span>
+<span id="cb41-11"><a href="#cb41-11"></a></span>
+<span id="cb41-12"><a href="#cb41-12"></a>tips_fit_rs1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Resampling results
 # 3-fold cross-validation 
@@ -1508,8 +1528,8 @@ Computational engine: lm </code></pre>
 <section id="collect-r2_adj-aic-bic-from-cv" class="slide level2 midi">
 <h2>Collect <span class="math inline">\(R^2_{Adj}\)</span>, AIC, BIC from CV</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">map_df</span>(tips_fit_rs1<span class="sc">$</span>.extracts, <span class="sc">~</span> .x[[<span class="dv">1</span>]][[<span class="dv">1</span>]]) <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">bind_cols</span>(<span class="at">Fold =</span> tips_fit_rs1<span class="sc">$</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">map_df</span>(tips_fit_rs1<span class="sc">$</span>.extracts, <span class="sc">~</span> .x[[<span class="dv">1</span>]][[<span class="dv">1</span>]]) <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">bind_cols</span>(<span class="at">Fold =</span> tips_fit_rs1<span class="sc">$</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   adj.r.squared   AIC   BIC Fold 
@@ -1521,13 +1541,6 @@ Computational engine: lm </code></pre>
 </div>
 <p><br></p>
 <p>Note: These are based on the model fit from the <em>analysis</em> data</p>
-</section>
-<section id="cross-validation-jargon" class="slide level2">
-<h2>Cross validation jargon</h2>
-<ul>
-<li>Referred to as <em>v-fold</em> or <em>k-fold</em> cross validation</li>
-</ul>
-<p>Also commonly abbreviated as CV</p>
 </section>
 <section id="cross-validation-in-practice" class="slide level2">
 <h2>Cross validation in practice</h2>

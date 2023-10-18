@@ -3945,14 +3945,14 @@
     "href": "slides/13-comparison-cv.html#announcements",
     "title": "Model comparison + cross validation",
     "section": "Announcements",
-    "text": "Announcements\n\nSee Ed Discussion for upcoming events and internship opportunities\nStatistics Experience due Mon, Nov 20 at 11:59pm\nPlease submit mid-semester feedback by Friday\nProf. Tackett office hours Fridays 1:30 - 3:30pm"
+    "text": "Announcements\n\nSee Ed Discussion for upcoming events and internship opportunities\nStatistics Experience due Mon, Nov 20 at 11:59pm\nPlease submit mid-semester feedback by Friday\nProf. Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester"
   },
   {
     "objectID": "slides/13-comparison-cv.html#topics",
     "href": "slides/13-comparison-cv.html#topics",
     "title": "Model comparison + cross validation",
     "section": "Topics",
-    "text": "Topics\n\n\nANOVA for Multiple Linear Regression and sum of squares\nComparing models with \\(R^2\\) vs. \\(R^2_{adj}\\)\nComparing models with AIC and BIC\nOccam’s razor and parsimony\nCross validation"
+    "text": "Topics\n\n\nANOVA for multiple linear regression and sum of squares\nComparing models with \\(R^2\\) vs. \\(R^2_{adj}\\)\nComparing models with AIC and BIC\nOccam’s razor and parsimony\nCross validation"
   },
   {
     "objectID": "slides/13-comparison-cv.html#computational-setup",
@@ -4099,7 +4099,7 @@
     "href": "slides/13-comparison-cv.html#adjusted-r2",
     "title": "Model comparison + cross validation",
     "section": "Adjusted \\(R^2\\)",
-    "text": "Adjusted \\(R^2\\)\n\nAdjusted \\(R^2\\): measure that includes a penalty for unnecessary predictor variables\nSimilar to \\(R^2\\), it is a measure of the amount of variation in the response that is explained by the regression model\nDiffers from \\(R^2\\) by using the mean squares rather than sums of squares and therefore adjusting for the number of predictor variables"
+    "text": "Adjusted \\(R^2\\)\n\nAdjusted \\(R^2\\): measure that includes a penalty for unnecessary predictor variables\nSimilar to \\(R^2\\), it is a measure of the amount of variation in the response that is explained by the regression model\nDiffers from \\(R^2\\) by using the mean squares (sumsq/df) rather than sums of squares and therefore adjusting for the number of predictor variables"
   },
   {
     "objectID": "slides/13-comparison-cv.html#r2-and-adjusted-r2",
@@ -4120,7 +4120,7 @@
     "href": "slides/13-comparison-cv.html#comparing-models-with-r2_adj",
     "title": "Model comparison + cross validation",
     "section": "Comparing models with \\(R^2_{adj}\\)",
-    "text": "Comparing models with \\(R^2_{adj}\\)\n\n\n\ntip_fit_1 &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(Tip ~ Party + \n            Age + \n            Meal,\n      \n    data = tips)\n\nglance(tip_fit_1) |&gt; \n  select(r.squared, adj.r.squared)\n\n# A tibble: 1 × 2\n  r.squared adj.r.squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.674         0.664\n\n\n\n\ntip_fit_2 &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(Tip ~ Party + \n            Age + \n            Meal + \n            Day, \n      data = tips)\n\nglance(tip_fit_2) |&gt; \n  select(r.squared, adj.r.squared)\n\n# A tibble: 1 × 2\n  r.squared adj.r.squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.683         0.662\n\n\n\n\n\n\nWhy did we not use the full recipe() workflow to fit Model 1 or Model 2?\nWhich model would we choose based on �2?\nWhich model would we choose based on Adjusted �2?\nWhich statistic should we use to choose the final model - �2 or Adjusted �2? Why?"
+    "text": "Comparing models with \\(R^2_{adj}\\)\n\n\n\ntip_fit_1 &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(Tip ~ Party + \n            Age + \n            Meal,\n      \n    data = tips)\n\nglance(tip_fit_1) |&gt; \n  select(r.squared, adj.r.squared)\n\n# A tibble: 1 × 2\n  r.squared adj.r.squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.674         0.664\n\n\n\n\ntip_fit_2 &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(Tip ~ Party + \n            Age + \n            Meal + \n            Day, \n      data = tips)\n\nglance(tip_fit_2) |&gt; \n  select(r.squared, adj.r.squared)\n\n# A tibble: 1 × 2\n  r.squared adj.r.squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.683         0.662\n\n\n\n\n\n\nWhy did we not use the full recipe() workflow to fit Model 1 or Model 2?\nWhich model would we choose based on \\(R^2\\)?\nWhich model would we choose based on Adjusted \\(R^2\\)?\nWhich statistic should we use to choose the final model - \\(R^2\\) or Adjusted \\(R^2\\)? Why?\n\nVote on Ed Discussion [10:05am lecture][1:25pm lecture]"
   },
   {
     "objectID": "slides/13-comparison-cv.html#aic-bic",
@@ -4246,7 +4246,7 @@
     "href": "slides/13-comparison-cv.html#to-get-started-1",
     "title": "Model comparison + cross validation",
     "section": "To get started…",
-    "text": "To get started…\nCreate recipe\n\ntips_rec1 &lt;- recipe(Tip ~ Party + Age + Meal, \n                    data = tips_train)\n\ntips_rec1"
+    "text": "To get started…\nCreate recipe\n\ntips_rec1 &lt;- recipe(Tip ~ Party + Age + Meal, \n                    data = tips_train)\n\ntips_rec1\n\n\n\n\n── Recipe ──────────────────────────────────────────────────────────────────────\n\n\n\n\n\n── Inputs \n\n\nNumber of variables by role\n\n\noutcome:   1\npredictor: 3"
   },
   {
     "objectID": "slides/13-comparison-cv.html#to-get-started-2",
@@ -4331,13 +4331,6 @@
     "title": "Model comparison + cross validation",
     "section": "Collect \\(R^2_{Adj}\\), AIC, BIC from CV",
     "text": "Collect \\(R^2_{Adj}\\), AIC, BIC from CV\n\nmap_df(tips_fit_rs1$.extracts, ~ .x[[1]][[1]]) |&gt;\n  bind_cols(Fold = tips_fit_rs1$id)\n\n# A tibble: 3 × 4\n  adj.r.squared   AIC   BIC Fold \n          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;\n1         0.550  369.  386. Fold1\n2         0.659  377.  394. Fold2\n3         0.718  337.  354. Fold3\n\n\n\nNote: These are based on the model fit from the analysis data"
-  },
-  {
-    "objectID": "slides/13-comparison-cv.html#cross-validation-jargon",
-    "href": "slides/13-comparison-cv.html#cross-validation-jargon",
-    "title": "Model comparison + cross validation",
-    "section": "Cross validation jargon",
-    "text": "Cross validation jargon\n\nReferred to as v-fold or k-fold cross validation\n\nAlso commonly abbreviated as CV"
   },
   {
     "objectID": "slides/13-comparison-cv.html#cross-validation-in-practice",

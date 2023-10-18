@@ -44,12 +44,12 @@ knitr::opts_chunk$set(
 
 -   Please submit [mid-semester feedback](https://duke.qualtrics.com/jfe/form/SV_86XWKdUFjvStYmW) by Friday
 
--   Prof. Tackett office hours Fridays 1:30 - 3:30pm
+-   Prof. Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester
 
 ## Topics
 
 ::: nonincremental
--   ANOVA for Multiple Linear Regression and sum of squares
+-   ANOVA for multiple linear regression and sum of squares
 -   Comparing models with $R^2$ vs. $R^2_{adj}$
 -   Comparing models with AIC and BIC
 -   Occam's razor and parsimony
@@ -389,7 +389,7 @@ glance(tip_fit)$r.squared
 
 -   **Adjusted** $R^2$: measure that includes a penalty for unnecessary predictor variables
 -   Similar to $R^2$, it is a measure of the amount of variation in the response that is explained by the regression model
--   Differs from $R^2$ by using the mean squares rather than sums of squares and therefore adjusting for the number of predictor variables
+-   Differs from $R^2$ by using the mean squares (sumsq/df) rather than sums of squares and therefore adjusting for the number of predictor variables
 
 ## $R^2$ and Adjusted $R^2$
 
@@ -452,9 +452,11 @@ glance(tip_fit_2) |>
 
 ::: question
 1.  Why did we not use the full `recipe()` workflow to fit Model 1 or Model 2?
-2.  Which model would we choose based on �2?
-3.  Which model would we choose based on Adjusted �2?
-4.  Which statistic should we use to choose the final model - �2 or Adjusted �2? Why?
+2.  Which model would we choose based on $R^2$?
+3.  Which model would we choose based on Adjusted $R^2$?
+4.  Which statistic should we use to choose the final model - $R^2$ or Adjusted $R^2$? Why?
+
+Vote on Ed Discussion \[[10:05am lecture](https://edstem.org/us/courses/44523/discussion/462744)\]\[[1:25pm lecture](https://edstem.org/us/courses/44523/discussion/462751)\]
 :::
 
 ## AIC & BIC
@@ -684,6 +686,7 @@ tips_test <- testing(tips_split)
 
 ```{r}
 #| echo: true
+#| message: true
 tips_rec1 <- recipe(Tip ~ Party + Age + Meal, 
                     data = tips_train)
 
@@ -843,12 +846,6 @@ map_df(tips_fit_rs1$.extracts, ~ .x[[1]][[1]]) |>
 <br>
 
 Note: These are based on the model fit from the *analysis* data
-
-## Cross validation jargon
-
--   Referred to as *v-fold* or *k-fold* cross validation
-
-Also commonly abbreviated as CV
 
 ## Cross validation in practice
 

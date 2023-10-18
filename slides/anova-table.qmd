@@ -1,0 +1,124 @@
+---
+title: ANOVA Output in R
+format: html
+---
+
+We will use the Tips data set for this example.
+
+```{r}
+#| message: false
+#| warning: false
+
+# load packages
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+```
+
+```{r}
+#| echo: false
+#| message: false
+tips <- read_csv(here::here("slides", "data/tip-data.csv")) |>
+  filter(!is.na(Party))
+
+# relevle the factors
+tips <- tips |>
+  mutate(
+    Meal = fct_relevel(Meal, "Lunch", "Dinner", "Late Night"),
+    Age  = fct_relevel(Age, "Yadult", "Middle", "SenCit")
+  )
+```
+
+The variables of interest in this analysis are
+
+-   `Party`: Number of people in the party
+-   `Meal`: Time of day (Lunch, Dinner, Late Night)
+-   `Age`: Age category of person paying the bill (Yadult, Middle, SenCit)
+
+## Model fit
+
+```{r}
+tip_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(Tip ~ Party + Age, data = tips)
+
+tidy(tip_fit) |>
+  kable(digits = 2)
+```
+
+## ANOVA
+
+Below is the ANOVA output for the model fit above.
+
+```{r}
+#| tbl-colwidths: [60,40]
+anova(tip_fit$fit) |>
+  tidy() |>
+  kable(digits = 2)
+```
+
+We will focus on the sum of squares in this document. The sum of squares are as follows:
+
+\$\$
+
+```{=tex}
+\begin{aligned}
+&SS_{Party} = 1188.64 \\
+&SS_{Age|Party} = 38.03 \\
+&SS_{Error} = SS_{Residuals} = 686.44 \\
+&SS_{Total} = 1913.11
+\end{aligned}
+```
+\$\$
+
+## Sum of squares in ANOVA table
+
+R uses a sequential method to calculate sum of squares for the variables in the model. This means that the sum of squares attributed to each variable is the variation in the response explained by that variable after accounting for the total variation explained by the other variables already in the model.
+
+The order of the sequence is determined by the order of the variables in the model fit code. This order is reflected in the order the variables appear in the ANOVA output. The sequential sum of squares attributed to each variable will change if the order of the variables in the model changes; however, the sum of squares attributed to the model overall will **not** change, regardless of the order of the variables.
+
+Let's take a look at the sum of squares for `Party`, the first variable in the model. This value is calculated as the total variation in `Tips` explained by `Party` only. We can calculate this value by looking at the ANOVA table for simple linear regression model where `Party` is the only predictor.
+
+```{r}
+party_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(Tip ~ Party, data = tips)
+
+anova(party_fit$fit) |>
+  tidy() |>
+  kable(digits = 2)
+```
+
+Notice that the sum of squares in this table is the value of $SS_{Party}$ above.
+
+Next, let's add `Age` to the model. The sum of squares associated with `Age` is the additional variation in `Tips` explained by `Age` <u>after</u> accounting for variation explained by `Party`. This can be understood as the additional model variation in the model with `Party` and `Age` compared to a model that only includes `Party`. We can calculate this additional variation as follows:
+
+```{r}
+anova(party_fit$fit, tip_fit$fit) |>
+  tidy() |>
+  kable(digits = 2)
+```
+
+Notice that the sum of squares in this table is the value of $SS_{Age|Party}$ above.
+
+::: callout-note
+When we input two model is the `anova()` function, e.g., `anova(Model 1, Model 2)`, the output produced is the additional sum of squares accounted for by the new variable(s) in `Model 2` after accounting for the variables in `Model 1`. In this case, it is the additional sum of squares accounted for by `Age` after accounting for `Party`.
+:::
+
+When we use the ANOVA table, we are most interested in the variation in the response explained by the entire model, not the contribution from each variable. Therefore, we will primarily consider the $SS_{Model}$, Sum of Squares Model. Because sum of squares are additive, it can be calculated as
+
+$$
+\begin{aligned}
+SS_{Model} &= SS_{Total} - SS_{Error} \\
+&= 1913.11 - 686.44 \\ 
+& = 1226.67 
+\end{aligned}
+$$It can also be calculated as
+
+$$
+\begin{aligned}
+SS_{Model} &= SS_{Party} + SS_{Age | Party} \\
+& = 1188.64 + 38.03 \\
+& = 1226.67
+\end{aligned}
+$$

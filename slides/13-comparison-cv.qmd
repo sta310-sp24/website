@@ -405,7 +405,7 @@ where
 
 -   $n$ is the number of observations used to fit the model
 
--   $p$ is the number of terms (predictors + intercept) in the model
+-   $p$ is the number of terms (not including the intercept) in the model
 
 ## Using $R^2$ and Adjusted $R^2$
 

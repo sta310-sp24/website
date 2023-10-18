@@ -4106,7 +4106,7 @@
     "href": "slides/13-comparison-cv.html#r2-and-adjusted-r2",
     "title": "Model comparison + cross validation",
     "section": "\\(R^2\\) and Adjusted \\(R^2\\)",
-    "text": "\\(R^2\\) and Adjusted \\(R^2\\)\n\\[R^2 = \\frac{SS_{Model}}{SS_{Total}} = 1 - \\frac{SS_{Error}}{SS_{Total}}\\]\n\n\n\\[R^2_{adj} = 1 - \\frac{SS_{Error}/(n-p-1)}{SS_{Total}/(n-1)}\\]\nwhere\n\n\\(n\\) is the number of observations used to fit the model\n\\(p\\) is the number of terms (predictors + intercept) in the model"
+    "text": "\\(R^2\\) and Adjusted \\(R^2\\)\n\\[R^2 = \\frac{SS_{Model}}{SS_{Total}} = 1 - \\frac{SS_{Error}}{SS_{Total}}\\]\n\n\n\\[R^2_{adj} = 1 - \\frac{SS_{Error}/(n-p-1)}{SS_{Total}/(n-1)}\\]\nwhere\n\n\\(n\\) is the number of observations used to fit the model\n\\(p\\) is the number of terms (not including the intercept) in the model"
   },
   {
     "objectID": "slides/13-comparison-cv.html#using-r2-and-adjusted-r2",

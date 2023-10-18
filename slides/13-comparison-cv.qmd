@@ -42,6 +42,8 @@ knitr::opts_chunk$set(
 
 -   Statistics Experience due Mon, Nov 20 at 11:59pm
 
+-   Please submit [mid-semester feedback](https://duke.qualtrics.com/jfe/form/SV_86XWKdUFjvStYmW) by Friday
+
 -   Prof. Tackett office hours Fridays 1:30 - 3:30pm
 
 ## Topics
@@ -870,11 +872,10 @@ Also commonly abbreviated as CV
 -   Comparing models with
     -   $R^2$ vs. $R^2_{Adj}$
     -   AIC and BIC
--   Occam\'s razor and parsimony
+-   Occam's razor and parsimony
 
-```{=html}
 <!-- -->
-```
+
 -   Cross validation for
 
     -   model evaluation

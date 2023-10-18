@@ -27,7 +27,7 @@ Learn approaches for analyzing multivariate data sets, emphasizing analysis of v
 
 | Office hours         | Location      |
 |----------------------|---------------|
-| Fri 1 - 3pm          | Old Chem 118B |
+| Fri 1:30 - 3:30 pm   | Old Chem 118B |
 | *or by appointment.* |               |
 
 ## Teaching assistants

@@ -1,0 +1,762 @@
+---
+title: "Inference for multiple linear regression"
+author: "Prof. Maria Tackett"
+date: "2023-10-23"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: false
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+
+# figure options
+knitr::opts_chunk$set(
+  fig.width = 10, fig.asp = 0.618,
+  fig.retina = 3, dpi = 300, fig.align = "center"
+)
+```
+
+## Announcements
+
+-   See Ed Discussion for upcoming events and internship opportunities
+
+-   Statistics Experience due Mon, Nov 20 at 11:59pm
+
+-   Prof. Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester
+
+## Mid-semester feedback
+
+## Statistician of the day
+
+## Topics
+
+::: nonincremental
+-   Cross validation application exercise
+-   Inference for multiple linear regression
+-   Checking model conditions
+:::
+
+## Computational setup
+
+```{r}
+#| echo: true
+
+# load packages
+library(tidyverse)
+library(tidymodels)
+library(patchwork)
+library(knitr)
+library(kableExtra)
+library(countdown)
+library(rms)
+
+# set default theme and larger font size for ggplot2
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 20))
+```
+
+# Introduction
+
+## Data: Restaurant tips
+
+Which variables help us predict the amount customers tip at a restaurant?
+
+```{r}
+#| echo: false
+#| message: false
+tips <- read_csv(here::here("slides", "data/tip-data.csv")) |>
+  filter(!is.na(Party))
+```
+
+```{r}
+#| echo: false
+tips |>
+  select(Tip, Party, Meal, Age, Alcohol)
+
+tips <- tips |>
+  mutate(
+    Meal = fct_relevel(Meal, "Lunch", "Dinner", "Late Night"),
+    Age  = fct_relevel(Age, "Yadult", "Middle", "SenCit")
+  )
+```
+
+## Variables
+
+**Predictors**:
+
+::: nonincremental
+-   `Party`: Number of people in the party
+-   `Meal`: Time of day (Lunch, Dinner, Late Night)
+-   `Age`: Age category of person paying the bill (Yadult, Middle, SenCit)
+-   `Alcohol`: Whether the party ordered alcohol with the meal (Yes, No)
+:::
+
+**Outcome**: `Tip`: Amount of tip
+
+## Outcome: `Tip`
+
+```{r}
+#| echo: false
+ggplot(tips, aes(x = Tip)) +
+  geom_histogram(binwidth = 1) +
+  labs(title = "Distribution of tips")
+```
+
+## Predictors
+
+```{r}
+#| echo: false
+p1 <- ggplot(tips, aes(x = Party)) +
+  geom_histogram(binwidth = 1) +
+  labs(title = "Number of people in party")
+
+p2 <- ggplot(tips, aes(x = Meal)) +
+  geom_bar() +
+  labs(title = "Meal type")
+
+p3 <- ggplot(tips, aes(x = Age)) +
+  geom_bar() +
+  labs(title = "Age of payer")
+
+p4 <- ggplot(tips, aes(x = Alcohol))+ 
+  geom_bar() + 
+  labs(title = "Ordered alcohol")
+
+(p1 + p2) / (p3 + p4)
+```
+
+## Outcome vs. predictors
+
+```{r}
+#| echo: false
+#| fig.width: 12
+#| fig.height: 4
+
+p5 <- ggplot(tips, aes(x = Party, y = Tip)) +
+  geom_point(color = "#5B888C")
+
+p6 <- ggplot(tips, aes(x = Meal, y = Tip, fill = Meal)) +
+  geom_boxplot(show.legend = FALSE) +
+  scale_fill_viridis_d(end = 0.8)
+
+p7 <- ggplot(tips, aes(x = Age, y = Tip, fill = Age)) +
+  geom_boxplot(show.legend = FALSE) +
+  scale_fill_viridis_d(option = "E", end = 0.8)
+
+p8 <- ggplot(tips, aes(x = Alcohol, y = Tip, fill = Alcohol)) +
+  geom_boxplot(show.legend = FALSE) +
+  scale_fill_viridis_d(option = "A", end = 0.8)
+
+p4 + p5 + p6
+```
+
+## Analysis goal {.midi}
+
+::: question
+Use cross validation to evaluate and select a model to predict the tip amount
+:::
+
+. . .
+
+**v-fold cross validation** -- commonly used resampling technique:
+
+-   Randomly split your **training** **data** into ***v*** partitions
+-   Use ***v-1*** partitions for analysis, and the remaining 1 partition for analysis (model fit + model fit statistics)
+-   Repeat ***v*** times, updating which partition is used for assessment each time
+
+# Application exercise
+
+::: appex
+📋 \[ADD AE LINK ADDRESS\]
+:::
+
+# Inference for multiple linear regression
+
+## Modeling workflow
+
+-   Split data into training and test sets.
+
+-   Use cross validation on the training set to fit, evaluate, and compare candidate models. Choose a final model based on summary of cross validation results.
+
+-   Refit the model using the entire training set and do "final" evaluation on the test set (make sure you have not overfit the model).
+
+    -   Adjust as needed if there is evidence of overfit.
+
+-   Use model fit on training set for inference and prediction.
+
+## Data: `rail_trail` {.smaller}
+
+::: nonincremental
+-   The Pioneer Valley Planning Commission (PVPC) collected data for ninety days from April 5, 2005 to November 15, 2005.
+-   Data collectors set up a laser sensor, with breaks in the laser beam recording when a rail-trail user passed the data collection station.
+:::
+
+```{r}
+#| echo: false
+rail_trail <- read_csv(here::here("slides", "data/rail_trail.csv"))
+rail_trail
+```
+
+Source: [Pioneer Valley Planning Commission](http://www.fvgreenway.org/pdfs/Northampton-Bikepath-Volume-Counts%20_05_LTA.pdf) via the **mosaicData** package.
+
+## Variables {.smaller}
+
+**Outcome**:
+
+`volume` estimated number of trail users that day (number of breaks recorded)
+
+. . .
+
+**Predictors**
+
+::: nonincremental
+-   `hightemp` daily high temperature (in degrees Fahrenheit)
+-   `avgtemp` average of daily low and daily high temperature (in degrees Fahrenheit)
+-   `season` one of "Fall", "Spring", or "Summer"
+-   `cloudcover` measure of cloud cover (in oktas)
+-   `precip` measure of precipitation (in inches)
+-   `day_type` one of "weekday" or "weekend"
+:::
+
+# Conduct a hypothesis test for $\beta_j$
+
+## Review: Simple linear regression (SLR)
+
+```{r}
+ggplot(rail_trail, aes(x = hightemp, y = volume)) + 
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "High temp (F)", y = "Number of riders")
+```
+
+## SLR model summary
+
+```{r}
+rt_slr_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(volume ~ hightemp, data = rail_trail)
+
+tidy(rt_slr_fit) |> kable(digits = 2)
+```
+
+## SLR hypothesis test {.midi}
+
+```{r}
+#| echo: false
+
+tidy(rt_slr_fit) |> kable(digits = 2)
+```
+
+1.  **Set hypotheses:** $H_0: \beta_1 = 0$ vs. $H_A: \beta_1 \ne 0$
+
+. . .
+
+2.  **Calculate test statistic and p-value:** The test statistic is $t= 6.72$ . The p-value is calculated using a $t$ distribution with 88 degrees of freedom. The p-value is $\approx 0$ .
+
+. . .
+
+3.  **State the conclusion:** The p-value is small, so we reject $H_0$. The data provide strong evidence that high temperature is a helpful predictor for the number of daily riders, i.e. there is a linear relationship between high temperature and number of daily riders.
+
+## Multiple linear regression
+
+```{r}
+rt_mlr_main_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(volume ~ hightemp + season, data = rail_trail)
+
+tidy(rt_mlr_main_fit) |> kable(digits = 2)
+```
+
+## MLR hypothesis test: hightemp {.midi}
+
+1.  **Set hypotheses:** $H_0: \beta_{hightemp} = 0$ vs. $H_A: \beta_{hightemp} \ne 0$, given `season` is in the model
+
+. . .
+
+2.  **Calculate test statistic and p-value:** The test statistic is $t = 6.43$. The p-value is calculated using a $t$ distribution with 86 $(n - p - 1)$ degrees of freedom. The p-value is $\approx 0$.
+
+. . .
+
+3.  **State the conclusion:** The p-value is small, so we reject $H_0$. The data provide strong evidence that high temperature for the day is a useful predictor in a model that already contains the season as a predictor for number of daily riders.
+
+## The model for `season = Spring` {.smaller}
+
+```{r}
+#| echo: false
+
+tidy(rt_mlr_main_fit) |> kable(digits = 2)
+```
+
+<br>
+
+. . .
+
+$$
+\begin{aligned}
+\widehat{volume} &= -125.23 + 7.54 \times \texttt{hightemp} + 5.13 \times \texttt{seasonSpring} - 76.84 \times \texttt{seasonSummer} \\
+&= -125.23 + 7.54 \times \texttt{hightemp} + 5.13 \times 1 - 76.84 \times 0 \\
+&= -120.10 + 7.54 \times \texttt{hightemp}
+\end{aligned}
+$$
+
+## The model for `season = Summer` {.smaller}
+
+```{r}
+#| echo: false
+
+tidy(rt_mlr_main_fit) |> kable(digits = 2)
+```
+
+<br>
+
+. . .
+
+$$
+\begin{aligned}
+\widehat{volume} &= -125.23 + 7.54 \times \texttt{hightemp} + 5.13 \times \texttt{seasonSpring} - 76.84 \times \texttt{seasonSummer} \\
+&= -125.23 + 7.54 \times \texttt{hightemp} + 5.13 \times 0 - 76.84 \times 1 \\
+&= -202.07 + 7.54 \times \texttt{hightemp}
+\end{aligned}
+$$
+
+## The model for `season = Fall` {.smaller}
+
+```{r}
+#| echo: false
+
+tidy(rt_mlr_main_fit) |> kable(digits = 2)
+```
+
+<br>
+
+. . .
+
+$$
+\begin{aligned}
+\widehat{volume} &= -125.23 + 7.54 \times \texttt{hightemp} + 5.13 \times \texttt{seasonSpring} - 76.84 \times \texttt{seasonSummer} \\
+&= -125.23 + 7.54 \times \texttt{hightemp} + 5.13 \times 0 - 76.84 \times 0 \\
+&= -125.23 + 7.54 \times \texttt{hightemp}
+\end{aligned}
+$$
+
+## The models
+
+Same slope, different intercepts
+
+-   `season = Spring`: $-120.10 + 7.54 \times \texttt{hightemp}$
+-   `season = Summer`: $-202.07 + 7.54 \times \texttt{hightemp}$
+-   `season = Fall`: $-125.23 + 7.54 \times \texttt{hightemp}$
+
+## Application exercise
+
+```{r}
+#| echo: false
+
+rt_mlr_int_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(volume ~ hightemp + season + hightemp * season, data = rail_trail)
+
+tidy(rt_mlr_int_fit) |> kable(digits = 2)
+
+```
+
+::: appex
+Do the data provide evidence of a significant interaction effect? Comment on the significance of the interaction terms.
+:::
+
+# Confidence interval for $\beta_j$
+
+## Confidence interval for $\beta_j$ {.midi}
+
+-   The $C%$ confidence interval for $\beta_j$ $$\hat{\beta}_j \pm t^* SE(\hat{\beta}_j)$$ where $t^*$ follows a $t$ distribution with $n - p - 1$ degrees of freedom.
+
+-   Generically, we are $C%$ confident that the interval LB to UB contains the population coefficient of $x_j$.
+
+-   In context, we are $C%$ confident that for every one unit increase in $x_j$, we expect $y$ to change by LB to UB units, holding all else constant.
+
+## Confidence interval for $\beta_j$
+
+```{r}
+tidy(rt_mlr_main_fit, conf.int = TRUE) |>
+  kable(digits= 2)
+```
+
+## CI for `hightemp` {.midi}
+
+```{r}
+#| echo: false
+
+tidy(rt_mlr_main_fit, conf.int = TRUE) |>
+  kable(digits = 2)
+```
+
+<br>
+
+We are 95% confident that for every degree Fahrenheit the day is warmer, the number of riders increases by 5.21 to 9.87, on average, holding season constant.
+
+## CI for `seasonSpring` {.midi}
+
+```{r}
+#| echo: false
+
+tidy(rt_mlr_main_fit, conf.int = TRUE) |>
+  kable(digits = 2)
+```
+
+<br>
+
+We are 95% confident that the number of riders on a Spring day is lower by 63.1 to higher by 73.4 compared to a Fall day, on average, holding high temperature for the day constant.
+
+. . .
+
+::: question
+Is `season` a significant predictor of the number of riders, after accounting for high temperature?
+:::
+
+# Inference pitfalls
+
+## Large sample sizes
+
+::: callout-caution
+If the sample size is large enough, the test will likely result in rejecting $H_0: \beta_j = 0$ even $x_j$ has a very small effect on $y$.
+
+::: nonincremental
+-   Consider the **practical significance** of the result not just the statistical significance.
+
+-   Use the confidence interval to draw conclusions instead of relying only p-values.
+:::
+:::
+
+## Small sample sizes
+
+::: callout-caution
+If the sample size is small, there may not be enough evidence to reject $H_0: \beta_j=0$.
+
+::: nonincremental
+-   When you fail to reject the null hypothesis, **DON'T** immediately conclude that the variable has no association with the response.
+
+-   There may be a linear association that is just not strong enough to detect given your data, or there may be a non-linear association.
+:::
+:::
+
+# Conditions for inference
+
+## Full model {.smaller}
+
+Including all available predictors
+
+**Fit:**
+
+```{r}
+rt_full_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(volume ~ ., data = rail_trail)
+```
+
+. . .
+
+**Summarize:**
+
+```{r}
+tidy(rt_full_fit)
+```
+
+. . .
+
+**Augment:**
+
+```{r}
+rt_full_aug <- augment(rt_full_fit$fit)
+```
+
+## Model conditions
+
+1.  **Linearity:** There is a linear relationship between the response and predictor variables.
+
+2.  **Constant Variance:** The variability about the least squares line is generally constant.
+
+3.  **Normality:** The distribution of the residuals is approximately normal.
+
+4.  **Independence:** The residuals are independent from each other.
+
+## Residuals vs. predicted values
+
+```{r}
+#| label: main_res_pred
+
+ggplot(data = rt_full_aug, aes(x = .fitted, y = .resid)) +
+  geom_point(alpha = 0.7) +
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
+  labs(x = "Predicted values", y = "Residuals")
+```
+
+## Linearity: Residuals vs. predicted
+
+::: question
+Does the linearity condition appear to be met?
+:::
+
+```{r}
+#| ref.label: main_res_pred
+#| echo: false
+```
+
+## Linearity: Residuals vs. predicted
+
+Look at individual plots of residuals vs. each predictor, particularly if there are potential issues in the plot of residuals vs. predicted values.
+
+## Linearity: Residuals vs. each predictor
+
+```{r}
+#| fig.asp: 0.5
+#| echo: false
+
+p1 <- ggplot(data = rt_full_aug, aes(x = hightemp, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed")
+
+p2 <- ggplot(data = rt_full_aug, aes(x = avgtemp, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed")
+
+p3 <- ggplot(data = rt_full_aug, aes(x = season, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed")
+
+p4 <- ggplot(data = rt_full_aug, aes(x = cloudcover, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed")
+
+p5 <- ggplot(data = rt_full_aug, aes(x = precip, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed")
+
+p6 <- ggplot(data = rt_full_aug, aes(x = day_type, y = .resid)) +
+  geom_point(alpha = 0.7) + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed")
+
+(p1 + p2 + p3) / (p4 + p5 + p6)
+```
+
+## Checking linearity
+
+-   The plots of residuals vs. `hightemp` and `avgtemp` appear to have a parabolic pattern.
+
+-   The linearity condition is not satisfied given these plots.
+
+## Checking constant variance
+
+::: question
+Does the constant variance condition appear to be satisfied?
+:::
+
+```{r}
+#| ref.label: main_res_pred
+#| echo: false
+```
+
+## Checking constant variance
+
+-   The vertical spread of the residuals is not constant across the plot.
+
+-   The constant variance condition is not satisfied.
+
+## Checking normality
+
+```{r}
+#| fig.asp: 0.8
+#| echo: false
+
+resid_hist <- ggplot(rt_full_aug, aes(x = .resid)) +
+  geom_histogram(binwidth = 25) +
+  labs(x = "Residuals")  
+
+resid_box <- ggplot(rt_full_aug, aes(x = .resid)) +
+  geom_boxplot()
+
+resid_hist / resid_box
+```
+
+## Checking independence
+
+-   We can often check the independence condition based on the context of the data and how the observations were collected.
+
+-   If the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected.
+
+-   If there is a grouping variable lurking in the background, check the residuals based on that grouping variable.
+
+## Checking independence {.midi}
+
+Residuals vs. order of data collection:
+
+```{r}
+ggplot(rt_full_aug, aes(y = .resid, x = 1:nrow(rt_full_aug))) +
+  geom_point() +
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
+  labs(x = "Order of data collection", y = "Residuals")
+```
+
+## Checking independence
+
+-   No clear pattern in the residuals vs. order of data collection plot.
+
+-   Independence condition appears to be satisfied, as far as we can evaluate it.
+
+# Multicollinearity
+
+## Why multicollinearity is a problem
+
+-   We can't include two variables that have a perfect linear association with each other
+
+-   If we did so, we could not find unique estimates for the model coefficients
+
+## Example
+
+Suppose the true population regression equation is $y = 3 + 4x$
+
+-   Suppose we try estimating that equation using a model with variables $x$ and $z = x/10$
+
+$$
+\begin{aligned}\hat{y}&= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2z\\
+&= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2\frac{x}{10}\\
+&= \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)x
+\end{aligned}
+$$
+
+## Example
+
+$$\hat{y} = \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)x$$
+
+-   We can set $\hat{\beta}_1$ and $\hat{\beta}_2$ to any two numbers such that $\hat{\beta}_1 + \frac{\hat{\beta}_2}{10} = 4$
+
+-   Therefore, we are unable to choose the "best" combination of $\hat{\beta}_1$ and $\hat{\beta}_2$
+
+## Why multicollinearity is a problem
+
+-   When we have almost perfect collinearities (i.e. highly correlated predictor variables), the standard errors for our regression coefficients inflate
+
+-   In other words, we lose precision in our estimates of the regression coefficients
+
+-   This impedes our ability to use the model for inference or prediction
+
+## Detecting Multicollinearity {.midi}
+
+Multicollinearity may occur when...
+
+-   There are very high correlations $(r > 0.9)$ among two or more predictor variables, especially when the sample size is small
+
+<!-- -->
+
+-   One (or more) predictor variables is an almost perfect linear combination of the others
+
+-   Include a quadratic in the model mean-centering the variable first
+
+-   Including interactions between two or more continuous variables
+
+## Detecting multicollinearity in the EDA
+
+-   Look at a correlation matrix of the predictor variables, including all indicator variables
+    -   Look out for values close to 1 or -1
+-   Look at a scatterplot matrix of the predictor variables
+    -   Look out for plots that show a relatively linear relationship
+
+## Detecting Multicollinearity (VIF)
+
+**Variance Inflation Factor (VIF)**: Measure of multicollinearity in the regression model
+
+$$VIF(\hat{\beta}_j) = \frac{1}{1-R^2_{X_j|X_{-j}}}$$
+
+where $R^2_{X_j|X_{-j}}$ is the proportion of variation $X$ that is explained by the linear combination of the other explanatory variables in the model.
+
+## Detecting Multicollinearity (VIF)
+
+Typically $VIF > 10$ indicates concerning multicollinearity - Variables with similar values of VIF are typically the ones correlated with each other
+
+<br>
+
+Use the `vif()` function in the **rms** R package to calculate VIF
+
+## VIF for rail trail model
+
+```{r echo = T}
+vif(rt_full_fit$fit)
+```
+
+<br>
+
+. . .
+
+`hightemp` and `avgtemp` are correlated. We need to remove <u>**one**</u> of these variables and refit the model.
+
+## Model without `hightemp` {.smaller}
+
+```{r}
+m1 <- linear_reg() |>
+  set_engine("lm") |>
+  fit(volume ~ . - hightemp, data = rail_trail)
+  
+m1 |>
+  tidy() |>
+  kable(digits = 3)
+```
+
+## Model without `avgtemp` {.smaller}
+
+```{r}
+m2 <- linear_reg() |>
+  set_engine("lm") |>
+  fit(volume ~ . - avgtemp, data = rail_trail)
+  
+m2 |>
+  tidy() |>
+  kable(digits = 3)
+```
+
+## Choosing a model {.midi}
+
+Model without **hightemp**:
+
+```{r}
+#| echo: false
+
+glance(m1) |>
+  select(adj.r.squared, AIC, BIC) |> kable(digits = 2)
+```
+
+Model without **avgtemp**:
+
+```{r echo = F}
+#| echo: false
+
+glance(m2) |>
+  select(adj.r.squared, AIC, BIC) |> kable(digits = 2)
+```
+
+Based on Adjusted $R^2$, AIC, and BIC, the model without **avgtemp** is a better fit. Therefore, we choose to remove **avgtemp** from the model and leave **hightemp** in the model to deal with the multicollinearity.
+
+## Final model
+
+```{r}
+#| echo: false
+tidy(m2) |>
+  kable(digits = 3)
+```

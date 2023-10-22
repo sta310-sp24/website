@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.429">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 210 - Fall 2023 - The big picture</title>
@@ -33,6 +33,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -177,7 +178,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -506,7 +508,7 @@ Prof.&nbsp;Maria Tackett
 <section id="rstudio-ide" class="slide level2">
 <h2>RStudio IDE</h2>
 
-<img data-src="images/02/rstudio-panes.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/02/rstudio-panes.png" class="quarto-figure-center r-stretch"></section>
 <section id="quarto" class="slide level2">
 <h2>Quarto</h2>
 <ul>
@@ -518,7 +520,7 @@ Prof.&nbsp;Maria Tackett
 <section id="quarto-1" class="slide level2">
 <h2>Quarto</h2>
 
-<img data-src="images/03/quarto.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/03/quarto.png" class="quarto-figure-center r-stretch"></section>
 <section id="how-will-we-use-quarto" class="slide level2">
 <h2>How will we use Quarto?</h2>
 <ul>
@@ -536,21 +538,17 @@ Prof.&nbsp;Maria Tackett
 <h2>What is versioning?</h2>
 <p><br></p>
 
-<img data-src="images/02/lego-steps.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/02/lego-steps.png" class="quarto-figure-center r-stretch"></section>
 <section id="what-is-versioning-1" class="slide level2">
 <h2>What is versioning?</h2>
 <p>with human readable messages</p>
 
-<img data-src="images/02/lego-steps-commit-messages.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/02/lego-steps-commit-messages.png" class="quarto-figure-center r-stretch"></section>
 <section id="why-do-we-need-version-control" class="slide level2">
 <h2>Why do we need version control?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/02/phd_comics_vc.gif"></p>
-</figure>
-</div>
+<p><img data-src="images/02/phd_comics_vc.gif" class="quarto-figure-center"></p>
 </div><div class="column" style="width:50%;">
 <p>Provides a clear record of how the analysis methods evolved. This makes analysis auditable and thus more trustworthy and reliable. <span class="citation" data-cites="ostblom2022">(<a href="#/references" role="doc-biblioref" onclick="">Ostblom and Timbers 2022</a>)</span></p>
 </div>
@@ -559,7 +557,7 @@ Prof.&nbsp;Maria Tackett
 <section id="git-and-github" class="slide level2">
 <h2>git and GitHub</h2>
 
-<img data-src="images/02/git-github.png" class="r-stretch quarto-figure-center"><ul>
+<img data-src="images/02/git-github.png" class="quarto-figure-center r-stretch"><ul>
 <li><strong>git</strong> is a version control system – like “Track Changes” features from Microsoft Word.</li>
 <li><strong>GitHub</strong> is the home for your git-based projects on the internet (like DropBox but much better).</li>
 <li>There are a lot of git commands and very few people know them all. 99% of the time you will use git to add, commit, push, and pull.</li>
@@ -619,7 +617,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 
 </div>
-<img data-src="02-big-picture_files/figure-html/univariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="02-big-picture_files/figure-html/univariate-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"></section>
 <section id="bivariate-exploratory-data-analysis" class="slide level2">
 <h2>Bivariate exploratory data analysis</h2>
 <div class="cell" data-layout-align="center">
@@ -628,7 +626,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 
 </div>
-<img data-src="02-big-picture_files/figure-html/bivariate-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="02-big-picture_files/figure-html/bivariate-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"></section>
 <section id="function-between-response-and-predictors" class="slide level2">
 <h2>Function between response and predictors</h2>
 <div class="goal">
@@ -666,12 +664,12 @@ Prof.&nbsp;Maria Tackett
 </div>
 
 </div>
-<img data-src="02-big-picture_files/figure-html/unnamed-chunk-2-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \epsilon\]</span></p>
+<img data-src="02-big-picture_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \epsilon\]</span></p>
 </section>
 <section id="carb-vs.-calories-bakery" class="slide level2">
 <h2>Carb vs.&nbsp;Calories + Bakery</h2>
 
-<img data-src="02-big-picture_files/figure-html/unnamed-chunk-4-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \epsilon\]</span></p>
+<img data-src="02-big-picture_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"><p><span class="math display">\[\text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \epsilon\]</span></p>
 </section>
 <section id="carb-vs.-calories-bakery-with-interaction" class="slide level2">
 <h2>Carb vs.&nbsp;Calories + Bakery (with interaction)</h2>
@@ -681,7 +679,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 
 </div>
-<img data-src="02-big-picture_files/figure-html/unnamed-chunk-5-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p><span class="math display">\[{\small \text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \beta_3 ~ \text{calories} \times \text{bakery}  + \epsilon}\]</span></p>
+<img data-src="02-big-picture_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"><p><span class="math display">\[{\small \text{carb} = \beta_0 + \beta_1 ~\text{calories} + \beta_2 ~\text{bakery} + \beta_3 ~ \text{calories} \times \text{bakery}  + \epsilon}\]</span></p>
 </section>
 <section id="statistical-model-vs.-regression-equation" class="slide level2 midi">
 <h2>Statistical model vs.&nbsp;regression equation</h2>
@@ -741,7 +739,7 @@ Prof.&nbsp;Maria Tackett
 <img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://sta210-fa23.netlify.app/schedule">🔗 STA 210 - Fall 2023 - Schedule</a></p>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-alexander2023" class="csl-entry" role="listitem">
 Alexander, Rohan. 2023. <span>“Telling Stories with Data,”</span> June. <a href="https://doi.org/10.1201/9781003229407">https://doi.org/10.1201/9781003229407</a>.
 </div>
@@ -778,7 +776,6 @@ Ostblom, Joel, and Tiffany Timbers. 2022. <span>“Opinionated Practices for Tea
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1040,10 +1037,9 @@ Ostblom, Joel, and Tiffany Timbers. 2022. <span>“Opinionated Practices for Tea
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1053,8 +1049,17 @@ Ostblom, Joel, and Tiffany Timbers. 2022. <span>“Opinionated Practices for Tea
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

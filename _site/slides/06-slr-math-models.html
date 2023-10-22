@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.429">
+  <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 210 - Fall 2023 - SLR: Mathematical models for inference</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -387,6 +386,7 @@
       margin-right: 0; 
     }
   </style>
+  
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
@@ -460,7 +460,11 @@ Prof.&nbsp;Maria Tackett
 <h2>Statistician of the day: Regina Nuzzo</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p><img data-src="images/statistician-of-the-day/nuzzo.jpg" class="quarto-figure-center" alt="Picture of Regina Nuzzo"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/statistician-of-the-day/nuzzo.jpg" alt="Picture of Regina Nuzzo"></p>
+</figure>
+</div>
 </div><div class="column" style="width:60%;">
 <p><em>Dr.&nbsp;Nuzzo received her PhD in Statistics from Stanford University and is now Professor of Science, Technology, &amp; Mathematics at <a href="https://gallaudet.edu/">Gallaudet University</a>. Dr.&nbsp;Nuzzo teaches statistics using American Sign Language.</em></p>
 <p><em>Her work has appeared in Nature, Los Angeles Times, New York Times, Reader’s Digest, New Scientist, and Scientific American. Primarily, she works to help lay-audiences understand science and statistics in particular. She earned the American Statistical Association’s 2014 Excellence in Statistical Reporting Award for her article on p-values in Nature. Her work led to the <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108">ASA’s statement on p-values</a>.</em></p>
@@ -768,7 +772,7 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
 </div>
 </div>
 
-<img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"></section>
+<img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="hypothesis-test-p-value-1" class="slide level2">
 <h2>Hypothesis test: p-value</h2>
 <div class="cell" data-layout-align="center">
@@ -944,7 +948,11 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
 </div><div class="column" style="width:40%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure-center" style="width:100.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1049,7 +1057,7 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
 <li>Similarly, reporting a single prediction for a new value is not wise, and we should report a plausible range instead</li>
 </ul>
 
-<img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"></section>
+<img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-15-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="two-types-of-predictions" class="slide level2">
 <h2>Two types of predictions</h2>
 <ol type="1">
@@ -1144,7 +1152,7 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
 <section id="comparing-intervals" class="slide level2">
 <h2>Comparing intervals</h2>
 
-<img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="06-slr-math-models_files/figure-revealjs/unnamed-chunk-20-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
 <section id="extrapolation" class="slide level2">
 <h2>Extrapolation</h2>
 <p>Using the model to predict for values outside the range of the original data is <strong>extrapolation</strong>.</p>
@@ -1155,7 +1163,11 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
 <p>Calculate the prediction interval for the sale price of a “tiny house” in Duke Forest that is 225 square feet.</p>
 </div>
 </div><div class="column" style="width:55%;">
-<p><img data-src="images/07/tiny-house.jpeg" class="quarto-figure-center" alt="Black tiny house on wheels"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/07/tiny-house.jpeg" alt="Black tiny house on wheels"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1201,6 +1213,7 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1500,9 +1513,10 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1512,17 +1526,8 @@ T = \frac{\hat{\beta}_1 - 0}{SE_{\hat{\beta}_1}} = \frac{159.48 - 0}{18.17} = 8.
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

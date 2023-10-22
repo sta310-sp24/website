@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.429">
+  <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 210 - Fall 2023 - Inference for multiple linear regression</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -488,15 +487,15 @@ Prof.&nbsp;Maria Tackett
 <section id="outcome-tip" class="slide level2">
 <h2>Outcome: <code>Tip</code></h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-5-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="predictors" class="slide level2">
 <h2>Predictors</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-6-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="outcome-vs.-predictors" class="slide level2">
 <h2>Outcome vs.&nbsp;predictors</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure-center r-stretch" width="3600"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-7-1.png" width="3600" class="r-stretch quarto-figure-center"></section>
 <section id="analysis-goal" class="slide level2 midi">
 <h2>Analysis goal</h2>
 <div class="question">
@@ -595,7 +594,7 @@ Prof.&nbsp;Maria Tackett
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"High temp (F)"</span>, <span class="at">y =</span> <span class="st">"Number of riders"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-9-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="slr-model-summary" class="slide level2">
 <h2>SLR model summary</h2>
 <div class="cell" data-layout-align="center">
@@ -1324,14 +1323,14 @@ Prof.&nbsp;Maria Tackett
 <span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-revealjs/main_res_pred-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/main_res_pred-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="linearity-residuals-vs.-predicted" class="slide level2">
 <h2>Linearity: Residuals vs.&nbsp;predicted</h2>
 <div class="question">
 <p>Does the linearity condition appear to be met?</p>
 </div>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-24-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="linearity-residuals-vs.-predicted-1" class="slide level2">
 <h2>Linearity: Residuals vs.&nbsp;predicted</h2>
 <p>Look at individual plots of residuals vs.&nbsp;each predictor, particularly if there are potential issues in the plot of residuals vs.&nbsp;predicted values.</p>
@@ -1339,7 +1338,7 @@ Prof.&nbsp;Maria Tackett
 <section id="linearity-residuals-vs.-each-predictor" class="slide level2">
 <h2>Linearity: Residuals vs.&nbsp;each predictor</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-25-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-linearity" class="slide level2">
 <h2>Checking linearity</h2>
 <ul>
@@ -1353,7 +1352,7 @@ Prof.&nbsp;Maria Tackett
 <p>Does the constant variance condition appear to be satisfied?</p>
 </div>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-26-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-constant-variance-1" class="slide level2">
 <h2>Checking constant variance</h2>
 <ul>
@@ -1364,7 +1363,7 @@ Prof.&nbsp;Maria Tackett
 <section id="checking-normality" class="slide level2">
 <h2>Checking normality</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-27-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-independence" class="slide level2">
 <h2>Checking independence</h2>
 <ul>
@@ -1383,7 +1382,7 @@ Prof.&nbsp;Maria Tackett
 <span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Order of data collection"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-28-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-independence-2" class="slide level2">
 <h2>Checking independence</h2>
 <ul>
@@ -1795,6 +1794,7 @@ Prof.&nbsp;Maria Tackett
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2094,9 +2094,10 @@ Prof.&nbsp;Maria Tackett
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2106,17 +2107,8 @@ Prof.&nbsp;Maria Tackett
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

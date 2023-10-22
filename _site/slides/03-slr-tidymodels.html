@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.429">
+  <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 210 - Fall 2023 - SLR: Fitting models in R with tidymodels</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -223,8 +223,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -482,14 +481,14 @@ Prof.&nbsp;Maria Tackett
 <li><p>RStudio is a convenient interface for R (an integrated development environment, IDE)</p></li>
 </ul>
 
-<img data-src="images/03/r_vs_rstudio_1.png" class="quarto-figure-center r-stretch"><div class="footnote">
+<img data-src="images/03/r_vs_rstudio_1.png" class="r-stretch quarto-figure-center"><div class="footnote">
 <p>Source: <a href="https://moderndive.com/1-getting-started.html">Modern Dive</a></p>
 </div>
 </section>
 <section id="rstudio-ide" class="slide level2">
 <h2>RStudio IDE</h2>
 
-<img data-src="images/03/rstudio-panes.png" class="quarto-figure-center r-stretch"></section>
+<img data-src="images/03/rstudio-panes.png" class="r-stretch quarto-figure-center"></section>
 <section id="quarto" class="slide level2">
 <h2>Quarto</h2>
 <ul>
@@ -501,7 +500,7 @@ Prof.&nbsp;Maria Tackett
 <section id="quarto-1" class="slide level2">
 <h2>Quarto</h2>
 
-<img data-src="images/03/quarto.png" class="quarto-figure-center r-stretch"></section>
+<img data-src="images/03/quarto.png" class="r-stretch quarto-figure-center"></section>
 <section id="how-will-we-use-quarto" class="slide level2">
 <h2>How will we use Quarto?</h2>
 <ul>
@@ -554,10 +553,26 @@ Prof.&nbsp;Maria Tackett
 <li>Contains every film that has at least 30 fan reviews on Fandango, an IMDb score, Rotten Tomatoes critic and user ratings, and Metacritic critic and user scores</li>
 </ul>
 </div><div class="column" style="width:30%;">
-<p><img data-src="images/03/fandango.png" class="quarto-figure-center" width="200"></p>
-<p><img data-src="images/03/imdb.png" class="quarto-figure-center" width="200"></p>
-<p><img data-src="images/03/rotten-tomatoes.png" class="quarto-figure-center" width="200"></p>
-<p><img data-src="images/03/metacritic.png" class="quarto-figure-center" width="200"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/03/fandango.png" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/03/imdb.png" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/03/rotten-tomatoes.png" width="200"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/03/metacritic.png" width="200"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -586,7 +601,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 
 </div>
-<img data-src="03-slr-tidymodels_files/figure-html/unnamed-chunk-1-1.png" class="quarto-figure-center r-stretch" style="width:80.0%"></section>
+<img data-src="03-slr-tidymodels_files/figure-html/unnamed-chunk-1-1.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="tidymodels" class="slide level2">
 <h2>tidymodels</h2>
 <div class="midi">
@@ -747,7 +762,7 @@ Coefficients:
 <p>📋 <a href="https://github.com/sta210-fa22/ae-02-bikeshare">github.com/sta210-fa22/ae-02-bikeshare</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAbElEQVR4Xs2RQQrAMAgEfZgf7W9LAguybljJpR3wEse5JOL3ZObDb4x1loDhHbBOFU6i2Ddnw2KNiXcdAXygJlwE8OFVBHDgKrLgSInN4WMe9iXiqIVsTMjH7z/GhNTEibOxQswcYIWYOR/zAjBJfiXh3jZ6AAAAAElFTkSuQmCC"></p>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAbElEQVR4Xs2RQQrAMAgEfZgf7W9LAguybljJpR3wEse5JOL3ZObDb4x1loDhHbBOFU6i2Ddnw2KNiXcdAXygJlwE8OFVBHDgKrLgSInN4WMe9iXiqIVsTMjH7z/GhNTEibOxQswcYIWYOR/zAjBJfiXh3jZ6AAAAAElFTkSuQmCC.png"></p>
 <figcaption>Close document tab</figcaption>
 </figure>
 </div>
@@ -793,6 +808,7 @@ Coefficients:
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1054,9 +1070,10 @@ Coefficients:
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1066,17 +1083,8 @@ Coefficients:
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

@@ -62,6 +62,17 @@ The four primary deliverables for the final project are
 
 ## Project proposal  {#project-proposal}
 
+::: callout-important
+## Due dates
+
+-   Friday, October 27 (Tuesday labs)
+
+```{=html}
+<!-- -->
+```
+-   Sunday, October 29 (Thursday labs)
+:::
+
 The purpose of the project proposal is for your team to identify the data set you're interested in analyzing for the project, do some prelminary exploratory data analysis, and begin to think about a modeling strategy . If you're unsure where to find data, you can use the list of potential data sources on the [Tips + resources](project-tips.qmd) page as a starting point. It may also help to think of topics you're interested in investigating and find data sets on those topics.
 
 The data set must meet the following criteria:
@@ -82,7 +93,7 @@ The data set must meet the following criteria:
 -   May not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.
 
 ::: callout-warning
-Types of data sets to avoid:
+## Types of data sets to avoid
 
 -   Data that are likely violate the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc.
 

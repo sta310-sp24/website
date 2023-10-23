@@ -457,7 +457,7 @@ Prof.&nbsp;Maria Tackett
 </figure>
 </div>
 </div><div class="column" style="width:60%;">
-<p><em>Dr.&nbsp;Felicity Enders received her PhD from Johns Hopkins Bloomberg School of Public Health. She is a Professor of Biostatistics at the Mayo Clinic. With close to 200 publications, she has worked closely with clinicians, with particular focus on women's health and psychology. Across the medical spectrum, Dr.&nbsp;Enders has provided advanced statistical modeling collaboration in clinical trials.</em></p>
+<p><em>Dr.&nbsp;Felicity Enders received her PhD from Johns Hopkins Bloomberg School of Public Health. She is a Professor of Biostatistics at the Mayo Clinic. With close to 200 publications, she has worked closely with clinicians, with particular focus on women’s health and psychology. Across the medical spectrum, Dr.&nbsp;Enders has provided advanced statistical modeling collaboration in clinical trials.</em></p>
 <p><em>She is also passionate about biostatistics education and works to dissolve the hidden curriculum for research, particularly statistical knowledge needed for non-statisticians.</em></p>
 </div>
 </div>
@@ -484,16 +484,69 @@ Prof.&nbsp;Maria Tackett
 <h2>Computational setup</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(countdown)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(rms)</span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.1.1 ──
+✔ broom        1.0.5     ✔ rsample      1.2.0
+✔ dials        1.2.0     ✔ tune         1.1.2
+✔ infer        1.0.5     ✔ workflows    1.1.3
+✔ modeldata    1.2.0     ✔ workflowsets 1.0.1
+✔ parsnip      1.1.1     ✔ yardstick    1.2.0
+✔ recipes      1.0.8     
+── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ scales::discard() masks purrr::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ recipes::fixed()  masks stringr::fixed()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()
+• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'kableExtra'
+
+The following object is masked from 'package:dplyr':
+
+    group_rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(countdown)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(rms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Hmisc
+
+Attaching package: 'Hmisc'
+
+The following object is masked from 'package:parsnip':
+
+    translate
+
+The following objects are masked from 'package:dplyr':
+
+    src, summarize
+
+The following objects are masked from 'package:base':
+
+    format.pval, units</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section>
@@ -539,15 +592,15 @@ Prof.&nbsp;Maria Tackett
 <section id="outcome-tip" class="slide level2">
 <h2>Outcome: <code>Tip</code></h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-5-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-5-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="predictors" class="slide level2">
 <h2>Predictors</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-6-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-6-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="outcome-vs.-predictors" class="slide level2">
 <h2>Outcome vs.&nbsp;predictors</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-7-1.png" width="3600" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-7-1.png" width="3600" class="r-stretch quarto-figure-center"></section>
 <section id="analysis-goal" class="slide level2 midi">
 <h2>Analysis goal</h2>
 <div class="question">
@@ -595,6 +648,16 @@ Prof.&nbsp;Maria Tackett
 </ul>
 </div>
 <div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 90 Columns: 7
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): season, day_type
+dbl (5): volume, hightemp, avgtemp, cloudcover, precip
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 90 × 7
    volume hightemp avgtemp season cloudcover precip day_type
@@ -640,21 +703,24 @@ Prof.&nbsp;Maria Tackett
 <section id="review-simple-linear-regression-slr" class="slide level2">
 <h2>Review: Simple linear regression (SLR)</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(rail_trail, <span class="fu">aes</span>(<span class="at">x =</span> hightemp, <span class="at">y =</span> volume)) <span class="sc">+</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"High temp (F)"</span>, <span class="at">y =</span> <span class="st">"Number of riders"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(rail_trail, <span class="fu">aes</span>(<span class="at">x =</span> hightemp, <span class="at">y =</span> volume)) <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"High temp (F)"</span>, <span class="at">y =</span> <span class="st">"Number of riders"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-9-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-9-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="slr-model-summary" class="slide level2">
 <h2>SLR model summary</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>rt_slr_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp, <span class="at">data =</span> rail_trail)</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">tidy</span>(rt_slr_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>rt_slr_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp, <span class="at">data =</span> rail_trail)</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">tidy</span>(rt_slr_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -740,11 +806,11 @@ Prof.&nbsp;Maria Tackett
 <section id="multiple-linear-regression" class="slide level2">
 <h2>Multiple linear regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>rt_mlr_main_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp <span class="sc">+</span> season, <span class="at">data =</span> rail_trail)</span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">tidy</span>(rt_mlr_main_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>rt_mlr_main_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp <span class="sc">+</span> season, <span class="at">data =</span> rail_trail)</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="fu">tidy</span>(rt_mlr_main_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1080,8 +1146,8 @@ Prof.&nbsp;Maria Tackett
 <section id="confidence-interval-for-beta_j-2" class="slide level2">
 <h2>Confidence interval for <span class="math inline">\(\beta_j\)</span></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">tidy</span>(rt_mlr_main_fit, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">kable</span>(<span class="at">digits=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">tidy</span>(rt_mlr_main_fit, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">kable</span>(<span class="at">digits=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1327,14 +1393,14 @@ Prof.&nbsp;Maria Tackett
 <p>Including all available predictors</p>
 <p><strong>Fit:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>rt_full_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> ., <span class="at">data =</span> rail_trail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>rt_full_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> ., <span class="at">data =</span> rail_trail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><strong>Summarize:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">tidy</span>(rt_full_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">tidy</span>(rt_full_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 5
   term            estimate std.error statistic p.value
@@ -1353,7 +1419,7 @@ Prof.&nbsp;Maria Tackett
 <div class="fragment">
 <p><strong>Augment:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>rt_full_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>rt_full_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1369,20 +1435,20 @@ Prof.&nbsp;Maria Tackett
 <section id="residuals-vs.-predicted-values" class="slide level2">
 <h2>Residuals vs.&nbsp;predicted values</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> rt_full_aug, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> rt_full_aug, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-revealjs/main_res_pred-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/main_res_pred-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="linearity-residuals-vs.-predicted" class="slide level2">
 <h2>Linearity: Residuals vs.&nbsp;predicted</h2>
 <div class="question">
 <p>Does the linearity condition appear to be met?</p>
 </div>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-24-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-24-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="linearity-residuals-vs.-predicted-1" class="slide level2">
 <h2>Linearity: Residuals vs.&nbsp;predicted</h2>
 <p>Look at individual plots of residuals vs.&nbsp;each predictor, particularly if there are potential issues in the plot of residuals vs.&nbsp;predicted values.</p>
@@ -1390,7 +1456,7 @@ Prof.&nbsp;Maria Tackett
 <section id="linearity-residuals-vs.-each-predictor" class="slide level2">
 <h2>Linearity: Residuals vs.&nbsp;each predictor</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-25-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-25-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-linearity" class="slide level2">
 <h2>Checking linearity</h2>
 <ul>
@@ -1404,7 +1470,7 @@ Prof.&nbsp;Maria Tackett
 <p>Does the constant variance condition appear to be satisfied?</p>
 </div>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-26-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-26-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-constant-variance-1" class="slide level2">
 <h2>Checking constant variance</h2>
 <ul>
@@ -1415,7 +1481,7 @@ Prof.&nbsp;Maria Tackett
 <section id="checking-normality" class="slide level2">
 <h2>Checking normality</h2>
 
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-27-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-27-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-independence" class="slide level2">
 <h2>Checking independence</h2>
 <ul>
@@ -1428,13 +1494,13 @@ Prof.&nbsp;Maria Tackett
 <h2>Checking independence</h2>
 <p>Residuals vs.&nbsp;order of data collection:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(rt_full_aug, <span class="fu">aes</span>(<span class="at">y =</span> .resid, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(rt_full_aug))) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Order of data collection"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(rt_full_aug, <span class="fu">aes</span>(<span class="at">y =</span> .resid, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(rt_full_aug))) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Order of data collection"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-revealjs/unnamed-chunk-28-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-28-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-independence-2" class="slide level2">
 <h2>Checking independence</h2>
 <ul>
@@ -1524,7 +1590,7 @@ Prof.&nbsp;Maria Tackett
 <section id="vif-for-rail-trail-model" class="slide level2">
 <h2>VIF for rail trail model</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">vif</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">vif</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       hightemp         avgtemp    seasonSpring    seasonSummer      cloudcover 
       10.259978       13.086175        2.751577        5.841985        1.587485 
@@ -1540,13 +1606,13 @@ Prof.&nbsp;Maria Tackett
 <section id="model-without-hightemp" class="slide level2 smaller">
 <h2>Model without <code>hightemp</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> hightemp, <span class="at">data =</span> rail_trail)</span>
-<span id="cb16-4"><a href="#cb16-4"></a>  </span>
-<span id="cb16-5"><a href="#cb16-5"></a>m1 <span class="sc">|&gt;</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> hightemp, <span class="at">data =</span> rail_trail)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>  </span>
+<span id="cb26-5"><a href="#cb26-5"></a>m1 <span class="sc">|&gt;</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1618,13 +1684,13 @@ Prof.&nbsp;Maria Tackett
 <section id="model-without-avgtemp" class="slide level2 smaller">
 <h2>Model without <code>avgtemp</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> avgtemp, <span class="at">data =</span> rail_trail)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>  </span>
-<span id="cb17-5"><a href="#cb17-5"></a>m2 <span class="sc">|&gt;</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> avgtemp, <span class="at">data =</span> rail_trail)</span>
+<span id="cb27-4"><a href="#cb27-4"></a>  </span>
+<span id="cb27-5"><a href="#cb27-5"></a>m2 <span class="sc">|&gt;</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -2032,44 +2098,6 @@ Prof.&nbsp;Maria Tackett
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

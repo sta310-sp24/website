@@ -1831,7 +1831,91 @@
     "href": "project-instructions.html",
     "title": "Final project",
     "section": "",
-    "text": "Instructions will be posted when the project is assigned.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n, visualizations and summary statistics to describe the following: –&gt;"
+    "text": "Instructions will be posted when the project is assigned."
+  },
+  {
+    "objectID": "project-instructions.html#timeline",
+    "href": "project-instructions.html#timeline",
+    "title": "Final project",
+    "section": "Timeline",
+    "text": "Timeline\nProject proposal\n\ndue Friday, October 27 (Tuesday labs)\ndue Sunday, October 29 (Thursday labs)\n\nDraft report + peer review\n\ndue Tuesday, November 14 (Tuesday labs)\ndue Thursday, November 16 (Thursday labs)\n\nRound 1 submission (optional) due Friday, December 1\nPresentation + [Presentation comments ]\n\nTuesday, December 5 (Tuesday labs)\nThursday, December 7 (Thursday labs)\n\nWritten report due Wednesday, December 13\nReproducibility + organization due Wednesday, December 13"
+  },
+  {
+    "objectID": "project-instructions.html#introduction",
+    "href": "project-instructions.html#introduction",
+    "title": "Final project",
+    "section": "Introduction",
+    "text": "Introduction\nTL;DR: Pick a data set and do a regression analysis. That is your final project.\nThe goal of the final project is for you to use regression analysis to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web.\nChoose the data based on your group’s interests or work you all have done in other courses or research projects. The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like!) and apply them to a data set to analyze it in a meaningful way.\nAll analyses must be done in RStudio, and your analysis and written report must be reproducible.\n\nLogistics\nYou will work on the project with your lab groups.\nThe four primary deliverables for the final project are\n\nA written, reproducible report detailing your analysis\nA GitHub repository corresponding to your report\nSlides + an in-person presentation\nFormal peer review on another team’s work"
+  },
+  {
+    "objectID": "project-instructions.html#project-proposal",
+    "href": "project-instructions.html#project-proposal",
+    "title": "Final project",
+    "section": "Project proposal",
+    "text": "Project proposal\nThe purpose of the project proposal is for your team to identify the data set you’re interested in analyzing for the project, do some prelminary exploratory data analysis, and begin to think about a modeling strategy . If you’re unsure where to find data, you can use the list of potential data sources on the Tips + resources page as a starting point. It may also help to think of topics you’re interested in investigating and find data sets on those topics.\nThe data set must meet the following criteria:\n\nAt least 500 observations\nAt least 10 columns, such that at least 6 of the columns are useful and unique predictor variables.\n\nE.g., identifier variables such as “name”, “social security number”, etc. are not useful predictor variables.\nE.g., if you have multiple columns with the same information (e.g. “state abbreviation” and “state name”), then they are not unique predictors.\n\nAt least one variable that can be identified as a reasonable response variable.\n\nThe response variable can be quantitative or categorical.\n\nA mix of quantitative and categorical variables that can be used as predictors.\nMay not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.\n\n\n\n\n\n\n\nWarning\n\n\n\nTypes of data sets to avoid:\n\nData that are likely violate the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc.\nData sets in which there is no information about how the data were originally collected\nData sets in which there are missing or unclear definitions about the variables\n\n\n\nAsk a member of the teaching team if you’re unsure whether your data set meets the criteria.\nThe proposal will include the following:\n\nSection 1: Introduction\nThe introduction section includes\n\nan introduction to the subject matter you’re investigating (citing any relevant literature)\nthe motivation for your research question (citing any relevant literature)\nthe primary research question you are interested in exploring\nyour team's hypotheses regarding the research question\n\nThis is narrative about what you think regarding the research question, not formal statistical hypotheses.\n\n\n\n\nSection 2: Data description\nThe data description section includes\n\nthe source of the data set\ndescription of how when and how the data were originally collected (by the original data curator, not necessarily how you found the data)\ndescription of the observations and general characteristics being measured\n\n\n\nSection 3: Initial exploratory data analysis\nIn this section, you will begin to explore the data. This includes using narrative, visualizations and summary statistics to describe the following:\n\ndistribution of the response variable\ndistributions of one potential quantitative predictor variable and one potential categorical predictor variable\nthe relationships between the response variable and each of the predictors from the previous step\na potential interaction effect you’re interested in exploring (it doesn’t have to be an interaction with the two predictors from above)\n\nThese steps are just to get your started on exploratory data analysis and will not be the complete EDA for the final report. The requirements above are the minimum requirements, but your group is welcome to include more at this stage.\nIn this section, you will also describe any data cleaning you need to do to prepare for modeling, such as imputing missing values, collapsing levels for categorical predictors, creating new variables, summarizing data, etc.\n\n\nSection 4: Analysis approach\nIn this section, you will provide a brief overview of your analysis approach. This includes\n\ndescription of the response variable and list of all potential predictors\nregression model technique (multiple linear regression or logistic regression)\n\n\n\nData dictionary (aka code book)\nSubmit a data dictionary for all the variables in your data set in the README of the data folder. You do not need to include the data dictionary in the PDF document.\n\n\nSubmission\n\n\n\n\n\n\nImportant\n\n\n\nWrite your narrative for Sections 1 - 4 in the proposal.qmd file. Put the data set and the data dictionary in the data folder.\nSubmit the PDF of the proposal to Gradescope. Mark all pages of the document.\n\n\n\n\nGrading\nThe anticipated length, including all graphs, tables, narrative, etc., is 2 -4 pages; it may not exceed 5 pages.\nThe proposal is worth 15 points and will be graded based on accurately and comprehensively addressing the criteria stated above. Points will be assigned based on a holistic review of the project proposal.\n\nExcellent (14 - 15 points) : All required elements are completed and are accurate. There is a thorough exploration of the data and the team has demonstrated a careful and thoughtful approach exploring the data and preparing it for analysis. The narrative is written clearly, all tables and visualizations are nicely formatted, and the work would be presentable in a professional setting.\nStrong: (11 - 13 points): Requirements are mostly met, but there are some elements that are incomplete or inaccurate. Some minor revision of the work required before team is ready for modeling.\nSatisfactory (8 - 10 points): Requirements partially met, but there are some elements that are incomplete and/or inaccurate. Major revision of the work required before team is ready for modeling.\nNeeds Improvement (7 or fewer points points): Requirements are largely unmet, and there are large elements that are incomplete and/or inaccurate. Substantial revisions of the work required before team is ready for modeling. --&gt;"
+  },
+  {
+    "objectID": "project-instructions.html#written-report",
+    "href": "project-instructions.html#written-report",
+    "title": "Final project",
+    "section": "Written report",
+    "text": "Written report"
+  },
+  {
+    "objectID": "project-instructions.html#draft-report-peer-review",
+    "href": "project-instructions.html#draft-report-peer-review",
+    "title": "Final project",
+    "section": "Draft report + peer review",
+    "text": "Draft report + peer review"
+  },
+  {
+    "objectID": "project-instructions.html#round1-submission",
+    "href": "project-instructions.html#round1-submission",
+    "title": "Final project",
+    "section": "Round 1 submission (optional)",
+    "text": "Round 1 submission (optional)"
+  },
+  {
+    "objectID": "project-instructions.html#presentation",
+    "href": "project-instructions.html#presentation",
+    "title": "Final project",
+    "section": "Presentation",
+    "text": "Presentation"
+  },
+  {
+    "objectID": "project-instructions.html#presentation-comments",
+    "href": "project-instructions.html#presentation-comments",
+    "title": "Final project",
+    "section": "Presentation comments",
+    "text": "Presentation comments"
+  },
+  {
+    "objectID": "project-instructions.html#reproducibility-organization",
+    "href": "project-instructions.html#reproducibility-organization",
+    "title": "Final project",
+    "section": "Reproducibility + organization",
+    "text": "Reproducibility + organization"
+  },
+  {
+    "objectID": "project-instructions.html#peer-teamwork-evaluation",
+    "href": "project-instructions.html#peer-teamwork-evaluation",
+    "title": "Final project",
+    "section": "Peer teamwork evaluation",
+    "text": "Peer teamwork evaluation"
+  },
+  {
+    "objectID": "project-instructions.html#overall-grading",
+    "href": "project-instructions.html#overall-grading",
+    "title": "Final project",
+    "section": "Overall grading",
+    "text": "Overall grading\nThe grade breakdown is as follows:\n\n\n\nTotal\n100 pts\n\n\n\n\nProject proposal\n15 pts\n\n\nDraft report + peer review\n15 pts\n\n\nPresentation\n20 pts\n\n\nPresentation comments\n5 pts\n\n\nWritten report\n40 pts\n\n\nReproducibility + organization\n5 pts\n\n\n\n\nGrading summary\nGrading of the project will take into account the following:\n\nContent - What is the quality of research and/or policy question and relevancy of data to those questions?\nCorrectness - Are statistical procedures carried out and explained correctly?\nWriting and Presentation - What is the quality of the statistical presentation, writing, and explanations?\nCreativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?\n\nA general breakdown of scoring is as follows:\n\n90%-100%: Outstanding effort. Student understands how to apply all statistical concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others.\n80%-89%: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others.\n70%-79%: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear.\n60%-69%: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear.\nBelow 60%: Student is not making a sufficient effort. --&gt;"
+  },
+  {
+    "objectID": "project-instructions.html#late-work-policy",
+    "href": "project-instructions.html#late-work-policy",
+    "title": "Final project",
+    "section": "Late work policy",
+    "text": "Late work policy\nThere is no late work accepted on the draft report or presentation. Other components of the project may be accepted up to 48 hours late. A 10% late deduction will apply for each 24-hour period late.\nBe sure to turn in your work early to avoid any technological mishaps."
   },
   {
     "objectID": "ae/ae-02-bikeshare.html",
@@ -3175,7 +3259,7 @@
     "href": "slides/14-mlr-inference.html#statistician-of-the-day-felicity-enders",
     "title": "Inference for multiple linear regression",
     "section": "Statistician of the day: Felicity Enders",
-    "text": "Statistician of the day: Felicity Enders\n\n\n\n\n\n\n\n\nDr. Felicity Enders received her PhD from Johns Hopkins Bloomberg School of Public Health. She is a Professor of Biostatistics at the Mayo Clinic. With close to 200 publications, she has worked closely with clinicians, with particular focus on women's health and psychology. Across the medical spectrum, Dr. Enders has provided advanced statistical modeling collaboration in clinical trials.\nShe is also passionate about biostatistics education and works to dissolve the hidden curriculum for research, particularly statistical knowledge needed for non-statisticians.\n\n\nSource: hardin47.github.io/CURV/scholars/enders"
+    "text": "Statistician of the day: Felicity Enders\n\n\n\n\n\n\n\n\nDr. Felicity Enders received her PhD from Johns Hopkins Bloomberg School of Public Health. She is a Professor of Biostatistics at the Mayo Clinic. With close to 200 publications, she has worked closely with clinicians, with particular focus on women’s health and psychology. Across the medical spectrum, Dr. Enders has provided advanced statistical modeling collaboration in clinical trials.\nShe is also passionate about biostatistics education and works to dissolve the hidden curriculum for research, particularly statistical knowledge needed for non-statisticians.\n\n\nSource: hardin47.github.io/CURV/scholars/enders"
   },
   {
     "objectID": "slides/14-mlr-inference.html#felicity-enders",
@@ -3196,7 +3280,7 @@
     "href": "slides/14-mlr-inference.html#computational-setup",
     "title": "Inference for multiple linear regression",
     "section": "Computational setup",
-    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(patchwork)\nlibrary(knitr)\nlibrary(kableExtra)\nlibrary(countdown)\nlibrary(rms)\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
+    "text": "Computational setup\n\n# load packages\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.3     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(tidymodels)\n\n── Attaching packages ────────────────────────────────────── tidymodels 1.1.1 ──\n✔ broom        1.0.5     ✔ rsample      1.2.0\n✔ dials        1.2.0     ✔ tune         1.1.2\n✔ infer        1.0.5     ✔ workflows    1.1.3\n✔ modeldata    1.2.0     ✔ workflowsets 1.0.1\n✔ parsnip      1.1.1     ✔ yardstick    1.2.0\n✔ recipes      1.0.8     \n── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──\n✖ scales::discard() masks purrr::discard()\n✖ dplyr::filter()   masks stats::filter()\n✖ recipes::fixed()  masks stringr::fixed()\n✖ dplyr::lag()      masks stats::lag()\n✖ yardstick::spec() masks readr::spec()\n✖ recipes::step()   masks stats::step()\n• Search for functions across packages at https://www.tidymodels.org/find/\n\nlibrary(patchwork)\nlibrary(knitr)\nlibrary(kableExtra)\n\n\nAttaching package: 'kableExtra'\n\nThe following object is masked from 'package:dplyr':\n\n    group_rows\n\nlibrary(countdown)\nlibrary(rms)\n\nLoading required package: Hmisc\n\nAttaching package: 'Hmisc'\n\nThe following object is masked from 'package:parsnip':\n\n    translate\n\nThe following objects are masked from 'package:dplyr':\n\n    src, summarize\n\nThe following objects are masked from 'package:base':\n\n    format.pval, units\n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_bw(base_size = 20))"
   },
   {
     "objectID": "slides/14-mlr-inference.html#data-restaurant-tips",
@@ -3252,7 +3336,7 @@
     "href": "slides/14-mlr-inference.html#data-rail_trail",
     "title": "Inference for multiple linear regression",
     "section": "Data: rail_trail",
-    "text": "Data: rail_trail\n\n\nThe Pioneer Valley Planning Commission (PVPC) collected data for ninety days from April 5, 2005 to November 15, 2005.\nData collectors set up a laser sensor, with breaks in the laser beam recording when a rail-trail user passed the data collection station.\n\n\n\n\n# A tibble: 90 × 7\n   volume hightemp avgtemp season cloudcover precip day_type\n    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;   \n 1    501       83    66.5 Summer       7.60 0      Weekday \n 2    419       73    61   Summer       6.30 0.290  Weekday \n 3    397       74    63   Spring       7.5  0.320  Weekday \n 4    385       95    78   Summer       2.60 0      Weekend \n 5    200       44    48   Spring      10    0.140  Weekday \n 6    375       69    61.5 Spring       6.60 0.0200 Weekday \n 7    417       66    52.5 Spring       2.40 0      Weekday \n 8    629       66    52   Spring       0    0      Weekend \n 9    533       80    67.5 Summer       3.80 0      Weekend \n10    547       79    62   Summer       4.10 0      Weekday \n# ℹ 80 more rows\n\n\nSource: Pioneer Valley Planning Commission via the mosaicData package."
+    "text": "Data: rail_trail\n\n\nThe Pioneer Valley Planning Commission (PVPC) collected data for ninety days from April 5, 2005 to November 15, 2005.\nData collectors set up a laser sensor, with breaks in the laser beam recording when a rail-trail user passed the data collection station.\n\n\n\n\nRows: 90 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): season, day_type\ndbl (5): volume, hightemp, avgtemp, cloudcover, precip\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 90 × 7\n   volume hightemp avgtemp season cloudcover precip day_type\n    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;   \n 1    501       83    66.5 Summer       7.60 0      Weekday \n 2    419       73    61   Summer       6.30 0.290  Weekday \n 3    397       74    63   Spring       7.5  0.320  Weekday \n 4    385       95    78   Summer       2.60 0      Weekend \n 5    200       44    48   Spring      10    0.140  Weekday \n 6    375       69    61.5 Spring       6.60 0.0200 Weekday \n 7    417       66    52.5 Spring       2.40 0      Weekday \n 8    629       66    52   Spring       0    0      Weekend \n 9    533       80    67.5 Summer       3.80 0      Weekend \n10    547       79    62   Summer       4.10 0      Weekday \n# ℹ 80 more rows\n\n\nSource: Pioneer Valley Planning Commission via the mosaicData package."
   },
   {
     "objectID": "slides/14-mlr-inference.html#variables-1",
@@ -3266,7 +3350,7 @@
     "href": "slides/14-mlr-inference.html#review-simple-linear-regression-slr",
     "title": "Inference for multiple linear regression",
     "section": "Review: Simple linear regression (SLR)",
-    "text": "Review: Simple linear regression (SLR)\n\nggplot(rail_trail, aes(x = hightemp, y = volume)) + \n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(x = \"High temp (F)\", y = \"Number of riders\")"
+    "text": "Review: Simple linear regression (SLR)\n\nggplot(rail_trail, aes(x = hightemp, y = volume)) + \n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(x = \"High temp (F)\", y = \"Number of riders\")\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/14-mlr-inference.html#slr-model-summary",

@@ -97,14 +97,16 @@ knitr::opts_chunk$set(echo = FALSE,
 
 <!-- -->
 
-    ---
-    title: "Your Title"
-    author: "Team Name + Group Members"
-    output: 
-      pdf_document:
-        fig_width: 5
-        fig_height: 3
-    ---
+```         
+---
+title: "Your Title"
+author: "Team Name + Group Members"
+output: 
+  pdf_document:
+    fig_width: 5
+    fig_height: 3
+---
+```
 
 Replace the height and width values with values appropriate for your write up.
 

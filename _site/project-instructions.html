@@ -211,7 +211,39 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#timeline" id="toc-timeline" class="nav-link active" data-scroll-target="#timeline">Timeline</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#logistics" id="toc-logistics" class="nav-link" data-scroll-target="#logistics">Logistics</a></li>
+  </ul></li>
+  <li><a href="#project-proposal" id="toc-project-proposal" class="nav-link" data-scroll-target="#project-proposal">Project proposal</a>
+  <ul class="collapse">
+  <li><a href="#section-1-introduction" id="toc-section-1-introduction" class="nav-link" data-scroll-target="#section-1-introduction">Section 1: Introduction</a></li>
+  <li><a href="#section-2-data-description" id="toc-section-2-data-description" class="nav-link" data-scroll-target="#section-2-data-description">Section 2: Data description</a></li>
+  <li><a href="#section-3-initial-exploratory-data-analysis" id="toc-section-3-initial-exploratory-data-analysis" class="nav-link" data-scroll-target="#section-3-initial-exploratory-data-analysis">Section 3: Initial exploratory data analysis</a></li>
+  <li><a href="#section-4-analysis-approach" id="toc-section-4-analysis-approach" class="nav-link" data-scroll-target="#section-4-analysis-approach">Section 4: Analysis approach</a></li>
+  <li><a href="#data-dictionary-aka-code-book" id="toc-data-dictionary-aka-code-book" class="nav-link" data-scroll-target="#data-dictionary-aka-code-book">Data dictionary (aka code book)</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  </ul></li>
+  <li><a href="#written-report" id="toc-written-report" class="nav-link" data-scroll-target="#written-report">Written report</a></li>
+  <li><a href="#draft-report-peer-review" id="toc-draft-report-peer-review" class="nav-link" data-scroll-target="#draft-report-peer-review">Draft report + peer review</a></li>
+  <li><a href="#round1-submission" id="toc-round1-submission" class="nav-link" data-scroll-target="#round1-submission">Round 1 submission (optional)</a></li>
+  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation">Presentation</a></li>
+  <li><a href="#presentation-comments" id="toc-presentation-comments" class="nav-link" data-scroll-target="#presentation-comments"><strong>Presentation comments</strong></a></li>
+  <li><a href="#reproducibility-organization" id="toc-reproducibility-organization" class="nav-link" data-scroll-target="#reproducibility-organization">Reproducibility + organization</a></li>
+  <li><a href="#peer-teamwork-evaluation" id="toc-peer-teamwork-evaluation" class="nav-link" data-scroll-target="#peer-teamwork-evaluation">Peer teamwork evaluation</a></li>
+  <li><a href="#overall-grading" id="toc-overall-grading" class="nav-link" data-scroll-target="#overall-grading">Overall grading</a>
+  <ul class="collapse">
+  <li><a href="#grading-summary" id="toc-grading-summary" class="nav-link" data-scroll-target="#grading-summary">Grading summary</a></li>
+  </ul></li>
+  <li><a href="#late-work-policy" id="toc-late-work-policy" class="nav-link" data-scroll-target="#late-work-policy">Late work policy</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/project-instructions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -234,115 +266,160 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>Instructions will be posted when the project is assigned.</p>
-<!-- # Timeline -->
-<!-- [Topic ideas](#topic-ideas) -->
-<!-- -   due Monday, October 17 (Thursday labs) -->
-<!-- -   due Tuesday, October 18 (Friday labs) -->
-<!-- [Project proposal](#project-proposal) due Friday, November 4 -->
-<!-- [Round 1 submission (optional)](#draft-report) due Tuesday, November 22 -->
-<!-- [Written report](#written-report) due Friday, December 9 (accepted until December 11) -->
-<!-- [Video presentation + slides](#video-presentation-slides) and [Reproducibility + organization](#reproducibility-organization) due Wednesday, December 14 -->
-<!-- [Presentation comments](#presentation-comments) due Friday, December 16 -->
-<!-- ## Introduction -->
-<!-- **TL;DR**: *Pick a data set and do a regression analysis. That is your final project.* -->
-<!-- The goal of the final project is for you to use regression analysis to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web. -->
-<!-- Choose the data based on your group's interests or work you all have done in other courses or research projects. The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like!) and apply them to a data set to analyze it in a meaningful way. -->
-<!-- All analyses must be done in RStudio, and all components of the project **must be reproducible** (with the exception of the presentation). -->
-<!-- ### Logistics -->
-<!-- You will work on the project with your lab groups. -->
-<!-- The four primary deliverables for the final project are -->
-<!-- -   A written, reproducible report detailing your analysis -->
-<!-- -   A GitHub repository corresponding to your report -->
-<!-- -   Slides + a video presentation -->
-<!-- -   Formal peer review on another team's project -->
-<!-- ## Topic ideas {#topic-ideas} -->
-<!-- Identify 2 - 3 data sets you're interested in potentially using for the final project. If you're unsure where to find data, you can use the list of potential data sources on the [Tips + resources](project-tips.qmd) page as a starting point. It may also help to think of topics you're interested in investigating and find data sets on those topics. -->
-<!-- The purpose of submitting project ideas is to give you time to find data for the project and to make sure you have a data set that can help set you up for a successful project. **Therefore, you must use one of the data sets submitted as a topic idea, unless otherwise notified by the teaching team.** -->
-<!-- The data sets should meet the following criteria: -->
-<!-- -   At least 500 observations -->
-<!-- -   At least 10 columns -->
-<!-- -   At least 6 of the columns must be useful and unique predictor variables. -->
-<!--     -   Identifier variables such as "name", "social security number", etc. are not useful predictor variables. -->
-<!--     -   If you have multiple columns with the same information (e.g. "state abbreviation" and "state name"), then they are not unique predictors. -->
-<!-- -   At least one variable that can be identified as a reasonable response variable. -->
-<!--     -   The response variable can be quantitative or categorical. -->
-<!-- -   A mix of quantitative and categorical variables that can be used as predictors. -->
-<!-- -   Observations should reasonably meet the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc. -->
-<!-- -   You may not use data that has previously been used in any course materials, or any derivation of data that has been used in course materials. -->
-<!-- ::: callout-tip -->
-<!-- Ask a member of the teaching team if you're unsure whether your data set meets the criteria. -->
-<!-- ::: -->
-<!-- For each data set, include the following: -->
-<!-- #### Introduction and data -->
-<!-- -   State the source of the data set. -->
-<!-- -   Describe when and how it was originally collected (by the original data curator, not necessarily how you found the data) -->
-<!-- -   Describe the observations and the general characteristics being measured in the data -->
-<!-- #### Research question -->
-<!-- -   Describe a research question you're interested in answering using this data. -->
-<!-- #### Glimpse of data -->
-<!-- -   Use the `glimpse` function to provide an overview of the data set -->
-<!-- ::: callout-important -->
-<!-- All work will go inside the `topic-ideas` folder. Write your responses in `topic-ideas.qmd` and put the data sets in the `data` folder within `topic-ideas`.\ -->
-<!-- \ -->
-<!-- Submit the PDF of the topic ideas to Gradescope. Mark all pages associated with each data set. -->
-<!-- ::: -->
-<!-- ### Grading -->
-<!-- The Topic Ideas portion of the project is worth 10 points. It will be graded based on meeting the criteria stated above for 2 proposed data sets. -->
-<!-- ## Project proposal {#project-proposal} -->
-<!-- The purpose of the project proposal is to help you think about your analysis strategy early and thoroughly explore the data. -->
-<!-- Include the following in the proposal: -->
-<!-- ### Section 1 - Introduction -->
-<!-- The introduction section includes -->
-<!-- -   an introduction to the subject matter you're investigating -->
-<!-- -   the motivation for your research question (citing any relevant literature) -->
-<!-- -   the primary research question you are interested in exploring -->
-<!-- -   your team's hypotheses regarding the research question -->
-<!-- ### Section 2 - Data description -->
-<!-- In this section, you will describe the data set. This includes -->
-<!-- -   description of the observations in the data set -->
-<!-- -   description of how the data were originally collected (not how you found the data but how the original curator of the data collected it). -->
-<!-- ### Section 3 - Exploratory data analysis -->
-<!-- In this section, you will explore the data. This includes using <!-- narrative -->
-<p>, visualizations and summary statistics to describe the following: –&gt;</p>
-<!-- -   univariate distribution of the response variable -->
-<!-- -   univariate distributions of the potential predictor variables -->
-<!-- -   relationships between the response and predictors -->
-<!-- -   relationships between predictors -->
-<!-- -   potential interaction effects you're interested in exploring -->
-<!-- In this section, you will also describe any data cleaning you need to do to prepare for modeling, such as imputing missing values, collapsing levels for categorical predictors, creating new variables, summarizing data, etc. -->
-<!-- ### Section 4 - Analysis approach -->
-<!-- In this section, you will provide a brief overview of your analysis approach. This includes: -->
-<!-- -   description of the response variable and list of potential predictors -->
-<!-- -   regression model technique (multiple linear regression or logistic regression) -->
-<!-- ### Data dictionary (aka code book) -->
-<!-- Submit a data dictionary for all the variables in your data set in the `README` of the `data` folder. You do [not]{.underline} need to include the data dictionary in the PDF. -->
-<!-- ### Submission -->
-<!-- ::: callout-important -->
-<!-- All work will go inside the `proposal` folder. Write your responses in `proposal.qmd` and put the data set and the data dictionary in the `data` folder.\ -->
-<!-- \ -->
-<!-- Submit the PDF of the proposal to Gradescope. Mark all pages of the document. -->
-<!-- ::: -->
-<!-- ### Grading -->
-
-<!-- The anticipated length, including all graphs, tables, narrative, etc., is 3 - 6 pages; it may not exceed **7 pages**. -->
-<!-- The proposal is with 15 points and will be graded based on accurately and comprehensively addressing the criteria stated above. Points will be assigned based on a holistic review of the project proposal. -->
-
-<!-- -   **Excellent (14 - 15 points) :** All required elements are completed and are accurate. There is a thorough exploration of the data and the team has demonstrated a careful and thoughtful approach exploring the data and preparing it for analysis. The narrative is written clearly, all tables and visualizations are nicely formatted, and the work would be presentable in a professional setting. -->
-<!-- -   **Strong: (11 - 13 points)** Requirements are mostly met, but there are some elements that are incomplete or inaccurate. Some minor revision of the work required before team is ready for modeling. -->
-<!-- -   **Satisfactory (8 - 10 points):** Requirements partially met, but there are some elements that are incomplete and/or inaccurate. Major revision of the work required before team is ready for modeling. -->
-<!-- -   **Needs Improvement (7 or fewer points points):** Requirements are largely unmet, and there are large elements that are incomplete and/or inaccurate. Substantial revisions of the work required before team is ready for modeling. -->
-<!-- ## Round 1 submission (optional) {#draft-report} -->
-<!-- The Round 1 submission is an opportunity to receive detailed feedback on your analysis and [written report](#written-report). The feedback will only be on the content that is submitted, so more "complete" drafts will receive more detailed feedback. At this stage, you will also be notified of the grade you would receive at that point. You will have the option to keep the grade (and thus you don't need to turn in an updated report) or resubmit the written report by the final submission deadline for grading. -->
-<!-- To submit the draft: -->
-<!-- 1\. Push the updated `written-report.qmd` and `written-report.pdf` to your GitHub repo. -->
-<!-- 2\. Open an issue with the title "Round 1 Submission". You can use the template issue in the GitHub repo. Make sure I am tagged in the issue (\@matackett), so I receive notification of your Round 1 submission. See [Creating an issue from a repository](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-repository) for instructions on opening an issue. Please ask a member of the teaching team for assistance if you need help opening the issue. -->
-<!-- ::: callout-important -->
-<!-- You must complete <u>both</u> steps by **Tuesday, November 22, 11:59pm** to receive preliminary feedback.\ -->
-<!-- \ -->
-<!-- Reports submitted after that date will not receive preliminary feedback. -->
-<!-- ::: -->
-<!-- Note that this is optional, so there is <u>**no**</u> grading penalty for turning in nothing for the Round 1 submission. Due to time constraints at the end of the semester, only high-level feedback will be given for the reports submitted at the final written report deadline in December. -->
-<!-- ## Written report {#written-report} -->
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p><a href="#project-proposal">Project proposal</a></p>
+<ul>
+<li><p>due Friday, October 27 (Tuesday labs)</p></li>
+<li><p>due Sunday, October 29 (Thursday labs)</p></li>
+</ul>
+<p><a href="#draft-report-peer-review">Draft report + peer review</a></p>
+<ul>
+<li><p>due Tuesday, November 14 (Tuesday labs)</p></li>
+<li><p>due Thursday, November 16 (Thursday labs)</p></li>
+</ul>
+<p><a href="#round1-submission">Round 1 submission (optional)</a> due Friday, December 1</p>
+<p><a href="#presentation">Presentation</a> + [Presentation comments ]</p>
+<ul>
+<li><p>Tuesday, December 5 (Tuesday labs)</p></li>
+<li><p>Thursday, December 7 (Thursday labs)</p></li>
+</ul>
+<p><a href="#written-report">Written report</a> due Wednesday, December 13</p>
+<p><a href="#reproducibility-organization">Reproducibility + organization</a> due Wednesday, December 13</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p><strong>TL;DR</strong>: <em>Pick a data set and do a regression analysis. That is your final project.</em></p>
+<p>The goal of the final project is for you to use regression analysis to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web.</p>
+<p>Choose the data based on your group’s interests or work you all have done in other courses or research projects. The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like!) and apply them to a data set to analyze it in a meaningful way.</p>
+<p>All analyses must be done in RStudio, and your analysis and written report <strong>must be reproducible</strong>.</p>
+<section id="logistics" class="level3">
+<h3 class="anchored" data-anchor-id="logistics">Logistics</h3>
+<p>You will work on the project with your lab groups.</p>
+<p>The four primary deliverables for the final project are</p>
+<ol type="1">
+<li><p>A written, reproducible report detailing your analysis</p></li>
+<li><p>A GitHub repository corresponding to your report</p></li>
+<li><p>Slides + an in-person presentation</p></li>
+<li><p>Formal peer review on another team’s work</p></li>
+</ol>
+</section>
+</section>
+<section id="project-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="project-proposal">Project proposal</h2>
+<p>The purpose of the project proposal is for your team to identify the data set you’re interested in analyzing for the project, do some prelminary exploratory data analysis, and begin to think about a modeling strategy . If you’re unsure where to find data, you can use the list of potential data sources on the <a href="./project-tips.html">Tips + resources</a> page as a starting point. It may also help to think of topics you’re interested in investigating and find data sets on those topics.</p>
+<p>The data set must meet the following criteria:</p>
+<ul>
+<li><p>At least 500 observations</p></li>
+<li><p>At least 10 columns, such that at least 6 of the columns are useful and unique predictor variables.</p>
+<ul>
+<li>E.g., identifier variables such as “name”, “social security number”, etc. are not useful predictor variables.</li>
+<li>E.g., if you have multiple columns with the same information (e.g.&nbsp;“state abbreviation” and “state name”), then they are not unique predictors.</li>
+</ul></li>
+<li><p>At least one variable that can be identified as a reasonable response variable.</p>
+<ul>
+<li>The response variable can be quantitative or categorical.</li>
+</ul></li>
+<li><p>A mix of quantitative and categorical variables that can be used as predictors.</p></li>
+<li><p>May not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.</p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Types of data sets to avoid:</p>
+<ul>
+<li><p>Data that are likely violate the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc.</p></li>
+<li><p>Data sets in which there is no information about how the data were originally collected</p></li>
+<li><p>Data sets in which there are missing or unclear definitions about the variables</p></li>
+</ul>
+</div>
+</div>
+<p>Ask a member of the teaching team if you’re unsure whether your data set meets the criteria.</p>
+<p>The proposal will include the following:</p>
+<section id="section-1-introduction" class="level3">
+<h3 class="anchored" data-anchor-id="section-1-introduction">Section 1: Introduction</h3>
+<p>The introduction section includes</p>
+<ul>
+<li><p>an introduction to the subject matter you’re investigating (citing any relevant literature)</p></li>
+<li><p>the motivation for your research question (citing any relevant literature)</p></li>
+<li><p>the primary research question you are interested in exploring</p></li>
+<li><p>your team's hypotheses regarding the research question</p>
+<ul>
+<li>This is narrative about what you think regarding the research question, not formal statistical hypotheses.</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-2-data-description" class="level3">
+<h3 class="anchored" data-anchor-id="section-2-data-description">Section 2: Data description</h3>
+<p>The data description section includes</p>
+<ul>
+<li><p>the source of the data set</p></li>
+<li><p>description of how when and how the data were originally collected (by the original data curator, not necessarily how you found the data)</p></li>
+<li><p>description of the observations and general characteristics being measured</p></li>
+</ul>
+</section>
+<section id="section-3-initial-exploratory-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="section-3-initial-exploratory-data-analysis">Section 3: Initial exploratory data analysis</h3>
+<p>In this section, you will begin to explore the data. This includes using narrative, visualizations and summary statistics to describe the following:</p>
+<ul>
+<li><p>distribution of the response variable</p></li>
+<li><p>distributions of one potential quantitative predictor variable and one potential categorical predictor variable</p></li>
+<li><p>the relationships between the response variable and each of the predictors from the previous step</p></li>
+<li><p>a potential interaction effect you’re interested in exploring (it doesn’t have to be an interaction with the two predictors from above)</p></li>
+</ul>
+<p>These steps are just to get your started on exploratory data analysis and will not be the complete EDA for the final report. The requirements above are the minimum requirements, but your group is welcome to include more at this stage.</p>
+<p>In this section, you will also describe any data cleaning you need to do to prepare for modeling, such as imputing missing values, collapsing levels for categorical predictors, creating new variables, summarizing data, etc.</p>
+</section>
+<section id="section-4-analysis-approach" class="level3">
+<h3 class="anchored" data-anchor-id="section-4-analysis-approach">Section 4: Analysis approach</h3>
+<p>In this section, you will provide a brief overview of your analysis approach. This includes</p>
+<ul>
+<li><p>description of the response variable and list of all potential predictors</p></li>
+<li><p>regression model technique (multiple linear regression or logistic regression)</p></li>
+</ul>
+</section>
+<section id="data-dictionary-aka-code-book" class="level3">
+<h3 class="anchored" data-anchor-id="data-dictionary-aka-code-book">Data dictionary (aka code book)</h3>
+<p>Submit a data dictionary for all the variables in your data set in the <code>README</code> of the <code>data</code> folder. You do <u>not</u> need to include the data dictionary in the PDF document.</p>
+</section>
+<section id="submission" class="level3">
+<h3 class="anchored" data-anchor-id="submission">Submission</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write your narrative for Sections 1 - 4 in the <code>proposal.qmd</code> file. Put the data set and the data dictionary in the <code>data</code> folder.</p>
+<p>Submit the PDF of the proposal to Gradescope. Mark all pages of the document.</p>
+</div>
+</div>
+</section>
+<section id="grading" class="level3">
+<h3 class="anchored" data-anchor-id="grading">Grading</h3>
+<p>The anticipated length, including all graphs, tables, narrative, etc., is 2 -4 pages; it may not exceed <strong>5 pages.</strong></p>
+<p>The proposal is worth 15 points and will be graded based on accurately and comprehensively addressing the criteria stated above. Points will be assigned based on a holistic review of the project proposal.</p>
+<ul>
+<li><p><strong>Excellent (14 - 15 points) :</strong> All required elements are completed and are accurate. There is a thorough exploration of the data and the team has demonstrated a careful and thoughtful approach exploring the data and preparing it for analysis. The narrative is written clearly, all tables and visualizations are nicely formatted, and the work would be presentable in a professional setting.</p></li>
+<li><p><strong>Strong: (11 - 13 points):</strong> Requirements are mostly met, but there are some elements that are incomplete or inaccurate. Some minor revision of the work required before team is ready for modeling.</p></li>
+<li><p><strong>Satisfactory (8 - 10 points):</strong> Requirements partially met, but there are some elements that are incomplete and/or inaccurate. Major revision of the work required before team is ready for modeling.</p></li>
+<li><p><strong>Needs Improvement (7 or fewer points points):</strong> Requirements are largely unmet, and there are large elements that are incomplete and/or inaccurate. Substantial revisions of the work required before team is ready for modeling. --&gt;</p></li>
+</ul>
+</section>
+</section>
+<section id="written-report" class="level2">
+<h2 class="anchored" data-anchor-id="written-report">Written report</h2>
 <!-- Your written report must be completed in the `written-report.qmd` file and must be reproducible. All team members should contribute to the GitHub repository, with regular meaningful commits. -->
 <!-- ::: callout-note -->
 <!-- Before you finalize your write up, make sure the code chunks are not visible and all messages and warnings are suppressed. -->
@@ -378,6 +455,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- Push the file `written-report.qmd` and the rendered `written-report.pdf` go the GitHub repo by the deadline. You will \<u\>not</u> submit the report on Gradescope. -->
 <!-- **The version of the report in the repo by the Sunday, December 11, 11:59pm will be the one that is graded.** -->
 <!-- ::: -->
+</section>
+<section id="draft-report-peer-review" class="level2">
+<h2 class="anchored" data-anchor-id="draft-report-peer-review">Draft report + peer review</h2>
+</section>
+<section id="round1-submission" class="level2">
+<h2 class="anchored" data-anchor-id="round1-submission">Round 1 submission (optional)</h2>
+<!-- ## Round 1 submission (optional) {#draft-report} -->
+<!-- The Round 1 submission is an opportunity to receive detailed feedback on your analysis and [written report](#written-report). The feedback will only be on the content that is submitted, so more "complete" drafts will receive more detailed feedback. At this stage, you will also be notified of the grade you would receive at that point. You will have the option to keep the grade (and thus you don't need to turn in an updated report) or resubmit the written report by the final submission deadline for grading. -->
+<!-- To submit the draft: -->
+<!-- 1\. Push the updated `written-report.qmd` and `written-report.pdf` to your GitHub repo. -->
+<!-- 2\. Open an issue with the title "Round 1 Submission". You can use the template issue in the GitHub repo. Make sure I am tagged in the issue (\@matackett), so I receive notification of your Round 1 submission. See [Creating an issue from a repository](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-repository) for instructions on opening an issue. Please ask a member of the teaching team for assistance if you need help opening the issue. -->
+<!-- ::: callout-important -->
+<!-- You must complete <u>both</u> steps by **Tuesday, November 22, 11:59pm** to receive preliminary feedback.\ -->
+<!-- \ -->
+<!-- Reports submitted after that date will not receive preliminary feedback. -->
+<!-- ::: -->
+<!-- Note that this is optional, so there is <u>**no**</u> grading penalty for turning in nothing for the Round 1 submission. Due to time constraints at the end of the semester, only high-level feedback will be given for the reports submitted at the final written report deadline in December. -->
+</section>
+<section id="presentation" class="level2">
+<h2 class="anchored" data-anchor-id="presentation">Presentation</h2>
 <!-- ## Video presentation + slides {#video-presentation-slides} -->
 <!-- ### Slides -->
 <!-- In addition to the written report, your team will also create presentation slides and record a video presentation that summarize and showcase your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. These slides should serve as a brief visual addition to your written report and will be graded for content and quality. -->
@@ -422,14 +519,18 @@ ul.task-list li input[type="checkbox"] {
 <!-- ::: callout-important -->
 <!-- The presentation video must be uploaded to Sakai by **Wednesday, December 14, 11:59pm.** -->
 <!-- ::: -->
-<!-- ## Presentation comments {#presentation-comments} -->
+</section>
+<section id="presentation-comments" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-comments"><strong>Presentation comments</strong></h2>
 <!-- Each student will be assigned 2 presentations to watch. [Click here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/ERbjrobTMghFrZDObDgVm44BjK9WcSjtgaZzUoPp1axz9Q?e=aBgZAH) to see your viewing assignments. -->
 <!-- Watch the group's video, then click "Reply" to post a question for the group. You may not post a question that's already been asked on the discussion thread. Additionally, the question should be (i) substantive (i.e. it shouldn't be "Why did you use a bar plot instead of a pie chart"?), (ii) demonstrate your understanding of the content from the course, and (iii) relevant to that group's specific presentation, i.e demonstrating that you've watched the presentation. -->
 <!-- ::: callout-important -->
 <!-- You may start posting questions and comments on Thursday, December 15. **All comments must be posted by Friday, December 16 at 11:59pm.** -->
 <!-- ::: -->
 <!-- <i>This portion of the project will be assessed individually.</i> -->
-<!-- ## Reproducibility + organization {#reproducibility-organization} -->
+</section>
+<section id="reproducibility-organization" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility-organization">Reproducibility + organization</h2>
 <!-- All written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized. -->
 <!-- The GitHub repo should have the following structure: -->
 <!-- -   `README`: Short project description and data dictionary -->
@@ -444,36 +545,74 @@ ul.task-list li input[type="checkbox"] {
 <!-- ::: callout-important -->
 <!-- **The repo must be ready for grading by Wednesday, December 14, 11:59pm.** -->
 <!-- ::: -->
-<!-- ## Peer teamwork evaluation -->
+</section>
+<section id="peer-teamwork-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="peer-teamwork-evaluation">Peer teamwork evaluation</h2>
 <!-- You will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member. Filling out the survey is a prerequisite for getting credit on the team member evaluation. If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation. If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly. -->
-<!-- ## Overall grading -->
-<!-- The grade breakdown is as follows: -->
-<!-- | Total                              | 100 pts | -->
-<!-- |------------------------------------|---------| -->
-<!-- | **Topic ideas**                    | 10 pts  | -->
-<!-- | **Project proposal**               | 15 pts  | -->
-<!-- | **Written report**                 | 45 pts  | -->
-<!-- | **Slides + video presentation**    | 15 pts  | -->
-<!-- | **Reproducibility + organization** | 5 pts   | -->
-<!-- | **Video comments**                 | 5 pts   | -->
-<!-- | **Peer teamwork evaluation**       | 5 pts   | -->
-<!-- <i>Note: No late project reports or videos are accepted.</i> -->
-<!-- ### Grading summary -->
-<!-- Grading of the project will take into account the following: -->
-<!-- -   Content - What is the quality of research and/or policy question and relevancy of data to those questions? -->
-<!-- -   Correctness - Are statistical procedures carried out and explained correctly? -->
-<!-- -   Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations? -->
-<!-- -   Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project? -->
-<!-- A general breakdown of scoring is as follows: -->
-<!-- -   *90%-100%*: Outstanding effort. Student understands how to apply all statistical concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others. -->
-<!-- -   *80%-89%*: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others. -->
-<!-- -   *70%-79%*: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear. -->
-<!-- -   *60%-69%*: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear. -->
-<!-- -   *Below 60%*: Student is not making a sufficient effort. -->
-<!-- ### Late work policy -->
-<!-- **There is no late work accepted on this project.** Be sure to turn in your work early to avoid any technological mishaps. -->
+</section>
+<section id="overall-grading" class="level2">
+<h2 class="anchored" data-anchor-id="overall-grading">Overall grading</h2>
+<p>The grade breakdown is as follows:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Total</th>
+<th>100 pts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Project proposal</td>
+<td>15 pts</td>
+</tr>
+<tr class="even">
+<td>Draft report + peer review</td>
+<td>15 pts</td>
+</tr>
+<tr class="odd">
+<td>Presentation</td>
+<td>20 pts</td>
+</tr>
+<tr class="even">
+<td>Presentation comments</td>
+<td>5 pts</td>
+</tr>
+<tr class="odd">
+<td>Written report</td>
+<td>40 pts</td>
+</tr>
+<tr class="even">
+<td>Reproducibility + organization</td>
+<td>5 pts</td>
+</tr>
+</tbody>
+</table>
+<section id="grading-summary" class="level3">
+<h3 class="anchored" data-anchor-id="grading-summary">Grading summary</h3>
+<p>Grading of the project will take into account the following:</p>
+<ul>
+<li><p>Content - What is the quality of research and/or policy question and relevancy of data to those questions?</p></li>
+<li><p>Correctness - Are statistical procedures carried out and explained correctly?</p></li>
+<li><p>Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations?</p></li>
+<li><p>Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?</p></li>
+</ul>
+<p>A general breakdown of scoring is as follows:</p>
+<ul>
+<li><p><em>90%-100%</em>: Outstanding effort. Student understands how to apply all statistical concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others.</p></li>
+<li><p><em>80%-89%</em>: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others.</p></li>
+<li><p><em>70%-79%</em>: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear.</p></li>
+<li><p><em>60%-69%</em>: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear.</p></li>
+<li><p><em>Below 60%</em>: Student is not making a sufficient effort. --&gt;</p></li>
+</ul>
+</section>
+</section>
+<section id="late-work-policy" class="level2">
+<h2 class="anchored" data-anchor-id="late-work-policy">Late work policy</h2>
+<p>There is no late work accepted on the draft report or presentation. Other components of the project may be accepted up to 48 hours late. A 10% late deduction will apply for each 24-hour period late.</p>
+<p><strong>Be sure to turn in your work early to avoid any technological mishaps.</strong></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -727,7 +866,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2022, Maria Tackett</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/project-instructions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">This site is built with <a href="https://quarto.org/">Quarto</a></div>
   </div>
 </footer>

@@ -84,12 +84,11 @@ knitr::opts_chunk$set(
 
 ::: columns
 ::: {.column width="40%"}
-
 ![](images/statistician-of-the-day/enders.jpg){fig-alt="Photo of Dr. Felicity Enders" fig-align="center"}
 :::
 
 ::: {.column width="60%"}
-*Dr. Felicity Enders received her PhD from Johns Hopkins Bloomberg School of Public Health. She is a Professor of Biostatistics at the Mayo Clinic. With close to 200 publications, she has worked closely with clinicians, with particular focus on women\'s health and psychology. Across the medical spectrum, Dr. Enders has provided advanced statistical modeling collaboration in clinical trials.*
+*Dr. Felicity Enders received her PhD from Johns Hopkins Bloomberg School of Public Health. She is a Professor of Biostatistics at the Mayo Clinic. With close to 200 publications, she has worked closely with clinicians, with particular focus on women's health and psychology. Across the medical spectrum, Dr. Enders has provided advanced statistical modeling collaboration in clinical trials.*
 
 *She is also passionate about biostatistics education and works to dissolve the hidden curriculum for research, particularly statistical knowledge needed for non-statisticians.*
 :::

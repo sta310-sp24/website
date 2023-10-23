@@ -3,25 +3,27 @@ title: "SLR: Prediction + model evaluation"
 author: "Prof. Maria Tackett"
 date: "2022-09-07"
 date-format: "MMM DD, YYYY"
-footer: "[🔗 Week 02](https://sta210-fa22.netlify.app/weeks/week-02.html)"
+footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"
 format: 
   revealjs:
     theme: slides.scss
     multiplex: false
     transition: fade
-    slide-number: true
+    slide-number: false
     incremental: false 
     chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 execute:
   freeze: auto
   echo: true
-  warning: false
-  message: false
 knitr:
   opts_chunk: 
     R.options:      
     width: 200
+bibliography: references.bib
 ---
 
 ```{r setup}

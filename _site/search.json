@@ -1852,7 +1852,7 @@
     "href": "project-instructions.html#project-proposal",
     "title": "Final project",
     "section": "Project proposal",
-    "text": "Project proposal\n\n\n\n\n\n\nDue dates\n\n\n\n\nFriday, October 27 (Tuesday labs)\n\n\n\nSunday, October 29 (Thursday labs)\n\n\n\nThe purpose of the project proposal is for your team to identify the data set you’re interested in analyzing for the project, do some prelminary exploratory data analysis, and begin to think about a modeling strategy . If you’re unsure where to find data, you can use the list of potential data sources on the Tips + resources page as a starting point. It may also help to think of topics you’re interested in investigating and find data sets on those topics.\nThe data set must meet the following criteria:\n\nAt least 500 observations\nAt least 10 columns, such that at least 6 of the columns are useful and unique predictor variables.\n\nE.g., identifier variables such as “name”, “social security number”, etc. are not useful predictor variables.\nE.g., if you have multiple columns with the same information (e.g. “state abbreviation” and “state name”), then they are not unique predictors.\n\nAt least one variable that can be identified as a reasonable response variable.\n\nThe response variable can be quantitative or categorical.\n\nA mix of quantitative and categorical variables that can be used as predictors.\nMay not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.\n\n\n\n\n\n\n\nTypes of data sets to avoid\n\n\n\n\nData that are likely violate the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc.\nData sets in which there is no information about how the data were originally collected\nData sets in which there are missing or unclear definitions about the variables\n\n\n\nAsk a member of the teaching team if you’re unsure whether your data set meets the criteria.\nThe proposal will include the following:\n\nSection 1: Introduction\nThe introduction section includes\n\nan introduction to the subject matter you’re investigating (citing any relevant literature)\nthe motivation for your research question (citing any relevant literature)\nthe primary research question you are interested in exploring\nyour team's hypotheses regarding the research question\n\nThis is narrative about what you think regarding the research question, not formal statistical hypotheses.\n\n\n\n\nSection 2: Data description\nThe data description section includes\n\nthe source of the data set\ndescription of how when and how the data were originally collected (by the original data curator, not necessarily how you found the data)\ndescription of the observations and general characteristics being measured\n\n\n\nSection 3: Initial exploratory data analysis\nIn this section, you will begin to explore the data. This includes using narrative, visualizations and summary statistics to describe the following:\n\ndistribution of the response variable\ndistributions of one potential quantitative predictor variable and one potential categorical predictor variable\nthe relationships between the response variable and each of the predictors from the previous step\na potential interaction effect you’re interested in exploring (it doesn’t have to be an interaction with the two predictors from above)\n\nThese steps are just to get your started on exploratory data analysis and will not be the complete EDA for the final report. The requirements above are the minimum requirements, but your group is welcome to include more at this stage.\nIn this section, you will also describe any data cleaning you need to do to prepare for modeling, such as imputing missing values, collapsing levels for categorical predictors, creating new variables, summarizing data, etc.\n\n\nSection 4: Analysis approach\nIn this section, you will provide a brief overview of your analysis approach. This includes\n\ndescription of the response variable and list of all potential predictors\nregression model technique (multiple linear regression or logistic regression)\n\n\n\nData dictionary (aka code book)\nSubmit a data dictionary for all the variables in your data set in the README of the data folder. You do not need to include the data dictionary in the PDF document.\n\n\nSubmission\n\n\n\n\n\n\nImportant\n\n\n\nWrite your narrative for Sections 1 - 4 in the proposal.qmd file. Put the data set and the data dictionary in the data folder.\nSubmit the PDF of the proposal to Gradescope. Mark all pages of the document.\n\n\n\n\nGrading\nThe anticipated length, including all graphs, tables, narrative, etc., is 2 -4 pages; it may not exceed 5 pages.\nThe proposal is worth 15 points and will be graded based on accurately and comprehensively addressing the criteria stated above. Points will be assigned based on a holistic review of the project proposal.\n\nExcellent (14 - 15 points) : All required elements are completed and are accurate. There is a thorough exploration of the data and the team has demonstrated a careful and thoughtful approach exploring the data and preparing it for analysis. The narrative is written clearly, all tables and visualizations are nicely formatted, and the work would be presentable in a professional setting.\nStrong: (11 - 13 points): Requirements are mostly met, but there are some elements that are incomplete or inaccurate. Some minor revision of the work required before team is ready for modeling.\nSatisfactory (8 - 10 points): Requirements partially met, but there are some elements that are incomplete and/or inaccurate. Major revision of the work required before team is ready for modeling.\nNeeds Improvement (7 or fewer points points): Requirements are largely unmet, and there are large elements that are incomplete and/or inaccurate. Substantial revisions of the work required before team is ready for modeling. --&gt;"
+    "text": "Project proposal\n\n\n\n\n\n\nDue dates\n\n\n\n\nFriday, October 27 (Tuesday labs)\n\n\n\nSunday, October 29 (Thursday labs)\n\n\n\nThe purpose of the project proposal is for your team to identify the data set you’re interested in analyzing for the project, do some prelminary exploratory data analysis, and begin to think about a modeling strategy . If you’re unsure where to find data, you can use the list of potential data sources on the Tips + resources page as a starting point. It may also help to think of topics you’re interested in investigating and find data sets on those topics.\nThe data set must meet the following criteria:\n\nAt least 500 observations\nAt least 10 columns, such that at least 6 of the columns are useful and unique predictor variables.\n\nE.g., identifier variables such as “name”, “social security number”, etc. are not useful predictor variables.\nE.g., if you have multiple columns with the same information (e.g. “state abbreviation” and “state name”), then they are not unique predictors.\n\nAt least one variable that can be identified as a reasonable response variable.\n\nThe response variable can be quantitative or categorical.\n\nA mix of quantitative and categorical variables that can be used as predictors.\nMay not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.\n\n\n\n\n\n\n\nTypes of data sets to avoid\n\n\n\n\nData that are likely violate the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc.\nData sets in which there is no information about how the data were originally collected\nData sets in which there are missing or unclear definitions about the variables\n\n\n\nAsk a member of the teaching team if you’re unsure whether your data set meets the criteria.\nThe proposal will include the following:\n\nSection 1: Introduction\nThe introduction section includes\n\nan introduction to the subject matter you’re investigating (citing any relevant literature)\nthe motivation for your research question (citing any relevant literature)\nthe primary research question you are interested in exploring\nyour team’s hypotheses regarding the research question\n\nThis is narrative about what you think regarding the research question, not formal statistical hypotheses.\n\n\n\n\nSection 2: Data description\nThe data description section includes\n\nthe source of the data set\ndescription of how when and how the data were originally collected (by the original data curator, not necessarily how you found the data)\ndescription of the observations and general characteristics being measured\n\n\n\nSection 3: Initial exploratory data analysis\nIn this section, you will begin to explore the data. This includes using narrative, visualizations and summary statistics to describe the following:\n\ndistribution of the response variable\ndistributions of one potential quantitative predictor variable and one potential categorical predictor variable\nthe relationships between the response variable and each of the predictors from the previous step\na potential interaction effect you’re interested in exploring (it doesn’t have to be an interaction with the two predictors from above)\n\nThese steps are just to get your started on exploratory data analysis and will not be the complete EDA for the final report. The requirements above are the minimum requirements, but your group is welcome to include more at this stage.\nIn this section, you will also describe any data cleaning you need to do to prepare for modeling, such as imputing missing values, collapsing levels for categorical predictors, creating new variables, summarizing data, etc.\n\n\nSection 4: Analysis approach\nIn this section, you will provide a brief overview of your analysis approach. This includes\n\ndescription of the response variable and list of all potential predictors\nregression model technique (multiple linear regression or logistic regression)\n\n\n\nData dictionary (aka code book)\nSubmit a data dictionary for all the variables in your data set in the README of the data folder. You do not need to include the data dictionary in the PDF document.\n\n\nSubmission\n\n\n\n\n\n\nImportant\n\n\n\nWrite your narrative for Sections 1 - 4 in the proposal.qmd file. Put the data set and the data dictionary in the data folder.\nSubmit the PDF of the proposal to Gradescope. Mark all pages of the document.\n\n\n\n\nGrading\nThe anticipated length, including all graphs, tables, narrative, etc., is 2 -4 pages; it may not exceed 5 pages.\nThe proposal is worth 15 points and will be graded based on accurately and comprehensively addressing the criteria stated above. Points will be assigned based on a holistic review of the project proposal.\n\nExcellent (14 - 15 points) : All required elements are completed and are accurate. There is a thorough exploration of the data and the team has demonstrated a careful and thoughtful approach exploring the data and preparing it for analysis. The narrative is written clearly, all tables and visualizations are nicely formatted, and the work would be presentable in a professional setting.\nStrong: (11 - 13 points): Requirements are mostly met, but there are some elements that are incomplete or inaccurate. Some minor revision of the work required before team is ready for modeling.\nSatisfactory (8 - 10 points): Requirements partially met, but there are some elements that are incomplete and/or inaccurate. Major revision of the work required before team is ready for modeling.\nNeeds Improvement (7 or fewer points points): Requirements are largely unmet, and there are large elements that are incomplete and/or inaccurate. Substantial revisions of the work required before team is ready for modeling. --&gt;"
   },
   {
     "objectID": "project-instructions.html#written-report",
@@ -3237,8 +3237,8 @@
     "objectID": "slides/14-mlr-inference.html#announcements",
     "href": "slides/14-mlr-inference.html#announcements",
     "title": "Inference for multiple linear regression",
-    "section": "Announcements",
-    "text": "Announcements\n\nSee Ed Discussion for upcoming events and internship opportunities\nStatistics Experience due Mon, Nov 20 at 11:59pm\nProf. Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester\nStart the final project in lab this week - start thinking about the data your team wants to use"
+    "section": "",
+    "text": "See Ed Discussion for upcoming events and internship opportunities\nStatistics Experience due Mon, Nov 20 at 11:59pm\nProf. Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester\nStart the final project in lab this week - start thinking about the data your team wants to use"
   },
   {
     "objectID": "slides/14-mlr-inference.html#mid-semester-survey",
@@ -3322,7 +3322,7 @@
     "href": "slides/14-mlr-inference.html#analysis-goal",
     "title": "Inference for multiple linear regression",
     "section": "Analysis goal",
-    "text": "Analysis goal\n\nUse cross validation to evaluate and select a model to predict the tip amount\n\n\nv-fold cross validation – commonly used resampling technique:\n\nRandomly split your training data into v partitions\nUse v-1 partitions for analysis, and the remaining 1 partition for analysis (model fit + model fit statistics)\nRepeat v times, updating which partition is used for assessment each time"
+    "text": "Analysis goal\n\nUse cross validation to evaluate and select a model to predict the tip amount\n\n. . .\nv-fold cross validation – commonly used resampling technique:\n\nRandomly split your training data into v partitions\nUse v-1 partitions for analysis, and the remaining 1 partition for assessment\nRepeat v times, updating which partition is used for assessment each time"
   },
   {
     "objectID": "slides/14-mlr-inference.html#modeling-workflow",
@@ -3343,7 +3343,7 @@
     "href": "slides/14-mlr-inference.html#variables-1",
     "title": "Inference for multiple linear regression",
     "section": "Variables",
-    "text": "Variables\nOutcome:\nvolume estimated number of trail users that day (number of breaks recorded)\n\nPredictors\n\n\nhightemp daily high temperature (in degrees Fahrenheit)\navgtemp average of daily low and daily high temperature (in degrees Fahrenheit)\nseason one of “Fall”, “Spring”, or “Summer”\ncloudcover measure of cloud cover (in oktas)\nprecip measure of precipitation (in inches)\nday_type one of “weekday” or “weekend”"
+    "text": "Variables\nOutcome:\nvolume estimated number of trail users that day (number of breaks recorded)\n. . .\nPredictors\n\n\nhightemp daily high temperature (in degrees Fahrenheit)\navgtemp average of daily low and daily high temperature (in degrees Fahrenheit)\nseason one of “Fall”, “Spring”, or “Summer”\ncloudcover measure of cloud cover (in oktas)\nprecip measure of precipitation (in inches)\nday_type one of “weekday” or “weekend”"
   },
   {
     "objectID": "slides/14-mlr-inference.html#review-simple-linear-regression-slr",
@@ -3364,7 +3364,7 @@
     "href": "slides/14-mlr-inference.html#slr-hypothesis-test",
     "title": "Inference for multiple linear regression",
     "section": "SLR hypothesis test",
-    "text": "SLR hypothesis test\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-17.08\n59.40\n-0.29\n0.77\n\n\nhightemp\n5.70\n0.85\n6.72\n0.00\n\n\n\n\n\n\n\n\nSet hypotheses: \\(H_0: \\beta_1 = 0\\) vs. \\(H_A: \\beta_1 \\ne 0\\)\n\n\n\nCalculate test statistic and p-value: The test statistic is \\(t= 6.72\\) . The p-value is calculated using a \\(t\\) distribution with 88 degrees of freedom. The p-value is \\(\\approx 0\\) .\n\n\n\n\nState the conclusion: The p-value is small, so we reject \\(H_0\\). The data provide strong evidence that high temperature is a helpful predictor for the number of daily riders, i.e. there is a linear relationship between high temperature and number of daily riders."
+    "text": "SLR hypothesis test\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-17.08\n59.40\n-0.29\n0.77\n\n\nhightemp\n5.70\n0.85\n6.72\n0.00\n\n\n\n\n\n\n\n\nSet hypotheses: \\(H_0: \\beta_1 = 0\\) vs. \\(H_A: \\beta_1 \\ne 0\\)\n\n. . .\n\nCalculate test statistic and p-value: The test statistic is \\(t= 6.72\\) . The p-value is calculated using a \\(t\\) distribution with 88 degrees of freedom. The p-value is \\(\\approx 0\\) .\n\n. . .\n\nState the conclusion: The p-value is small, so we reject \\(H_0\\). The data provide strong evidence that high temperature is a helpful predictor for the number of daily riders, i.e. there is a linear relationship between high temperature and number of daily riders."
   },
   {
     "objectID": "slides/14-mlr-inference.html#multiple-linear-regression",
@@ -3378,28 +3378,28 @@
     "href": "slides/14-mlr-inference.html#mlr-hypothesis-test-hightemp",
     "title": "Inference for multiple linear regression",
     "section": "MLR hypothesis test: hightemp",
-    "text": "MLR hypothesis test: hightemp\n\nSet hypotheses: \\(H_0: \\beta_{hightemp} = 0\\) vs. \\(H_A: \\beta_{hightemp} \\ne 0\\), given season is in the model\n\n\n\nCalculate test statistic and p-value: The test statistic is \\(t = 6.43\\). The p-value is calculated using a \\(t\\) distribution with 86 \\((n - p - 1)\\) degrees of freedom. The p-value is \\(\\approx 0\\).\n\n\n\n\nState the conclusion: The p-value is small, so we reject \\(H_0\\). The data provide strong evidence that high temperature for the day is a useful predictor in a model that already contains the season as a predictor for number of daily riders."
+    "text": "MLR hypothesis test: hightemp\n\nSet hypotheses: \\(H_0: \\beta_{hightemp} = 0\\) vs. \\(H_A: \\beta_{hightemp} \\ne 0\\), given season is in the model\n\n. . .\n\nCalculate test statistic and p-value: The test statistic is \\(t = 6.43\\). The p-value is calculated using a \\(t\\) distribution with 86 \\((n - p - 1)\\) degrees of freedom. The p-value is \\(\\approx 0\\).\n\n. . .\n\nState the conclusion: The p-value is small, so we reject \\(H_0\\). The data provide strong evidence that high temperature for the day is a useful predictor in a model that already contains the season as a predictor for number of daily riders."
   },
   {
     "objectID": "slides/14-mlr-inference.html#the-model-for-season-spring",
     "href": "slides/14-mlr-inference.html#the-model-for-season-spring",
     "title": "Inference for multiple linear regression",
     "section": "The model for season = Spring",
-    "text": "The model for season = Spring\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n\n\n\n\n\n\n\n\n\n\\[\n\\begin{aligned}\n\\widehat{volume} &= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times \\texttt{seasonSpring} - 76.84 \\times \\texttt{seasonSummer} \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times 1 - 76.84 \\times 0 \\\\\n&= -120.10 + 7.54 \\times \\texttt{hightemp}\n\\end{aligned}\n\\]"
+    "text": "The model for season = Spring\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n\n\n\n\n\n\n\n\n. . .\n\\[\n\\begin{aligned}\n\\widehat{volume} &= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times \\texttt{seasonSpring} - 76.84 \\times \\texttt{seasonSummer} \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times 1 - 76.84 \\times 0 \\\\\n&= -120.10 + 7.54 \\times \\texttt{hightemp}\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/14-mlr-inference.html#the-model-for-season-summer",
     "href": "slides/14-mlr-inference.html#the-model-for-season-summer",
     "title": "Inference for multiple linear regression",
     "section": "The model for season = Summer",
-    "text": "The model for season = Summer\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n\n\n\n\n\n\n\n\n\n\\[\n\\begin{aligned}\n\\widehat{volume} &= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times \\texttt{seasonSpring} - 76.84 \\times \\texttt{seasonSummer} \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times 0 - 76.84 \\times 1 \\\\\n&= -202.07 + 7.54 \\times \\texttt{hightemp}\n\\end{aligned}\n\\]"
+    "text": "The model for season = Summer\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n\n\n\n\n\n\n\n\n. . .\n\\[\n\\begin{aligned}\n\\widehat{volume} &= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times \\texttt{seasonSpring} - 76.84 \\times \\texttt{seasonSummer} \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times 0 - 76.84 \\times 1 \\\\\n&= -202.07 + 7.54 \\times \\texttt{hightemp}\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/14-mlr-inference.html#the-model-for-season-fall",
     "href": "slides/14-mlr-inference.html#the-model-for-season-fall",
     "title": "Inference for multiple linear regression",
     "section": "The model for season = Fall",
-    "text": "The model for season = Fall\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n\n\n\n\n\n\n\n\n\n\\[\n\\begin{aligned}\n\\widehat{volume} &= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times \\texttt{seasonSpring} - 76.84 \\times \\texttt{seasonSummer} \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times 0 - 76.84 \\times 0 \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp}\n\\end{aligned}\n\\]"
+    "text": "The model for season = Fall\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n\n\n\n\n\n\n\n\n. . .\n\\[\n\\begin{aligned}\n\\widehat{volume} &= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times \\texttt{seasonSpring} - 76.84 \\times \\texttt{seasonSummer} \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp} + 5.13 \\times 0 - 76.84 \\times 0 \\\\\n&= -125.23 + 7.54 \\times \\texttt{hightemp}\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/14-mlr-inference.html#the-models",
@@ -3441,28 +3441,28 @@
     "href": "slides/14-mlr-inference.html#ci-for-seasonspring",
     "title": "Inference for multiple linear regression",
     "section": "CI for seasonSpring",
-    "text": "CI for seasonSpring\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n-267.68\n17.22\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n5.21\n9.87\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n-63.10\n73.36\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n-171.68\n18.00\n\n\n\n\n\n\n\n\nWe are 95% confident that the number of riders on a Spring day is lower by 63.1 to higher by 73.4 compared to a Fall day, on average, holding high temperature for the day constant.\n\n\nIs season a significant predictor of the number of riders, after accounting for high temperature?"
+    "text": "CI for seasonSpring\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n-267.68\n17.22\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n5.21\n9.87\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n-63.10\n73.36\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n-171.68\n18.00\n\n\n\n\n\n\n\n\nWe are 95% confident that the number of riders on a Spring day is lower by 63.1 to higher by 73.4 compared to a Fall day, on average, holding high temperature for the day constant.\n. . .\n\nIs season a significant predictor of the number of riders, after accounting for high temperature?"
   },
   {
     "objectID": "slides/14-mlr-inference.html#large-sample-sizes",
     "href": "slides/14-mlr-inference.html#large-sample-sizes",
     "title": "Inference for multiple linear regression",
     "section": "Large sample sizes",
-    "text": "Large sample sizes\n\n\n\n\n\n\nCaution\n\n\nIf the sample size is large enough, the test will likely result in rejecting \\(H_0: \\beta_j = 0\\) even \\(x_j\\) has a very small effect on \\(y\\).\n\n\nConsider the practical significance of the result not just the statistical significance.\nUse the confidence interval to draw conclusions instead of relying only p-values."
+    "text": "Large sample sizes\n\n\n\n\n\n\nCaution\n\n\n\nIf the sample size is large enough, the test will likely result in rejecting \\(H_0: \\beta_j = 0\\) even \\(x_j\\) has a very small effect on \\(y\\).\n\n\nConsider the practical significance of the result not just the statistical significance.\nUse the confidence interval to draw conclusions instead of relying only p-values."
   },
   {
     "objectID": "slides/14-mlr-inference.html#small-sample-sizes",
     "href": "slides/14-mlr-inference.html#small-sample-sizes",
     "title": "Inference for multiple linear regression",
     "section": "Small sample sizes",
-    "text": "Small sample sizes\n\n\n\n\n\n\nCaution\n\n\nIf the sample size is small, there may not be enough evidence to reject \\(H_0: \\beta_j=0\\).\n\n\nWhen you fail to reject the null hypothesis, DON’T immediately conclude that the variable has no association with the response.\nThere may be a linear association that is just not strong enough to detect given your data, or there may be a non-linear association."
+    "text": "Small sample sizes\n\n\n\n\n\n\nCaution\n\n\n\nIf the sample size is small, there may not be enough evidence to reject \\(H_0: \\beta_j=0\\).\n\n\nWhen you fail to reject the null hypothesis, DON’T immediately conclude that the variable has no association with the response.\nThere may be a linear association that is just not strong enough to detect given your data, or there may be a non-linear association."
   },
   {
     "objectID": "slides/14-mlr-inference.html#full-model",
     "href": "slides/14-mlr-inference.html#full-model",
     "title": "Inference for multiple linear regression",
     "section": "Full model",
-    "text": "Full model\nIncluding all available predictors\nFit:\n\nrt_full_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(volume ~ ., data = rail_trail)\n\n\nSummarize:\n\ntidy(rt_full_fit)\n\n# A tibble: 8 × 5\n  term            estimate std.error statistic p.value\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)        17.6      76.6      0.230 0.819  \n2 hightemp            7.07      2.42     2.92  0.00450\n3 avgtemp            -2.04      3.14    -0.648 0.519  \n4 seasonSpring       35.9      33.0      1.09  0.280  \n5 seasonSummer       24.2      52.8      0.457 0.649  \n6 cloudcover         -7.25      3.84    -1.89  0.0627 \n7 precip            -95.7      42.6     -2.25  0.0273 \n8 day_typeWeekend    35.9      22.4      1.60  0.113  \n\n\n\n\nAugment:\n\nrt_full_aug &lt;- augment(rt_full_fit$fit)"
+    "text": "Full model\nIncluding all available predictors\nFit:\n\nrt_full_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(volume ~ ., data = rail_trail)\n\n. . .\nSummarize:\n\ntidy(rt_full_fit)\n\n# A tibble: 8 × 5\n  term            estimate std.error statistic p.value\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)        17.6      76.6      0.230 0.819  \n2 hightemp            7.07      2.42     2.92  0.00450\n3 avgtemp            -2.04      3.14    -0.648 0.519  \n4 seasonSpring       35.9      33.0      1.09  0.280  \n5 seasonSummer       24.2      52.8      0.457 0.649  \n6 cloudcover         -7.25      3.84    -1.89  0.0627 \n7 precip            -95.7      42.6     -2.25  0.0273 \n8 day_typeWeekend    35.9      22.4      1.60  0.113  \n\n\n. . .\nAugment:\n\nrt_full_aug &lt;- augment(rt_full_fit$fit)"
   },
   {
     "objectID": "slides/14-mlr-inference.html#model-conditions",
@@ -3609,7 +3609,7 @@
     "href": "slides/14-mlr-inference.html#vif-for-rail-trail-model",
     "title": "Inference for multiple linear regression",
     "section": "VIF for rail trail model",
-    "text": "VIF for rail trail model\n\nvif(rt_full_fit$fit)\n\n       hightemp         avgtemp    seasonSpring    seasonSummer      cloudcover \n      10.259978       13.086175        2.751577        5.841985        1.587485 \n         precip day_typeWeekend \n       1.295352        1.125741 \n\n\n\n\nhightemp and avgtemp are correlated. We need to remove one of these variables and refit the model."
+    "text": "VIF for rail trail model\n\nvif(rt_full_fit$fit)\n\n       hightemp         avgtemp    seasonSpring    seasonSummer      cloudcover \n      10.259978       13.086175        2.751577        5.841985        1.587485 \n         precip day_typeWeekend \n       1.295352        1.125741 \n\n\n\n. . .\nhightemp and avgtemp are correlated. We need to remove one of these variables and refit the model."
   },
   {
     "objectID": "slides/14-mlr-inference.html#model-without-hightemp",
@@ -3637,7 +3637,7 @@
     "href": "slides/14-mlr-inference.html#final-model",
     "title": "Inference for multiple linear regression",
     "section": "Final model",
-    "text": "Final model\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.421\n74.992\n0.112\n0.911\n\n\nhightemp\n5.696\n1.164\n4.895\n0.000\n\n\nseasonSpring\n31.239\n32.082\n0.974\n0.333\n\n\nseasonSummer\n9.424\n47.504\n0.198\n0.843\n\n\ncloudcover\n-8.353\n3.435\n-2.431\n0.017\n\n\nprecip\n-98.904\n42.137\n-2.347\n0.021\n\n\nday_typeWeekend\n37.062\n22.280\n1.663\n0.100\n\n\n\n\n\n\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "text": "Final model\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.421\n74.992\n0.112\n0.911\n\n\nhightemp\n5.696\n1.164\n4.895\n0.000\n\n\nseasonSpring\n31.239\n32.082\n0.974\n0.333\n\n\nseasonSummer\n9.424\n47.504\n0.198\n0.843\n\n\ncloudcover\n-8.353\n3.435\n-2.431\n0.017\n\n\nprecip\n-98.904\n42.137\n-2.347\n0.021\n\n\nday_typeWeekend\n37.062\n22.280\n1.663\n0.100"
   },
   {
     "objectID": "slides/06-slr-math-models.html#announcements",
@@ -4350,8 +4350,8 @@
     "objectID": "slides/04-slr-evaluation.html#announcements",
     "href": "slides/04-slr-evaluation.html#announcements",
     "title": "SLR: Prediction + model evaluation",
-    "section": "Announcements",
-    "text": "Announcements\n\nOffice hours have started. Click here for full schedule.\nAccept the email invitation to join the sta210-fa22 GitHub organization by today at 11:59pm.\n\nYou may also go to the course organization and click to accept on the banner at the top of the page.\nIf you don’t see the email or banner invitation, please email Prof. Tackett (maria.tackett@duke.edu).\n\nLab 01 this week - will need access to RStudio and to be a member of the course GitHub organization.\nSee Week 02 for this week’s activities."
+    "section": "",
+    "text": "Office hours have started. Click here for full schedule.\nAccept the email invitation to join the sta210-fa22 GitHub organization by today at 11:59pm.\n\nYou may also go to the course organization and click to accept on the banner at the top of the page.\nIf you don’t see the email or banner invitation, please email Prof. Tackett (maria.tackett@duke.edu).\n\nLab 01 this week - will need access to RStudio and to be a member of the course GitHub organization.\nSee Week 02 for this week’s activities."
   },
   {
     "objectID": "slides/04-slr-evaluation.html#topics",
@@ -4379,7 +4379,7 @@
     "href": "slides/04-slr-evaluation.html#data-source",
     "title": "SLR: Prediction + model evaluation",
     "section": "Data source",
-    "text": "Data source\n\nThe data come from usdata::county_2019\nThese data have been compiled from the 2019 American Community Survey"
+    "text": "Data source\n\nThe data come from usdata::county_2019\nThese data have been compiled from the 2019 American Community Survey\n\n\n\nJoining with `by = join_by(region, subregion)`"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#uninsurance-rate",
@@ -4400,14 +4400,14 @@
     "href": "slides/04-slr-evaluation.html#examining-the-relationship",
     "title": "SLR: Prediction + model evaluation",
     "section": "Examining the relationship",
-    "text": "Examining the relationship\n\n\nThe NC Labor and Economic Analysis Division (LEAD) “collects data, conducts research and analysis and publishes reports about the state’s economy and labor market. Information and data produced by LEAD help stakeholders make more informed decisions on business recruitment, education and workforce policies and career development, as well as gain a more extensive view of North Carolina’s economy.”\nSuppose that an analyst working for LEAD is interested in the relationship between uninsurance and high school graduation rates in NC counties.\n\n\n\n\nWhat type of visualization should the analyst make to examine the relationship between these two variables?"
+    "text": "Examining the relationship\n\n\nThe NC Labor and Economic Analysis Division (LEAD) “collects data, conducts research and analysis and publishes reports about the state’s economy and labor market. Information and data produced by LEAD help stakeholders make more informed decisions on business recruitment, education and workforce policies and career development, as well as gain a more extensive view of North Carolina’s economy.”\nSuppose that an analyst working for LEAD is interested in the relationship between uninsurance and high school graduation rates in NC counties.\n\n\n. . .\n\nWhat type of visualization should the analyst make to examine the relationship between these two variables?"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#data-prep",
     "href": "slides/04-slr-evaluation.html#data-prep",
     "title": "SLR: Prediction + model evaluation",
     "section": "Data prep",
-    "text": "Data prep\n\ncounty_2019_nc &lt;- county_2019 |&gt;\n  as_tibble() |&gt;\n  filter(state == \"North Carolina\") |&gt;\n  select(name, hs_grad, uninsured)\n\ncounty_2019_nc\n\n# A tibble: 100 × 3\n   name             hs_grad uninsured\n   &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;\n 1 Alamance County     86.3      11.2\n 2 Alexander County    82.4       8.9\n 3 Alleghany County    77.5      11.3\n 4 Anson County        80.7      11.1\n 5 Ashe County         85.1      12.6\n 6 Avery County        83.6      15.9\n 7 Beaufort County     87.7      12  \n 8 Bertie County       78.4      11.9\n 9 Bladen County       81.3      12.9\n10 Brunswick County    91.3       9.8\n# … with 90 more rows"
+    "text": "Data prep\n\ncounty_2019_nc &lt;- county_2019 |&gt;\n  as_tibble() |&gt;\n  filter(state == \"North Carolina\") |&gt;\n  select(name, hs_grad, uninsured)\n\ncounty_2019_nc\n\n# A tibble: 100 × 3\n   name             hs_grad uninsured\n   &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;\n 1 Alamance County     86.3      11.2\n 2 Alexander County    82.4       8.9\n 3 Alleghany County    77.5      11.3\n 4 Anson County        80.7      11.1\n 5 Ashe County         85.1      12.6\n 6 Avery County        83.6      15.9\n 7 Beaufort County     87.7      12  \n 8 Bertie County       78.4      11.9\n 9 Bladen County       81.3      12.9\n10 Brunswick County    91.3       9.8\n# ℹ 90 more rows"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#uninsurance-vs.-hs-graduation-rates",
@@ -4421,7 +4421,7 @@
     "href": "slides/04-slr-evaluation.html#modeling-the-relationship",
     "title": "SLR: Prediction + model evaluation",
     "section": "Modeling the relationship",
-    "text": "Modeling the relationship\n\n\nCode\nggplot(county_2019_nc, aes(x = hs_grad, y = uninsured)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#8F2D56\") +\n  scale_x_continuous(labels = label_percent(scale = 1, accuracy = 1)) +\n  scale_y_continuous(labels = label_percent(scale = 1, accuracy = 1)) +\n  labs(\n    x = \"High school graduate\", y = \"Uninsured\",\n    title = \"Uninsurance vs. HS graduation rates\",\n    subtitle = \"North Carolina counties, 2015 - 2019\"\n  )"
+    "text": "Modeling the relationship\n\n\nCode\nggplot(county_2019_nc, aes(x = hs_grad, y = uninsured)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#8F2D56\") +\n  scale_x_continuous(labels = label_percent(scale = 1, accuracy = 1)) +\n  scale_y_continuous(labels = label_percent(scale = 1, accuracy = 1)) +\n  labs(\n    x = \"High school graduate\", y = \"Uninsured\",\n    title = \"Uninsurance vs. HS graduation rates\",\n    subtitle = \"North Carolina counties, 2015 - 2019\"\n  )\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#fitting-the-model",
@@ -4435,7 +4435,7 @@
     "href": "slides/04-slr-evaluation.html#augmenting-the-data",
     "title": "SLR: Prediction + model evaluation",
     "section": "Augmenting the data",
-    "text": "Augmenting the data\nWith augment() to add columns for predicted values (.fitted), residuals (.resid), etc.:\n\nnc_aug &lt;- augment(nc_fit$fit)\nnc_aug\n\n# A tibble: 100 × 8\n   uninsured hs_grad .fitted  .resid   .hat .sigma    .cooksd .std.resid\n       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      11.2    86.3   11.3  -0.0633 0.0107   2.10 0.00000501    -0.0305\n 2       8.9    82.4   12.3  -3.39   0.0138   2.07 0.0186        -1.63  \n 3      11.3    77.5   13.6  -2.27   0.0393   2.09 0.0252        -1.11  \n 4      11.1    80.7   12.7  -1.63   0.0199   2.09 0.00633       -0.790 \n 5      12.6    85.1   11.6   1.02   0.0100   2.10 0.00122        0.492 \n 6      15.9    83.6   12.0   3.93   0.0112   2.06 0.0203         1.89  \n 7      12      87.7   10.9   1.10   0.0133   2.10 0.00191        0.532 \n 8      11.9    78.4   13.3  -1.44   0.0328   2.09 0.00830       -0.700 \n 9      12.9    81.3   12.6   0.324  0.0174   2.10 0.000218       0.157 \n10       9.8    91.3    9.95 -0.151  0.0291   2.10 0.0000806     -0.0734\n# … with 90 more rows"
+    "text": "Augmenting the data\nWith augment() to add columns for predicted values (.fitted), residuals (.resid), etc.:\n\nnc_aug &lt;- augment(nc_fit$fit)\nnc_aug\n\n# A tibble: 100 × 8\n   uninsured hs_grad .fitted  .resid   .hat .sigma    .cooksd .std.resid\n       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      11.2    86.3   11.3  -0.0633 0.0107   2.10 0.00000501    -0.0305\n 2       8.9    82.4   12.3  -3.39   0.0138   2.07 0.0186        -1.63  \n 3      11.3    77.5   13.6  -2.27   0.0393   2.09 0.0252        -1.11  \n 4      11.1    80.7   12.7  -1.63   0.0199   2.09 0.00633       -0.790 \n 5      12.6    85.1   11.6   1.02   0.0100   2.10 0.00122        0.492 \n 6      15.9    83.6   12.0   3.93   0.0112   2.06 0.0203         1.89  \n 7      12      87.7   10.9   1.10   0.0133   2.10 0.00191        0.532 \n 8      11.9    78.4   13.3  -1.44   0.0328   2.09 0.00830       -0.700 \n 9      12.9    81.3   12.6   0.324  0.0174   2.10 0.000218       0.157 \n10       9.8    91.3    9.95 -0.151  0.0291   2.10 0.0000806     -0.0734\n# ℹ 90 more rows"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#visualizing-the-model-i",
@@ -4449,21 +4449,21 @@
     "href": "slides/04-slr-evaluation.html#visualizing-the-model-ii",
     "title": "SLR: Prediction + model evaluation",
     "section": "Visualizing the model II",
-    "text": "Visualizing the model II\n\n\n\n\nBlack circles: Observed values (y = uninsured)\nPink solid line: Least squares regression line"
+    "text": "Visualizing the model II\n\n\n\n\nBlack circles: Observed values (y = uninsured)\nPink solid line: Least squares regression line\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#visualizing-the-model-iii",
     "href": "slides/04-slr-evaluation.html#visualizing-the-model-iii",
     "title": "SLR: Prediction + model evaluation",
     "section": "Visualizing the model III",
-    "text": "Visualizing the model III\n\n\n\n\nBlack circles: Observed values (y = uninsured)\nPink solid line: Least squares regression line\nMaroon triangles: Predicted values (y = .fitted)"
+    "text": "Visualizing the model III\n\n\n\n\nBlack circles: Observed values (y = uninsured)\nPink solid line: Least squares regression line\nMaroon triangles: Predicted values (y = .fitted)\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#visualizing-the-model-iv",
     "href": "slides/04-slr-evaluation.html#visualizing-the-model-iv",
     "title": "SLR: Prediction + model evaluation",
     "section": "Visualizing the model IV",
-    "text": "Visualizing the model IV\n\n\n\n\nBlack circles: Observed values (y = uninsured)\nPink solid line: Least squares regression line\nMaroon triangles: Predicted values (y = .fitted)\nGray dashed lines: Residuals"
+    "text": "Visualizing the model IV\n\n\n\n\nBlack circles: Observed values (y = uninsured)\nPink solid line: Least squares regression line\nMaroon triangles: Predicted values (y = .fitted)\nGray dashed lines: Residuals\n\n\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#evaluating-the-model-fit",
@@ -4477,7 +4477,7 @@
     "href": "slides/04-slr-evaluation.html#two-statistics",
     "title": "SLR: Prediction + model evaluation",
     "section": "Two statistics",
-    "text": "Two statistics\n\n\nR-squared, \\(R^2\\) : Percentage of variability in the outcome explained by the regression model (in the context of SLR, the predictor)\n\\[\nR^2 = Cor(x,y)^2 = Cor(y, \\hat{y})^2\n\\]\nRoot mean square error, RMSE: A measure of the average error (average difference between observed and predicted values of the outcome)\n\\[\nRMSE = \\sqrt{\\frac{\\sum_{i = 1}^n (y_i - \\hat{y}_i)^2}{n}}\n\\]\n\n\n\n\nWhat indicates a good model fit? Higher or lower \\(R^2\\)? Higher or lower RMSE?"
+    "text": "Two statistics\n\n\nR-squared, \\(R^2\\) : Percentage of variability in the outcome explained by the regression model (in the context of SLR, the predictor)\n\\[\nR^2 = Cor(x,y)^2 = Cor(y, \\hat{y})^2\n\\]\nRoot mean square error, RMSE: A measure of the average error (average difference between observed and predicted values of the outcome)\n\\[\nRMSE = \\sqrt{\\frac{\\sum_{i = 1}^n (y_i - \\hat{y}_i)^2}{n}}\n\\]\n\n\n. . .\n\nWhat indicates a good model fit? Higher or lower \\(R^2\\)? Higher or lower RMSE?"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#r2",
@@ -4498,7 +4498,7 @@
     "href": "slides/04-slr-evaluation.html#alternative-approach-for-r2",
     "title": "SLR: Prediction + model evaluation",
     "section": "Alternative approach for \\(R^2\\)",
-    "text": "Alternative approach for \\(R^2\\)\nAlternatively, use glance() to construct a single row summary of the model fit, including \\(R^2\\):\n\nglance(nc_fit)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic     p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.243         0.235  2.09      31.5 0.000000188     1  -214.  435.  443.\n# … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\nglance(nc_fit)$r.squared\n\n[1] 0.2430694"
+    "text": "Alternative approach for \\(R^2\\)\nAlternatively, use glance() to construct a single row summary of the model fit, including \\(R^2\\):\n\nglance(nc_fit)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic     p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.243         0.235  2.09      31.5 0.000000188     1  -214.  435.  443.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n. . .\n\nglance(nc_fit)$r.squared\n\n[1] 0.2430694"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#rmse",
@@ -4533,14 +4533,14 @@
     "href": "slides/04-slr-evaluation.html#simulation-data-splitting",
     "title": "SLR: Prediction + model evaluation",
     "section": "Simulation: data splitting",
-    "text": "Simulation: data splitting\n\n\n\n\nTake a random sample of 10% of the data and set aside (testing data)\nFit a model on the remaining 90% of the data (training data)\nUse the coefficients from this model to make predictions for the testing data\nRepeat 10 times"
+    "text": "Simulation: data splitting\n\n\n\n\nTake a random sample of 10% of the data and set aside (testing data)\nFit a model on the remaining 90% of the data (training data)\nUse the coefficients from this model to make predictions for the testing data\nRepeat 10 times\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#predictive-performance",
     "href": "slides/04-slr-evaluation.html#predictive-performance",
     "title": "SLR: Prediction + model evaluation",
     "section": "Predictive performance",
-    "text": "Predictive performance\n\n\n\n\n\nHow consistent are the predictions for different testing datasets?\nHow consistent are the predictions for counties with high school graduation rates in the middle of the plot vs. in the edges?"
+    "text": "Predictive performance\n\n\n\n\n\nHow consistent are the predictions for different testing datasets?\nHow consistent are the predictions for counties with high school graduation rates in the middle of the plot vs. in the edges?\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#bootstrapping-our-data",
@@ -4554,14 +4554,14 @@
     "href": "slides/04-slr-evaluation.html#simulation-bootstrapping",
     "title": "SLR: Prediction + model evaluation",
     "section": "Simulation: bootstrapping",
-    "text": "Simulation: bootstrapping\n\n\n\n\nTake a bootstrap sample – sample with replacement from the original data, same size as the original data\nFit model to the sample and make predictions for that sample\nRepeat many times"
+    "text": "Simulation: bootstrapping\n\n\n\n\nTake a bootstrap sample – sample with replacement from the original data, same size as the original data\nFit model to the sample and make predictions for that sample\nRepeat many times\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#predictive-performance-1",
     "href": "slides/04-slr-evaluation.html#predictive-performance-1",
     "title": "SLR: Prediction + model evaluation",
     "section": "Predictive performance",
-    "text": "Predictive performance\n\n\n\n\n\nHow consistent are the predictions for different bootstrap datasets?\nHow consistent are the predictions for counties with high school graduation rates in the middle of the plot vs. in the edges?"
+    "text": "Predictive performance\n\n\n\n\n\nHow consistent are the predictions for different bootstrap datasets?\nHow consistent are the predictions for counties with high school graduation rates in the middle of the plot vs. in the edges?\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "slides/04-slr-evaluation.html#recap",
@@ -4575,7 +4575,7 @@
     "href": "slides/04-slr-evaluation.html#next-week",
     "title": "SLR: Prediction + model evaluation",
     "section": "Next week",
-    "text": "Next week\nInference on the slope using\n\nSimulation-based methods\nMathematical models\n\n\n\n\n🔗 Week 02"
+    "text": "Next week\nInference on the slope using\n\nSimulation-based methods\nMathematical models"
   },
   {
     "objectID": "slides/13-comparison-cv.html#announcements",
@@ -5388,5 +5388,19 @@
     "title": "Computing troubleshooting",
     "section": "",
     "text": "If you’re having difficulty launching an RStudio session from your reserved container, go to status.oit.duke.edu and scroll down to Teaching and Learning Tools. Under this heading you’ll find an entry called Container Manager (CMGR Coursework Containers).\n\nIf the status shows something other than Operational, this means there is a known incident with the containers. Check back later to see if it’s been resolved. If there’s a deadline coming up soon, post on the course forum to let us know that there’s an issue. We can look into how quickly it might get resolved and decide on what to do about the deadline accordingly. Note: We don’t anticipate this to happen regularly, the systems are Operational a huge majority of the time!\nIf the status shows Operational, this means the system is expected to be working. Check your internet connection, if need be, restart your computer to ensure a fresh new connection. If your issue persists, post on the course forum with details on what you’ve tried and the errors you see (including verbatim errors and/or screenshots)."
+  },
+  {
+    "objectID": "slides/04-slr-evaluation.html",
+    "href": "slides/04-slr-evaluation.html",
+    "title": "SLR: Prediction + model evaluation",
+    "section": "",
+    "text": "Office hours have started. Click here for full schedule.\nAccept the email invitation to join the sta210-fa22 GitHub organization by today at 11:59pm.\n\nYou may also go to the course organization and click to accept on the banner at the top of the page.\nIf you don’t see the email or banner invitation, please email Prof. Tackett (maria.tackett@duke.edu).\n\nLab 01 this week - will need access to RStudio and to be a member of the course GitHub organization.\nSee Week 02 for this week’s activities."
+  },
+  {
+    "objectID": "slides/14-mlr-inference.html",
+    "href": "slides/14-mlr-inference.html",
+    "title": "Inference for multiple linear regression",
+    "section": "",
+    "text": "See Ed Discussion for upcoming events and internship opportunities\nStatistics Experience due Mon, Nov 20 at 11:59pm\nProf. Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester\nStart the final project in lab this week - start thinking about the data your team wants to use"
   }
 ]

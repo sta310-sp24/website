@@ -238,7 +238,7 @@ Use cross validation to evaluate and select a model to predict the tip amount
 **v-fold cross validation** -- commonly used resampling technique:
 
 -   Randomly split your **training** **data** into ***v*** partitions
--   Use ***v-1*** partitions for analysis, and the remaining 1 partition for analysis (model fit + model fit statistics)
+-   Use ***v-1*** partitions for analysis, and the remaining 1 partition for assessment
 -   Repeat ***v*** times, updating which partition is used for assessment each time
 
 # Application exercise

@@ -2814,6 +2814,223 @@
     "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
   },
   {
+    "objectID": "hw/hw-01.html",
+    "href": "hw/hw-01.html",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "",
+    "text": "In this assignment, you will use simple linear regression to examine the association between between the percent of adults with a bachelor’s degree and the median household income for counties in the United States."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "href": "hw/hw-01.html#part-1-exploratory-data-analysis",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 1: Exploratory data analysis",
+    "text": "Part 1: Exploratory data analysis\n\nExercise 1\nCreate a histogram of the distribution of the predictor variable bachelorsand calculate appropriate summary statistics. Use the visualization and summary statistics to describe the distribution. Include an informative title and axis labels on the plot.\n\n\nExercise 2\nLet’s view the data in another way. Use the code below to make a map of the United States with the color of the counties filled in based on the percent of residents 25 years old and older who have a Bachelor’s degree. Fill in title and axis labels.\nThen use the plot answer the following:\n\nWhat are 2 observations you have from the map?\nWhat is a feature that is apparent in the map that wasn’t as easily apparent from the histogram in the previous exercise? What is a feature that is apparent in the histogram that is not as easily apparent from the map?\n\n\ncounty_map_data &lt;- left_join(county_data_sample, map_data_sample)\n\nggplot(data = map_data_all) +\n  geom_polygon(aes(x = long, y = lat, group = group),\n    fill = \"lightgray\", color = \"white\"\n    ) +\n  geom_polygon(data = county_map_data, aes(x = long, y = lat, group = group,\n    fill = bachelors)\n    ) +\n  labs(\n    x = \"Longitude\",\n    y = \"Latitude\",\n    fill = \"_____\",\n    title = \"_____\"\n  ) +\n  scale_fill_viridis_c(labels = label_percent(scale = 1)) +\n  coord_quickmap()\n\n\n\nExercise 3\nCreate a visualization of the relationship between bachelors and median_household_income and calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables.\n\n\n\n\n\n\nTip\n\n\n\nRecall the analysis objective stated at the beginning of the Exercises section.\n\n\n\nIf you haven’t yet done so, now is a good time to render your document and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-2-modeling",
+    "href": "hw/hw-01.html#part-2-modeling",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 2: Modeling",
+    "text": "Part 2: Modeling\n\nExercise 4\nWe will use a linear regression model to better quantify the relationship between bachelors and median_household_income.\nWrite the form of the statistical model we will use for this task using mathematical notation. Use variable names (bachelors and median_household_income) in the equation for your model1.\n\n\nExercise 5\n\nFit the regression line corresponding to the statistical model in the previous exercise. Neatly display the model output using 3 digits.\nWrite the equation of the fitted model using mathematical notation. Use variable names (bachelors and median_household_income) in the equation.\n\n\n\nExercise 6\n\nInterpret the slope. The interpretation should be written in a way that is meaningful in the context of the data.\nIs it useful to interpret the intercept for this data? If so, write the interpretation in the context of the data. Otherwise, briefly explain why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "href": "hw/hw-01.html#part-3-inference-for-the-u.s.",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Part 3: Inference for the U.S.",
+    "text": "Part 3: Inference for the U.S.\nWe want to use the data from these 600 randomly selected counties to draw conclusions about the relationship between the percent of adults age 25 and older with a bachelor’s degree and median household income for the over 3,000 counties in the United States.\n\nExercise 7\n\nWhat is the population of interest? What is the sample?\nIs it reasonable to treat the sample in this analysis as representative of the population? Briefly explain why or why not.\n\n\n\nExercise 8\nConduct a hypothesis test for the slope to assess whether there is sufficient evidence of a linear relationship between the percent of adults age 25 and older with a bachelor’s degree and the median household income in a county. Use a randomization (permutation) test. In your response:\n\nState the null and alternative hypotheses in words and mathematical notation\nShow all relevant code and output used to conduct the test. Use set.seed(2023) and 1000 iterations to construct the appropriate distribution.\nState the conclusion in the context of the data.\n\n\n\nExercise 9\nNext, construct a 95% confidence interval for the slope using bootstrapping with set.seed(2023) and 1000 iterations.\n\nShow all relevant code and output used to calculate the interval.\nInterpret the confidence interval in the context of the data.\nIs the confidence interval consistent with the results of the test from the previous exercise? Briefly explain why or why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#reproducibility",
+    "href": "hw/hw-01.html#reproducibility",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\nExercise 10\nYou are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.\n\nSource: Ostblom and Timbers (2022)\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nChoose one of the scenarios from the table and read the linked article discussing what went wrong. Then,\n\nBriefly describe what went wrong, i.e., what part of the process of was not reproducible and what error or impact that had.\nThen, describe how the researchers could make the process reproducible.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-01.html#submission",
+    "href": "hw/hw-01.html#submission",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Submission",
+    "text": "Submission\n\n\n\n\n\n\nWarning\n\n\n\nBefore you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.\nRemember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.\n\n\nTo submit your assignment:\n\nGo to http://www.gradescope.com and click Log in in the top right corner.\nClick School Credentials ➡️ Duke NetID and log in using your NetID credentials.\nClick on your STA 210 course.\nClick on the assignment, and you’ll be prompted to submit it.\nMark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).\nSelect the first page of your PDF submission to be associated with the “Workflow & formatting” section."
+  },
+  {
+    "objectID": "hw/hw-01.html#grading-50-points",
+    "href": "hw/hw-01.html#grading-50-points",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Grading (50 points)",
+    "text": "Grading (50 points)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n5\n\n\nEx 2\n5\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n4\n\n\nEx 6\n4\n\n\nEx 7\n3\n\n\nEx 8\n7\n\n\nEx 9\n7\n\n\nEx 10\n5\n\n\nWorkflow & formatting\n32"
+  },
+  {
+    "objectID": "hw/hw-01.html#footnotes",
+    "href": "hw/hw-01.html#footnotes",
+    "title": "HW 01: Education & median income in US Counties",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-04.html",
+    "href": "labs/lab-04.html",
+    "title": "Lab 04: Alumni jobs",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 29, 11:59pm (Tuesday labs)\nSunday, October 1, 11:59pm (Thursday labs)\nIn today’s lab, you’ll use simple linear regression to analyze the relationship between the median early career salary and percent of alumni who perceive their job as making the world a better place for colleges and universities in the United States. You will also start working with your lab teams, write a team agreement, and be introduced to using GitHub for collaboration."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-1",
+    "href": "labs/lab-04.html#exercise-1",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nFit a linear model that can be used to predict the typical (median) early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-2",
+    "href": "labs/lab-04.html#exercise-2",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nCalculate the predicted values and residuals from your model and save these results in a data frame. Print the first five rows of the new data frame.\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercises 1- 2.\nTeam Member 2: It’s your turn! Type the team’s response to exercise 3."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-3",
+    "href": "labs/lab-04.html#exercise-3",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nBefore using the model for prediction, let’s check the model conditions. To figure out how to do so, we type the following prompt into ChatGPT (“an AI powered language model”) “How do you check the model conditions for simple linear regression?”\nThe response from ChatGPT shown below would receive partial credit. For each condition, state whether it is correct or incorrect/ incomplete. If it incorrect/incomplete, state what is wrong or missing, then write the correct response.\n\nIn simple linear regression, you’re trying to establish a linear relationship between two variables: a dependent variable (Y) and an independent variable (X). The model conditions or assumptions for simple linear regression are important to check to ensure that your model is valid and reliable. Here are the key assumptions and how to check them:\n1. Linearity Assumption:\n\nAssumption: The relationship between the independent variable (X) and the dependent variable (Y) is linear.\nHow to Check: Create a scatterplot of Y against X. If the points roughly form a straight line, the linearity assumption is likely met.\n\n2. Independence Assumption:\n\nAssumption: The residuals (the differences between observed Y and predicted Y) are independent of each other.\nHow to Check: Plot the residuals against the independent variable (X) or the predicted values. Look for patterns or trends in the residuals. There should be no clear structure or autocorrelation in the residuals.\n\n3. Homoscedasticity [Constant variance] Assumption:\n\nAssumption: The variance of the residuals is constant across all levels of the independent variable.\nHow to Check: Plot the residuals against the predicted values or the independent variable (X). The spread of the residuals should remain roughly constant across the range of X.\n\n4. Normality Assumption:\n\nAssumption: The residuals follow a normal distribution.\nHow to Check: Create a histogram or a normal probability plot (Q-Q plot) of the residuals. If the residuals are approximately normally distributed, they should follow a bell-shaped curve in the histogram and lie along a straight line in the Q-Q plot.\n\nIt’s important to note that these assumptions may not always hold perfectly in real-world data, and minor violations may not necessarily invalidate your model. However, if you detect significant violations of these assumptions, you may need to consider alternative modeling techniques or transformations of your data to address the issues.\n\n\n✅ ⬆️ Team Member 2: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 3.\nTeam Member 3: It’s your turn! Type the team’s response to exercises 4 - 5.\n\n\n\n\n\n\n\nImportant\n\n\n\nYou can proceed assuming all the model conditions are satisfied."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-4",
+    "href": "labs/lab-04.html#exercise-4",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\n31 percent of the alumni at Johns Hopkins University received a STEM degree. Calculate the predicted early career pay at this university and the appropriate 95% interval. Interpret the interval in the context of the data.\nThe actual early career pay at this university is $67,200. Is this what you expected based on your analysis? Briefly explain your reasoning."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-5",
+    "href": "labs/lab-04.html#exercise-5",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nNext, let’s consider how well the model fits the relationship between the early career pay and percent with a STEM degree.\n\nCalculate \\(R^2\\) and interpret it in the context of the data.\nCalculate RMSE and interpret it in the context of the data.\n\n\nTeam Member 3: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 4 - 5.\nTeam Member 4: It’s your turn! Type the team’s response to exercise 6."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-6",
+    "href": "labs/lab-04.html#exercise-6",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nDo you think the model is useful for understanding and predicting the typical early career pay for alumni at a university? Briefly explain your reasoning.\n\nTeam Member 4: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 6.\nTeam Member 1: It’s your turn! Type the team’s response to exercise 7."
+  },
+  {
+    "objectID": "labs/lab-04.html#exercise-7",
+    "href": "labs/lab-04.html#exercise-7",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nFit another model which predicts the typical early career pay using only the percentage of alumni that believe their career will make the world a better place.\n\nNeatly display this model with 3 digits.\nWhich model do you think is better - this model or the model fit in Exercise 1? Explain your response showing any analysis used to make the decision.\n\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and the rest of the team can see the completed lab.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the team’s completed lab!"
+  },
+  {
+    "objectID": "labs/lab-04.html#footnotes",
+    "href": "labs/lab-04.html#footnotes",
+    "title": "Lab 04: Alumni jobs",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nDon’t trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.↩︎↩︎"
+  },
+  {
+    "objectID": "labs/lab-01.html",
+    "href": "labs/lab-01.html",
+    "title": "Lab 01: Park access",
+    "section": "",
+    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-01.html#learning-goals",
+    "href": "labs/lab-01.html#learning-goals",
+    "title": "Lab 01: Park access",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
+  },
+  {
+    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
+    "title": "Lab 01: Park access",
+    "section": "Clone the repo & start new RStudio project",
+    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
+  },
+  {
+    "objectID": "labs/lab-01.html#r-and-r-studio",
+    "href": "labs/lab-01.html#r-and-r-studio",
+    "title": "Lab 01: Park access",
+    "section": "R and R Studio",
+    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
+  },
+  {
+    "objectID": "labs/lab-01.html#footnotes",
+    "href": "labs/lab-01.html#footnotes",
+    "title": "Lab 01: Park access",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-02.html",
+    "href": "labs/lab-02.html",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-02.html#learning-goals",
+    "href": "labs/lab-02.html#learning-goals",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-10",
+    "href": "labs/lab-02.html#exercise-10",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Exercise 10",
+    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab-02.html#footnotes",
+    "href": "labs/lab-02.html#footnotes",
+    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-03.html",
+    "href": "labs/lab-03.html",
+    "title": "Lab 03: Coffee grades",
+    "section": "",
+    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
+  },
+  {
+    "objectID": "labs/lab-03.html#learning-goals",
+    "href": "labs/lab-03.html#learning-goals",
+    "title": "Lab 03: Coffee grades",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
+  },
+  {
+    "objectID": "labs/lab-03.html#grading-50-pts",
+    "href": "labs/lab-03.html#grading-50-pts",
+    "title": "Lab 03: Coffee grades",
+    "section": "Grading (50 pts)",
+    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n4\n\n\nEx 2\n3\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n8\n\n\nEx 6\n5\n\n\nEx 7\n8\n\n\nEx 8\n6\n\n\nEx 9\n4\n\n\nEx 10\n2\n\n\nWorkflow & formatting\n31"
+  },
+  {
+    "objectID": "labs/lab-03.html#footnotes",
+    "href": "labs/lab-03.html#footnotes",
+    "title": "Lab 03: Coffee grades",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+  },
+  {
+    "objectID": "labs/lab-00.html",
+    "href": "labs/lab-00.html",
+    "title": "Lab 00: Getting started",
+    "section": "",
+    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
+  },
+  {
     "objectID": "labs/lab-05.html",
     "href": "labs/lab-05.html",
     "title": "Lab 05: Candy Competition",
@@ -2884,221 +3101,116 @@
     "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.↩︎"
   },
   {
-    "objectID": "labs/lab-00.html",
-    "href": "labs/lab-00.html",
-    "title": "Lab 00: Getting started",
+    "objectID": "hw/hw-03.html",
+    "href": "hw/hw-03.html",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "",
-    "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today.\n\n\n\nReserve a STA 210 container\n\nMake sure to reserve the container titled “STA210” not “RStudio”\nStart the container and confirm you see the RStudio interface\n\nSubmit your GitHub username and confirm you have access to the 210 container\n\nIf you do not have a GitHub username, click here for information on registering for a GitHub account and choosing a username\n\nComplete the STA 210 Student Survey"
+    "text": "In this analysis you will use multiple linear regression to fit and evaluate models using characteristics of LEGO sets to understand variability in the price."
   },
   {
-    "objectID": "labs/lab-03.html",
-    "href": "labs/lab-03.html",
-    "title": "Lab 03: Coffee grades",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 22, 11:59pm (Tuesday labs)\nSunday, September 24, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-03.html#learning-goals",
-    "href": "labs/lab-03.html#learning-goals",
-    "title": "Lab 03: Coffee grades",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nbe able to use mathematical models to conduct inference for the slope\nbe able to assess conditions for simple linear regression"
-  },
-  {
-    "objectID": "labs/lab-03.html#grading-50-pts",
-    "href": "labs/lab-03.html#grading-50-pts",
-    "title": "Lab 03: Coffee grades",
-    "section": "Grading (50 pts)",
-    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n4\n\n\nEx 2\n3\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n8\n\n\nEx 6\n5\n\n\nEx 7\n8\n\n\nEx 8\n6\n\n\nEx 9\n4\n\n\nEx 10\n2\n\n\nWorkflow & formatting\n31"
-  },
-  {
-    "objectID": "labs/lab-03.html#footnotes",
-    "href": "labs/lab-03.html#footnotes",
-    "title": "Lab 03: Coffee grades",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-02.html",
-    "href": "labs/lab-02.html",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 15, 11:59pm (Tuesday labs)\nSunday, September 17, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-02.html#learning-goals",
-    "href": "labs/lab-02.html#learning-goals",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab you will…\n\nBe able to fit a simple linear regression model using R.\nBe able to interpret the slope and intercept for the model.\nBe able to use simulation-based inference to draw conclusions about the slope.\nContinue developing a workflow for reproducible data analysis."
-  },
-  {
-    "objectID": "labs/lab-02.html#exercise-10",
-    "href": "labs/lab-02.html#exercise-10",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Exercise 10",
-    "text": "Exercise 10\n\nThere is a statistically significant linear relationship between average air temperature and average ice duration on Lake Monona \\((\\beta_1 \\neq 0)\\).\n\nDoes the confidence interval you calculated in the previous exercise support or refute this claim? Briefly explain.\n\nRender, commit, and push your final changes to your remote lab repo on GitHub. Click the checkbox next to each file in the Git pane to stage the updates you’ve made, write an informative commit message, and push. After you push the changes, the Git pane in RStudio should be empty."
-  },
-  {
-    "objectID": "labs/lab-02.html#footnotes",
-    "href": "labs/lab-02.html#footnotes",
-    "title": "Lab 02: Ice duration and air temperature in Madison, WI",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nhttps://lter.github.io/lterdatasampler/index.html↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-01.html",
-    "href": "labs/lab-01.html",
-    "title": "Lab 01: Park access",
-    "section": "",
-    "text": "Important\n\n\n\nDue\n\nFriday, September 8, 11:59pm (Tuesday labs)\nSunday, September 10, 11:59pm (Thursday labs)"
-  },
-  {
-    "objectID": "labs/lab-01.html#learning-goals",
-    "href": "labs/lab-01.html#learning-goals",
-    "title": "Lab 01: Park access",
-    "section": "Learning goals",
-    "text": "Learning goals\nBy the end of the lab, you will…\n\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to create data visualizations using ggplot2 and use those visualizations to describe distributions\nBe gain to fit, interpret, and evaluate simple linear regression models"
-  },
-  {
-    "objectID": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "href": "labs/lab-01.html#clone-the-repo-start-new-rstudio-project",
-    "title": "Lab 01: Park access",
-    "section": "Clone the repo & start new RStudio project",
-    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta210-fa23 organization on GitHub. Click on the repo with the prefix lab-01-. It contains the starter documents you need to complete the lab.\n\nIf you do not see your lab-01 repo, click here to create your repo. Then, click here to (re)submit your GitHub username.\n\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
-  },
-  {
-    "objectID": "labs/lab-01.html#r-and-r-studio",
-    "href": "labs/lab-01.html#r-and-r-studio",
-    "title": "Lab 01: Park access",
-    "section": "R and R Studio",
-    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\nBelow are the components of an Quarto (.Rmd) file.\n\n\n\n\n\n\nYAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document.\n\n\n\n\nCommitting changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!\n\n\nPush changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
-  },
-  {
-    "objectID": "labs/lab-01.html#footnotes",
-    "href": "labs/lab-01.html#footnotes",
-    "title": "Lab 01: Park access",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
-  },
-  {
-    "objectID": "labs/lab-04.html",
-    "href": "labs/lab-04.html",
-    "title": "Lab 04: Alumni jobs",
-    "section": "",
-    "text": "Important\n\n\n\nDue:\n\nFriday, September 29, 11:59pm (Tuesday labs)\nSunday, October 1, 11:59pm (Thursday labs)\nIn today’s lab, you’ll use simple linear regression to analyze the relationship between the median early career salary and percent of alumni who perceive their job as making the world a better place for colleges and universities in the United States. You will also start working with your lab teams, write a team agreement, and be introduced to using GitHub for collaboration."
-  },
-  {
-    "objectID": "labs/lab-04.html#exercise-1",
-    "href": "labs/lab-04.html#exercise-1",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-1",
+    "href": "hw/hw-03.html#exercise-1",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Exercise 1",
-    "text": "Exercise 1\nFit a linear model that can be used to predict the typical (median) early career pay based on the percent of STEM degrees. Display the model output using 3 digits for numerical values."
+    "text": "Exercise 1\nIn this analysis, we dropped observations that have missing values for some of the relevant variables. What is a disadvantage of dropping observations that have missing values, instead of using a method to impute, i.e., fill in, the missing data? How might dropping these observations impact the generalizability of conclusions? What is the disadvantage of replacing the NAs in Minifigures to 0?"
   },
   {
-    "objectID": "labs/lab-04.html#exercise-2",
-    "href": "labs/lab-04.html#exercise-2",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-2",
+    "href": "hw/hw-03.html#exercise-2",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Exercise 2",
-    "text": "Exercise 2\nCalculate the predicted values and residuals from your model and save these results in a data frame. Print the first five rows of the new data frame.\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercises 1- 2.\nTeam Member 2: It’s your turn! Type the team’s response to exercise 3."
+    "text": "Exercise 2\nVisualize the distributions of the predictor variables Pieces, Size, Year, and Pages. Neatly arrange the plots using the patchwork package."
   },
   {
-    "objectID": "labs/lab-04.html#exercise-3",
-    "href": "labs/lab-04.html#exercise-3",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-3",
+    "href": "hw/hw-03.html#exercise-3",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Exercise 3",
-    "text": "Exercise 3\nBefore using the model for prediction, let’s check the model conditions. To figure out how to do so, we type the following prompt into ChatGPT (“an AI powered language model”) “How do you check the model conditions for simple linear regression?”\nThe response from ChatGPT shown below would receive partial credit. For each condition, state whether it is correct or incorrect/ incomplete. If it incorrect/incomplete, state what is wrong or missing, then write the correct response.\n\nIn simple linear regression, you’re trying to establish a linear relationship between two variables: a dependent variable (Y) and an independent variable (X). The model conditions or assumptions for simple linear regression are important to check to ensure that your model is valid and reliable. Here are the key assumptions and how to check them:\n1. Linearity Assumption:\n\nAssumption: The relationship between the independent variable (X) and the dependent variable (Y) is linear.\nHow to Check: Create a scatterplot of Y against X. If the points roughly form a straight line, the linearity assumption is likely met.\n\n2. Independence Assumption:\n\nAssumption: The residuals (the differences between observed Y and predicted Y) are independent of each other.\nHow to Check: Plot the residuals against the independent variable (X) or the predicted values. Look for patterns or trends in the residuals. There should be no clear structure or autocorrelation in the residuals.\n\n3. Homoscedasticity [Constant variance] Assumption:\n\nAssumption: The variance of the residuals is constant across all levels of the independent variable.\nHow to Check: Plot the residuals against the predicted values or the independent variable (X). The spread of the residuals should remain roughly constant across the range of X.\n\n4. Normality Assumption:\n\nAssumption: The residuals follow a normal distribution.\nHow to Check: Create a histogram or a normal probability plot (Q-Q plot) of the residuals. If the residuals are approximately normally distributed, they should follow a bell-shaped curve in the histogram and lie along a straight line in the Q-Q plot.\n\nIt’s important to note that these assumptions may not always hold perfectly in real-world data, and minor violations may not necessarily invalidate your model. However, if you detect significant violations of these assumptions, you may need to consider alternative modeling techniques or transformations of your data to address the issues.\n\n\n✅ ⬆️ Team Member 2: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 3.\nTeam Member 3: It’s your turn! Type the team’s response to exercises 4 - 5.\n\n\n\n\n\n\n\nImportant\n\n\n\nYou can proceed assuming all the model conditions are satisfied."
+    "text": "Exercise 3\nWhat are some feature engineering steps you might use to prepare the variables in the previous exercise for the model? Describe the steps and the function you would use. The list should incorporate at least three different step_ functions.\n\n\n\n\n\n\nTip\n\n\n\nUse the recipes reference page for a list of step_ functions."
   },
   {
-    "objectID": "labs/lab-04.html#exercise-4",
-    "href": "labs/lab-04.html#exercise-4",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-4",
+    "href": "hw/hw-03.html#exercise-4",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Exercise 4",
-    "text": "Exercise 4\n\n31 percent of the alumni at Johns Hopkins University received a STEM degree. Calculate the predicted early career pay at this university and the appropriate 95% interval. Interpret the interval in the context of the data.\nThe actual early career pay at this university is $67,200. Is this what you expected based on your analysis? Briefly explain your reasoning."
+    "text": "Exercise 4\nThe distribution of Theme is shown below. The bars are ordered by the frequency they occur in the data set.\n\nlegos |&gt;\n  count(Theme) |&gt;\nggplot(aes(x = fct_reorder(Theme, n), y = n)) +\n  geom_col() + \n    labs(title = \"Lego Set Theme\", \n         x = \"Theme\", \n         y = \"Number of LEGO sets\") + \n  coord_flip()\n\n\n\n\nWhat is one reason we should avoid putting the variable Theme in a model as is?"
   },
   {
-    "objectID": "labs/lab-04.html#exercise-5",
-    "href": "labs/lab-04.html#exercise-5",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-5",
+    "href": "hw/hw-03.html#exercise-5",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Exercise 5",
-    "text": "Exercise 5\nNext, let’s consider how well the model fits the relationship between the early career pay and percent with a STEM degree.\n\nCalculate \\(R^2\\) and interpret it in the context of the data.\nCalculate RMSE and interpret it in the context of the data.\n\n\nTeam Member 3: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 4 - 5.\nTeam Member 4: It’s your turn! Type the team’s response to exercise 6."
+    "text": "Exercise 5\nWe will use v-fold cross validation to compare two models. We’ll start by preparing the data, creating the folds, and defining the model specification that will be used for both models.\n\nSplit the data into training (75%) and testing (25%) sets. Use a seed of 6.\nSplit the training data into 12 folds. Set the seed to 6 again.\nSpecify the model."
   },
   {
-    "objectID": "labs/lab-04.html#exercise-6",
-    "href": "labs/lab-04.html#exercise-6",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-6",
+    "href": "hw/hw-03.html#exercise-6",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Exercise 6",
-    "text": "Exercise 6\nDo you think the model is useful for understanding and predicting the typical early career pay for alumni at a university? Briefly explain your reasoning.\n\nTeam Member 4: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the responses to exercise 6.\nTeam Member 1: It’s your turn! Type the team’s response to exercise 7."
+    "text": "Exercise 6\nUse the training data to create a recipe for the first model. The model uses the variables Size, Theme, and Pages to predict Amazon_Price. Conduct the following feature engineering steps:\n\nUse step_other() to collapse Theme into fewer categories. Define the threshold such that any levels of Theme with fewer than 20 observations is defined as “Other”.\nMean-center Pages.\nMake dummy variables for all categorical predictors.\nRemove any predictors with zero variance.\n\nThen create the workflow that brings together this recipe and the model specification from the previous exercise."
   },
   {
-    "objectID": "labs/lab-04.html#exercise-7",
-    "href": "labs/lab-04.html#exercise-7",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-7",
+    "href": "hw/hw-03.html#exercise-7",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Exercise 7",
-    "text": "Exercise 7\nFit another model which predicts the typical early career pay using only the percentage of alumni that believe their career will make the world a better place.\n\nNeatly display this model with 3 digits.\nWhich model do you think is better - this model or the model fit in Exercise 1? Explain your response showing any analysis used to make the decision.\n\n\nTeam Member 1: Knit, commit and push your changes to GitHub with an appropriate commit message again. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and the rest of the team can see the completed lab.\n\n\nAll other team members: Pull to get the updated documents from GitHub. Click on the .qmd file, and you should see the team’s completed lab!"
+    "text": "Exercise 7\nConduct 12-fold cross validation using the workflow from the previous exercise. Calculate and display mean RMSE across the 12 folds.\n\n\n\n\n\n\nNote\n\n\n\nWe will just use RMSE to compare models for this assignment; however, in practice, it is best to take into account multiple model fit statistics to get a more holistic evaluation and comparison of the models."
   },
   {
-    "objectID": "labs/lab-04.html#footnotes",
-    "href": "labs/lab-04.html#footnotes",
-    "title": "Lab 04: Alumni jobs",
+    "objectID": "hw/hw-03.html#exercise-8",
+    "href": "hw/hw-03.html#exercise-8",
+    "title": "HW 03: Multiple linear regression, Part 2",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nNow let’s consider a new model that includes all the variables used in model from Exercise 6 along with Year, Pieces and Minifigures.\n\nUse the training data to create a recipe that uses all the feature engineering steps in Exercise 6 with the addition of the following steps:\n\nCreate a new variable called since2018 that calculates the number of years since 2018.\nRemove Year as a potential predictor.\nMean-center Pieces.\n\nCreate the workflow that brings together this recipe and the model specification from Exercise 5.\nConduct 12-fold cross validation using this model workflow. Calculate and display mean RMSE across the 10 folds."
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-9",
+    "href": "hw/hw-03.html#exercise-9",
+    "title": "HW 03: Multiple linear regression, Part 2",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nCompare the cross validation results from Exercises 7 and 8. Which model do you select based on RMSE? Briefly explain your choice."
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-10",
+    "href": "hw/hw-03.html#exercise-10",
+    "title": "HW 03: Multiple linear regression, Part 2",
+    "section": "Exercise 10",
+    "text": "Exercise 10\nRefit the selected model on the entire training data. Neatly display the model using 3 digits.\nThen, calculate VIF for the model and use it to comment on whether there are potential issues with multicollinearity.\n\n\n\n\n\n\nTip\n\n\n\nWhen we fit a model using recipe and workflow, we need to extract the model object before using augment or vif functions. Fill in the name of the selected model in both blanks in the code below to extract the model object and calculate VIF\n\nlegos_fit_model &lt;- extract_fit_parsnip(______)\nvif(legos_fit_model$fit)"
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-11",
+    "href": "hw/hw-03.html#exercise-11",
+    "title": "HW 03: Multiple linear regression, Part 2",
+    "section": "Exercise 11",
+    "text": "Exercise 11\nCalculate RMSE on the training data and on the testing data. Use it to comment on how well the model performs on new data and whether there are signs of model overfit."
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-12",
+    "href": "hw/hw-03.html#exercise-12",
+    "title": "HW 03: Multiple linear regression, Part 2",
+    "section": "Exercise 12",
+    "text": "Exercise 12\nThough we do not check the model conditions in this assignment, complete this exercise assuming the model conditions are met.\nDescribe the effect of Theme on the price of LEGO sets, including an indication of which levels are statistically significant. Use a threshold of 0.05 to determine significance.\n\nBefore submitting, make sure you render your document and commit (with a meaningful commit message) and push all updates."
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-13",
+    "href": "hw/hw-03.html#exercise-13",
+    "title": "HW 03: Multiple linear regression, Part 2",
+    "section": "Exercise 13",
+    "text": "Exercise 13\nThe World Bank collects “world development indicators” about the past and current development of countries. These data are made available on the World Bank’s website, and can be used to understand the relationships between these various factors along with trends over time.\n\nFor this analysis, we focus on indicators from 2011 on 165 countries. The variables of interest are:\n\ngdp.per.capita: gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in current U.S. dollars.\nsanit.access.factor: Population access to sanitation facilities (Low, High)\nedu.expend: Government expenditure on education, total (% of government expenditure)\nlife.expect: Life expectancy at birth\n\nYou fit a model using sanitation access, education expenditures, and life expectancy to understand variability in GDP. The model takes the form\n\\[\n\\begin{aligned}\\widehat{\\log(GDP)} = \\hat{\\beta}_0 &+ \\hat{\\beta}_1 ~ sanit.access.factor + \\hat{\\beta}_2 ~ edu.expend + \\hat{\\beta}_3 * life.expect \\\\ &+ \\hat{\\beta}_4 ~ sanit.access.factor \\times life.expect\\end{aligned}\n\\]\nThe output from R is shown below.\n\nInterpret the coefficient of edu.expend in the context of the data.\nInterpret the coefficient of life.expect for countries with high sanitation access in the context of the data.\n\n\n\n\n\n\nImportant\n\n\n\nWrite all interpretations in terms of the original units, not the log-transformed units."
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-14",
+    "href": "hw/hw-03.html#exercise-14",
+    "title": "HW 03: Multiple linear regression, Part 2",
+    "section": "Exercise 14",
+    "text": "Exercise 14\nBelow are plots from the exploratory data analysis of the relationships between the predictor variables. Based on these plots, what appears to be a potential issue with the model from Exercise 13? Briefly explain your response."
+  },
+  {
+    "objectID": "hw/hw-03.html#footnotes",
+    "href": "hw/hw-03.html#footnotes",
+    "title": "HW 03: Multiple linear regression, Part 2",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nDon’t trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.↩︎↩︎"
-  },
-  {
-    "objectID": "hw/hw-01.html",
-    "href": "hw/hw-01.html",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "",
-    "text": "In this assignment, you will use simple linear regression to examine the association between between the percent of adults with a bachelor’s degree and the median household income for counties in the United States."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-1-exploratory-data-analysis",
-    "href": "hw/hw-01.html#part-1-exploratory-data-analysis",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 1: Exploratory data analysis",
-    "text": "Part 1: Exploratory data analysis\n\nExercise 1\nCreate a histogram of the distribution of the predictor variable bachelorsand calculate appropriate summary statistics. Use the visualization and summary statistics to describe the distribution. Include an informative title and axis labels on the plot.\n\n\nExercise 2\nLet’s view the data in another way. Use the code below to make a map of the United States with the color of the counties filled in based on the percent of residents 25 years old and older who have a Bachelor’s degree. Fill in title and axis labels.\nThen use the plot answer the following:\n\nWhat are 2 observations you have from the map?\nWhat is a feature that is apparent in the map that wasn’t as easily apparent from the histogram in the previous exercise? What is a feature that is apparent in the histogram that is not as easily apparent from the map?\n\n\ncounty_map_data &lt;- left_join(county_data_sample, map_data_sample)\n\nggplot(data = map_data_all) +\n  geom_polygon(aes(x = long, y = lat, group = group),\n    fill = \"lightgray\", color = \"white\"\n    ) +\n  geom_polygon(data = county_map_data, aes(x = long, y = lat, group = group,\n    fill = bachelors)\n    ) +\n  labs(\n    x = \"Longitude\",\n    y = \"Latitude\",\n    fill = \"_____\",\n    title = \"_____\"\n  ) +\n  scale_fill_viridis_c(labels = label_percent(scale = 1)) +\n  coord_quickmap()\n\n\n\nExercise 3\nCreate a visualization of the relationship between bachelors and median_household_income and calculate the correlation. Use the visualization and correlation to describe the relationship between the two variables.\n\n\n\n\n\n\nTip\n\n\n\nRecall the analysis objective stated at the beginning of the Exercises section.\n\n\n\nIf you haven’t yet done so, now is a good time to render your document and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-2-modeling",
-    "href": "hw/hw-01.html#part-2-modeling",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 2: Modeling",
-    "text": "Part 2: Modeling\n\nExercise 4\nWe will use a linear regression model to better quantify the relationship between bachelors and median_household_income.\nWrite the form of the statistical model we will use for this task using mathematical notation. Use variable names (bachelors and median_household_income) in the equation for your model1.\n\n\nExercise 5\n\nFit the regression line corresponding to the statistical model in the previous exercise. Neatly display the model output using 3 digits.\nWrite the equation of the fitted model using mathematical notation. Use variable names (bachelors and median_household_income) in the equation.\n\n\n\nExercise 6\n\nInterpret the slope. The interpretation should be written in a way that is meaningful in the context of the data.\nIs it useful to interpret the intercept for this data? If so, write the interpretation in the context of the data. Otherwise, briefly explain why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#part-3-inference-for-the-u.s.",
-    "href": "hw/hw-01.html#part-3-inference-for-the-u.s.",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Part 3: Inference for the U.S.",
-    "text": "Part 3: Inference for the U.S.\nWe want to use the data from these 600 randomly selected counties to draw conclusions about the relationship between the percent of adults age 25 and older with a bachelor’s degree and median household income for the over 3,000 counties in the United States.\n\nExercise 7\n\nWhat is the population of interest? What is the sample?\nIs it reasonable to treat the sample in this analysis as representative of the population? Briefly explain why or why not.\n\n\n\nExercise 8\nConduct a hypothesis test for the slope to assess whether there is sufficient evidence of a linear relationship between the percent of adults age 25 and older with a bachelor’s degree and the median household income in a county. Use a randomization (permutation) test. In your response:\n\nState the null and alternative hypotheses in words and mathematical notation\nShow all relevant code and output used to conduct the test. Use set.seed(2023) and 1000 iterations to construct the appropriate distribution.\nState the conclusion in the context of the data.\n\n\n\nExercise 9\nNext, construct a 95% confidence interval for the slope using bootstrapping with set.seed(2023) and 1000 iterations.\n\nShow all relevant code and output used to calculate the interval.\nInterpret the confidence interval in the context of the data.\nIs the confidence interval consistent with the results of the test from the previous exercise? Briefly explain why or why not.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#reproducibility",
-    "href": "hw/hw-01.html#reproducibility",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Reproducibility",
-    "text": "Reproducibility\n\nExercise 10\nYou are asked to use a reproducible workflow for all of your work in the class, and the goal of this question to is better understand potential real-world implications of doing (or not) doing so. Below are some real-life examples in which having a non-reproducible workflow resulted in errors that impacted research and public records.\n\nSource: Ostblom and Timbers (2022)\n\n\nReproducibility error\nConsequence\nSource(s)\n\n\n\n\nLimitations in Excel data formats\nLoss of 16,000 COVID case records in the UK\n(Kelion 2020)\n\n\nAutomatic formatting in Excel\nImportant genes disregarded in scientific studies\n(Ziemann, Eren, and El-Osta 2016)\n\n\nDeletion of a cell caused rows to shift\nMix-up of which patient group received the treatment\n(Wallensteen et al. 2018)\n\n\nUsing binary instead of explanatory labels\nMix-up of the intervention with the control group\n(Aboumatar and Wise 2019)\n\n\nUsing the same notation for missing data and zero values\nPaper retraction\n(Whitehouse et al. 2021)\n\n\nIncorrectly copying data in a spreadsheet\nDelay in the opening of a hospital\n(Picken 2020)\n\n\n\nChoose one of the scenarios from the table and read the linked article discussing what went wrong. Then,\n\nBriefly describe what went wrong, i.e., what part of the process of was not reproducible and what error or impact that had.\nThen, describe how the researchers could make the process reproducible.\n\n\nNow is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates."
-  },
-  {
-    "objectID": "hw/hw-01.html#submission",
-    "href": "hw/hw-01.html#submission",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Submission",
-    "text": "Submission\n\n\n\n\n\n\nWarning\n\n\n\nBefore you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.\nRemember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.\n\n\nTo submit your assignment:\n\nGo to http://www.gradescope.com and click Log in in the top right corner.\nClick School Credentials ➡️ Duke NetID and log in using your NetID credentials.\nClick on your STA 210 course.\nClick on the assignment, and you’ll be prompted to submit it.\nMark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).\nSelect the first page of your PDF submission to be associated with the “Workflow & formatting” section."
-  },
-  {
-    "objectID": "hw/hw-01.html#grading-50-points",
-    "href": "hw/hw-01.html#grading-50-points",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Grading (50 points)",
-    "text": "Grading (50 points)\n\n\n\nComponent\nPoints\n\n\n\n\nEx 1\n5\n\n\nEx 2\n5\n\n\nEx 3\n4\n\n\nEx 4\n3\n\n\nEx 5\n4\n\n\nEx 6\n4\n\n\nEx 7\n3\n\n\nEx 8\n7\n\n\nEx 9\n7\n\n\nEx 10\n5\n\n\nWorkflow & formatting\n32"
-  },
-  {
-    "objectID": "hw/hw-01.html#footnotes",
-    "href": "hw/hw-01.html#footnotes",
-    "title": "HW 01: Education & median income in US Counties",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nClick here for a guide on writing mathematical symbols using LaTex.↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎"
+    "text": "Footnotes\n\n\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎↩︎"
   },
   {
     "objectID": "prepare/oct-09.html",
@@ -5562,7 +5674,7 @@
     "href": "project-tips.html",
     "title": "Final project tips + resources",
     "section": "",
-    "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your Title\"\nauthor: \"Team Name + Group Members\"\noutput: \n  pdf_document:\n    fig_width: 5\n    fig_height: 3\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
+    "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your title\"\nauthor: \"Your names\"\nformat:\n  pdf:\n    fig-width: 7\n    fig-height: 5\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
   },
   {
     "objectID": "computing-troubleshooting.html",

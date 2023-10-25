@@ -769,7 +769,7 @@ $$\begin{align}\hat{Y} &= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\
 Why is the interpretation in terms of a multiplicative change?
 :::
 
-## Model for $log(volume)$  {.midi}
+## Model for $log(volume)$ {.midi}
 
 ```{r}
 #| echo: true

@@ -171,13 +171,15 @@ rt_mlr_main_fit <- linear_reg() |>
 tidy(rt_mlr_main_fit) |> kable(digits = 2)
 ```
 
+## Multiple linear regression
+
 The multiple linear regression model assumes $$Y|X_1, X_2,  \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p, \sigma_\epsilon^2)$$
 
 . . .
 
 For a given observation $(x_{i1}, x_{i2}, \ldots, x_{ip}, y_i)$, we can rewrite the previous statement as
 
-$$y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \epsilon_{i} \hspace{10mm} \epsilon_i \sim N(0,\sigma^2)$$
+$$y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \epsilon_{i} \hspace{10mm} \epsilon_i \sim N(0,\sigma_{\epsilon}^2)$$
 
 ------------------------------------------------------------------------
 
@@ -193,7 +195,7 @@ $$\hat{\sigma}_\epsilon  = \sqrt{\frac{\sum_{i=1}^ne_i^2}{n-p-1}}$$
 
 . . .
 
-As with SLR, we use $\hat{\sigma}_{\epsilon}$ to calculate $SE_{\hat{\beta}_j}$, the standard error of each coefficient.
+As with SLR, we use $\hat{\sigma}_{\epsilon}$ to calculate $SE_{\hat{\beta}_j}$, the standard error of each coefficient. See [Matrix Form of Linear Regression](https://github.com/STA210-Sp19/supplemental-notes/blob/master/regression-basics-matrix.pdf) for more detail.
 
 ## MLR hypothesis test: hightemp {.midi}
 
@@ -296,11 +298,11 @@ Do the data provide evidence of a significant interaction effect? Comment on the
 
 ## Confidence interval for $\beta_j$ {.midi}
 
--   The $C%$ confidence interval for $\beta_j$ $$\hat{\beta}_j \pm t^* SE(\hat{\beta}_j)$$ where $t^*$ follows a $t$ distribution with $n - p - 1$ degrees of freedom.
+-   The $C\%$ confidence interval for $\beta_j$ $$\hat{\beta}_j \pm t^* SE(\hat{\beta}_j)$$ where $t^*$ follows a $t$ distribution with $n - p - 1$ degrees of freedom.
 
--   Generically, we are $C%$ confident that the interval LB to UB contains the population coefficient of $x_j$.
+-   **Generically**: We are $C\%$ confident that the interval LB to UB contains the population coefficient of $x_j$.
 
--   In context, we are $C%$ confident that for every one unit increase in $x_j$, we expect $y$ to change by LB to UB units, holding all else constant.
+-   **In context:** We are $C\%$ confident that for every one unit increase in $x_j$, we expect $y$ to change by LB to UB units, holding all else constant.
 
 ## Confidence interval for $\beta_j$
 
@@ -426,7 +428,7 @@ ggplot(data = rt_full_aug, aes(x = .fitted, y = .resid)) +
   labs(x = "Predicted values", y = "Residuals")
 ```
 
-## Linearity: Residuals vs. each predictor
+## Residuals vs. each predictor
 
 ```{r}
 #| fig.asp: 0.5
@@ -461,9 +463,17 @@ p6 <- ggplot(data = rt_full_aug, aes(x = day_type, y = .resid)) +
 
 ## Checking linearity
 
+-   The plot of the residuals vs. predicted values looked OK
+
 -   The plots of residuals vs. `hightemp` and `avgtemp` appear to have a parabolic pattern.
 
--   The linearity condition is not satisfied given these plots.
+-   The linearity condition does not appear to be satisfied given these plots.
+
+. . .
+
+::: question
+Given this conclusion, what might be a next step in the analysis?
+:::
 
 ## Checking constant variance
 
@@ -482,6 +492,12 @@ Does the constant variance condition appear to be satisfied?
 
 -   The constant variance condition is not satisfied.
 
+. . .
+
+::: question
+We will talk about to address this later in the notes.
+:::
+
 ## Checking normality
 
 ```{r}
@@ -491,6 +507,8 @@ Does the constant variance condition appear to be satisfied?
 resid_hist <- ggplot(rt_full_aug, aes(x = .resid)) +
   geom_histogram(binwidth = 25) +
   labs(x = "Residuals")  
+
+resid_hist
 ```
 
 The distribution of the residuals is approximately unimodal and symmetric, so the normality condition is satisfied. The sample size 90 is sufficiently large to relax this condition if it was not satisfied.
@@ -529,9 +547,11 @@ ggplot(rt_full_aug, aes(y = .resid, x = 1:nrow(rt_full_aug))) +
 
 ## Example
 
-Suppose the true population regression equation is $y = 3 + 4x$
+Let's assume the true population regression equation is $y = 3 + 4x$
 
--   Suppose we try estimating that equation using a model with variables $x$ and $z = x/10$
+. . .
+
+Suppose we try estimating that equation using a model with variables $x$ and $z = x/10$
 
 $$
 \begin{aligned}\hat{y}&= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2z\\
@@ -550,13 +570,15 @@ $$\hat{y} = \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)
 
 ## Why multicollinearity is a problem
 
--   When we have almost perfect collinearities (i.e. highly correlated predictor variables), the standard errors for our regression coefficients inflate
+-   When we have perfect collinearities, we are unable to get estimates for the coefficients
 
--   In other words, we lose precision in our estimates of the regression coefficients
+    -   When we have almost perfect collinearities (i.e. highly correlated predictor variables), the standard errors for our regression coefficients inflate
 
--   This impedes our ability to use the model for inference
+    -   In other words, we lose precision in our estimates of the regression coefficients
 
--   It is also difficult to interpret the model coefficients
+    -   This impedes our ability to use the model for inference
+
+    -   It is also difficult to interpret the model coefficients
 
 ## Detecting Multicollinearity {.midi}
 
@@ -568,11 +590,13 @@ Multicollinearity may occur when...
 
 -   One (or more) predictor variables is an almost perfect linear combination of the others
 
--   Include a quadratic term in the model mean-centering the variable first
+-   There is a quadratic term in the model without mean-centering the variable first
 
--   Including interactions between two or more continuous variables
+-   There are interactions between two or more continuous variables
 
     -   Can reduce this by mean-centering the variables first
+
+-   There is a categorical predictor with very few observations in the baseline level
 
 ## Detecting multicollinearity in the EDA
 
@@ -580,6 +604,7 @@ Multicollinearity may occur when...
     -   Look out for values close to 1 or -1
 -   Look at a scatterplot matrix of the predictor variables
     -   Look out for plots that show a relatively linear relationship
+-   Look at the distribution of categorical predictors and avoid setting the baseline to a category with very few observations
 
 ## Detecting Multicollinearity (VIF)
 
@@ -591,11 +616,11 @@ where $R^2_{X_j|X_{-j}}$ is the proportion of variation $X$ that is explained by
 
 ## Detecting Multicollinearity (VIF)
 
-Typically $VIF > 10$ indicates concerning multicollinearity - Variables with similar values of VIF are typically the ones correlated with each other
+-   Typically $VIF > 10$ indicates concerning multicollinearity
 
-<br>
+-   Variables with similar values of VIF are typically the ones correlated with each other
 
-Use the `vif()` function in the **rms** R package to calculate VIF
+-   Use the `vif()` function in the **rms** R package to calculate VIF
 
 ## VIF for rail trail model
 
@@ -653,6 +678,8 @@ glance(m2) |>
   select(adj.r.squared, AIC, BIC) |> kable(digits = 2)
 ```
 
+. . .
+
 Based on Adjusted $R^2$, AIC, and BIC, the model without **avgtemp** is a better fit. Therefore, we choose to remove **avgtemp** from the model and leave **hightemp** in the model to deal with the multicollinearity.
 
 ## Selected model (for now)
@@ -683,20 +710,20 @@ resid_orig <- ggplot(data = m2_aug, aes(x = .fitted, y = .resid)) +
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
   labs(x = "Predicted values", y = "Residuals", 
         title="Residuals vs. Predicted", 
-       subtitle = "Original Y")
+       subtitle = "Selected model (without avgtemp)")
 
 resid_orig
 
 ```
 
-As before, the constant variance condition is not satisfied. We can transform the response variable to address the violation in this condition.
+The constant variance condition is not satisfied. We can transform the response variable to address the violation in this condition.
 
 # Log transformation on the response variable
 
 ## Identifying a need to transform $Y$ {.midi}
 
 -   Typically, a "fan-shaped" residual plot indicates the need for a transformation of the response variable $Y$
-    -   There are multiple ways to transform a variable, e.g., $\sqrt{Y}$, $1/Y$, $\log(Y)$.
+    -   There are multiple ways to transform a variable, e.g., $\sqrt{Y}$, $1/Y$, $\log(Y)$
     -   $\log(Y)$ the most straightforward to interpret, so we use that transformation when possible
 
 . . .
@@ -720,13 +747,12 @@ $$\widehat{\log(Y)} = \hat{\beta}_0+ \hat{\beta}_1 X + \dots + \hat{\beta}_pX_p$
 
 ## Log transformation on $Y$
 
-We want to interpret the model in terms of the original variable $Y$, not $\log(Y)$, so we need to write the model in terms of $Y$
+We want to interpret the model in terms of the original variable $Y$, not $\log(Y)$, so we need to write the regression equation in terms of $Y$
 
-$$\begin{align}\hat{Y} &= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\beta}_PX_P\}\\ &= \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\end{align}$$\
-$$\widehat{\text{Median}({Y|X_1,\ldots,X_p})} = \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}$$
+$$\begin{align}\hat{Y} &= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\beta}_PX_P\}\\ &= \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\end{align}$$
 
 ::: callout-note
-If the distribution of $Y|X_1, \ldots, X_p$ is symmetric, then the median equals the mean.
+The predicted value $\hat{Y}$ is the predicted *median* of $Y$. Note, when the distribution of $Y|X_1, \ldots, X_p$ is symmetric, then the median equals the mean. See the slides in the [appendix] for more detail.
 :::
 
 ## Model interpretation
@@ -743,7 +769,7 @@ $$\hat{Y} = \exp\{\hat{\beta}_0 + \hat{\beta}_1 X\} = \exp\{\hat{\beta}_0\}\exp\
 Why is the interpretation in terms of a multiplicative change?
 :::
 
-## Model for log(volume)  {.midi}
+## Model for $log(volume)$  {.midi}
 
 ```{r}
 #| echo: true
@@ -756,7 +782,7 @@ tidy(log_rt_fit) |>
   kable(digits = 3)
 ```
 
-## Interpretation {.midi}
+## Interpretation of model for $\log(volume)$ {.midi}
 
 ```{r}
 #| echo: false
@@ -772,7 +798,7 @@ tidy(log_rt_fit) |>
 -   Interpret the coefficient of `hightemp` in terms of (1) `log(volume)` and (2) `volume`.
 :::
 
-## Residuals for model with `log(volume)`
+## Residuals for model with $\log(volume)$
 
 ```{r}
 #| echo: false
@@ -781,7 +807,7 @@ resp_logy_aug <- augment(log_rt_fit$fit)
 resid_logy <- ggplot(data = resp_logy_aug, aes(x = .fitted, y = .resid)) +
   geom_point(alpha = 0.7) + 
   geom_hline(yintercept=0, color="red") +
-  labs(x="Predicted", y="Residuals",
+  labs(x="Predicted values", y="Residuals",
        title="Residuals vs. Predicted", 
        subtitle = "Log-transformed Y")
 
@@ -888,7 +914,9 @@ tidy(resp_logx_fit) |>
 $$\hat{\text{Rate}} = 50.135 - 5.982 \times \log\text{(Age)}$$
 
 ::: question
-Interpret the slope and intercept in the context of the data.
+-   Interpret the intercept in the context of the data.
+
+-   Interpret the slope in terms of age multiplying by 2 in the context of the data.
 :::
 
 ## Learn more

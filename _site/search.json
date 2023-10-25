@@ -3728,14 +3728,21 @@
     "href": "slides/15-mlr-inference.html#multiple-linear-regression",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Multiple linear regression",
-    "text": "Multiple linear regression\n\nrt_mlr_main_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(volume ~ hightemp + season, data = rail_trail)\n\ntidy(rt_mlr_main_fit) |&gt; kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11\n\n\n\n\n\n\n\nThe multiple linear regression model assumes \\[Y|X_1, X_2,  \\ldots, X_p \\sim N(\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\dots + \\beta_p X_p, \\sigma_\\epsilon^2)\\]\n\nFor a given observation \\((x_{i1}, x_{i2}, \\ldots, x_{ip}, y_i)\\), we can rewrite the previous statement as\n\\[y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\dots + \\beta_p x_{ip} + \\epsilon_{i} \\hspace{10mm} \\epsilon_i \\sim N(0,\\sigma^2)\\]"
+    "text": "Multiple linear regression\n\nrt_mlr_main_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(volume ~ hightemp + season, data = rail_trail)\n\ntidy(rt_mlr_main_fit) |&gt; kable(digits = 2)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-125.23\n71.66\n-1.75\n0.08\n\n\nhightemp\n7.54\n1.17\n6.43\n0.00\n\n\nseasonSpring\n5.13\n34.32\n0.15\n0.88\n\n\nseasonSummer\n-76.84\n47.71\n-1.61\n0.11"
+  },
+  {
+    "objectID": "slides/15-mlr-inference.html#multiple-linear-regression-1",
+    "href": "slides/15-mlr-inference.html#multiple-linear-regression-1",
+    "title": "MLR: Inference, conditions, and transformations",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nThe multiple linear regression model assumes \\[Y|X_1, X_2,  \\ldots, X_p \\sim N(\\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\dots + \\beta_p X_p, \\sigma_\\epsilon^2)\\]\n\nFor a given observation \\((x_{i1}, x_{i2}, \\ldots, x_{ip}, y_i)\\), we can rewrite the previous statement as\n\\[y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\dots + \\beta_p x_{ip} + \\epsilon_{i} \\hspace{10mm} \\epsilon_i \\sim N(0,\\sigma_{\\epsilon}^2)\\]"
   },
   {
     "objectID": "slides/15-mlr-inference.html#estimating-sigma_epsilon",
     "href": "slides/15-mlr-inference.html#estimating-sigma_epsilon",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Estimating \\(\\sigma_\\epsilon\\)",
-    "text": "Estimating \\(\\sigma_\\epsilon\\)\nFor a given observation \\((x_{i1}, x_{i2}, \\ldots,x_{ip}, y_i)\\) the residual is \\[e_i = y_{i} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 x_{i1} + \\hat{\\beta}_{2} x_{i2} + \\dots + \\hat{\\beta}_p x_{ip})\\]\n\nThe estimated value of the regression standard error , \\(\\sigma_{\\epsilon}\\), is\n\\[\\hat{\\sigma}_\\epsilon  = \\sqrt{\\frac{\\sum_{i=1}^ne_i^2}{n-p-1}}\\]\n\n\nAs with SLR, we use \\(\\hat{\\sigma}_{\\epsilon}\\) to calculate \\(SE_{\\hat{\\beta}_j}\\), the standard error of each coefficient."
+    "text": "Estimating \\(\\sigma_\\epsilon\\)\nFor a given observation \\((x_{i1}, x_{i2}, \\ldots,x_{ip}, y_i)\\) the residual is \\[e_i = y_{i} - (\\hat{\\beta}_0 + \\hat{\\beta}_1 x_{i1} + \\hat{\\beta}_{2} x_{i2} + \\dots + \\hat{\\beta}_p x_{ip})\\]\n\nThe estimated value of the regression standard error , \\(\\sigma_{\\epsilon}\\), is\n\\[\\hat{\\sigma}_\\epsilon  = \\sqrt{\\frac{\\sum_{i=1}^ne_i^2}{n-p-1}}\\]\n\n\nAs with SLR, we use \\(\\hat{\\sigma}_{\\epsilon}\\) to calculate \\(SE_{\\hat{\\beta}_j}\\), the standard error of each coefficient. See Matrix Form of Linear Regression for more detail."
   },
   {
     "objectID": "slides/15-mlr-inference.html#mlr-hypothesis-test-hightemp",
@@ -3784,7 +3791,7 @@
     "href": "slides/15-mlr-inference.html#confidence-interval-for-beta_j-1",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Confidence interval for \\(\\beta_j\\)",
-    "text": "Confidence interval for \\(\\beta_j\\)\n\nThe \\(C%\\) confidence interval for \\(\\beta_j\\) \\[\\hat{\\beta}_j \\pm t^* SE(\\hat{\\beta}_j)\\] where \\(t^*\\) follows a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\nGenerically, we are \\(C%\\) confident that the interval LB to UB contains the population coefficient of \\(x_j\\).\nIn context, we are \\(C%\\) confident that for every one unit increase in \\(x_j\\), we expect \\(y\\) to change by LB to UB units, holding all else constant."
+    "text": "Confidence interval for \\(\\beta_j\\)\n\nThe \\(C\\%\\) confidence interval for \\(\\beta_j\\) \\[\\hat{\\beta}_j \\pm t^* SE(\\hat{\\beta}_j)\\] where \\(t^*\\) follows a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\nGenerically: We are \\(C\\%\\) confident that the interval LB to UB contains the population coefficient of \\(x_j\\).\nIn context: We are \\(C\\%\\) confident that for every one unit increase in \\(x_j\\), we expect \\(y\\) to change by LB to UB units, holding all else constant."
   },
   {
     "objectID": "slides/15-mlr-inference.html#confidence-interval-for-beta_j-2",
@@ -3850,18 +3857,18 @@
     "text": "Residuals vs. predicted values\n\nggplot(data = rt_full_aug, aes(x = .fitted, y = .resid)) +\n  geom_point(alpha = 0.7) +\n  geom_hline(yintercept = 0, color = \"red\", linetype = \"dashed\") +\n  labs(x = \"Predicted values\", y = \"Residuals\")"
   },
   {
-    "objectID": "slides/15-mlr-inference.html#linearity-residuals-vs.-each-predictor",
-    "href": "slides/15-mlr-inference.html#linearity-residuals-vs.-each-predictor",
+    "objectID": "slides/15-mlr-inference.html#residuals-vs.-each-predictor",
+    "href": "slides/15-mlr-inference.html#residuals-vs.-each-predictor",
     "title": "MLR: Inference, conditions, and transformations",
-    "section": "Linearity: Residuals vs. each predictor",
-    "text": "Linearity: Residuals vs. each predictor"
+    "section": "Residuals vs. each predictor",
+    "text": "Residuals vs. each predictor"
   },
   {
     "objectID": "slides/15-mlr-inference.html#checking-linearity-1",
     "href": "slides/15-mlr-inference.html#checking-linearity-1",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Checking linearity",
-    "text": "Checking linearity\n\nThe plots of residuals vs. hightemp and avgtemp appear to have a parabolic pattern.\nThe linearity condition is not satisfied given these plots."
+    "text": "Checking linearity\n\nThe plot of the residuals vs. predicted values looked OK\nThe plots of residuals vs. hightemp and avgtemp appear to have a parabolic pattern.\nThe linearity condition does not appear to be satisfied given these plots.\n\n\n\nGiven this conclusion, what might be a next step in the analysis?"
   },
   {
     "objectID": "slides/15-mlr-inference.html#checking-constant-variance",
@@ -3875,14 +3882,14 @@
     "href": "slides/15-mlr-inference.html#checking-constant-variance-1",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Checking constant variance",
-    "text": "Checking constant variance\n\nThe vertical spread of the residuals is not constant across the plot.\nThe constant variance condition is not satisfied."
+    "text": "Checking constant variance\n\nThe vertical spread of the residuals is not constant across the plot.\nThe constant variance condition is not satisfied.\n\n\n\nWe will talk about to address this later in the notes."
   },
   {
     "objectID": "slides/15-mlr-inference.html#checking-normality",
     "href": "slides/15-mlr-inference.html#checking-normality",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Checking normality",
-    "text": "Checking normality\nThe distribution of the residuals is approximately unimodal and symmetric, so the normality condition is satisfied. The sample size 90 is sufficiently large to relax this condition if it was not satisfied."
+    "text": "Checking normality\n\nThe distribution of the residuals is approximately unimodal and symmetric, so the normality condition is satisfied. The sample size 90 is sufficiently large to relax this condition if it was not satisfied."
   },
   {
     "objectID": "slides/15-mlr-inference.html#checking-independence",
@@ -3917,7 +3924,7 @@
     "href": "slides/15-mlr-inference.html#example",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Example",
-    "text": "Example\nSuppose the true population regression equation is \\(y = 3 + 4x\\)\n\nSuppose we try estimating that equation using a model with variables \\(x\\) and \\(z = x/10\\)\n\n\\[\n\\begin{aligned}\\hat{y}&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2z\\\\\n&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2\\frac{x}{10}\\\\\n&= \\hat{\\beta}_0 + \\bigg(\\hat{\\beta}_1 + \\frac{\\hat{\\beta}_2}{10}\\bigg)x\n\\end{aligned}\n\\]"
+    "text": "Example\nLet’s assume the true population regression equation is \\(y = 3 + 4x\\)\n\nSuppose we try estimating that equation using a model with variables \\(x\\) and \\(z = x/10\\)\n\\[\n\\begin{aligned}\\hat{y}&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2z\\\\\n&= \\hat{\\beta}_0 + \\hat{\\beta}_1x  + \\hat{\\beta}_2\\frac{x}{10}\\\\\n&= \\hat{\\beta}_0 + \\bigg(\\hat{\\beta}_1 + \\frac{\\hat{\\beta}_2}{10}\\bigg)x\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/15-mlr-inference.html#example-1",
@@ -3931,21 +3938,21 @@
     "href": "slides/15-mlr-inference.html#why-multicollinearity-is-a-problem",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Why multicollinearity is a problem",
-    "text": "Why multicollinearity is a problem\n\nWhen we have almost perfect collinearities (i.e. highly correlated predictor variables), the standard errors for our regression coefficients inflate\nIn other words, we lose precision in our estimates of the regression coefficients\nThis impedes our ability to use the model for inference\nIt is also difficult to interpret the model coefficients"
+    "text": "Why multicollinearity is a problem\n\nWhen we have perfect collinearities, we are unable to get estimates for the coefficients\n\nWhen we have almost perfect collinearities (i.e. highly correlated predictor variables), the standard errors for our regression coefficients inflate\nIn other words, we lose precision in our estimates of the regression coefficients\nThis impedes our ability to use the model for inference\nIt is also difficult to interpret the model coefficients"
   },
   {
     "objectID": "slides/15-mlr-inference.html#detecting-multicollinearity",
     "href": "slides/15-mlr-inference.html#detecting-multicollinearity",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Detecting Multicollinearity",
-    "text": "Detecting Multicollinearity\nMulticollinearity may occur when…\n\nThere are very high correlations \\((r &gt; 0.9)\\) among two or more predictor variables, especially when the sample size is small\n\n\n\nOne (or more) predictor variables is an almost perfect linear combination of the others\nInclude a quadratic term in the model mean-centering the variable first\nIncluding interactions between two or more continuous variables\n\nCan reduce this by mean-centering the variables first"
+    "text": "Detecting Multicollinearity\nMulticollinearity may occur when…\n\nThere are very high correlations \\((r &gt; 0.9)\\) among two or more predictor variables, especially when the sample size is small\n\n\n\nOne (or more) predictor variables is an almost perfect linear combination of the others\nThere is a quadratic term in the model without mean-centering the variable first\nThere are interactions between two or more continuous variables\n\nCan reduce this by mean-centering the variables first\n\nThere is a categorical predictor with very few observations in the baseline level"
   },
   {
     "objectID": "slides/15-mlr-inference.html#detecting-multicollinearity-in-the-eda",
     "href": "slides/15-mlr-inference.html#detecting-multicollinearity-in-the-eda",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Detecting multicollinearity in the EDA",
-    "text": "Detecting multicollinearity in the EDA\n\nLook at a correlation matrix of the predictor variables, including all indicator variables\n\nLook out for values close to 1 or -1\n\nLook at a scatterplot matrix of the predictor variables\n\nLook out for plots that show a relatively linear relationship"
+    "text": "Detecting multicollinearity in the EDA\n\nLook at a correlation matrix of the predictor variables, including all indicator variables\n\nLook out for values close to 1 or -1\n\nLook at a scatterplot matrix of the predictor variables\n\nLook out for plots that show a relatively linear relationship\n\nLook at the distribution of categorical predictors and avoid setting the baseline to a category with very few observations"
   },
   {
     "objectID": "slides/15-mlr-inference.html#detecting-multicollinearity-vif",
@@ -3959,7 +3966,7 @@
     "href": "slides/15-mlr-inference.html#detecting-multicollinearity-vif-1",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Detecting Multicollinearity (VIF)",
-    "text": "Detecting Multicollinearity (VIF)\nTypically \\(VIF &gt; 10\\) indicates concerning multicollinearity - Variables with similar values of VIF are typically the ones correlated with each other\n\nUse the vif() function in the rms R package to calculate VIF"
+    "text": "Detecting Multicollinearity (VIF)\n\nTypically \\(VIF &gt; 10\\) indicates concerning multicollinearity\nVariables with similar values of VIF are typically the ones correlated with each other\nUse the vif() function in the rms R package to calculate VIF"
   },
   {
     "objectID": "slides/15-mlr-inference.html#vif-for-rail-trail-model",
@@ -3987,7 +3994,7 @@
     "href": "slides/15-mlr-inference.html#choosing-a-model",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Choosing a model",
-    "text": "Choosing a model\nModel without hightemp:\n\n\n\n\n\nadj.r.squared\nAIC\nBIC\n\n\n\n\n0.42\n1087.5\n1107.5\n\n\n\n\n\n\n\nModel without avgtemp:\n\n\n\n\n\nadj.r.squared\nAIC\nBIC\n\n\n\n\n0.47\n1079.05\n1099.05\n\n\n\n\n\n\n\nBased on Adjusted \\(R^2\\), AIC, and BIC, the model without avgtemp is a better fit. Therefore, we choose to remove avgtemp from the model and leave hightemp in the model to deal with the multicollinearity."
+    "text": "Choosing a model\nModel without hightemp:\n\n\n\n\n\nadj.r.squared\nAIC\nBIC\n\n\n\n\n0.42\n1087.5\n1107.5\n\n\n\n\n\n\n\nModel without avgtemp:\n\n\n\n\n\nadj.r.squared\nAIC\nBIC\n\n\n\n\n0.47\n1079.05\n1099.05\n\n\n\n\n\n\n\n\nBased on Adjusted \\(R^2\\), AIC, and BIC, the model without avgtemp is a better fit. Therefore, we choose to remove avgtemp from the model and leave hightemp in the model to deal with the multicollinearity."
   },
   {
     "objectID": "slides/15-mlr-inference.html#selected-model-for-now",
@@ -4008,14 +4015,14 @@
     "href": "slides/15-mlr-inference.html#residuals-vs.-fitted-for-the-selected-model",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Residuals vs. fitted for the selected model",
-    "text": "Residuals vs. fitted for the selected model\n\nAs before, the constant variance condition is not satisfied. We can transform the response variable to address the violation in this condition."
+    "text": "Residuals vs. fitted for the selected model\n\nThe constant variance condition is not satisfied. We can transform the response variable to address the violation in this condition."
   },
   {
     "objectID": "slides/15-mlr-inference.html#identifying-a-need-to-transform-y",
     "href": "slides/15-mlr-inference.html#identifying-a-need-to-transform-y",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Identifying a need to transform \\(Y\\)",
-    "text": "Identifying a need to transform \\(Y\\)\n\nTypically, a “fan-shaped” residual plot indicates the need for a transformation of the response variable \\(Y\\)\n\nThere are multiple ways to transform a variable, e.g., \\(\\sqrt{Y}\\), \\(1/Y\\), \\(\\log(Y)\\).\n\\(\\log(Y)\\) the most straightforward to interpret, so we use that transformation when possible\n\n\n\n\nWhen building a model:\n\nChoose a transformation and build the model on the transformed data\nReassess the residual plots\nIf the residuals plots did not sufficiently improve, try a new transformation!"
+    "text": "Identifying a need to transform \\(Y\\)\n\nTypically, a “fan-shaped” residual plot indicates the need for a transformation of the response variable \\(Y\\)\n\nThere are multiple ways to transform a variable, e.g., \\(\\sqrt{Y}\\), \\(1/Y\\), \\(\\log(Y)\\)\n\\(\\log(Y)\\) the most straightforward to interpret, so we use that transformation when possible\n\n\n\n\nWhen building a model:\n\nChoose a transformation and build the model on the transformed data\nReassess the residual plots\nIf the residuals plots did not sufficiently improve, try a new transformation!"
   },
   {
     "objectID": "slides/15-mlr-inference.html#log-transformation-on-y",
@@ -4029,7 +4036,7 @@
     "href": "slides/15-mlr-inference.html#log-transformation-on-y-1",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Log transformation on \\(Y\\)",
-    "text": "Log transformation on \\(Y\\)\nWe want to interpret the model in terms of the original variable \\(Y\\), not \\(\\log(Y)\\), so we need to write the model in terms of \\(Y\\)\n\\[\\begin{align}\\hat{Y} &= \\exp\\{\\hat{\\beta}_0 + \\hat{\\beta}_1 X + \\dots + \\hat{\\beta}_PX_P\\}\\\\ &= \\exp\\{\\hat{\\beta}_0\\}\\exp\\{\\hat{\\beta}_1X\\}\\dots\\exp\\{\\hat{\\beta}_pX_p\\}\\end{align}\\]\n\\[\\widehat{\\text{Median}({Y|X_1,\\ldots,X_p})} = \\exp\\{\\hat{\\beta}_0\\}\\exp\\{\\hat{\\beta}_1X\\}\\dots\\exp\\{\\hat{\\beta}_pX_p\\}\\]\n\n\n\n\n\n\nNote\n\n\nIf the distribution of \\(Y|X_1, \\ldots, X_p\\) is symmetric, then the median equals the mean."
+    "text": "Log transformation on \\(Y\\)\nWe want to interpret the model in terms of the original variable \\(Y\\), not \\(\\log(Y)\\), so we need to write the regression equation in terms of \\(Y\\)\n\\[\\begin{align}\\hat{Y} &= \\exp\\{\\hat{\\beta}_0 + \\hat{\\beta}_1 X + \\dots + \\hat{\\beta}_PX_P\\}\\\\ &= \\exp\\{\\hat{\\beta}_0\\}\\exp\\{\\hat{\\beta}_1X\\}\\dots\\exp\\{\\hat{\\beta}_pX_p\\}\\end{align}\\]\n\n\n\n\n\n\nNote\n\n\nThe predicted value \\(\\hat{Y}\\) is the predicted median of \\(Y\\). Note, when the distribution of \\(Y|X_1, \\ldots, X_p\\) is symmetric, then the median equals the mean. See the slides in the appendix for more detail."
   },
   {
     "objectID": "slides/15-mlr-inference.html#model-interpretation",
@@ -4042,22 +4049,22 @@
     "objectID": "slides/15-mlr-inference.html#model-for-logvolume",
     "href": "slides/15-mlr-inference.html#model-for-logvolume",
     "title": "MLR: Inference, conditions, and transformations",
-    "section": "Model for log(volume)",
-    "text": "Model for log(volume)\n\n#fit model\nlog_rt_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(log(volume) ~ hightemp + season + cloudcover + precip + day_type, data = rail_trail)\n\ntidy(log_rt_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n4.738\n0.219\n21.667\n0.000\n\n\nhightemp\n0.018\n0.003\n5.452\n0.000\n\n\nseasonSpring\n0.026\n0.094\n0.283\n0.778\n\n\nseasonSummer\n-0.047\n0.139\n-0.338\n0.736\n\n\ncloudcover\n-0.025\n0.010\n-2.452\n0.016\n\n\nprecip\n-0.294\n0.123\n-2.397\n0.019\n\n\nday_typeWeekend\n0.064\n0.065\n0.987\n0.327"
+    "section": "Model for \\(log(volume)\\)",
+    "text": "Model for \\(log(volume)\\)\n\n#fit model\nlog_rt_fit &lt;- linear_reg() |&gt;\n  set_engine(\"lm\") |&gt;\n  fit(log(volume) ~ hightemp + season + cloudcover + precip + day_type, data = rail_trail)\n\ntidy(log_rt_fit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n4.738\n0.219\n21.667\n0.000\n\n\nhightemp\n0.018\n0.003\n5.452\n0.000\n\n\nseasonSpring\n0.026\n0.094\n0.283\n0.778\n\n\nseasonSummer\n-0.047\n0.139\n-0.338\n0.736\n\n\ncloudcover\n-0.025\n0.010\n-2.452\n0.016\n\n\nprecip\n-0.294\n0.123\n-2.397\n0.019\n\n\nday_typeWeekend\n0.064\n0.065\n0.987\n0.327"
   },
   {
-    "objectID": "slides/15-mlr-inference.html#interpretation",
-    "href": "slides/15-mlr-inference.html#interpretation",
+    "objectID": "slides/15-mlr-inference.html#interpretation-of-model-for-logvolume",
+    "href": "slides/15-mlr-inference.html#interpretation-of-model-for-logvolume",
     "title": "MLR: Inference, conditions, and transformations",
-    "section": "Interpretation",
-    "text": "Interpretation\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n4.738\n0.219\n21.667\n0.000\n\n\nhightemp\n0.018\n0.003\n5.452\n0.000\n\n\nseasonSpring\n0.026\n0.094\n0.283\n0.778\n\n\nseasonSummer\n-0.047\n0.139\n-0.338\n0.736\n\n\ncloudcover\n-0.025\n0.010\n-2.452\n0.016\n\n\nprecip\n-0.294\n0.123\n-2.397\n0.019\n\n\nday_typeWeekend\n0.064\n0.065\n0.987\n0.327\n\n\n\n\n\n\n\n\n\nInterpret the intercept in terms of (1) log(volume) and (2) volume.\nInterpret the coefficient of hightemp in terms of (1) log(volume) and (2) volume."
+    "section": "Interpretation of model for \\(\\log(volume)\\)",
+    "text": "Interpretation of model for \\(\\log(volume)\\)\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n4.738\n0.219\n21.667\n0.000\n\n\nhightemp\n0.018\n0.003\n5.452\n0.000\n\n\nseasonSpring\n0.026\n0.094\n0.283\n0.778\n\n\nseasonSummer\n-0.047\n0.139\n-0.338\n0.736\n\n\ncloudcover\n-0.025\n0.010\n-2.452\n0.016\n\n\nprecip\n-0.294\n0.123\n-2.397\n0.019\n\n\nday_typeWeekend\n0.064\n0.065\n0.987\n0.327\n\n\n\n\n\n\n\n\n\nInterpret the intercept in terms of (1) log(volume) and (2) volume.\nInterpret the coefficient of hightemp in terms of (1) log(volume) and (2) volume."
   },
   {
     "objectID": "slides/15-mlr-inference.html#residuals-for-model-with-logvolume",
     "href": "slides/15-mlr-inference.html#residuals-for-model-with-logvolume",
     "title": "MLR: Inference, conditions, and transformations",
-    "section": "Residuals for model with log(volume)",
-    "text": "Residuals for model with log(volume)"
+    "section": "Residuals for model with \\(\\log(volume)\\)",
+    "text": "Residuals for model with \\(\\log(volume)\\)"
   },
   {
     "objectID": "slides/15-mlr-inference.html#compare-residual-plots",
@@ -4099,7 +4106,7 @@
     "href": "slides/15-mlr-inference.html#model-interpretation-1",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Model interpretation",
-    "text": "Model interpretation\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n50.135\n0.632\n79.330\n0\n\n\nlog(Age)\n-5.982\n0.263\n-22.781\n0\n\n\n\n\n\n\n\n\\[\\hat{\\text{Rate}} = 50.135 - 5.982 \\times \\log\\text{(Age)}\\]\n\nInterpret the slope and intercept in the context of the data."
+    "text": "Model interpretation\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n50.135\n0.632\n79.330\n0\n\n\nlog(Age)\n-5.982\n0.263\n-22.781\n0\n\n\n\n\n\n\n\n\\[\\hat{\\text{Rate}} = 50.135 - 5.982 \\times \\log\\text{(Age)}\\]\n\n\nInterpret the intercept in the context of the data.\nInterpret the slope in terms of age multiplying by 2 in the context of the data."
   },
   {
     "objectID": "slides/15-mlr-inference.html#learn-more",

@@ -666,10 +666,13 @@ Prof.&nbsp;Maria Tackett
 
 </div>
 </div>
+</section>
+<section id="multiple-linear-regression-1" class="slide level2">
+<h2>Multiple linear regression</h2>
 <p>The multiple linear regression model assumes <span class="math display">\[Y|X_1, X_2,  \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p, \sigma_\epsilon^2)\]</span></p>
 <div class="fragment">
 <p>For a given observation <span class="math inline">\((x_{i1}, x_{i2}, \ldots, x_{ip}, y_i)\)</span>, we can rewrite the previous statement as</p>
-<p><span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \epsilon_{i} \hspace{10mm} \epsilon_i \sim N(0,\sigma^2)\]</span></p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \epsilon_{i} \hspace{10mm} \epsilon_i \sim N(0,\sigma_{\epsilon}^2)\]</span></p>
 </div>
 </section>
 <section id="estimating-sigma_epsilon" class="slide level2">
@@ -680,7 +683,7 @@ Prof.&nbsp;Maria Tackett
 <p><span class="math display">\[\hat{\sigma}_\epsilon  = \sqrt{\frac{\sum_{i=1}^ne_i^2}{n-p-1}}\]</span></p>
 </div>
 <div class="fragment">
-<p>As with SLR, we use <span class="math inline">\(\hat{\sigma}_{\epsilon}\)</span> to calculate <span class="math inline">\(SE_{\hat{\beta}_j}\)</span>, the standard error of each coefficient.</p>
+<p>As with SLR, we use <span class="math inline">\(\hat{\sigma}_{\epsilon}\)</span> to calculate <span class="math inline">\(SE_{\hat{\beta}_j}\)</span>, the standard error of each coefficient. See <a href="https://github.com/STA210-Sp19/supplemental-notes/blob/master/regression-basics-matrix.pdf">Matrix Form of Linear Regression</a> for more detail.</p>
 </div>
 </section>
 <section id="mlr-hypothesis-test-hightemp" class="slide level2 midi">
@@ -963,9 +966,9 @@ Prof.&nbsp;Maria Tackett
 <section id="confidence-interval-for-beta_j-1" class="slide level2 midi">
 <h2>Confidence interval for <span class="math inline">\(\beta_j\)</span></h2>
 <ul>
-<li><p>The <span class="math inline">\(C%\)</span> confidence interval for <span class="math inline">\(\beta_j\)</span> <span class="math display">\[\hat{\beta}_j \pm t^* SE(\hat{\beta}_j)\]</span> where <span class="math inline">\(t^*\)</span> follows a <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n - p - 1\)</span> degrees of freedom.</p></li>
-<li><p>Generically, we are <span class="math inline">\(C%\)</span> confident that the interval LB to UB contains the population coefficient of <span class="math inline">\(x_j\)</span>.</p></li>
-<li><p>In context, we are <span class="math inline">\(C%\)</span> confident that for every one unit increase in <span class="math inline">\(x_j\)</span>, we expect <span class="math inline">\(y\)</span> to change by LB to UB units, holding all else constant.</p></li>
+<li><p>The <span class="math inline">\(C\%\)</span> confidence interval for <span class="math inline">\(\beta_j\)</span> <span class="math display">\[\hat{\beta}_j \pm t^* SE(\hat{\beta}_j)\]</span> where <span class="math inline">\(t^*\)</span> follows a <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n - p - 1\)</span> degrees of freedom.</p></li>
+<li><p><strong>Generically</strong>: We are <span class="math inline">\(C\%\)</span> confident that the interval LB to UB contains the population coefficient of <span class="math inline">\(x_j\)</span>.</p></li>
+<li><p><strong>In context:</strong> We are <span class="math inline">\(C\%\)</span> confident that for every one unit increase in <span class="math inline">\(x_j\)</span>, we expect <span class="math inline">\(y\)</span> to change by LB to UB units, holding all else constant.</p></li>
 </ul>
 </section>
 <section id="confidence-interval-for-beta_j-2" class="slide level2">
@@ -1275,16 +1278,22 @@ Prof.&nbsp;Maria Tackett
 
 </div>
 <img data-src="15-mlr-inference_files/figure-revealjs/main_res_pred-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
-<section id="linearity-residuals-vs.-each-predictor" class="slide level2">
-<h2>Linearity: Residuals vs.&nbsp;each predictor</h2>
+<section id="residuals-vs.-each-predictor" class="slide level2">
+<h2>Residuals vs.&nbsp;each predictor</h2>
 
 <img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-19-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-linearity-1" class="slide level2">
 <h2>Checking linearity</h2>
 <ul>
+<li><p>The plot of the residuals vs.&nbsp;predicted values looked OK</p></li>
 <li><p>The plots of residuals vs.&nbsp;<code>hightemp</code> and <code>avgtemp</code> appear to have a parabolic pattern.</p></li>
-<li><p>The linearity condition is not satisfied given these plots.</p></li>
+<li><p>The linearity condition does not appear to be satisfied given these plots.</p></li>
 </ul>
+<div class="fragment">
+<div class="question">
+<p>Given this conclusion, what might be a next step in the analysis?</p>
+</div>
+</div>
 </section>
 <section id="checking-constant-variance" class="slide level2">
 <h2>Checking constant variance</h2>
@@ -1299,10 +1308,16 @@ Prof.&nbsp;Maria Tackett
 <li><p>The vertical spread of the residuals is not constant across the plot.</p></li>
 <li><p>The constant variance condition is not satisfied.</p></li>
 </ul>
+<div class="fragment">
+<div class="question">
+<p>We will talk about to address this later in the notes.</p>
+</div>
+</div>
 </section>
 <section id="checking-normality" class="slide level2">
 <h2>Checking normality</h2>
-<p>The distribution of the residuals is approximately unimodal and symmetric, so the normality condition is satisfied. The sample size 90 is sufficiently large to relax this condition if it was not satisfied.</p>
+
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-21-1.png" width="3000" class="r-stretch quarto-figure-center"><p>The distribution of the residuals is approximately unimodal and symmetric, so the normality condition is satisfied. The sample size 90 is sufficiently large to relax this condition if it was not satisfied.</p>
 </section>
 <section id="checking-independence" class="slide level2">
 <h2>Checking independence</h2>
@@ -1342,16 +1357,16 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
-<p>Suppose the true population regression equation is <span class="math inline">\(y = 3 + 4x\)</span></p>
-<ul>
-<li>Suppose we try estimating that equation using a model with variables <span class="math inline">\(x\)</span> and <span class="math inline">\(z = x/10\)</span></li>
-</ul>
+<p>Let’s assume the true population regression equation is <span class="math inline">\(y = 3 + 4x\)</span></p>
+<div class="fragment">
+<p>Suppose we try estimating that equation using a model with variables <span class="math inline">\(x\)</span> and <span class="math inline">\(z = x/10\)</span></p>
 <p><span class="math display">\[
 \begin{aligned}\hat{y}&amp;= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2z\\
 &amp;= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2\frac{x}{10}\\
 &amp;= \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)x
 \end{aligned}
 \]</span></p>
+</div>
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
@@ -1364,10 +1379,13 @@ Prof.&nbsp;Maria Tackett
 <section id="why-multicollinearity-is-a-problem" class="slide level2">
 <h2>Why multicollinearity is a problem</h2>
 <ul>
+<li><p>When we have perfect collinearities, we are unable to get estimates for the coefficients</p>
+<ul>
 <li><p>When we have almost perfect collinearities (i.e.&nbsp;highly correlated predictor variables), the standard errors for our regression coefficients inflate</p></li>
 <li><p>In other words, we lose precision in our estimates of the regression coefficients</p></li>
 <li><p>This impedes our ability to use the model for inference</p></li>
 <li><p>It is also difficult to interpret the model coefficients</p></li>
+</ul></li>
 </ul>
 </section>
 <section id="detecting-multicollinearity" class="slide level2 midi">
@@ -1379,11 +1397,12 @@ Prof.&nbsp;Maria Tackett
 <!-- -->
 <ul>
 <li><p>One (or more) predictor variables is an almost perfect linear combination of the others</p></li>
-<li><p>Include a quadratic term in the model mean-centering the variable first</p></li>
-<li><p>Including interactions between two or more continuous variables</p>
+<li><p>There is a quadratic term in the model without mean-centering the variable first</p></li>
+<li><p>There are interactions between two or more continuous variables</p>
 <ul>
 <li>Can reduce this by mean-centering the variables first</li>
 </ul></li>
+<li><p>There is a categorical predictor with very few observations in the baseline level</p></li>
 </ul>
 </section>
 <section id="detecting-multicollinearity-in-the-eda" class="slide level2">
@@ -1397,6 +1416,7 @@ Prof.&nbsp;Maria Tackett
 <ul>
 <li>Look out for plots that show a relatively linear relationship</li>
 </ul></li>
+<li>Look at the distribution of categorical predictors and avoid setting the baseline to a category with very few observations</li>
 </ul>
 </section>
 <section id="detecting-multicollinearity-vif" class="slide level2">
@@ -1407,9 +1427,11 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="detecting-multicollinearity-vif-1" class="slide level2">
 <h2>Detecting Multicollinearity (VIF)</h2>
-<p>Typically <span class="math inline">\(VIF &gt; 10\)</span> indicates concerning multicollinearity - Variables with similar values of VIF are typically the ones correlated with each other</p>
-<p><br></p>
-<p>Use the <code>vif()</code> function in the <strong>rms</strong> R package to calculate VIF</p>
+<ul>
+<li><p>Typically <span class="math inline">\(VIF &gt; 10\)</span> indicates concerning multicollinearity</p></li>
+<li><p>Variables with similar values of VIF are typically the ones correlated with each other</p></li>
+<li><p>Use the <code>vif()</code> function in the <strong>rms</strong> R package to calculate VIF</p></li>
+</ul>
 </section>
 <section id="vif-for-rail-trail-model" class="slide level2">
 <h2>VIF for rail trail model</h2>
@@ -1631,7 +1653,9 @@ Prof.&nbsp;Maria Tackett
 
 </div>
 </div>
+<div class="fragment">
 <p>Based on Adjusted <span class="math inline">\(R^2\)</span>, AIC, and BIC, the model without <strong>avgtemp</strong> is a better fit. Therefore, we choose to remove <strong>avgtemp</strong> from the model and leave <strong>hightemp</strong> in the model to deal with the multicollinearity.</p>
+</div>
 </section>
 <section id="selected-model-for-now" class="slide level2">
 <h2>Selected model (for now)</h2>
@@ -1719,7 +1743,7 @@ Prof.&nbsp;Maria Tackett
 <section id="residuals-vs.-fitted-for-the-selected-model" class="slide level2 midi">
 <h2>Residuals vs.&nbsp;fitted for the selected model</h2>
 
-<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-29-1.png" width="3000" class="r-stretch quarto-figure-center"><p>As before, the constant variance condition is not satisfied. We can transform the response variable to address the violation in this condition.</p>
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-29-1.png" width="3000" class="r-stretch quarto-figure-center"><p>The constant variance condition is not satisfied. We can transform the response variable to address the violation in this condition.</p>
 </section></section>
 <section>
 <section id="log-transformation-on-the-response-variable" class="title-slide slide level1 center">
@@ -1731,7 +1755,7 @@ Prof.&nbsp;Maria Tackett
 <ul>
 <li>Typically, a “fan-shaped” residual plot indicates the need for a transformation of the response variable <span class="math inline">\(Y\)</span>
 <ul>
-<li>There are multiple ways to transform a variable, e.g., <span class="math inline">\(\sqrt{Y}\)</span>, <span class="math inline">\(1/Y\)</span>, <span class="math inline">\(\log(Y)\)</span>.</li>
+<li>There are multiple ways to transform a variable, e.g., <span class="math inline">\(\sqrt{Y}\)</span>, <span class="math inline">\(1/Y\)</span>, <span class="math inline">\(\log(Y)\)</span></li>
 <li><span class="math inline">\(\log(Y)\)</span> the most straightforward to interpret, so we use that transformation when possible</li>
 </ul></li>
 </ul>
@@ -1761,9 +1785,8 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="log-transformation-on-y-1" class="slide level2">
 <h2>Log transformation on <span class="math inline">\(Y\)</span></h2>
-<p>We want to interpret the model in terms of the original variable <span class="math inline">\(Y\)</span>, not <span class="math inline">\(\log(Y)\)</span>, so we need to write the model in terms of <span class="math inline">\(Y\)</span></p>
-<p><span class="math display">\[\begin{align}\hat{Y} &amp;= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\beta}_PX_P\}\\ &amp;= \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\end{align}\]</span><br>
-<span class="math display">\[\widehat{\text{Median}({Y|X_1,\ldots,X_p})} = \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\]</span></p>
+<p>We want to interpret the model in terms of the original variable <span class="math inline">\(Y\)</span>, not <span class="math inline">\(\log(Y)\)</span>, so we need to write the regression equation in terms of <span class="math inline">\(Y\)</span></p>
+<p><span class="math display">\[\begin{align}\hat{Y} &amp;= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\beta}_PX_P\}\\ &amp;= \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\end{align}\]</span></p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1773,7 +1796,7 @@ Prof.&nbsp;Maria Tackett
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>If the distribution of <span class="math inline">\(Y|X_1, \ldots, X_p\)</span> is symmetric, then the median equals the mean.</p>
+<p>The predicted value <span class="math inline">\(\hat{Y}\)</span> is the predicted <em>median</em> of <span class="math inline">\(Y\)</span>. Note, when the distribution of <span class="math inline">\(Y|X_1, \ldots, X_p\)</span> is symmetric, then the median equals the mean. See the slides in the <a href="#/appendix">appendix</a> for more detail.</p>
 </div>
 </div>
 </div>
@@ -1792,7 +1815,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 </section>
 <section id="model-for-logvolume" class="slide level2 midi">
-<h2>Model for log(volume)</h2>
+<h2>Model for <span class="math inline">\(log(volume)\)</span></h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#fit model</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>log_rt_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
@@ -1869,8 +1892,8 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 </section>
-<section id="interpretation" class="slide level2 midi">
-<h2>Interpretation</h2>
+<section id="interpretation-of-model-for-logvolume" class="slide level2 midi">
+<h2>Interpretation of model for <span class="math inline">\(\log(volume)\)</span></h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
@@ -1947,7 +1970,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 </section>
 <section id="residuals-for-model-with-logvolume" class="slide level2">
-<h2>Residuals for model with <code>log(volume)</code></h2>
+<h2>Residuals for model with <span class="math inline">\(\log(volume)\)</span></h2>
 
 <img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-32-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="compare-residual-plots" class="slide level2">
@@ -2031,7 +2054,10 @@ Prof.&nbsp;Maria Tackett
 </div>
 <p><span class="math display">\[\hat{\text{Rate}} = 50.135 - 5.982 \times \log\text{(Age)}\]</span></p>
 <div class="question">
-<p>Interpret the slope and intercept in the context of the data.</p>
+<ul>
+<li><p>Interpret the intercept in the context of the data.</p></li>
+<li><p>Interpret the slope in terms of age multiplying by 2 in the context of the data.</p></li>
+</ul>
 </div>
 </section>
 <section id="learn-more" class="slide level2">

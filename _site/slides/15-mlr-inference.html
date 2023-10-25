@@ -1801,13 +1801,13 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 </section>
-<section id="model-interpretation" class="slide level2">
+<section id="model-interpretation" class="slide level2 midi">
 <h2>Model interpretation</h2>
-<p><span class="math display">\[\hat{Y} = \exp\{\hat{\beta}_0 + \hat{\beta}_1 X\} = \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\]</span></p>
+<p><span class="math display">\[\begin{align}\hat{Y} &amp;= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\beta}_PX_P\}\\ &amp;= \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\end{align}\]</span></p>
 <div class="fragment">
 <ul>
-<li><p><strong>Intercept</strong>: When <span class="math inline">\(X=0\)</span>, <span class="math inline">\(Y\)</span> is expected to be <span class="math inline">\(\exp\{\hat{\beta}_0\}\)</span></p></li>
-<li><p><strong>Slope:</strong> For every one unit increase in <span class="math inline">\(X\)</span>, the <span class="math inline">\(Y\)</span> is expected to multiply by a factor of <span class="math inline">\(\exp\{\hat{\beta}_1\}\)</span></p></li>
+<li><p><strong>Intercept</strong>: When <span class="math inline">\(X_1 = \dots = X_p =0\)</span>, <span class="math inline">\(Y\)</span> is expected to be <span class="math inline">\(\exp\{\hat{\beta}_0\}\)</span></p></li>
+<li><p><strong>Slope:</strong> For every one unit increase in <span class="math inline">\(X_j\)</span>, the <span class="math inline">\(Y\)</span> is expected to multiply by a factor of <span class="math inline">\(\exp\{\hat{\beta}_j\}\)</span>, holding all else constant</p></li>
 </ul>
 <div class="question">
 <p>Why is the interpretation in terms of a multiplicative change?</p>

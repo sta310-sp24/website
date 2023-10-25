@@ -4043,7 +4043,7 @@
     "href": "slides/15-mlr-inference.html#model-interpretation",
     "title": "MLR: Inference, conditions, and transformations",
     "section": "Model interpretation",
-    "text": "Model interpretation\n\\[\\hat{Y} = \\exp\\{\\hat{\\beta}_0 + \\hat{\\beta}_1 X\\} = \\exp\\{\\hat{\\beta}_0\\}\\exp\\{\\hat{\\beta}_1X\\}\\]\n\n\nIntercept: When \\(X=0\\), \\(Y\\) is expected to be \\(\\exp\\{\\hat{\\beta}_0\\}\\)\nSlope: For every one unit increase in \\(X\\), the \\(Y\\) is expected to multiply by a factor of \\(\\exp\\{\\hat{\\beta}_1\\}\\)\n\n\nWhy is the interpretation in terms of a multiplicative change?"
+    "text": "Model interpretation\n\\[\\begin{align}\\hat{Y} &= \\exp\\{\\hat{\\beta}_0 + \\hat{\\beta}_1 X + \\dots + \\hat{\\beta}_PX_P\\}\\\\ &= \\exp\\{\\hat{\\beta}_0\\}\\exp\\{\\hat{\\beta}_1X\\}\\dots\\exp\\{\\hat{\\beta}_pX_p\\}\\end{align}\\]\n\n\nIntercept: When \\(X_1 = \\dots = X_p =0\\), \\(Y\\) is expected to be \\(\\exp\\{\\hat{\\beta}_0\\}\\)\nSlope: For every one unit increase in \\(X_j\\), the \\(Y\\) is expected to multiply by a factor of \\(\\exp\\{\\hat{\\beta}_j\\}\\), holding all else constant\n\n\nWhy is the interpretation in terms of a multiplicative change?"
   },
   {
     "objectID": "slides/15-mlr-inference.html#model-for-logvolume",

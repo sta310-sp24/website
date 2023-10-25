@@ -755,15 +755,15 @@ $$\begin{align}\hat{Y} &= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\
 The predicted value $\hat{Y}$ is the predicted *median* of $Y$. Note, when the distribution of $Y|X_1, \ldots, X_p$ is symmetric, then the median equals the mean. See the slides in the [appendix] for more detail.
 :::
 
-## Model interpretation
+## Model interpretation {.midi}
 
-$$\hat{Y} = \exp\{\hat{\beta}_0 + \hat{\beta}_1 X\} = \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}$$
+$$\begin{align}\hat{Y} &= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\beta}_PX_P\}\\ &= \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\end{align}$$
 
 . . .
 
--   **Intercept**: When $X=0$, $Y$ is expected to be $\exp\{\hat{\beta}_0\}$
+-   **Intercept**: When $X_1 = \dots = X_p =0$, $Y$ is expected to be $\exp\{\hat{\beta}_0\}$
 
--   **Slope:** For every one unit increase in $X$, the $Y$ is expected to multiply by a factor of $\exp\{\hat{\beta}_1\}$
+-   **Slope:** For every one unit increase in $X_j$, the $Y$ is expected to multiply by a factor of $\exp\{\hat{\beta}_j\}$, holding all else constant
 
 ::: question
 Why is the interpretation in terms of a multiplicative change?

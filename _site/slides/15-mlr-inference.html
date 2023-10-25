@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
-  <title>STA 210 - Fall 2023 - Inference for multiple linear regression</title>
+  <title>STA 210 - Fall 2023 - MLR: Inference, conditions, and transformations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Inference for multiple linear regression</h1>
+  <h1 class="title">MLR: Inference, conditions, and transformations</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -402,81 +402,29 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 
-  <p class="date">Oct 23, 2023</p>
+  <p class="date">Oct 25, 2023</p>
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>See Ed Discussion for upcoming events and internship opportunities</p></li>
-<li><p>Statistics Experience due Mon, Nov 20 at 11:59pm</p></li>
-<li><p>Prof.&nbsp;Tackett office hours Fridays 1:30 - 3:30pm for the rest of the semester</p></li>
-<li><p>Start the final project in lab this week - start thinking about the data your team wants to use</p></li>
-</ul>
-</section>
-<section id="mid-semester-survey" class="slide level2 small">
-<h2>Mid-semester survey</h2>
-<p><strong><em>Thank you to everyone who filled out the mid-semester survey!</em></strong></p>
-<p><strong>Aspect of class most helpful with learning</strong></p>
+<li><p>Project propsal due</p>
 <ul>
-<li>Application exercises</li>
-<li>Lectures</li>
-<li>Discussing content with others</li>
-</ul>
-<p><strong>Something to do in class to better help with learning</strong></p>
-<ul>
-<li>Zooming out more / reminder of the big picture</li>
-<li>Taking time to finish AEs (perhaps do some of this in lab)</li>
-<li>More conceptual questions on assignments, specifically HW</li>
-</ul>
-<p><strong>Things you do that are helpful with learning</strong></p>
-<ul>
-<li>Attend office hours!</li>
-<li>Review course materials</li>
-<li>Lots practice - review AEs, HW, labs</li>
-</ul>
-</section>
-<section id="mid-semester-survey-1" class="slide level2">
-<h2>Mid-semester survey</h2>
-<p><strong>Why we do in-class exams</strong></p>
-<ul>
-<li><p>Opportunity to demonstrate understanding of concepts and how they apply to application</p>
-<ul>
-<li>This is what will make you stand out as a statistician/ data scientist!</li>
+<li><p>Friday, October 27 (Tuesday labs)</p></li>
+<li><p>Sunday, October 29 (Thursday labs)</p></li>
 </ul></li>
-<li><p>In-class provides the most “level” playing field to demonstrate conceptual understanding, given all the online resources available now</p></li>
-<li><p>Lots of other opportunities to demonstrate application skills through labs, HW, final project, and take-home portion of exam</p></li>
+<li><p>HW 03 due Wednesday, November 1</p>
+<ul>
+<li>released after Section 002 lecture</li>
+</ul></li>
 </ul>
-</section>
-<section id="statistician-of-the-day-felicity-enders" class="slide level2 midi">
-<h2>Statistician of the day: Felicity Enders</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/statistician-of-the-day/enders.jpg" alt="Photo of Dr. Felicity Enders"></p>
-</figure>
-</div>
-</div><div class="column" style="width:60%;">
-<p><em>Dr.&nbsp;Felicity Enders received her PhD from Johns Hopkins Bloomberg School of Public Health. She is a Professor of Biostatistics at the Mayo Clinic. With close to 200 publications, she has worked closely with clinicians, with particular focus on women’s health and psychology. Across the medical spectrum, Dr.&nbsp;Enders has provided advanced statistical modeling collaboration in clinical trials.</em></p>
-<p><em>She is also passionate about biostatistics education and works to dissolve the hidden curriculum for research, particularly statistical knowledge needed for non-statisticians.</em></p>
-</div>
-</div>
-<p>Source: <a href="https://hardin47.github.io/CURV/scholars/enders.html">hardin47.github.io/CURV/scholars/enders</a></p>
-</section>
-<section id="felicity-enders" class="slide level2 midi">
-<h2>Felicity Enders</h2>
-<p>Dr.&nbsp;Enders was a statistician on an interdisciplinary research team that used logistic regression to identify demographic, clinical, and laboratory variables associated with the presence (or absence) of advanced fibrosis with the aim to create a scoring system that could be used by clinicians.</p>
-<p><em>“Data from each of the <strong>4 countries were randomly separated into 2/3 and 1/3 of patients for model building and model validation, respectively</strong>. Hence, data on 480 patients were used to build a model, whereas data on 253 patients were used to validate the model.”</em></p>
-<p><em>“…cross-validation was used with 20 subgroups, so that at most 5% of the data under consideration was excluded at any one time. <strong>By employing cross-validation, the possibility of an unusually positive or negative validation subset could be assessed.</strong>”</em></p>
-<p>Angulo, Paul, et al.&nbsp;“<a href="https://aasldpubs.onlinelibrary.wiley.com/doi/10.1002/hep.21496">The NAFLD fibrosis score: a noninvasive system that identifies liver fibrosis in patients with NAFLD</a>.” <em>Hepatology</em> 45.4 (2007): 846-854.</p>
 </section>
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
 <div>
 <ul>
-<li>Cross validation application exercise</li>
 <li>Inference for multiple linear regression</li>
 <li>Checking model conditions</li>
+<li>Variable transformations</li>
 </ul>
 </div>
 </section>
@@ -484,144 +432,18 @@ Prof.&nbsp;Maria Tackett
 <h2>Computational setup</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.3     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.3     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.1.1 ──
-✔ broom        1.0.5     ✔ rsample      1.2.0
-✔ dials        1.2.0     ✔ tune         1.1.2
-✔ infer        1.0.5     ✔ workflows    1.1.3
-✔ modeldata    1.2.0     ✔ workflowsets 1.0.1
-✔ parsnip      1.1.1     ✔ yardstick    1.2.0
-✔ recipes      1.0.8     
-── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
-✖ scales::discard() masks purrr::discard()
-✖ dplyr::filter()   masks stats::filter()
-✖ recipes::fixed()  masks stringr::fixed()
-✖ dplyr::lag()      masks stats::lag()
-✖ yardstick::spec() masks readr::spec()
-✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'kableExtra'
-
-The following object is masked from 'package:dplyr':
-
-    group_rows</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(countdown)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(rms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: Hmisc
-
-Attaching package: 'Hmisc'
-
-The following object is masked from 'package:parsnip':
-
-    translate
-
-The following objects are masked from 'package:dplyr':
-
-    src, summarize
-
-The following objects are masked from 'package:base':
-
-    format.pval, units</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(countdown)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(rms)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
-
-</section>
-<section id="data-restaurant-tips" class="slide level2">
-<h2>Data: Restaurant tips</h2>
-<p>Which variables help us predict the amount customers tip at a restaurant?</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 169 × 5
-     Tip Party Meal   Age    Alcohol
-   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  
- 1  2.99     1 Dinner Yadult No     
- 2  2        1 Dinner Yadult No     
- 3  5        1 Dinner SenCit No     
- 4  4        3 Dinner Middle No     
- 5 10.3      2 Dinner SenCit No     
- 6  4.85     2 Dinner Middle No     
- 7  5        4 Dinner Yadult No     
- 8  4        3 Dinner Middle No     
- 9  5        2 Dinner Middle No     
-10  1.58     1 Dinner SenCit No     
-# ℹ 159 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="variables" class="slide level2">
-<h2>Variables</h2>
-<p><strong>Predictors</strong>:</p>
-<div>
-<ul>
-<li><code>Party</code>: Number of people in the party</li>
-<li><code>Meal</code>: Time of day (Lunch, Dinner, Late Night)</li>
-<li><code>Age</code>: Age category of person paying the bill (Yadult, Middle, SenCit)</li>
-<li><code>Alcohol</code>: Whether the party ordered alcohol with the meal (Yes, No)</li>
-</ul>
-</div>
-<p><strong>Outcome</strong>: <code>Tip</code>: Amount of tip</p>
-</section>
-<section id="outcome-tip" class="slide level2">
-<h2>Outcome: <code>Tip</code></h2>
-
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-5-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
-<section id="predictors" class="slide level2">
-<h2>Predictors</h2>
-
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-6-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
-<section id="outcome-vs.-predictors" class="slide level2">
-<h2>Outcome vs.&nbsp;predictors</h2>
-
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-7-1.png" width="3600" class="r-stretch quarto-figure-center"></section>
-<section id="analysis-goal" class="slide level2 midi">
-<h2>Analysis goal</h2>
-<div class="question">
-<p>Use cross validation to evaluate and select a model to predict the tip amount</p>
-</div>
-<div class="fragment">
-<p><strong>v-fold cross validation</strong> – commonly used resampling technique:</p>
-<ul>
-<li>Randomly split your <strong>training</strong> <strong>data</strong> into <strong><em>v</em></strong> partitions</li>
-<li>Use <strong><em>v-1</em></strong> partitions for analysis, and the remaining 1 partition for assessment</li>
-<li>Repeat <strong><em>v</em></strong> times, updating which partition is used for assessment each time</li>
-</ul>
-</div>
-</section></section>
-<section id="application-exercise" class="title-slide slide level1 center">
-<h1>Application exercise</h1>
-<div class="appex">
-<p>📋 <a href="https://sta210-fa23.netlify.app/ae/ae-11-cross-validation" class="uri">https://sta210-fa23.netlify.app/ae/ae-11-cross-validation</a></p>
-</div>
-</section>
-
 <section>
 <section id="inference-for-multiple-linear-regression" class="title-slide slide level1 center">
 <h1>Inference for multiple linear regression</h1>
@@ -648,16 +470,6 @@ The following objects are masked from 'package:base':
 </ul>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 90 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (2): season, day_type
-dbl (5): volume, hightemp, avgtemp, cloudcover, precip
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 90 × 7
    volume hightemp avgtemp season cloudcover precip day_type
@@ -677,7 +489,7 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 </div>
 <p>Source: <a href="http://www.fvgreenway.org/pdfs/Northampton-Bikepath-Volume-Counts%20_05_LTA.pdf">Pioneer Valley Planning Commission</a> via the <strong>mosaicData</strong> package.</p>
 </section>
-<section id="variables-1" class="slide level2 smaller">
+<section id="variables" class="slide level2 smaller">
 <h2>Variables</h2>
 <p><strong>Outcome</strong>:</p>
 <p><code>volume</code> estimated number of trail users that day (number of breaks recorded)</p>
@@ -703,24 +515,21 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <section id="review-simple-linear-regression-slr" class="slide level2">
 <h2>Review: Simple linear regression (SLR)</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(rail_trail, <span class="fu">aes</span>(<span class="at">x =</span> hightemp, <span class="at">y =</span> volume)) <span class="sc">+</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"High temp (F)"</span>, <span class="at">y =</span> <span class="st">"Number of riders"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(rail_trail, <span class="fu">aes</span>(<span class="at">x =</span> hightemp, <span class="at">y =</span> volume)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"High temp (F)"</span>, <span class="at">y =</span> <span class="st">"Number of riders"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-9-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-4-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="slr-model-summary" class="slide level2">
 <h2>SLR model summary</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>rt_slr_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp, <span class="at">data =</span> rail_trail)</span>
-<span id="cb15-4"><a href="#cb15-4"></a></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">tidy</span>(rt_slr_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>rt_slr_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp, <span class="at">data =</span> rail_trail)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">tidy</span>(rt_slr_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -806,11 +615,11 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <section id="multiple-linear-regression" class="slide level2">
 <h2>Multiple linear regression</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>rt_mlr_main_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp <span class="sc">+</span> season, <span class="at">data =</span> rail_trail)</span>
-<span id="cb16-4"><a href="#cb16-4"></a></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="fu">tidy</span>(rt_mlr_main_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>rt_mlr_main_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> hightemp <span class="sc">+</span> season, <span class="at">data =</span> rail_trail)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">tidy</span>(rt_mlr_main_fit) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -856,6 +665,22 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 
 
 </div>
+</div>
+<p>The multiple linear regression model assumes <span class="math display">\[Y|X_1, X_2,  \ldots, X_p \sim N(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p, \sigma_\epsilon^2)\]</span></p>
+<div class="fragment">
+<p>For a given observation <span class="math inline">\((x_{i1}, x_{i2}, \ldots, x_{ip}, y_i)\)</span>, we can rewrite the previous statement as</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \epsilon_{i} \hspace{10mm} \epsilon_i \sim N(0,\sigma^2)\]</span></p>
+</div>
+</section>
+<section id="estimating-sigma_epsilon" class="slide level2">
+<h2>Estimating <span class="math inline">\(\sigma_\epsilon\)</span></h2>
+<p>For a given observation <span class="math inline">\((x_{i1}, x_{i2}, \ldots,x_{ip}, y_i)\)</span> the residual is <span class="math display">\[e_i = y_{i} - (\hat{\beta}_0 + \hat{\beta}_1 x_{i1} + \hat{\beta}_{2} x_{i2} + \dots + \hat{\beta}_p x_{ip})\]</span></p>
+<div class="fragment">
+<p>The estimated value of the regression standard error , <span class="math inline">\(\sigma_{\epsilon}\)</span>, is</p>
+<p><span class="math display">\[\hat{\sigma}_\epsilon  = \sqrt{\frac{\sum_{i=1}^ne_i^2}{n-p-1}}\]</span></p>
+</div>
+<div class="fragment">
+<p>As with SLR, we use <span class="math inline">\(\hat{\sigma}_{\epsilon}\)</span> to calculate <span class="math inline">\(SE_{\hat{\beta}_j}\)</span>, the standard error of each coefficient.</p>
 </div>
 </section>
 <section id="mlr-hypothesis-test-hightemp" class="slide level2 midi">
@@ -1063,8 +888,8 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <li><code>season = Fall</code>: <span class="math inline">\(-125.23 + 7.54 \times \texttt{hightemp}\)</span></li>
 </ul>
 </section>
-<section id="application-exercise-1" class="slide level2">
-<h2>Application exercise</h2>
+<section id="interaction-terms" class="slide level2">
+<h2>Interaction terms</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
@@ -1126,7 +951,7 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 
 </div>
 </div>
-<div class="appex">
+<div class="question">
 <p>Do the data provide evidence of a significant interaction effect? Comment on the significance of the interaction terms.</p>
 </div>
 </section></section>
@@ -1146,8 +971,8 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <section id="confidence-interval-for-beta_j-2" class="slide level2">
 <h2>Confidence interval for <span class="math inline">\(\beta_j\)</span></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">tidy</span>(rt_mlr_main_fit, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">kable</span>(<span class="at">digits=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">tidy</span>(rt_mlr_main_fit, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">kable</span>(<span class="at">digits=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1393,14 +1218,14 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <p>Including all available predictors</p>
 <p><strong>Fit:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>rt_full_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> ., <span class="at">data =</span> rail_trail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>rt_full_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> ., <span class="at">data =</span> rail_trail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><strong>Summarize:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">tidy</span>(rt_full_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">tidy</span>(rt_full_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 5
   term            estimate std.error statistic p.value
@@ -1419,7 +1244,7 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <div class="fragment">
 <p><strong>Augment:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>rt_full_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>rt_full_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1432,32 +1257,29 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <li><p><strong>Independence:</strong> The residuals are independent from each other.</p></li>
 </ol>
 </section>
+<section id="checking-linearity" class="slide level2">
+<h2>Checking Linearity</h2>
+<ul>
+<li><p>Look at a plot of the residuals vs.&nbsp;predicted values</p></li>
+<li><p>Look at a plot of the residuals vs.&nbsp;each predictor</p></li>
+<li><p>Linearity is met if there is no discernible pattern in each of these plots</p></li>
+</ul>
+</section>
 <section id="residuals-vs.-predicted-values" class="slide level2">
 <h2>Residuals vs.&nbsp;predicted values</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> rt_full_aug, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> rt_full_aug, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-html/main_res_pred-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
-<section id="linearity-residuals-vs.-predicted" class="slide level2">
-<h2>Linearity: Residuals vs.&nbsp;predicted</h2>
-<div class="question">
-<p>Does the linearity condition appear to be met?</p>
-</div>
-
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-24-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
-<section id="linearity-residuals-vs.-predicted-1" class="slide level2">
-<h2>Linearity: Residuals vs.&nbsp;predicted</h2>
-<p>Look at individual plots of residuals vs.&nbsp;each predictor, particularly if there are potential issues in the plot of residuals vs.&nbsp;predicted values.</p>
-</section>
+<img data-src="15-mlr-inference_files/figure-revealjs/main_res_pred-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="linearity-residuals-vs.-each-predictor" class="slide level2">
 <h2>Linearity: Residuals vs.&nbsp;each predictor</h2>
 
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-25-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
-<section id="checking-linearity" class="slide level2">
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-19-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<section id="checking-linearity-1" class="slide level2">
 <h2>Checking linearity</h2>
 <ul>
 <li><p>The plots of residuals vs.&nbsp;<code>hightemp</code> and <code>avgtemp</code> appear to have a parabolic pattern.</p></li>
@@ -1470,7 +1292,7 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <p>Does the constant variance condition appear to be satisfied?</p>
 </div>
 
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-26-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-20-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-constant-variance-1" class="slide level2">
 <h2>Checking constant variance</h2>
 <ul>
@@ -1480,8 +1302,8 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 </section>
 <section id="checking-normality" class="slide level2">
 <h2>Checking normality</h2>
-
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-27-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<p>The distribution of the residuals is approximately unimodal and symmetric, so the normality condition is satisfied. The sample size 90 is sufficiently large to relax this condition if it was not satisfied.</p>
+</section>
 <section id="checking-independence" class="slide level2">
 <h2>Checking independence</h2>
 <ul>
@@ -1494,13 +1316,14 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <h2>Checking independence</h2>
 <p>Residuals vs.&nbsp;order of data collection:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(rt_full_aug, <span class="fu">aes</span>(<span class="at">y =</span> .resid, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(rt_full_aug))) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Order of data collection"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(rt_full_aug, <span class="fu">aes</span>(<span class="at">y =</span> .resid, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(rt_full_aug))) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Order of data collection"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="14-mlr-inference_files/figure-html/unnamed-chunk-28-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-22-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
 <section id="checking-independence-2" class="slide level2">
 <h2>Checking independence</h2>
 <ul>
@@ -1513,12 +1336,9 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <h1>Multicollinearity</h1>
 
 </section>
-<section id="why-multicollinearity-is-a-problem" class="slide level2">
-<h2>Why multicollinearity is a problem</h2>
-<ul>
-<li><p>We can’t include two variables that have a perfect linear association with each other</p></li>
-<li><p>If we did so, we could not find unique estimates for the model coefficients</p></li>
-</ul>
+<section id="what-is-multicollinearity" class="slide level2">
+<h2>What is multicollinearity</h2>
+<p><strong>Multicollinearity</strong> is the case when two or more predictor variables are strongly correlated with one another</p>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
@@ -1541,12 +1361,13 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <li><p>Therefore, we are unable to choose the “best” combination of <span class="math inline">\(\hat{\beta}_1\)</span> and <span class="math inline">\(\hat{\beta}_2\)</span></p></li>
 </ul>
 </section>
-<section id="why-multicollinearity-is-a-problem-1" class="slide level2">
+<section id="why-multicollinearity-is-a-problem" class="slide level2">
 <h2>Why multicollinearity is a problem</h2>
 <ul>
 <li><p>When we have almost perfect collinearities (i.e.&nbsp;highly correlated predictor variables), the standard errors for our regression coefficients inflate</p></li>
 <li><p>In other words, we lose precision in our estimates of the regression coefficients</p></li>
-<li><p>This impedes our ability to use the model for inference or prediction</p></li>
+<li><p>This impedes our ability to use the model for inference</p></li>
+<li><p>It is also difficult to interpret the model coefficients</p></li>
 </ul>
 </section>
 <section id="detecting-multicollinearity" class="slide level2 midi">
@@ -1558,8 +1379,11 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <!-- -->
 <ul>
 <li><p>One (or more) predictor variables is an almost perfect linear combination of the others</p></li>
-<li><p>Include a quadratic in the model mean-centering the variable first</p></li>
-<li><p>Including interactions between two or more continuous variables</p></li>
+<li><p>Include a quadratic term in the model mean-centering the variable first</p></li>
+<li><p>Including interactions between two or more continuous variables</p>
+<ul>
+<li>Can reduce this by mean-centering the variables first</li>
+</ul></li>
 </ul>
 </section>
 <section id="detecting-multicollinearity-in-the-eda" class="slide level2">
@@ -1590,7 +1414,7 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <section id="vif-for-rail-trail-model" class="slide level2">
 <h2>VIF for rail trail model</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">vif</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">vif</span>(rt_full_fit<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       hightemp         avgtemp    seasonSpring    seasonSummer      cloudcover 
       10.259978       13.086175        2.751577        5.841985        1.587485 
@@ -1606,13 +1430,13 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <section id="model-without-hightemp" class="slide level2 smaller">
 <h2>Model without <code>hightemp</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> hightemp, <span class="at">data =</span> rail_trail)</span>
-<span id="cb26-4"><a href="#cb26-4"></a>  </span>
-<span id="cb26-5"><a href="#cb26-5"></a>m1 <span class="sc">|&gt;</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> hightemp, <span class="at">data =</span> rail_trail)</span>
+<span id="cb15-4"><a href="#cb15-4"></a>  </span>
+<span id="cb15-5"><a href="#cb15-5"></a>m1 <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1684,13 +1508,13 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 <section id="model-without-avgtemp" class="slide level2 smaller">
 <h2>Model without <code>avgtemp</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> avgtemp, <span class="at">data =</span> rail_trail)</span>
-<span id="cb27-4"><a href="#cb27-4"></a>  </span>
-<span id="cb27-5"><a href="#cb27-5"></a>m2 <span class="sc">|&gt;</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">fit</span>(volume <span class="sc">~</span> . <span class="sc">-</span> avgtemp, <span class="at">data =</span> rail_trail)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>  </span>
+<span id="cb16-5"><a href="#cb16-5"></a>m2 <span class="sc">|&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1809,8 +1633,8 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 </div>
 <p>Based on Adjusted <span class="math inline">\(R^2\)</span>, AIC, and BIC, the model without <strong>avgtemp</strong> is a better fit. Therefore, we choose to remove <strong>avgtemp</strong> from the model and leave <strong>hightemp</strong> in the model to deal with the multicollinearity.</p>
 </section>
-<section id="final-model" class="slide level2">
-<h2>Final model</h2>
+<section id="selected-model-for-now" class="slide level2">
+<h2>Selected model (for now)</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
@@ -1879,10 +1703,465 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
 
 </div>
 </div>
+</section></section>
+<section>
+<section id="variable-transformations" class="title-slide slide level1 center">
+<h1>Variable transformations</h1>
+
+</section>
+<section id="topics-1" class="slide level2">
+<h2>Topics</h2>
+<ul>
+<li><p>Log transformation on the response variable</p></li>
+<li><p>Log transformation on the predictor variable</p></li>
+</ul>
+</section>
+<section id="residuals-vs.-fitted-for-the-selected-model" class="slide level2 midi">
+<h2>Residuals vs.&nbsp;fitted for the selected model</h2>
+
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-29-1.png" width="3000" class="r-stretch quarto-figure-center"><p>As before, the constant variance condition is not satisfied. We can transform the response variable to address the violation in this condition.</p>
+</section></section>
+<section>
+<section id="log-transformation-on-the-response-variable" class="title-slide slide level1 center">
+<h1>Log transformation on the response variable</h1>
+
+</section>
+<section id="identifying-a-need-to-transform-y" class="slide level2 midi">
+<h2>Identifying a need to transform <span class="math inline">\(Y\)</span></h2>
+<ul>
+<li>Typically, a “fan-shaped” residual plot indicates the need for a transformation of the response variable <span class="math inline">\(Y\)</span>
+<ul>
+<li>There are multiple ways to transform a variable, e.g., <span class="math inline">\(\sqrt{Y}\)</span>, <span class="math inline">\(1/Y\)</span>, <span class="math inline">\(\log(Y)\)</span>.</li>
+<li><span class="math inline">\(\log(Y)\)</span> the most straightforward to interpret, so we use that transformation when possible</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>When building a model:
+<ul>
+<li>Choose a transformation and build the model on the transformed data</li>
+<li>Reassess the residual plots</li>
+<li>If the residuals plots did not sufficiently improve, try a new transformation!</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="log-transformation-on-y" class="slide level2">
+<h2>Log transformation on <span class="math inline">\(Y\)</span></h2>
+<ul>
+<li>If we apply a log transformation to the response variable, we want to estimate the parameters for the statistical model</li>
+</ul>
+<p><span class="math display">\[
+\log(Y) = \beta_0+ \beta_1 X_1 + \dots +\beta_pX_p + \epsilon, \hspace{10mm} \epsilon \sim N(0,\sigma^2_\epsilon)
+\]</span></p>
+<ul>
+<li>The regression equation is</li>
+</ul>
+<p><span class="math display">\[\widehat{\log(Y)} = \hat{\beta}_0+ \hat{\beta}_1 X + \dots + \hat{\beta}_pX_p\]</span></p>
+</section>
+<section id="log-transformation-on-y-1" class="slide level2">
+<h2>Log transformation on <span class="math inline">\(Y\)</span></h2>
+<p>We want to interpret the model in terms of the original variable <span class="math inline">\(Y\)</span>, not <span class="math inline">\(\log(Y)\)</span>, so we need to write the model in terms of <span class="math inline">\(Y\)</span></p>
+<p><span class="math display">\[\begin{align}\hat{Y} &amp;= \exp\{\hat{\beta}_0 + \hat{\beta}_1 X + \dots + \hat{\beta}_PX_P\}\\ &amp;= \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\end{align}\]</span><br>
+<span class="math display">\[\widehat{\text{Median}({Y|X_1,\ldots,X_p})} = \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\dots\exp\{\hat{\beta}_pX_p\}\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>If the distribution of <span class="math inline">\(Y|X_1, \ldots, X_p\)</span> is symmetric, then the median equals the mean.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="model-interpretation" class="slide level2">
+<h2>Model interpretation</h2>
+<p><span class="math display">\[\hat{Y} = \exp\{\hat{\beta}_0 + \hat{\beta}_1 X\} = \exp\{\hat{\beta}_0\}\exp\{\hat{\beta}_1X\}\]</span></p>
+<div class="fragment">
+<ul>
+<li><p><strong>Intercept</strong>: When <span class="math inline">\(X=0\)</span>, <span class="math inline">\(Y\)</span> is expected to be <span class="math inline">\(\exp\{\hat{\beta}_0\}\)</span></p></li>
+<li><p><strong>Slope:</strong> For every one unit increase in <span class="math inline">\(X\)</span>, the <span class="math inline">\(Y\)</span> is expected to multiply by a factor of <span class="math inline">\(\exp\{\hat{\beta}_1\}\)</span></p></li>
+</ul>
+<div class="question">
+<p>Why is the interpretation in terms of a multiplicative change?</p>
+</div>
+</div>
+</section>
+<section id="model-for-logvolume" class="slide level2 midi">
+<h2>Model for log(volume)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#fit model</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>log_rt_fit <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">fit</span>(<span class="fu">log</span>(volume) <span class="sc">~</span> hightemp <span class="sc">+</span> season <span class="sc">+</span> cloudcover <span class="sc">+</span> precip <span class="sc">+</span> day_type, <span class="at">data =</span> rail_trail)</span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="fu">tidy</span>(log_rt_fit) <span class="sc">|&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">std.error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">4.738</td>
+<td style="text-align: right;">0.219</td>
+<td style="text-align: right;">21.667</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hightemp</td>
+<td style="text-align: right;">0.018</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">5.452</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">seasonSpring</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.094</td>
+<td style="text-align: right;">0.283</td>
+<td style="text-align: right;">0.778</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">seasonSummer</td>
+<td style="text-align: right;">-0.047</td>
+<td style="text-align: right;">0.139</td>
+<td style="text-align: right;">-0.338</td>
+<td style="text-align: right;">0.736</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cloudcover</td>
+<td style="text-align: right;">-0.025</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">-2.452</td>
+<td style="text-align: right;">0.016</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">precip</td>
+<td style="text-align: right;">-0.294</td>
+<td style="text-align: right;">0.123</td>
+<td style="text-align: right;">-2.397</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">day_typeWeekend</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">0.987</td>
+<td style="text-align: right;">0.327</td>
+</tr>
+</tbody>
+</table>
 
 
-<img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+</div>
+</div>
+</section>
+<section id="interpretation" class="slide level2 midi">
+<h2>Interpretation</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">std.error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">4.738</td>
+<td style="text-align: right;">0.219</td>
+<td style="text-align: right;">21.667</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hightemp</td>
+<td style="text-align: right;">0.018</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">5.452</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">seasonSpring</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.094</td>
+<td style="text-align: right;">0.283</td>
+<td style="text-align: right;">0.778</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">seasonSummer</td>
+<td style="text-align: right;">-0.047</td>
+<td style="text-align: right;">0.139</td>
+<td style="text-align: right;">-0.338</td>
+<td style="text-align: right;">0.736</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cloudcover</td>
+<td style="text-align: right;">-0.025</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">-2.452</td>
+<td style="text-align: right;">0.016</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">precip</td>
+<td style="text-align: right;">-0.294</td>
+<td style="text-align: right;">0.123</td>
+<td style="text-align: right;">-2.397</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">day_typeWeekend</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">0.987</td>
+<td style="text-align: right;">0.327</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="question">
+<ul>
+<li><p>Interpret the intercept in terms of (1) <code>log(volume)</code> and (2) <code>volume</code>.</p></li>
+<li><p>Interpret the coefficient of <code>hightemp</code> in terms of (1) <code>log(volume)</code> and (2) <code>volume</code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="residuals-for-model-with-logvolume" class="slide level2">
+<h2>Residuals for model with <code>log(volume)</code></h2>
+
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-32-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<section id="compare-residual-plots" class="slide level2">
+<h2>Compare residual plots</h2>
+
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-33-1.png" width="3000" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="log-transformation-on-a-predictor-variable" class="title-slide slide level1 center">
+<h1>Log transformation on a predictor variable</h1>
+
+</section>
+<section id="log-transformation-on-x" class="slide level2">
+<h2>Log Transformation on <span class="math inline">\(X\)</span></h2>
+
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-36-1.png" width="3000" class="r-stretch quarto-figure-center"><p>Try a transformation on <span class="math inline">\(X\)</span> if the scatterplot shows some curvature but the variance is constant for all values of <span class="math inline">\(X\)</span></p>
+</section>
+<section id="respiratory-rate-vs.-age" class="slide level2 midi">
+<h2>Respiratory Rate vs.&nbsp;Age</h2>
+<ul>
+<li><p>A high respiratory rate can potentially indicate a respiratory infection in children. In order to determine what indicates a “high” rate, we first want to understand the relationship between a child’s age and their respiratory rate.</p></li>
+<li><p>The data contain the respiratory rate for 618 children ages 15 days to 3 years. It was obtained from the <strong>Sleuth3</strong> R package and is originally form a 1994 publication “Reference Values for Respiratory Rate in the First 3 Years of Life”.</p></li>
+<li><p><strong>Variables</strong>:</p>
+<ul>
+<li><code>Age</code>: age in months</li>
+<li><code>Rate</code>: respiratory rate (breaths per minute)</li>
+</ul></li>
+</ul>
+</section>
+<section id="rate-vs.-age" class="slide level2">
+<h2>Rate vs.&nbsp;Age</h2>
+
+<img data-src="15-mlr-inference_files/figure-revealjs/unnamed-chunk-37-1.png" width="3000" class="r-stretch quarto-figure-center"></section>
+<section id="model-with-transformation-on-x" class="slide level2 midi">
+<h2>Model with Transformation on <span class="math inline">\(X\)</span></h2>
+<p>Suppose we have the following regression equation:</p>
+<p><span class="math display">\[\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 \log(X)\]</span></p>
+<div class="fragment">
+<ul>
+<li><p><strong>Intercept:</strong> When <span class="math inline">\(X = 1\)</span> <span class="math inline">\((\log(X) = 0)\)</span>, <span class="math inline">\(Y\)</span> is expected to be <span class="math inline">\(\hat{\beta}_0\)</span> (i.e.&nbsp;the mean of <span class="math inline">\(Y\)</span> is <span class="math inline">\(\hat{\beta}_0\)</span>)</p></li>
+<li><p><strong>Slope:</strong> When <span class="math inline">\(X\)</span> is multiplied by a factor of <span class="math inline">\(\mathbf{C}\)</span>, the mean of <span class="math inline">\(Y\)</span> is expected to increase by <span class="math inline">\(\boldsymbol{\hat{\beta}_1}\mathbf{\log(C)}\)</span> units</p>
+<ul>
+<li><strong>Example</strong>: when <span class="math inline">\(X\)</span> is multiplied by a factor of 2, <span class="math inline">\(Y\)</span> is expected to increase by <span class="math inline">\(\boldsymbol{\hat{\beta}_1}\mathbf{\log(2)}\)</span> units</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="model-interpretation-1" class="slide level2">
+<h2>Model interpretation</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">std.error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">50.135</td>
+<td style="text-align: right;">0.632</td>
+<td style="text-align: right;">79.330</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">log(Age)</td>
+<td style="text-align: right;">-5.982</td>
+<td style="text-align: right;">0.263</td>
+<td style="text-align: right;">-22.781</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p><span class="math display">\[\hat{\text{Rate}} = 50.135 - 5.982 \times \log\text{(Age)}\]</span></p>
+<div class="question">
+<p>Interpret the slope and intercept in the context of the data.</p>
+</div>
+</section>
+<section id="learn-more" class="slide level2">
+<h2>Learn more</h2>
+<p>See <a href="https://github.com/sta210-sp20/supplemental-notes/blob/master/log-transformations.pdf">Log Transformations in Linear Regression</a> for more details about interpreting regression models with log-transformed variables.</p>
+</section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+
+</section>
+<section id="why-medianyx-instead-of-mu_yx" class="slide level2">
+<h2>Why <span class="math inline">\(Median(Y|X)\)</span> instead of <span class="math inline">\(\mu_{Y|X}\)</span></h2>
+<p>Suppose we have a set of values</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Let’s calculate <span class="math inline">\(\overline{\log(x)}\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>log_x <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">mean</span>(log_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.066476</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Let’s calculate <span class="math inline">\(\log(\bar{x})\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">log</span>(xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.228477</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>Note: <span class="math inline">\(\overline{\log(x)} \neq \log(\bar{x})\)</span></p>
+</div>
+</section>
+<section id="why-medianyx-instead-of-mu_yx-1" class="slide level2">
+<h2>Why <span class="math inline">\(Median(Y|X)\)</span> instead of <span class="math inline">\(\mu_{Y|X}\)</span></h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Let’s calculate <span class="math inline">\(\text{Median}(\log(x))\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>log_x <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">median</span>(log_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.079442</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Let’s calculate <span class="math inline">\(\log(\text{Median}(x))\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>median_x <span class="ot">&lt;-</span> <span class="fu">median</span>(x)</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">log</span>(median_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.079442</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>Note: <span class="math inline">\(\text{Median}(\log(x)) = \log(\text{Median}(x))\)</span></p>
+</div>
+</section>
+<section id="mean-median-and-log" class="slide level2">
+<h2>Mean, Median, and log</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math display">\[\overline{\log(x)} \neq \log(\bar{x})\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">mean</span>(log_x) <span class="sc">==</span> <span class="fu">log</span>(xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\text{Median}(\log(x)) = \log(\text{Median}(x))\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">median</span>(log_x) <span class="sc">==</span> <span class="fu">log</span>(median_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-and-median-of-logy" class="slide level2">
+<h2>Mean and median of <span class="math inline">\(\log(Y)\)</span></h2>
+<ul>
+<li><p>Recall that <span class="math inline">\(Y = \beta_0 + \beta_1 X\)</span> is the <strong>mean</strong> value of the response at the given value of the predictor <span class="math inline">\(X\)</span>. This doesn’t hold when we log-transform the response variable.</p></li>
+<li><p>Mathematically, the mean of the logged values is <strong>not</strong> necessarily equal to the log of the mean value. Therefore at a given value of <span class="math inline">\(X\)</span></p></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}\exp\{\text{Mean}(\log(Y|X))\} \neq \text{Mean}(Y|X) \\[5pt]
+\Rightarrow \exp\{\beta_0 + \beta_1 X\} \neq \text{Mean}(Y|X) \end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="mean-and-median-of-logy-1" class="slide level2">
+<h2>Mean and median of <span class="math inline">\(\log(y)\)</span></h2>
+<ul>
+<li>However, the median of the logged values <strong>is</strong> equal to the log of the median value. Therefore,</li>
+</ul>
+<p><span class="math display">\[\exp\{\text{Median}(\log(Y|X))\} = \text{Median}(Y|X)\]</span></p>
+<div class="fragment">
+<ul>
+<li>If the distribution of <span class="math inline">\(\log(Y)\)</span> is symmetric about the regression line, for a given value <span class="math inline">\(X\)</span>, we can expect <span class="math inline">\(Mean(Y)\)</span> and <span class="math inline">\(Median(Y)\)</span> to be approximately equal.</li>
+</ul>
+
+<p><img src="../images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://sta210-fa23.netlify.app/schedule">🔗 STA 210 - Fall 2023 - Schedule</a></p>
+</div>
 </div>
 </section></section>
     </div>
@@ -2098,6 +2377,44 @@ dbl (5): volume, hightemp, avgtemp, cloudcover, precip
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

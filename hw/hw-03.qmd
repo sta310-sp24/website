@@ -204,13 +204,14 @@ For this analysis, we focus on indicators from 2011 on 165 countries. The variab
 You fit a model using sanitation access, education expenditures, and life expectancy to understand variability in GDP. The model takes the form
 
 $$
-\begin{aligned}\widehat{\log(GDP)} = \hat{\beta}_0 &+ \hat{\beta}_1 ~ sanit.access.factor + \hat{\beta}_2 ~ edu.expend + \hat{\beta}_3 * life.expect \\ &+ \hat{\beta}_4 ~ sanit.access.factor \times life.expect\end{aligned}
+\begin{aligned}\widehat{\log(GDP)} = \hat{\beta}_0 &+ \hat{\beta}_1 ~ sanit.access.factor + \hat{\beta}_2 ~ edu.expend + \hat{\beta}_3 ~life.expect \\ &+ \hat{\beta}_4 ~ sanit.access.factor \times life.expect\end{aligned}
 $$
 
 The output from R is shown below.
 
 ```{r}
 #| echo: false
+#| eval: true
 
 world_df <- read_csv("data/wdi.2011.csv") |>
   filter(!is.na(sanit.access.factor))|>
@@ -237,6 +238,8 @@ Below are plots from the exploratory data analysis of the relationships between 
 
 ```{r}
 #| echo: false
+#| eval: true 
+
 library(patchwork)
 p1 <- ggplot(data = world_df, aes(x = life.expect, y = sanit.access.factor)) + 
   geom_boxplot(fill = "steelblue") +

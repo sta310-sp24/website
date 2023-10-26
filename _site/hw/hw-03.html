@@ -544,9 +544,68 @@ For this analysis, we focus on indicators from 2011 on 165 countries. The variab
 </ul>
 <p>You fit a model using sanitation access, education expenditures, and life expectancy to understand variability in GDP. The model takes the form</p>
 <p><span class="math display">\[
-\begin{aligned}\widehat{\log(GDP)} = \hat{\beta}_0 &amp;+ \hat{\beta}_1 ~ sanit.access.factor + \hat{\beta}_2 ~ edu.expend + \hat{\beta}_3 * life.expect \\ &amp;+ \hat{\beta}_4 ~ sanit.access.factor \times life.expect\end{aligned}
+\begin{aligned}\widehat{\log(GDP)} = \hat{\beta}_0 &amp;+ \hat{\beta}_1 ~ sanit.access.factor + \hat{\beta}_2 ~ edu.expend + \hat{\beta}_3 ~life.expect \\ &amp;+ \hat{\beta}_4 ~ sanit.access.factor \times life.expect\end{aligned}
 \]</span></p>
 <p>The output from R is shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">4.491</td>
+<td style="text-align: right;">1.638</td>
+<td style="text-align: right;">2.742</td>
+<td style="text-align: right;">0.007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sanit.access.factorhigh</td>
+<td style="text-align: right;">-6.993</td>
+<td style="text-align: right;">1.971</td>
+<td style="text-align: right;">-3.548</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">edu.expend</td>
+<td style="text-align: right;">0.097</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">2.550</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">life.expect</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.029</td>
+<td style="text-align: right;">1.061</td>
+<td style="text-align: right;">0.291</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sanit.access.factorhigh:life.expect</td>
+<td style="text-align: right;">0.122</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">3.853</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <ul>
 <li><p>Interpret the coefficient of <code>edu.expend</code> in the context of the data.</p></li>
 <li><p>Interpret the coefficient of <code>life.expect</code> for countries with high sanitation access in the context of the data.</p>
@@ -568,6 +627,11 @@ Important
 <section id="exercise-14" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-14">Exercise 14</h2>
 <p>Below are plots from the exploratory data analysis of the relationships between the predictor variables. Based on these plots, what appears to be a potential issue with the model from Exercise 13? Briefly explain your response.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="hw-03_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="submission" class="level1">

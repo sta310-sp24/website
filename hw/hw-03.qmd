@@ -152,7 +152,7 @@ Now let's consider a new model that includes all the variables used in model fro
 
 -   Create the workflow that brings together this recipe and the model specification from Exercise 5.
 
--   Conduct 12-fold cross validation using this model workflow. Calculate and display mean **RMSE** across the 10 folds.
+-   Conduct 12-fold cross validation using this model workflow. Calculate and display mean **RMSE** across the 12 folds.
 
 ## Exercise 9
 

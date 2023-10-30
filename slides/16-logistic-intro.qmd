@@ -46,6 +46,7 @@ library(countdown)
 -   See Ed Discussion for
 
     -   [Code](https://edstem.org/us/courses/44523/discussion/3725414) to reformat `Theme` variable in HW 03 data set
+    -   [Explanation](https://edstem.org/us/courses/44523/discussion/3754375) on interpreting models with quadratic terms
 
 ## Spring 2024 statistics courses {.small}
 

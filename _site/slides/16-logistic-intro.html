@@ -407,16 +407,117 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
-<!--HW 03 due Wed, Nov 1 at 11:59pm-->
-<!--See Ed Discussion for-->
-<!--Code to reformat Theme variable in HW 03 data set -->
-<!--Interpreting quadratic effects-->
+<ul>
+<li><p>HW 03 due Wed, Nov 1 at 11:59pm</p></li>
+<li><p>See Ed Discussion for</p>
+<ul>
+<li><a href="https://edstem.org/us/courses/44523/discussion/3725414">Code</a> to reformat <code>Theme</code> variable in HW 03 data set</li>
+</ul></li>
+</ul>
 </section>
-<section id="spring-2024-statistics-courses" class="slide level2">
+<section id="spring-2024-statistics-courses" class="slide level2 small">
 <h2>Spring 2024 statistics courses</h2>
+<ul>
+<li>STA 211: Mathematics of Regression
+<ul>
+<li>Prereqs: MATH 216/218/221, STA 210</li>
+</ul></li>
+<li>STA 230 or STA 240: Probability
+<ul>
+<li>Prereqs: MATH 22/112/122/202/212/219/222</li>
+</ul></li>
+<li>STA 310: Generalized Linear Models
+<ul>
+<li>Prereqs: STA 210 and STA 230/240</li>
+</ul></li>
+<li>STA 313: Advanced Data Visualization
+<ul>
+<li>Prereqs: STA 198 or STA 199 or STA 210</li>
+</ul></li>
+<li>STA 323: Statistical Computing
+<ul>
+<li>Prereqs: STA 210 and STA 230/240</li>
+</ul></li>
+<li>STA 360: Bayesian Inference and Modern Statistical Methods
+<ul>
+<li>Prereqs: STA 210 and STA 230/240 and MATH 202/212/219/222 and CS 101/102/201 and MATH 216/218/221, 211 (co-req)</li>
+</ul></li>
+</ul>
 </section>
-<section id="interpreting-models-with-log-transformed-variables" class="slide level2">
+<section id="interpreting-models-with-log-transformed-variables" class="slide level2 small">
 <h2>Interpreting models with log-transformed variables</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">4.738</td>
+<td style="text-align: right;">0.219</td>
+<td style="text-align: right;">21.667</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hightemp</td>
+<td style="text-align: right;">0.018</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">5.452</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">seasonSpring</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.094</td>
+<td style="text-align: right;">0.283</td>
+<td style="text-align: right;">0.778</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">seasonSummer</td>
+<td style="text-align: right;">-0.047</td>
+<td style="text-align: right;">0.139</td>
+<td style="text-align: right;">-0.338</td>
+<td style="text-align: right;">0.736</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cloudcover</td>
+<td style="text-align: right;">-0.025</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">-2.452</td>
+<td style="text-align: right;">0.016</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">precip</td>
+<td style="text-align: right;">-0.294</td>
+<td style="text-align: right;">0.123</td>
+<td style="text-align: right;">-2.397</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">day_typeWeekend</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">0.987</td>
+<td style="text-align: right;">0.327</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="question">
+<ul>
+<li><p>Interpret the intercept in terms of (1) <code>log(volume)</code> and (2) <code>volume</code>.</p></li>
+<li><p>Interpret the coefficient of <code>hightemp</code> in terms of (1) <code>log(volume)</code> and (2) <code>volume</code>.</p></li>
+</ul>
+</div>
 </section>
 <section>
 <section id="logistic-regression" class="title-slide slide level1 center">
@@ -532,22 +633,22 @@ Prof.&nbsp;Maria Tackett
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Getting 7+ hours of sleep"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="lets-fit-a-linear-regression-model" class="slide level2">
 <h2>Let’s fit a linear regression model</h2>
 <p><strong>Outcome:</strong> <span class="math inline">\(Y\)</span> = 1: yes, 0: no</p>
 
-<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="lets-use-proportions" class="slide level2">
 <h2>Let’s use proportions</h2>
 <p><strong>Outcome:</strong> Probability of getting 7+ hours of sleep</p>
 
-<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="what-happens-if-we-zoom-out" class="slide level2">
 <h2>What happens if we zoom out?</h2>
 <p><strong>Outcome:</strong> Probability of getting 7+ hours of sleep</p>
 
-<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p>🛑 <em>This model produces predictions outside of 0 and 1.</em></p>
+<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p>🛑 <em>This model produces predictions outside of 0 and 1.</em></p>
 </section>
 <section id="lets-try-another-model" class="slide level2">
 <h2>Let’s try another model</h2>
@@ -745,7 +846,7 @@ Prof.&nbsp;Maria Tackett
 <span id="cb9-5"><a href="#cb9-5"></a>       <span class="at">title =</span> <span class="st">"Age vs. High risk of heart disease"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="16-logistic-intro_files/figure-revealjs/unnamed-chunk-13-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="lets-fit-the-model" class="slide level2">
 <h2>Let’s fit the model</h2>
 <div class="cell" data-layout-align="center">

@@ -550,21 +550,21 @@
     "href": "slides/16-logistic-intro.html#announcements",
     "title": "Logistic regression",
     "section": "Announcements",
-    "text": "Announcements"
+    "text": "Announcements\n\nHW 03 due Wed, Nov 1 at 11:59pm\nSee Ed Discussion for\n\nCode to reformat Theme variable in HW 03 data set"
   },
   {
     "objectID": "slides/16-logistic-intro.html#spring-2024-statistics-courses",
     "href": "slides/16-logistic-intro.html#spring-2024-statistics-courses",
     "title": "Logistic regression",
     "section": "Spring 2024 statistics courses",
-    "text": "Spring 2024 statistics courses"
+    "text": "Spring 2024 statistics courses\n\nSTA 211: Mathematics of Regression\n\nPrereqs: MATH 216/218/221, STA 210\n\nSTA 230 or STA 240: Probability\n\nPrereqs: MATH 22/112/122/202/212/219/222\n\nSTA 310: Generalized Linear Models\n\nPrereqs: STA 210 and STA 230/240\n\nSTA 313: Advanced Data Visualization\n\nPrereqs: STA 198 or STA 199 or STA 210\n\nSTA 323: Statistical Computing\n\nPrereqs: STA 210 and STA 230/240\n\nSTA 360: Bayesian Inference and Modern Statistical Methods\n\nPrereqs: STA 210 and STA 230/240 and MATH 202/212/219/222 and CS 101/102/201 and MATH 216/218/221, 211 (co-req)"
   },
   {
     "objectID": "slides/16-logistic-intro.html#interpreting-models-with-log-transformed-variables",
     "href": "slides/16-logistic-intro.html#interpreting-models-with-log-transformed-variables",
     "title": "Logistic regression",
     "section": "Interpreting models with log-transformed variables",
-    "text": "Interpreting models with log-transformed variables"
+    "text": "Interpreting models with log-transformed variables\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n4.738\n0.219\n21.667\n0.000\n\n\nhightemp\n0.018\n0.003\n5.452\n0.000\n\n\nseasonSpring\n0.026\n0.094\n0.283\n0.778\n\n\nseasonSummer\n-0.047\n0.139\n-0.338\n0.736\n\n\ncloudcover\n-0.025\n0.010\n-2.452\n0.016\n\n\nprecip\n-0.294\n0.123\n-2.397\n0.019\n\n\nday_typeWeekend\n0.064\n0.065\n0.987\n0.327\n\n\n\n\n\n\n\nInterpret the intercept in terms of (1) log(volume) and (2) volume.\nInterpret the coefficient of hightemp in terms of (1) log(volume) and (2) volume."
   },
   {
     "objectID": "slides/16-logistic-intro.html#topics",

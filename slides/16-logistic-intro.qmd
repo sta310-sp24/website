@@ -41,17 +41,52 @@ library(countdown)
 
 ## Announcements
 
-<!--HW 03 due Wed, Nov 1 at 11:59pm-->
+-   HW 03 due Wed, Nov 1 at 11:59pm
 
-<!--See Ed Discussion for-->
+-   See Ed Discussion for
 
-<!--Code to reformat Theme variable in HW 03 data set -->
+    -   [Code](https://edstem.org/us/courses/44523/discussion/3725414) to reformat `Theme` variable in HW 03 data set
 
-<!--Interpreting quadratic effects-->
+## Spring 2024 statistics courses {.small}
 
-## Spring 2024 statistics courses
+-   STA 211: Mathematics of Regression
+    -   Prereqs: MATH 216/218/221, STA 210
+-   STA 230 or STA 240: Probability
+    -   Prereqs: MATH 22/112/122/202/212/219/222
+-   STA 310: Generalized Linear Models
+    -   Prereqs: STA 210 and STA 230/240
+-   STA 313: Advanced Data Visualization
+    -   Prereqs: STA 198 or STA 199 or STA 210
+-   STA 323: Statistical Computing
+    -   Prereqs: STA 210 and STA 230/240
+-   STA 360: Bayesian Inference and Modern Statistical Methods
+    -   Prereqs: STA 210 and STA 230/240 and MATH 202/212/219/222 and CS 101/102/201 and MATH 216/218/221, 211 (co-req)
 
-## Interpreting models with log-transformed variables
+## Interpreting models with log-transformed variables {.small}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+
+rail_trail <- read_csv(here::here("slides", "data/rail_trail.csv"))
+log_rt_fit <- linear_reg() |>
+  set_engine("lm") |>
+  fit(log(volume) ~ hightemp + season + cloudcover + precip + day_type, data = rail_trail)
+
+tidy(log_rt_fit) |>
+  kable(digits = 3)
+```
+
+::: question
+-   Interpret the intercept in terms of (1) `log(volume)` and (2) `volume`.
+
+-   Interpret the coefficient of `hightemp` in terms of (1) `log(volume)` and (2) `volume`.
+:::
 
 # Logistic regression
 

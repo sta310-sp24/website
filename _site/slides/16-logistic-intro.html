@@ -672,9 +672,9 @@ Prof.&nbsp;Maria Tackett
 <h2>Different types of models</h2>
 <table>
 <colgroup>
-<col style="width: 27%">
-<col style="width: 21%">
-<col style="width: 50%">
+<col style="width: 26%">
+<col style="width: 25%">
+<col style="width: 48%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -708,7 +708,7 @@ Prof.&nbsp;Maria Tackett
 <p>State whether a linear regression model or logistic regression model is more appropriate for each scenario.</p>
 <ol type="1">
 <li><p>Use age and education to predict if a randomly selected person will vote in the next election.</p></li>
-<li><p>Use budget and run time (in minutes) to predict a movie's total revenue.</p></li>
+<li><p>Use budget and run time (in minutes) to predict a movie’s total revenue.</p></li>
 <li><p>Use age and sex to calculate the probability a randomly selected adult will visit Duke Health in the next year.</p></li>
 </ol>
 <p>Submit your responses on Ed Discussion [<a href="https://edstem.org/us/courses/44523/discussion/471372">10:05am</a>][<a href="https://edstem.org/us/courses/44523/discussion/471377">1:25pm</a>]</p>
@@ -790,7 +790,9 @@ Prof.&nbsp;Maria Tackett
 <li><strong>Odds =</strong> <span class="math inline">\(\exp\big\{\log\big(\frac{\pi}{1-\pi}\big)\big\} = \frac{\pi}{1-\pi}\)</span></li>
 <li>Combining (1) and (2) with what we saw earlier</li>
 </ol>
+<div class="fragment">
 <p><span class="math display">\[\text{probability} = \pi = \frac{\exp\{\beta_0 + \beta_1~X\}}{1 + \exp\{\beta_0 + \beta_1~X\}}\]</span></p>
+</div>
 </section>
 <section id="logistic-regression-model" class="slide level2">
 <h2>Logistic regression model</h2>
@@ -972,7 +974,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="fragment">
 <p><strong>For observation 1</strong></p>
-<p> = = = 0.066$$</p>
+<p><span class="math display">\[\text{predicted probability} = \hat{\pi} = \frac{\exp\{-2.650\}}{1 + \exp\{-2.650\}} = 0.066\]</span></p>
 </div>
 </section>
 <section id="predicted-classes" class="slide level2">
@@ -1047,7 +1049,7 @@ Prof.&nbsp;Maria Tackett
 <section id="application-exercise" class="title-slide slide level1 center">
 <h1>Application exercise</h1>
 <div class="appex">
-<p>📋 <a href="../ae/ae-12-logistic-intro.qmd">AE 12: Logistic Regression Intro</a></p>
+<p>📋 <a href="../ae/ae-12-logistic-intro.html">AE 12: Logistic Regression Intro</a></p>
 </div>
 </section>
 <section id="recap" class="slide level2">

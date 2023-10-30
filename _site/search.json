@@ -669,7 +669,7 @@
     "href": "slides/16-logistic-intro.html#linear-vs.-logistic-regression",
     "title": "Logistic regression",
     "section": "Linear vs. logistic regression",
-    "text": "Linear vs. logistic regression\n\nState whether a linear regression model or logistic regression model is more appropriate for each scenario.\n\nUse age and education to predict if a randomly selected person will vote in the next election.\nUse budget and run time (in minutes) to predict a movie's total revenue.\nUse age and sex to calculate the probability a randomly selected adult will visit Duke Health in the next year.\n\nSubmit your responses on Ed Discussion [10:05am][1:25pm]"
+    "text": "Linear vs. logistic regression\n\nState whether a linear regression model or logistic regression model is more appropriate for each scenario.\n\nUse age and education to predict if a randomly selected person will vote in the next election.\nUse budget and run time (in minutes) to predict a movie’s total revenue.\nUse age and sex to calculate the probability a randomly selected adult will visit Duke Health in the next year.\n\nSubmit your responses on Ed Discussion [10:05am][1:25pm]"
   },
   {
     "objectID": "slides/16-logistic-intro.html#binary-response-variable",
@@ -704,7 +704,7 @@
     "href": "slides/16-logistic-intro.html#from-odds-to-probabilities-1",
     "title": "Logistic regression",
     "section": "From odds to probabilities",
-    "text": "From odds to probabilities\n\nLogistic model: log odds = \\(\\log\\big(\\frac{\\pi}{1-\\pi}\\big) = \\beta_0 + \\beta_1~X\\)\nOdds = \\(\\exp\\big\\{\\log\\big(\\frac{\\pi}{1-\\pi}\\big)\\big\\} = \\frac{\\pi}{1-\\pi}\\)\nCombining (1) and (2) with what we saw earlier\n\n\\[\\text{probability} = \\pi = \\frac{\\exp\\{\\beta_0 + \\beta_1~X\\}}{1 + \\exp\\{\\beta_0 + \\beta_1~X\\}}\\]"
+    "text": "From odds to probabilities\n\nLogistic model: log odds = \\(\\log\\big(\\frac{\\pi}{1-\\pi}\\big) = \\beta_0 + \\beta_1~X\\)\nOdds = \\(\\exp\\big\\{\\log\\big(\\frac{\\pi}{1-\\pi}\\big)\\big\\} = \\frac{\\pi}{1-\\pi}\\)\nCombining (1) and (2) with what we saw earlier\n\n\n\\[\\text{probability} = \\pi = \\frac{\\exp\\{\\beta_0 + \\beta_1~X\\}}{1 + \\exp\\{\\beta_0 + \\beta_1~X\\}}\\]"
   },
   {
     "objectID": "slides/16-logistic-intro.html#logistic-regression-model",
@@ -760,7 +760,7 @@
     "href": "slides/16-logistic-intro.html#predicted-probabilities",
     "title": "Logistic regression",
     "section": "Predicted probabilities",
-    "text": "Predicted probabilities\n\npredict(heart_disease_fit, new_data = heart_disease, type = \"prob\")\n\n# A tibble: 4,240 × 2\n   .pred_0 .pred_1\n     &lt;dbl&gt;   &lt;dbl&gt;\n 1   0.934  0.0660\n 2   0.894  0.106 \n 3   0.878  0.122 \n 4   0.733  0.267 \n 5   0.894  0.106 \n 6   0.913  0.0870\n 7   0.702  0.298 \n 8   0.900  0.0996\n 9   0.843  0.157 \n10   0.913  0.0870\n# ℹ 4,230 more rows\n\n\n\nFor observation 1\n = = = 0.066$$"
+    "text": "Predicted probabilities\n\npredict(heart_disease_fit, new_data = heart_disease, type = \"prob\")\n\n# A tibble: 4,240 × 2\n   .pred_0 .pred_1\n     &lt;dbl&gt;   &lt;dbl&gt;\n 1   0.934  0.0660\n 2   0.894  0.106 \n 3   0.878  0.122 \n 4   0.733  0.267 \n 5   0.894  0.106 \n 6   0.913  0.0870\n 7   0.702  0.298 \n 8   0.900  0.0996\n 9   0.843  0.157 \n10   0.913  0.0870\n# ℹ 4,230 more rows\n\n\n\nFor observation 1\n\\[\\text{predicted probability} = \\hat{\\pi} = \\frac{\\exp\\{-2.650\\}}{1 + \\exp\\{-2.650\\}} = 0.066\\]"
   },
   {
     "objectID": "slides/16-logistic-intro.html#predicted-classes",

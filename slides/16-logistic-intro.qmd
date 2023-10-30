@@ -272,7 +272,7 @@ ggplot(sleep_age, aes(x = Age, y = prop)) +
 ## Different types of models
 
 | Method                          | Outcome      | Model                                                     |
-|--------------------|----------------|-------------------------------------|
+|-------------------|------------------|-----------------------------------|
 | Linear regression               | Quantitative | $Y = \beta_0 + \beta_1~ X$                                |
 | Linear regression (transform Y) | Quantitative | $\log(Y) = \beta_0 + \beta_1~ X$                          |
 | Logistic regression             | Binary       | $\log\big(\frac{\pi}{1-\pi}\big) = \beta_0 + \beta_1 ~ X$ |
@@ -284,7 +284,7 @@ State whether a linear regression model or logistic regression model is more app
 
 1.  Use age and education to predict if a randomly selected person will vote in the next election.
 
-2.  Use budget and run time (in minutes) to predict a movie\'s total revenue.
+2.  Use budget and run time (in minutes) to predict a movie's total revenue.
 
 3.  Use age and sex to calculate the probability a randomly selected adult will visit Duke Health in the next year.
 
@@ -356,6 +356,8 @@ $$\pi = \frac{\omega}{1 + \omega}$$
 (1) **Logistic model**: log odds = $\log\big(\frac{\pi}{1-\pi}\big) = \beta_0 + \beta_1~X$
 (2) **Odds =** $\exp\big\{\log\big(\frac{\pi}{1-\pi}\big)\big\} = \frac{\pi}{1-\pi}$
 (3) Combining (1) and (2) with what we saw earlier
+
+. . .
 
 $$\text{probability} = \pi = \frac{\exp\{\beta_0 + \beta_1~X\}}{1 + \exp\{\beta_0 + \beta_1~X\}}$$
 
@@ -456,7 +458,7 @@ predict(heart_disease_fit, new_data = heart_disease, type = "prob")
 
 **For observation 1**
 
-\text{predicted probability} = \hat{\pi} = \frac{\exp\{-2.650\}}{1 + \exp\{-2.650\}} = 0.066$$
+$$\text{predicted probability} = \hat{\pi} = \frac{\exp\{-2.650\}}{1 + \exp\{-2.650\}} = 0.066$$
 
 ## Predicted classes
 
@@ -493,7 +495,7 @@ The `.pred_class` is the class with the highest predicted probability. What is a
 # Application exercise
 
 ::: appex
-📋 [AE 12: Logistic Regression Intro](../ae/ae-12-logistic-intro.qmd)
+📋 [AE 12: Logistic Regression Intro](../ae/ae-12-logistic-intro.html)
 :::
 
 ## Recap

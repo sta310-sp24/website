@@ -49,7 +49,7 @@ To resolve the merge conflict, decide if you want to keep only your text, the te
 
 ### Resolving a merge conflict
 
-**Step 1: Everyone** clone the **merge-conflict** assignment repo in RStudio and open file **merge-conflict.Rmd**. Configure git if you haven't already done so:
+**Step 1: Everyone** clone the **merge-conflict** assignment repo in RStudio and open file **merge-conflict.Rmd**.
 
 **Member 4** should look at the group's repo on GitHub.com to ensure that the other members' files are pushed to GitHub after every step.
 
@@ -116,7 +116,7 @@ These data can be found in the **palmerpenguins** package. We're going to be wor
 We will focus on the following variables:\
 
 | variable            | class   | description                                 |
-|:-----------------|:-----------------|:------------------------------------|
+|:--------------------|:--------|:--------------------------------------------|
 | `species`           | integer | Penguin species (Adelie, Gentoo, Chinstrap) |
 | `body_mass_g`       | integer | Body mass in g                              |
 | `flipper_length_mm` | integer | Flipper length in mm                        |

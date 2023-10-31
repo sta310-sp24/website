@@ -2,246 +2,250 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sta210-fa23.netlify.app/schedule.html</loc>
-    <lastmod>2023-10-30T13:44:59.941Z</lastmod>
+    <lastmod>2023-10-31T01:07:13.506Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/syllabus.html</loc>
-    <lastmod>2023-10-30T13:44:56.554Z</lastmod>
+    <lastmod>2023-10-31T01:07:10.000Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/stats-experience.html</loc>
-    <lastmod>2023-10-30T13:44:47.744Z</lastmod>
+    <lastmod>2023-10-31T01:07:01.818Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/14-cross-validation-pt2.html</loc>
-    <lastmod>2023-10-30T13:44:46.826Z</lastmod>
+    <lastmod>2023-10-31T01:07:00.971Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/11-feature-engineering.html</loc>
-    <lastmod>2023-10-30T13:44:45.192Z</lastmod>
+    <lastmod>2023-10-31T01:06:59.609Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/16-logistic-intro.html</loc>
-    <lastmod>2023-10-30T13:44:42.927Z</lastmod>
+    <lastmod>2023-10-31T01:06:57.556Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/12-model-workflow.html</loc>
-    <lastmod>2023-10-30T13:44:40.034Z</lastmod>
+    <lastmod>2023-10-31T01:06:55.791Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/05-slr-sim-testing.html</loc>
-    <lastmod>2023-10-30T13:44:36.759Z</lastmod>
+    <lastmod>2023-10-31T01:06:53.395Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/10-exam-01-review.html</loc>
-    <lastmod>2023-10-30T13:44:33.712Z</lastmod>
+    <lastmod>2023-10-31T01:06:51.354Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/01-welcome.html</loc>
-    <lastmod>2023-10-30T13:44:32.521Z</lastmod>
+    <lastmod>2023-10-31T01:06:50.237Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/03-slr-tidymodels.html</loc>
-    <lastmod>2023-10-30T13:44:30.444Z</lastmod>
+    <lastmod>2023-10-31T01:06:48.058Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/03-slr-intro.html</loc>
-    <lastmod>2023-10-30T13:44:28.513Z</lastmod>
+    <lastmod>2023-10-31T01:06:46.132Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/lab-04.html</loc>
-    <lastmod>2023-10-30T13:44:27.149Z</lastmod>
+    <lastmod>2023-10-31T01:06:44.863Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/lab-01.html</loc>
-    <lastmod>2023-10-30T13:44:26.325Z</lastmod>
+    <lastmod>2023-10-31T01:06:44.128Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/15-mlr-inference.html</loc>
-    <lastmod>2023-10-30T13:44:24.904Z</lastmod>
+    <lastmod>2023-10-31T01:06:42.773Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/lab-02.html</loc>
-    <lastmod>2023-10-30T13:44:22.134Z</lastmod>
+    <lastmod>2023-10-31T01:06:39.992Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/computing-access.html</loc>
-    <lastmod>2023-10-30T13:44:21.022Z</lastmod>
+    <lastmod>2023-10-31T01:06:39.012Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/project-instructions.html</loc>
-    <lastmod>2023-10-30T13:44:20.278Z</lastmod>
+    <lastmod>2023-10-31T01:06:38.349Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-02-bikeshare.html</loc>
-    <lastmod>2023-10-30T13:44:18.889Z</lastmod>
+    <lastmod>2023-10-31T01:06:36.990Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-07-model-eval.html</loc>
-    <lastmod>2023-10-30T13:44:17.678Z</lastmod>
+    <lastmod>2023-10-31T01:06:35.583Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-08-exam-01-review.html</loc>
-    <lastmod>2023-10-30T13:44:16.245Z</lastmod>
+    <lastmod>2023-10-31T01:06:33.942Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-05-sim-testing.html</loc>
-    <lastmod>2023-10-30T13:44:14.793Z</lastmod>
+    <lastmod>2023-10-31T01:06:32.433Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-09-feature-engineering.html</loc>
-    <lastmod>2023-10-30T13:44:13.487Z</lastmod>
+    <lastmod>2023-10-31T01:06:31.113Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-04-bootstrap.html</loc>
-    <lastmod>2023-10-30T13:44:12.086Z</lastmod>
+    <lastmod>2023-10-31T01:06:29.856Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/prepare/week-02.html</loc>
-    <lastmod>2023-10-30T13:44:10.777Z</lastmod>
+    <lastmod>2023-10-31T01:06:28.480Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/prepare/sep-11.html</loc>
-    <lastmod>2023-10-30T13:44:10.165Z</lastmod>
+    <lastmod>2023-10-31T01:06:27.715Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/hw/hw-02.html</loc>
-    <lastmod>2023-10-30T13:44:09.548Z</lastmod>
+    <lastmod>2023-10-31T01:06:27.086Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/hw/hw-01.html</loc>
-    <lastmod>2023-10-30T13:44:07.791Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta210-fa23.netlify.app/labs/lab-04.html</loc>
-    <lastmod>2023-10-30T13:44:06.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta210-fa23.netlify.app/labs/lab-01.html</loc>
-    <lastmod>2023-10-30T13:44:04.697Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta210-fa23.netlify.app/labs/lab-02.html</loc>
-    <lastmod>2023-10-30T13:44:02.422Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta210-fa23.netlify.app/labs/lab-03.html</loc>
-    <lastmod>2023-10-30T13:44:03.318Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta210-fa23.netlify.app/labs/lab-00.html</loc>
-    <lastmod>2023-10-30T13:44:05.005Z</lastmod>
+    <lastmod>2023-10-31T01:06:25.219Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/labs/lab-05.html</loc>
-    <lastmod>2023-10-30T13:44:06.805Z</lastmod>
+    <lastmod>2023-10-31T01:06:20.930Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta210-fa23.netlify.app/labs/lab-00.html</loc>
+    <lastmod>2023-10-31T01:06:19.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta210-fa23.netlify.app/labs/lab-03.html</loc>
+    <lastmod>2023-10-31T01:06:16.990Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta210-fa23.netlify.app/labs/lab-02.html</loc>
+    <lastmod>2023-10-31T01:06:16.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta210-fa23.netlify.app/labs/lab-01.html</loc>
+    <lastmod>2023-10-31T01:06:18.719Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta210-fa23.netlify.app/labs/lab-04.html</loc>
+    <lastmod>2023-10-31T01:06:20.057Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta210-fa23.netlify.app/labs/lab-06.html</loc>
+    <lastmod>2023-10-31T01:06:24.209Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/hw/hw-03.html</loc>
-    <lastmod>2023-10-30T13:44:08.731Z</lastmod>
+    <lastmod>2023-10-31T01:06:26.208Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/prepare/oct-09.html</loc>
-    <lastmod>2023-10-30T13:44:09.859Z</lastmod>
+    <lastmod>2023-10-31T01:06:27.388Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/prepare/sep-13.html</loc>
-    <lastmod>2023-10-30T13:44:10.469Z</lastmod>
+    <lastmod>2023-10-31T01:06:28.023Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-11-cross-validation.html</loc>
-    <lastmod>2023-10-30T13:44:11.502Z</lastmod>
+    <lastmod>2023-10-31T01:06:29.238Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-10-model-workflow.html</loc>
-    <lastmod>2023-10-30T13:44:12.789Z</lastmod>
+    <lastmod>2023-10-31T01:06:30.508Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-06-conditions.html</loc>
-    <lastmod>2023-10-30T13:44:14.169Z</lastmod>
+    <lastmod>2023-10-31T01:06:31.794Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-03-slr.html</loc>
-    <lastmod>2023-10-30T13:44:15.492Z</lastmod>
+    <lastmod>2023-10-31T01:06:33.154Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-12-logistic-intro.html</loc>
-    <lastmod>2023-10-30T13:44:16.884Z</lastmod>
+    <lastmod>2023-10-31T01:06:34.629Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/ae/ae-01-movies.html</loc>
-    <lastmod>2023-10-30T13:44:18.314Z</lastmod>
+    <lastmod>2023-10-31T01:06:36.271Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/support.html</loc>
-    <lastmod>2023-10-30T13:44:19.328Z</lastmod>
+    <lastmod>2023-10-31T01:06:37.474Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/computing-r-resources.html</loc>
-    <lastmod>2023-10-30T13:44:20.630Z</lastmod>
+    <lastmod>2023-10-31T01:06:38.680Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/index.html</loc>
-    <lastmod>2023-10-30T13:44:21.539Z</lastmod>
+    <lastmod>2023-10-31T01:06:39.393Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/lab-03.html</loc>
-    <lastmod>2023-10-30T13:44:22.486Z</lastmod>
+    <lastmod>2023-10-31T01:06:40.405Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/04-slr-bootstrap.html</loc>
-    <lastmod>2023-10-30T13:44:25.884Z</lastmod>
+    <lastmod>2023-10-31T01:06:43.728Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/lab-00.html</loc>
-    <lastmod>2023-10-30T13:44:26.757Z</lastmod>
+    <lastmod>2023-10-31T01:06:44.470Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/lab-05.html</loc>
-    <lastmod>2023-10-30T13:44:27.532Z</lastmod>
+    <lastmod>2023-10-31T01:06:45.241Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/06-slr-math-models.html</loc>
-    <lastmod>2023-10-30T13:44:29.707Z</lastmod>
+    <lastmod>2023-10-31T01:06:47.333Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/09-mlr.html</loc>
-    <lastmod>2023-10-30T13:44:31.834Z</lastmod>
+    <lastmod>2023-10-31T01:06:49.492Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/02-big-picture.html</loc>
-    <lastmod>2023-10-30T13:44:33.287Z</lastmod>
+    <lastmod>2023-10-31T01:06:50.941Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/04-slr-evaluation.html</loc>
-    <lastmod>2023-10-30T13:44:35.087Z</lastmod>
+    <lastmod>2023-10-31T01:06:52.352Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/13-comparison-cv.html</loc>
-    <lastmod>2023-10-30T13:44:38.843Z</lastmod>
+    <lastmod>2023-10-31T01:06:54.885Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/08-slr-model-eval.html</loc>
-    <lastmod>2023-10-30T13:44:41.518Z</lastmod>
+    <lastmod>2023-10-31T01:06:56.500Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/07-slr-conditions-eval.html</loc>
-    <lastmod>2023-10-30T13:44:43.962Z</lastmod>
+    <lastmod>2023-10-31T01:06:58.475Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/slides/anova-table.html</loc>
-    <lastmod>2023-10-30T13:44:46.044Z</lastmod>
+    <lastmod>2023-10-31T01:07:00.329Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/links.html</loc>
-    <lastmod>2023-10-30T13:44:47.166Z</lastmod>
+    <lastmod>2023-10-31T01:07:01.304Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/project-tips.html</loc>
-    <lastmod>2023-10-30T13:44:48.839Z</lastmod>
+    <lastmod>2023-10-31T01:07:02.691Z</lastmod>
   </url>
   <url>
     <loc>https://sta210-fa23.netlify.app/computing-troubleshooting.html</loc>
-    <lastmod>2023-10-30T13:44:56.879Z</lastmod>
+    <lastmod>2023-10-31T01:07:10.294Z</lastmod>
   </url>
 </urlset>

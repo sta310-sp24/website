@@ -49,7 +49,7 @@ library(countdown)
 
     -   Sunday, November 05 at 11:59pm (Thursday labs)
 
-## Application exercise 
+## Application exercise
 
 ::: appex
 📋 AE 13: Logistic regression (continuation of AE 12)
@@ -159,11 +159,11 @@ $$
 #| echo: false
 ```
 
--   Odds of having high risk for the **High school or GED** group: $\frac{147}{1106} = 0.133$
+-   Odds of being high risk for the **High school or GED** group: $\frac{147}{1106} = 0.133$
 
--   Odds of having high risk for the **College** group: $\frac{70}{403} = 0.174$
+-   Odds of being high risk for the **College** group: $\frac{70}{403} = 0.174$
 
--   Based on this, we see those with a college degree had higher odds of having high risk for heart disease than those with a high school diploma or GED.
+-   Based on this, we see those with a college degree had higher odds of being high risk for heart disease than those with a high school diploma or GED.
 
 ## Odds ratio (OR) {.midi}
 
@@ -189,7 +189,7 @@ $$OR = \frac{\text{odds}_{College}}{\text{odds}_{HS}} = \frac{0.174}{0.133} = \m
 
 . . .
 
-The odds of having high risk for heart disease are 1.30 times higher for those with a college degree than those with a high school diploma or GED.
+The odds of being high risk for heart disease are 1.30 times higher for those with a college degree than those with a high school diploma or GED.
 
 ## OR: College vs. Some high school {.midi}
 
@@ -202,13 +202,13 @@ $$OR = \frac{\text{odds}_{College}}{\text{odds}_{Some HS}} = \frac{70/403}{323/1
 
 . . .
 
-The odds of having high risk for having heart disease for those with a college degree are 0.751 times the odds of having high risk for heart disease for those with some high school.
+The odds of being high risk for having heart disease for those with a college degree are 0.751 times the odds of being high risk for heart disease for those with some high school.
 
 ## More natural interpretation
 
 -   It's more natural to interpret the odds ratio with a statement with the odds ratio greater than 1.
 
--   The odds of having high risk for heart disease are 1.33 times higher for those with some high school than those with a college degree.
+-   The odds of being high risk for heart disease are 1.33 times higher for those with some high school than those with a college degree.
 
 ## Making the table 1
 
@@ -294,7 +294,7 @@ tidy(heart_edu_fit) |>
 ```
 :::
 
-The **log-odds** of having high risk for heart disease are expected to be 0.286 less for those with a college degree compared to those with some high school (the baseline group).
+The **log-odds** of being high risk for heart disease are expected to be 0.286 less for those with a college degree compared to those with some high school (the baseline group).
 
 . . .
 
@@ -311,7 +311,7 @@ We would not use the interpretation in terms of log-odds in practice.
 ```
 :::
 
-The **odds** of having high risk for heart disease for those with a college degree are expected to be `r round(exp(-0.286),3)` (exp{-0.286}) **times** the odds for those with some high school.
+The **odds** of being high risk for heart disease for those with a college degree are expected to be `r round(exp(-0.286),3)` (exp{-0.286}) **times** the odds for those with some high school.
 
 ## Coefficients + odds ratios
 
@@ -353,7 +353,7 @@ tidy(heart_age_fit) |>
 ```
 :::
 
-For each additional year in age, the log-odds of having high risk for heart disease are expected to increase by 0.076.
+For each additional year in age, the log-odds of being high risk for heart disease are expected to increase by 0.076.
 
 . . .
 
@@ -370,8 +370,8 @@ We would not use the interpretation in terms of log-odds in practice.
 ```
 :::
 
--   For each additional year in age, the odds of having high risk for heart disease are expected to multiply by a factor of `r round(exp(0.076),2)` (exp{0.076}).
--   **Alternate interpretation:** For each additional year in age, the odds of having high risk for heart disease are expected to increase by 8%.
+-   For each additional year in age, the odds of being high risk for heart disease are expected to multiply by a factor of `r round(exp(0.076),2)` (exp{0.076}).
+-   **Alternate interpretation:** For each additional year in age, the odds of being high risk for heart disease are expected to increase by 8%.
 
 # Logistic regression: multiple predictors
 
@@ -399,7 +399,7 @@ tidy(heart_edu_age_fit) |>
 ```
 :::
 
-`education4`: The **log-odds** of having high risk for heart disease are expected to be 0.020 less for those with a college degree compared to those with some high school, **holding age constant.**
+`education4`: The **log-odds** of being high risk for heart disease are expected to be 0.020 less for those with a college degree compared to those with some high school, **holding age constant.**
 
 . . .
 
@@ -416,7 +416,7 @@ We would not use the interpretation in terms of log-odds in practice.
 ```
 :::
 
-`age`: For each additional year in age, the log-odds of having high risk for heart disease are expected to increase by 0.073, **holding education level constant.**
+`age`: For each additional year in age, the log-odds of being high risk for heart disease are expected to increase by 0.073, **holding education level constant.**
 
 . . .
 
@@ -424,7 +424,7 @@ We would not use the interpretation in terms of log-odds in practice.
 We would not use the interpretation in terms of log-odds in practice.
 :::
 
-## Interpretation in terms of odds
+## Interpretation in terms of odds {.midi}
 
 ::: small
 ```{r}
@@ -433,13 +433,13 @@ We would not use the interpretation in terms of log-odds in practice.
 ```
 :::
 
-`education4`: The **odds** of having high risk for heart disease for those with a college degree are expected to be `r round(exp(-0.020),3)` (exp{-0.020}) **times** the odds for those with some high school, **holding age constant**.
+`education4`: The **odds** of being high risk for heart disease for those with a college degree are expected to be `r round(exp(-0.020),3)` (exp{-0.020}) **times** the odds for those with some high school, **holding age constant**.
 
 ::: callout-note
 In logistic regression with 2+ predictors, $exp\{\hat{\beta}_j\}$ is often called the **adjusted odds ratio (AOR).**
 :::
 
-## Interpretation in terms of odds
+## Interpretation in terms of odds {.midi}
 
 ::: small
 ```{r}
@@ -448,7 +448,7 @@ In logistic regression with 2+ predictors, $exp\{\hat{\beta}_j\}$ is often calle
 ```
 :::
 
-`age`: For each additional year in age, the odds having high risk for heart disease are expected to multiply by a factor of `r round(exp(0.073),2)` (`exp(0.073)`), **holding education level constant**.
+`age`: For each additional year in age, the odds being high risk for heart disease are expected to multiply by a factor of `r round(exp(0.073),2)` (`exp(0.073)`), **holding education level constant**.
 
 ::: callout-note
 In logistic regression with 2+ predictors, $exp\{\hat{\beta}_j\}$ is often called the **adjusted odds ratio (AOR).**

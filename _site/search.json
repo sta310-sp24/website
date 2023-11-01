@@ -844,7 +844,7 @@
     "href": "slides/17-odds-ratios.html#compare-the-odds-for-two-groups-1",
     "title": "Odds ratios",
     "section": "Compare the odds for two groups",
-    "text": "Compare the odds for two groups\n\n\n\n\n\nEducation\nHigh risk\nNot high risk\n\n\n\n\nSome high school\n323\n1397\n\n\nHigh school or GED\n147\n1106\n\n\nSome college or vocational school\n88\n601\n\n\nCollege\n70\n403\n\n\n\n\n\n\nOdds of having high risk for the High school or GED group: \\(\\frac{147}{1106} = 0.133\\)\nOdds of having high risk for the College group: \\(\\frac{70}{403} = 0.174\\)\nBased on this, we see those with a college degree had higher odds of having high risk for heart disease than those with a high school diploma or GED."
+    "text": "Compare the odds for two groups\n\n\n\n\n\nEducation\nHigh risk\nNot high risk\n\n\n\n\nSome high school\n323\n1397\n\n\nHigh school or GED\n147\n1106\n\n\nSome college or vocational school\n88\n601\n\n\nCollege\n70\n403\n\n\n\n\n\n\nOdds of being high risk for the High school or GED group: \\(\\frac{147}{1106} = 0.133\\)\nOdds of being high risk for the College group: \\(\\frac{70}{403} = 0.174\\)\nBased on this, we see those with a college degree had higher odds of being high risk for heart disease than those with a high school diploma or GED."
   },
   {
     "objectID": "slides/17-odds-ratios.html#odds-ratio-or",
@@ -858,21 +858,21 @@
     "href": "slides/17-odds-ratios.html#or-college-vs.-high-school-or-ged",
     "title": "Odds ratios",
     "section": "OR: College vs. High school or GED",
-    "text": "OR: College vs. High school or GED\n\n\n\n\n\nEducation\nHigh risk\nNot high risk\n\n\n\n\nSome high school\n323\n1397\n\n\nHigh school or GED\n147\n1106\n\n\nSome college or vocational school\n88\n601\n\n\nCollege\n70\n403\n\n\n\n\n\n\\[OR = \\frac{\\text{odds}_{College}}{\\text{odds}_{HS}} = \\frac{0.174}{0.133} = \\mathbf{1.308}\\]\n\nThe odds of having high risk for heart disease are 1.30 times higher for those with a college degree than those with a high school diploma or GED."
+    "text": "OR: College vs. High school or GED\n\n\n\n\n\nEducation\nHigh risk\nNot high risk\n\n\n\n\nSome high school\n323\n1397\n\n\nHigh school or GED\n147\n1106\n\n\nSome college or vocational school\n88\n601\n\n\nCollege\n70\n403\n\n\n\n\n\n\\[OR = \\frac{\\text{odds}_{College}}{\\text{odds}_{HS}} = \\frac{0.174}{0.133} = \\mathbf{1.308}\\]\n\nThe odds of being high risk for heart disease are 1.30 times higher for those with a college degree than those with a high school diploma or GED."
   },
   {
     "objectID": "slides/17-odds-ratios.html#or-college-vs.-some-high-school",
     "href": "slides/17-odds-ratios.html#or-college-vs.-some-high-school",
     "title": "Odds ratios",
     "section": "OR: College vs. Some high school",
-    "text": "OR: College vs. Some high school\n\n\n\n\n\nEducation\nHigh risk\nNot high risk\n\n\n\n\nSome high school\n323\n1397\n\n\nHigh school or GED\n147\n1106\n\n\nSome college or vocational school\n88\n601\n\n\nCollege\n70\n403\n\n\n\n\n\n\\[OR = \\frac{\\text{odds}_{College}}{\\text{odds}_{Some HS}} = \\frac{70/403}{323/1397} = 0.751\\]\n\nThe odds of having high risk for having heart disease for those with a college degree are 0.751 times the odds of having high risk for heart disease for those with some high school."
+    "text": "OR: College vs. Some high school\n\n\n\n\n\nEducation\nHigh risk\nNot high risk\n\n\n\n\nSome high school\n323\n1397\n\n\nHigh school or GED\n147\n1106\n\n\nSome college or vocational school\n88\n601\n\n\nCollege\n70\n403\n\n\n\n\n\n\\[OR = \\frac{\\text{odds}_{College}}{\\text{odds}_{Some HS}} = \\frac{70/403}{323/1397} = 0.751\\]\n\nThe odds of being high risk for having heart disease for those with a college degree are 0.751 times the odds of being high risk for heart disease for those with some high school."
   },
   {
     "objectID": "slides/17-odds-ratios.html#more-natural-interpretation",
     "href": "slides/17-odds-ratios.html#more-natural-interpretation",
     "title": "Odds ratios",
     "section": "More natural interpretation",
-    "text": "More natural interpretation\n\nIt’s more natural to interpret the odds ratio with a statement with the odds ratio greater than 1.\nThe odds of having high risk for heart disease are 1.33 times higher for those with some high school than those with a college degree."
+    "text": "More natural interpretation\n\nIt’s more natural to interpret the odds ratio with a statement with the odds ratio greater than 1.\nThe odds of being high risk for heart disease are 1.33 times higher for those with some high school than those with a college degree."
   },
   {
     "objectID": "slides/17-odds-ratios.html#making-the-table-1",
@@ -928,14 +928,14 @@
     "href": "slides/17-odds-ratios.html#interpreting-education4-log-odds",
     "title": "Odds ratios",
     "section": "Interpreting education4: log-odds",
-    "text": "Interpreting education4: log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-1.464\n0.062\n-23.719\n0.000\n\n\neducation2\n-0.554\n0.107\n-5.159\n0.000\n\n\neducation3\n-0.457\n0.130\n-3.520\n0.000\n\n\neducation4\n-0.286\n0.143\n-1.994\n0.046\n\n\n\n\n\n\nThe log-odds of having high risk for heart disease are expected to be 0.286 less for those with a college degree compared to those with some high school (the baseline group).\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
+    "text": "Interpreting education4: log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-1.464\n0.062\n-23.719\n0.000\n\n\neducation2\n-0.554\n0.107\n-5.159\n0.000\n\n\neducation3\n-0.457\n0.130\n-3.520\n0.000\n\n\neducation4\n-0.286\n0.143\n-1.994\n0.046\n\n\n\n\n\n\nThe log-odds of being high risk for heart disease are expected to be 0.286 less for those with a college degree compared to those with some high school (the baseline group).\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
   },
   {
     "objectID": "slides/17-odds-ratios.html#interpreting-education4-odds",
     "href": "slides/17-odds-ratios.html#interpreting-education4-odds",
     "title": "Odds ratios",
     "section": "Interpreting education4: odds",
-    "text": "Interpreting education4: odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-1.464\n0.062\n-23.719\n0.000\n\n\neducation2\n-0.554\n0.107\n-5.159\n0.000\n\n\neducation3\n-0.457\n0.130\n-3.520\n0.000\n\n\neducation4\n-0.286\n0.143\n-1.994\n0.046\n\n\n\n\n\n\nThe odds of having high risk for heart disease for those with a college degree are expected to be 0.751 (exp{-0.286}) times the odds for those with some high school."
+    "text": "Interpreting education4: odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-1.464\n0.062\n-23.719\n0.000\n\n\neducation2\n-0.554\n0.107\n-5.159\n0.000\n\n\neducation3\n-0.457\n0.130\n-3.520\n0.000\n\n\neducation4\n-0.286\n0.143\n-1.994\n0.046\n\n\n\n\n\n\nThe odds of being high risk for heart disease for those with a college degree are expected to be 0.751 (exp{-0.286}) times the odds for those with some high school."
   },
   {
     "objectID": "slides/17-odds-ratios.html#coefficients-odds-ratios",
@@ -956,14 +956,14 @@
     "href": "slides/17-odds-ratios.html#interpreting-age-log-odds",
     "title": "Odds ratios",
     "section": "Interpreting age: log-odds",
-    "text": "Interpreting age: log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.619\n0.288\n-19.498\n0\n\n\nage\n0.076\n0.005\n14.174\n0\n\n\n\n\n\n\nFor each additional year in age, the log-odds of having high risk for heart disease are expected to increase by 0.076.\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
+    "text": "Interpreting age: log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.619\n0.288\n-19.498\n0\n\n\nage\n0.076\n0.005\n14.174\n0\n\n\n\n\n\n\nFor each additional year in age, the log-odds of being high risk for heart disease are expected to increase by 0.076.\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
   },
   {
     "objectID": "slides/17-odds-ratios.html#interpreting-age-odds",
     "href": "slides/17-odds-ratios.html#interpreting-age-odds",
     "title": "Odds ratios",
     "section": "Interpreting age: odds",
-    "text": "Interpreting age: odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.619\n0.288\n-19.498\n0\n\n\nage\n0.076\n0.005\n14.174\n0\n\n\n\n\n\n\n\nFor each additional year in age, the odds of having high risk for heart disease are expected to multiply by a factor of 1.08 (exp{0.076}).\nAlternate interpretation: For each additional year in age, the odds of having high risk for heart disease are expected to increase by 8%."
+    "text": "Interpreting age: odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.619\n0.288\n-19.498\n0\n\n\nage\n0.076\n0.005\n14.174\n0\n\n\n\n\n\n\n\nFor each additional year in age, the odds of being high risk for heart disease are expected to multiply by a factor of 1.08 (exp{0.076}).\nAlternate interpretation: For each additional year in age, the odds of being high risk for heart disease are expected to increase by 8%."
   },
   {
     "objectID": "slides/17-odds-ratios.html#multiple-predictors",
@@ -977,28 +977,28 @@
     "href": "slides/17-odds-ratios.html#interpretation-in-terms-of-log-odds",
     "title": "Odds ratios",
     "section": "Interpretation in terms of log-odds",
-    "text": "Interpretation in terms of log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\neducation4: The log-odds of having high risk for heart disease are expected to be 0.020 less for those with a college degree compared to those with some high school, holding age constant.\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
+    "text": "Interpretation in terms of log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\neducation4: The log-odds of being high risk for heart disease are expected to be 0.020 less for those with a college degree compared to those with some high school, holding age constant.\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
   },
   {
     "objectID": "slides/17-odds-ratios.html#interpretation-in-terms-of-log-odds-1",
     "href": "slides/17-odds-ratios.html#interpretation-in-terms-of-log-odds-1",
     "title": "Odds ratios",
     "section": "Interpretation in terms of log-odds",
-    "text": "Interpretation in terms of log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\nage: For each additional year in age, the log-odds of having high risk for heart disease are expected to increase by 0.073, holding education level constant.\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
+    "text": "Interpretation in terms of log-odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\nage: For each additional year in age, the log-odds of being high risk for heart disease are expected to increase by 0.073, holding education level constant.\n\n\n\n\n\n\n\nWarning\n\n\nWe would not use the interpretation in terms of log-odds in practice."
   },
   {
     "objectID": "slides/17-odds-ratios.html#interpretation-in-terms-of-odds",
     "href": "slides/17-odds-ratios.html#interpretation-in-terms-of-odds",
     "title": "Odds ratios",
     "section": "Interpretation in terms of odds",
-    "text": "Interpretation in terms of odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\neducation4: The odds of having high risk for heart disease for those with a college degree are expected to be 0.98 (exp{-0.020}) times the odds for those with some high school, holding age constant.\n\n\n\n\n\n\nNote\n\n\nIn logistic regression with 2+ predictors, \\(exp\\{\\hat{\\beta}_j\\}\\) is often called the adjusted odds ratio (AOR)."
+    "text": "Interpretation in terms of odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\neducation4: The odds of being high risk for heart disease for those with a college degree are expected to be 0.98 (exp{-0.020}) times the odds for those with some high school, holding age constant.\n\n\n\n\n\n\nNote\n\n\nIn logistic regression with 2+ predictors, \\(exp\\{\\hat{\\beta}_j\\}\\) is often called the adjusted odds ratio (AOR)."
   },
   {
     "objectID": "slides/17-odds-ratios.html#interpretation-in-terms-of-odds-1",
     "href": "slides/17-odds-ratios.html#interpretation-in-terms-of-odds-1",
     "title": "Odds ratios",
     "section": "Interpretation in terms of odds",
-    "text": "Interpretation in terms of odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\nage: For each additional year in age, the odds having high risk for heart disease are expected to multiply by a factor of 1.08 (exp(0.073)), holding education level constant.\n\n\n\n\n\n\nNote\n\n\nIn logistic regression with 2+ predictors, \\(exp\\{\\hat{\\beta}_j\\}\\) is often called the adjusted odds ratio (AOR)."
+    "text": "Interpretation in terms of odds\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-5.385\n0.308\n-17.507\n0.000\n\n\neducation2\n-0.242\n0.112\n-2.162\n0.031\n\n\neducation3\n-0.235\n0.134\n-1.761\n0.078\n\n\neducation4\n-0.020\n0.148\n-0.136\n0.892\n\n\nage\n0.073\n0.005\n13.385\n0.000\n\n\n\n\n\n\nage: For each additional year in age, the odds being high risk for heart disease are expected to multiply by a factor of 1.08 (exp(0.073)), holding education level constant.\n\n\n\n\n\n\nNote\n\n\nIn logistic regression with 2+ predictors, \\(exp\\{\\hat{\\beta}_j\\}\\) is often called the adjusted odds ratio (AOR)."
   },
   {
     "objectID": "slides/17-odds-ratios.html#recap",

@@ -2,7 +2,7 @@
 title: "Odds ratios"
 subtitle: "Interpreting coefficients of the logistic regression model"
 author: "Prof. Maria Tackett"
-date: "2022-11-07"
+date: "2023-11-01"
 date-format: "MMM DD, YYYY"
 footer: "[🔗 STA 210 - Fall 2023 -  Schedule](https://sta210-fa23.netlify.app/schedule)"
 logo: "../images/logo.png"
@@ -43,7 +43,7 @@ library(countdown)
 
 -   HW 03 TODAY at 11:59pm
 
--   Lab 05 due
+-   Lab 06 due
 
     -   Friday, November 03 at 11:59pm (Tuesday labs)
 

@@ -8,8 +8,6 @@ library(knitr)
 library(broom)
 ```
 
-Instructions will be posted when the project is assigned.
-
 ## Timeline
 
 [Project proposal](#project-proposal)
@@ -26,7 +24,7 @@ Instructions will be posted when the project is assigned.
 
 [Round 1 submission (optional)](#round1-submission) due Friday, December 1
 
-[Presentation](#presentation) + \[Presentation comments\]
+[Presentation](#presentation) + [Presentation comments](#presentation-comments)
 
 -   Tuesday, December 5 (Tuesday labs)
 
@@ -174,6 +172,52 @@ The proposal is worth 15 points and will be graded based on accurately and compr
 
 -   **Needs Improvement (7 or fewer points points):** Requirements are largely unmet, and there are large elements that are incomplete and/or inaccurate. Substantial revisions of the work required before team is ready for modeling.
 
+## Draft report + peer review {#draft-report-peer-review}
+
+The purpose of the draft and peer review is to give you an opportunity to get early feedback on your analysis. Therefore, the draft and peer review will focus primarily on the exploratory data analysis, modeling, and initial interpretations.
+
+### Draft report
+
+::: callout-important
+## Due dates 
+
+Draft is due i**n your project GitHub repo at** **9am** on
+
+-   Tuesday, November 14 (Tuesday labs)
+-   Thursday, November 16 (Thursday labs)
+:::
+
+Write the draft in the **written-report.qmd** file in your project repo. You do [**not**]{.underline} need to submit the draft on Gradescope. The draft will be graded based on whether there is demonstration of a reasonable attempt at each of the sections described below in the written-report.qmd file in our GitHub repo by the deadline.
+
+Below is a brief description of the sections to focus on in the draft:
+
+#### Introduction and data
+
+This section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won\'t fit in the body of the report, so focus on the EDA for the response variable and a few other interesting variables and relationships.
+
+#### Methodology
+
+This section includes a brief description of your modeling process. Explain the reasoning for the type of model you\'re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process.
+
+#### Results
+
+In this section, you will output the final model and include a brief discussion of the model assumptions, diagnostics, and any relevant model fit statistics.
+
+This section also includes initial interpretations and conclusions drawn from the model.
+
+### Peer review
+
+::: callout-important
+Peer review comments are due in GitHub at 11:59pm on
+
+-   Wednesday, November 15 (Tuesday labs)
+-   Friday, November 17 (Thursday labs)
+:::
+
+Critically reviewing others\' work is a crucial part of the scientific process, and STA 210 is no exception. Each lab team will be assigned two other teams\'s projects to review. Each team should push their draft to their GitHub repo by the 9am on the day their lab's draft is due. The lab that week will be dedicate to the peer review, so your team will have time to review and provide quality feedback to two other teams.
+
+During the peer review process, you will be provided read-only access to your partner teams\' GitHub repos. Provide your review in the form of GitHub issues to your partner team\'s GitHub repo using the issue template provided in the repo. The peer review will be graded on the extent to which it comprehensively and constructively addresses the components of the partner team\'s report: the research context and motivation, exploratory data analysis, modeling, interpretations, and conclusions.
+
 ## Written report {#written-report}
 
 Your written report must be completed in the `written-report.qmd` file and must be reproducible. All team members should contribute to the GitHub repository, with regular meaningful commits.
@@ -246,29 +290,27 @@ This is an assessment of the overall presentation and formatting of the written 
 
 <!-- ::: -->
 
-## Draft report + peer review {#draft-report-peer-review}
-
 ## Round 1 submission (optional) {#round1-submission}
 
-The Round 1 submission is an opportunity to receive detailed feedback on your analysis and [written report](#written-report). The feedback will only be on the content that is submitted, so more "complete" drafts will receive more detailed feedback. At this stage, you will also be notified of the grade you would receive at that point. You will have the option to keep the grade (and thus you don't need to turn in an updated report) or resubmit the written report by the final submission deadline for grading.
+::: callout-important
+## Due date 
 
-<!-- To submit the draft: -->
+Friday, December 1 at 11:59pm on GitHub (all teams)
 
-<!-- 1\. Push the updated `written-report.qmd` and `written-report.pdf` to your GitHub repo. -->
+Reports submitted after this date will not receive preliminary feedback.
+:::
 
-<!-- 2\. Open an issue with the title "Round 1 Submission". You can use the template issue in the GitHub repo. Make sure I am tagged in the issue (\@matackett), so I receive notification of your Round 1 submission. See [Creating an issue from a repository](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-repository) for instructions on opening an issue. Please ask a member of the teaching team for assistance if you need help opening the issue. -->
+The Round 1 submission is an opportunity to receive detailed feedback on your analysis and [written report](#written-report) before the final submission. Therefore, to make the feedback most useful, ***you must submit a complete written report to receive feedback.*** You will also be notified of the grade you would receive at that point. You will have the option to keep the grade (and thus you don't need to turn in an updated report) or resubmit the written report by the final submission deadline to receive a new grade.
 
-<!-- ::: callout-important -->
+#### **To submit the Round 1 submission:** 
 
-<!-- You must complete <u>both</u> steps by **Tuesday, November 22, 11:59pm** to receive preliminary feedback.\ -->
+1.   Push the updated `written-report.qmd` and `written-report.pdf` to your GitHub repo.
 
-<!-- \ -->
+2.  Open an issue with the title "Round 1 Submission". You can use the template issue in the GitHub repo. Make sure I am tagged in the issue (`@matackett`), so I receive an email notification of your Round 1 submission. See [Creating an issue from a repository](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-repository) for instructions on opening an issue. Please ask a member of the teaching team for assistance if you need help opening the issue.
 
-<!-- Reports submitted after that date will not receive preliminary feedback. -->
-
-<!-- ::: -->
-
-<!-- Note that this is optional, so there is <u>**no**</u> grading penalty for turning in nothing for the Round 1 submission. Due to time constraints at the end of the semester, only high-level feedback will be given for the reports submitted at the final written report deadline in December. -->
+::: callout-note
+Note that this is optional, so there is [**no**]{.underline}grade penalty for not turning in a Round 1 submission. Due to time constraints at the end of the semester, only high-level feedback will be given for the reports submitted at the final written report deadline on December 13.
+:::
 
 ## Presentation {#presentation}
 

@@ -6269,7 +6269,7 @@
     "href": "slides/18-logistic-prediction.html#odds-ratios-practice",
     "title": "Logistic Regression: Prediction + classification",
     "section": "Odds ratios practice",
-    "text": "Odds ratios practice\nLet’s take a look at one of the models from Lab 06.\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-39.151\n7.149\n-5.477\n0.000\n\n\nspeciesChinstrap\n-1.870\n0.580\n-3.221\n0.001\n\n\nspeciesGentoo\n0.512\n0.843\n0.607\n0.544\n\n\nflipper_length_mm\n0.195\n0.037\n5.295\n0.000\n\n\n\n\n\n\n\nInterpret the coefficient of flipper_length_mm in terms of the odds a penguin is large.\nInterpret the coefficient of speciesChinstrap in terms of the odds a penguin is large.\n\n\n\n\n\n−+\n03:00"
+    "text": "Odds ratios practice\nLet’s take a look at one of the models from Lab 06 using flipper length and species to predict the odds a penguin is large (has a body mass above average).\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-39.151\n7.149\n-5.477\n0.000\n\n\nspeciesChinstrap\n-1.870\n0.580\n-3.221\n0.001\n\n\nspeciesGentoo\n0.512\n0.843\n0.607\n0.544\n\n\nflipper_length_mm\n0.195\n0.037\n5.295\n0.000\n\n\n\n\n\n\n\nInterpret the coefficient of flipper_length_mm in terms of the odds a penguin is large.\nInterpret the coefficient of speciesChinstrap in terms of the odds a penguin is large.\n\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/18-logistic-prediction.html#topics",
@@ -6402,7 +6402,7 @@
     "href": "slides/18-logistic-prediction.html#false-positive-and-negative",
     "title": "Logistic Regression: Prediction + classification",
     "section": "False positive and negative",
-    "text": "False positive and negative\n\n\n\n\n\n\n\n\n\nEmail is spam\nEmail is not spam\n\n\n\n\nEmail classified as spam\nTrue positive\nFalse positive (Type 1 error)\n\n\nEmail classified as not spam\nFalse negative (Type 2 error)\nTrue negative\n\n\n\n\n\n\nFalse negative rate = P(classified as not spam | Email spam) = FN / (TP + FN)\nFalse positive rate = P(classified as spam | Email not spam) = FP / (FP + TN)"
+    "text": "False positive and negative\n\n\n\n\n\n\n\n\n\nEmail is spam\nEmail is not spam\n\n\n\n\nEmail classified as spam\nTrue positive\nFalse positive (Type 1 error)\n\n\nEmail classified as not spam\nFalse negative (Type 2 error)\nTrue negative\n\n\n\n\n\n\nFalse negative rate = P(classified as not spam | Email spam)\n\n= FN / (TP + FN)\n\nFalse positive rate = P(classified as spam | Email not spam)\n\n= FP / (FP + TN)"
   },
   {
     "objectID": "slides/18-logistic-prediction.html#sensitivity-and-specificity-1",

@@ -58,7 +58,7 @@ library(countdown)
 
 ## Odds ratios practice {.small}
 
-Let's take a look at one of the models from [Lab 06](../labs/lab-06.html).
+Let's take a look at one of the models from [Lab 06](../labs/lab-06.html) using flipper length and species to predict the odds a penguin is large (has a body mass above average).
 
 ```{r}
 #| echo: false
@@ -318,9 +318,13 @@ email_pred |>
 
 . . .
 
--   False negative rate = P(classified as not spam \| Email spam) = `FN / (TP + FN)`
+-   False negative rate = P(classified as not spam \| Email spam)
 
--   False positive rate = P(classified as spam \| Email not spam) = `FP / (FP + TN)`
+= `FN / (TP + FN)`
+
+-   False positive rate = P(classified as spam \| Email not spam)
+
+= `FP / (FP + TN)`
 
 ## Sensitivity and specificity {.midi}
 

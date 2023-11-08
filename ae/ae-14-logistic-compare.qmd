@@ -50,7 +50,7 @@ leukemia <- read_csv("data/leukemia.csv") |>
 
 ## Comparing models
 
-Consider a model with all the pre-treatment variables: `Age`, `Smear`, `Infil`, `Index`, `Blasts` and `Temp`. Fit a model using these six variables to predict whether a patient responded to the treatment. Call the model `full_model`. Display the model.
+1.  Consider a model with all the pre-treatment variables: `Age`, `Smear`, `Infil`, `Index`, `Blasts` and `Temp`. Fit a model using these six variables to predict whether a patient responded to the treatment. Call the model `full_model`. Display the model.
 
 ```{r}
 #| label: full-model 
@@ -58,9 +58,9 @@ Consider a model with all the pre-treatment variables: `Age`, `Smear`, `Infil`, 
 # add code
 ```
 
-1.  Based on the model, which pre-treatment variables are statistically significant using a threshold of $\alpha = 0.05$? (We will talk more about inference for logistic regression coefficients in an upcoming lecture)
+2.  Based on the model, which pre-treatment variables are statistically significant using a threshold of $\alpha = 0.05$? (We will talk more about inference for logistic regression coefficients in an upcoming lecture.)
 
-2.  Fit a model that only includes the statistically significant predictors. Call the model `reduced_model`.
+3.  Fit a model that only includes the statistically significant predictors. Call the model `reduced_model`.
 
 ```{r}
 #| label: reduced-model
@@ -68,7 +68,7 @@ Consider a model with all the pre-treatment variables: `Age`, `Smear`, `Infil`, 
 # add code
 ```
 
-3.  Use a drop-in-deviance test to compare a model that includes only the significant predictors to the full model. Which model do you choose based on the results of this test, which model do you choose as the final model?
+4.  Use a drop-in-deviance test to compare a model that includes only the significant predictors to the full model. Which model do you choose based on the results of this test?
 
 ```{r}
 #| label: drop-in-dev-test
@@ -76,7 +76,7 @@ Consider a model with all the pre-treatment variables: `Age`, `Smear`, `Infil`, 
 # add code
 ```
 
-4.  Does AIC agree with the conclusion from the previous exercise? Does BIC agree?
+5.  Is your choice based on AIC consistent with your choice from the previous exercise? What about a choice based on BIC?
 
 ```{r}
 #| label: aic-bic

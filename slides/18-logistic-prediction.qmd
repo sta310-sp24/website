@@ -310,7 +310,7 @@ email_pred |>
 ## False positive and negative {.midi}
 
 |                              | Email is spam                   | Email is not spam               |
-|-----------------------|-------------------------|-------------------------|
+|------------------------------|---------------------------------|---------------------------------|
 | Email classified as spam     | True positive                   | False positive (*Type 1 error*) |
 | Email classified as not spam | False negative (*Type 2 error*) | True negative                   |
 
@@ -329,7 +329,7 @@ email_pred |>
 ## Sensitivity and specificity {.midi}
 
 |                              | Email is spam                   | Email is not spam               |
-|-----------------------|-------------------------|-------------------------|
+|------------------------------|---------------------------------|---------------------------------|
 | Email classified as spam     | True positive                   | False positive (*Type 1 error*) |
 | Email classified as not spam | False negative (*Type 2 error*) | True negative                   |
 

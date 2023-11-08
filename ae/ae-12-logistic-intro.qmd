@@ -99,7 +99,7 @@ Suppose a person's cholesterol changes from 250 mg/dL to 200 mg/dL.
 
 8.  How do you expect the odds that this person is high risk for heart disease in the next 10 years to change?
 
-## Submission 
+## Submission
 
 ::: callout-important
 To submit the AE:

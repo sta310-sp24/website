@@ -533,8 +533,8 @@ Prof.&nbsp;Maria Tackett
 <p>Notice there is no error term when writing the statistical model for logistic regression. Why?</p>
 <ul>
 <li>Recall that the statistical model is the “data-generating” model</li>
-<li>Each observed <span class="math inline">\(Y\)</span> is generated from a Binomial distribution, <span class="math inline">\(Binomial(n, \pi)\)</span></li>
-<li>Therefore, the randomness is not produced by an error term but rather in the Binomial distribution used to generate <span class="math inline">\(Y\)</span></li>
+<li>Each individual observed <span class="math inline">\(Y\)</span> is generated from a Bernoulli distribution, <span class="math inline">\(Bernoulli(\pi)\)</span> (similarly we can think of <span class="math inline">\(n\)</span> observed <span class="math inline">\(Y\)</span>’s as generated from a Binomial distribution, <span class="math inline">\(Binomial(n,p)\)</span>)</li>
+<li>Therefore, the randomness is not produced by an error term but rather in the distribution used to generate <span class="math inline">\(Y\)</span></li>
 </ul>
 </div>
 </section>

@@ -227,7 +227,7 @@ During the peer review process, you will be provided read-only access to your pa
 ::: callout-note
 ## Peer review assignments
 
-Click here to see which project your team is reviewing. You'll spend about 30 minutes reviewing each project.
+[Click here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/Eez-RT2TVd9Cs_aLCOffbDcB2W7VnGmcZs0myTmdiy2qvA?e=WBpJx2) to see which project your team is reviewing. You'll spend about 30 minutes reviewing each project.
 :::
 
 When you get to lab, you should have access to the GitHub repos for the teams you're reviewing. In GitHub, search the repositories for `project`, and you should see the repos for the projects you\'re reviewing. You will be able to read the files in the repo and post issues, but you cannot push changes to the repo. You will have access to the repo until the deadline for the peer review.

@@ -152,8 +152,8 @@ where $\pi$ is the probability $Y = 1$.
 Notice there is no error term when writing the statistical model for logistic regression. Why?
 
 -   Recall that the statistical model is the "data-generating" model
--   Each observed $Y$ is generated from a Binomial distribution, $Binomial(n, \pi)$
--   Therefore, the randomness is not produced by an error term but rather in the Binomial distribution used to generate $Y$
+-   Each individual observed $Y$ is generated from a Bernoulli distribution, $Bernoulli(\pi)$ (similarly we can think of $n$ observed $Y$'s as generated from a Binomial distribution, $Binomial(n,p)$)
+-   Therefore, the randomness is not produced by an error term but rather in the distribution used to generate $Y$
 
 ## Estimating coefficients {.midi}
 

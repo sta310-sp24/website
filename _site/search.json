@@ -6073,7 +6073,7 @@
     "href": "slides/20-logistic-inf.html#statistical-model",
     "title": "LR: Inference + conditions",
     "section": "Statistical model",
-    "text": "Statistical model\nThe form of the statistical model for logistic regression is\n\\[\n\\log\\Big(\\frac{\\pi}{1-\\pi}\\Big) = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\dots + \\beta_pX_p\n\\]\nwhere \\(\\pi\\) is the probability \\(Y = 1\\).\n\nNotice there is no error term when writing the statistical model for logistic regression. Why?\n\nRecall that the statistical model is the “data-generating” model\nEach observed \\(Y\\) is generated from a Binomial distribution, \\(Binomial(n, \\pi)\\)\nTherefore, the randomness is not produced by an error term but rather in the Binomial distribution used to generate \\(Y\\)"
+    "text": "Statistical model\nThe form of the statistical model for logistic regression is\n\\[\n\\log\\Big(\\frac{\\pi}{1-\\pi}\\Big) = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\dots + \\beta_pX_p\n\\]\nwhere \\(\\pi\\) is the probability \\(Y = 1\\).\n\nNotice there is no error term when writing the statistical model for logistic regression. Why?\n\nRecall that the statistical model is the “data-generating” model\nEach individual observed \\(Y\\) is generated from a Bernoulli distribution, \\(Bernoulli(\\pi)\\) (similarly we can think of \\(n\\) observed \\(Y\\)’s as generated from a Binomial distribution, \\(Binomial(n,p)\\))\nTherefore, the randomness is not produced by an error term but rather in the distribution used to generate \\(Y\\)"
   },
   {
     "objectID": "slides/20-logistic-inf.html#estimating-coefficients-1",

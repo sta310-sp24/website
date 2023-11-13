@@ -52,7 +52,7 @@ library(countdown)
 
 -   Next week:
 
-    -   (Optional) Project meetings next Nov 20 & 21. [Click here](https://docs.google.com/spreadsheets/d/1EpTge-O1hBDnNy5KW7Y1FoNzIhpLoz4_Xx_nf_FbPgI/edit?usp=sharing) to sign up. Must sign up by Fri, Nov 17
+    -   (Optional) Project meetings Nov 20 & 21. [Click here](https://docs.google.com/spreadsheets/d/1EpTge-O1hBDnNy5KW7Y1FoNzIhpLoz4_Xx_nf_FbPgI/edit?usp=sharing) to sign up. Must sign up by Fri, Nov 17
 
     -   No lecture Mon, Nov 20
 

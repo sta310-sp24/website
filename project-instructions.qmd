@@ -187,7 +187,7 @@ Draft is due i**n your project GitHub repo at** **9am** on
 -   Thursday, November 16 (Thursday labs)
 :::
 
-Write the draft in the **written-report.qmd** file in your project repo. You do [**not**]{.underline} need to submit the draft on Gradescope. The draft will be graded based on whether there is demonstration of a reasonable attempt at each of the sections described below in the written-report.qmd file in our GitHub repo by the deadline.
+Write the draft in the **written-report.qmd** file in your project repo. You do [**not**]{.underline} need to submit the draft on Gradescope.
 
 Below is a brief description of the sections to focus on in the draft:
 
@@ -205,6 +205,10 @@ In this section, you will output the final model and include a brief discussion 
 
 This section also includes initial interpretations and conclusions drawn from the model.
 
+#### Grading 
+
+The draft will be graded based on whether there is demonstration of a reasonable attempt at each of the sections described below in the written-report.qmd file in our GitHub repo by the deadline.
+
 ### Peer review
 
 ::: callout-important
@@ -216,7 +220,43 @@ Peer review comments are due in GitHub at 11:59pm on
 
 Critically reviewing others' work is a crucial part of the scientific process, and STA 210 is no exception. Each lab team will be assigned two other teams's projects to review. Each team should push their draft to their GitHub repo by the 9am on the day their lab's draft is due. The lab that week will be dedicate to the peer review, so your team will have time to review and provide quality feedback to two other teams.
 
-During the peer review process, you will be provided read-only access to your partner teams' GitHub repos. Provide your review in the form of GitHub issues to your partner team's GitHub repo using the issue template provided in the repo. The peer review will be graded on the extent to which it comprehensively and constructively addresses the components of the partner team's report: the research context and motivation, exploratory data analysis, modeling, interpretations, and conclusions.
+During the peer review process, you will be provided read-only access to your partner teams' GitHub repos. Provide your review in the form of GitHub issues to your partner team's GitHub repo using the issue template provided in the repo.
+
+#### Steps for peer review
+
+::: callout-note
+## Peer review assignments
+
+Click here to see which project your team is reviewing. You'll spend about 30 minutes reviewing each project.
+:::
+
+When you get to lab, you should have access to the GitHub repos for the teams you're reviewing. In GitHub, search the repositories for `project`, and you should see the repos for the projects you\'re reviewing. You will be able to read the files in the repo and post issues, but you cannot push changes to the repo. You will have access to the repo until the deadline for the peer review.
+
+For each team you're reviewing:
+
+-   Open that team's repo, read the project draft, and browse the rest of the repo.
+
+-   Go to the **Issues** tab in that repo, click on **New issue**, and click on **Get started** for the Peer Review issue. Fill out this issue. You will answer the the following questions:
+
+    -   Describe the goal of the project.
+
+    -   Describe the data set used in the project. What are the observations in the data? What is the source of the data? How were the data originally collected?
+
+    -   Consider the exploratory data analysis (EDA). Describe one aspect of the EDA that is effective in helping you understand the data. Provide constructive feedback on how the team might improve the EDA.
+
+    -   Describe the statistical methods and analysis approach used.
+
+    -   Provide constructive feedback on how the team might improve their analysis. Make sure your feedback includes at least one comment on the statistical modeling aspect of the project, but also feel free to comment on aspects beyond the modeling.
+
+    -   What aspect of this project are you most interested in and would like to see highlighted in the presentation?
+
+    -   Provide constructive feedback on any issues with file and/or code organization.
+
+    -   (Optional) Any further comments or feedback?
+
+#### Grading 
+
+The peer review will be graded on the extent to which it comprehensively and constructively addresses the components of the partner team's report: the research context and motivation, exploratory data analysis, modeling, interpretations, and conclusions.
 
 ## Written report {#written-report}
 

@@ -153,7 +153,7 @@ Then use the model selected to write a short paragraph (2 - 5 sentences) describ
 
 In the article, the authors write
 
-> *\"Nonvoters were more likely to have lower incomes; to be young; to have lower levels of education; and to say they don\'t belong to either political party, which are all traits that square with what we know about people less likely to engage with the political system.\"*
+> *"Nonvoters were more likely to have lower incomes; to be young; to have lower levels of education; and to say they don't belong to either political party, which are all traits that square with what we know about people less likely to engage with the political system."*
 
 Consider the model you selected in Exercise 6. Is it consistent with this statement? Briefly explain why or why not.
 

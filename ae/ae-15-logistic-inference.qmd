@@ -8,7 +8,7 @@ execute:
 ---
 
 ::: callout-important
-Go to the [course GitHub organization](https://github.com/sta210-fa23) and locate your `ae-15` repo to get started.Render, commit, and push your responses to GitHub by the end of class. \
+Go to the [course GitHub organization](https://github.com/sta210-fa23) and locate your `ae-15` repo to get started.Render, commit, and push your responses to GitHub by the end of class.\
 \
 The responses are due in your GitHub repo no later than Thursday, November 16 at 11:59pm.
 :::
@@ -64,12 +64,12 @@ leukemia %>%
 Let's set up some notation:
 
 -   $Y$: Bernoulli random variable indicating whether an adult diagnosed with leukemia responds to the treatment
--   $y$: outcome for an individual adult (1: responded to treatment or 0: failed to respond)
+-   $y_i$: outcome for an individual adult (1: responded to treatment or 0: failed to respond)
 -   $p$: probability a randomly selected adult diagnosed with leukemia responds to the treatment
 
 Our goal is to find the most likely value of $p$ given our data.
 
-The likelihood function of the outcome for a single randomly selected adult diagnosed with leukemia is $$P(Y = y) = p^y(1-p)^{1-y}$$
+The likelihood function of the outcome for a single randomly selected adult diagnosed with leukemia is $$P(Y = y_i) = p^{y_i}(1-p)^{1-y_i}$$
 
 The likelihood function, i.e. the joint probability, for the outcomes of 51 adults is
 
@@ -141,7 +141,7 @@ $$L = P(y_1, y_2, \ldots, y_n) = \prod_{i = 1}^{n} \pi^{y_i}(1-\pi)^{1-y_i}$$
 
 where $$\pi = \frac{\exp\{\beta_0 + \beta_1x\}}{1 + \exp\{\beta_0 + \beta_1x\}}$$
 
-There isn't a closed-form solution for the log-likelihood, so numerical methods such as Iterative Weighted Least Squares are used to estimate the coefficients. This is the method used to estimate the coefficients in R.
+There isn't a closed-form solution for the log-likelihood, so numerical methods such as Iterative Weighted Least Squares are used to estimate the coefficients (learn more about IWLS in STA 211 and STA 310). This is the method used to estimate the coefficients in R.
 
 Let's fit a model using `Age` as a predictor and see some details of coefficient estimation.[^2] This is for demonstration purposes.
 
@@ -159,15 +159,24 @@ trace(glm.fit, quote(cat <- function(...) {
 resp_fit_details <- glm(Resp ~ Age, data = leukemia, 
                         family = "binomial", 
                         control = glm.control(trace = TRUE))
+untrace(glm.fit)
+```
 
+**Final model**
+
+```{r}
+resp_fit <- logistic_reg() |>
+  fit(Resp ~ Age, data = leukemia, family = "binomial")
+
+tidy(resp_fit)
 ```
 
 ## Inference for coefficients
 
-1.  Fit a model using `Temp` , `Age`, and `Index` to predict whether or not a patient responded to the treatment. Display the model and the 95% confidence interval for the model coefficients.
+1.  Fit a model using `Temp` , `Age`, and `Index` to predict whether or not a patient responds to the treatment. Display the model and the 95% confidence interval for the model coefficients.
 
 ```{r}
-
+# add code here
 ```
 
 2.  Interpret the coefficient of `Temp` in the context of the data in terms of the odds an individual responds to the treatment.

@@ -351,11 +351,11 @@ The responses are due in your GitHub repo no later than Thursday, November 16 at
 <p>Let’s set up some notation:</p>
 <ul>
 <li><span class="math inline">\(Y\)</span>: Bernoulli random variable indicating whether an adult diagnosed with leukemia responds to the treatment</li>
-<li><span class="math inline">\(y\)</span>: outcome for an individual adult (1: responded to treatment or 0: failed to respond)</li>
+<li><span class="math inline">\(y_i\)</span>: outcome for an individual adult (1: responded to treatment or 0: failed to respond)</li>
 <li><span class="math inline">\(p\)</span>: probability a randomly selected adult diagnosed with leukemia responds to the treatment</li>
 </ul>
 <p>Our goal is to find the most likely value of <span class="math inline">\(p\)</span> given our data.</p>
-<p>The likelihood function of the outcome for a single randomly selected adult diagnosed with leukemia is <span class="math display">\[P(Y = y) = p^y(1-p)^{1-y}\]</span></p>
+<p>The likelihood function of the outcome for a single randomly selected adult diagnosed with leukemia is <span class="math display">\[P(Y = y_i) = p^{y_i}(1-p)^{1-y_i}\]</span></p>
 <p>The likelihood function, i.e.&nbsp;the joint probability, for the outcomes of 51 adults is</p>
 <p><span class="math display">\[L = P(y_1, y_2, \ldots, y_{51}) = \prod_{i = 1}^{51} p^{y_i} (1 - p)^{1 - y_i}\]</span></p>
 <p>We often use the log of the likelihood function, so we can work with sums rather than products.</p>
@@ -420,7 +420,7 @@ The responses are due in your GitHub repo no later than Thursday, November 16 at
 <p>The estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the ones maximize the log likelihood function</p>
 <p><span class="math display">\[L = P(y_1, y_2, \ldots, y_n) = \prod_{i = 1}^{n} \pi^{y_i}(1-\pi)^{1-y_i}\]</span></p>
 <p>where <span class="math display">\[\pi = \frac{\exp\{\beta_0 + \beta_1x\}}{1 + \exp\{\beta_0 + \beta_1x\}}\]</span></p>
-<p>There isn’t a closed-form solution for the log-likelihood, so numerical methods such as Iterative Weighted Least Squares are used to estimate the coefficients. This is the method used to estimate the coefficients in R.</p>
+<p>There isn’t a closed-form solution for the log-likelihood, so numerical methods such as Iterative Weighted Least Squares are used to estimate the coefficients (learn more about IWLS in STA 211 and STA 310). This is the method used to estimate the coefficients in R.</p>
 <p>Let’s fit a model using <code>Age</code> as a predictor and see some details of coefficient estimation.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> This is for demonstration purposes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function that allows us to see the coefficients at each iteration</span></span>
@@ -446,14 +446,32 @@ Deviance = 64.00374 Iterations - 3
 Deviance = 64.00374 Iterations - 4
 [1]  2.196772 -0.046760</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">untrace</span>(glm.fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Final model</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>resp_fit <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(Resp <span class="sc">~</span> Age, <span class="at">data =</span> leukemia, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(resp_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)   2.20      1.01        2.18  0.0289
+2 Age          -0.0468    0.0195     -2.39  0.0166</code></pre>
+</div>
 </div>
 </section>
 </section>
 <section id="inference-for-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="inference-for-coefficients">Inference for coefficients</h2>
 <ol type="1">
-<li>Fit a model using <code>Temp</code> , <code>Age</code>, and <code>Index</code> to predict whether or not a patient responded to the treatment. Display the model and the 95% confidence interval for the model coefficients.</li>
+<li>Fit a model using <code>Temp</code> , <code>Age</code>, and <code>Index</code> to predict whether or not a patient responds to the treatment. Display the model and the 95% confidence interval for the model coefficients.</li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ol start="2" type="1">
 <li><p>Interpret the coefficient of <code>Temp</code> in the context of the data in terms of the odds an individual responds to the treatment.</p></li>
 <li><p>Interpret the 95% confidence interval for the coefficient of <code>Temp</code> in terms of the odds an individual responds to the treatment.</p></li>

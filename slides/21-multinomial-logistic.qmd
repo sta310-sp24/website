@@ -381,7 +381,7 @@ where $Z \sim N(0, 1)$, the Standard Normal distribution
 -   **Interpretation:** We are $C\%$ confident that for every one unit change in $x_{j}$, the odds of $y = k$ versus the baseline will multiply by a factor of $\exp\{\hat{\beta}_{jk} - z^* SE(\hat{\beta}_{jk})\}$ to $\exp\{\hat{\beta}_{jk} + z^* SE(\hat{\beta}_{jk})\}$, holding all else constant.
 :::
 
-## Interpreting CIs for $\beta_{jk}$ {.smaller}
+## Interpreting CIs for $\beta_{jk}$  {.midi}
 
 ```{r}
 tidy(health_fit, conf.int = TRUE) |>
@@ -395,7 +395,7 @@ tidy(health_fit, conf.int = TRUE) |>
 
 We are 95% confident, that for each additional year in age, the odds a person rates themselves as having fair health versus excellent health will multiply by `r round(exp(-0.003), 3)` (exp(-0.003)) to `r round(exp(0.009), 3)` (exp(0.009)) , holding physical activity constant.
 
-## Interpreting CIs for $\beta_{jk}$ {.smaller}
+## Interpreting CIs for $\beta_{jk}$  {.midi}
 
 ```{r}
 tidy(health_fit, conf.int = TRUE) |>

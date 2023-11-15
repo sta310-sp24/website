@@ -335,13 +335,15 @@ $$
 \log\Big(\frac{\hat{\pi}_{Fair}}{\hat{\pi}_{Excellent}}\Big) = 0.915  + 0.003 ~ \text{age} - 1.645 ~ \text{PhysActive}
 $$
 
-## Interpretations {.small}
+## Interpretations {.midi}
 
 $$
 \log\Big(\frac{\hat{\pi}_{Fair}}{\hat{\pi}_{Excellent}}\Big) = 0.915  + 0.003 ~ \text{age} - 1.645 ~ \text{PhysActive}
 $$
 
 For each additional year in age, the odds a person rates themselves as having fair health versus excellent health are expected to multiply by `r round(exp(0.003), 3)` (exp(0.003)), holding physical activity constant.
+
+<br>
 
 . . .
 

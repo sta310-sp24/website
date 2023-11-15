@@ -33,7 +33,7 @@ Learn approaches for analyzing multivariate data sets, emphasizing analysis of v
 ## Teaching assistants
 
 ::: {.callout-tip appearance="simple" icon="false"}
-[Click ](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing)[here](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing) for schedule of office hours.
+[Clickhere](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing) for schedule of office hours.
 :::
 
 | Name              | Role    |                             |

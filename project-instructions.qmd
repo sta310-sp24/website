@@ -205,7 +205,7 @@ In this section, you will output the final model and include a brief discussion 
 
 This section also includes initial interpretations and conclusions drawn from the model.
 
-#### Grading 
+#### Grading
 
 The draft will be graded based on whether there is demonstration of a reasonable attempt at each of the sections described below in the written-report.qmd file in our GitHub repo by the deadline.
 
@@ -230,7 +230,7 @@ During the peer review process, you will be provided read-only access to your pa
 [Click here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/Eez-RT2TVd9Cs_aLCOffbDcB2W7VnGmcZs0myTmdiy2qvA?e=WBpJx2) to see which project your team is reviewing. You'll spend about 30 minutes reviewing each project.
 :::
 
-When you get to lab, you should have access to the GitHub repos for the teams you're reviewing. In GitHub, search the repositories for `project`, and you should see the repos for the projects you\'re reviewing. You will be able to read the files in the repo and post issues, but you cannot push changes to the repo. You will have access to the repo until the deadline for the peer review.
+When you get to lab, you should have access to the GitHub repos for the teams you're reviewing. In GitHub, search the repositories for `project`, and you should see the repos for the projects you're reviewing. You will be able to read the files in the repo and post issues, but you cannot push changes to the repo. You will have access to the repo until the deadline for the peer review.
 
 For each team you're reviewing:
 
@@ -254,7 +254,7 @@ For each team you're reviewing:
 
     -   (Optional) Any further comments or feedback?
 
-#### Grading 
+#### Grading
 
 The peer review will be graded on the extent to which it comprehensively and constructively addresses the components of the partner team's report: the research context and motivation, exploratory data analysis, modeling, interpretations, and conclusions.
 

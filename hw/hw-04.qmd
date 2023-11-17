@@ -181,18 +181,17 @@ Make a confusion matrix based on the cut-off probability of 0.25. Use the confus
 Before you wrap up the assignment, make sure all documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.
 
 Remember -- you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.
+:::
 
-To submit your assignment:
+To submit your assignment
 
 -   Go to [http://www.gradescope.com](http://www.gradescope.com/) and click *Log in* in the top right corner.
 -   Click *School Credentials* ➡️ *Duke NetID* and log in using your NetID credentials.
 -   Click on your *STA 210* course.
 -   Click on the assignment, and you'll be prompted to submit it.
 -   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be "checked").
--   Select the first page of your PDF submission to be associated with the *"Workflow & formatting"* section.
-:::
-
-# Grading (50 pts)
+-   Select the first page of your PDF submission to be associated with the *"Workflow & formatting"* section.\
+    Grading (50 pts)
 
 | Component             | Points |
 |-----------------------|--------|

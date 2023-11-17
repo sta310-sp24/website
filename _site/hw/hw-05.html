@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 210 - Fall 2023 - HW 04: Logistic regression</title>
+<title>STA 210 - Fall 2023 - HW 05: Multinomial Logistic Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">HW 04: Logistic regression</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">HW 05: Multinomial Logistic Regression</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -258,8 +258,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning goals</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
   </ul></li>
-  <li><a href="#data-why-many-americans-dont-vote" id="toc-data-why-many-americans-dont-vote" class="nav-link" data-scroll-target="#data-why-many-americans-dont-vote">Data: “Why Many Americans Don’t Vote”</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
@@ -270,19 +270,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
   <li><a href="#exercise-8" id="toc-exercise-8" class="nav-link" data-scroll-target="#exercise-8">Exercise 8</a></li>
-  <li><a href="#exercise-9" id="toc-exercise-9" class="nav-link" data-scroll-target="#exercise-9">Exercise 9</a></li>
-  <li><a href="#exercise-10" id="toc-exercise-10" class="nav-link" data-scroll-target="#exercise-10">Exercise 10</a></li>
   </ul></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/hw/hw-04.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta210-fa23/website/edit/main/hw/hw-05.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta210-fa23/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW 04: Logistic regression</h1>
+<h1 class="title">HW 05: Multinomial Logistic Regression</h1>
 </div>
 
 
@@ -307,26 +307,24 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Due Wednesday, November 15 at 11:59pm</p>
+<p>Due Wednesday, November 29 at 11:59pm</p>
 </div>
 </div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this assignment, you’ll analyze data from an online Ipsos survey that was conducted for the FiveThirtyEight article <a href="https://projects.fivethirtyeight.com/non-voters-poll-2020-election/">“Why Many Americans Don’t Vote”</a> using logistic regression for interpretation and prediction. You can read more about the polling design and respondents in the README of the <a href="https://github.com/fivethirtyeight/data/tree/master/non-voters">GitHub repo</a> for the data.</p>
+<p>In this assignment, you will use multinomial logistic regression to analyze data from the 2014 article <a href="https://www.sciencedirect.com/science/article/abs/pii/S2211368114000229">“An evaluation of lineup presentation, weapon presence, and a distinctive feature using ROC analysis”</a> by Curt Carlson and Maria Carlson<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <section id="learning-goals" class="level2">
 <h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
-<p>By the end of the assignment you will be able to…</p>
+<p>In this assignment, you will…</p>
 <ul>
-<li><p>Use logistic regression to explore the relationship between a binary response variable and multiple predictor variables</p></li>
-<li><p>Conduct exploratory data analysis for logistic regression</p></li>
-<li><p>Interpret coefficients of logistic regression model</p></li>
-<li><p>Use statistics to help choose the best fit model</p></li>
-<li><p>Use the logistic regression model for prediction and classification</p></li>
+<li><p>Fit and interpret multinomial logistic regression models.</p></li>
+<li><p>Evaluate conditions for multinomial logistic regression</p></li>
+<li><p>Continue developing a workflow for reproducible data analysis.</p></li>
 </ul>
 </section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<p>The repo for this assignment is available on GitHub at <a href="https://github.com/sta210-fa23" title="Course GitHub organization">github.com/sta210-fa23</a> and starts with the prefix <strong>hw-04</strong>. See <a href="../labs/lab-01.html">Lab 01</a> for more detailed instructions on getting started.</p>
+<p>The repo for this assignment is available on GitHub at <a href="https://github.com/sta210-fa23" title="Course GitHub organization">github.com/sta210-fa23</a> and starts with the prefix <strong>hw-05</strong>. See <a href="../labs/lab-01.html">Lab 01</a> for more detailed instructions on getting started.</p>
 </section>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
@@ -335,127 +333,113 @@ Important
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add other packages as needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add other packages as needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-</section>
-<section id="data-why-many-americans-dont-vote" class="level1">
-<h1>Data: “Why Many Americans Don’t Vote”</h1>
-<p>The data from the article <a href="https://projects.fivethirtyeight.com/non-voters-poll-2020-election/">“Why Many Americans Don’t Vote”</a> includes information from polling done by Ipsos for FiveThirtyEight. Respondents were asked a variety of questions about their political beliefs, thoughts on multiple issues, and voting behavior. We will focus on using the demographic variables and someone’s party identification to understand whether an eligible voter is a “frequent” voter.</p>
-<p>The codebook for the variable definitions can be found in the <a href="https://github.com/fivethirtyeight/data/tree/master/non-voters">GitHub repo</a> for the data. The variables we’ll focus on are:</p>
+<section id="the-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-data">The Data</h2>
+<p>For this assignment, we will analyze data from the eye witness identification experiment in <a href="https://www.sciencedirect.com/science/article/pii/S2211368114000229">Carlson and Carlson (2014)</a>. In this experiment, participants were asked to watch a video of a mock crime (from the first person perspective), spend a few minutes completing a random task, and then identify the perpetrator of the mock crime from a line up shown on the screen. Every lineup in this analysis included the true perpetrator from the video. After viewing the line-up , each participant could make one of the following decisions (<strong><code>id</code></strong>):</p>
 <ul>
-<li><p><code>ppage</code>: Age of respondent</p></li>
-<li><p><code>educ</code>: Highest educational attainment category.</p></li>
-<li><p><code>race</code>: Race of respondent, census categories. Note: all categories except Hispanic are non-Hispanic.</p></li>
-<li><p><code>gender</code>: Gender of respondent</p></li>
-<li><p><code>income_cat</code>: Household income category of respondent</p></li>
-<li><p><code>Q30</code>: Response to the question “Generally speaking, do you think of yourself as a…”</p>
-<ul>
-<li>1:Republican</li>
-<li>2: Democrat</li>
-<li>3: Independent</li>
-<li>4: Another party, please specify</li>
-<li>5: No preference</li>
-<li>-1: No response</li>
-</ul></li>
-<li><p><code>voter_category</code>: past voting behavior:</p>
-<ul>
-<li>always: respondent voted in all or all-but-one of the elections they were eligible in</li>
-<li>sporadic: respondent voted in at least two, but fewer than all-but-one of the elections they were eligible in</li>
-<li>rarely/never: respondent voted in 0 or 1 of the elections they were eligible in</li>
-</ul></li>
+<li><strong>correct</strong>: correctly identified the true perpetrator</li>
+<li><strong>foil</strong>: incorrectly identified the “foil”, i.e.&nbsp;a person who looks very similar to the perpetrator</li>
+<li><strong>reject</strong>: incorrectly concluded the true perpetrator is not in the lineup</li>
 </ul>
-<p>You can read in the data directly from the GitHub repo:</p>
+<p>The main objective of the analysis is to understand how different conditions of the mock crime and suspect lineup affect the decision made by the participant. We will consider the following conditions to describe the decisions:</p>
+<ul>
+<li><strong><code>lineup</code></strong>: How potential suspects are shown to the participants
+<ul>
+<li><strong>Simultaneous Lineup</strong>: Participants were shown photos of all 6 potential suspects at the same time and were required to make a single decision (identify someone from the lineup or reject the lineup).</li>
+<li><strong>Sequential 5 Lineup</strong>: Photos of the 6 suspects were shown one at a time. The participant was required to make a decision (choose or don’t choose) as each photo was shown. Once a decision was made, participants were not allowed to reexamine a photo. If the participant made an identification, the remaining photos were not shown. In each of these lineups the true perpetrator was always the 5<sup>th</sup> photo in the lineup.</li>
+</ul></li>
+<li><strong><code>weapon</code></strong>: Whether or not a weapon was present in the video of the mock crime.</li>
+<li><strong><code>feature</code></strong>: Whether or not the perpetrator had a distinctive marking on his face. In this experiment, the distinctive feature was a large “N” sticker on one cheek. (The letter “N” was chosen to represent the first author’s alma mater - University of Nebraska.)</li>
+</ul>
+<p>The data may be found in <code>eyewitness.csv</code> in the <code>data</code> folder.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>voter_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/fivethirtyeight/data/master/non-voters/nonvoters_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ew <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/eyewitness.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ew <span class="ot">&lt;-</span> ew <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">as_factor</span>(id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that the authors use weighting to make the final sample more representative on the US population for their article. We will not use the weighting in this assignment, so we should treat the sample as a convenience sample rather than a random sample of the population.</p>
+</section>
 </section>
 <section id="exercises" class="level1">
 <h1>Exercises</h1>
-<p>The goal of this analysis is use the polling data to examine the relationship between U.S. adults’ political party identification and voting behavior.</p>
 <section id="exercise-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<p>Why do you think the authors chose to only include data from people who were eligible to vote for at least four election cycles?</p>
+<p>Let’s begin by doing some exploratory data analysis. The univariate plots for each of the predictor variables and the response variable are shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="hw-05_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Complete the exploratory data analysis by creating the plots and/or summary statistics to examine the relationship between the response variable (<code>id</code>) and each of the explanatory variables (<code>lineup</code>, <code>weapon</code>, and <code>feature</code>).</p>
 </section>
 <section id="exercise-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<p>Let’s prepare the data for analysis and modeling.</p>
+<p>Using the plots/tables from Question 1:</p>
 <ul>
-<li>Create a new variable called <code>frequent_voter</code> that takes the value 1 if the <code>voter_category</code> is “always” and 0 otherwise.</li>
-<li>Make a table of the distribution of <code>frequent_voter</code>.</li>
-<li>What percentage of the respondents in the data say they voted “in all or all-but-one of the elections they were eligible in”?</li>
+<li>What is one thing you learn about the data from the univariate plots?</li>
+<li>Based on the bivariate plots, do any of the predictors appear to have a significant effect on the <code>id</code>? Briefly explain.</li>
 </ul>
 </section>
 <section id="exercise-3" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
-<p>The variable <code>Q30</code> contains the respondent’s political party identification. Make a new variable, <code>party_id</code>, that simplifies <code>Q30</code> into three categories: “Democrat”, “Republican”, “Independent/Neither”, The category “Independent/Neither” will also include respondents who did not answer the question. Make <code>party_id</code> a factor and relevel it so that it is consistent with the ordering of the responses in Question 30 of the survey.</p>
-<ul>
-<li>Make a plot of the distribution of <code>party_id</code>.</li>
-<li>Which category of <code>party_id</code> occurs most frequently in this data set?</li>
-</ul>
+<p>Briefly explain why you should use a multinomial logistic regression model to predict <code>id</code> using <code>lineup</code>, <code>weapon</code> and <code>feature</code>.</p>
 </section>
 <section id="exercise-4" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
-<p>In the FiveThirtyEight article, the authors include visualizations of the relationship between the voter category and demographic variables such as race, age, education, etc.</p>
+<p>Fit the multinomial logistic model that only includes main effects. Display the model output.</p>
 <ul>
-<li><p>Make a segmented barplot (also known as a stacked barplot) displaying the distribution of <code>frequent_voter</code> for each category of <code>party_id</code>. Make the plot such that the percentages (instead of counts) are displayed.</p></li>
-<li><p>Use the plot to describe the relationship between these two variables.</p></li>
+<li>What is the baseline category for the response variable?</li>
+<li>Interpret the intercepts for each part of the model in terms of the odds.</li>
+<li>Interpret the coefficients of <code>lineup</code> for each part of the model in terms of the odds.</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
+</section>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<p>You want to consider all possible interaction effects for the model.</p>
+<ul>
+<li>Use the appropriate test to determine if there is at least one significant interaction effect.</li>
+</ul>
+<!-- -->
+<ul>
+<li>Based on your test, is there evidence of any significant interaction effects? Briefly explain.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>See the plots of demographic information by voting history in the <a href="https://projects.fivethirtyeight.com/non-voters-poll-2020-election/">FiveThirtyEight article</a> for examples of segmented bar plots.</p>
+<p><em>Regardless of your answer to Question 5, use the model that includes the interaction terms for the remainder of the assignment.</em></p>
 </div>
 </div>
-</section>
-<section id="exercise-5" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
-<p>Let’s start by fitting a model using the demographic factors - <code>ppage</code>, <code>educ</code>, <code>race</code>, <code>gender</code>, <code>income_cat</code> - to predict the odds a person is a frequent voter.</p>
-<ul>
-<li><p>Split the data into training (75%) and testing sets (25%). Use a seed of <code>29</code>.</p></li>
-<li><p>Fit the model on the training data. Display the model using 3 digits.</p></li>
-<li><p>Consider the relationship between <code>ppage</code> and one’s voting behavior. Interpret the coefficient of <code>ppage</code> in the context of the data in terms of the <strong>odds</strong> a person is a frequent voter.</p></li>
-</ul>
 </section>
 <section id="exercise-6" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
-<p><em>Should party identification be added to the model?</em> Use a drop-in-deviance test to determine if party identification should be added to the model fit in the previous exercise. Include the hypotheses in mathematical notation, the output from the test, and the conclusion in the context of the data.</p>
+<p>According to the model,</p>
+<ul>
+<li>If there was no weapon but the perpetrator had a distinctive feature in the mock crime, how do the <strong>log-odds</strong> of reject vs.&nbsp;a correct ID change when there is a simultaneous lineup vs.&nbsp;a sequential lineup?</li>
+<li>If there was no weapon but the perpetrator had a distinctive feature in the mock crime, how do the <strong>odds</strong> of reject vs.&nbsp;a correct ID change when there is a simultaneous lineup vs.&nbsp;a sequential lineup?</li>
+<li>Which group of participants (i.e.&nbsp;which set of experimental conditions) is described by the intercept?</li>
+</ul>
 </section>
 <section id="exercise-7" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-7">Exercise 7</h2>
-<p>Display the model chosen from the previous exercise using 3 digits.</p>
-<p>Then use the model selected to write a short paragraph (2 - 5 sentences) describing the effect (or lack of effect) of political party on the odds a person is a frequent voter. The paragraph should include an indication of which levels (if any) are statistically significant along with specifics about the differences in the odds between the political parties, as appropriate.</p>
+<p>Are the conditions for inference met? List the conditions, and, <strong>if relevant</strong>, create visualizations to check the conditions and evaluate whether each condition is met. Include an assessment about each condition and a brief explanation about your conclusion.</p>
 </section>
 <section id="exercise-8" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-8">Exercise 8</h2>
-<p>In the article, the authors write</p>
-<blockquote class="blockquote">
-<p><em>“Nonvoters were more likely to have lower incomes; to be young; to have lower levels of education; and to say they don’t belong to either political party, which are all traits that square with what we know about people less likely to engage with the political system.”</em></p>
-</blockquote>
-<p>Consider the model you selected in Exercise 6. Is it consistent with this statement? Briefly explain why or why not.</p>
-</section>
-<section id="exercise-9" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-9">Exercise 9</h2>
-<p>Use the testing data to produce the ROC curve and calculate the area under curve (AUC) for the model selected in Exercise 6. Write 1 - 2 sentences describing how well the model fits the data.</p>
-</section>
-<section id="exercise-10" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-10">Exercise 10</h2>
-<p>You have been tasked by a local political organization to identify adults in the community who are frequent voters. These adults will receive targeted political mailings that will be different from the mailings sent to adults who are not frequent voters. You will use the model selected in Exercise 6 to identify the frequent voters.</p>
-<p>Make a confusion matrix based on the cut-off probability of 0.25. Use the confusion matrix to calculate the following:</p>
+<p>Use the model to predict the decision made by each participant. Make a table of the predicted vs.the actual decisions.</p>
 <ul>
-<li><p>Sensitivity</p></li>
-<li><p>Specificity</p></li>
-<li><p>False negative rate</p></li>
-<li><p>False positive rate</p></li>
+<li>Briefly describe how the predicted decision is determined for each participant.</li>
+<li>What is the misclassification rate?</li>
 </ul>
 </section>
 </section>
@@ -485,60 +469,31 @@ Warning
 <li>Select the first page of your PDF submission to be associated with the <em>“Workflow &amp; formatting”</em> section.<br>
 Grading (50 pts)</li>
 </ul>
+</section>
+<section id="grading" class="level1">
+<h1>Grading</h1>
 <table class="table">
 <thead>
 <tr class="header">
-<th>Component</th>
-<th>Points</th>
+<th><strong>Total</strong></th>
+<th style="text-align: center;"><strong>50</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Ex 1</td>
-<td>2</td>
+<td>Exercise 1- 8</td>
+<td style="text-align: center;">45</td>
 </tr>
 <tr class="even">
-<td>Ex 2</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>Ex 3</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>Ex 4</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td>Ex 5</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td>Ex 6</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>Ex 7</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>Ex 8</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td>Ex 9</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>Ex 10</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>Workflow &amp; formatting</td>
-<td>3<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+<td>Workflow &amp; formatting<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
+<td style="text-align: center;">5</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S2211368114000229">Carlson, C. and Carlson, M., 2014, An evaluation of lineup presentation, weapon presence, and a distinctive feature using ROC analysis, <em>Journal of Applied Research in Memory and Cognition</em>, 3: 45-53.</a></p>
 
 
 </section>
@@ -547,7 +502,8 @@ Grading (50 pts)</li>
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.<a href="https://sta210-fa23.netlify.app/hw/hw-01#fnref2">↩︎</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Carlson, C. A., &amp; Carlson, M. A. (2014). <a href="https://www.sciencedirect.com/science/article/abs/pii/S2211368114000229">An evaluation of lineup presentation, weapon presence, and a distinctive feature using ROC analysis</a>. <em>Journal of Applied Research in Memory and Cognition</em>, <em>3</em>(2), 45-53<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.<a href="https://sta210-fa23.netlify.app/hw/hw-01#fnref2">↩︎</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -150,8 +150,8 @@
     "objectID": "slides/21-multinomial-logistic.html#announcements",
     "href": "slides/21-multinomial-logistic.html#announcements",
     "title": "Multinomial Logistic Regression",
-    "section": "Announcements",
-    "text": "Announcements\n\nDue dates\n\nDraft report due in GitHub repo on 9am on your lab day\nHW 04 due TODAY at 11:59pm\nStatistics experience due Mon, Nov 20 at 11:59pm\n\nNext week:\n\n(Optional) Project meetings Nov 20 & 21. Click here to sign up. Must sign up by Fri, Nov 17\nNo class meetings next week\n\nClick here to access lecture recordings. Available until Mon, Dec 04 at 9am\n\n\n🍂 Have a good Thanksgiving break! 🍂"
+    "section": "",
+    "text": "Due dates\n\nDraft report due in GitHub repo on 9am on your lab day\nHW 04 due TODAY at 11:59pm\nStatistics experience due Mon, Nov 20 at 11:59pm\n\nNext week:\n\n(Optional) Project meetings Nov 20 & 21. Click here to sign up. Must sign up by Fri, Nov 17\nNo class meetings next week\n\nClick here to access lecture recordings. Available until Mon, Dec 04 at 9am\n\n\n🍂 Have a good Thanksgiving break! 🍂"
   },
   {
     "objectID": "slides/21-multinomial-logistic.html#topics",
@@ -172,7 +172,7 @@
     "href": "slides/21-multinomial-logistic.html#generalized-linear-models-glms",
     "title": "Multinomial Logistic Regression",
     "section": "Generalized Linear Models (GLMs)",
-    "text": "Generalized Linear Models (GLMs)\n\nIn practice, there are many different types of outcome variables:\n\n\nBinary: Win or Lose\nNominal: Democrat, Republican or Third Party candidate\nOrdered: Movie rating (1 - 5 stars)\nand others…\n\n\nPredicting each of these outcomes requires a generalized linear model, a broader class of models that generalize the multiple linear regression model\n\n\n\n\n\n\n\nNote\n\n\nRecommended reading for more details about GLMs: Generalized Linear Models: A Unifying Theory."
+    "text": "Generalized Linear Models (GLMs)\n\nIn practice, there are many different types of outcome variables:\n\n\nBinary: Win or Lose\nNominal: Democrat, Republican or Third Party candidate\nOrdered: Movie rating (1 - 5 stars)\nand others…\n\n\nPredicting each of these outcomes requires a generalized linear model, a broader class of models that generalize the multiple linear regression model\n\n\n\n\n\n\n\nNote\n\n\n\nRecommended reading for more details about GLMs: Generalized Linear Models: A Unifying Theory."
   },
   {
     "objectID": "slides/21-multinomial-logistic.html#binary-outcome-logistic",
@@ -270,7 +270,7 @@
     "href": "slides/21-multinomial-logistic.html#model-output",
     "title": "Multinomial Logistic Regression",
     "section": "Model output",
-    "text": "Model output\n\nWhat function do we use to get the model summary, i.e., coefficient estimates.\n\n\n\ntidy(health_fit)\n\n# A tibble: 12 × 6\n   y.level term           estimate std.error statistic  p.value\n   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 Vgood   (Intercept)    1.21       0.145       8.33  8.42e-17\n 2 Vgood   Age            0.000910   0.00246     0.369 7.12e- 1\n 3 Vgood   PhysActiveYes -0.321      0.0929     -3.45  5.51e- 4\n 4 Good    (Intercept)    1.95       0.141      13.8   1.39e-43\n 5 Good    Age           -0.00237    0.00242    -0.977 3.29e- 1\n 6 Good    PhysActiveYes -1.00       0.0901    -11.1   1.00e-28\n 7 Fair    (Intercept)    0.915      0.164       5.57  2.61e- 8\n 8 Fair    Age            0.00305    0.00288     1.06  2.90e- 1\n 9 Fair    PhysActiveYes -1.65       0.107     -15.3   5.69e-53\n10 Poor    (Intercept)   -1.52       0.290      -5.24  1.62e- 7\n11 Poor    Age            0.0222     0.00491     4.52  6.11e- 6\n12 Poor    PhysActiveYes -2.66       0.236     -11.3   1.75e-29"
+    "text": "Model output\n\nWhat function do we use to get the model summary, i.e., coefficient estimates.\n\n. . .\n\ntidy(health_fit)\n\n# A tibble: 12 × 6\n   y.level term           estimate std.error statistic  p.value\n   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n 1 Vgood   (Intercept)    1.21       0.145       8.33  8.42e-17\n 2 Vgood   Age            0.000910   0.00246     0.369 7.12e- 1\n 3 Vgood   PhysActiveYes -0.321      0.0929     -3.45  5.51e- 4\n 4 Good    (Intercept)    1.95       0.141      13.8   1.39e-43\n 5 Good    Age           -0.00237    0.00242    -0.977 3.29e- 1\n 6 Good    PhysActiveYes -1.00       0.0901    -11.1   1.00e-28\n 7 Fair    (Intercept)    0.915      0.164       5.57  2.61e- 8\n 8 Fair    Age            0.00305    0.00288     1.06  2.90e- 1\n 9 Fair    PhysActiveYes -1.65       0.107     -15.3   5.69e-53\n10 Poor    (Intercept)   -1.52       0.290      -5.24  1.62e- 7\n11 Poor    Age            0.0222     0.00491     4.52  6.11e- 6\n12 Poor    PhysActiveYes -2.66       0.236     -11.3   1.75e-29"
   },
   {
     "objectID": "slides/21-multinomial-logistic.html#model-output-with-ci",
@@ -291,21 +291,21 @@
     "href": "slides/21-multinomial-logistic.html#fair-vs.-excellent-health",
     "title": "Multinomial Logistic Regression",
     "section": "Fair vs. Excellent Health",
-    "text": "Fair vs. Excellent Health\nThe baseline category for the model is Excellent.\n\nThe model equation for the log-odds a person rates themselves as having “Fair” health vs. “Excellent” is\n\\[\n\\log\\Big(\\frac{\\hat{\\pi}_{Fair}}{\\hat{\\pi}_{Excellent}}\\Big) = 0.915  + 0.003 ~ \\text{age} - 1.645 ~ \\text{PhysActive}\n\\]"
+    "text": "Fair vs. Excellent Health\nThe baseline category for the model is Excellent.\n. . .\nThe model equation for the log-odds a person rates themselves as having “Fair” health vs. “Excellent” is\n\\[\n\\log\\Big(\\frac{\\hat{\\pi}_{Fair}}{\\hat{\\pi}_{Excellent}}\\Big) = 0.915  + 0.003 ~ \\text{age} - 1.645 ~ \\text{PhysActive}\n\\]"
   },
   {
     "objectID": "slides/21-multinomial-logistic.html#interpretations",
     "href": "slides/21-multinomial-logistic.html#interpretations",
     "title": "Multinomial Logistic Regression",
     "section": "Interpretations",
-    "text": "Interpretations\n\\[\n\\log\\Big(\\frac{\\hat{\\pi}_{Fair}}{\\hat{\\pi}_{Excellent}}\\Big) = 0.915  + 0.003 ~ \\text{age} - 1.645 ~ \\text{PhysActive}\n\\]\nFor each additional year in age, the odds a person rates themselves as having fair health versus excellent health are expected to multiply by 1.003 (exp(0.003)), holding physical activity constant.\n\n\nThe odds a person who does physical activity will rate themselves as having fair health versus excellent health are expected to be 0.193 (exp(-1.645)) times the odds for a person who doesn’t do physical activity, holding age constant."
+    "text": "Interpretations\n\\[\n\\log\\Big(\\frac{\\hat{\\pi}_{Fair}}{\\hat{\\pi}_{Excellent}}\\Big) = 0.915  + 0.003 ~ \\text{age} - 1.645 ~ \\text{PhysActive}\n\\]\nFor each additional year in age, the odds a person rates themselves as having fair health versus excellent health are expected to multiply by 1.003 (exp(0.003)), holding physical activity constant.\n\n. . .\nThe odds a person who does physical activity will rate themselves as having fair health versus excellent health are expected to be 0.193 (exp(-1.645)) times the odds for a person who doesn’t do physical activity, holding age constant."
   },
   {
     "objectID": "slides/21-multinomial-logistic.html#interpretations-1",
     "href": "slides/21-multinomial-logistic.html#interpretations-1",
     "title": "Multinomial Logistic Regression",
     "section": "Interpretations",
-    "text": "Interpretations\n\\[\n\\log\\Big(\\frac{\\hat{\\pi}_{Fair}}{\\hat{\\pi}_{Excellent}}\\Big) = 0.915  + 0.003 ~ \\text{age} - 1.645 ~ \\text{PhysActive}\n\\]\nThe odds a 0 year old person who doesn’t do physical activity rates themselves as having fair health vs. excellent health are 2.497 (exp(0.915)).\n\n\n\n\n\n\n\nWarning\n\n\nNeed to mean-center age for the intercept to have a meaningful interpretation!"
+    "text": "Interpretations\n\\[\n\\log\\Big(\\frac{\\hat{\\pi}_{Fair}}{\\hat{\\pi}_{Excellent}}\\Big) = 0.915  + 0.003 ~ \\text{age} - 1.645 ~ \\text{PhysActive}\n\\]\nThe odds a 0 year old person who doesn’t do physical activity rates themselves as having fair health vs. excellent health are 2.497 (exp(0.915)).\n. . .\n\n\n\n\n\n\nWarning\n\n\n\nNeed to mean-center age for the intercept to have a meaningful interpretation!"
   },
   {
     "objectID": "slides/21-multinomial-logistic.html#hypothesis-test-for-beta_jk",
@@ -326,7 +326,7 @@
     "href": "slides/21-multinomial-logistic.html#interpreting-cis-for-beta_jk",
     "title": "Multinomial Logistic Regression",
     "section": "Interpreting CIs for \\(\\beta_{jk}\\)",
-    "text": "Interpreting CIs for \\(\\beta_{jk}\\)\n\ntidy(health_fit, conf.int = TRUE) |&gt;\n  filter(y.level == \"Fair\") |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny.level\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\nFair\n(Intercept)\n0.915\n0.164\n5.566\n0.00\n0.592\n1.237\n\n\nFair\nAge\n0.003\n0.003\n1.058\n0.29\n-0.003\n0.009\n\n\nFair\nPhysActiveYes\n-1.645\n0.107\n-15.319\n0.00\n-1.856\n-1.435\n\n\n\n\n\n\n\nWe are 95% confident, that for each additional year in age, the odds a person rates themselves as having fair health versus excellent health will multiply by 0.997 (exp(-0.003)) to 1.009 (exp(0.009)) , holding physical activity constant."
+    "text": "Interpreting CIs for \\(\\beta_{jk}\\)\n\ntidy(health_fit, conf.int = TRUE) |&gt;\n  filter(y.level == \"Fair\") |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ny.level\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\nFair\n(Intercept)\n0.915\n0.164\n5.566\n0.00\n0.592\n1.237\n\n\nFair\nAge\n0.003\n0.003\n1.058\n0.29\n-0.003\n0.009\n\n\nFair\nPhysActiveYes\n-1.645\n0.107\n-15.319\n0.00\n-1.856\n-1.435\n\n\n\n\n\n\n. . .\nWe are 95% confident, that for each additional year in age, the odds a person rates themselves as having fair health versus excellent health will multiply by 0.997 (exp(-0.003)) to 1.009 (exp(0.009)) , holding physical activity constant."
   },
   {
     "objectID": "slides/21-multinomial-logistic.html#interpreting-cis-for-beta_jk-1",
@@ -340,7 +340,7 @@
     "href": "slides/21-multinomial-logistic.html#recap",
     "title": "Multinomial Logistic Regression",
     "section": "Recap",
-    "text": "Recap\n\nIntroduce multinomial logistic regression\nInterpret model coefficients\nInference for a coefficient \\(\\beta_{jk}\\)\n\n\n\n\n🔗 STA 210 - Fall 2023 - Schedule"
+    "text": "Recap\n\nIntroduce multinomial logistic regression\nInterpret model coefficients\nInference for a coefficient \\(\\beta_{jk}\\)"
   },
   {
     "objectID": "slides/18-logistic-prediction.html#announcements",
@@ -7292,5 +7292,110 @@
     "title": "Computing troubleshooting",
     "section": "",
     "text": "If you’re having difficulty launching an RStudio session from your reserved container, go to status.oit.duke.edu and scroll down to Teaching and Learning Tools. Under this heading you’ll find an entry called Container Manager (CMGR Coursework Containers).\n\nIf the status shows something other than Operational, this means there is a known incident with the containers. Check back later to see if it’s been resolved. If there’s a deadline coming up soon, post on the course forum to let us know that there’s an issue. We can look into how quickly it might get resolved and decide on what to do about the deadline accordingly. Note: We don’t anticipate this to happen regularly, the systems are Operational a huge majority of the time!\nIf the status shows Operational, this means the system is expected to be working. Check your internet connection, if need be, restart your computer to ensure a fresh new connection. If your issue persists, post on the course forum with details on what you’ve tried and the errors you see (including verbatim errors and/or screenshots)."
+  },
+  {
+    "objectID": "hw/hw-05.html",
+    "href": "hw/hw-05.html",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "",
+    "text": "Important\n\n\n\nDue Wednesday, November 29 at 11:59pm"
+  },
+  {
+    "objectID": "hw/hw-05.html#learning-goals",
+    "href": "hw/hw-05.html#learning-goals",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Learning goals",
+    "text": "Learning goals\nIn this assignment, you will…\n\nFit and interpret multinomial logistic regression models.\nEvaluate conditions for multinomial logistic regression\nContinue developing a workflow for reproducible data analysis."
+  },
+  {
+    "objectID": "hw/hw-05.html#getting-started",
+    "href": "hw/hw-05.html#getting-started",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Getting started",
+    "text": "Getting started\nThe repo for this assignment is available on GitHub at github.com/sta210-fa23 and starts with the prefix hw-05. See Lab 01 for more detailed instructions on getting started."
+  },
+  {
+    "objectID": "hw/hw-05.html#packages",
+    "href": "hw/hw-05.html#packages",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Packages",
+    "text": "Packages\nThe following packages will be used for this assignment.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(patchwork)\n\n# add other packages as needed"
+  },
+  {
+    "objectID": "hw/hw-05.html#the-data",
+    "href": "hw/hw-05.html#the-data",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "The Data",
+    "text": "The Data\nFor this assignment, we will analyze data from the eye witness identification experiment in Carlson and Carlson (2014). In this experiment, participants were asked to watch a video of a mock crime (from the first person perspective), spend a few minutes completing a random task, and then identify the perpetrator of the mock crime from a line up shown on the screen. Every lineup in this analysis included the true perpetrator from the video. After viewing the line-up , each participant could make one of the following decisions (id):\n\ncorrect: correctly identified the true perpetrator\nfoil: incorrectly identified the “foil”, i.e. a person who looks very similar to the perpetrator\nreject: incorrectly concluded the true perpetrator is not in the lineup\n\nThe main objective of the analysis is to understand how different conditions of the mock crime and suspect lineup affect the decision made by the participant. We will consider the following conditions to describe the decisions:\n\nlineup: How potential suspects are shown to the participants\n\nSimultaneous Lineup: Participants were shown photos of all 6 potential suspects at the same time and were required to make a single decision (identify someone from the lineup or reject the lineup).\nSequential 5 Lineup: Photos of the 6 suspects were shown one at a time. The participant was required to make a decision (choose or don’t choose) as each photo was shown. Once a decision was made, participants were not allowed to reexamine a photo. If the participant made an identification, the remaining photos were not shown. In each of these lineups the true perpetrator was always the 5th photo in the lineup.\n\nweapon: Whether or not a weapon was present in the video of the mock crime.\nfeature: Whether or not the perpetrator had a distinctive marking on his face. In this experiment, the distinctive feature was a large “N” sticker on one cheek. (The letter “N” was chosen to represent the first author’s alma mater - University of Nebraska.)\n\nThe data may be found in eyewitness.csv in the data folder.\n\new &lt;- read_csv(\"data/eyewitness.csv\")\new &lt;- ew |&gt;\n  mutate(id = as_factor(id))"
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-1",
+    "href": "hw/hw-05.html#exercise-1",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nLet’s begin by doing some exploratory data analysis. The univariate plots for each of the predictor variables and the response variable are shown below.\n\n\n\n\n\nComplete the exploratory data analysis by creating the plots and/or summary statistics to examine the relationship between the response variable (id) and each of the explanatory variables (lineup, weapon, and feature)."
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-2",
+    "href": "hw/hw-05.html#exercise-2",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nUsing the plots/tables from Question 1:\n\nWhat is one thing you learn about the data from the univariate plots?\nBased on the bivariate plots, do any of the predictors appear to have a significant effect on the id? Briefly explain."
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-3",
+    "href": "hw/hw-05.html#exercise-3",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nBriefly explain why you should use a multinomial logistic regression model to predict id using lineup, weapon and feature."
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-4",
+    "href": "hw/hw-05.html#exercise-4",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nFit the multinomial logistic model that only includes main effects. Display the model output.\n\nWhat is the baseline category for the response variable?\nInterpret the intercepts for each part of the model in terms of the odds.\nInterpret the coefficients of lineup for each part of the model in terms of the odds."
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-5",
+    "href": "hw/hw-05.html#exercise-5",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nYou want to consider all possible interaction effects for the model.\n\nUse the appropriate test to determine if there is at least one significant interaction effect.\n\n\n\nBased on your test, is there evidence of any significant interaction effects? Briefly explain.\n\n\n\n\n\n\n\nImportant\n\n\n\nRegardless of your answer to Question 5, use the model that includes the interaction terms for the remainder of the assignment."
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-6",
+    "href": "hw/hw-05.html#exercise-6",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nAccording to the model,\n\nIf there was no weapon but the perpetrator had a distinctive feature in the mock crime, how do the log-odds of reject vs. a correct ID change when there is a simultaneous lineup vs. a sequential lineup?\nIf there was no weapon but the perpetrator had a distinctive feature in the mock crime, how do the odds of reject vs. a correct ID change when there is a simultaneous lineup vs. a sequential lineup?\nWhich group of participants (i.e. which set of experimental conditions) is described by the intercept?"
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-7",
+    "href": "hw/hw-05.html#exercise-7",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nAre the conditions for inference met? List the conditions, and, if relevant, create visualizations to check the conditions and evaluate whether each condition is met. Include an assessment about each condition and a brief explanation about your conclusion."
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-8",
+    "href": "hw/hw-05.html#exercise-8",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nUse the model to predict the decision made by each participant. Make a table of the predicted vs.the actual decisions.\n\nBriefly describe how the predicted decision is determined for each participant.\nWhat is the misclassification rate?"
+  },
+  {
+    "objectID": "hw/hw-05.html#footnotes",
+    "href": "hw/hw-05.html#footnotes",
+    "title": "HW 05: Multinomial Logistic Regression",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCarlson, C. A., & Carlson, M. A. (2014). An evaluation of lineup presentation, weapon presence, and a distinctive feature using ROC analysis. Journal of Applied Research in Memory and Cognition, 3(2), 45-53↩︎\nThe “Workflow & formatting” grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.↩︎↩︎"
+  },
+  {
+    "objectID": "slides/21-multinomial-logistic.html",
+    "href": "slides/21-multinomial-logistic.html",
+    "title": "Multinomial Logistic Regression",
+    "section": "",
+    "text": "Due dates\n\nDraft report due in GitHub repo on 9am on your lab day\nHW 04 due TODAY at 11:59pm\nStatistics experience due Mon, Nov 20 at 11:59pm\n\nNext week:\n\n(Optional) Project meetings Nov 20 & 21. Click here to sign up. Must sign up by Fri, Nov 17\nNo class meetings next week\n\nClick here to access lecture recordings. Available until Mon, Dec 04 at 9am\n\n\n🍂 Have a good Thanksgiving break! 🍂"
   }
 ]

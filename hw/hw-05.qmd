@@ -176,8 +176,8 @@ To submit your assignment
 
 | **Total**                 | **50** |
 |---------------------------|:------:|
-| Exercise 1- 8             |   45   |
-| Workflow & formatting[^2] |   5    |
+| Exercise 1- 8             |   47   |
+| Workflow & formatting[^2] |   3    |
 
 [^2]: The "Workflow & formatting" grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date in the YAML.[↩︎](https://sta210-fa23.netlify.app/hw/hw-01#fnref2)
 

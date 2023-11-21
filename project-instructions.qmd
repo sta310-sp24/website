@@ -412,27 +412,27 @@ The GitHub repo should have the following structure:
 
 -   `written-report.qmd` & `written-report.pdf`: Final written report
 
+-   `proposal.qmd` & `proposal.pdf`: Project proposal
+
 -   `/data`: Folder that contains the data set for the final project.
-
--   `/presentation`: Folder with the presentation slides.
-
-    -   If your presentation slides are online, you can put a link to the slides in a `README.md` file in the `presentation` folder.
 
 -   `project.Rproj`: File specifying the RStudio project
 
--   `.gitignore`: File listing all files that are in the local RStudio project but not the GitHub repo
+-   `/presentation`: Folder with the presentation slides or link to slides.
 
-Points for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable.
+-   `.gitignore`: File that lists all files that are in the local RStudio project but not the GitHub repo
 
-<!-- ::: callout-important -->
+-   `/.github`: Folder for peer review issue template
 
-<!-- **The repo must be ready for grading by Wednesday, December 14, 11:59pm.** -->
+Points for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the `README` should be easily readable.
 
-<!-- ::: -->
+::: callout-important
+The repo must be ready for grading by Wednesday, December 13 at 11:59pm.
+:::
 
 ## Peer teamwork evaluation
 
-<!-- You will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member. Filling out the survey is a prerequisite for getting credit on the team member evaluation. If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation. If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly. -->
+You will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member. If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation. If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly.
 
 ## Overall grading
 

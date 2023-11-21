@@ -4897,14 +4897,14 @@
     "href": "project-instructions.html#reproducibility-organization",
     "title": "Final project",
     "section": "Reproducibility + organization",
-    "text": "Reproducibility + organization\nAll written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized.\nThe GitHub repo should have the following structure:\n\nREADME: Short project description and data dictionary\nwritten-report.qmd & written-report.pdf: Final written report\n/data: Folder that contains the data set for the final project.\n/presentation: Folder with the presentation slides.\n\nIf your presentation slides are online, you can put a link to the slides in a README.md file in the presentation folder.\n\nproject.Rproj: File specifying the RStudio project\n.gitignore: File listing all files that are in the local RStudio project but not the GitHub repo\n\nPoints for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable."
+    "text": "Reproducibility + organization\nAll written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized.\nThe GitHub repo should have the following structure:\n\nREADME: Short project description and data dictionary\nwritten-report.qmd & written-report.pdf: Final written report\nproposal.qmd & proposal.pdf: Project proposal\n/data: Folder that contains the data set for the final project.\nproject.Rproj: File specifying the RStudio project\n/presentation: Folder with the presentation slides or link to slides.\n.gitignore: File that lists all files that are in the local RStudio project but not the GitHub repo\n/.github: Folder for peer review issue template\n\nPoints for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable.\n\n\n\n\n\n\nImportant\n\n\n\nThe repo must be ready for grading by Wednesday, December 13 at 11:59pm."
   },
   {
     "objectID": "project-instructions.html#peer-teamwork-evaluation",
     "href": "project-instructions.html#peer-teamwork-evaluation",
     "title": "Final project",
     "section": "Peer teamwork evaluation",
-    "text": "Peer teamwork evaluation"
+    "text": "Peer teamwork evaluation\nYou will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member. If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation. If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly."
   },
   {
     "objectID": "project-instructions.html#overall-grading",

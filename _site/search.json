@@ -6881,11 +6881,25 @@
     "text": "Announcements\n\nDue dates\n\nHW 05 due Wed, Nov 29 at 11:59pm\n\nProject\n\n(Optional) Round 1 submission due Fri, Dec 01 at 11:59pm\nPresentations in lab Dec 5 & 7\n\nExam 02 dates\n\nIn-class: Mon, Dec 4\nTake-home: Mon, Dec 4 - Wed, Dec 6\nReview: Wed, Nov 29\n\nClick here to access lecture recordings. Available until Mon, Dec 04 at 9am"
   },
   {
+    "objectID": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-mike-dairyko",
+    "href": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-mike-dairyko",
+    "title": "Multinomial logistic regression",
+    "section": "Statistician of the day: Mike Dairyko",
+    "text": "Statistician of the day: Mike Dairyko\n\n\nMike Dairyko was a student at Pomona College where he studied Mathematics. Through a linear algebra class, he found his way to two different summer REU programs and eventually to a PhD in Applied Mathematics from Iowa State University (2018). Being introduced to machine learning methods caused him to pursue data science jobs after graduation.\nDr. Dairyko served as a Senior Manager of Data Science at the Milwaukee Brewers and is now the Director of Ticketing Analytics at the Milwaukee Bucks. Helping the organization get the most out of budgeting, revenue, and ticket sales allows him to fully use his training in mathematics and data science.\n\n\n\n\nSource: hardin47.github.io/CURV/scholars/dairykol"
+  },
+  {
     "objectID": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day",
     "href": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day",
     "title": "Multinomial logistic regression",
     "section": "Statistician of the day",
     "text": "Statistician of the day\nAbout his role as a Senior Manager of Data Science for the Milkwaukee Brewers:\n\n“During the season, one of my main priorities is to produce game-by-game ticket and revenue projections. To do so, my group incorporates historical data—such as team performance, weather, and schedules—into multiple regression-based models and then consolidates the outputs in an easily-digestible format. A large codebase both automates and maintains this process; the codebase is regularly tweaked to ensure that it is agile enough to handle the constant usage and flow of new information.”\n\n“Our projections are most accurate when we utilize both qualitative and quantitative forecasts.”\n\n\n\nSource: From Academia to Major League Baseball: The Journey of a Data Scientist"
+  },
+  {
+    "objectID": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-1",
+    "href": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-1",
+    "title": "Multinomial logistic regression",
+    "section": "Statistician of the day",
+    "text": "Statistician of the day\nAbout his role as a Senior Manager of Data Science for the Milkwaukee Brewers:\n“Mathematicians are ultimately trained to develop problem-solving skills and apply them with persistence and creativity…Carefully reviewing the work—and perhaps redoing it a different way or approaching the issue from another angle—eventually leads to success…I do use the problem-solving strategies, persistence, and creativity that I have honed throughout my mathematical journey every single day.”\n“I would encourage students to become comfortable with navigating a programming language such as R or Python…Briefly stepping outside of mathematics and establishing computer science and statistics expertise is also useful…Finally, participating in conferences with data science content is an excellent way to gain exposure to more advanced topics in the field and build a network within the community.”\n\n\nSource: From Academia to Major League Baseball: The Journey of a Data Scientist"
   },
   {
     "objectID": "slides/22-multinomial-logistic-pt2.html#topics",
@@ -7635,19 +7649,5 @@
     "title": "Computing troubleshooting",
     "section": "",
     "text": "If you’re having difficulty launching an RStudio session from your reserved container, go to status.oit.duke.edu and scroll down to Teaching and Learning Tools. Under this heading you’ll find an entry called Container Manager (CMGR Coursework Containers).\n\nIf the status shows something other than Operational, this means there is a known incident with the containers. Check back later to see if it’s been resolved. If there’s a deadline coming up soon, post on the course forum to let us know that there’s an issue. We can look into how quickly it might get resolved and decide on what to do about the deadline accordingly. Note: We don’t anticipate this to happen regularly, the systems are Operational a huge majority of the time!\nIf the status shows Operational, this means the system is expected to be working. Check your internet connection, if need be, restart your computer to ensure a fresh new connection. If your issue persists, post on the course forum with details on what you’ve tried and the errors you see (including verbatim errors and/or screenshots)."
-  },
-  {
-    "objectID": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-mike-dairyko",
-    "href": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-mike-dairyko",
-    "title": "Multinomial logistic regression",
-    "section": "Statistician of the day: Mike Dairyko",
-    "text": "Statistician of the day: Mike Dairyko\n\n\nMike Dairyko was a student at Pomona College where a linear algebra class set him on a career path centered around mathematics. Through that class he found his way to two different summer REU programs and eventually to a PhD in Applied Mathematics from Iowa State University (2018). While initially believing that he would stay in academia after his graduate work, being introduced to machine learning methods caused him to pursue data science jobs after graduation.\nDr. Dairyko served as a Senior Manager of Data Science at the Milwaukee Brewers and is now the Director of Ticketing Analytics at the Milwaukee Bucks. Helping the organization get the most out of budgeting, revenue, and ticket sales allows him to fully use his training in mathematics and data science.\n\n\n\n\nSource: hardin47.github.io/CURV/scholars/dairykol"
-  },
-  {
-    "objectID": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-1",
-    "href": "slides/22-multinomial-logistic-pt2.html#statistician-of-the-day-1",
-    "title": "Multinomial logistic regression",
-    "section": "Statistician of the day",
-    "text": "Statistician of the day\nAbout his role as a Senior Manager of Data Science for the Milkwaukee Brewers:\n“Mathematicians are ultimately trained to develop problem-solving skills and apply them with persistence and creativity…Carefully reviewing the work—and perhaps redoing it a different way or approaching the issue from another angle—eventually leads to success…I do use the problem-solving strategies, persistence, and creativity that I have honed throughout my mathematical journey every single day.”\n“I would encourage students to become comfortable with navigating a programming language such as R or Python…Briefly stepping outside of mathematics and establishing computer science and statistics expertise is also useful…Finally, participating in conferences with data science content is an excellent way to gain exposure to more advanced topics in the field and build a network within the community.”\n\n\nSource: From Academia to Major League Baseball: The Journey of a Data Scientist"
   }
 ]

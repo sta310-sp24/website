@@ -76,13 +76,13 @@ library(countdown)
 
 ::: columns
 ::: {.column width="60%"}
-*Mike Dairyko was a student at Pomona College where a linear algebra class set him on a career path centered around mathematics. Through that class he found his way to two different summer REU programs and eventually to a PhD in Applied Mathematics from Iowa State University (2018). While initially believing that he would stay in academia after his graduate work, being introduced to machine learning methods caused him to pursue data science jobs after graduation.*
+*Mike Dairyko was a student at Pomona College where he studied Mathematics. Through a linear algebra class, he found his way to two different summer REU programs and eventually to a PhD in Applied Mathematics from Iowa State University (2018). Being introduced to machine learning methods caused him to pursue data science jobs after graduation.*
 
 *Dr. Dairyko served as a Senior Manager of Data Science at the Milwaukee Brewers and is now the Director of Ticketing Analytics at the Milwaukee Bucks. Helping the organization get the most out of budgeting, revenue, and ticket sales allows him to fully use his training in mathematics and data science.*
 :::
 
 ::: {.column width="40%"}
-![](images/statistician-of-the-day/dairyko.jpg){fig-alt="Headshot of Mike Dairyko"}
+![](images/statistician-of-the-day/dairyko.jpg){fig-alt="Headshot of Mike Dairyko" width="70%"}
 :::
 :::
 

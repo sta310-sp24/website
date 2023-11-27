@@ -86,11 +86,11 @@ library(countdown)
 :::
 :::
 
-Source: [hardin47.github.io/CURV/scholars/dairyko](https://hardin47.github.io/CURV/scholars/dairyko.html)[l](https://hardin47.github.io/CURV/scholars/dairyko.html)
+Source: [hardin47.github.io/CURV/scholars/dairyko](https://hardin47.github.io/CURV/scholars/dairyko.html)
 
 ## Statistician of the day {.small}
 
-About his role as a Senior Manager of Data Science for the Milkwaukee Brewers: \
+About his role as a Senior Manager of Data Science for the MilwaukeeBrewers:\
 \
 *"During the season, one of my main priorities is to produce game-by-game ticket and revenue projections. To do so, my group incorporates historical data---such as team performance, weather, and schedules---into multiple regression-based models and then consolidates the outputs in an easily-digestible format. A large codebase both automates and maintains this process; the codebase is regularly tweaked to ensure that it is agile enough to handle the constant usage and flow of new information."\
 \
@@ -101,13 +101,13 @@ About his role as a Senior Manager of Data Science for the Milkwaukee Brewers: \
 Source: [From Academia to Major League Baseball: The Journey of a Data Scientist](https://sinews.siam.org/Details-Page/from-academia-to-major-league-baseball-the-journey-of-a-data-scientist)
 :::
 
-## Statistician of the day  {.small}
+## Statistician of the day {.small}
 
-About his role as a Senior Manager of Data Science for the Milkwaukee Brewers:
+About his role as a Senior Manager of Data Science for the Milwaukee Brewers:
 
 *"Mathematicians are ultimately trained to develop problem-solving skills and apply them with persistence and creativity...Carefully reviewing the work---and perhaps redoing it a different way or approaching the issue from another angle---eventually leads to success...I do use the problem-solving strategies, persistence, and creativity that I have honed throughout my mathematical journey every single day."*
 
-*"I would encourage students to become comfortable with navigating a programming language such as R or Python...Briefly stepping outside of mathematics and establishing computer science and statistics expertise is also useful...Finally, participating in conferences with data science content is an excellent way to gain exposure to more advanced topics in the field and build a network within the community."*
+*"I would encourage students to become comfortable with **navigating a programming language such as R or Python**...Briefly stepping outside of mathematics and **establishing computer science and statistics expertise** is also useful...Finally, **participating in conferences with data science content** is an excellent way to gain exposure to more advanced topics in the field and build a network within the community."*
 
 ::: aside
 Source: [From Academia to Major League Baseball: The Journey of a Data Scientist](https://sinews.siam.org/Details-Page/from-academia-to-major-league-baseball-the-journey-of-a-data-scientist)
@@ -283,7 +283,7 @@ health_aug |>
 
 ## ROC curve: under the hood
 
-An additional column, `.level`, identifies the \"one\" column in the one-vs-all calculation:
+An additional column, `.level`, identifies the "one" column in the one-vs-all calculation:
 
 ```{r}
 health_aug |> 
@@ -336,7 +336,7 @@ full_fit <- multinom_reg() |>
   data = nhanes_adult)
 ```
 
-## Add `Education` to the model?  {.midi}
+## Add `Education` to the model? {.midi}
 
 ```{r}
 anova(reduced_fit$fit, full_fit$fit, test = "Chisq") |>
@@ -448,7 +448,7 @@ emplogitplot1(Poor ~ Age, data = nhanes_adult,
 
 . . .
 
-`r emo::ji("white_check_mark")` The linearity condition is satisfied. There is generally a linear relationship between the empirical logit and the quantitative predictor variable, Age.
+`r emo::ji("white_check_mark")` The linearity condition is satisfied. There is generally a linear relationship between the empirical logit and the quantitative predictor variable, Age, for each level of the response.
 
 ## Checking randomness
 
@@ -478,7 +478,7 @@ Independence is most often violated if the data were collected over time or ther
 -   Model selection for inference
 -   Checking conditions for inference
 
-## Full multinomial modeling workflow 
+## Full multinomial modeling workflow
 
 -   [juliasilge.com/blog/multinomial-volcano-eruptions](https://juliasilge.com/blog/multinomial-volcano-eruptions/)
 
@@ -489,5 +489,5 @@ Independence is most often violated if the data were collected over time or ther
 ::: question
 Submit your questions for the Exam 02 review: <https://forms.office.com/r/cTyeRjVmfb>\
 \
-Exam 02 will cover mutliple linear regression, logistic regression, and multinomial logistic regression.
+Exam 02 will cover multiple linear regression, logistic regression, and multinomial logistic regression.
 :::

@@ -1162,6 +1162,13 @@
     "text": "Announcements\n\nDue dates\n\nHW 05 due TODAY at 11:59pm\n\nProject\n\n(Optional) Round 1 submission due Fri, Dec 01 at 11:59pm\nPresentations in lab Dec 5 & 7\n\nExam 02 dates\n\nIn-class: Mon, Dec 4\nTake-home: Mon, Dec 4 - Wed, Dec 6\nReview: Wed, Nov 29\nNo Ed Discussion or office hours Dec 4 - 6\n\nClick here to access lecture recordings. Available until Mon, Dec 04 at 9am\nPlease fill out course evaluations"
   },
   {
+    "objectID": "slides/23-exam-02-review.html#course-ta-evaluations",
+    "href": "slides/23-exam-02-review.html#course-ta-evaluations",
+    "title": "Exam 02 review",
+    "section": "Course + TA evaluations",
+    "text": "Course + TA evaluations\n\nCourse and TA evaluations are now available (will receive email about TA evals)\nIf there is at least 80% on the course evaluations and TA evaluations, everyone in the class will get 1 percentage point (i.e. 0.5 out of 50) on Exam 02.\n\nThis will be determined separately for the Sections 001 and 002."
+  },
+  {
     "objectID": "slides/23-exam-02-review.html#exam-02",
     "href": "slides/23-exam-02-review.html#exam-02",
     "title": "Exam 02 review",
@@ -1180,7 +1187,7 @@
     "href": "slides/23-exam-02-review.html#outline-of-in-class-portion",
     "title": "Exam 02 review",
     "section": "Outline of in-class portion",
-    "text": "Outline of in-class portion\n\nClosed-book, closed-note.\n10 questions, some with multiple parts\nQuestion types:\n\nMultiple choice\nShort answer (no more than 3 sentences)\nTrue/ False.\n\nIf false, write 1 - 2 sentence justification about why it is false. Must get justification correct to receive credit.\n\nEvaluate a response.\n\nLast page will have analysis output.\nJust need a pencil or pen. No calculator permitted on exam."
+    "text": "Outline of in-class portion\n\nClosed-book, closed-note.\n8-10 questions, some with multiple parts\nQuestion types:\n\nMultiple choice\nShort answer (no more than 3 sentences)\nTrue/ False.\n\nIf false, write 1 - 2 sentence justification about why it is false. Must get justification correct to receive credit.\n\nEvaluate a response.\n\nLast page will have analysis output.\nJust need a pencil or pen. No calculator permitted on exam."
   },
   {
     "objectID": "slides/20-logistic-inf.html#announcements",
@@ -3210,7 +3217,7 @@
     "href": "ae/ae-17-exam-02-review.html#exercise-1",
     "title": "AE 17: Exam 02 Review",
     "section": "Exercise 1",
-    "text": "Exercise 1\n\nWhy should we use a logistic regression model for this analysis task?\n\n\n\nFill in the blanks. In logistic regression, we\n\nuse log-odds to …\nuse odds to …\nuse probabilities to …"
+    "text": "Exercise 1\n\nWhy is logistic regression the best modeling approach for this analysis?\n\n\n\nFill in the blanks. In logistic regression, we\n\nuse log-odds to …\nuse odds to …\nuse probabilities to …"
   },
   {
     "objectID": "ae/ae-17-exam-02-review.html#exercise-2",
@@ -3238,7 +3245,7 @@
     "href": "ae/ae-17-exam-02-review.html#exercise-5",
     "title": "AE 17: Exam 02 Review",
     "section": "Exercise 5",
-    "text": "Exercise 5\nConduct 5-fold cross validation. Use seed 210 to create the folds.\n\n# add code here\n\nThen, summarize metrics from your CV resamples.\n\n# add code here"
+    "text": "Exercise 5\nConduct 5-fold cross validation. Use seed 210 to create the folds.\n\n# add code here\n\nThen, summarize the metrics from your CV resamples.\n\n# add code here"
   },
   {
     "objectID": "ae/ae-17-exam-02-review.html#exercise-6",
@@ -3259,7 +3266,7 @@
     "href": "ae/ae-17-exam-02-review.html#exercise-8",
     "title": "AE 17: Exam 02 Review",
     "section": "Exercise 8",
-    "text": "Exercise 8\nNow let’s evaluate the performance of the selected model using the testing data.\nCreate a confusion matrix using a cutoff probability of 0.5.\n\n# add code here\n\n\nWhat is the sensitivity? What does it mean in the context of the data ?\nWhat is the specificity? What does it mean in the context of the data?\nWhat is the true positive rate? What does it mean in the context of the data?\nWhat is the false positive rate? What does it mean in the context of the data?"
+    "text": "Exercise 8\nNow let’s evaluate the performance of the selected model using the testing data.\nCreate a confusion matrix using a cutoff probability of 0.5.\n\n# add code here\n\n\nWhat is the sensitivity? What does it mean in the context of the data ?\nWhat is the specificity? What does it mean in the context of the data?\nWhat is the false positive rate? What does it mean in the context of the data?\nWhat is the false negative rate? What does it mean in the context of the data?"
   },
   {
     "objectID": "ae/ae-17-exam-02-review.html#exercise-9",
@@ -3273,7 +3280,7 @@
     "href": "ae/ae-17-exam-02-review.html#exercise-10",
     "title": "AE 17: Exam 02 Review",
     "section": "Exercise 10",
-    "text": "Exercise 10\nQuestions about checking conditions for logistic regression:\n\nDo we assess conditions on the training or testing set?\nWhy do we not consider categorical predictors when checking linearity?\nWhy do we not need to check constant variance?"
+    "text": "Exercise 10\nQuestions about checking conditions for logistic regression:\n\nDo we assess conditions on the training or testing set?\nWhy do we not consider categorical predictors when checking linearity?\nWhy do we not need to check constant variance for logistic regression?"
   },
   {
     "objectID": "ae/ae-17-exam-02-review.html#submission",

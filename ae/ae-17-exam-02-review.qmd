@@ -57,11 +57,10 @@ credit <- read_csv("data/credit.csv") |>
 
 ## Exercise 1
 
--   Why should we use a logistic regression model for this analysis task?
+-   Why is logistic regression the best modeling approach for this analysis?
 
-```{=html}
 <!-- -->
-```
+
 -   Fill in the blanks. In logistic regression, we
 
     -   use log-odds to ...
@@ -129,7 +128,7 @@ Conduct 5-fold cross validation. Use seed 210 to create the folds.
 
 ```
 
-Then, summarize metrics from your CV resamples.
+Then, summarize the metrics from your CV resamples.
 
 ```{r}
 #| label: summarize-cv-metrics
@@ -176,9 +175,9 @@ Create a confusion matrix using a cutoff probability of 0.5.
 
 -   What is the specificity? What does it mean in the context of the data?
 
--   What is the true positive rate? What does it mean in the context of the data?
-
 -   What is the false positive rate? What does it mean in the context of the data?
+
+-   What is the false negative rate? What does it mean in the context of the data?
 
 ## Exercise 9
 
@@ -201,7 +200,7 @@ Questions about checking conditions for logistic regression:
 
 -   Why do we not consider categorical predictors when checking linearity?
 
--   Why do we not need to check constant variance?
+-   Why do we not need to check constant variance for logistic regression?
 
 ## Submission
 

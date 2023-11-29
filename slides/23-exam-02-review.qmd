@@ -43,6 +43,14 @@ bibliography: references.bib
 -   [Click here](https://docs.google.com/spreadsheets/d/1dUD4SOpM79BL2kdvue9I2TP-ibcdxfpOIkHkMreYx64/edit?usp=sharing) to access lecture recordings. Available until Mon, Dec 04 at 9am
 -   Please fill out course evaluations
 
+## Course + TA evaluations 
+
+-   Course and TA evaluations are now available (will receive email about TA evals)
+
+-   If there is at least 80% on the course evaluations [**and**]{.underline} TA evaluations, everyone in the class will get 1 percentage point (i.e. 0.5 out of 50) on Exam 02.
+
+    -   This will be determined separately for the Sections 001 and 002.
+
 ## Exam 02 {.midi}
 
 -   15% of final course grade
@@ -93,7 +101,7 @@ bibliography: references.bib
 
 -   Closed-book, closed-note.
 
--   10 questions, some with multiple parts
+-   8-10 questions, some with multiple parts
 
 -   Question types:
 

@@ -192,7 +192,7 @@ tidy(health_fit) |> kable(digits = 3)
 
 ## Calculating probabilities {.smaller}
 
--   For categories $2,\ldots,K$, the probability that the $i^{th}$ observation is in the $j^{th}$ category is
+-   Suppose the repsonse variable has $K$ categories and $k = 1$ is the baseline category. For categories $2,\ldots,K$, the probability that the $i^{th}$ observation is in the $j^{th}$ category is
 
     $$
     \hat{\pi}_{ij} = \frac{\exp\{\hat{\beta}_{0j} + \hat{\beta}_{1j}x_{i1} + \dots + \hat{\beta}_{pj}x_{ip}\}}{1 + \sum\limits_{k=2}^K \exp\{\hat{\beta}_{0k} + \hat{\beta}_{1k}x_{i1} + \dots \hat{\beta}_{pk}x_{ip}\}}

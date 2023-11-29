@@ -665,7 +665,7 @@ $ obs_num    &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 
 <section id="calculating-probabilities" class="slide level2 smaller">
 <h2>Calculating probabilities</h2>
 <ul>
-<li><p>For categories <span class="math inline">\(2,\ldots,K\)</span>, the probability that the <span class="math inline">\(i^{th}\)</span> observation is in the <span class="math inline">\(j^{th}\)</span> category is</p>
+<li><p>Suppose the repsonse variable has <span class="math inline">\(K\)</span> categories and <span class="math inline">\(k = 1\)</span> is the baseline category. For categories <span class="math inline">\(2,\ldots,K\)</span>, the probability that the <span class="math inline">\(i^{th}\)</span> observation is in the <span class="math inline">\(j^{th}\)</span> category is</p>
 <p><span class="math display">\[
 \hat{\pi}_{ij} = \frac{\exp\{\hat{\beta}_{0j} + \hat{\beta}_{1j}x_{i1} + \dots + \hat{\beta}_{pj}x_{ip}\}}{1 + \sum\limits_{k=2}^K \exp\{\hat{\beta}_{0k} + \hat{\beta}_{1k}x_{i1} + \dots \hat{\beta}_{pk}x_{ip}\}}
 \]</span></p></li>

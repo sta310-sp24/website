@@ -351,7 +351,9 @@ Note that this is optional, so there is [**no**]{.underline}grade penalty for no
 ## Presentation {#presentation}
 
 ::: callout-important
-Presentations will take place in class during labs December 5 & 7.
+Presentations will take place in class during labs December 5 & 7.\
+
+[Click here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/Ed8d7gVI8-lMrmgJpFpTEjYB2UXUTyZNDMOgQYpO4YOJJg?e=CieZZL) for the presentation order.
 :::
 
 In addition to the written report, your team will also do an in-person presentation that summarize and showcase your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. The presentation should be supported by slides that serve as a brief visual addition to the presentation. The presentation and slides will be graded for content and clarity.
@@ -378,6 +380,20 @@ The slide deck should have no more than 6 content slides + 1 title slide. Here i
 -   Slide 5: Interesting findings from the model
 -   Slide 6: Conclusions + future work
 
+### Grading criteria
+
+The presentation grade will be based on the following criteira:
+
+-   Content: The group told a unified story using the appropriate regression analysis.
+
+-   Slides: The presentation slides were organized, included clear and informative visualizations, and were easily readable.
+
+-   Professionalism: The group's communication style was clear and professional.
+
+-   Time Management: Team divided the time well and stayed within the 6 minute time limit, with each team member making a meaning contribution to the presentation. (assessed by the teaching team only).
+
+80% of the presentation grade will be the average of the teaching scores and 20% will be the average of the peer scores.
+
 ::: callout-important
 You can submit the presentation slides in two ways:
 
@@ -390,17 +406,15 @@ You can submit the presentation slides in two ways:
 
 ## **Presentation comments** {#presentation-comments}
 
-<!-- Each student will be assigned 2 presentations to watch. [Click here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/ERbjrobTMghFrZDObDgVm44BjK9WcSjtgaZzUoPp1axz9Q?e=aBgZAH) to see your viewing assignments. -->
+::: callout-important
+[Click here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/Ed8d7gVI8-lMrmgJpFpTEjYB2UXUTyZNDMOgQYpO4YOJJg?e=jxx4e4) to find the teams you're scoring and a link to the feedback form.
 
-<!-- Watch the group's video, then click "Reply" to post a question for the group. You may not post a question that's already been asked on the discussion thread. Additionally, the question should be (i) substantive (i.e. it shouldn't be "Why did you use a bar plot instead of a pie chart"?), (ii) demonstrate your understanding of the content from the course, and (iii) relevant to that group's specific presentation, i.e demonstrating that you've watched the presentation. -->
+This portion of the project will be assessed individually.\
+:::
 
-<!-- ::: callout-important -->
+You will provide feedback on two teams' presentations. You can find your assigned teams and the link to the feedback from [here](https://prodduke-my.sharepoint.com/:x:/g/personal/mt324_duke_edu/Ed8d7gVI8-lMrmgJpFpTEjYB2UXUTyZNDMOgQYpO4YOJJg?e=CieZZL). Please provide all scores and comments by the end of the lab session. There will be a few minutes between each presentation to submit scores.
 
-<!-- You may start posting questions and comments on Thursday, December 15. **All comments must be posted by Friday, December 16 at 11:59pm.** -->
-
-<!-- ::: -->
-
-<!-- <i>This portion of the project will be assessed individually.</i> -->
+The grade will be based on submitting the scores and comments for both of your assigned teams by the end of the presentation day (December 5 for Tuesday labs, December 7 for Thursday labs).
 
 ## Reproducibility + organization {#reproducibility-organization}
 

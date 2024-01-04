@@ -1,5 +1,5 @@
 ---
-title: "HW 02"
+title: "HW 06"
 subtitle: ""
 editor: visual
 execute:

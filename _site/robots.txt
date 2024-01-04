@@ -1,1 +1,1 @@
-Sitemap: https://sta210-fa23.netlify.app/sitemap.xml
+Sitemap: https://sta310-sp24.netlify.app/sitemap.xml

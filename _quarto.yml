@@ -3,70 +3,76 @@ project:
 
 website:
   page-navigation: true
-  title: "STA 210 - Fall 2023"
-  description: "Homepage for STA 210 - Regression Analysis at Duke University, Fall 2023"
-  site-url: https://sta210-fa23.netlify.app
+  title: "STA 310 - Spring 2024"
+  description: "Homepage for STA 310: Generalized Linear Models at Duke University, Spring 2024"
+  site-url: https://sta310-sp24.netlify.app
 
-  repo-url: https://github.com/sta210-fa23/website
+  repo-url: https://github.com/sta310-sp24/website
   repo-actions: [edit, issue]
   
   page-footer:
-    background: "#7eb7c2"
+    background: "#4187aa"
     left: |
-      &copy; Copyright 2022, Maria Tackett
+      &copy; Copyright 2024, Maria Tackett
     right: |
       This site is built with [Quarto](https://quarto.org/)
 
   sidebar:
-    background: "#7eb7c2"
+    background: "#4187aa"
     logo: "images/logo.png"
     align: center
     tools: 
       - icon: github
-        href: https://github.com/sta210-fa23
+        href: https://github.com/sta310-sp24
         text: "GitHub organization"
-      - icon: code-square
-        href: https://cmgr.oit.duke.edu/containers
-        text: "RStudio Containers"
       - icon: person-fill
-        text: "Sakai"
-        menu:
-          - text: Sakai
-            url: https://sakai.duke.edu/portal/site/f2e8b7dc-61e6-4431-9b5c-29f8411ee5db
-          - text: Ed Discussion 
-            url: https://edstem.org/us/courses/44523/discussion/
-          - text: Gradescope 
-            url: https://www.gradescope.com/courses/584312
+        href: https://sakai.duke.edu/portal/site/f2e8b7dc-61e6-4431-9b5c-29f8411ee5db
+        text: "Canvas"
+      - icon: person-fill
+        href: https://www.gradescope.com/courses/584312
+        text: "Gradescope"
     style: "docked"
     search: true
     collapse-level: 1
     contents: 
-      - href: schedule.qmd
-        text: Schedule
-      - href: syllabus.qmd
-        text: Syllabus
-      - href: support.qmd
-        text: Support
-      - href: links.qmd
-        text: Useful links
-      - section: Computing
+      - section: Course information 
         contents: 
-        - href: computing-access.qmd
-          text: Access
-        - href: computing-troubleshooting.qmd
-          text: Troubleshooting
-        - href: computing-r-resources.qmd
-          text: R resources
-      - section: Project
+        - href: course-overview.qmd
+          text: Overview
+        - href: syllabus.qmd
+          text: Syllabus
+        - href: index.qmd
+          text: Schedule
+        - href: support.qmd
+          text: Support
+        - href: computing.qmd
+          text: Computing
+        - href: links.qmd
+          text: Useful links
+      - section: Homework 
+        contents: 
+          - href: hw/hw-01.qmd
+            text: HW 01
+          - href: hw/hw-02.qmd
+            text: HW 02
+          - href: hw/hw-03.qmd
+            text: HW 03
+          - href: hw/hw-04.qmd
+            text: HW 04
+          - href: hw/hw-05.qmd
+            text: HW 05
+          - href: hw/hw-06.qmd
+            text: HW 06
+      - section: Projects
         contents:
-        - href: project-instructions.qmd
-          text: Instructions
+        - href: projects/project-01.qmd
+          text: Project 01
+        - href: projects/project-02.qmd
+          text: Project 02
+        - href: projects/final-project.qmd
+          text: Final Project
         - href: project-tips.qmd
           text: Tips + resources
-      - href: stats-experience.qmd
-        text: Statistics experience
-      - href: https://docs.google.com/spreadsheets/d/1dUD4SOpM79BL2kdvue9I2TP-ibcdxfpOIkHkMreYx64/edit?usp=sharing
-        text: Lecture recordings
 
 format:
   html:

@@ -1,0 +1,35 @@
+---
+title: "Course overview"
+navbar: false
+---
+
+# Overview
+
+STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 students will be introduced to generalized linear models (GLMs), a broad modeling framework that includes linear and logistic models, among others. Students will learn the basic theory of GLMs and how they can used to model a variety of response variables with non-normal distributions. Students will also learn an extension of GLMs that can be applied to modeling data with correlated observations, such as data with repeated measures.
+
+# Class meetings
+
+|             |           |               |                       |
+|-------------|-----------|---------------|-----------------------|
+| **Lecture** | Mon & Wed | 3:05 - 4:20pm | Social Science 136    |
+| **Lab 01**  | Thu       | 3:05 - 4:20pm | Perkins 071 (Link #5) |
+| **Lab 02**  | Thu       | 4:40 - 5:55pm | Perkins 071 (Link #5) |
+
+# Teaching team
+
+### Instructor
+
+[Maria Tackett](https://www2.stat.duke.edu/~mt324) is an Assistant Professor of the Practice in the Department of Statistical Science at Duke University. Her work focuses on understanding how active learning strategies can be used to promote engagement and student motivation in undergraduate statistics courses. She also studies how classroom practices in introductory math and statistics courses impact students' sense of community, self-efficacy, and learning outcomes.
+
+| Office hours         | Location      |
+|----------------------|---------------|
+| \[UPDATE\]           | Old Chem 118B |
+| *or by appointment.* |               |
+
+## Teaching assistant
+
+The teaching assistant for this course is \[INSERT NAME + Link to website?\]. He is a \[insert year of PhD and perhaps something about the topic he's studying.\]
+
+| Office hours | Location   |
+|--------------|------------|
+| \[UPDATE\]   | \[UPDATE\] |

@@ -1,21 +1,19 @@
-# Website for STA 210 at Duke University
+# Website for STA 310 at Duke University
 
-# Fall 2023
+# Spring 2024
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bebb2437-53bf-4f05-a2f3-424f965f62e2/deploy-status)](https://app.netlify.com/sites/sta210-fa23/deploys)
 
-:link: [sta210-fa23.netlify.app](https://sta210-fa23.netlify.app/)
+:link: [sta310-sp24.netlify.app](https://sta310-sp24.netlify.app)
 
 ## Colors
 
--   primary color: #7eb7c2
--   main accent: #871d89
+-   primary color: #4187aa
+-   main accent: #AF5A94
 
 ## Attribution
 
-This website is design is based on the [STA 210 Spring 2022 website](https://sta210-s22.github.io/website/), and the design of the schedule page is adapted from[STA 199 Fall 2022](https://sta199-f22-1.github.io/). Both sites are by Dr. Mine Çetinkaya-Rundel.
-
-Content is based on [STA 210 Fall 2021](https://sta210-fa21.netlify.app) taught by Dr. Maria Tackett and S[TA 210 Spring 2022](https://sta210-s22.github.io) taught by Dr. Mine Çetinkaya-Rundel.
+This website is design is based on the [STA 210 Spring 2022 website](https://sta210-s22.github.io/website/), and the design of the schedule page is adapted from [STA 199 Fall 2022](https://sta199-f22-1.github.io/). Both sites are by Dr. Mine Çetinkaya-Rundel.
 
 <hr>
 

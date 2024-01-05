@@ -12,17 +12,15 @@ If you have a question during lecture or lab, feel free to ask it! There are lik
 
 The teaching team is here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage you to take advantage of them!
 
-Make a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself. You can find a list of everyone's office hours [here](https://docs.google.com/spreadsheets/d/1bZMZsX0Z6-rMI_qguqZCPg3kaes7KTz5Cn7gtcm9nWk/edit?usp=sharing).
+Make a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself.
 
-## Ed Discussion
+## Slack
 
-Outside of class and office hours, any general questions about course content or assignments should be posted on [Ed Discussion](https://edstem.org/us/courses/44523/discussion/). There is a chance another student has already asked a similar question, so please check the other posts on Ed Discussion before adding a new question. If you know the answer to a question that is posted, I encourage you to respond!
+Outside of class and office hours, any general questions about course content or assignments should be posted on the classrom Slack. There is a chance another student has already asked a similar question, so please check the other posts on Slack before adding a new question. If you know the answer to a question that is posted, I encourage you to respond!
 
 ## Email
 
-If you have questions about personal matters that are not appropriate for the class discussion forum (e.g. illness, accommodations, etc.), you may email Professor Tackett at [maria.tackett\@duke.edu](mailto:maria.tackett@duke.edu). **If you email me, please include "STA 210" in the subject line.** Barring extenuating circumstances, I will respond to STA 210 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.
-
-If you have questions about assignment extensions, please email [sta210\@duke.edu](mailto:sta210@duke.edu). This email is accessible to the Head TA Sam Rosen and Professor Tackett.
+If you have questions about personal matters that are not appropriate for the class discussion forum (e.g. illness, accommodations, etc.), you may email Professor Tackett at [maria.tackett\@duke.edu](mailto:maria.tackett@duke.edu). **If you email me, please include "STA 310" in the subject line.** Barring extenuating circumstances, I will respond to STA 310 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.
 
 ## Academic support
 
@@ -45,11 +43,3 @@ Note that we will be using Duke's computational resources in this course. These 
 ## **Course materials costs**
 
 There are no costs associated with this course. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.).
-
-## Assistance with Zoom or Sakai
-
-For technical help with Sakai or Zoom, contact the Duke OIT Service Desk at [oit.duke.edu/help](https://oit.duke.edu/help). You can also access the self-service help documentation for Zoom [here](https://oit.duke.edu/help/articles/kb0029318) and for Sakai [here](https://sakai-duke.screenstepslive.com/s/sakai_support).
-
-Note that we will be making minimal use of Sakai in this course (primarily for announcements and grade book). All assignment submission and discussion will take place on GitHub instead.
-
-Zoom will be used for online office hours as well as as a backup option should we need to hold the course online instead of in person.

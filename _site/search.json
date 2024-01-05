@@ -179,21 +179,21 @@
     "href": "support.html#office-hours",
     "title": "Course support",
     "section": "Office hours",
-    "text": "Office hours\nThe teaching team is here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage you to take advantage of them!\nMake a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself. You can find a list of everyone’s office hours here."
+    "text": "Office hours\nThe teaching team is here to help you be successful in the course. You are encouraged to attend office hours during the times posted on the home page to ask questions about the course content and assignments. A lot of questions are most effectively answered in-person, so office hours are a valuable resource. I encourage you to take advantage of them!\nMake a pledge to stop by office hours at least once during the first three weeks of class. If you truly have no questions to ask, just stop by and say hi and introduce yourself."
   },
   {
-    "objectID": "support.html#ed-discussion",
-    "href": "support.html#ed-discussion",
+    "objectID": "support.html#slack",
+    "href": "support.html#slack",
     "title": "Course support",
-    "section": "Ed Discussion",
-    "text": "Ed Discussion\nOutside of class and office hours, any general questions about course content or assignments should be posted on Ed Discussion. There is a chance another student has already asked a similar question, so please check the other posts on Ed Discussion before adding a new question. If you know the answer to a question that is posted, I encourage you to respond!"
+    "section": "Slack",
+    "text": "Slack\nOutside of class and office hours, any general questions about course content or assignments should be posted on the classrom Slack. There is a chance another student has already asked a similar question, so please check the other posts on Slack before adding a new question. If you know the answer to a question that is posted, I encourage you to respond!"
   },
   {
     "objectID": "support.html#email",
     "href": "support.html#email",
     "title": "Course support",
     "section": "Email",
-    "text": "Email\nIf you have questions about personal matters that are not appropriate for the class discussion forum (e.g. illness, accommodations, etc.), you may email Professor Tackett at maria.tackett@duke.edu. If you email me, please include “STA 210” in the subject line. Barring extenuating circumstances, I will respond to STA 210 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday.\nIf you have questions about assignment extensions, please email sta210@duke.edu. This email is accessible to the Head TA Sam Rosen and Professor Tackett."
+    "text": "Email\nIf you have questions about personal matters that are not appropriate for the class discussion forum (e.g. illness, accommodations, etc.), you may email Professor Tackett at maria.tackett@duke.edu. If you email me, please include “STA 310” in the subject line. Barring extenuating circumstances, I will respond to STA 310 emails within 48 hours Monday - Friday. Response time may be slower for emails sent Friday evening - Sunday."
   },
   {
     "objectID": "support.html#academic-support",
@@ -222,13 +222,6 @@
     "title": "Course support",
     "section": "Course materials costs",
     "text": "Course materials costs\nThere are no costs associated with this course. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.)."
-  },
-  {
-    "objectID": "support.html#assistance-with-zoom-or-sakai",
-    "href": "support.html#assistance-with-zoom-or-sakai",
-    "title": "Course support",
-    "section": "Assistance with Zoom or Sakai",
-    "text": "Assistance with Zoom or Sakai\nFor technical help with Sakai or Zoom, contact the Duke OIT Service Desk at oit.duke.edu/help. You can also access the self-service help documentation for Zoom here and for Sakai here.\nNote that we will be making minimal use of Sakai in this course (primarily for announcements and grade book). All assignment submission and discussion will take place on GitHub instead.\nZoom will be used for online office hours as well as as a backup option should we need to hold the course online instead of in person."
   },
   {
     "objectID": "prepare/week-02.html",
@@ -375,7 +368,7 @@
     "href": "links.html",
     "title": "Useful links",
     "section": "",
-    "text": "RStudio containers\n🔗 on Duke Container Manager\n\n\nCourse GitHub organization\n🔗 on GitHub\n\n\nDiscussion forum\n🔗 on Ed Discussion\n\n\nAssignment submission\n🔗 on Gradescope\n\n\nZoom links\n🔗 on Sakai"
+    "text": "RStudio containers (optional)\n🔗 on Duke Container Manager\n\n\nCourse GitHub organization\n🔗 on GitHub\n\n\nLecture recordings\n🔗 TBD\n\n\nGradebook\n🔗 on Canvas\n\n\nTextbooks\n🔗 Beyond Multiple Linear Regression\n\n\n\n🔗 R for Data Science\n\n\n\n🔗 Tidy Modeling with R"
   },
   {
     "objectID": "project-tips.html",

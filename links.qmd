@@ -2,10 +2,12 @@
 title: "Useful links"
 ---
 
-|                            |                                                                                        |
-|----------------|--------------------------------------------------------|
-| RStudio containers         | 🔗 on [Duke Container Manager](https://cmgr.oit.duke.edu/containers)                   |
-| Course GitHub organization | 🔗 on [GitHub](https://github.com/sta210-fa23)                                         |
-| Discussion forum           | 🔗 on [Ed Discussion](https://edstem.org/us/courses/44523/discussion/)                 |
-| Assignment submission      | 🔗 on [Gradescope](https://www.gradescope.com/courses/584312)                          |
-| Zoom links                 | 🔗 on [Sakai](https://sakai.duke.edu/portal/site/f2e8b7dc-61e6-4431-9b5c-29f8411ee5db) |
+|                               |                                                                                         |
+|--------------------------------|------------------------------------------------------|
+| RStudio containers (optional) | 🔗 on [Duke Container Manager](https://cmgr.oit.duke.edu/containers)                    |
+| Course GitHub organization    | 🔗 on [GitHub](https://github.com/sta310-sp24)                                          |
+| Lecture recordings            | 🔗 TBD                                                                                  |
+| Gradebook                     | 🔗 on Canvas                                                                            |
+| Textbooks                     | 🔗 [Beyond Multiple Linear Regression](https://bookdown.org/roback/bookdown-BeyondMLR/) |
+|                               | 🔗 [R for Data Science](https://r4ds.hadley.nz/)                                        |
+|                               | 🔗 [Tidy Modeling with R](https://www.tmwr.org/)                                        |

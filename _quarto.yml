@@ -25,12 +25,15 @@ website:
       - icon: github
         href: https://github.com/sta310-sp24
         text: "GitHub organization"
+      - icon: slack
+        href: https://sta310-sp24.slack.com
+        text: "Slack"
       - icon: person-fill
         href: https://sakai.duke.edu/portal/site/f2e8b7dc-61e6-4431-9b5c-29f8411ee5db
         text: "Canvas"
-      - icon: person-fill
-        href: https://www.gradescope.com/courses/584312
-        text: "Gradescope"
+      # - icon: file-play
+      #   href: https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=82374550-c813-415d-be91-b06f010856ce
+      #   text: "Panopto"
     style: "docked"
     search: true
     collapse-level: 1

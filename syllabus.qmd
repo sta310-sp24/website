@@ -64,10 +64,15 @@ As a student in this course, you have agreed to uphold the [Duke Community Stand
 
 It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with [Duke's Commitment to Diversity and Inclusion](https://provost.duke.edu/initiatives/commitment-to-diversity-and-inclusion). Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
 
-Furthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities. To help accomplish this:
+Furthermore, I would like to create a learning environment that supports a diversity of thoughts, perspectives and experiences, and honors your identities. To help accomplish this:
 
+-   If you have a name that differs from those that appear in your official Duke records, please let me know! You\'ll be able to note this in the Getting to know you survey.
 -   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your academic dean is an excellent resource.
 -   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please let me or a member of the teaching team know.
+
+### **Pronouns**
+
+Pronouns are meaningful tools to communicate identities and experiences, and using pronouns supports a campus environment where all community members can thrive. Please update your gender pronouns in Duke Hub. You can learn more at the [Center for Sexual and Gender Diversity\'s website](https://students.duke.edu/belonging/icr/csgd/pronouns/).
 
 ### Accessibility
 
@@ -77,21 +82,23 @@ The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) 
 
 ### Communication
 
-All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website, [sta310-sp22.netlify.app](https://sta310-sp22.netlify.app/)
+All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website, [sta310-sp24.netlify.app](https://sta310-sp24.netlify.app/)
 
-Announcements will be emailed through Sakai Announcements periodically. Please check your email regularly to ensure you have the latest announcements for the course.
+Announcements will be sent through Canvas and email. Please check your email regularly to ensure you have the latest announcements for the course.
 
-### Class support & resources
+### Where to get help
 
 -   If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.
--   The teaching team is here to help you be successful in the course. You are encouraged to attend office hours to ask questions about the course content and assignments. Many questions are most effectively answered as you discuss them with others, so office hours are a valuable resource. Please use them!
--   Outside of class and office hours, any general questions about course content or assignments should be posted on the class [GitHub Discussion Forum](https://github.com/sta310-sp22/discussion/discussions). There is a chance another student has already asked a similar question, so please check the other posts before adding a new question. If you know the answer to a question posted in the discussion forum, I encourage you to respond!
+-   The teaching team is here to help you be successful in the course. You are encouraged to attend office hours[^1] to ask questions about the course content and assignments. Many questions are most effectively answered as you discuss them with others, so office hours are a valuable resource. Please use them!
+-   Outside of class and office hours, any general questions about course content or assignments should be posted on the course Slack. There is a chance another student has already asked a similar question, so please check the other posts on Slack before adding a new question. If you know the answer to a question posted on Slack, I encourage you to respond!
 
-Check out the [Support](/help/) tab for more resources.
+[^1]: Office hours are times the teaching team set aside each week to meet with students. [Click here](https://academicguides.duke.edu/reasons-to-attend-office-hours/) to learn more about how to effectively use office hours.
+
+Check out the [Support](support.qmd) page for more resources.
 
 ### Email
 
-If there is a question that's not appropriate for the public forum, you are welcome to email me directly with "STA 310" in the subject line. Barring extenuating circumstances, I will respond to STA 310 emails within 48 hours Monday - Thursday. Response time may be slower for emails received Friday - Sunday.
+If there is a question that's not appropriate for Slack, please email directly with "STA 310" in the subject line. Barring extenuating circumstances, I will respond to STA 310 emails within 48 hours Monday - Thursday. Response time may be slower for emails received Friday - Sunday.
 
 ## Activities & Assessment
 
@@ -105,7 +112,7 @@ The activities and assessments in this course are designed to help you successfu
 
 ### Readings
 
-There will be reading assignments to accompany each topic. Readings will primarily come from the course textbook *Beyond Multiple Linear Regression*, but they may periodically include articles and other resources. It is strongly recommended that you complete the readings before lectures, so you have an introduction to the topic before class.
+There will be reading assignments to accompany each topic. Readings will primarily come from the course textbook [*Beyond Multiple Linear Regression*](https://bookdown.org/roback/bookdown-BeyondMLR/), but they may periodically include articles and other resources. It is strongly recommended that you complete the readings before lectures, so you have an introduction to the topic before class.
 
 ### Lectures
 
@@ -113,19 +120,19 @@ Lectures will be interactive with a mix of presenting lecture notes, short in-cl
 
 ### Homework
 
-There will be about 5 homework assignments during the semester. In these assignments, you will apply what you've learned as you answer conceptual questions and complete guided and unguided analyses. You may discuss homework assignments with other students; however, homework should be completed and submitted individually.
+There will be 6 homework assignments during the semester. In these assignments, you will apply what you've learned as you answer conceptual questions and complete guided and unguided analyses. You may discuss homework assignments with other students; however, homework should be completed and submitted individually.
 
-*The lowest homework grade will be dropped*
+*The lowest homework grade is dropped.*
 
 ### Quizzes
 
-There will be periodic short quizzes during the semester. These quizzes will cover the readings, lecture notes and activities, and any assignments since the previous quiz. More details about the format and content for each quiz will be available as they are assigned.
+There will be 6 quizzes during the semester. Quizzes will cover the readings, lecture notes and activities, and any assignments since the previous quiz.
 
-*The lowest quiz grade will be dropped at the end of the semester.*
+*The lowest quiz grade is dropped.*
 
 ### Projects
 
-There will be 2 mini group projects and 1 final individual project in this course. Teams will be randomly assigned for each of the mini projects. More details about each project will be available under the [projects](/project/) tab as they are assigned.
+There will be 2 short group projects and 1 final individual project in this course. Teams will be randomly assigned for each of the mini projects. More details about each project will be available as they are assigned.
 
 ## Grading
 
@@ -133,13 +140,13 @@ The final course grade will be calculated as follows:
 
 <center>
 
-| Category        | Percentage |
-|-----------------|------------|
-| Homework        | 40%        |
-| Mini-project 01 | 10%        |
-| Mini-project 02 | 10%        |
-| Final project   | 25%        |
-| Quizzes         | 15%        |
+| Category      | Percentage |
+|---------------|------------|
+| Homework      | 40%        |
+| Project 01    | 10%        |
+| Project 02    | 10%        |
+| Final project | 25%        |
+| Quizzes       | 15%        |
 
 </center>
 
@@ -164,7 +171,7 @@ The final letter grade will be determined based on the following thresholds:
 | D-           | 60 - 62.99         |
 | F            | \< 60              |
 
-</center>
+These are upper bounds for grade cutoffs, depending on the class performance the cutoffs may be lowered but they won\'t be increased.
 
 ## Course policies
 
@@ -172,43 +179,71 @@ The final letter grade will be determined based on the following thresholds:
 
 By participating in this course, you agree to abide by the following when completing assignments:
 
--   You may discuss individual homework and lab assignments with other students; however, you may not directly share (or copy) code or write up with other students. For team assignments, you may collaborate freely within your team. You may discuss the assignment with other teams; however, you may not directly share (or copy) code or write up with another team. Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved.
--   You may not discuss or otherwise work with others on the quizzes. Unauthorized collaboration or using unauthorized materials will be considered a violation for all students involved. More details will be given closer to the exam date.
--   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
+-   The homework assignments must be completed individually and you are welcomed to discuss the assignment with classmates at a high level (e.g., discuss what\'s the best way for approaching a problem, what functions are useful for accomplishing a particular task, etc.). However you may not directly share answers to homework questions (including any code) with anyone other than myself and the teaching assistants.
+
+-   You may not discuss or otherwise work with others on quizzes. Unauthorized collaboration or using unauthorized materials will be considered a violation for all students involved.
+
+-   For the projects collaboration within teams is not only allowed, but expected. Communication between teams at a high level is also allowed however you may not share code or components of the project across teams.
+
+-   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
+
+-   **Use of artificial intelligence (AI)**: You should treat AI tools, such as ChatGPT, the same as other online resources. There are two guiding principles that govern how you can use AI in this course:^[2](https://sta210-fa23.netlify.app/syllabus#fn2)^ (1) *Cognitive dimension:* Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate---rather than hinder---learning. (2) *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
+
+    -   **AI tools for code:** You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism. You may use [these guidelines](https://guides.lib.monash.edu/c.php?g=219786&p=6972087) for citing AI-generated content.
+
+    -   **No AI tools for narrative:** Unless instructed otherwise, AI is [**not**]{.underline} permitted for writing narrative on assignments. In general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content.
+
+If you are unsure if the use of a particular resource complies with the academic honesty policy, please ask me or a teaching assistant.
+
+Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including academic integrity (e.g., completing one\'s own work, following proper citation of sources, adhering to guidance around group work projects,and more). Ignoring these requirements is a violation of the Duke Community Standard. Any questions and/or concerns regarding academic integrity can be directed to the Office of Student Conduct and Community Standards at [conduct\@duke.edu](mailto:conduct@duke.edu).
 
 Any violations in academic honesty standards as outlined in the [Duke Community Standard](https://studentaffairs.duke.edu/conduct/about-us/duke-community-standard) and those specific to this course will automatically result in a 0 for the assignment and will be reported to the [Office of Student Conduct](https://studentaffairs.duke.edu/conduct) for further action.
 
 ### Late work & extensions
 
-The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline. Note that the lowest homework assignment will be dropped to accommodate such circumstances.
+The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner. We understand that things come up periodically that could make it difficult to submit an assignment by the deadline.
 
-### Late work policy
-
--   Homework will be accepted up to 72 hours (3 days) after the due date. There will be a 5% deduction for each 24-hour period the assignment is late. A late waiver may be used for one homework assignment. See [late waiver](#late-waiver) policy for more information.
+-   Homework will be accepted up to 48 hours after the deadline. There will be a 5% deduction for each 24-hour period the assignment is late.
 
 -   No late work is accepted on quizzes, and there are no makeups for missed quizzes.
 
--   The late work policy for the project will be provided with the project instructions.
+-   Late policy for the project:
 
-### Late waiver for extenuating circumstances
+    -   **Presentation:** Late presentations are not accepted and there are no make ups for missed presentations.
 
-If there are circumstances that prevent you from completing a homework assignment by the stated due date, you may email Professor Tackett before the deadline to waive the late penalty. In your email, you only need to request the waiver; you do not need to provide explanation. This waiver may only be used for once in the semester, so only use it for a truly extenuating circumstance.
+    -   **Write up:** GitHub repositories will be closed to contributions at the deadline. If you need to submit your work late, please send me a message via Slack or email to reopen your repository. There will be a 5% deduction for write ups submitted late but the same day (by 11:59pm). There will be a 10% deduction for write ups submitted the next day (by 11:59pm). There will be a 15% deduction for write ups submitted two days late (by 11:59pm). No credit given for write ups submitted more than 2 days after the deadline.
 
-If there are circumstances that are having a longer-term impact on your academic performance, please let your academic dean know, as they can be a resource. Please let Professor Tackett know if you need help contacting your academic dean.
+    -   Peer evaluation: Late peer evaluations are not accepted. If you do not turn in your peer evaluation, you get 0 points for your own peer score as well, regardless of how your teammates have evaluated you. There are no make ups for peer evaluations.
+
+### Late waiver for extenuating circumstances {#late-waiver}
+
+If there are circumstances that prevent you from completing a homework assignment by the deadline, you may email me before the deadline to waive the late penalty. In your email, you only need to request the waiver; you do not need to provide explanation. This waiver may only be used for once in the semester, so only use it for a truly extenuating circumstance.
+
+If there are circumstances that are having a longer-term impact on your academic performance, please let your academic dean know, as they can be a resource. Please let me know if you need help contacting your academic dean.
 
 ### Regrade requests
 
-Regrade requests must be submitted on Gradescope within a week of when an assignment is returned. Regrade requests should only be submitted if a correct answer was mistakenly marked as incorrect. Requests to dispute the number of points deducted for an incorrect response will not be considered. Note that by submitting a regrade request, the entire question will be graded which could potentially result in losing points.
+Regrade requests must be submitted via email to me within a week of when an assignment is returned. Regrade requests will only be considered if points were tallied incorrectly or a correct answer was mistakenly marked as incorrect. Requests to dispute the number of points deducted for an incorrect response will not be considered. If a regrade request is submitted, the entire question will be regraded, so your score could increase, decrease, or remain unchanged.
 
 ### Attendance
 
-You are expected to attend all lectures and labs with a fully-charged laptop or tablet with access to RStudio to participate. We understand there may be times when you are unable to attend a class meeting; in such instances it is your responsibility to make up the missed material. Labs will primarily be used to work on homework and the projects. If you miss a lab meeting dedicated to group work, please communicate with your teammates to make a plan to contribute to the assignment. [Click here](https://trinity.duke.edu/undergraduate/academic-policies/class-attendance-and-missed-work) for more information on the Trinity attendance policies.
+You are expected to attend all lectures and labs with a fully-charged laptop or tablet with access to RStudio. We understand there may be times when you are unable to attend a class meeting; in such instances it is your responsibility to make up the missed material. Labs will primarily be used to work on homework and the projects. If you miss a lab meeting dedicated to group work, please communicate with your teammates to make a plan to contribute to the assignment. [Click here](https://trinity.duke.edu/undergraduate/academic-policies/class-attendance-and-missed-work) for more information on the Trinity attendance policies.
 
 ### Attendance Policy Related to COVID Symptoms, Exposure, or Infection
 
-Student health, safety, and well-being are the university's top priorities. To help ensure your well-being and the well-being of those around you, **please do not come to class if you have symptoms related to COVID-19, have had a known exposure to COVID-19, or have tested positive for COVID-19.** If any of these situations apply to you, you must follow university guidance related to the ongoing COVID-19 pandemic and current health and safety protocols.
+Student health, safety, and well-being are the university\'s top priorities. To help ensure your well-being and the well-being of those around you, please do not come to class if you have tested positive for COVID-19 or have possible symptoms and have not yet been tested. If any of these situations apply to you, you must follow university guidance related to the ongoing COVID-19 pandemic and current health and safety protocols. If you are experiencing any COVID-19 symptoms, contact student health ([dshcheckin\@duke.edu](mailto:dshcheckin@duke.edu), 919-681-9355). Learn more about current university policy related to COVID-19 at [coronavirus.duke.edu](https://coronavirus.duke.edu/).
 
-If you are experiencing any COVID-19 symptoms, contact student health at 919-681-9355. To keep the university community as safe and healthy as possible, you will be expected to follow these guidelines. Please reach out to me and your academic dean as soon as possible if you need to quarantine or isolate so that we can discuss arrangements for your continued participation in class.
+To keep the university community as safe and healthy as possible, you will be expected to follow these guidelines. Please reach out to me and your academic dean as soon as possible if you need to quarantine or isolate so that we can discuss arrangements for your continued participation in class.
+
+## Accommodations 
+
+### **Academic accommodations**
+
+If you are a student with a disability and need accommodations for this class, it is your responsibility to register with the Student Disability Access Office (SDAO) and provide them with documentation of your disability. SDAO will work with you to determine what accommodations are appropriate for your situation. Please note that accommodations are not retroactive and disability accommodations cannot be provided until a Faculty Accommodation Letter has been given to me. Please contact SDAO for more information: [sdao\@duke.edu](mailto:sdao@duke.edu) or [access.duke.edu](https://access.duke.edu/).
+
+### **Religious accommodations**
+
+Students are permitted by university policy to be absent from class to observe a religious holiday. Accordingly, Trinity College of Arts & Sciences and the Pratt School of Engineering have established procedures to be followed by students for notifying their instructors of an absence necessitated by the observance of a religious holiday. Please submit requests for religious accommodations at the beginning of the semester so that we can work to make suitable arrangements well ahead of time. You can find the policy and relevant notification form here: [trinity.duke.edu/undergraduate/academic-policies/religious-holidays](https://trinity.duke.edu/undergraduate/academic-policies/religious-holidays)
 
 ## Additional support
 
@@ -233,19 +268,19 @@ If your mental health concerns and/or stressful events negatively affect your da
 
 ### Technology Accommodations
 
-Students with demonstrated high financial need who have limited access to computers may request assistance in the form of loaner laptops. For new Spring 2022 technology assistance requests, please go [here](https://dukelife.duke.edu/technology-assistance-program/). Please note that supplies are limited.
+Students with demonstrated high financial need who have limited access to computers may request assistance in the form of loaner laptops. For new Spring 2024 technology assistance requests, please go [here](https://dukelife.duke.edu/technology-assistance-program/). Please note that supplies are limited.
 
-See the [Support](/help/) page for a more comprehensive list of academic and mental health wellness resources.
+See the [Support](support.qmd) page for a more comprehensive list of academic and mental health wellness resources.
 
 ## Important dates
 
--   **Jan 05:** Classes begin
--   **Jan 17**: Martin Luther King, Jr. Holiday - No classes
--   **Jan 19**: Drop/add ends
--   **Mar 07 - 11**: Spring break
--   **Mar 23**: Last day to withdraw with W
--   **Apr 20**: LDOC
--   **Apr 21 - 24**: Reading period
--   **Apr 25 - 30**: Final exams
+-   **Jan 10:** Classes begin
+-   **Jan 15**: Martin Luther King, Jr. Holiday - No classes
+-   **Jan 24**: Drop/add ends
+-   **Mar 11 - 15**: Spring break - No classes
+-   **Mar 27** :Last day to withdraw with W
+-   **Apr 24**: LDOC
+-   **Apr 25 - 28**: Reading period
+-   **Apr 19 - May 04**: Final exams
 
-Click [here](https://registrar.duke.edu/spring-2022-academic-calendar) for the full academic calendar.
+Click [here](https://registrar.duke.edu/academic-calendar/current-academic-calendar/#spring2024) for the full academic calendar.

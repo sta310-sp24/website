@@ -2,7 +2,7 @@
 
 # Spring 2024
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bebb2437-53bf-4f05-a2f3-424f965f62e2/deploy-status)](https://app.netlify.com/sites/sta210-fa23/deploys)
+[![Website build status](https://api.netlify.com/api/v1/badges/dd067293-590a-4af6-a952-a66f1b10a4f5/deploy-status)](https://app.netlify.com/sites/sta310-sp24/deploys)
 
 :link: [sta310-sp24.netlify.app](https://sta310-sp24.netlify.app)
 

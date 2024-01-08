@@ -376,5 +376,257 @@
     "title": "Final project tips + resources",
     "section": "",
     "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your title\"\nauthor: \"Your names\"\nformat:\n  pdf:\n    fig-width: 7\n    fig-height: 5\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
+  },
+  {
+    "objectID": "slides/01-welcome.html#teaching-team",
+    "href": "slides/01-welcome.html#teaching-team",
+    "title": "Welcome to STA 310!",
+    "section": "Teaching Team",
+    "text": "Teaching Team\n\n\nInstructor:\nProfessor Maria Tackett\nOld Chem 118B\nmaria.tackett@duke.edu\n\nTeaching assistant\nHun Kang\nPhD student in statistics"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-logistics",
+    "href": "slides/01-welcome.html#course-logistics",
+    "title": "Welcome to STA 310!",
+    "section": "Course logistics",
+    "text": "Course logistics\nLectures\nMondays and Wednesdays, 3:05 - 4:20pm, Soc Sci 136\nLabs\nLab 01: Thursdays, 3:05 - 4:20pm, Link #5\nLab 02: Thursdays, 4:45- 5:55pm, Link #5"
+  },
+  {
+    "objectID": "slides/01-welcome.html#generalized-linear-models",
+    "href": "slides/01-welcome.html#generalized-linear-models",
+    "title": "Welcome to STA 310!",
+    "section": "Generalized Linear Models",
+    "text": "Generalized Linear Models\nIn statistics, a generalized linear model (GLM) is a flexible generalization of ordinary linear regression. The GLM generalizes linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value.1\n\nExample: Logistic regression\n\\[\\begin{aligned}\\pi = P(y = 1 | x) \\hspace{2mm} &\\Rightarrow \\hspace{2mm} \\text{Link function: } \\log\\big(\\frac{\\pi}{1-\\pi}\\big) \\\\\n&\\Rightarrow \\log\\big(\\frac{\\pi}{1-\\pi}\\big) = \\beta_0 + \\beta_1~x\\end{aligned}\\]\n\nGeneralized linear model"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-learning-objectives",
+    "href": "slides/01-welcome.html#course-learning-objectives",
+    "title": "Welcome to STA 310!",
+    "section": "Course learning objectives",
+    "text": "Course learning objectives\n[Add learning objectives]"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-topics",
+    "href": "slides/01-welcome.html#course-topics",
+    "title": "Welcome to STA 310!",
+    "section": "Course topics",
+    "text": "Course topics\nGeneralized Linear Models\n\nIntroduce models for non-normal response variables\nEstimation, interpretation, and inference\nMathematical details of GLMs as a unified framework\n\nModeling correlated data\n\nIntroduce multilevel models for correlated and longitudinal data\nEstimation, interpretation, and inference\nMathematical details, particularly diving into covariance structures"
+  },
+  {
+    "objectID": "slides/01-welcome.html#examples---update",
+    "href": "slides/01-welcome.html#examples---update",
+    "title": "Welcome to STA 310!",
+    "section": "Examples - [UPDATE]",
+    "text": "Examples - [UPDATE]\n[ Add some examples of GLMs]\n\nPoisson regression or gamma? - RHD paper?\nLongitudinal modeling?\nSports data"
+  },
+  {
+    "objectID": "slides/01-welcome.html#meet-your-classmates-6-minutes-update",
+    "href": "slides/01-welcome.html#meet-your-classmates-6-minutes-update",
+    "title": "Welcome to STA 310!",
+    "section": "Meet your classmates! (6 minutes) [UPDATE]",
+    "text": "Meet your classmates! (6 minutes) [UPDATE]\n\nQuick introductions - Name and year\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to January 5.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (we’re all wearing socks)\nNot body parts (we all have a nose)"
+  },
+  {
+    "objectID": "slides/01-welcome.html#what-background-is-assumed-for-the-course",
+    "href": "slides/01-welcome.html#what-background-is-assumed-for-the-course",
+    "title": "Welcome to STA 310!",
+    "section": "What background is assumed for the course?",
+    "text": "What background is assumed for the course?\nPre-reqs\nSTA 210 and STA 230 / STA 240\nBackground knowledge\n\n\nStatistical methods\n\nLinear and logistic regression\nStatistical inference\nBasic understanding of random variables\n\n\nComputing\n\nUsing R for data analysis\nWriting reports using Quarto\nVersion control and collaboration using GitHub"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-toolkit",
+    "href": "slides/01-welcome.html#course-toolkit",
+    "title": "Welcome to STA 310!",
+    "section": "Course toolkit",
+    "text": "Course toolkit\n\n\nsta310-sp24.netlify.app"
+  },
+  {
+    "objectID": "slides/01-welcome.html#class-meetings",
+    "href": "slides/01-welcome.html#class-meetings",
+    "title": "Welcome to STA 310!",
+    "section": "Class Meetings",
+    "text": "Class Meetings\n\n\nLectures\n\nSome traditional lecture\nShort individual and group activities\nBring fully-charged laptop / tablet to use R\n\n\nLabs (start January 18)\n\nWork on class assignments with TA support\nWork on projects with teammates\n\n\n\n\nAttendance is strongly expected (if you are healthy!)"
+  },
+  {
+    "objectID": "slides/01-welcome.html#readings",
+    "href": "slides/01-welcome.html#readings",
+    "title": "Welcome to STA 310!",
+    "section": "Readings",
+    "text": "Readings\n\n\n\n\n\n\n\n\n\nPrimary textbook: Beyond Multiple Linear Regression by Roback and Legler\nOther texts:\n\nR for Data Science (2nd edition) by Wickham, Çetinkaya-Rundel, and Grolemund\nTidy Modeling with R by Kuhn and Silge\n\nArticles and videos periodically assigned"
+  },
+  {
+    "objectID": "slides/01-welcome.html#r-and-rstudio",
+    "href": "slides/01-welcome.html#r-and-rstudio",
+    "title": "Welcome to STA 310!",
+    "section": "R and RStudio",
+    "text": "R and RStudio\n1️⃣ Install R and RStudio on your laptop\n\nClick here for instructions to install RStudio and configure git\n\nor\n2️⃣ Access RStudio through Docker container provided by Duke OIT - Reserve a generic RStudio container (there is no course specific container)"
+  },
+  {
+    "objectID": "slides/01-welcome.html#github---update",
+    "href": "slides/01-welcome.html#github---update",
+    "title": "Welcome to STA 310!",
+    "section": "GitHub - [UPDATE]",
+    "text": "GitHub - [UPDATE]"
+  },
+  {
+    "objectID": "slides/01-welcome.html#slack---update",
+    "href": "slides/01-welcome.html#slack---update",
+    "title": "Welcome to STA 310!",
+    "section": "Slack - [UPDATE]",
+    "text": "Slack - [UPDATE]"
+  },
+  {
+    "objectID": "slides/01-welcome.html#activities-assessments",
+    "href": "slides/01-welcome.html#activities-assessments",
+    "title": "Welcome to STA 310!",
+    "section": "Activities & assessments",
+    "text": "Activities & assessments\nReadings\n\nPrimarily from Beyond Multiple Linear Regression\nRecommend reading assigned text before lecture\n\n\nHomework - Individual assignments - Lowest dropped at end of semester"
+  },
+  {
+    "objectID": "slides/01-welcome.html#activities-assessments-1",
+    "href": "slides/01-welcome.html#activities-assessments-1",
+    "title": "Welcome to STA 310!",
+    "section": "Activities & assessments",
+    "text": "Activities & assessments\nQuizzes - Covers content from readings and assignments since the previous quiz - Lowest dropped at end of semester"
+  },
+  {
+    "objectID": "slides/01-welcome.html#activities-assessments-2",
+    "href": "slides/01-welcome.html#activities-assessments-2",
+    "title": "Welcome to STA 310!",
+    "section": "Activities & assessments",
+    "text": "Activities & assessments\nMini-projects\n\nMini-project 01: Focused on models for non-normal response variables\nMini-project 02: Focused on models for correlated data\nBoth have presentation & short write up\nBoth are team-based\n\nFinal project\n\nUse any model(s) you’ve learned to analyze data set of your choice\nWrite up\nIndividual project"
+  },
+  {
+    "objectID": "slides/01-welcome.html#grading",
+    "href": "slides/01-welcome.html#grading",
+    "title": "Welcome to STA 310!",
+    "section": "Grading",
+    "text": "Grading\nFinal grades will be calculated as follows\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n40%\n\n\nProject 01\n10%\n\n\nProject 02\n10%\n\n\nFinal project\n20%\n\n\nQuizzes\n20%\n\n\n\n\nSee syllabus for letter grade thresholds."
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-community-resources",
+    "href": "slides/01-welcome.html#course-community-resources",
+    "title": "Welcome to STA 310!",
+    "section": "Course community & resources",
+    "text": "Course community & resources"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-community",
+    "href": "slides/01-welcome.html#course-community",
+    "title": "Welcome to STA 310!",
+    "section": "Course community",
+    "text": "Course community\n\nUphold the Duke Community Standard: &gt; - I will not lie, cheat, or steal in my academic endeavors; &gt;- I will conduct myself honorably in all my endeavors; and &gt; - I will act if the Standard is compromised.\n\n\n\nCommit to respect, honor, and celebrate our diverse community\nCommit to being part of a learning environment that is welcoming and accessible to everyone"
+  },
+  {
+    "objectID": "slides/01-welcome.html#resources",
+    "href": "slides/01-welcome.html#resources",
+    "title": "Welcome to STA 310!",
+    "section": "Resources",
+    "text": "Resources\n\nOffice hours to meet with a member of the teaching team.\n\nFind the schedule in the syllabus\nRegular office hours begin January 18\n\nGithub Discussion for questions about course logistics, content, and assignments\nEmail Prof. Tackett for private questions regarding personal matters or grades.\n\nPlease put STA 310 in the subject line\n\n\n.small[See the syllabus and support page for additional academic and mental health and wellness resources]"
+  },
+  {
+    "objectID": "slides/01-welcome.html#questions",
+    "href": "slides/01-welcome.html#questions",
+    "title": "Welcome to STA 310!",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/01-welcome.html#before-monday",
+    "href": "slides/01-welcome.html#before-monday",
+    "title": "Welcome to STA 310!",
+    "section": "Before Monday",
+    "text": "Before Monday\n\nComplete Get to Know You survey\nComplete Slack tasks\nReview the syllabus and let me know if you have any questions\nWednesday’s reading:\nGet R and RStudio and configure git\n\nWill use in class on Wed, Jan 17\n\n\n\n\n\n🔗 STA 310 - Spring 2024"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-toolkit-1",
+    "href": "slides/01-welcome.html#course-toolkit-1",
+    "title": "Welcome to STA 310!",
+    "section": "Course toolkit",
+    "text": "Course toolkit\nCanvas: canvas.duke.edu/courses/25310\n\nAnnouncements\nGradebook\n\nGitHub: github.com/sta310-sp24\n\nHomework and projects\n\nSlack: sta310-sp24.slack.com\n\nClass discussion forum"
+  },
+  {
+    "objectID": "slides/01-welcome.html#homework-40",
+    "href": "slides/01-welcome.html#homework-40",
+    "title": "Welcome to STA 310!",
+    "section": "Homework (40%)",
+    "text": "Homework (40%)\n\n6 individual assignments\nCombination of conceptual questions, guided analyses, and open-ended analyses\nWill be submitted in your private GitHub repo\nLowest homework grade is dropped"
+  },
+  {
+    "objectID": "slides/01-welcome.html#quizzes-20",
+    "href": "slides/01-welcome.html#quizzes-20",
+    "title": "Welcome to STA 310!",
+    "section": "Quizzes (20%)",
+    "text": "Quizzes (20%)\n\n6 individual online quizzes\nCovers content since the previous quiz, including readings, lecture notes, in-class activities, and homework\nLowest quiz grade is dropped"
+  },
+  {
+    "objectID": "slides/01-welcome.html#projects",
+    "href": "slides/01-welcome.html#projects",
+    "title": "Welcome to STA 310!",
+    "section": "Projects",
+    "text": "Projects\n\nProject 01 (10%)\n\nRead and evaluate academic article that includes model for non-normal response variable\nIncludes in-class presentation and short write up\nTeam project\n\nProject 02 (10%)\n\nArticle evaluation and analysis focused on models for correlated data\nIncludes in-class presentation and short write up\nTeam project\n\nFinal project (20%)\n\nApply what you’ve learned to analyze correlated data\nIncludes write up\nIndividual project"
+  },
+  {
+    "objectID": "slides/01-welcome.html#course-community-1",
+    "href": "slides/01-welcome.html#course-community-1",
+    "title": "Welcome to STA 310!",
+    "section": "Course community",
+    "text": "Course community\n\nUphold the Duke Community Standard:\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors;\nI will act if the Standard is compromised.\n\n\n\n\nCommit to respect, honor, and celebrate our diverse community\nCommit to being part of a learning environment that is welcoming and accessible to everyone"
+  },
+  {
+    "objectID": "slides/01-welcome.html#accessibility",
+    "href": "slides/01-welcome.html#accessibility",
+    "title": "Welcome to STA 310!",
+    "section": "Accessibility",
+    "text": "Accessibility\n\nThe Student Disability Access Office (SDAO) is available to ensure that students are able to engage with their courses and related assignments.\nIf you have documented accommodations from SDAO, please send the documentation as soon as possible.\nI am committed to making all course activities and materials accessible. If any course component is not accessible to you in any way, please don’t hesitate to let me know."
+  },
+  {
+    "objectID": "slides/01-welcome.html#support",
+    "href": "slides/01-welcome.html#support",
+    "title": "Welcome to STA 310!",
+    "section": "Support",
+    "text": "Support\n\nOffice hours to meet with a member of the teaching team.\n\nFind the schedule in the syllabus and course webpage\nOffice hours begin January 16\nPlease email me if you’d like to meet before then\n\nSlack for questions about course logistics, content, and assignments\nEmail for questions not appropriate for Slack, e.g., regarding personal matters or grades\n\nPlease put STA 310 in the subject line\n\n\nSee the syllabus and support page for additional academic and mental health and wellness resources"
+  },
+  {
+    "objectID": "slides/01-welcome.html#covid-19-and-other-illness",
+    "href": "slides/01-welcome.html#covid-19-and-other-illness",
+    "title": "Welcome to STA 310!",
+    "section": "COVID-19 and other illness",
+    "text": "COVID-19 and other illness\n\nPlease do not come to class if you have tested positive for COVID-19, have possible symptoms and have not yet been tested, or have other illness.\nRead and follow the university guidelines regarding COVID-19 at coronavirus.duke.edu."
+  },
+  {
+    "objectID": "slides/01-welcome.html#late-work",
+    "href": "slides/01-welcome.html#late-work",
+    "title": "Welcome to STA 310!",
+    "section": "Late work",
+    "text": "Late work\n\nHomework will be accepted up to 48 hours after the deadline. There will be a 5% deduction for each 24-hour period the assignment is late.\nNo late work is accepted on quizzes, and there are no makeups for missed quizzes.\nLate policy for projects:\n\nPresentation: Late presentations are not accepted and there are no make ups for missed presentations.\nWrite up: There will be a 5% deduction for write ups submitted late but the same day, a 10% deduction for write ups submitted the next day, and a 15% deduction for write ups submitted two days late (by 11:59pm). No credit given for write ups submitted more than 2 days after the deadline.\nPeer evaluation: No late work is accepted on peer evaluations."
+  },
+  {
+    "objectID": "slides/01-welcome.html#academic-integrity-and-collaboration",
+    "href": "slides/01-welcome.html#academic-integrity-and-collaboration",
+    "title": "Welcome to STA 310!",
+    "section": "Academic integrity and collaboration",
+    "text": "Academic integrity and collaboration\n\nThe homework assignments must be completed individually and you are welcomed to discuss the assignment with classmates at a high level.\nYou may not discuss or otherwise work with others on quizzes.\nFor the projects collaboration within teams is not only allowed, but expected. Communication between teams at a high level is also allowed however you may not share code or components of the project across teams.\nReusing code: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code."
+  },
+  {
+    "objectID": "slides/01-welcome.html#use-of-artificial-intelligence-ai",
+    "href": "slides/01-welcome.html#use-of-artificial-intelligence-ai",
+    "title": "Welcome to STA 310!",
+    "section": "Use of artificial intelligence (AI)",
+    "text": "Use of artificial intelligence (AI)\n\nYou should treat AI tools, such as ChatGPT, the same as other online resources.\nThere are two guiding principles that govern how you can use AI in this course:1\n\n(1) Cognitive dimension: Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.\n(2) Ethical dimension: Students using AI should be transparent about their use and make sure it aligns with academic integrity.\n\n\nThese guiding principles are based on Course Policies related to ChatGPT and other AI Tools developed by Joel Gladd, Ph.D.↩︎"
+  },
+  {
+    "objectID": "slides/01-welcome.html#use-of-artificial-intelligence-ai-1",
+    "href": "slides/01-welcome.html#use-of-artificial-intelligence-ai-1",
+    "title": "Welcome to STA 310!",
+    "section": "Use of artificial intelligence (AI)",
+    "text": "Use of artificial intelligence (AI)\n✅ AI tools for code: You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.\n❌ No AI tools for narrative: Unless instructed otherwise, AI is not permitted for writing narrative on assignments.\n\n\n\n\n\n\nImportant\n\n\nIn general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content."
+  },
+  {
+    "objectID": "slides/01-welcome.html#slack-github-username",
+    "href": "slides/01-welcome.html#slack-github-username",
+    "title": "Welcome to STA 310!",
+    "section": "Slack + GitHub username",
+    "text": "Slack + GitHub username\n[instructions to join Slack workspace + get GitHub username email DM me]"
   }
 ]

@@ -12,6 +12,8 @@ You will need access to R/ RStudio and git for this course. There are two option
 
     -   Reserve a generic **RStudio** container (there is no course specific container)
 
+    -   Follow [Step 4: Set up git authentication] and [Step 5: Configure git] to connect RStudio and GitHub.
+
 # Computing set up
 
 ## Step 1: Install R/RStudio and git
@@ -80,4 +82,4 @@ usethis::use_git_config(
   user.email = "maria.tackett@duke.edu")
 ```
 
-You are now ready interact between GitHub and RStudio!
+You are now ready to conduct reproducible data analyses!

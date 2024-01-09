@@ -28,7 +28,7 @@ STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 stud
 
 ## Teaching assistant
 
-The teaching assistant for this course is [Hun Kang](www.linkedin.com/in/gyeonghunkang). He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.
+The teaching assistant for this course is [Hun Kang](https://www.linkedin.com/in/gyeonghunkang). He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.
 
 |            | Location   |
 |------------|------------|

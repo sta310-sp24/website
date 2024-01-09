@@ -12,7 +12,7 @@ You will need access to R/ RStudio and git for this course. There are two option
 
     -   Reserve a generic **RStudio** container (there is no course specific container)
 
-    -   Follow [Step 4: Set up git authentication] and [Step 5: Configure git] to connect RStudio and GitHub.
+    -   Follow [Step 4: Set up git authentication] and \[Step 5: Configure git\] to connect RStudio and GitHub.
 
 # Computing set up
 
@@ -40,11 +40,11 @@ install.packages("usethis")
 install.packages("credentials")
 ```
 
-## Step 3: Install Quarto 
+## Step 3: Install Quarto
 
 We will use Quarto (similar to R Markdown) to write up analyses. Download and install Quarto at [quarto.org/docs/get-started](https://quarto.org/docs/get-started/)
 
-## Step 4: Set up git authentication 
+## Step 4: Set up git authentication
 
 You will authenticate GitHub using SSH.
 

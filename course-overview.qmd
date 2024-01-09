@@ -21,15 +21,20 @@ STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 stud
 
 [Maria Tackett](https://www2.stat.duke.edu/~mt324) is an Assistant Professor of the Practice in the Department of Statistical Science at Duke University. Her work focuses on understanding how active learning strategies can be used to promote engagement and student motivation in undergraduate statistics courses. She also studies how classroom practices in introductory math and statistics courses impact students' sense of community, self-efficacy, and learning outcomes.
 
++----------------------+---------------+
 | Office hours         | Location      |
-|----------------------|---------------|
-| \[UPDATE\]           | Old Chem 118B |
++======================+===============+
+| Mon 11am - 12pm      | Old Chem 118B |
+|                      |               |
+| Wed 1:30 - 2:30pm    |               |
++----------------------+---------------+
 | *or by appointment.* |               |
++----------------------+---------------+
 
 ## Teaching assistant
 
 The teaching assistant for this course is [Hun Kang](https://www.linkedin.com/in/gyeonghunkang). He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.
 
-|            | Location   |
-|------------|------------|
-| \[UPDATE\] | \[UPDATE\] |
+|             | Location   |
+|-------------|------------|
+| Tue 3 - 5pm | \[UPDATE\] |

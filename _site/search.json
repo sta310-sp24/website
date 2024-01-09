@@ -4,14 +4,14 @@
     "href": "syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "Role\nName\nOffice hours\nLocation\n\n\n\n\nInstructor\nProf. Maria Tackett\nTBD\nOld Chem 118B\n\n\n\n\nor by appointment\nOld Chem 118B or Zoom\n\n\nTeaching Assistant\nTBD\nTBD\nTBD"
+    "text": "Role\nName\nOffice hours\nLocation\n\n\n\n\nInstructor\nProf. Maria Tackett\nMon 11am - 12pm\nWed 1:30 - 2:30pm\nOld Chem 118B\n\n\n\n\nor by appointment\nOld Chem 118B or Zoom\n\n\nTeaching Assistant\nHun Kang\nTue 3 - 5pm\nTBD"
   },
   {
     "objectID": "syllabus.html#teaching-team-office-hours",
     "href": "syllabus.html#teaching-team-office-hours",
     "title": "Syllabus",
     "section": "",
-    "text": "Role\nName\nOffice hours\nLocation\n\n\n\n\nInstructor\nProf. Maria Tackett\nTBD\nOld Chem 118B\n\n\n\n\nor by appointment\nOld Chem 118B or Zoom\n\n\nTeaching Assistant\nTBD\nTBD\nTBD"
+    "text": "Role\nName\nOffice hours\nLocation\n\n\n\n\nInstructor\nProf. Maria Tackett\nMon 11am - 12pm\nWed 1:30 - 2:30pm\nOld Chem 118B\n\n\n\n\nor by appointment\nOld Chem 118B or Zoom\n\n\nTeaching Assistant\nHun Kang\nTue 3 - 5pm\nTBD"
   },
   {
     "objectID": "syllabus.html#course-info",
@@ -179,7 +179,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      slides\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n    \nTh\nJan 18\n\n\n\n\n\n\n\n    3\nM\nJan 22\nLikelihoods\n\n\n\n\n\n\n    \nW\nJan 24\nLikelihoods + Distribution theory\n\n\n\n\n\nHW 01 due\n    \nTh\nJan 25\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson regression\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson regression cont'd\n\n\n\n\n\n\n    \nTh\nFeb 1\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nZIP models\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period\nNA"
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n    \nTh\nJan 18\n\n\n\n\n\n\n\n    3\nM\nJan 22\nLikelihoods\n\n\n\n\n\n\n    \nW\nJan 24\nLikelihoods + Distribution theory\n\n\n\n\n\nHW 01 due\n    \nTh\nJan 25\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson regression\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson regression cont'd\n\n\n\n\n\n\n    \nTh\nFeb 1\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nZIP models\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period\nNA"
   },
   {
     "objectID": "projects/project-02.html",
@@ -196,46 +196,11 @@
     "text": "To be posted."
   },
   {
-    "objectID": "prepare/nov-27.html",
-    "href": "prepare/nov-27.html",
-    "title": "November 27 lecture",
+    "objectID": "prepare/jan-17.html",
+    "href": "prepare/jan-17.html",
+    "title": "Prepare for Jan 17 lecture",
     "section": "",
-    "text": "Examples of full multinomial modeling workflow:\n\njuliasilge.com/blog/multinomial-volcano-eruptions\njuliasilge.com/blog/nber-papers"
-  },
-  {
-    "objectID": "prepare/nov-27.html#additional-resources",
-    "href": "prepare/nov-27.html#additional-resources",
-    "title": "November 27 lecture",
-    "section": "",
-    "text": "Examples of full multinomial modeling workflow:\n\njuliasilge.com/blog/multinomial-volcano-eruptions\njuliasilge.com/blog/nber-papers"
-  },
-  {
-    "objectID": "prepare/sep-13.html",
-    "href": "prepare/sep-13.html",
-    "title": "September 13 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/sep-13.html#assigned-reading",
-    "href": "prepare/sep-13.html#assigned-reading",
-    "title": "September 13 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/oct-09.html",
-    "href": "prepare/oct-09.html",
-    "title": "October 09 & 11 lectures",
-    "section": "",
-    "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
-  },
-  {
-    "objectID": "prepare/oct-09.html#assigned-reading",
-    "href": "prepare/oct-09.html#assigned-reading",
-    "title": "October 09 & 11 lectures",
-    "section": "",
-    "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
     "objectID": "hw/hw-03.html",
@@ -278,41 +243,6 @@
     "title": "HW 02",
     "section": "",
     "text": "To be posted."
-  },
-  {
-    "objectID": "prepare/sep-11.html",
-    "href": "prepare/sep-11.html",
-    "title": "September 11 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/sep-11.html#assigned-reading",
-    "href": "prepare/sep-11.html#assigned-reading",
-    "title": "September 11 lecture",
-    "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/week-02.html",
-    "href": "prepare/week-02.html",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#assigned-reading",
-    "href": "prepare/week-02.html#assigned-reading",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#additional-resources-optional",
-    "href": "prepare/week-02.html#additional-resources-optional",
-    "title": "September 06 lecture",
-    "section": "Additional resources (optional)",
-    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
   },
   {
     "objectID": "support.html",
@@ -396,7 +326,7 @@
     "href": "course-overview.html#teaching-assistant",
     "title": "Course overview",
     "section": "Teaching assistant",
-    "text": "Teaching assistant\nThe teaching assistant for this course is Hun Kang. He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.\n\n\n\n\nLocation\n\n\n\n\n[UPDATE]\n[UPDATE]"
+    "text": "Teaching assistant\nThe teaching assistant for this course is Hun Kang. He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.\n\n\n\n\nLocation\n\n\n\n\nTue 3 - 5pm\n[UPDATE]"
   },
   {
     "objectID": "slides/01-welcome.html#teaching-team",
@@ -434,18 +364,18 @@
     "text": "Course topics\nGeneralized Linear Models\n\nIntroduce models for non-normal response variables\nEstimation, interpretation, and inference\nMathematical details of GLMs as a unified framework\n\n\nModeling correlated data\n\nIntroduce multilevel models for correlated and longitudinal data\nEstimation, interpretation, and inference\nMathematical details, particularly diving into covariance structures"
   },
   {
-    "objectID": "slides/01-welcome.html#examples---update",
-    "href": "slides/01-welcome.html#examples---update",
+    "objectID": "slides/01-welcome.html#examples-of-glms-in-practice",
+    "href": "slides/01-welcome.html#examples-of-glms-in-practice",
     "title": "Welcome to STA 310!",
-    "section": "Examples - [UPDATE]",
-    "text": "Examples - [UPDATE]\n[ Add some examples of GLMs]\n\nPoisson regression or gamma? - RHD paper?\nLongitudinal modeling?\nSports data"
+    "section": "Examples of GLMs in practice",
+    "text": "Examples of GLMs in practice"
   },
   {
-    "objectID": "slides/01-welcome.html#meet-your-classmates-6-minutes-update",
-    "href": "slides/01-welcome.html#meet-your-classmates-6-minutes-update",
+    "objectID": "slides/01-welcome.html#meet-your-classmates-1",
+    "href": "slides/01-welcome.html#meet-your-classmates-1",
     "title": "Welcome to STA 310!",
-    "section": "Meet your classmates! (6 minutes) [UPDATE]",
-    "text": "Meet your classmates! (6 minutes) [UPDATE]\n\nQuick introductions - Name and year\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to January 5.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (we’re all wearing socks)\nNot body parts (we all have a nose)"
+    "section": "Meet your classmates!",
+    "text": "Meet your classmates!"
   },
   {
     "objectID": "slides/01-welcome.html#pre-reqs",
@@ -588,25 +518,32 @@
     "text": "Use of artificial intelligence (AI)\n✅ AI tools for code: You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.\n❌ No AI tools for narrative: Unless instructed otherwise, AI is not permitted for writing narrative on assignments.\n\n\n\n\n\n\n\nImportant\n\n\nIn general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content."
   },
   {
-    "objectID": "slides/01-welcome.html#slack-github-username",
-    "href": "slides/01-welcome.html#slack-github-username",
+    "objectID": "slides/01-welcome.html#set-up-course-toolkit",
+    "href": "slides/01-welcome.html#set-up-course-toolkit",
     "title": "Welcome to STA 310!",
-    "section": "Slack + GitHub username",
-    "text": "Slack + GitHub username\n[instructions to join Slack workspace + get GitHub username email DM me]"
+    "section": "Set up course toolkit",
+    "text": "Set up course toolkit\nSee announcement on Canvas and complete the following:\n\nSign up for Slack\nComplete STA 310 Student Survey\n\nNeed to provide GitHub username. If you do not have a GitHub username, go to github.com to sign up and click here for advice on making a username."
   },
   {
-    "objectID": "slides/01-welcome.html#before-monday",
-    "href": "slides/01-welcome.html#before-monday",
+    "objectID": "slides/01-welcome.html#next-class",
+    "href": "slides/01-welcome.html#next-class",
     "title": "Welcome to STA 310!",
-    "section": "Before Monday",
-    "text": "Before Monday\n\nComplete Get to Know You survey\nComplete Slack tasks\nReview the syllabus and let me know if you have any questions\nWednesday’s reading:\nGet R and RStudio and configure git\n\nWill use in class on Wed, Jan 17\n\n\n\n\n\n🔗 STA 310 - Spring 2024"
+    "section": "Next Class",
+    "text": "Next Class\n(Wednesday, January 17)\n\nUnderstand statistical models\nReview multiple linear regression"
+  },
+  {
+    "objectID": "slides/01-welcome.html#to-do-before-next-time",
+    "href": "slides/01-welcome.html#to-do-before-next-time",
+    "title": "Welcome to STA 310!",
+    "section": "To do before next time",
+    "text": "To do before next time\n\nInstall RStudio and configure git (or reserve container). See computing page for instructions.\n\nWill do application exercise next class\n\nRead syllabus and let me know if you have any questions\nSee Prepare for Jan 17 lecture\n\n\n\n\n🔗 STA 310 - Spring 2024"
   },
   {
     "objectID": "links.html",
     "href": "links.html",
     "title": "Useful links",
     "section": "",
-    "text": "RStudio containers (optional)\n🔗 on Duke Container Manager\n\n\nCourse GitHub organization\n🔗 on GitHub\n\n\nLecture recordings\n🔗 TBD\n\n\nGradebook\n🔗 on Canvas\n\n\nTextbooks\n🔗 Beyond Multiple Linear Regression\n\n\n\n🔗 R for Data Science\n\n\n\n🔗 Tidy Modeling with R"
+    "text": "RStudio containers (optional)\n🔗 on Duke Container Manager\n\n\nCourse GitHub organization\n🔗 on GitHub\n\n\nGradebook\n🔗 on Canvas\n\n\nTextbooks\n🔗 Beyond Multiple Linear Regression\n\n\n\n🔗 R for Data Science\n\n\n\n🔗 Tidy Modeling with R"
   },
   {
     "objectID": "project-tips.html",

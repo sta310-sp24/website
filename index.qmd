@@ -38,7 +38,7 @@ d |>
       )
     }
   ) |>
-  text_transform(cells_body(columns = c(slides)),
+  text_transform(cells_body(columns = c(lectures)),
     fn = function(x) {
       ifelse(is.na(x), fontawesome::fa("laptop", fill_opacity = 0.1),
         glue::glue("<a href = {x}>{fontawesome::fa('laptop')}</a>")
@@ -77,7 +77,7 @@ d |>
   sub_missing(columns = c(date, topic, notes), missing_text = "") |>
   cols_align(
     align = "center", 
-    columns = c(week, dow, prepare, slides, hw, quiz,project)
+    columns = c(week, dow, prepare, lectures, hw, quiz,project)
     ) |>
   cols_align(
     align = "left", 

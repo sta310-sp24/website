@@ -113,27 +113,19 @@ By the end of the semester, you will be able to ...
 
 -   Mathematical details, particularly diving into covariance structures
 
-## Examples - \[UPDATE\]
+## Examples of GLMs in practice
 
-\[ Add some examples of GLMs\]
+<!--[ Add some examples of GLMs]-->
 
--   Poisson regression or gamma? - RHD paper?
+<!--Poisson regression or gamma? - RHD paper?-->
 
--   Longitudinal modeling?
+<!--Longitudinal modeling?-->
 
--   Sports data
+<!--Sports data-->
 
 # Meet your classmates!
 
-## Meet your classmates! (6 minutes) \[UPDATE\]
-
--   Quick introductions - Name and year
--   Choose a reporter
-    -   Need help choosing? Person with birthday closest to January 5.
--   Identify 8 things everyone in the group has in common
-    -   Not being a Duke student
-    -   Not clothes (we're all wearing socks)
-    -   Not body parts (we all have a nose)
+## Meet your classmates!
 
 # Course details
 
@@ -413,24 +405,28 @@ In general, you may use AI as a resource as you complete assignments but not to 
 
 # Questions?
 
-## Slack + GitHub username
+## Set up course toolkit
 
-\[instructions to join Slack workspace + get GitHub username email DM me\]
+See announcement on Canvas and complete the following:
 
-# statistical models
+-   Sign up for Slack
+-   Complete STA 310 Student Survey
+    -   Need to provide GitHub username. If you do not have a GitHub username, go to [github.com](https://github.com) to sign up and [click here](https://happygitwithr.com/github-acct.html?q=username#username-advice) for advice on making a username.
 
-\[Add content on statistical models?\]
+## Next Class 
 
-## **Before Monday**
+(Wednesday, January 17)
 
--   Complete Get to Know You survey
+-   Understand statistical models
 
--   Complete Slack tasks
+-   Review multiple linear regression
 
--   Review the [syllabus](https://sta310-sp24.netlify.app/syllabus/) and let me know if you have any questions
+## To do before next time 
 
--   Wednesday's reading:
+-   Install RStudio and configure git (or reserve container). See [computing](../computing.html) page for instructions.
 
--   Get R and RStudio and configure git
+    -   Will do application exercise next class
 
-    -   Will use in class on Wed, Jan 17
+-   Read [syllabus](../syllabus.html) and let me know if you have any questions
+
+-   See [Prepare for Jan 17 lecture](../prepare/jan-17.html)

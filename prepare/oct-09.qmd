@@ -1,8 +1,0 @@
----
-title: "October 09 & 11 lectures"
-subtitle: "Feature engineering"
----
-
-## Assigned reading
-
-📖 Tidy Modeling withr R, Ch 8:[Feature engineering with recipes](https://www.tmwr.org/recipes.html)

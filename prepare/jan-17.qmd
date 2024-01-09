@@ -1,0 +1,13 @@
+---
+title: "Prepare for Jan 17 lecture"
+---
+
+-   Read [Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html)
+
+-   Install RStudio and configure git or reserve RStudio Docker container. See [computing page](../computing.html) for instructions.
+
+-   If you have not yet done so, see Canvas announcement for links to...
+
+    -   Sign up for Slack
+
+    -   Complete STA 310 Student Survey

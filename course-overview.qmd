@@ -11,7 +11,7 @@ STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 stud
 
 |             |           |               |                       |
 |-------------|-----------|---------------|-----------------------|
-| **Lecture** | Mon & Wed | 3:05 - 4:20pm | Social Science 136    |
+| **Lecture** | Mon & Wed | 3:05 - 4:20pm | Physics 205           |
 | **Lab 01**  | Thu       | 3:05 - 4:20pm | Perkins 071 (Link #5) |
 | **Lab 02**  | Thu       | 4:40 - 5:55pm | Perkins 071 (Link #5) |
 
@@ -28,8 +28,8 @@ STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 stud
 
 ## Teaching assistant
 
-The teaching assistant for this course is \[INSERT NAME + Link to website?\]. He is a \[insert year of PhD and perhaps something about the topic he's studying.\]
+The teaching assistant for this course is [Hun Kang](www.linkedin.com/in/gyeonghunkang). He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.
 
-| Office hours | Location   |
-|--------------|------------|
-| \[UPDATE\]   | \[UPDATE\] |
+|            | Location   |
+|------------|------------|
+| \[UPDATE\] | \[UPDATE\] |

@@ -290,9 +290,7 @@ See [syllabus](https://sta310-sp24.netlify.app/syllabus/#grading) for letter gra
 -   Uphold the Duke Community Standard:
 
     > -   I will not lie, cheat, or steal in my academic endeavors;
-    >
     > -   I will conduct myself honorably in all my endeavors;
-    >
     > -   I will act if the Standard is compromised.
 
 <br>

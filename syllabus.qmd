@@ -17,7 +17,7 @@ format:
 
 |          | Day       | Time          | Location              |
 |----------|-----------|---------------|-----------------------|
-| Lectures | Mon & Wed | 3:05 - 4:20pm | Social Sciences 136   |
+| Lectures | Mon & Wed | 3:05 - 4:20pm | Physics 205           |
 | Lab 01   | Thu       | 3:05 - 4:20pm | Perkins 071 (Link #5) |
 | Lab 02   | Thu       | 4:40 - 5:55pm | Perkins 071 (Link #5) |
 

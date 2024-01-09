@@ -57,7 +57,9 @@ PhD student in statistics
 
 **Lectures**
 
-Mondays and Wednesdays, 3:05 - 4:20pm, Soc Sci 136
+Mondays and Wednesdays, 3:05 - 4:20pm, Physics 205
+
+<br>
 
 **Labs**
 
@@ -71,7 +73,7 @@ Lab 02: Thursdays, 4:45- 5:55pm, Link #5
 
 *In statistics, a generalized linear model (GLM) is a flexible generalization of ordinary linear regression. The GLM generalizes linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value.*[^1]
 
-[^1]: [Generalized linear model](https://en.wikipedia.org/wiki/Generalized_linear_model)
+[^1]: Souce: [Generalized linear model](https://en.wikipedia.org/wiki/Generalized_linear_model)
 
 . . .
 
@@ -80,9 +82,18 @@ Lab 02: Thursdays, 4:45- 5:55pm, Link #5
 $$\begin{aligned}\pi = P(y = 1 | x) \hspace{2mm} &\Rightarrow \hspace{2mm} \text{Link function: } \log\big(\frac{\pi}{1-\pi}\big) \\
 &\Rightarrow \log\big(\frac{\pi}{1-\pi}\big) = \beta_0 + \beta_1~x\end{aligned}$$
 
-## Course learning objectives
+## Course learning objectives {.midi}
 
-\[Add learning objectives\]
+By the end of the semester, you will be able to ...
+
+::: incremental
+-   describe generalized linear models (GLMs) as a unified framework.
+-   explain how specific models fit into the GLM framework, including extensions for correlated data.
+-   identify the appropriate model given the data and analysis objective.
+-   analyze real-world data by fitting and interpreting GLMs.
+-   use R for analysis, Quarto to write reports, git for version control, and GitHub for collaboration.
+-   effectively communicate results from statistical analyses to a general audience in writing and oral presentations.
+:::
 
 ## Course topics
 
@@ -91,6 +102,8 @@ $$\begin{aligned}\pi = P(y = 1 | x) \hspace{2mm} &\Rightarrow \hspace{2mm} \text
 -   Introduce models for non-normal response variables
 -   Estimation, interpretation, and inference
 -   Mathematical details of GLMs as a unified framework
+
+. . .
 
 **Modeling correlated data**
 
@@ -124,13 +137,15 @@ $$\begin{aligned}\pi = P(y = 1 | x) \hspace{2mm} &\Rightarrow \hspace{2mm} \text
 
 # Course details
 
-## What background is assumed for the course?
+## Pre-reqs
 
 **Pre-reqs**
 
 STA 210 and STA 230 / STA 240
 
-**Background knowledge**
+<br>
+
+<u>**Background knowledge**</u>
 
 ::: columns
 ::: {.column width="45%"}
@@ -152,7 +167,7 @@ STA 210 and STA 230 / STA 240
 
 ## Course toolkit
 
-![](images/01/website.png){fig-alt="Homepage of STA 310 home page" fig-align="left"}
+![](images/01/website.png){fig-alt="Homepage of STA 310 home page" fig-align="center"}
 
 <center>[sta310-sp24.netlify.app](https://sta310-sp24.netlify.app)</center>
 
@@ -167,7 +182,7 @@ STA 210 and STA 230 / STA 240
 
 -   Homework and projects
 
-**Slack**: [sta310-sp24.slack.com](https://sta310-sp24.slack.com)
+**Slack** (link in Canvas)
 
 -   Class discussion forum
 
@@ -189,6 +204,8 @@ STA 210 and STA 230 / STA 240
 -   Work on projects with teammates
 :::
 :::
+
+<br>
 
 <center>**Attendance is strongly expected (if you are healthy!)**</center>
 
@@ -218,15 +235,37 @@ STA 210 and STA 230 / STA 240
 
 `r emo::ji("one")` Install R and RStudio on your laptop
 
--   [Click here](https://github.com/sta310-sp22/computing/blob/main/README.md) for instructions to install RStudio and configure git
+-   [Click here](../computing.html) for instructions to install RStudio and configure git
+
+<br>
 
 **or**
 
-`r emo::ji("two")` Access RStudio through [Docker container](https://cmgr.oit.duke.edu/containers) provided by Duke OIT - Reserve a generic **RStudio** container (there is no course specific container)
+<br>
 
-## GitHub - \[UPDATE\]
+`r emo::ji("two")` Access RStudio through [Docker container](https://cmgr.oit.duke.edu/containers) provided by Duke OIT
 
-## Slack - \[UPDATE\]
+-   Reserve a generic **RStudio** container (there is no course specific container)
+
+## GitHub
+
+-   GitHub course organization: [github.com/sta310-sp24](https://github.com/sta310-sp24)
+
+-   Will receive and submit assignments through a private GitHub repo in the course Github organization
+
+-   Will receive assignment feedback as a GitHub issue. Final grades on each assignment will be available in Canvas
+
+-   All work and feedback are private
+
+## Slack
+
+-   Online discussion forum (like Piazza, Ed Discussion, etc.)
+
+-   Platform to ask questions about course content, logistics, assignments, etc.
+
+-   Content organized by channels. Before posting, please browse previous posts to see if your question has already been answered. If not, please post your question in the relevant channel.
+
+-   Questions about grades, absences, and other private matters should be emailed to me with "STA 310" in the subject line.
 
 # Activities & Assessment
 
@@ -247,25 +286,21 @@ STA 210 and STA 230 / STA 240
 
 ## Projects {.midi}
 
--   **Project 01 (10%)**
+-   **Project 01 (Team project, 10%)**
 
-    -   Read and evaluate academic article that includes model for non-normal response variable
+    -   Team project to read and evaluate academic article that includes model for non-normal response variable
     -   Includes in-class presentation and short write up
-    -   Team project
 
--   **Project 02 (10%)**
+-   **Project 02 (Team project, 10%)**
 
-    -   Article evaluation and analysis focused on models for correlated data
+    -   Team project to evaluate article and conduct analysis focused on models for correlated data
     -   Includes in-class presentation and short write up
-    -   Team project
 
 -   **Final project (20%)**
 
-    -   Apply what you've learned to analyze correlated data
+    -   Individual project to apply what you've learned to analyze correlated data
 
     -   Includes write up
-
-    -   Individual project
 
 ## Grading
 
@@ -370,11 +405,13 @@ See the [syllabus](https://sta310-sp24.netlify.app/syllabus/#additional-support)
 
 ❌ **No AI tools for narrative:** Unless instructed otherwise, AI is [**not**]{.underline} permitted for writing narrative on assignments.
 
+<br>
+
 ::: callout-important
 In general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content.
 :::
 
-## Questions?
+# Questions?
 
 ## Slack + GitHub username
 

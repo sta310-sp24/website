@@ -135,9 +135,44 @@
   {
     "objectID": "computing.html",
     "href": "computing.html",
-    "title": "Computing access",
+    "title": "Computing",
     "section": "",
-    "text": "To access computing resources for the introductory data science courses offered by the Duke University Department of Statistical Science, go to the Duke Container Manager website, cmgr.oit.duke.edu/containers.\nIf this is your first time accessing the containers, click on reserve STA210 on the Reservations available menu on the right. You only need to do this once, and when you do, you’ll see this container moved to the My reservations menu on the left.\nNext, click on STA210 under My reservations to access the RStudio instance you’ll use for the course."
+    "text": "You will need access to R/ RStudio and git for this course. There are two options to access the software:"
+  },
+  {
+    "objectID": "computing.html#step-1-install-rrstudio-and-git",
+    "href": "computing.html#step-1-install-rrstudio-and-git",
+    "title": "Computing",
+    "section": "Step 1: Install R/RStudio and git",
+    "text": "Step 1: Install R/RStudio and git\nYou can install R/RStudio on your local machine and configure it to work with git and GitHub. The text Happy Git and GitHub for the useR is a great resource for working with RStudio and git. The steps are outlined below. Click on each link for more detail.\n\nInstall R and RStudio Desktop: posit.co/download/rstudio-desktop\n\nI recommend installing the desktop version not the preview release of RStudio\n\nInstall git: happygitwithr.com/install-git"
+  },
+  {
+    "objectID": "computing.html#step-2-install-r-packages",
+    "href": "computing.html#step-2-install-r-packages",
+    "title": "Computing",
+    "section": "Step 2: Install R packages",
+    "text": "Step 2: Install R packages\nBelow is a set of R packages we will use throughout the semester. This list is just to get you started; we will let you know as new R packages are required.\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"knitr\")\ninstall.packages(\"lme4\")\ninstall.packages(\"tidymodels\")\ninstall.packages(\"usethis\")\ninstall.packages(\"credentials\")"
+  },
+  {
+    "objectID": "computing.html#step-3-install-quarto",
+    "href": "computing.html#step-3-install-quarto",
+    "title": "Computing",
+    "section": "Step 3: Install Quarto",
+    "text": "Step 3: Install Quarto\nWe will use Quarto (similar to R Markdown) to write up analyses. Download and install Quarto at quarto.org/docs/get-started"
+  },
+  {
+    "objectID": "computing.html#step-4-set-up-git-authentication",
+    "href": "computing.html#step-4-set-up-git-authentication",
+    "title": "Computing",
+    "section": "Step 4: Set up git authentication",
+    "text": "Step 4: Set up git authentication\nYou will authenticate GitHub using SSH.\n\nType credentials::ssh_setup_github() into your console.\nR will ask “No SSH key found. Generate one now?” Click 1 for yes.\nYou will generate a key. It will begin with “ssh-rsa….” R will then ask “Would you like to open a browser now?” Click 1 for yes.\nYou may be asked to provide your username and password to log into GitHub. This would be the ones associated with your account that you set up. After entering this information, paste the key in and give it a name. You might name it in a way that indicates where the key will be used, e.g., sta310)\n\nYou can find more detailed instructions here if you’re interested."
+  },
+  {
+    "objectID": "computing.html#step-5-configure-git",
+    "href": "computing.html#step-5-configure-git",
+    "title": "Computing",
+    "section": "Step 5: Configure git",
+    "text": "Step 5: Configure git\nWe need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your name and email address.\nTo do so, you will use the use_git_config() function from the usethis package.\nType the following lines of code in the console in RStudio filling in your name and the email address associated with your GitHub account.\n\nusethis::use_git_config(\n  user.name = \"Your name\", \n  user.email = \"Email associated with your GitHub account\")\n\nFor example, mine would be\n\nusethis::use_git_config(\n  user.name = \"Maria Tackett\",\n  user.email = \"maria.tackett@duke.edu\")\n\nYou are now ready interact between GitHub and RStudio!"
   },
   {
     "objectID": "index.html",
@@ -375,28 +410,28 @@
     "href": "slides/01-welcome.html#course-logistics",
     "title": "Welcome to STA 310!",
     "section": "Course logistics",
-    "text": "Course logistics\nLectures\nMondays and Wednesdays, 3:05 - 4:20pm, Soc Sci 136\nLabs\nLab 01: Thursdays, 3:05 - 4:20pm, Link #5\nLab 02: Thursdays, 4:45- 5:55pm, Link #5"
+    "text": "Course logistics\nLectures\nMondays and Wednesdays, 3:05 - 4:20pm, Physics 205\n\nLabs\nLab 01: Thursdays, 3:05 - 4:20pm, Link #5\nLab 02: Thursdays, 4:45- 5:55pm, Link #5"
   },
   {
     "objectID": "slides/01-welcome.html#generalized-linear-models",
     "href": "slides/01-welcome.html#generalized-linear-models",
     "title": "Welcome to STA 310!",
     "section": "Generalized Linear Models",
-    "text": "Generalized Linear Models\nIn statistics, a generalized linear model (GLM) is a flexible generalization of ordinary linear regression. The GLM generalizes linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value.1\n\nExample: Logistic regression\n\\[\\begin{aligned}\\pi = P(y = 1 | x) \\hspace{2mm} &\\Rightarrow \\hspace{2mm} \\text{Link function: } \\log\\big(\\frac{\\pi}{1-\\pi}\\big) \\\\\n&\\Rightarrow \\log\\big(\\frac{\\pi}{1-\\pi}\\big) = \\beta_0 + \\beta_1~x\\end{aligned}\\]\n\nGeneralized linear model"
+    "text": "Generalized Linear Models\nIn statistics, a generalized linear model (GLM) is a flexible generalization of ordinary linear regression. The GLM generalizes linear regression by allowing the linear model to be related to the response variable via a link function and by allowing the magnitude of the variance of each measurement to be a function of its predicted value.1\n\nExample: Logistic regression\n\\[\\begin{aligned}\\pi = P(y = 1 | x) \\hspace{2mm} &\\Rightarrow \\hspace{2mm} \\text{Link function: } \\log\\big(\\frac{\\pi}{1-\\pi}\\big) \\\\\n&\\Rightarrow \\log\\big(\\frac{\\pi}{1-\\pi}\\big) = \\beta_0 + \\beta_1~x\\end{aligned}\\]\n\nSouce: Generalized linear model"
   },
   {
     "objectID": "slides/01-welcome.html#course-learning-objectives",
     "href": "slides/01-welcome.html#course-learning-objectives",
     "title": "Welcome to STA 310!",
     "section": "Course learning objectives",
-    "text": "Course learning objectives\n[Add learning objectives]"
+    "text": "Course learning objectives\nBy the end of the semester, you will be able to …\n\n\ndescribe generalized linear models (GLMs) as a unified framework.\nexplain how specific models fit into the GLM framework, including extensions for correlated data.\nidentify the appropriate model given the data and analysis objective.\nanalyze real-world data by fitting and interpreting GLMs.\nuse R for analysis, Quarto to write reports, git for version control, and GitHub for collaboration.\neffectively communicate results from statistical analyses to a general audience in writing and oral presentations."
   },
   {
     "objectID": "slides/01-welcome.html#course-topics",
     "href": "slides/01-welcome.html#course-topics",
     "title": "Welcome to STA 310!",
     "section": "Course topics",
-    "text": "Course topics\nGeneralized Linear Models\n\nIntroduce models for non-normal response variables\nEstimation, interpretation, and inference\nMathematical details of GLMs as a unified framework\n\nModeling correlated data\n\nIntroduce multilevel models for correlated and longitudinal data\nEstimation, interpretation, and inference\nMathematical details, particularly diving into covariance structures"
+    "text": "Course topics\nGeneralized Linear Models\n\nIntroduce models for non-normal response variables\nEstimation, interpretation, and inference\nMathematical details of GLMs as a unified framework\n\n\nModeling correlated data\n\nIntroduce multilevel models for correlated and longitudinal data\nEstimation, interpretation, and inference\nMathematical details, particularly diving into covariance structures"
   },
   {
     "objectID": "slides/01-welcome.html#examples---update",
@@ -413,11 +448,11 @@
     "text": "Meet your classmates! (6 minutes) [UPDATE]\n\nQuick introductions - Name and year\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to January 5.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (we’re all wearing socks)\nNot body parts (we all have a nose)"
   },
   {
-    "objectID": "slides/01-welcome.html#what-background-is-assumed-for-the-course",
-    "href": "slides/01-welcome.html#what-background-is-assumed-for-the-course",
+    "objectID": "slides/01-welcome.html#pre-reqs",
+    "href": "slides/01-welcome.html#pre-reqs",
     "title": "Welcome to STA 310!",
-    "section": "What background is assumed for the course?",
-    "text": "What background is assumed for the course?\nPre-reqs\nSTA 210 and STA 230 / STA 240\nBackground knowledge\n\n\nStatistical methods\n\nLinear and logistic regression\nStatistical inference\nBasic understanding of random variables\n\n\nComputing\n\nUsing R for data analysis\nWriting reports using Quarto\nVersion control and collaboration using GitHub"
+    "section": "Pre-reqs",
+    "text": "Pre-reqs\nPre-reqs\nSTA 210 and STA 230 / STA 240\n\nBackground knowledge\n\n\nStatistical methods\n\nLinear and logistic regression\nStatistical inference\nBasic understanding of random variables\n\n\nComputing\n\nUsing R for data analysis\nWriting reports using Quarto\nVersion control and collaboration using GitHub"
   },
   {
     "objectID": "slides/01-welcome.html#course-toolkit",
@@ -431,14 +466,14 @@
     "href": "slides/01-welcome.html#course-toolkit-1",
     "title": "Welcome to STA 310!",
     "section": "Course toolkit",
-    "text": "Course toolkit\nCanvas: canvas.duke.edu/courses/25310\n\nAnnouncements\nGradebook\n\nGitHub: github.com/sta310-sp24\n\nHomework and projects\n\nSlack: sta310-sp24.slack.com\n\nClass discussion forum"
+    "text": "Course toolkit\nCanvas: canvas.duke.edu/courses/25310\n\nAnnouncements\nGradebook\n\nGitHub: github.com/sta310-sp24\n\nHomework and projects\n\nSlack (link in Canvas)\n\nClass discussion forum"
   },
   {
     "objectID": "slides/01-welcome.html#class-meetings",
     "href": "slides/01-welcome.html#class-meetings",
     "title": "Welcome to STA 310!",
     "section": "Class Meetings",
-    "text": "Class Meetings\n\n\nLectures\n\nSome traditional lecture\nShort individual and group activities\nBring fully-charged laptop / tablet to use R\n\n\nLabs (start January 18)\n\nWork on class assignments with TA support\nWork on projects with teammates\n\n\n\n\nAttendance is strongly expected (if you are healthy!)"
+    "text": "Class Meetings\n\n\nLectures\n\nSome traditional lecture\nShort individual and group activities\nBring fully-charged laptop / tablet to use R\n\n\nLabs (start January 18)\n\nWork on class assignments with TA support\nWork on projects with teammates\n\n\n\n\n\nAttendance is strongly expected (if you are healthy!)"
   },
   {
     "objectID": "slides/01-welcome.html#readings",
@@ -452,21 +487,21 @@
     "href": "slides/01-welcome.html#r-and-rstudio",
     "title": "Welcome to STA 310!",
     "section": "R and RStudio",
-    "text": "R and RStudio\n1️⃣ Install R and RStudio on your laptop\n\nClick here for instructions to install RStudio and configure git\n\nor\n2️⃣ Access RStudio through Docker container provided by Duke OIT - Reserve a generic RStudio container (there is no course specific container)"
+    "text": "R and RStudio\n1️⃣ Install R and RStudio on your laptop\n\nClick here for instructions to install RStudio and configure git\n\n\nor\n\n2️⃣ Access RStudio through Docker container provided by Duke OIT\n\nReserve a generic RStudio container (there is no course specific container)"
   },
   {
-    "objectID": "slides/01-welcome.html#github---update",
-    "href": "slides/01-welcome.html#github---update",
+    "objectID": "slides/01-welcome.html#github",
+    "href": "slides/01-welcome.html#github",
     "title": "Welcome to STA 310!",
-    "section": "GitHub - [UPDATE]",
-    "text": "GitHub - [UPDATE]"
+    "section": "GitHub",
+    "text": "GitHub\n\nGitHub course organization: github.com/sta310-sp24\nWill receive and submit assignments through a private GitHub repo in the course Github organization\nWill receive assignment feedback as a GitHub issue. Final grades on each assignment will be available in Canvas\nAll work and feedback are private"
   },
   {
-    "objectID": "slides/01-welcome.html#slack---update",
-    "href": "slides/01-welcome.html#slack---update",
+    "objectID": "slides/01-welcome.html#slack",
+    "href": "slides/01-welcome.html#slack",
     "title": "Welcome to STA 310!",
-    "section": "Slack - [UPDATE]",
-    "text": "Slack - [UPDATE]"
+    "section": "Slack",
+    "text": "Slack\n\nOnline discussion forum (like Piazza, Ed Discussion, etc.)\nPlatform to ask questions about course content, logistics, assignments, etc.\nContent organized by channels. Before posting, please browse previous posts to see if your question has already been answered. If not, please post your question in the relevant channel.\nQuestions about grades, absences, and other private matters should be emailed to me with “STA 310” in the subject line."
   },
   {
     "objectID": "slides/01-welcome.html#homework-40",
@@ -487,7 +522,7 @@
     "href": "slides/01-welcome.html#projects",
     "title": "Welcome to STA 310!",
     "section": "Projects",
-    "text": "Projects\n\nProject 01 (10%)\n\nRead and evaluate academic article that includes model for non-normal response variable\nIncludes in-class presentation and short write up\nTeam project\n\nProject 02 (10%)\n\nArticle evaluation and analysis focused on models for correlated data\nIncludes in-class presentation and short write up\nTeam project\n\nFinal project (20%)\n\nApply what you’ve learned to analyze correlated data\nIncludes write up\nIndividual project"
+    "text": "Projects\n\nProject 01 (Team project, 10%)\n\nTeam project to read and evaluate academic article that includes model for non-normal response variable\nIncludes in-class presentation and short write up\n\nProject 02 (Team project, 10%)\n\nTeam project to evaluate article and conduct analysis focused on models for correlated data\nIncludes in-class presentation and short write up\n\nFinal project (20%)\n\nIndividual project to apply what you’ve learned to analyze correlated data\nIncludes write up"
   },
   {
     "objectID": "slides/01-welcome.html#grading",
@@ -550,14 +585,7 @@
     "href": "slides/01-welcome.html#use-of-artificial-intelligence-ai-1",
     "title": "Welcome to STA 310!",
     "section": "Use of artificial intelligence (AI)",
-    "text": "Use of artificial intelligence (AI)\n✅ AI tools for code: You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.\n❌ No AI tools for narrative: Unless instructed otherwise, AI is not permitted for writing narrative on assignments.\n\n\n\n\n\n\nImportant\n\n\nIn general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content."
-  },
-  {
-    "objectID": "slides/01-welcome.html#questions",
-    "href": "slides/01-welcome.html#questions",
-    "title": "Welcome to STA 310!",
-    "section": "Questions?",
-    "text": "Questions?"
+    "text": "Use of artificial intelligence (AI)\n✅ AI tools for code: You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.\n❌ No AI tools for narrative: Unless instructed otherwise, AI is not permitted for writing narrative on assignments.\n\n\n\n\n\n\n\nImportant\n\n\nIn general, you may use AI as a resource as you complete assignments but not to answer the exercises for you. You are ultimately responsible for the work you turn in; it should reflect your understanding of the course content."
   },
   {
     "objectID": "slides/01-welcome.html#slack-github-username",

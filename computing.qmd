@@ -1,10 +1,83 @@
 ---
-title: "Computing access"
+title: "Computing"
 ---
 
-To access computing resources for the introductory data science courses offered by the Duke University Department of Statistical Science, go to the [Duke Container Manager](https://cmgr.oit.duke.edu/containers) website, [cmgr.oit.duke.edu/containers](https://cmgr.oit.duke.edu/containers).
+You will need access to R/ RStudio and git for this course. There are two options to access the software:
 
-If this is your first time accessing the containers, click on `reserve STA210` on the *Reservations available* menu on the right.
-You only need to do this once, and when you do, you'll see this container moved to the *My reservations* menu on the left.
+1.  Install R and RStudio on your laptop
 
-Next, click on `STA210` under *My reservations* to access the RStudio instance you'll use for the course.
+    -   See installation and set up instructions below
+
+2.  Access RStudio through [Docker container](https://cmgr.oit.duke.edu/containers) provided by Duke OIT
+
+    -   Reserve a generic **RStudio** container (there is no course specific container)
+
+# Computing set up
+
+## Step 1: Install R/RStudio and git
+
+You can install R/RStudio on your local machine and configure it to work with git and GitHub. The text [Happy Git and GitHub for the useR](https://happygitwithr.com/) is a great resource for working with RStudio and git. The steps are outlined below. Click on each link for more detail.
+
+-   Install R and RStudio Desktop: [posit.co/download/rstudio-desktop](https://posit.co/download/rstudio-desktop/)
+
+    -   I recommend installing the desktop version not the preview release of RStudio
+
+-   Install git: [happygitwithr.com/install-git](https://happygitwithr.com/install-git.html)
+
+## Step 2: Install R packages
+
+Below is a set of R packages we will use throughout the semester. This list is just to get you started; we will let you know as new R packages are required.
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+install.packages("knitr")
+install.packages("lme4")
+install.packages("tidymodels")
+install.packages("usethis")
+install.packages("credentials")
+```
+
+## Step 3: Install Quarto 
+
+We will use Quarto (similar to R Markdown) to write up analyses. Download and install Quarto at [quarto.org/docs/get-started](https://quarto.org/docs/get-started/)
+
+## Step 4: Set up git authentication 
+
+You will authenticate GitHub using SSH.
+
+1.  Type `credentials::ssh_setup_github()` into your console.
+
+2.  R will ask “No SSH key found. Generate one now?” Click 1 for yes.
+
+3.  You will generate a key. It will begin with “ssh-rsa….” R will then ask “Would you like to open a browser now?” Click 1 for yes.
+
+4.  You may be asked to provide your username and password to log into GitHub. This would be the ones associated with your account that you set up. After entering this information, paste the key in and give it a name. You might name it in a way that indicates where the key will be used, e.g., `sta310`)
+
+You can find more detailed instructions [here](https://github.com/DukeStatSci/github_auth_guide) if you’re interested.
+
+## **Step 5: Configure git**
+
+We need to configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your name and email address.
+
+To do so, you will use the `use_git_config()` function from the `usethis` package.
+
+Type the following lines of code in the **console** in RStudio filling in your name and the email address associated with your GitHub account.
+
+```{r}
+#| eval: false
+usethis::use_git_config(
+  user.name = "Your name", 
+  user.email = "Email associated with your GitHub account")
+```
+
+For example, mine would be
+
+```{r}
+#| eval: false
+usethis::use_git_config(
+  user.name = "Maria Tackett",
+  user.email = "maria.tackett@duke.edu")
+```
+
+You are now ready interact between GitHub and RStudio!

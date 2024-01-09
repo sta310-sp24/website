@@ -363,7 +363,8 @@ Prof.&nbsp;Maria Tackett
 <section id="course-logistics" class="slide level2">
 <h2>Course logistics</h2>
 <p><strong>Lectures</strong></p>
-<p>Mondays and Wednesdays, 3:05 - 4:20pm, Soc Sci 136</p>
+<p>Mondays and Wednesdays, 3:05 - 4:20pm, Physics 205</p>
+<p><br></p>
 <p><strong>Labs</strong></p>
 <p>Lab 01: Thursdays, 3:05 - 4:20pm, Link #5</p>
 <p>Lab 02: Thursdays, 4:45- 5:55pm, Link #5</p>
@@ -376,10 +377,20 @@ Prof.&nbsp;Maria Tackett
 <p><span class="math display">\[\begin{aligned}\pi = P(y = 1 | x) \hspace{2mm} &amp;\Rightarrow \hspace{2mm} \text{Link function: } \log\big(\frac{\pi}{1-\pi}\big) \\
 &amp;\Rightarrow \log\big(\frac{\pi}{1-\pi}\big) = \beta_0 + \beta_1~x\end{aligned}\]</span></p>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized linear model</a></p></li></ol></aside></section>
-<section id="course-learning-objectives" class="slide level2">
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Souce: <a href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized linear model</a></p></li></ol></aside></section>
+<section id="course-learning-objectives" class="slide level2 midi">
 <h2>Course learning objectives</h2>
-<p>[Add learning objectives]</p>
+<p>By the end of the semester, you will be able to …</p>
+<div>
+<ul>
+<li class="fragment">describe generalized linear models (GLMs) as a unified framework.</li>
+<li class="fragment">explain how specific models fit into the GLM framework, including extensions for correlated data.</li>
+<li class="fragment">identify the appropriate model given the data and analysis objective.</li>
+<li class="fragment">analyze real-world data by fitting and interpreting GLMs.</li>
+<li class="fragment">use R for analysis, Quarto to write reports, git for version control, and GitHub for collaboration.</li>
+<li class="fragment">effectively communicate results from statistical analyses to a general audience in writing and oral presentations.</li>
+</ul>
+</div>
 </section>
 <section id="course-topics" class="slide level2">
 <h2>Course topics</h2>
@@ -389,12 +400,14 @@ Prof.&nbsp;Maria Tackett
 <li>Estimation, interpretation, and inference</li>
 <li>Mathematical details of GLMs as a unified framework</li>
 </ul>
+<div class="fragment">
 <p><strong>Modeling correlated data</strong></p>
 <ul>
 <li><p>Introduce multilevel models for correlated and longitudinal data</p></li>
 <li><p>Estimation, interpretation, and inference</p></li>
 <li><p>Mathematical details, particularly diving into covariance structures</p></li>
 </ul>
+</div>
 </section>
 <section id="examples---update" class="slide level2">
 <h2>Examples - [UPDATE]</h2>
@@ -431,11 +444,12 @@ Prof.&nbsp;Maria Tackett
 <h1>Course details</h1>
 
 </section>
-<section id="what-background-is-assumed-for-the-course" class="slide level2">
-<h2>What background is assumed for the course?</h2>
+<section id="pre-reqs" class="slide level2">
+<h2>Pre-reqs</h2>
 <p><strong>Pre-reqs</strong></p>
 <p>STA 210 and STA 230 / STA 240</p>
-<p><strong>Background knowledge</strong></p>
+<p><br></p>
+<p><u><strong>Background knowledge</strong></u></p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><strong>Statistical methods</strong></p>
@@ -457,7 +471,7 @@ Prof.&nbsp;Maria Tackett
 <section id="course-toolkit" class="slide level2">
 <h2>Course toolkit</h2>
 
-<img data-src="images/01/website.png" alt="Homepage of STA 310 home page" class="r-stretch quarto-figure-left"><center>
+<img data-src="images/01/website.png" alt="Homepage of STA 310 home page" class="r-stretch quarto-figure-center"><center>
 <a href="https://sta310-sp24.netlify.app">sta310-sp24.netlify.app</a>
 </center>
 </section>
@@ -472,7 +486,7 @@ Prof.&nbsp;Maria Tackett
 <ul>
 <li>Homework and projects</li>
 </ul>
-<p><strong>Slack</strong>: <a href="https://sta310-sp24.slack.com">sta310-sp24.slack.com</a></p>
+<p><strong>Slack</strong> (link in Canvas)</p>
 <ul>
 <li>Class discussion forum</li>
 </ul>
@@ -495,6 +509,7 @@ Prof.&nbsp;Maria Tackett
 </ul>
 </div>
 </div>
+<p><br></p>
 <center>
 <strong>Attendance is strongly expected (if you are healthy!)</strong>
 </center>
@@ -530,16 +545,33 @@ Prof.&nbsp;Maria Tackett
 <h2>R and RStudio</h2>
 <p>1️⃣ Install R and RStudio on your laptop</p>
 <ul>
-<li><a href="https://github.com/sta310-sp22/computing/blob/main/README.md">Click here</a> for instructions to install RStudio and configure git</li>
+<li><a href="../computing.html">Click here</a> for instructions to install RStudio and configure git</li>
 </ul>
+<p><br></p>
 <p><strong>or</strong></p>
-<p>2️⃣ Access RStudio through <a href="https://cmgr.oit.duke.edu/containers">Docker container</a> provided by Duke OIT - Reserve a generic <strong>RStudio</strong> container (there is no course specific container)</p>
+<p><br></p>
+<p>2️⃣ Access RStudio through <a href="https://cmgr.oit.duke.edu/containers">Docker container</a> provided by Duke OIT</p>
+<ul>
+<li>Reserve a generic <strong>RStudio</strong> container (there is no course specific container)</li>
+</ul>
 </section>
-<section id="github---update" class="slide level2">
-<h2>GitHub - [UPDATE]</h2>
+<section id="github" class="slide level2">
+<h2>GitHub</h2>
+<ul>
+<li><p>GitHub course organization: <a href="https://github.com/sta310-sp24">github.com/sta310-sp24</a></p></li>
+<li><p>Will receive and submit assignments through a private GitHub repo in the course Github organization</p></li>
+<li><p>Will receive assignment feedback as a GitHub issue. Final grades on each assignment will be available in Canvas</p></li>
+<li><p>All work and feedback are private</p></li>
+</ul>
 </section>
-<section id="slack---update" class="slide level2">
-<h2>Slack - [UPDATE]</h2>
+<section id="slack" class="slide level2">
+<h2>Slack</h2>
+<ul>
+<li><p>Online discussion forum (like Piazza, Ed Discussion, etc.)</p></li>
+<li><p>Platform to ask questions about course content, logistics, assignments, etc.</p></li>
+<li><p>Content organized by channels. Before posting, please browse previous posts to see if your question has already been answered. If not, please post your question in the relevant channel.</p></li>
+<li><p>Questions about grades, absences, and other private matters should be emailed to me with “STA 310” in the subject line.</p></li>
+</ul>
 </section></section>
 <section>
 <section id="activities-assessment" class="title-slide slide level1 center">
@@ -566,23 +598,20 @@ Prof.&nbsp;Maria Tackett
 <section id="projects" class="slide level2 midi">
 <h2>Projects</h2>
 <ul>
-<li><p><strong>Project 01 (10%)</strong></p>
+<li><p><strong>Project 01 (Team project, 10%)</strong></p>
 <ul>
-<li>Read and evaluate academic article that includes model for non-normal response variable</li>
+<li>Team project to read and evaluate academic article that includes model for non-normal response variable</li>
 <li>Includes in-class presentation and short write up</li>
-<li>Team project</li>
 </ul></li>
-<li><p><strong>Project 02 (10%)</strong></p>
+<li><p><strong>Project 02 (Team project, 10%)</strong></p>
 <ul>
-<li>Article evaluation and analysis focused on models for correlated data</li>
+<li>Team project to evaluate article and conduct analysis focused on models for correlated data</li>
 <li>Includes in-class presentation and short write up</li>
-<li>Team project</li>
 </ul></li>
 <li><p><strong>Final project (20%)</strong></p>
 <ul>
-<li><p>Apply what you’ve learned to analyze correlated data</p></li>
+<li><p>Individual project to apply what you’ve learned to analyze correlated data</p></li>
 <li><p>Includes write up</p></li>
-<li><p>Individual project</p></li>
 </ul></li>
 </ul>
 </section>
@@ -717,6 +746,7 @@ Prof.&nbsp;Maria Tackett
 <h2>Use of artificial intelligence (AI)</h2>
 <p>✅ <strong>AI tools for code:</strong> You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.</p>
 <p>❌ <strong>No AI tools for narrative:</strong> Unless instructed otherwise, AI is <u><strong>not</strong></u> permitted for writing narrative on assignments.</p>
+<p><br></p>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -730,9 +760,11 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 </div>
-</section>
-<section id="questions" class="slide level2">
-<h2>Questions?</h2>
+</section></section>
+<section>
+<section id="questions" class="title-slide slide level1 center">
+<h1>Questions?</h1>
+
 </section>
 <section id="slack-github-username" class="slide level2">
 <h2>Slack + GitHub username</h2>

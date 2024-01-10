@@ -364,18 +364,25 @@
     "text": "Course topics\nGeneralized Linear Models\n\nIntroduce models for non-normal response variables\nEstimation, interpretation, and inference\nMathematical details of GLMs as a unified framework\n\n\nModeling correlated data\n\nIntroduce multilevel models for correlated and longitudinal data\nEstimation, interpretation, and inference\nMathematical details, particularly diving into covariance structures"
   },
   {
-    "objectID": "slides/01-welcome.html#examples-of-glms-in-practice",
-    "href": "slides/01-welcome.html#examples-of-glms-in-practice",
+    "objectID": "slides/01-welcome.html#glms-in-practice",
+    "href": "slides/01-welcome.html#glms-in-practice",
     "title": "Welcome to STA 310!",
-    "section": "Examples of GLMs in practice",
-    "text": "Examples of GLMs in practice"
+    "section": "GLMs in practice",
+    "text": "GLMs in practice\n\n\n\n\n\n“…we used negative binomial regression to model the association between the number of questions produced, race, and group after adjusting for the additional covariates age and years of education. Poisson and zero-inflated Poisson regression models were also considered…the negative binomial model was a good fit for the data given the overdispersion in the distribution of number of questions asked.”1\nFannin, D. K., Elleby, J., Tackett, M., & Minga, J. (2023). Intersectionality of Race and Question-Asking in Women After Right Hemisphere Brain Damage. Journal of Speech, Language, and Hearing Research, 66(1), 314-324."
+  },
+  {
+    "objectID": "slides/01-welcome.html#glms-in-practice-1",
+    "href": "slides/01-welcome.html#glms-in-practice-1",
+    "title": "Welcome to STA 310!",
+    "section": "GLMs in practice",
+    "text": "GLMs in practice\n\n\n\n\n\n” …a logistic regression model is used to test how the likelihood of a foul is affected by which team is the home team, the foul differential, and the score differential…The logistic regression was run under several specifications … using clustered observation standard errors, with each game as a cluster. This is done as an attempt to adjust for the fact that observations may not be independent as required under the logistic specification.1\n\n\n\n\nAnderson, K. J., & Pierce, D. A. (2009). Officiating bias: The effect of foul differential on foul calls in NCAA basketball. Journal of sports sciences, 27(7), 687-694."
   },
   {
     "objectID": "slides/01-welcome.html#meet-your-classmates-1",
     "href": "slides/01-welcome.html#meet-your-classmates-1",
     "title": "Welcome to STA 310!",
     "section": "Meet your classmates!",
-    "text": "Meet your classmates!"
+    "text": "Meet your classmates!\n\nGet in groups of 2 - 3\nEach person in the group…\n\nIntroduce yourself\nShare a boring fact about yourself\n\nEveryone will introduce one person from your group to the class"
   },
   {
     "objectID": "slides/01-welcome.html#pre-reqs",
@@ -466,7 +473,7 @@
     "href": "slides/01-welcome.html#course-community-1",
     "title": "Welcome to STA 310!",
     "section": "Course community",
-    "text": "Course community\n\nUphold the Duke Community Standard:\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors;\nI will act if the Standard is compromised.\n\n\n\n\nCommit to respect, honor, and celebrate our diverse community\nCommit to being part of a learning environment that is welcoming and accessible to everyone"
+    "text": "Course community\n\nUphold the Duke Community Standard:\n\n\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors;\nI will act if the Standard is compromised.\n\n\n\n\n\n\nCommit to respect, honor, and celebrate our diverse community\nCommit to being part of a learning environment that is welcoming and accessible to everyone"
   },
   {
     "objectID": "slides/01-welcome.html#accessibility",

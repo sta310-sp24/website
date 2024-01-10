@@ -113,7 +113,22 @@ By the end of the semester, you will be able to ...
 
 -   Mathematical details, particularly diving into covariance structures
 
-## Examples of GLMs in practice
+## GLMs in practice {.small}
+
+![](images/01/rhd-article.png){fig-align="center" width="65%"}
+
+*"...we used **negative binomial regression** to model the association between the number of questions produced, race, and group after adjusting for the additional covariates age and years of education. **Poisson and zero-inflated Poisson regression models** were also considered...the negative binomial model was a good fit for the data given the **overdispersion** in the distribution of number of questions asked."[^2]*
+
+[^2]: Fannin, D. K., Elleby, J., Tackett, M., & Minga, J. (2023). [Intersectionality of Race and Question-Asking in Women After Right Hemisphere Brain Damage](https://search-ebscohost-com.proxy.lib.duke.edu/login.aspx?direct=true&db=a9h&AN=161407156&site=ehost-live&scope=site). Journal of Speech, Language, and Hearing Research, 66(1), 314-324.
+
+## GLMs in practice {.small}
+
+![](images/01/ncaa-fouls-article.png){fig-align="center" width="90%"}
+
+*" ...a **logistic regression model** is used to test
+how the likelihood of a foul is affected by which team is the home team, the foul differential, and the score differential...The logistic regression was run under several specifications ... using **clustered observation standard errors**, with each game as a cluster. This is done as an attempt to adjust for the fact that **observations may not be independent** as required under the logistic specification.[^3]*
+
+[^3]: Anderson, K. J., & Pierce, D. A. (2009). Officiating bias: [The effect of foul differential on foul calls in NCAA basketball](https://search-ebscohost-com.proxy.lib.duke.edu/login.aspx?direct=true&db=s3h&AN=39982562&site=ehost-live&scope=site). Journal of sports sciences, 27(7), 687-694.
 
 <!--[ Add some examples of GLMs]-->
 
@@ -126,6 +141,15 @@ By the end of the semester, you will be able to ...
 # Meet your classmates!
 
 ## Meet your classmates!
+
+-   Get in groups of 2 - 3
+
+-   Each person in the group...
+
+    -   Introduce yourself
+    -   Share a boring fact about yourself
+
+-   Everyone will introduce one person from your group to the class
 
 # Course details
 
@@ -316,9 +340,11 @@ See [syllabus](https://sta310-sp24.netlify.app/syllabus/#grading) for letter gra
 
 -   Uphold the Duke Community Standard:
 
+    > ::: nonincremental
     > -   I will not lie, cheat, or steal in my academic endeavors;
     > -   I will conduct myself honorably in all my endeavors;
     > -   I will act if the Standard is compromised.
+    > :::
 
 <br>
 
@@ -379,17 +405,17 @@ See the [syllabus](https://sta310-sp24.netlify.app/syllabus/#additional-support)
 -   For the projects collaboration within teams is not only allowed, but expected. Communication between teams at a high level is also allowed however you may not share code or components of the project across teams.
 -   **Reusing code**: Unless explicitly stated otherwise, you may make use of online resources (e.g. StackOverflow) for coding examples on assignments. If you directly use code from an outside source (or use it as inspiration), you must explicitly cite where you obtained the code.
 
-## Use of artificial intelligence (AI)
+## Use of artificial intelligence (AI) {.midi}
 
 -   You should treat AI tools, such as ChatGPT, the same as other online resources.
 
--   There are two guiding principles that govern how you can use AI in this course:[^2]
+-   There are two guiding principles that govern how you can use AI in this course:[^4]
 
     -   \(1\) *Cognitive dimension:* Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.
 
     -   \(2\) *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
 
-[^2]: These guiding principles are based on [*Course Policies related to ChatGPT and other AI Tools*](https://docs.google.com/document/d/1WpCeTyiWCPQ9MNCsFeKMDQLSTsg1oKfNIH6MzoSFXqQ/preview) developed by Joel Gladd, Ph.D.[↩︎](https://sta101-f23.github.io/course-syllabus.html#fnref1)
+[^4]: These guiding principles are based on [*Course Policies related to ChatGPT and other AI Tools*](https://docs.google.com/document/d/1WpCeTyiWCPQ9MNCsFeKMDQLSTsg1oKfNIH6MzoSFXqQ/preview) developed by Joel Gladd, Ph.D.[↩︎](https://sta101-f23.github.io/course-syllabus.html#fnref1)
 
 ## Use of artificial intelligence (AI)
 

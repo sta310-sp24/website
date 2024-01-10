@@ -117,18 +117,17 @@ By the end of the semester, you will be able to ...
 
 ![](images/01/rhd-article.png){fig-align="center" width="65%"}
 
-*"...we used **negative binomial regression** to model the association between the number of questions produced, race, and group after adjusting for the additional covariates age and years of education. **Poisson and zero-inflated Poisson regression models** were also considered...the negative binomial model was a good fit for the data given the **overdispersion** in the distribution of number of questions asked."[^2]*
+*"...we used **negative binomial regression** to model the association between the number of questions produced, race, and group after adjusting for the additional covariates age and years of education. **Poisson and zero-inflated Poisson regression models** were also considered...the negative binomial model was a good fit for the data given the **overdispersion** in the distribution of number of questions asked."*[^2]
 
-[^2]: Fannin, D. K., Elleby, J., Tackett, M., & Minga, J. (2023). [Intersectionality of Race and Question-Asking in Women After Right Hemisphere Brain Damage](https://search-ebscohost-com.proxy.lib.duke.edu/login.aspx?direct=true&db=a9h&AN=161407156&site=ehost-live&scope=site). Journal of Speech, Language, and Hearing Research, 66(1), 314-324.
+[^2]: *Fannin, D. K., Elleby, J., Tackett, M., & Minga, J. (2023). [Intersectionality of Race and Question-Asking in Women After Right Hemisphere Brain Damage](https://search-ebscohost-com.proxy.lib.duke.edu/login.aspx?direct=true&db=a9h&AN=161407156&site=ehost-live&scope=site). Journal of Speech, Language, and Hearing Research, 66(1), 314-324.*
 
 ## GLMs in practice {.small}
 
 ![](images/01/ncaa-fouls-article.png){fig-align="center" width="90%"}
 
-*" ...a **logistic regression model** is used to test
-how the likelihood of a foul is affected by which team is the home team, the foul differential, and the score differential...The logistic regression was run under several specifications ... using **clustered observation standard errors**, with each game as a cluster. This is done as an attempt to adjust for the fact that **observations may not be independent** as required under the logistic specification.[^3]*
+*" ...a **logistic regression model** is used to test how the likelihood of a foul is affected by which team is the home team, the foul differential, and the score differential...The logistic regression was run under several specifications ... using **clustered observation standard errors**, with each game as a cluster. This is done as an attempt to adjust for the fact that **observations may not be independent** as required under the logistic specification.*[^3]
 
-[^3]: Anderson, K. J., & Pierce, D. A. (2009). Officiating bias: [The effect of foul differential on foul calls in NCAA basketball](https://search-ebscohost-com.proxy.lib.duke.edu/login.aspx?direct=true&db=s3h&AN=39982562&site=ehost-live&scope=site). Journal of sports sciences, 27(7), 687-694.
+[^3]: *Anderson, K. J., & Pierce, D. A. (2009). Officiating bias: [The effect of foul differential on foul calls in NCAA basketball](https://search-ebscohost-com.proxy.lib.duke.edu/login.aspx?direct=true&db=s3h&AN=39982562&site=ehost-live&scope=site). Journal of sports sciences, 27(7), 687-694.*
 
 <!--[ Add some examples of GLMs]-->
 
@@ -183,7 +182,7 @@ STA 210 and STA 230 / STA 240
 
 ## Course toolkit
 
-![](images/01/website.png){fig-alt="Homepage of STA 310 home page" fig-align="center"}
+![](images/01/website.png){fig-alt="Homepage of STA 310 home page" fig-align="center" width="100%"}
 
 <center>[sta310-sp24.netlify.app](https://sta310-sp24.netlify.app)</center>
 
@@ -439,7 +438,7 @@ See announcement on Canvas and complete the following:
 -   Complete STA 310 Student Survey
     -   Need to provide GitHub username. If you do not have a GitHub username, go to [github.com](https://github.com) to sign up and [click here](https://happygitwithr.com/github-acct.html?q=username#username-advice) for advice on making a username.
 
-## Next Class 
+## Next Class
 
 (Wednesday, January 17)
 
@@ -447,7 +446,7 @@ See announcement on Canvas and complete the following:
 
 -   Review multiple linear regression
 
-## To do before next time 
+## To do before next time
 
 -   Install RStudio and configure git (or reserve container). See [computing](../computing.html) page for instructions.
 

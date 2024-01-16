@@ -1,0 +1,76 @@
+---
+title: "Welcome to STA 310 Labs!"
+date: "2024-01-18"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    multiplex: false
+    transition: fade
+    slide-number: false
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+## Meet your TA!
+
+![](images/labs/hello-sticker.jpeg){fig-alt="Pink sticker that says Hello my name is." fig-align="center"}
+
+## Meet each other!
+
+::: midi
+-   Get into groups of 3 - 5.
+
+-   Introduce yourself if you haven't met
+
+-   Choose a reporter
+
+    -   Need help choosing? Person with birthday closest to today's date.
+
+-   Identify **8 things** everyone in the group has in common
+
+    -   Not being a Duke student
+    -   Not clothes (e.g., we're all wearing socks)
+    -   Not body parts (e.g., we all have a nose)
+
+-   Reporter will share list with the class.
+:::
+
+```{r}
+#| echo: false 
+
+countdown::countdown(minutes  = 5)
+```
+
+## What to expect in lab
+
+-   Introduction to the week's lab
+
+-   Answer questions about lectures and cover additional content, as needed
+
+-   Work on homework or projects
+
+# Any questions about the course or syllabus? 
+
+## Today's lab {.midi}
+
+The rest of the today's lab is focused on working on HW 01. You are encouraged to discuss homework with each other but everyone must turn in their own assignment. See the syllabus for policy on homework collaboration.
+
+<br>
+
+🔗 [sta310-sp24.netlify.app/hw/hw-01](https://sta310-sp24.netlify.app/hw/hw-01.html)

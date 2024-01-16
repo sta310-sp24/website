@@ -2,78 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sta310-sp24.netlify.app/syllabus.html</loc>
-    <lastmod>2024-01-10T19:28:30.147Z</lastmod>
+    <lastmod>2024-01-16T17:55:56.269Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/stats-experience.html</loc>
-    <lastmod>2024-01-10T19:28:20.831Z</lastmod>
+    <lastmod>2024-01-16T17:55:49.057Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/computing.html</loc>
-    <lastmod>2024-01-10T19:28:19.907Z</lastmod>
+    <lastmod>2024-01-16T17:55:48.158Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/index.html</loc>
-    <lastmod>2024-01-10T19:28:16.961Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/projects/project-02.html</loc>
-    <lastmod>2024-01-10T19:28:11.283Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/projects/final-project.html</loc>
-    <lastmod>2024-01-10T19:28:10.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/prepare/jan-17.html</loc>
-    <lastmod>2024-01-10T19:28:09.659Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-03.html</loc>
-    <lastmod>2024-01-10T19:28:08.869Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-04.html</loc>
-    <lastmod>2024-01-10T19:28:07.987Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-06.html</loc>
-    <lastmod>2024-01-10T19:28:07.202Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-05.html</loc>
-    <lastmod>2024-01-10T19:28:07.518Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-01.html</loc>
-    <lastmod>2024-01-10T19:28:08.417Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-02.html</loc>
-    <lastmod>2024-01-10T19:28:09.270Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/support.html</loc>
-    <lastmod>2024-01-10T19:28:10.241Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/projects/project-01.html</loc>
-    <lastmod>2024-01-10T19:28:10.975Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/lab-01.html</loc>
+    <lastmod>2024-01-16T17:55:46.645Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/course-overview.html</loc>
-    <lastmod>2024-01-10T19:28:11.685Z</lastmod>
+    <lastmod>2024-01-16T17:55:43.312Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/projects/project-01.html</loc>
+    <lastmod>2024-01-16T17:55:42.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/support.html</loc>
+    <lastmod>2024-01-16T17:55:42.097Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-02.html</loc>
+    <lastmod>2024-01-16T17:55:41.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-01.html</loc>
+    <lastmod>2024-01-16T17:55:40.732Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-05.html</loc>
+    <lastmod>2024-01-16T17:55:40.079Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-06.html</loc>
+    <lastmod>2024-01-16T17:55:39.769Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-04.html</loc>
+    <lastmod>2024-01-16T17:55:40.394Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-03.html</loc>
+    <lastmod>2024-01-16T17:55:41.055Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/prepare/jan-17.html</loc>
+    <lastmod>2024-01-16T17:55:41.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/projects/final-project.html</loc>
+    <lastmod>2024-01-16T17:55:42.391Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/projects/project-02.html</loc>
+    <lastmod>2024-01-16T17:55:42.960Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/index.html</loc>
+    <lastmod>2024-01-16T17:55:46.219Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/slides/01-welcome.html</loc>
-    <lastmod>2024-01-10T19:28:19.216Z</lastmod>
+    <lastmod>2024-01-16T17:55:47.500Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/links.html</loc>
-    <lastmod>2024-01-10T19:28:20.268Z</lastmod>
+    <lastmod>2024-01-16T17:55:48.493Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/project-tips.html</loc>
-    <lastmod>2024-01-10T19:28:21.798Z</lastmod>
+    <lastmod>2024-01-16T17:55:49.949Z</lastmod>
   </url>
 </urlset>

@@ -444,11 +444,10 @@ Prof.&nbsp;Maria Tackett
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(ggfortify)</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>colors <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">green =</span> <span class="st">"#B5BA72"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>colors <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">green =</span> <span class="st">"#B5BA72"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="topics" class="slide level2">
@@ -469,10 +468,13 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="models-and-statistical-models" class="slide level2">
 <h2>Models and statistical models</h2>
+<p>Suppose we have observations <span class="math inline">\(y_1, \ldots, y_n\)</span></p>
+<div>
 <ul>
-<li><p><strong>Model</strong>: Mathematical description of the process we think generates the observations <span class="math inline">\(y_1, \ldots, y_n\)</span></p></li>
-<li><p><strong>Statistical model</strong>: Model that includes an equation describing the impact of explanatory variables (<strong>systematic part)</strong> and probability distributions for parts of the process that are assumed to be random variation (<strong>random part)</strong></p></li>
+<li class="fragment"><p><strong>Model</strong>: Mathematical description of the process we think generates the observations</p></li>
+<li class="fragment"><p><strong>Statistical model</strong>: Model that includes an equation describing the impact of explanatory variables (<strong>deterministic part)</strong> and probability distributions for parts of the process that are assumed to be random variation (<strong>random part)</strong></p></li>
 </ul>
+</div>
 
 <aside><div>
 <p>Definitions adapted from <span class="citation" data-cites="stroup2012generalized">Stroup (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p>
@@ -496,40 +498,49 @@ Prof.&nbsp;Maria Tackett
 y_{ij} = \mu_i + \epsilon_{ij}
 \]</span></p>
 <p>where</p>
+<div class="fragment">
+<div>
 <ul>
-<li><span class="math inline">\(i = 1, 2\)</span>: group</li>
-<li><span class="math inline">\(j = 1, \ldots, n\)</span>: observation number</li>
-<li><span class="math inline">\(n_i\)</span>: number of observations in group <span class="math inline">\(i\)</span></li>
-<li><span class="math inline">\(\mu_i\)</span>: mean of group <span class="math inline">\(i\)</span></li>
-<li><span class="math inline">\(y_{ij}\)</span>: <span class="math inline">\(j^{th}\)</span> observation in the <span class="math inline">\(i^{th}\)</span> group</li>
-<li><span class="math inline">\(\epsilon_{ij}\)</span> : random error (variation) associated with <span class="math inline">\(ij^{th}\)</span> observation</li>
+<li class="fragment"><span class="math inline">\(i = 1, 2\)</span>: group</li>
 </ul>
+<!-- -->
+<ul>
+<li class="fragment"><span class="math inline">\(j = 1, \ldots, n\)</span>: observation number</li>
+<li class="fragment"><span class="math inline">\(n_i\)</span>: number of observations in group <span class="math inline">\(i\)</span></li>
+<li class="fragment"><span class="math inline">\(\mu_i\)</span>: mean of group <span class="math inline">\(i\)</span></li>
+<li class="fragment"><span class="math inline">\(y_{ij}\)</span>: <span class="math inline">\(j^{th}\)</span> observation in the <span class="math inline">\(i^{th}\)</span> group</li>
+<li class="fragment"><span class="math inline">\(\epsilon_{ij}\)</span> : random error (variation) associated with <span class="math inline">\(ij^{th}\)</span> observation</li>
+</ul>
+</div>
 
+</div>
 <aside><div>
-<p>Adpated from <span class="citation" data-cites="stroup2012generalized">Stroup (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p>
+<p>Adapted from <span class="citation" data-cites="stroup2012generalized">Stroup (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p>
 </div></aside></section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
 <p><span class="math display">\[
 y_{ij} = \mu_i + \epsilon_{ij}
 \]</span></p>
+<div>
 <ul>
-<li><p><span class="math inline">\(y_{ij}\)</span>: the observations</p></li>
-<li><p><span class="math inline">\(\mu_i\)</span>: deterministic part of the model, no random variability</p></li>
-<li><p><span class="math inline">\(e_{ij}\)</span> : random part of the model, indicating observations vary about their mean</p></li>
-<li><p>Typically assume <span class="math inline">\(\epsilon_{ij}\)</span> are independent and identically distributed (i.i.d.) <span class="math inline">\(N(0, \sigma^2)\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(y_{ij}\)</span>: the observations</p></li>
+<li class="fragment"><p><span class="math inline">\(\mu_i\)</span>: deterministic part of the model, no random variability</p></li>
+<li class="fragment"><p><span class="math inline">\(e_{ij}\)</span> : random part of the model, indicating observations vary about their mean</p></li>
+<li class="fragment"><p>Typically assume <span class="math inline">\(\epsilon_{ij}\)</span> are independent and identically distributed (i.i.d.) <span class="math inline">\(N(0, \sigma^2)\)</span></p></li>
 </ul>
+</div>
 
 <aside><div>
-<p>Adpated from <span class="citation" data-cites="stroup2012generalized">Stroup (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p>
+<p>Adapted from <span class="citation" data-cites="stroup2012generalized">Stroup (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p>
 </div></aside></section>
 <section id="practice" class="slide level2">
 <h2>Practice</h2>
 <div class="question">
-<p>Suppose <span class="math inline">\(y_{ij}'s\)</span> are observed outcome data and <span class="math inline">\(x_i's\)</span> are values of the explanatory variable. Assume a linear regression model can used to describe the process of generating <span class="math inline">\(y_{ij}'s\)</span> based on the <span class="math inline">\(x_i's\)</span>.</p>
+<p>Suppose <span class="math inline">\(y_{ij}\)</span>’s are observed outcome data and <span class="math inline">\(x_i\)</span>’s are values of the explanatory variable. Assume a linear regression model can used to describe the process of generating <span class="math inline">\(y_{ij}\)</span> based on the <span class="math inline">\(x_i\)</span>.</p>
 <ol type="1">
 <li>Write the specification of the statistical model.</li>
-<li>Label the 3 components of the model equation (observation, systematic part, random part)</li>
+<li>Label the 3 components of the model equation (observation, deterministic part, random part)</li>
 <li>What is <span class="math inline">\(E(y_{ij})\)</span>, the expected value of the observations?</li>
 </ol>
 </div>
@@ -596,24 +607,26 @@ y_{ij} = \mu_i + \epsilon_{ij}
 </section>
 <section id="beyond-linear-regression" class="slide level2 midi">
 <h2>Beyond linear regression</h2>
+<div>
 <ul>
-<li><p>When drawe conclusions from linear regression models, we do so assuming LINE are all met</p></li>
-<li><p><strong>Generalized linear models</strong> require different assumptions and can accommodate violations in LINE</p>
+<li class="fragment"><p>When drawing conclusions from linear regression models, we do so assuming LINE are all met</p></li>
+<li class="fragment"><p><strong>Generalized linear models</strong> require different assumptions and can accommodate violations in LINE</p>
 <ul>
-<li>Relationship between response and predictor(s) can be nonlinear</li>
-<li>Response variable can be non-normal</li>
-<li>Variance in response can differ at each level of predictor(s)</li>
-<li><strong>The independence assumption must hold!</strong></li>
+<li class="fragment">Relationship between response and predictor(s) can be nonlinear</li>
+<li class="fragment">Response variable can be non-normal</li>
+<li class="fragment">Variance in response can differ at each level of predictor(s)</li>
+<li class="fragment"><strong>The independence assumption still must hold!</strong></li>
 </ul></li>
-<li><p><strong>Multilevel models</strong> are used to model data that violate the independence assumption, i.e.&nbsp;correlated observations</p></li>
+<li class="fragment"><p><strong>Multilevel models</strong> are used to model data that violate the independence assumption, i.e.&nbsp;correlated observations</p></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="multiple-linear-regression" class="title-slide slide level1 center">
 <h1>Multiple linear regression</h1>
 
 </section>
-<section id="data-kentucky-derby-winners" class="slide level2">
+<section id="data-kentucky-derby-winners" class="slide level2 midi">
 <h2>Data: Kentucky Derby Winners</h2>
 <p>Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file <a href="data/derbyplus.csv">derbyplus.csv</a> and contains information for races 1896 - 2017.</p>
 <div class="columns">
@@ -635,6 +648,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 </ul>
 </div>
 </div>
+<p><strong>Goal: Understand variability in average winner speed based on characteristics of the race.</strong></p>
 </section>
 <section id="data" class="slide level2">
 <h2>Data</h2>
@@ -703,7 +717,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <section id="exploratory-data-analysis-eda" class="slide level2">
 <h2>Exploratory data analysis (EDA)</h2>
 <ul>
-<li><p>Once you’re ready for the statistical analysis (explore), the first step should always be <strong>exploratory data analysis</strong>.</p></li>
+<li><p>Once you’re ready for the statistical analysis, the first step should always be <strong>exploratory data analysis</strong>.</p></li>
 <li><p>The EDA will help you</p>
 <ul>
 <li>begin to understand the variables and observations</li>
@@ -801,16 +815,20 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(speed <span class="sc">~</span> starters <span class="sc">+</span> year <span class="sc">+</span> condition, <span class="at">data =</span> derby)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
+<div class="fragment">
 <p>Model 2: Main effects + <span class="math inline">\(year^2\)</span>, the quadratic effect of <code>year</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(speed <span class="sc">~</span> starters <span class="sc">+</span> year <span class="sc">+</span> <span class="fu">I</span>(year<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> condition,</span>
 <span id="cb9-2"><a href="#cb9-2"></a>             <span class="at">data =</span> derby)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
+</div>
+<div class="fragment">
 <p>Model 3: Main effects + interaction between <code>year</code> and <code>condition</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(speed <span class="sc">~</span> starters <span class="sc">+</span> year <span class="sc">+</span> condition <span class="sc">+</span> year <span class="sc">*</span> condition, </span>
 <span id="cb10-2"><a href="#cb10-2"></a>             <span class="at">data =</span> derby)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </section></section>
 <section id="application-exercise" class="title-slide slide level1 center">
@@ -823,7 +841,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <h1>Inference for regression</h1>
 <p>Use statistical inference to</p>
 <ul>
-<li><p>Determine if predictors are statistically significant (not necessarily practically significant!)</p></li>
+<li><p>Evaluate if predictors are statistically significant (not necessarily practically significant!)</p></li>
 <li><p>Quantify uncertainty in coefficient estimates</p></li>
 <li><p>Quantify uncertainty in model predictions</p></li>
 </ul>
@@ -831,49 +849,60 @@ y_{ij} = \mu_i + \epsilon_{ij}
 </section>
 <section id="inference-for-regression-1" class="slide level2 midi">
 <h2>Inference for regression</h2>
-<p>When LINE assumptions are met…</p>
+<p>When LINE assumptions are met… . . .</p>
+<div>
 <ul>
-<li><p>Use least squares regression to obtain the estimates for the model coefficients <span class="math inline">\(\beta_0, \beta_1, \ldots, \beta_j\)</span> and for <span class="math inline">\(\sigma^2\)</span></p></li>
-<li><p><span class="math inline">\(\hat{\sigma}\)</span> is the <strong>regression standard error</strong></p>
+<li class="fragment"><p>Use least squares regression to obtain the estimates for the model coefficients <span class="math inline">\(\beta_0, \beta_1, \ldots, \beta_j\)</span> and for <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\sigma}\)</span> is the <strong>regression standard error</strong></p>
 <p><span class="math display">\[
 \hat{\sigma} = \sqrt{\frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n - p - 1}} = \sqrt{\frac{\sum_{i=1}^n e_i^2}{n-p-1}}
 \]</span></p>
 <p>where <span class="math inline">\(p\)</span> is the number of non-intercept terms in the model (e.g., <span class="math inline">\(p = 1\)</span> in simple linear regression)</p></li>
-<li><p>Goal is to use estimated values to draw conclusions about <span class="math inline">\(\beta_j\)</span></p>
+<li class="fragment"><p>Goal is to use estimated values to draw conclusions about <span class="math inline">\(\beta_j\)</span></p>
 <ul>
-<li>Use <span class="math inline">\(\hat{\sigma}\)</span> to calculate <span class="math inline">\(SE_{\hat{\beta}_j}\)</span> . <a href="https://github.com/STA210-Sp19/supplemental-notes/blob/master/regression-basics-matrix.pdf">Click here</a> for more detail.</li>
+<li class="fragment">Use <span class="math inline">\(\hat{\sigma}\)</span> to calculate <span class="math inline">\(SE_{\hat{\beta}_j}\)</span> . <a href="https://github.com/STA210-Sp19/supplemental-notes/blob/master/regression-basics-matrix.pdf">Click here</a> for more detail.</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="hypothesis-testing-for-beta_j" class="slide level2 small">
 <h2>Hypothesis testing for <span class="math inline">\(\beta_j\)</span></h2>
 <ol type="1">
 <li><strong>State the hypotheses</strong>. <span class="math inline">\(H_0: \beta_j = 0 \text{ vs. } H_a: \beta_j \neq 0\)</span>, given the other variables in the model.</li>
 </ol>
-<!-- -->
+<div class="fragment">
 <ol start="2" type="1">
-<li><p><strong>Calculate the test statistic.</strong></p>
+<li><strong>Calculate the test statistic.</strong></li>
+</ol>
 <p><span class="math display">\[
 t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
-\]</span></p></li>
+\]</span>. . .</p>
+<ol start="3" type="1">
 <li><p><strong>Calculate the p-value.</strong> The p-value is calculated from a <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n - p - 1\)</span> degrees of freedom.</p>
 <p><span class="math display">\[
 \text{p-value} = 2P(T &gt; |t|) \hspace{4mm} T \sim t_{n-p-1}
 \]</span></p></li>
-<li><p><strong>State the conclusion in context of the data.</strong></p>
+</ol>
+</div>
+<div class="fragment">
+<ol start="43" type="1">
+<li><strong>State the conclusion in context of the data.</strong>
 <ul>
 <li>Reject <span class="math inline">\(H_0\)</span> if p-value is sufficiently small.</li>
 </ul></li>
 </ol>
+</div>
 </section>
 <section id="confidence-interval-for-beta_j" class="slide level2">
 <h2>Confidence interval for <span class="math inline">\(\beta_j\)</span></h2>
 <p>The <span class="math inline">\(C\%\)</span> confidence confidence interval for <span class="math inline">\(\beta_j\)</span> is</p>
 <p><span class="math display">\[\hat{\beta}_j \pm t^* \times SE_{\hat{\beta}_j}\]</span></p>
-<p>where the critical value <span class="math inline">\(t^* \sim t(n-p-1)\)</span></p>
+<p>where the critical value <span class="math inline">\(t^* \sim t_{n-p-1}\)</span></p>
 <p><br></p>
+<div class="fragment">
 <p><strong>General interpretation for the confidence interval [LB, UB]</strong>:</p>
 <p>We are <span class="math inline">\(C\%\)</span> confident that for every one unit increase in <span class="math inline">\(x_j\)</span>, the response is expected to change by LB to UB units, holding all else constant.</p>
+</div>
 </section></section>
 <section>
 <section id="application-exercise-1" class="title-slide slide level1 center">
@@ -892,8 +921,8 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <li><p><span class="math inline">\(BIC\)</span>: Similar to AIC with stronger penalty for extra terms</p></li>
 </ul>
 </section>
-<section id="which-model-do-you-choose" class="slide level2">
-<h2>Which model do you choose?</h2>
+<section id="model-summary-statistics" class="slide level2">
+<h2>Model summary statistics</h2>
 <p>Use the <code>glance()</code> function to get model summary statistics</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
@@ -934,6 +963,11 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </table>
 </div>
 </div>
+<div class="fragment">
+<div class="question">
+<p>Which model do you choose based on these statistics?</p>
+</div>
+</div>
 </section>
 <section id="characteristics-of-a-good-final-model" class="slide level2 midi">
 <h2>Characteristics of a “good” final model</h2>
@@ -949,7 +983,14 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 
 <aside><div>
 <p>List from Section 1.6.7 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
-</div></aside></section></section>
+</div></aside></section>
+<section id="next-class" class="slide level2">
+<h2>Next class</h2>
+<ul>
+<li><p>Using likelihoods</p></li>
+<li><p>See <a href="../prepare/jan-22.html">Prepare for Jan 22</a> lecture</p></li>
+</ul>
+</section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 

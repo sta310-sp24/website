@@ -504,6 +504,13 @@
     "text": "Course materials costs\nThere are no costs associated with this course. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.)."
   },
   {
+    "objectID": "prepare/jan-24.html",
+    "href": "prepare/jan-24.html",
+    "title": "Prepare for Jan 22 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+  },
+  {
     "objectID": "hw/hw-02.html",
     "href": "hw/hw-02.html",
     "title": "HW 02",
@@ -553,6 +560,13 @@
     "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
+    "objectID": "prepare/jan-22.html",
+    "href": "prepare/jan-22.html",
+    "title": "Prepare for Jan 22 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+  },
+  {
     "objectID": "projects/final-project.html",
     "href": "projects/final-project.html",
     "title": "Final project",
@@ -571,7 +585,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n    \nTh\nJan 18\n\n\n\n\n\n\n\n    3\nM\nJan 22\nLikelihoods\n\n\n\n\n\n\n    \nW\nJan 24\nLikelihoods + Distribution theory\n\n\n\n\n\nHW 01 due\n    \nTh\nJan 25\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson regression\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson regression cont'd\n\n\n\n\n\n\n    \nTh\nFeb 1\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nZIP models\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period\nNA"
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n    \nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n    3\nM\nJan 22\nUsing likelihoods\n\n\n\n\n\n\n    \nW\nJan 24\nPoisson regression\n\n\n\n\n\nHW 01 due\n    \nTh\nJan 25\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson regression cont'd\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson regression cont'd\n\n\n\n\n\n\n    \nTh\nFeb 1\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nZIP models\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period\nNA"
   },
   {
     "objectID": "slides/03-mlr-review-pt2.html",
@@ -781,7 +795,7 @@
     "href": "slides/02-mlr-review.html#computing-set-up",
     "title": "Review of multiple linear regression",
     "section": "Computing set up",
-    "text": "Computing set up\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(GGally)\nlibrary(knitr)\nlibrary(patchwork)\nlibrary(viridis)\nlibrary(ggfortify)\n\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))\n\ncolors &lt;- tibble::tibble(green = \"#B5BA72\")"
+    "text": "Computing set up\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(GGally)\nlibrary(knitr)\nlibrary(patchwork)\nlibrary(viridis)\n\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))\n\ncolors &lt;- tibble::tibble(green = \"#B5BA72\")"
   },
   {
     "objectID": "slides/02-mlr-review.html#topics",
@@ -795,7 +809,7 @@
     "href": "slides/02-mlr-review.html#models-and-statistical-models",
     "title": "Review of multiple linear regression",
     "section": "Models and statistical models",
-    "text": "Models and statistical models\n\nModel: Mathematical description of the process we think generates the observations \\(y_1, \\ldots, y_n\\)\nStatistical model: Model that includes an equation describing the impact of explanatory variables (systematic part) and probability distributions for parts of the process that are assumed to be random variation (random part)\n\n\n\nDefinitions adapted from Stroup (2012)"
+    "text": "Models and statistical models\nSuppose we have observations \\(y_1, \\ldots, y_n\\)\n\n\nModel: Mathematical description of the process we think generates the observations\nStatistical model: Model that includes an equation describing the impact of explanatory variables (deterministic part) and probability distributions for parts of the process that are assumed to be random variation (random part)\n\n\n\n\nDefinitions adapted from Stroup (2012)"
   },
   {
     "objectID": "slides/02-mlr-review.html#statistical-models-1",
@@ -809,21 +823,21 @@
     "href": "slides/02-mlr-review.html#example",
     "title": "Review of multiple linear regression",
     "section": "Example",
-    "text": "Example\nSuppose we have the model for comparing two means:\n\\[\ny_{ij} = \\mu_i + \\epsilon_{ij}\n\\]\nwhere\n\n\\(i = 1, 2\\): group\n\\(j = 1, \\ldots, n\\): observation number\n\\(n_i\\): number of observations in group \\(i\\)\n\\(\\mu_i\\): mean of group \\(i\\)\n\\(y_{ij}\\): \\(j^{th}\\) observation in the \\(i^{th}\\) group\n\\(\\epsilon_{ij}\\) : random error (variation) associated with \\(ij^{th}\\) observation\n\n\n\nAdpated from Stroup (2012)"
+    "text": "Example\nSuppose we have the model for comparing two means:\n\\[\ny_{ij} = \\mu_i + \\epsilon_{ij}\n\\]\nwhere\n\n\n\n\\(i = 1, 2\\): group\n\n\n\n\\(j = 1, \\ldots, n\\): observation number\n\\(n_i\\): number of observations in group \\(i\\)\n\\(\\mu_i\\): mean of group \\(i\\)\n\\(y_{ij}\\): \\(j^{th}\\) observation in the \\(i^{th}\\) group\n\\(\\epsilon_{ij}\\) : random error (variation) associated with \\(ij^{th}\\) observation\n\n\n\n\n\nAdapted from Stroup (2012)"
   },
   {
     "objectID": "slides/02-mlr-review.html#example-1",
     "href": "slides/02-mlr-review.html#example-1",
     "title": "Review of multiple linear regression",
     "section": "Example",
-    "text": "Example\n\\[\ny_{ij} = \\mu_i + \\epsilon_{ij}\n\\]\n\n\\(y_{ij}\\): the observations\n\\(\\mu_i\\): deterministic part of the model, no random variability\n\\(e_{ij}\\) : random part of the model, indicating observations vary about their mean\nTypically assume \\(\\epsilon_{ij}\\) are independent and identically distributed (i.i.d.) \\(N(0, \\sigma^2)\\)\n\n\n\nAdpated from Stroup (2012)"
+    "text": "Example\n\\[\ny_{ij} = \\mu_i + \\epsilon_{ij}\n\\]\n\n\n\\(y_{ij}\\): the observations\n\\(\\mu_i\\): deterministic part of the model, no random variability\n\\(e_{ij}\\) : random part of the model, indicating observations vary about their mean\nTypically assume \\(\\epsilon_{ij}\\) are independent and identically distributed (i.i.d.) \\(N(0, \\sigma^2)\\)\n\n\n\n\nAdapted from Stroup (2012)"
   },
   {
     "objectID": "slides/02-mlr-review.html#practice",
     "href": "slides/02-mlr-review.html#practice",
     "title": "Review of multiple linear regression",
     "section": "Practice",
-    "text": "Practice\n\nSuppose \\(y_{ij}'s\\) are observed outcome data and \\(x_i's\\) are values of the explanatory variable. Assume a linear regression model can used to describe the process of generating \\(y_{ij}'s\\) based on the \\(x_i's\\).\n\nWrite the specification of the statistical model.\nLabel the 3 components of the model equation (observation, systematic part, random part)\nWhat is \\(E(y_{ij})\\), the expected value of the observations?"
+    "text": "Practice\n\nSuppose \\(y_{ij}\\)’s are observed outcome data and \\(x_i\\)’s are values of the explanatory variable. Assume a linear regression model can used to describe the process of generating \\(y_{ij}\\) based on the \\(x_i\\).\n\nWrite the specification of the statistical model.\nLabel the 3 components of the model equation (observation, deterministic part, random part)\nWhat is \\(E(y_{ij})\\), the expected value of the observations?"
   },
   {
     "objectID": "slides/02-mlr-review.html#assumptions-for-linear-regression",
@@ -858,14 +872,14 @@
     "href": "slides/02-mlr-review.html#beyond-linear-regression",
     "title": "Review of multiple linear regression",
     "section": "Beyond linear regression",
-    "text": "Beyond linear regression\n\nWhen drawe conclusions from linear regression models, we do so assuming LINE are all met\nGeneralized linear models require different assumptions and can accommodate violations in LINE\n\nRelationship between response and predictor(s) can be nonlinear\nResponse variable can be non-normal\nVariance in response can differ at each level of predictor(s)\nThe independence assumption must hold!\n\nMultilevel models are used to model data that violate the independence assumption, i.e. correlated observations"
+    "text": "Beyond linear regression\n\n\nWhen drawing conclusions from linear regression models, we do so assuming LINE are all met\nGeneralized linear models require different assumptions and can accommodate violations in LINE\n\nRelationship between response and predictor(s) can be nonlinear\nResponse variable can be non-normal\nVariance in response can differ at each level of predictor(s)\nThe independence assumption still must hold!\n\nMultilevel models are used to model data that violate the independence assumption, i.e. correlated observations"
   },
   {
     "objectID": "slides/02-mlr-review.html#data-kentucky-derby-winners",
     "href": "slides/02-mlr-review.html#data-kentucky-derby-winners",
     "title": "Review of multiple linear regression",
     "section": "Data: Kentucky Derby Winners",
-    "text": "Data: Kentucky Derby Winners\nToday’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv and contains information for races 1896 - 2017.\n\n\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced"
+    "text": "Data: Kentucky Derby Winners\nToday’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv and contains information for races 1896 - 2017.\n\n\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\n\n\nGoal: Understand variability in average winner speed based on characteristics of the race."
   },
   {
     "objectID": "slides/02-mlr-review.html#data",
@@ -886,7 +900,7 @@
     "href": "slides/02-mlr-review.html#exploratory-data-analysis-eda",
     "title": "Review of multiple linear regression",
     "section": "Exploratory data analysis (EDA)",
-    "text": "Exploratory data analysis (EDA)\n\nOnce you’re ready for the statistical analysis (explore), the first step should always be exploratory data analysis.\nThe EDA will help you\n\nbegin to understand the variables and observations\nidentify outliers or potential data entry errors\nbegin to see relationships between variables\nidentify the appropriate model and identify a strategy\n\nThe EDA is exploratory; formal modeling and statistical inference are used to draw conclusions."
+    "text": "Exploratory data analysis (EDA)\n\nOnce you’re ready for the statistical analysis, the first step should always be exploratory data analysis.\nThe EDA will help you\n\nbegin to understand the variables and observations\nidentify outliers or potential data entry errors\nbegin to see relationships between variables\nidentify the appropriate model and identify a strategy\n\nThe EDA is exploratory; formal modeling and statistical inference are used to draw conclusions."
   },
   {
     "objectID": "slides/02-mlr-review.html#univariate-eda",
@@ -949,28 +963,28 @@
     "href": "slides/02-mlr-review.html#candidate-models",
     "title": "Review of multiple linear regression",
     "section": "Candidate models",
-    "text": "Candidate models\nModel 1: Main effects model (year, condition, starters)\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\n\nModel 2: Main effects + \\(year^2\\), the quadratic effect of year\n\nmodel2 &lt;- lm(speed ~ starters + year + I(year^2) + condition,\n             data = derby)\n\n\nModel 3: Main effects + interaction between year and condition\n\nmodel3 &lt;- lm(speed ~ starters + year + condition + year * condition, \n             data = derby)"
+    "text": "Candidate models\nModel 1: Main effects model (year, condition, starters)\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\n\n\nModel 2: Main effects + \\(year^2\\), the quadratic effect of year\n\nmodel2 &lt;- lm(speed ~ starters + year + I(year^2) + condition,\n             data = derby)\n\n\n\n\nModel 3: Main effects + interaction between year and condition\n\nmodel3 &lt;- lm(speed ~ starters + year + condition + year * condition, \n             data = derby)"
   },
   {
     "objectID": "slides/02-mlr-review.html#inference-for-regression-1",
     "href": "slides/02-mlr-review.html#inference-for-regression-1",
     "title": "Review of multiple linear regression",
     "section": "Inference for regression",
-    "text": "Inference for regression\nWhen LINE assumptions are met…\n\nUse least squares regression to obtain the estimates for the model coefficients \\(\\beta_0, \\beta_1, \\ldots, \\beta_j\\) and for \\(\\sigma^2\\)\n\\(\\hat{\\sigma}\\) is the regression standard error\n\\[\n\\hat{\\sigma} = \\sqrt{\\frac{\\sum_{i=1}^n(y_i - \\hat{y}_i)^2}{n - p - 1}} = \\sqrt{\\frac{\\sum_{i=1}^n e_i^2}{n-p-1}}\n\\]\nwhere \\(p\\) is the number of non-intercept terms in the model (e.g., \\(p = 1\\) in simple linear regression)\nGoal is to use estimated values to draw conclusions about \\(\\beta_j\\)\n\nUse \\(\\hat{\\sigma}\\) to calculate \\(SE_{\\hat{\\beta}_j}\\) . Click here for more detail."
+    "text": "Inference for regression\nWhen LINE assumptions are met… . . .\n\n\nUse least squares regression to obtain the estimates for the model coefficients \\(\\beta_0, \\beta_1, \\ldots, \\beta_j\\) and for \\(\\sigma^2\\)\n\\(\\hat{\\sigma}\\) is the regression standard error\n\\[\n\\hat{\\sigma} = \\sqrt{\\frac{\\sum_{i=1}^n(y_i - \\hat{y}_i)^2}{n - p - 1}} = \\sqrt{\\frac{\\sum_{i=1}^n e_i^2}{n-p-1}}\n\\]\nwhere \\(p\\) is the number of non-intercept terms in the model (e.g., \\(p = 1\\) in simple linear regression)\nGoal is to use estimated values to draw conclusions about \\(\\beta_j\\)\n\nUse \\(\\hat{\\sigma}\\) to calculate \\(SE_{\\hat{\\beta}_j}\\) . Click here for more detail."
   },
   {
     "objectID": "slides/02-mlr-review.html#hypothesis-testing-for-beta_j",
     "href": "slides/02-mlr-review.html#hypothesis-testing-for-beta_j",
     "title": "Review of multiple linear regression",
     "section": "Hypothesis testing for \\(\\beta_j\\)",
-    "text": "Hypothesis testing for \\(\\beta_j\\)\n\nState the hypotheses. \\(H_0: \\beta_j = 0 \\text{ vs. } H_a: \\beta_j \\neq 0\\), given the other variables in the model.\n\n\n\nCalculate the test statistic.\n\\[\nt = \\frac{\\hat{\\beta}_j - 0}{SE_{\\hat{\\beta}_j}}\n\\]\nCalculate the p-value. The p-value is calculated from a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\n\\[\n\\text{p-value} = 2P(T &gt; |t|) \\hspace{4mm} T \\sim t_{n-p-1}\n\\]\nState the conclusion in context of the data.\n\nReject \\(H_0\\) if p-value is sufficiently small."
+    "text": "Hypothesis testing for \\(\\beta_j\\)\n\nState the hypotheses. \\(H_0: \\beta_j = 0 \\text{ vs. } H_a: \\beta_j \\neq 0\\), given the other variables in the model.\n\n\n\nCalculate the test statistic.\n\n\\[\nt = \\frac{\\hat{\\beta}_j - 0}{SE_{\\hat{\\beta}_j}}\n\\]. . .\n\nCalculate the p-value. The p-value is calculated from a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\n\\[\n\\text{p-value} = 2P(T &gt; |t|) \\hspace{4mm} T \\sim t_{n-p-1}\n\\]\n\n\n\n\nState the conclusion in context of the data.\n\nReject \\(H_0\\) if p-value is sufficiently small."
   },
   {
     "objectID": "slides/02-mlr-review.html#confidence-interval-for-beta_j",
     "href": "slides/02-mlr-review.html#confidence-interval-for-beta_j",
     "title": "Review of multiple linear regression",
     "section": "Confidence interval for \\(\\beta_j\\)",
-    "text": "Confidence interval for \\(\\beta_j\\)\nThe \\(C\\%\\) confidence confidence interval for \\(\\beta_j\\) is\n\\[\\hat{\\beta}_j \\pm t^* \\times SE_{\\hat{\\beta}_j}\\]\nwhere the critical value \\(t^* \\sim t(n-p-1)\\)\n\nGeneral interpretation for the confidence interval [LB, UB]:\nWe are \\(C\\%\\) confident that for every one unit increase in \\(x_j\\), the response is expected to change by LB to UB units, holding all else constant."
+    "text": "Confidence interval for \\(\\beta_j\\)\nThe \\(C\\%\\) confidence confidence interval for \\(\\beta_j\\) is\n\\[\\hat{\\beta}_j \\pm t^* \\times SE_{\\hat{\\beta}_j}\\]\nwhere the critical value \\(t^* \\sim t_{n-p-1}\\)\n\n\nGeneral interpretation for the confidence interval [LB, UB]:\nWe are \\(C\\%\\) confident that for every one unit increase in \\(x_j\\), the response is expected to change by LB to UB units, holding all else constant."
   },
   {
     "objectID": "slides/02-mlr-review.html#measures-of-model-performance",
@@ -980,11 +994,11 @@
     "text": "Measures of model performance\n\n\\(R^2\\): Proportion of variability in the response explained by the model\n\nWill always increase as predictors are added, so it shouldn’t be used to compare models\n\n\\(Adj. R^2\\): Similar to \\(R^2\\) with a penalty for extra terms\n\\(AIC\\): Likelihood-based approach balancing model performance and complexity\n\\(BIC\\): Similar to AIC with stronger penalty for extra terms"
   },
   {
-    "objectID": "slides/02-mlr-review.html#which-model-do-you-choose",
-    "href": "slides/02-mlr-review.html#which-model-do-you-choose",
+    "objectID": "slides/02-mlr-review.html#model-summary-statistics",
+    "href": "slides/02-mlr-review.html#model-summary-statistics",
     "title": "Review of multiple linear regression",
-    "section": "Which model do you choose?",
-    "text": "Which model do you choose?\nUse the glance() function to get model summary statistics\n\n\n\n\n\n\nmodel\nr.squared\nadj.r.squared\nAIC\nBIC\n\n\n\n\nModel1\n0.730\n0.721\n259.478\n276.302\n\n\nModel2\n0.827\n0.819\n207.429\n227.057\n\n\nModel3\n0.751\n0.738\n253.584\n276.016"
+    "section": "Model summary statistics",
+    "text": "Model summary statistics\nUse the glance() function to get model summary statistics\n\n\n\n\n\n\nmodel\nr.squared\nadj.r.squared\nAIC\nBIC\n\n\n\n\nModel1\n0.730\n0.721\n259.478\n276.302\n\n\nModel2\n0.827\n0.819\n207.429\n227.057\n\n\nModel3\n0.751\n0.738\n253.584\n276.016\n\n\n\n\n\n\n\nWhich model do you choose based on these statistics?"
   },
   {
     "objectID": "slides/02-mlr-review.html#characteristics-of-a-good-final-model",
@@ -992,6 +1006,13 @@
     "title": "Review of multiple linear regression",
     "section": "Characteristics of a “good” final model",
     "text": "Characteristics of a “good” final model\n\nModel can be used to answer primary research questions\nPredictor variables control for important covariates\nPotential interactions have been investigated\nVariables are centered, as needed, for more meaningful interpretations\nUnnecessary terms are removed\nAssumptions are met and influential points have been addressed\nModel tells a “persuasive story parsimoniously”\n\n\n\nList from Section 1.6.7 of Roback and Legler (2021)"
+  },
+  {
+    "objectID": "slides/02-mlr-review.html#next-class",
+    "href": "slides/02-mlr-review.html#next-class",
+    "title": "Review of multiple linear regression",
+    "section": "Next class",
+    "text": "Next class\n\nUsing likelihoods\nSee Prepare for Jan 22 lecture"
   },
   {
     "objectID": "links.html",

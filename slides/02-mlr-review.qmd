@@ -59,7 +59,6 @@ library(GGally)
 library(knitr)
 library(patchwork)
 library(viridis)
-library(ggfortify)
 
 ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
 
@@ -82,9 +81,13 @@ Notes based on Chapter 1 of @roback2021beyond unless noted otherwise.
 
 ## Models and statistical models
 
--   **Model**: Mathematical description of the process we think generates the observations $y_1, \ldots, y_n$
+Suppose we have observations $y_1, \ldots, y_n$
 
--   **Statistical model**: Model that includes an equation describing the impact of explanatory variables (**systematic part)** and probability distributions for parts of the process that are assumed to be random variation (**random part)**
+::: incremental
+-   **Model**: Mathematical description of the process we think generates the observations
+
+-   **Statistical model**: Model that includes an equation describing the impact of explanatory variables (**deterministic part)** and probability distributions for parts of the process that are assumed to be random variation (**random part)**
+:::
 
 ::: aside
 Definitions adapted from @stroup2012generalized
@@ -112,15 +115,23 @@ $$
 
 where
 
+. . .
+
+::: incremental
 -   $i = 1, 2$: group
+
+```{=html}
+<!-- -->
+```
 -   $j = 1, \ldots, n$: observation number
 -   $n_i$: number of observations in group $i$
 -   $\mu_i$: mean of group $i$
 -   $y_{ij}$: $j^{th}$ observation in the $i^{th}$ group
 -   $\epsilon_{ij}$ : random error (variation) associated with $ij^{th}$ observation
+:::
 
 ::: aside
-Adpated from @stroup2012generalized
+Adapted from @stroup2012generalized
 :::
 
 ## Example
@@ -129,6 +140,7 @@ $$
 y_{ij} = \mu_i + \epsilon_{ij}
 $$
 
+::: incremental
 -   $y_{ij}$: the observations
 
 -   $\mu_i$: deterministic part of the model, no random variability
@@ -136,18 +148,19 @@ $$
 -   $e_{ij}$ : random part of the model, indicating observations vary about their mean
 
 -   Typically assume $\epsilon_{ij}$ are independent and identically distributed (i.i.d.) $N(0, \sigma^2)$
+:::
 
 ::: aside
-Adpated from @stroup2012generalized
+Adapted from @stroup2012generalized
 :::
 
 ## Practice
 
 ::: question
-Suppose $y_{ij}'s$ are observed outcome data and $x_i's$ are values of the explanatory variable. Assume a linear regression model can used to describe the process of generating $y_{ij}'s$ based on the $x_i's$.
+Suppose $y_{ij}$'s are observed outcome data and $x_i$'s are values of the explanatory variable. Assume a linear regression model can used to describe the process of generating $y_{ij}$ based on the $x_i$.
 
 1.  Write the specification of the statistical model.
-2.  Label the 3 components of the model equation (observation, systematic part, random part)
+2.  Label the 3 components of the model equation (observation, deterministic part, random part)
 3.  What is $E(y_{ij})$, the expected value of the observations?
 :::
 
@@ -259,20 +272,22 @@ Which assumption(s) are obviously violated, if any?
 
 ## Beyond linear regression {.midi}
 
--   When drawe conclusions from linear regression models, we do so assuming LINE are all met
+::: incremental
+-   When drawing conclusions from linear regression models, we do so assuming LINE are all met
 
 -   **Generalized linear models** require different assumptions and can accommodate violations in LINE
 
     -   Relationship between response and predictor(s) can be nonlinear
     -   Response variable can be non-normal
     -   Variance in response can differ at each level of predictor(s)
-    -   **The independence assumption must hold!**
+    -   **The independence assumption still must hold!**
 
 -   **Multilevel models** are used to model data that violate the independence assumption, i.e. correlated observations
+:::
 
 # Multiple linear regression
 
-## Data: Kentucky Derby Winners
+## Data: Kentucky Derby Winners {.midi}
 
 Today's data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file [derbyplus.csv](data/derbyplus.csv) and contains information for races 1896 - 2017.
 
@@ -296,6 +311,8 @@ Today's data is from the Kentucky Derby, an annual 1.25-mile horse race held at 
 :::
 :::
 
+**Goal: Understand variability in average winner speed based on characteristics of the race.**
+
 ## Data
 
 ```{r}
@@ -313,7 +330,7 @@ derby |>
 
 ## Exploratory data analysis (EDA)
 
--   Once you're ready for the statistical analysis (explore), the first step should always be **exploratory data analysis**.
+-   Once you're ready for the statistical analysis, the first step should always be **exploratory data analysis**.
 
 -   The EDA will help you
 
@@ -461,6 +478,8 @@ model1 <- lm(speed ~ starters + year + condition, data = derby)
 
 <br>
 
+. . .
+
 Model 2: Main effects + $year^2$, the quadratic effect of `year`
 
 ```{r}
@@ -469,6 +488,8 @@ model2 <- lm(speed ~ starters + year + I(year^2) + condition,
 ```
 
 <br>
+
+. . .
 
 Model 3: Main effects + interaction between `year` and `condition`
 
@@ -485,7 +506,7 @@ model3 <- lm(speed ~ starters + year + condition + year * condition,
 
 Use statistical inference to
 
--   Determine if predictors are statistically significant (not necessarily practically significant!)
+-   Evaluate if predictors are statistically significant (not necessarily practically significant!)
 
 -   Quantify uncertainty in coefficient estimates
 
@@ -496,7 +517,9 @@ If LINE assumptions are met, we can use inferential methods based on mathematica
 ## Inference for regression  {.midi}
 
 When LINE assumptions are met...
+. . .
 
+::: incremental
 -   Use least squares regression to obtain the estimates for the model coefficients $\beta_0, \beta_1, \ldots, \beta_j$ and for $\sigma^2$
 
 -   $\hat{\sigma}$ is the **regression standard error**
@@ -510,19 +533,19 @@ When LINE assumptions are met...
 -   Goal is to use estimated values to draw conclusions about $\beta_j$
 
     -   Use $\hat{\sigma}$ to calculate $SE_{\hat{\beta}_j}$ . [Click here](https://github.com/STA210-Sp19/supplemental-notes/blob/master/regression-basics-matrix.pdf) for more detail.
+:::
 
 ## Hypothesis testing for $\beta_j$ {.small}
 
 1.  **State the hypotheses**. $H_0: \beta_j = 0 \text{ vs. } H_a: \beta_j \neq 0$, given the other variables in the model.
 
-```{=html}
-<!-- -->
-```
+. . .
+
 2.  **Calculate the test statistic.**
 
-    $$
-    t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
-    $$
+$$
+t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
+$$. . .
 
 3.  **Calculate the p-value.** The p-value is calculated from a $t$ distribution with $n - p - 1$ degrees of freedom.
 
@@ -530,8 +553,9 @@ When LINE assumptions are met...
     \text{p-value} = 2P(T > |t|) \hspace{4mm} T \sim t_{n-p-1}
     $$
 
-4.  **State the conclusion in context of the data.**
+. . .
 
+43. **State the conclusion in context of the data.**
     -   Reject $H_0$ if p-value is sufficiently small.
 
 ## Confidence interval for $\beta_j$ 
@@ -540,9 +564,11 @@ The $C\%$ confidence confidence interval for $\beta_j$ is
 
 $$\hat{\beta}_j \pm t^* \times SE_{\hat{\beta}_j}$$
 
-where the critical value $t^* \sim t(n-p-1)$
+where the critical value $t^* \sim t_{n-p-1}$
 
 <br>
+
+. . .
 
 **General interpretation for the confidence interval \[LB, UB\]**:
 
@@ -562,7 +588,7 @@ We are $C\%$ confident that for every one unit increase in $x_j$, the response i
 
 -   $BIC$: Similar to AIC with stronger penalty for extra terms
 
-## Which model do you choose?
+## Model summary statistics
 
 Use the `glance()` function to get model summary statistics
 
@@ -584,6 +610,12 @@ model1_glance |>
 kable(digits = 3)
 ```
 
+. . .
+
+::: question
+Which model do you choose based on these statistics?
+:::
+
 ## Characteristics of a "good" final model {.midi}
 
 -   Model can be used to answer primary research questions
@@ -603,5 +635,11 @@ kable(digits = 3)
 ::: aside
 List from Section 1.6.7 of @roback2021beyond
 :::
+
+## Next class 
+
+-   Using likelihoods
+
+-   See [Prepare for Jan 22](../prepare/jan-22.html) lecture
 
 # References

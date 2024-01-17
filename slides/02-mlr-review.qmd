@@ -52,7 +52,7 @@ knitr::opts_chunk$set(
 
 ## Computing set up
 
-```{r setup, include = F}
+```{r setup}
 library(tidyverse)
 library(tidymodels)
 library(GGally)
@@ -479,7 +479,7 @@ model3 <- lm(speed ~ starters + year + condition + year * condition,
 
 # Application exercise
 
--   do an interpretation activity here - 3 groups each interpreting a different variable- put guidance in the AE
+<!--do an interpretation activity here - 3 groups each interpreting a different variable- put guidance in the AE-->
 
 # Inference for regression 
 
@@ -603,7 +603,5 @@ kable(digits = 3)
 ::: aside
 List from Section 1.6.7 of @roback2021beyond
 :::
-
-## Next class
 
 # References

@@ -2,90 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sta310-sp24.netlify.app/syllabus.html</loc>
-    <lastmod>2024-01-16T17:55:56.269Z</lastmod>
+    <lastmod>2024-01-17T15:32:13.747Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/stats-experience.html</loc>
-    <lastmod>2024-01-16T17:55:49.057Z</lastmod>
+    <lastmod>2024-01-17T15:32:05.479Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/computing.html</loc>
-    <lastmod>2024-01-16T17:55:48.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/slides/lab-01.html</loc>
-    <lastmod>2024-01-16T17:55:46.645Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/course-overview.html</loc>
-    <lastmod>2024-01-16T17:55:43.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/projects/project-01.html</loc>
-    <lastmod>2024-01-16T17:55:42.677Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/support.html</loc>
-    <lastmod>2024-01-16T17:55:42.097Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-02.html</loc>
-    <lastmod>2024-01-16T17:55:41.364Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-01.html</loc>
-    <lastmod>2024-01-16T17:55:40.732Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-05.html</loc>
-    <lastmod>2024-01-16T17:55:40.079Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-06.html</loc>
-    <lastmod>2024-01-16T17:55:39.769Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-04.html</loc>
-    <lastmod>2024-01-16T17:55:40.394Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/hw/hw-03.html</loc>
-    <lastmod>2024-01-16T17:55:41.055Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/prepare/jan-17.html</loc>
-    <lastmod>2024-01-16T17:55:41.674Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/projects/final-project.html</loc>
-    <lastmod>2024-01-16T17:55:42.391Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/projects/project-02.html</loc>
-    <lastmod>2024-01-16T17:55:42.960Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta310-sp24.netlify.app/index.html</loc>
-    <lastmod>2024-01-16T17:55:46.219Z</lastmod>
+    <lastmod>2024-01-17T15:32:04.586Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/slides/01-welcome.html</loc>
-    <lastmod>2024-01-16T17:55:47.500Z</lastmod>
+    <lastmod>2024-01-17T15:31:52.780Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/links.html</loc>
-    <lastmod>2024-01-16T17:55:48.493Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/lab-01.html</loc>
+    <lastmod>2024-01-17T15:31:45.984Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/project-tips.html</loc>
-    <lastmod>2024-01-16T17:55:49.949Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/course-overview.html</loc>
+    <lastmod>2024-01-17T15:30:37.443Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/02-mlr-review-pt1.html</loc>
-    <lastmod>2024-01-16T18:35:26.157Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/projects/project-01.html</loc>
+    <lastmod>2024-01-17T15:30:36.780Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/support.html</loc>
+    <lastmod>2024-01-17T15:30:36.176Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-02.html</loc>
+    <lastmod>2024-01-17T15:30:35.391Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-01.html</loc>
+    <lastmod>2024-01-17T15:30:34.690Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-05.html</loc>
+    <lastmod>2024-01-17T15:30:33.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-06.html</loc>
+    <lastmod>2024-01-17T15:30:33.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-04.html</loc>
+    <lastmod>2024-01-17T15:30:34.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/hw/hw-03.html</loc>
+    <lastmod>2024-01-17T15:30:35.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/prepare/jan-17.html</loc>
+    <lastmod>2024-01-17T15:30:35.750Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/projects/final-project.html</loc>
+    <lastmod>2024-01-17T15:30:36.468Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/projects/project-02.html</loc>
+    <lastmod>2024-01-17T15:30:37.089Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/index.html</loc>
+    <lastmod>2024-01-17T15:31:45.502Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/slides/03-mlr-review-pt2.html</loc>
+    <lastmod>2024-01-17T15:31:51.930Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/slides/02-mlr-review.html</loc>
-    <lastmod>2024-01-17T11:31:19.895Z</lastmod>
+    <lastmod>2024-01-17T15:32:03.962Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/links.html</loc>
+    <lastmod>2024-01-17T15:32:04.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/project-tips.html</loc>
+    <lastmod>2024-01-17T15:32:06.346Z</lastmod>
   </url>
 </urlset>

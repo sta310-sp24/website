@@ -8,9 +8,9 @@ logo: "../images/logo.png"
 format: 
   revealjs:
     theme: slides.scss
+    slide-number: true
     multiplex: false
     transition: fade
-    slide-number: false
     incremental: false 
     chalkboard: true
 html-math-method:

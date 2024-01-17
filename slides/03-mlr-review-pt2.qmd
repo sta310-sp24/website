@@ -32,7 +32,6 @@ ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
 colors <- tibble::tibble(green = "#B5BA72")
 ```
 
-
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(tidymodels)
@@ -50,59 +49,48 @@ xaringanExtra::use_panelset()
 
 class: middle, center
 
-##[Click for PDF of slides](03-mlr-review-pt2.pdf)
+\##[Click for PDF of slides](03-mlr-review-pt2.pdf)
 
----
+------------------------------------------------------------------------
 
 ## Announcements
 
-- Lab starts Thu 3:30 - 4:45pm online
-  - Find Zoom link in Sakai
+-   Lab starts Thu 3:30 - 4:45pm online
+    -   Find Zoom link in Sakai
+-   Office hours this week:
+    -   Thu 2 - 3pm & Fri 1 - 2pm online (links in Sakai)
+    -   Full office hours schedule starts Tue, Jan 19
+-   Week 02 reading: [BMLR: Chapter 2- Beyond Least Squares: Using Likelihoods](https://bookdown.org/roback/bookdown-BeyondMLR/ch-beyondmost.html)
 
-- Office hours this week: 
-  - Thu 2 - 3pm & Fri 1 - 2pm online (links in Sakai)
-  - Full office hours schedule starts Tue, Jan 19
-
-- Week 02 reading: [BMLR: Chapter 2- Beyond Least Squares: Using Likelihoods](https://bookdown.org/roback/bookdown-BeyondMLR/ch-beyondmost.html)
-
----
+------------------------------------------------------------------------
 
 class: middle
 
 ## Questions?
 
----
+------------------------------------------------------------------------
 
 class: middle, inverse
 
 ## Recap
 
----
+------------------------------------------------------------------------
 
 ## Data: Kentucky Derby Winners
 
-.midi[
-Today's data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file [derbyplus.csv](data/derbyplus.csv) and contains information for races 1896 - 2017. 
-]
+.midi\[ Today's data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file [derbyplus.csv](data/derbyplus.csv) and contains information for races 1896 - 2017. \]
 
-.pull-left[
+.pull-left\[
 
-.midi[**Response variable**]
+.midi\[**Response variable**\]
 
-- .midi[`speed`: Average speed of the winner in feet per second (ft/s)]
+-   .midi\[`speed`: Average speed of the winner in feet per second (ft/s)\]
 
-.midi[**Additional variable**]
-.midi[- `winner`: Winning horse]
-]
+.midi\[**Additional variable**\] .midi\[- `winner`: Winning horse\] \]
 
-.pull-right[
-.midi[**Predictor variables**]
-- .midi[`year`: Year of the race]
-- .midi[`condition`: Condition of the track (good, fast, slow)]
-- .midi[`starters`: Number of horses who raced]
-]
+.pull-right\[ .midi\[**Predictor variables**\] - .midi\[`year`: Year of the race\] - .midi\[`condition`: Condition of the track (good, fast, slow)\] - .midi\[`starters`: Number of horses who raced\]\]
 
----
+------------------------------------------------------------------------
 
 ## Data
 
@@ -116,7 +104,7 @@ derby %>%
   head(5) %>% kable()
 ```
 
----
+------------------------------------------------------------------------
 
 ## Model 1: Main effects model (with centering)
 
@@ -125,19 +113,21 @@ model1Cent <- lm(speed ~ starters + yearnew + condition, data = derby)
 tidy(model1Cent) %>% kable(digits = 3)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Model 2: Include quadratic effect for year
 
-.midi[
+.midi\[
+
 ```{r echo = F}
 model2 <- lm(speed ~ starters + yearnew + I(yearnew^2) + condition, 
              data = derby)
 tidy(model2) %>% kable(digits = 4)
 ```
-]
 
----
+\]
+
+------------------------------------------------------------------------
 
 ## Model 2: Check model assumptions
 
@@ -145,12 +135,11 @@ tidy(model2) %>% kable(digits = 4)
 autoplot(model2)
 ```
 
----
+------------------------------------------------------------------------
 
 class: middle, inverse
 
-## Model 3
----
+## \## Model 3
 
 ## Include interaction term?
 
@@ -169,38 +158,41 @@ ggplot(data = derby, aes(x = year, y = speed, color = condition,
   scale_color_viridis_d(end = 0.9)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Model 3: Include interaction term
 
 $$\begin{aligned}\widehat{speed} = & 52.387 - 0.003 ~ starters + 0.020 ~ yearnew - 1.070 ~ good - 2.183 ~ slow \\ &+0.012 ~ yearnew \times good + 0.012 ~ yearnew \times slow \end{aligned}$$
 
-.panelset.sideways[
-.panel[.panel-name[Output]
+.panelset.sideways\[ .panel\[.panel-name\[Output\]
+
 ```{r echo = F ,out.width = "70%"}
 model3 <- lm(speed ~ starters + yearnew + condition +
                yearnew * condition, 
              data = derby)
 tidy(model3) %>% kable(digits = 3)
 ```
-]
 
-.panel[.panel-name[Code]
+\]
+
+.panel\[.panel-name\[Code\]
+
 ```{r model3-code, eval = F}
 model3 <- lm(speed ~ starters + yearnew + condition +
                yearnew * condition, 
              data = derby)
 tidy(model3) %>% kable(digits = 4)
 ```
-]
-.panel[.panel-name[Assumptions]
+
+\] .panel\[.panel-name\[Assumptions\]
+
 ```{r, echo = F}
 autoplot(model3)
 ```
-]
-]
 
----
+\] \]
+
+------------------------------------------------------------------------
 
 ## Interpreting interaction effects
 
@@ -209,9 +201,7 @@ tidy(model3) %>%
   kable(digits = 3)
 ```
 
-
 [Click here](https://forms.gle/BrufiFdhQAi4WBWeA) for poll
-
 
 ```{r echo = F}
 library(countdown)
@@ -219,26 +209,25 @@ countdown(minutes = 4, seconds = 0,
           margin = "5%")
 ```
 
----
+------------------------------------------------------------------------
 
 ## Measures of model performance
 
-- $\color{#4187aa}{R^2}$: Proportion of variability in the response explained by the model.
-  -  Will always increase as predictors are added, so it shouldn't be used to compare models
-  
-- $\color{#4187aa}{Adj. R^2}$: Similar to $R^2$ with a penalty for extra terms
+-   $\color{#4187aa}{R^2}$: Proportion of variability in the response explained by the model.
+    -   Will always increase as predictors are added, so it shouldn't be used to compare models
+-   $\color{#4187aa}{Adj. R^2}$: Similar to $R^2$ with a penalty for extra terms
 
 --
 
-- $\color{#4187aa}{AIC}$: Likelihood-based approach balancing model performance and complexity
+-   $\color{#4187aa}{AIC}$: Likelihood-based approach balancing model performance and complexity
 
-- $\color{#4187aa}{BIC}$: Similar to AIC with stronger penalty for extra terms
+-   $\color{#4187aa}{BIC}$: Similar to AIC with stronger penalty for extra terms
 
 --
 
-- **Nested F Test (extra sum of squares F test)**: Generalization of t-test for individual coefficients to perform significance tests on nested models
+-   **Nested F Test (extra sum of squares F test)**: Generalization of t-test for individual coefficients to perform significance tests on nested models
 
----
+------------------------------------------------------------------------
 
 ## Which model would you choose?
 
@@ -260,50 +249,49 @@ model1_glance %>%
 kable(digits = 3)
 ```
 
-**Which model would you choose?**
----
+## **Which model would you choose?**
 
 ## Characteristics of a "good" final model
 
-- Model can be used to answer primary research questions
-- Predictor variables control for important covariates
-- Potential interactions have been investigated
-- Variables are centered, as needed, for more meaningful interpretations 
-- Unnecessary terms are removed 
-- Assumptions are met and influential points have been addressed
-- Model tells a "persuasive story parsimoniously"
+-   Model can be used to answer primary research questions
+-   Predictor variables control for important covariates
+-   Potential interactions have been investigated
+-   Variables are centered, as needed, for more meaningful interpretations
+-   Unnecessary terms are removed
+-   Assumptions are met and influential points have been addressed
+-   Model tells a "persuasive story parsimoniously"
 
 <br>
 
-.footnote[List from Section 1.6.7 of [BMLR](https://bookdown.org/roback/bookdown-BeyondMLR/)]
+.footnote\[List from Section 1.6.7 of [BMLR](https://bookdown.org/roback/bookdown-BeyondMLR/)\]
 
----
+------------------------------------------------------------------------
 
 class: middle, inverse
 
 ## Inference for multiple linear regression
 
----
-
-## Inference for regression 
-
-Use statistical inference to 
-
-- Determine if predictors are statistically significant (not necessarily practically significant!)
-- Quantify uncertainty in coefficient estimates
-- Quantify uncertainty in model predictions
-
-<br>
-
-If L.I.N.E. assumptions are met, we can conduct inference using the $t$ distribution and estimated standard errors 
-
----
+------------------------------------------------------------------------
 
 ## Inference for regression
 
-.pull-left[
+Use statistical inference to
 
-When L.I.N.E. conditions are met 
+-   Determine if predictors are statistically significant (not necessarily practically significant!)
+-   Quantify uncertainty in coefficient estimates
+-   Quantify uncertainty in model predictions
+
+<br>
+
+If L.I.N.E. assumptions are met, we can conduct inference using the $t$ distribution and estimated standard errors
+
+------------------------------------------------------------------------
+
+## Inference for regression
+
+.pull-left\[
+
+When L.I.N.E. conditions are met
 
 ```{r echo = F, out.width = "100%"}
 ##   Code modified from https://stackoverflow.com/questions/31794876/ggplot2-how-to-curve-small-gaussian-densities-on-a-regression-line?rq=1
@@ -357,117 +345,101 @@ geom_vline(xintercept=breaks, lty=2, color = "grey") +
       )
   
 ```
-]
 
-.pull-right[
+\]
 
-- Use least squares regression to get the estimates $\hat{\beta}_0$, $\hat{\beta}_1$, and $\hat{\sigma}^2$
+.pull-right\[
 
-- $\hat{\sigma}$ is the **regression standard error** 
+-   Use least squares regression to get the estimates $\hat{\beta}_0$, $\hat{\beta}_1$, and $\hat{\sigma}^2$
+
+-   $\hat{\sigma}$ is the **regression standard error**
 
 $$\hat{\sigma} = \sqrt{\frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n - p - 1}} = \sqrt{\frac{\sum_{i=1}^n e_i^2}{n-p-1}}$$
 
-where $p$ is the number of non-intercept terms in the model 
+where $p$ is the number of non-intercept terms in the model
 
-(p = 1 in simple linear regression)
-]
+(p = 1 in simple linear regression) \]
 
----
+------------------------------------------------------------------------
 
 ## Inference for $\beta_j$
 
-- Suppose we have the following model:
+-   Suppose we have the following model:
 
 $$y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \dots + \beta_p x_{pi} + \epsilon_i \hspace{5mm} \epsilon \sim N(0, \sigma^2)$$
 
 --
 
-- We use least squares regression to get estimates for the parameters $\beta_0, \beta_1, \ldots, \beta_p$ and $\sigma^2$. The regression equation is 
+-   We use least squares regression to get estimates for the parameters $\beta_0, \beta_1, \ldots, \beta_p$ and $\sigma^2$. The regression equation is
 
 $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + \hat{\beta}_2 x_2 + \dots + \hat{\beta}_p x_p$$
 
-- When the L.I.N.E. assumptions are met, $\hat{\beta}_j \sim N(\beta_j, SE_{\hat{\beta}_j})$.
-  - The objective of statistical inference is to understand $\beta_j$
-  - Use $\hat{\sigma}$ to estimate $SE_{\hat{\beta}_j}$, the **standard error of $\hat{\beta}_j$**
+-   When the L.I.N.E. assumptions are met, $\hat{\beta}_j \sim N(\beta_j, SE_{\hat{\beta}_j})$.
+    -   The objective of statistical inference is to understand $\beta_j$
+    -   Use $\hat{\sigma}$ to estimate $SE_{\hat{\beta}_j}$, the **standard error of** $\hat{\beta}_j$
 
----
+------------------------------------------------------------------------
 
 ## Inference for $\beta_j$
 
-.eq[
-$$SE_{\hat{\beta}_j} = \hat{\sigma}\sqrt{\frac{1}{(n-1)s_{x_j}^2}}$$
-]
+.eq\[ $$SE_{\hat{\beta}_j} = \hat{\sigma}\sqrt{\frac{1}{(n-1)s_{x_j}^2}}$$\]
 
-Conduct inference for $\beta_j$ using a $t$ distribution with $n-p-1$ degrees of freedom (df).  
+Conduct inference for $\beta_j$ using a $t$ distribution with $n-p-1$ degrees of freedom (df).
 
-- $\hat{\beta}_j$ follows a $t$ distribution, because $\hat{\sigma}$ (not $\sigma$) is used to calculate the standard error of $\hat{\beta}_j$.
+-   $\hat{\beta}_j$ follows a $t$ distribution, because $\hat{\sigma}$ (not $\sigma$) is used to calculate the standard error of $\hat{\beta}_j$.
 
-- The distribution has $n-p-1$ df because we use up $p + 1$ df to calculate $\hat{\sigma}$, so there are $n - p - 1$ df left to understand variability.
+-   The distribution has $n-p-1$ df because we use up $p + 1$ df to calculate $\hat{\sigma}$, so there are $n - p - 1$ df left to understand variability.
 
----
+------------------------------------------------------------------------
 
 ## Hypothesis test for $\beta_j$
 
-.pull-left[
-`r emo::ji("one")` State the hypotheses
+.pull-left\[ `r emo::ji("one")` State the hypotheses
 
-.eq[
-$$\small{H_0: \beta_j = 0 \text{ vs. }H_a: \beta_j \neq 0}$$
-]
+.eq\[ $$\small{H_0: \beta_j = 0 \text{ vs. }H_a: \beta_j \neq 0}$$\]
 
-<br> 
+<br>
 
 `r emo::ji("two")` Calculate the test statistic.
 
-.eq[
-$$\small{t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}} = \frac{\hat{\beta}_j - 0}{\hat{\sigma}\sqrt{\frac{1}{(n-1)s_{x_j}^2}}}}$$
-]
-]
+.eq\[ $$\small{t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}} = \frac{\hat{\beta}_j - 0}{\hat{\sigma}\sqrt{\frac{1}{(n-1)s_{x_j}^2}}}}$$\] \]
 
-.pull-right[
-`r emo::ji("three")` Calculate the p-value.
+.pull-right\[ `r emo::ji("three")` Calculate the p-value.
 
-.eq[
-$$\text{p-value} = 2P(T > |t|) \hspace{4mm} T \sim t_{n-p-1}$$
-]
+.eq\[ $$\text{p-value} = 2P(T > |t|) \hspace{4mm} T \sim t_{n-p-1}$$\]
 
 <br>
 
 `r emo::ji("four")` State the conclusion in context of the data.
 
-.eq[
-Reject $H_0$ if p-value is sufficiently small.
-]
+.eq\[ Reject $H_0$ if p-value is sufficiently small.\]
 
-]
+\]
 
+------------------------------------------------------------------------
 
----
+## Confidence intervals
 
-## Confidence intervals 
-
-.eq[
-The $C$% confidence confidence interval for $\beta_j$ is 
+.eq\[ The $C$% confidence confidence interval for $\beta_j$ is
 
 $$\begin{align}&\hat{\beta}_j \pm t^* \times SE_{\hat{\beta}_j}\\[8pt]
-&\hat{\beta}_j \pm t^* \times \hat{\sigma}\sqrt{\frac{1}{(n-1)s_{x_{j}}^2}}\end{align}$$
-where the critical value $t^* \sim t(n-p-1)$
-]
+&\hat{\beta}_j \pm t^* \times \hat{\sigma}\sqrt{\frac{1}{(n-1)s_{x_{j}}^2}}\end{align}$$ where the critical value $t^* \sim t(n-p-1)$ \]
 
 **General interpretation:** We are $C$% confident that for every one unit increase in $x_j$, the response is expected to change by LB to UB units, holding all else constant.
 
----
+------------------------------------------------------------------------
 
-## Inference Activity (~8 minutes)
+## Inference Activity (\~8 minutes)
 
-- Use the Model 3 output on the next slide to conduct a hypothesis test and interpret the 95% confidence interval for your assigned variable. 
-  - You do not have to do the calculations by hand. 
+-   Use the Model 3 output on the next slide to conduct a hypothesis test and interpret the 95% confidence interval for your assigned variable.
 
-- Choose one person to write your group's response on your slide [slide](https://docs.google.com/presentation/d/14WD6HUhUL4Z_i9tcG94tgfa9VbpDbAYkzprhAPB7O0w/edit?usp=sharing).
+    -   You do not have to do the calculations by hand.
 
-- Choose on person to share your group's responses with the class. 
+-   Choose one person to write your group's response on your slide [slide](https://docs.google.com/presentation/d/14WD6HUhUL4Z_i9tcG94tgfa9VbpDbAYkzprhAPB7O0w/edit?usp=sharing).
 
----
+-   Choose on person to share your group's responses with the class.
+
+------------------------------------------------------------------------
 
 ## Model 3 output
 
@@ -476,22 +448,18 @@ tidy(model3, conf.int = TRUE) %>%
   kable(digits = 3)
 ```
 
----
+------------------------------------------------------------------------
 
-## Additional review topics 
+## Additional review topics
 
-- [Uncertainty in predictions](https://sta210-fa21.netlify.app/slides/07-slr-prediction.html#1)
+-   [Uncertainty in predictions](https://sta210-fa21.netlify.app/slides/07-slr-prediction.html#1)
 
-- [Variable transformations](https://sta210-fa21.netlify.app/slides/14-transformations.html#1)
+-   [Variable transformations](https://sta210-fa21.netlify.app/slides/14-transformations.html#1)
 
-- [Comparing models using Nested F tests](https://sta210-fa21.netlify.app/slides/15-model-comparison.html#1)
+-   [Comparing models using Nested F tests](https://sta210-fa21.netlify.app/slides/15-model-comparison.html#1)
 
----
+------------------------------------------------------------------------
 
 ## Acknowledgements
 
 These slides are based on content in [BMLR: Chapter 1 - Review of Multiple Linear Regression](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html)
-
-
-
-

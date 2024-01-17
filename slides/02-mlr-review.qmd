@@ -500,7 +500,9 @@ model3 <- lm(speed ~ starters + year + condition + year * condition,
 
 # Application exercise
 
-<!--do an interpretation activity here - 3 groups each interpreting a different variable- put guidance in the AE-->
+::: appex
+📋 [sta310-sp24.netlify.app/ae/ae-02-mlr-review](../ae/ae-02-mlr-review.html)
+:::
 
 # Inference for regression 
 
@@ -545,7 +547,9 @@ When LINE assumptions are met...
 
 $$
 t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
-$$. . .
+$$
+
+. . .
 
 3.  **Calculate the p-value.** The p-value is calculated from a $t$ distribution with $n - p - 1$ degrees of freedom.
 
@@ -555,7 +559,7 @@ $$. . .
 
 . . .
 
-43. **State the conclusion in context of the data.**
+4.  **State the conclusion in context of the data.**
     -   Reject $H_0$ if p-value is sufficiently small.
 
 ## Confidence interval for $\beta_j$ 
@@ -575,6 +579,10 @@ where the critical value $t^* \sim t_{n-p-1}$
 We are $C\%$ confident that for every one unit increase in $x_j$, the response is expected to change by LB to UB units, holding all else constant.
 
 # Application exercise
+
+::: appex
+📋 [sta310-sp24.netlify.app/ae/ae-02-mlr-review](../ae/ae-02-mlr-review.html)
+:::
 
 ## Measures of model performance
 

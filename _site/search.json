@@ -504,37 +504,23 @@
     "text": "Course materials costs\nThere are no costs associated with this course. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.)."
   },
   {
-    "objectID": "prepare/jan-24.html",
-    "href": "prepare/jan-24.html",
+    "objectID": "prepare/jan-22.html",
+    "href": "prepare/jan-22.html",
     "title": "Prepare for Jan 22 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "hw/hw-02.html",
-    "href": "hw/hw-02.html",
-    "title": "HW 02",
+    "objectID": "prepare/jan-17.html",
+    "href": "prepare/jan-17.html",
+    "title": "Prepare for Jan 17 lecture",
     "section": "",
-    "text": "To be posted."
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "hw/hw-01.html",
-    "href": "hw/hw-01.html",
-    "title": "HW 01",
-    "section": "",
-    "text": "To be posted."
-  },
-  {
-    "objectID": "hw/hw-05.html",
-    "href": "hw/hw-05.html",
-    "title": "HW 05",
-    "section": "",
-    "text": "To be posted."
-  },
-  {
-    "objectID": "hw/hw-06.html",
-    "href": "hw/hw-06.html",
-    "title": "HW 06",
+    "objectID": "hw/hw-03.html",
+    "href": "hw/hw-03.html",
+    "title": "HW 03",
     "section": "",
     "text": "To be posted."
   },
@@ -546,25 +532,74 @@
     "text": "To be posted."
   },
   {
-    "objectID": "hw/hw-03.html",
-    "href": "hw/hw-03.html",
-    "title": "HW 03",
+    "objectID": "hw/hw-06.html",
+    "href": "hw/hw-06.html",
+    "title": "HW 06",
     "section": "",
     "text": "To be posted."
   },
   {
-    "objectID": "prepare/jan-17.html",
-    "href": "prepare/jan-17.html",
-    "title": "Prepare for Jan 17 lecture",
+    "objectID": "hw/hw-05.html",
+    "href": "hw/hw-05.html",
+    "title": "HW 05",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "text": "To be posted."
   },
   {
-    "objectID": "prepare/jan-22.html",
-    "href": "prepare/jan-22.html",
+    "objectID": "hw/hw-01.html",
+    "href": "hw/hw-01.html",
+    "title": "HW 01",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-02.html",
+    "href": "hw/hw-02.html",
+    "title": "HW 02",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "prepare/jan-24.html",
+    "href": "prepare/jan-24.html",
     "title": "Prepare for Jan 22 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html",
+    "href": "ae/ae-02-mlr-review.html",
+    "title": "Review of multiple linear regression",
+    "section": "",
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#introduction",
+    "href": "ae/ae-02-mlr-review.html#introduction",
+    "title": "Review of multiple linear regression",
+    "section": "",
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
+    "href": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
+    "title": "Review of multiple linear regression",
+    "section": "Model 1: Main effects model",
+    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
+    "href": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
+    "title": "Review of multiple linear regression",
+    "section": "Model 2: Main effects + quadratic effect for year",
+    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
+    "href": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
+    "title": "Review of multiple linear regression",
+    "section": "Model 3: Main effects + interaction between year and condition",
+    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
   },
   {
     "objectID": "projects/final-project.html",
@@ -585,7 +620,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n    \nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n    3\nM\nJan 22\nUsing likelihoods\n\n\n\n\n\n\n    \nW\nJan 24\nPoisson regression\n\n\n\n\n\nHW 01 due\n    \nTh\nJan 25\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson regression cont'd\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson regression cont'd\n\n\n\n\n\n\n    \nTh\nFeb 1\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nZIP models\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period\nNA"
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      ae\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n    \nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n    3\nM\nJan 22\nUsing likelihoods\n\n\n\n\n\n\n\n    \nW\nJan 24\nPoisson regression\n\n\n\n\n\n\nHW 01 due\n    \nTh\nJan 25\n\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson regression cont'd\n\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson regression cont'd\n\n\n\n\n\n\n\n    \nTh\nFeb 1\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nZIP models\n\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period\nNA"
   },
   {
     "objectID": "slides/03-mlr-review-pt2.html",
@@ -977,7 +1012,7 @@
     "href": "slides/02-mlr-review.html#hypothesis-testing-for-beta_j",
     "title": "Review of multiple linear regression",
     "section": "Hypothesis testing for \\(\\beta_j\\)",
-    "text": "Hypothesis testing for \\(\\beta_j\\)\n\nState the hypotheses. \\(H_0: \\beta_j = 0 \\text{ vs. } H_a: \\beta_j \\neq 0\\), given the other variables in the model.\n\n\n\nCalculate the test statistic.\n\n\\[\nt = \\frac{\\hat{\\beta}_j - 0}{SE_{\\hat{\\beta}_j}}\n\\]. . .\n\nCalculate the p-value. The p-value is calculated from a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\n\\[\n\\text{p-value} = 2P(T &gt; |t|) \\hspace{4mm} T \\sim t_{n-p-1}\n\\]\n\n\n\n\nState the conclusion in context of the data.\n\nReject \\(H_0\\) if p-value is sufficiently small."
+    "text": "Hypothesis testing for \\(\\beta_j\\)\n\nState the hypotheses. \\(H_0: \\beta_j = 0 \\text{ vs. } H_a: \\beta_j \\neq 0\\), given the other variables in the model.\n\n\n\nCalculate the test statistic.\n\n\\[\nt = \\frac{\\hat{\\beta}_j - 0}{SE_{\\hat{\\beta}_j}}\n\\]\n\n\n\nCalculate the p-value. The p-value is calculated from a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\n\\[\n\\text{p-value} = 2P(T &gt; |t|) \\hspace{4mm} T \\sim t_{n-p-1}\n\\]\n\n\n\n\nState the conclusion in context of the data.\n\nReject \\(H_0\\) if p-value is sufficiently small."
   },
   {
     "objectID": "slides/02-mlr-review.html#confidence-interval-for-beta_j",

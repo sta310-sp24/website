@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 310 - Spring 2024 - HW 01:Multiple linear regression</title>
+<title>STA 310 - Spring 2024 - HW 01: Multiple linear regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -265,12 +265,12 @@ div.csl-indent {
    
   <ul>
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <li><a href="#exercises1" id="toc-exercises1" class="nav-link" data-scroll-target="#exercises1">Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-11" id="toc-exercise-11" class="nav-link" data-scroll-target="#exercise-11">Exercise 1</a></li>
-  <li><a href="#exercise-22" id="toc-exercise-22" class="nav-link" data-scroll-target="#exercise-22">Exercise 2</a></li>
-  <li><a href="#exercise-33" id="toc-exercise-33" class="nav-link" data-scroll-target="#exercise-33">Exercise 3</a></li>
-  <li><a href="#exercise-44" id="toc-exercise-44" class="nav-link" data-scroll-target="#exercise-44">Exercise 4</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
   <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   </ul></li>
@@ -287,7 +287,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW 01:Multiple linear regression</h1>
+<h1 class="title">HW 01: Multiple linear regression</h1>
 </div>
 
 
@@ -318,18 +318,18 @@ Important
 <section id="instructions" class="level1">
 <h1>Instructions</h1>
 <ul>
-<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the problem.</li>
-<li>Display all analysis code in the PDF.</li>
+<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.</li>
+<li>Be sure all analysis code is displayed in the rendered pdf.</li>
 <li>If you are fitting a model, display the model output in a neatly formatted table. (The <code>tidy</code> and <code>kable</code> functions can help!)</li>
-<li>If you are creating a plot, use clear labels for all axes, titles, etc.</li>
-<li>Render, commit and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
-<li>When you’re done, we should be able to knit the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.</li>
+<li>If you are creating a plot, use clear and informative labels and titles.</li>
+<li>Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
+<li>When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.</li>
 </ul>
 </section>
-<section id="exercises" class="level1">
-<h1>Exercises</h1>
-<section id="exercise-11" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-11">Exercise 1<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<section id="exercises1" class="level1">
+<h1>Exercises<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
 <!--Adapted from BMLR Ch 1 Ex 1-->
 <p>Consider the following scenario:</p>
 <blockquote class="blockquote">
@@ -341,8 +341,8 @@ Important
 <li><p>Write the assumptions for linear regression in the context of the problem.</p></li>
 </ol>
 </section>
-<section id="exercise-22" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-22">Exercise 2<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
 <!--Adapted from BMLR Ch 1 Ex 2-->
 <p>Consider the following scenario:</p>
 <blockquote class="blockquote">
@@ -353,8 +353,8 @@ Important
 <li><p>Identify which model assumption(s) are violated. Briefly explain your choice.</p></li>
 </ol>
 </section>
-<section id="exercise-33" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-33">Exercise 3<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></h2>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
 <!--Adapted from Ch 1 Ex 3-->
 <p>Use the <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#review-of-multiple-linear-regression">Kentucky Derby case study</a> in Chapter 1 of <em>Beyond Multiple Linear Regression.</em></p>
 <ol type="a">
@@ -362,10 +362,10 @@ Important
 <li>Briefly explain why there is no error (random variation) term <span class="math inline">\(\epsilon_i\)</span> in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#multiple-linear-regression-with-an-interaction-term">Equation (1.4)</a> in Section 1.6.6?</li>
 </ol>
 </section>
-<section id="exercise-44" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-44">Exercise 4<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h2>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
 <!--Adapted from Ch 1 Guided Ex 3-->
-<p>The data set <code>kingCountyHouses.csv</code> contains data on over 20,000 houses sold in King County, Washington (<span class="citation" data-cites="kingcounty">Kaggle (<a href="#ref-kingcounty" role="doc-biblioref">2018</a>)</span>).</p>
+<p>The data set <code>kingCountyHouses.csv</code> in the <code>data</code> folder contains data on over 20,000 houses sold in King County, Washington (<span class="citation" data-cites="kingcounty">Kaggle (<a href="#ref-kingcounty" role="doc-biblioref">2018</a>)</span>).</p>
 <p>We will use the following variables:</p>
 <ul>
 <li><code>price</code> = selling price of the house</li>
@@ -373,8 +373,8 @@ Important
 </ul>
 <p><em>See Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.</em></p>
 <ol type="a">
-<li><p>Fit a linear regression model with <code>price</code> as the response variable and <code>sqrt</code> as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when <code>sqft</code> increases by 100.</p></li>
-<li><p>Fit Model 2, where <code>logprice</code> (the natural log of price) is now the response variable and <code>sqft</code> is still the predictor variable. Write out the regression equation. How is the <code>logprice</code> expected to change when <code>sqft</code> increases by 100?</p></li>
+<li><p>Fit a linear regression model with <code>price</code> as the response variable and <code>sqft</code> as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when <code>sqft</code> increases by 100.</p></li>
+<li><p>Fit Model 2, where <code>logprice</code> (the natural log of price) is now the response variable and <code>sqft</code> is still the predictor variable. How is the <code>logprice</code> expected to change when <code>sqft</code> increases by 100?</p></li>
 <li><p>Recall that <span class="math inline">\(log(a) - log(b) = log(\frac{a}{b})\)</span>. Use this to derive how the <code>price</code> is expected to change when <code>sqft</code> increases by 100 based on Model 2.</p></li>
 <li><p>Fit Model 3, where <code>price</code> and <code>logsqft</code> (the natural log of sqft) are the response and predictor variables, respectively. How does the price expected to change when sqft increases by 10%? <em>As a hint, this is the same as multiplying sqft by 1.10.</em></p></li>
 </ol>
@@ -490,7 +490,7 @@ early\_career\_pay_{i} = \beta_0 &amp;+ \beta_1~out\_of\_state\_total_{i} + \bet
 </tr>
 <tr class="even">
 <td>Ex 4</td>
-<td style="text-align: center;">11</td>
+<td style="text-align: center;">12</td>
 </tr>
 <tr class="odd">
 <td>Ex 5</td>
@@ -498,7 +498,7 @@ early\_career\_pay_{i} = \beta_0 &amp;+ \beta_1~out\_of\_state\_total_{i} + \bet
 </tr>
 <tr class="even">
 <td>Ex 6</td>
-<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
 </tr>
 <tr class="odd">
 <td>Workflow &amp; formatting</td>
@@ -520,13 +520,13 @@ early\_career\_pay_{i} = \beta_0 &amp;+ \beta_1~out\_of\_state\_total_{i} + \bet
 <div id="ref-kingcounty" class="csl-entry" role="listitem">
 Kaggle. 2018. <span>“House Sales in King County, USA.”</span> https://www.kaggle.com/harlfoxem/housesalesprediction/home.
 </div>
+<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
+Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in r</em>. CRC Press.
+</div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Adapted from BMLR Sec 1.8.1 Ex 1<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Adapted from BMLR Sec 1.8.1 Ex 2<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Adapted from Sec 1.8.1 Ex 3<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Adapted from Ex 1.8.2 Ex 3<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Exercises 1 - 4 are adapted from exercises in Section 1.8 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#ref-roback2021beyond" role="doc-biblioref">2021</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

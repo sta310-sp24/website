@@ -1,5 +1,5 @@
 ---
-title: "HW 01:Multiple linear regression"
+title: "HW 01: Multiple linear regression"
 editor: visual
 execute:
   freeze: auto
@@ -16,18 +16,18 @@ This assignment is due on Wednesday, January 24 at 11:59pm on GitHub.
 
 # Instructions 
 
--   Write all narrative using full sentences. Write all interpretations and conclusions in the context of the problem.
--   Display all analysis code in the PDF.
+-   Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.
+-   Be sure all analysis code is displayed in the rendered pdf.
 -   If you are fitting a model, display the model output in a neatly formatted table. (The `tidy` and `kable` functions can help!)
--   If you are creating a plot, use clear labels for all axes, titles, etc.
--   Render, commit and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.
--   When you’re done, we should be able to knit the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.
+-   If you are creating a plot, use clear and informative labels and titles.
+-   Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.
+-   When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.
 
-# Exercises
+# Exercises[^1]
 
-## Exercise 1[^1]
+[^1]: Exercises 1 - 4 are adapted from exercises in Section 1.8 of @roback2021beyond.
 
-[^1]: Adapted from BMLR Sec 1.8.1 Ex 1
+## Exercise 1
 
 <!--Adapted from BMLR Ch 1 Ex 1-->
 
@@ -41,9 +41,7 @@ b.  Write the complete specification of the statistical model.
 
 c.  Write the assumptions for linear regression in the context of the problem.
 
-## Exercise 2[^2]
-
-[^2]: Adapted from BMLR Sec 1.8.1 Ex 2
+## Exercise 2
 
 <!--Adapted from BMLR Ch 1 Ex 2-->
 
@@ -55,9 +53,7 @@ a.  Identify the response and predictor variables.
 
 b.  Identify which model assumption(s) are violated. Briefly explain your choice.
 
-## Exercise 3[^3]
-
-[^3]: Adapted from Sec 1.8.1 Ex 3
+## Exercise 3
 
 <!--Adapted from Ch 1 Ex 3-->
 
@@ -66,13 +62,11 @@ Use the [Kentucky Derby case study](https://bookdown.org/roback/bookdown-BeyondM
 a.  Consider [Equation (1.3)](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#multiple-linear-regression-with-two-predictors) in Section 1.6.3. Show why we have to be sure to say "holding year constant", "after adjusting for year", or an equivalent statement, when interpreting $\beta_2$.
 b.  Briefly explain why there is no error (random variation) term $\epsilon_i$ in [Equation (1.4)](https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#multiple-linear-regression-with-an-interaction-term) in Section 1.6.6?
 
-## Exercise 4[^4]
-
-[^4]: Adapted from Ex 1.8.2 Ex 3
+## Exercise 4
 
 <!--Adapted from Ch 1 Guided Ex 3-->
 
-The data set `kingCountyHouses.csv` contains data on over 20,000 houses sold in King County, Washington (@kingcounty).
+The data set `kingCountyHouses.csv` in the `data` folder contains data on over 20,000 houses sold in King County, Washington (@kingcounty).
 
 We will use the following variables:
 
@@ -81,9 +75,9 @@ We will use the following variables:
 
 *See Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.*
 
-a.  Fit a linear regression model with `price` as the response variable and `sqrt` as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when `sqft` increases by 100.
+a.  Fit a linear regression model with `price` as the response variable and `sqft` as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when `sqft` increases by 100.
 
-b.  Fit Model 2, where `logprice` (the natural log of price) is now the response variable and `sqft` is still the predictor variable. Write out the regression equation. How is the `logprice` expected to change when `sqft` increases by 100?
+b.  Fit Model 2, where `logprice` (the natural log of price) is now the response variable and `sqft` is still the predictor variable. How is the `logprice` expected to change when `sqft` increases by 100?
 
 c.  Recall that $log(a) - log(b) = log(\frac{a}{b})$. Use this to derive how the `price` is expected to change when `sqft` increases by 100 based on Model 2.
 
@@ -136,9 +130,9 @@ To submit the assignment, push your final changes to your GitHub repo. Then, you
 | Ex 1                  |   8    |
 | Ex 2                  |   4    |
 | Ex 3                  |   7    |
-| Ex 4                  |   11   |
+| Ex 4                  |   12   |
 | Ex 5                  |   12   |
-| Ex 6                  |   5    |
+| Ex 6                  |   4    |
 | Workflow & formatting |   3    |
 
 The "Workflow & formatting" grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.

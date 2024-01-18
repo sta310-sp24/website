@@ -548,9 +548,9 @@
   {
     "objectID": "hw/hw-01.html",
     "href": "hw/hw-01.html",
-    "title": "HW 01",
+    "title": "HW 01:Multiple linear regression",
     "section": "",
-    "text": "To be posted."
+    "text": "Important\n\n\n\nThis assignment is due on Wednesday, January 24 at 11:59pm on GitHub."
   },
   {
     "objectID": "hw/hw-02.html",
@@ -569,35 +569,35 @@
   {
     "objectID": "ae/ae-02-mlr-review.html",
     "href": "ae/ae-02-mlr-review.html",
-    "title": "Review of multiple linear regression",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
     "section": "",
     "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
     "objectID": "ae/ae-02-mlr-review.html#introduction",
     "href": "ae/ae-02-mlr-review.html#introduction",
-    "title": "Review of multiple linear regression",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
     "section": "",
     "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
     "objectID": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
     "href": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
-    "title": "Review of multiple linear regression",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
     "section": "Model 1: Main effects model",
     "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
   },
   {
     "objectID": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
     "href": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
-    "title": "Review of multiple linear regression",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
     "section": "Model 2: Main effects + quadratic effect for year",
     "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
   },
   {
     "objectID": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
     "href": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
-    "title": "Review of multiple linear regression",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
     "section": "Model 3: Main effects + interaction between year and condition",
     "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
   },
@@ -822,8 +822,8 @@
     "objectID": "slides/02-mlr-review.html#announcements",
     "href": "slides/02-mlr-review.html#announcements",
     "title": "Review of multiple linear regression",
-    "section": "Announcements",
-    "text": "Announcements\n\nHW 01 due Wed, Jan 24 at 11:59pm\n\nReleased Thursday morning\n\nLabs start Thursday\nCheck website for office hours schedule\nAdded a Slack channel #internships-research-opportunities (optional)"
+    "section": "",
+    "text": "HW 01 due Wed, Jan 24 at 11:59pm\n\nReleased Thursday morning\n\nLabs start Thursday\nCheck website for office hours schedule\nAdded a Slack channel #internships-research-opportunities (optional)"
   },
   {
     "objectID": "slides/02-mlr-review.html#computing-set-up",
@@ -858,7 +858,7 @@
     "href": "slides/02-mlr-review.html#example",
     "title": "Review of multiple linear regression",
     "section": "Example",
-    "text": "Example\nSuppose we have the model for comparing two means:\n\\[\ny_{ij} = \\mu_i + \\epsilon_{ij}\n\\]\nwhere\n\n\n\n\\(i = 1, 2\\): group\n\n\n\n\\(j = 1, \\ldots, n\\): observation number\n\\(n_i\\): number of observations in group \\(i\\)\n\\(\\mu_i\\): mean of group \\(i\\)\n\\(y_{ij}\\): \\(j^{th}\\) observation in the \\(i^{th}\\) group\n\\(\\epsilon_{ij}\\) : random error (variation) associated with \\(ij^{th}\\) observation\n\n\n\n\n\nAdapted from Stroup (2012)"
+    "text": "Example\nSuppose we have the model for comparing two means:\n\\[\ny_{ij} = \\mu_i + \\epsilon_{ij}\n\\]\nwhere\n. . .\n\n\n\\(i = 1, 2\\): group\n\n\n\n\\(j = 1, \\ldots, n\\): observation number\n\\(n_i\\): number of observations in group \\(i\\)\n\\(\\mu_i\\): mean of group \\(i\\)\n\\(y_{ij}\\): \\(j^{th}\\) observation in the \\(i^{th}\\) group\n\\(\\epsilon_{ij}\\) : random error (variation) associated with \\(ij^{th}\\) observation\n\n\n\n\nAdapted from Stroup (2012)"
   },
   {
     "objectID": "slides/02-mlr-review.html#example-1",
@@ -928,7 +928,7 @@
     "href": "slides/02-mlr-review.html#data-science-workflow",
     "title": "Review of multiple linear regression",
     "section": "Data science workflow",
-    "text": "Data science workflow\n\nImage source: Wickham, Çetinkaya-Rundel, and Grolemund (2023)"
+    "text": "Data science workflow\n\n\n\nImage source: Wickham, Çetinkaya-Rundel, and Grolemund (2023)"
   },
   {
     "objectID": "slides/02-mlr-review.html#exploratory-data-analysis-eda",
@@ -998,7 +998,7 @@
     "href": "slides/02-mlr-review.html#candidate-models",
     "title": "Review of multiple linear regression",
     "section": "Candidate models",
-    "text": "Candidate models\nModel 1: Main effects model (year, condition, starters)\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\n\n\nModel 2: Main effects + \\(year^2\\), the quadratic effect of year\n\nmodel2 &lt;- lm(speed ~ starters + year + I(year^2) + condition,\n             data = derby)\n\n\n\n\nModel 3: Main effects + interaction between year and condition\n\nmodel3 &lt;- lm(speed ~ starters + year + condition + year * condition, \n             data = derby)"
+    "text": "Candidate models\nModel 1: Main effects model (year, condition, starters)\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\n\n. . .\nModel 2: Main effects + \\(year^2\\), the quadratic effect of year\n\nmodel2 &lt;- lm(speed ~ starters + year + I(year^2) + condition,\n             data = derby)\n\n\n. . .\nModel 3: Main effects + interaction between year and condition\n\nmodel3 &lt;- lm(speed ~ starters + year + condition + year * condition, \n             data = derby)"
   },
   {
     "objectID": "slides/02-mlr-review.html#inference-for-regression-1",
@@ -1012,14 +1012,14 @@
     "href": "slides/02-mlr-review.html#hypothesis-testing-for-beta_j",
     "title": "Review of multiple linear regression",
     "section": "Hypothesis testing for \\(\\beta_j\\)",
-    "text": "Hypothesis testing for \\(\\beta_j\\)\n\nState the hypotheses. \\(H_0: \\beta_j = 0 \\text{ vs. } H_a: \\beta_j \\neq 0\\), given the other variables in the model.\n\n\n\nCalculate the test statistic.\n\n\\[\nt = \\frac{\\hat{\\beta}_j - 0}{SE_{\\hat{\\beta}_j}}\n\\]\n\n\n\nCalculate the p-value. The p-value is calculated from a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\n\\[\n\\text{p-value} = 2P(T &gt; |t|) \\hspace{4mm} T \\sim t_{n-p-1}\n\\]\n\n\n\n\nState the conclusion in context of the data.\n\nReject \\(H_0\\) if p-value is sufficiently small."
+    "text": "Hypothesis testing for \\(\\beta_j\\)\n\nState the hypotheses. \\(H_0: \\beta_j = 0 \\text{ vs. } H_a: \\beta_j \\neq 0\\), given the other variables in the model.\n\n. . .\n\nCalculate the test statistic.\n\n\\[\nt = \\frac{\\hat{\\beta}_j - 0}{SE_{\\hat{\\beta}_j}}\n\\]\n. . .\n\nCalculate the p-value. The p-value is calculated from a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\n\\[\n\\text{p-value} = 2P(T &gt; |t|) \\hspace{4mm} T \\sim t_{n-p-1}\n\\]\n\n. . .\n\nState the conclusion in context of the data.\n\nReject \\(H_0\\) if p-value is sufficiently small."
   },
   {
     "objectID": "slides/02-mlr-review.html#confidence-interval-for-beta_j",
     "href": "slides/02-mlr-review.html#confidence-interval-for-beta_j",
     "title": "Review of multiple linear regression",
     "section": "Confidence interval for \\(\\beta_j\\)",
-    "text": "Confidence interval for \\(\\beta_j\\)\nThe \\(C\\%\\) confidence confidence interval for \\(\\beta_j\\) is\n\\[\\hat{\\beta}_j \\pm t^* \\times SE_{\\hat{\\beta}_j}\\]\nwhere the critical value \\(t^* \\sim t_{n-p-1}\\)\n\n\nGeneral interpretation for the confidence interval [LB, UB]:\nWe are \\(C\\%\\) confident that for every one unit increase in \\(x_j\\), the response is expected to change by LB to UB units, holding all else constant."
+    "text": "Confidence interval for \\(\\beta_j\\)\nThe \\(C\\%\\) confidence confidence interval for \\(\\beta_j\\) is\n\\[\\hat{\\beta}_j \\pm t^* \\times SE_{\\hat{\\beta}_j}\\]\nwhere the critical value \\(t^* \\sim t_{n-p-1}\\)\n\n. . .\nGeneral interpretation for the confidence interval [LB, UB]:\nWe are \\(C\\%\\) confident that for every one unit increase in \\(x_j\\), the response is expected to change by LB to UB units, holding all else constant."
   },
   {
     "objectID": "slides/02-mlr-review.html#measures-of-model-performance",
@@ -1033,7 +1033,7 @@
     "href": "slides/02-mlr-review.html#model-summary-statistics",
     "title": "Review of multiple linear regression",
     "section": "Model summary statistics",
-    "text": "Model summary statistics\nUse the glance() function to get model summary statistics\n\n\n\n\n\n\nmodel\nr.squared\nadj.r.squared\nAIC\nBIC\n\n\n\n\nModel1\n0.730\n0.721\n259.478\n276.302\n\n\nModel2\n0.827\n0.819\n207.429\n227.057\n\n\nModel3\n0.751\n0.738\n253.584\n276.016\n\n\n\n\n\n\n\nWhich model do you choose based on these statistics?"
+    "text": "Model summary statistics\nUse the glance() function to get model summary statistics\n\n\n\n\n\n\nmodel\nr.squared\nadj.r.squared\nAIC\nBIC\n\n\n\n\nModel1\n0.730\n0.721\n259.478\n276.302\n\n\nModel2\n0.827\n0.819\n207.429\n227.057\n\n\nModel3\n0.751\n0.738\n253.584\n276.016\n\n\n\n\n\n. . .\n\nWhich model do you choose based on these statistics?"
   },
   {
     "objectID": "slides/02-mlr-review.html#characteristics-of-a-good-final-model",
@@ -1062,5 +1062,103 @@
     "title": "Final project tips + resources",
     "section": "",
     "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your title\"\nauthor: \"Your names\"\nformat:\n  pdf:\n    fig-width: 7\n    fig-height: 5\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-1",
+    "href": "hw/hw-01.html#exercise-1",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nConsider the following scenario:\n\nResearchers record the number of cricket chirps per minute and temperature during that time. They use linear regression to investigate whether the number of chirps varies with temperature.\n\n\nIdentify the response and predictor variable.\nWrite the complete specification of the statistical model.\nWrite the assumptions for linear regression in the context of the problem."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-2",
+    "href": "hw/hw-01.html#exercise-2",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nConsider the following scenario:\n\nA randomized clinical trial investigated postnatal depression and the use of an estrogen patch. Patients were randomly assigned to either use the patch or not. Depression scores were recorded on 6 different visits.\n\n\nIdentify the response and predictor variables.\nIdentify which model assumption(s) are violated. Briefly explain your choice."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-3",
+    "href": "hw/hw-01.html#exercise-3",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nUse the Kentucky Derby case study in Chapter 1 of Beyond Multiple Linear Regression.\n\nConsider Equation (1.3) in Section 1.6.3. Show why we have to be sure to say “holding year constant”, “after adjusting for year”, or an equivalent statement, when interpreting \\(\\beta_2\\).\nBriefly explain why there is no error (random variation) term \\(\\epsilon_i\\) in Equation (1.4) in Section 1.6.6?"
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-4",
+    "href": "hw/hw-01.html#exercise-4",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nThe data set kingCountyHouses.csv contains data on over 20,000 houses sold in King County, Washington (Kaggle (2018)).1\nWe will use the following variables:\n\nprice = selling price of the house\nsqft = interior square footage\n\nSee Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.\n\nFit a linear regression model with price as the response variable and sqrt as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when sqft increases by 100.\nFit Model 2, where logprice (the natural log of price) is now the response variable and sqft is still the predictor variable. Write out the regression equation. How is the logprice expected to change when sqft increases by 100?\nRecall that \\(log(a) - log(b) = log(\\frac{a}{b})\\). Use this to derive how the price is expected to change when sqft increases by 100 based on Model 2.\nFit Model 3, where price and logsqft (the natural log of sqft) are the response and predictor variables, respectively. How does the price expected to change when sqft increases by 10%? As a hint, this is the same as multiplying sqft by 1.10.\n\n\n\n\n\n\n\nTip\n\n\n\nClick here for notes on interpreting model effects for log-transformed response and/or predictor variables."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-5",
+    "href": "hw/hw-01.html#exercise-5",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nThe goal of this analysis is to use characteristics of 593 colleges and universities in the United States to understand variability in the early career pay, defined as the median salary for alumni with 0 - 5 years of experience. The data was obtained from TidyTuesday College tuition, diversity, and pay, and was originaly collected from the PayScale College Salary Report.\nThe data set is located in college-data.csv in the data folder. We will focus on the following variables:\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\nname\ncharacter\nName of school\n\n\nstate_name\ncharacter\nstate name\n\n\ntype\ncharacter\nPublic or private\n\n\nearly_career_pay\ndouble\nMedian salary for alumni with 0 - 5 years experience (in US dollars)\n\n\nstem_percent\ndouble\nPercent of degrees awarded in science, technology, engineering, or math subjects\n\n\nout_of_state_total\ndouble\nTotal cost for in-state residents in USD (sum of room & board + out of state tuition)\n\n\n\n\nVisualize the distribution of the response variable early_career_pay. Write 1 - 2 observations from the plot.\nVisualize the relationship between (i) early_career_pay and type and (ii) early_career_pay and stem_percent. Write an observation from each plot.\nBelow is the specification of the statistical model for this analysis. Fit the model and neatly display the results using 3 digits. Display the 95% confidence interval for the coefficients.\n\n\\[\n\\begin{align}\nearly\\_career\\_pay_{i} = \\beta_0 &+ \\beta_1~out\\_of\\_state\\_total_{i} + \\beta_2 ~ type\\\\&+ \\beta_3 ~ stem\\_percent_{i} + \\beta_4 ~ type * stem\\_percent_{i} \\\\ &+ \\epsilon_{i}, \\hspace{5mm} \\text{where } \\epsilon_i \\sim N(0, \\sigma^2)\n\\end{align}\n\\]\n\nHow many degrees of freedom are there in the estimate of the regression standard error \\(\\sigma\\)?\nWhat is the 95% confidence interval for the amount in which the intercept for public institutions differs from private institutions?"
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-6",
+    "href": "hw/hw-01.html#exercise-6",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nUse the analysis from the previous exercise to write a paragraph (~ 4 - 5 sentences) describing the differences in early career pay based on the institution characteristics. The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit)."
+  },
+  {
+    "objectID": "hw/hw-01.html#acknowledgements",
+    "href": "hw/hw-01.html#acknowledgements",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nExercises 1 - 4 are adapted from exercises in Beyond Multiple Linear Regression."
+  },
+  {
+    "objectID": "hw/hw-01.html#references",
+    "href": "hw/hw-01.html#references",
+    "title": "HW 01:Multiple linear regression",
+    "section": "References",
+    "text": "References"
+  },
+  {
+    "objectID": "hw/hw-01.html#footnotes",
+    "href": "hw/hw-01.html#footnotes",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAdapted from BMLR Sec 1.8.1 Ex 1↩︎\nAdapted from BMLR Sec 1.8.1 Ex 2↩︎\nAdapted from Sec 1.8.1 Ex 3↩︎\nAdapted from Ex 1.8.2 Ex 3↩︎"
+  },
+  {
+    "objectID": "slides/02-mlr-review.html",
+    "href": "slides/02-mlr-review.html",
+    "title": "Review of multiple linear regression",
+    "section": "",
+    "text": "HW 01 due Wed, Jan 24 at 11:59pm\n\nReleased Thursday morning\n\nLabs start Thursday\nCheck website for office hours schedule\nAdded a Slack channel #internships-research-opportunities (optional)"
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-11",
+    "href": "hw/hw-01.html#exercise-11",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 11",
+    "text": "Exercise 11\n\nConsider the following scenario:\n\nResearchers record the number of cricket chirps per minute and temperature during that time. They use linear regression to investigate whether the number of chirps varies with temperature.\n\n\nIdentify the response and predictor variable.\nWrite the complete specification of the statistical model.\nWrite the assumptions for linear regression in the context of the problem."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-22",
+    "href": "hw/hw-01.html#exercise-22",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 22",
+    "text": "Exercise 22\n\nConsider the following scenario:\n\nA randomized clinical trial investigated postnatal depression and the use of an estrogen patch. Patients were randomly assigned to either use the patch or not. Depression scores were recorded on 6 different visits.\n\n\nIdentify the response and predictor variables.\nIdentify which model assumption(s) are violated. Briefly explain your choice."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-33",
+    "href": "hw/hw-01.html#exercise-33",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 33",
+    "text": "Exercise 33\n\nUse the Kentucky Derby case study in Chapter 1 of Beyond Multiple Linear Regression.\n\nConsider Equation (1.3) in Section 1.6.3. Show why we have to be sure to say “holding year constant”, “after adjusting for year”, or an equivalent statement, when interpreting \\(\\beta_2\\).\nBriefly explain why there is no error (random variation) term \\(\\epsilon_i\\) in Equation (1.4) in Section 1.6.6?"
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-44",
+    "href": "hw/hw-01.html#exercise-44",
+    "title": "HW 01:Multiple linear regression",
+    "section": "Exercise 44",
+    "text": "Exercise 44\n\nThe data set kingCountyHouses.csv contains data on over 20,000 houses sold in King County, Washington (Kaggle (2018)).\nWe will use the following variables:\n\nprice = selling price of the house\nsqft = interior square footage\n\nSee Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.\n\nFit a linear regression model with price as the response variable and sqrt as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when sqft increases by 100.\nFit Model 2, where logprice (the natural log of price) is now the response variable and sqft is still the predictor variable. Write out the regression equation. How is the logprice expected to change when sqft increases by 100?\nRecall that \\(log(a) - log(b) = log(\\frac{a}{b})\\). Use this to derive how the price is expected to change when sqft increases by 100 based on Model 2.\nFit Model 3, where price and logsqft (the natural log of sqft) are the response and predictor variables, respectively. How does the price expected to change when sqft increases by 10%? As a hint, this is the same as multiplying sqft by 1.10.\n\n\n\n\n\n\n\nTip\n\n\n\nClick here for notes on interpreting model effects for log-transformed response and/or predictor variables."
   }
 ]

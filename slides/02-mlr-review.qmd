@@ -120,9 +120,8 @@ where
 ::: incremental
 -   $i = 1, 2$: group
 
-```{=html}
 <!-- -->
-```
+
 -   $j = 1, \ldots, n$: observation number
 -   $n_i$: number of observations in group $i$
 -   $\mu_i$: mean of group $i$
@@ -504,7 +503,7 @@ model3 <- lm(speed ~ starters + year + condition + year * condition,
 📋 [sta310-sp24.netlify.app/ae/ae-02-mlr-review](../ae/ae-02-mlr-review.html)
 :::
 
-# Inference for regression 
+# Inference for regression
 
 Use statistical inference to
 
@@ -516,10 +515,9 @@ Use statistical inference to
 
 If LINE assumptions are met, we can use inferential methods based on mathematical models. If at least linearity and independence are met, we can use simulation-based inference methods.
 
-## Inference for regression  {.midi}
+## Inference for regression {.midi}
 
-When LINE assumptions are met...
-. . .
+When LINE assumptions are met... . . .
 
 ::: incremental
 -   Use least squares regression to obtain the estimates for the model coefficients $\beta_0, \beta_1, \ldots, \beta_j$ and for $\sigma^2$
@@ -562,7 +560,7 @@ $$
 4.  **State the conclusion in context of the data.**
     -   Reject $H_0$ if p-value is sufficiently small.
 
-## Confidence interval for $\beta_j$ 
+## Confidence interval for $\beta_j$
 
 The $C\%$ confidence confidence interval for $\beta_j$ is
 
@@ -644,7 +642,7 @@ Which model do you choose based on these statistics?
 List from Section 1.6.7 of @roback2021beyond
 :::
 
-## Next class 
+## Next class
 
 -   Using likelihoods
 

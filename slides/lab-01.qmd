@@ -65,7 +65,15 @@ countdown::countdown(minutes  = 5)
 
 -   Work on homework or projects
 
-# Any questions about the course or syllabus? 
+# Any questions about the course or syllabus?
+
+# Lecture 02 AE
+
+-   Open the Lecture 02 AE from yesterday's lecture.
+
+-   Are there any questions about Exercises 1 - 5?
+
+-   We will go over Exercises 6 - 8 about Model 3 today. You will do Part 2 in Monday's lecture.
 
 ## Today's lab {.midi}
 

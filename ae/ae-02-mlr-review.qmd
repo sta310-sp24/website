@@ -1,5 +1,5 @@
 ---
-title: "Review of multiple linear regression"
+title: "Lecture 02 AE: Review of multiple linear regression"
 date: "`r Sys.Date()`"
 ---
 

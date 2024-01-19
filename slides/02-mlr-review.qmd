@@ -503,6 +503,8 @@ model3 <- lm(speed ~ starters + year + condition + year * condition,
 📋 [sta310-sp24.netlify.app/ae/ae-02-mlr-review](../ae/ae-02-mlr-review.html)
 :::
 
+<!--Stopped here in class in Spring 2024-->
+
 # Inference for regression
 
 Use statistical inference to

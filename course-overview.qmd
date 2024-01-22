@@ -13,7 +13,7 @@ STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 stud
 |-------------|-----------|---------------|-----------------------|
 | **Lecture** | Mon & Wed | 3:05 - 4:20pm | Physics 205           |
 | **Lab 01**  | Thu       | 3:05 - 4:20pm | Perkins 071 (Link #5) |
-| **Lab 02**  | Thu       | 4:40 - 5:55pm | Perkins 071 (Link #5) |
+| **Lab 02**  | Thu       | 4:40 - 5:55pm | Perkins 087 (Link #3) |
 
 # Teaching team
 

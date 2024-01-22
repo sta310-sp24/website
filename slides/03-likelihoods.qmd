@@ -1,5 +1,5 @@
 ---
-title: "Using likelihoods"
+title: "Inference review + <br> using likelihoods"
 author: "Prof. Maria Tackett"
 date: "2024-01-22"
 date-format: "MMM DD, YYYY"
@@ -40,6 +40,8 @@ knitr::opts_chunk$set(fig.width = 8,
 ## Announcements
 
 -   HW 01 due Wednesday at 11:59pm
+    -   Your access to the repo will be removed at the deadline. If you wish to submit the HW late, please email me and I will extend your access to the repo.
+    -   You will have access to your HW repo again when grades are returned.
 
 ## Computing set up
 
@@ -66,7 +68,7 @@ colors <- tibble::tibble(green = "#B5BA72")
 Notes based on Chapter 1 and 2 of @roback2021beyond unless noted otherwise.
 :::
 
-# Inference for multiple linear regression 
+# Inference for multiple linear regression
 
 ## Data: Kentucky Derby Winners {.midi}
 
@@ -181,11 +183,11 @@ $$
 
 . . .
 
-3.  **Calculate the p-value.** The p-value is calculated from a $t$ distribution with $n - p - 1$ degrees of freedom.
+**Calculate the p-value.** The p-value is calculated from a $t$ distribution with $n - p - 1$ degrees of freedom.
 
-    $$
-    \text{p-value} = 2P(T > |t|) \hspace{4mm} T \sim t_{n-p-1}
-    $$
+$$
+\text{p-value} = 2P(T > |t|) \hspace{8mm} T \sim t_{n-p-1}
+$$
 
 . . .
 
@@ -292,7 +294,7 @@ List from Section 1.6.7 of @roback2021beyond
 
 A **likelihood** is a function that tells us how likely we are to observe our data for a given parameter value (or values).
 
--   Unlike Ordinary Least Squares (OLS), they do not require the responses be independent, identically distributed, and normal (iidN)
+-   Unlike with Ordinary Least Squares (OLS) estimates, they do not require the responses be independent, identically distributed, and normal
 
 -   They are <u>not</u> the same as probability functions
 
@@ -302,7 +304,7 @@ A **likelihood** is a function that tells us how likely we are to observe our da
 
 -   **Likelihood:** Fixed data + input possible parameter values $\Rightarrow$ probability of seeing the fixed data for each parameter value
 
-## Data: Fouls in college basketball games
+## Data: Fouls in college basketball games {.midi}
 
 The data set [`04-refs.csv`](data/04-refs.csv) includes 30 randomly selected NCAA men's basketball games played in the 2009 - 2010 season.[^1]
 
@@ -340,11 +342,11 @@ We will treat the games as independent in this analysis.
 
 -   Is there a tendency for referees to call a foul on the team that already has more fouls?
 
+. . .
+
 **Ultimately we want to decide which model is better.**
 
-------------------------------------------------------------------------
-
-## Exploratory data analysis
+## Exploratory data analysis {.midi}
 
 ::: columns
 ::: {.column width="50%"}
@@ -403,13 +405,48 @@ countdown(minutes = 2, seconds = 0,
 
 Because the observations (the games) are independent, the **likelihood** is
 
-## $$Lik(p_H) = \prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}$$
+$$Lik(p_H) = \prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}$$
 
 . . .
 
 We will use this function to find the **maximum likelihood estimate (MLE)**. The MLE is the value between 0 and 1 where we are most likely to see the observed data.
 
-## Visualizing the likelihood {.midi}
+## Visualizing the likelihood
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false 
+
+p <- seq(0,1, length.out = 100) #sequence of 100 values between 0 and 100
+lik <- p^46 *(1 -p)^44
+x <- tibble(p = p, lik = lik)
+ggplot(data = x, aes(x = p, y = lik)) + 
+  geom_point() + 
+  geom_line() +
+  labs(y = "Likelihood",
+       title = "Likelihood of p_H")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: false
+
+p <- seq(0,1, length.out = 100) #sequence of 100 values between 0 and 100
+lik <- p^46 *(1 -p)^44
+x <- tibble(p = p, lik = lik)
+ggplot(data = x, aes(x = p, y = lik)) + 
+  geom_point() + 
+  geom_line() +
+  labs(y = "Likelihood",
+       title = "Likelihood of p_H")
+
+```
+:::
+:::
+
+------------------------------------------------------------------------
 
 ::: question
 What is your best guess for the MLE, \$\\hat{p}\_H\$?
@@ -452,7 +489,7 @@ lik_plot <- ggplot(data = x1, aes(x = p, y = lik)) +
 lik_plot
 ```
 
-## Find the MLE using numerical approximation
+## MLE using numerical approximation
 
 Specify a finite set of possible values the for $p_H$ and calculate the likelihood for each value
 
@@ -471,13 +508,6 @@ lik <- ref_lik(ph)
 ph[lik == max(lik)]
 ```
 
-. . .
-
-```{r}
-# use the optimize function to find the MLE
-optimize(ref_lik, interval = c(0,1), maximum = TRUE)
-```
-
 ## Find MLE using calculus
 
 -   Find the MLE by taking the first derivative of the likelihood function.
@@ -486,7 +516,20 @@ optimize(ref_lik, interval = c(0,1), maximum = TRUE)
 
 . . .
 
-```{r echo = F, out.width = "60%"}
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+
+lik_plot
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+
 loglik_plot <- ggplot(data = x1, aes(x = p, y = log(lik))) + 
   geom_point() + 
   geom_line() + 
@@ -494,10 +537,10 @@ loglik_plot <- ggplot(data = x1, aes(x = p, y = log(lik))) +
     labs(y = "log(Likelihood)", 
        title = "log(Likelihood) of p_H")
 
-lik_plot + loglik_plot
+loglik_plot
 ```
-
-------------------------------------------------------------------------
+:::
+:::
 
 ## Find MLE using calculus
 
@@ -533,9 +576,7 @@ $$
 
 . . .
 
-::: center
-😐
-:::
+<center>😐</center>
 
 # Model 2: Conditional model
 
@@ -543,7 +584,7 @@ Is there a tendency for referees to call more fouls on the visiting team or home
 
 Is there a tendency for referees to call a foul on the team that already has more fouls?
 
-## Model 2: Conditional model
+## Model 2: Conditional model {.midi}
 
 Now let's assume fouls are <u>not</u> independent within each game. We will specify this dependence using conditional probabilities.
 
@@ -559,33 +600,32 @@ Define new parameters:
 -   $p_{H|V Bias}$: Probability referees call foul on home team given there are more prior fouls on the visiting team
 :::
 
-## Model 2: Likelihood contributions {.midi}
+## Model 2: Likelihood contributions {.small}
 
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| Foul 1       | Foul 2       | Foul 3       | n     | Likelihood contribution                                                                                                                     |
-+==============+==============+==============+=======+=============================================================================================================================================+
-| H            | H            | H            | 3     | | $(p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2$                                              |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| H            | H            | V            | 2     | | $(p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2$                                              |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| H            | V            | H            | 3     | | $(p_{H\vert N})(p_{H\vert H Bias})(1 - p_{H\vert H Bias})$                                                                                |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| H            | V            | V            | 7     | **A**                                                                                                                                       |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V            | H            | H            | 7     | **B**                                                                                                                                       |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V            | H            | V            | 1     | | $(1 - p_{H\vert N})(p_{H\vert V Bias})(1 - p_{H\vert N}) = (1 - p_{H\vert N})^2(p_{H\vert V Bias})$                                       |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V            | V            | H            | 5     | | $(1 - p_{H\vert N})(1-p_{H\vert V Bias})(p_{H\vert V Bias})$                                                                              |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V            | V            | V            | 2     | | $\begin{aligned}&(1 - p_{H\vert N})(1-p_{H\vert V Bias})(1-p_{H\vert V Bias})\\ &=(1 - p_{H\vert N})(1-p_{H\vert V Bias})^2\end{aligned}$ |
-+--------------+--------------+--------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------+
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| Foul 1 | Foul 2 | Foul 3 | n   | Likelihood contribution                                                                                                                     |
++========+========+========+=====+=============================================================================================================================================+
+| H      | H      | H      | 3   | | $(p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2$                                              |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| H      | H      | V      | 2   | | $(p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2$                                              |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| H      | V      | H      | 3   | | $(p_{H\vert N})(p_{H\vert H Bias})(1 - p_{H\vert H Bias})$                                                                                |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| H      | V      | V      | 7   | **A**                                                                                                                                       |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | H      | H      | 7   | **B**                                                                                                                                       |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | H      | V      | 1   | | $(1 - p_{H\vert N})(p_{H\vert V Bias})(1 - p_{H\vert N}) = (1 - p_{H\vert N})^2(p_{H\vert V Bias})$                                       |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | V      | H      | 5   | | $(1 - p_{H\vert N})(1-p_{H\vert V Bias})(p_{H\vert V Bias})$                                                                              |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | V      | V      | 2   | | $\begin{aligned}&(1 - p_{H\vert N})(1-p_{H\vert V Bias})(1-p_{H\vert V Bias})\\ &=(1 - p_{H\vert N})(1-p_{H\vert V Bias})^2\end{aligned}$ |
++--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
 
-::: question
-Fill in **A** and **B.**
+::: footer
 :::
 
-## Likelihood function
+## Likelihood function {.midi}
 
 $$\begin{aligned}Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}) &= [(p_{H| N})^{25}(1 - p_{H|N})^{23}(p_{H| H Bias})^8 \\ &(1 - p_{H| H Bias})^{12}(p_{H| V Bias})^{13}(1-p_{H|V Bias})^9]\end{aligned}$$
 
@@ -597,7 +637,7 @@ $$\begin{aligned}Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}) &= [(p_{H| N})^{25}(
 
 $$\begin{aligned}\log (Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias})) &= 25 \log(p_{H| N}) + 23 \log(1 - p_{H|N}) \\ & + 8 \log(p_{H| H Bias}) + 12 \log(1 - p_{H| H Bias})\\ &+ 13 \log(p_{H| V Bias}) + 9 \log(1-p_{H|V Bias})\end{aligned}$$
 
----
+------------------------------------------------------------------------
 
 ::: question
 If fouls within a game are independent, how would you expect $\hat{p}_H$, $\hat{p}_{H\vert H Bias}$ and $\hat{p}_{H\vert V Bias}$ to compare?
@@ -611,22 +651,242 @@ c.  $\hat{p}_{H\vert V Bias}$ is greater than $\hat{p}_H$ and $\hat{p}_{H \vert 
 d.  They are all approximately equal.
 :::
 
-## UPDATE THE CHOICES!
+---
 
 ::: question
-If there is a tendency for referees to call a foul on the team that already has more fouls, how would you expect $\hat{p}_H$ and $\hat{p}_{H\vert H Bias}$ to compare?
+If there is a tendency for referees to call a foul on the team that already has more fouls, how would you expect $\hat{p}_H$, $\hat{p}_{H\vert H Bias}$ and $\hat{p}_{H\vert V Bias}$ to compare?
 
-a.  $\hat{p}_H$ is greater than $\hat{p}_{H\vert H Bias}$
+a.  $\hat{p}_H$ is greater than $\hat{p}_{H\vert H Bias}$ and $\hat{p}_{H \vert V Bias}$
 
-b.  $\hat{p}_{H\vert H Bias}$ is greater than $\hat{p}_H$
+b.  $\hat{p}_{H\vert H Bias}$ is greater than $\hat{p}_H$ and $\hat{p}_{H \vert V Bias}$
 
-c.  They are approximately equal.
+c.  $\hat{p}_{H\vert V Bias}$ is greater than $\hat{p}_H$ and $\hat{p}_{H \vert V Bias}$
+
+d.  They are all approximately equal.
+:::
+
+## MLEs for Model 2
+
+[Click here](03-model2-mle.html) for details on finding MLEs for Model2.
+
+# Using likelihoods to compare models
+
+```{r echo = F}
+lik1 <- function(ph) {
+ ph^46 * (1 - ph)^44
+}
+
+lik2 <- function(phn, phh, phv) {
+  phn^25 * (1 - phn)^23 * phh^8 * (1 - phh)^12 * phv^13 * (1 - phv)^9
+}
+```
+
+## Maximum likelihood estimates {.midi}
+
+The **maximum likelihood estimate (MLE)** is the value between 0 and 1 where we are most likely to see the observed data.
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+**Model 1 (Unconditional Model)**
+
+-   $\hat{p}_H = 46/90 = 0.511$
+:::
+
+::: {.column width="50%"}
+**Model 2 (Conditional Model)**
+
+-   $\hat{p}_{H|N} = 25 / 48 = 0.521$
+-   $\hat{p}_{H|H Bias} = 8 /20 = 0.4$
+-   $\hat{p}_{H|V Bias} = 13/ 22 = 0.591$
+:::
+:::
+
+-   What is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?
+-   Is there a tendency for the referees to call more fouls on the visiting team or home team?
+-   Is there a tendency for referees to call a foul on the team that already has more fouls?
+
+## Model comparisons
+
+-   Nested models
+
+-   Non-nested models
+
+# Comparing nested models
+
+## Nested Models {.midi}
+
+**Nested models**: Models such that the parameters of the reduced model are a subset of the parameters for a larger model
+
+Example:
+
+$$\begin{aligned}&\text{Model A: }y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\\
+&\text{Model B: }y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4 + \epsilon\end{aligned}$$
+
+. . .
+
+Model A is nested in Model B. We could use likelihoods to test whether it is useful to add $x_3$ and $x_4$ to the model.
+
+. . .
+
+$$\begin{aligned}&H_0: \beta_3 = \beta_4 = 0 \\ 
+&H_a: \text{ at least one }\beta_j \text{ is not equal to 0}\end{aligned}$$
+
+## Nested models {.midi}
+
+**Another way to think about nested models**: Parameters in larger model can be equated to get the simpler model or if some parameters can be set to constants
+
+**Example:**
+
+$$\begin{aligned}&\text{Model 1: }p_H \\
+&\text{Model 2: }p_{H| N}, p_{H| H Bias}, p_{H| V Bias}\end{aligned}$$
+
+. . .
+
+Model 1 is nested in Model 2. The parameters $p_{H| N}$, $p_{H|H Bias}$, and $p_{H |V Bias}$ can be set equal to $p_H$ to get Model 1.
+
+. . .
+
+$$\begin{aligned}&H_0: p_{H| N} = p_{H| H Bias} = p_{H| V Bias} = p_H \\
+&H_a: \text{At least one of }p_{H| N}, p_{H| H Bias}, p_{H| V Bias} \text{ differs from the others}\end{aligned}$$
+
+## Steps to compare models
+
+`r emo::ji("one")` Find the MLEs for each model.
+
+`r emo::ji("two")` Plug the MLEs into the log-likelihood function for each model to get the maximum value of the log-likelihood for each model.
+
+`r emo::ji("three")` Find the difference in the maximum log-likelihoods
+
+`r emo::ji("four")` Use the Likelihood Ratio Test to determine if the difference is statistically significant
+
+## Steps 1 - 2
+
+Find the MLEs for each model and plug them into the log-likelihood functions.
+
+::: columns
+::: {.column width="50%"}
+**Model 1:**
+
+-   $\hat{p}_H = 46/90 = 0.511$
+
+```{r}
+loglik1 <- function(ph){
+ log(ph^46 * (1 - ph)^44)
+}
+loglik1(46/90)
+```
+:::
+
+::: {.column width="50%"}
+**Model 2**
+
+-   $\hat{p}_{H|N} = 25 / 48 = 0.521$
+-   $\hat{p}_{H|H Bias} = 8 /20 = 0.4$
+-   $\hat{p}_{H|V Bias} = 13/ 22 = 0.591$
+
+```{r}
+loglik2 <- function(phn, phh, phv) {
+  log(phn^25 * (1 - phn)^23 * phh^8 * 
+        (1 - phh)^12 * phv^13 * (1 - phv)^9)
+}
+loglik2(25/48, 8/20, 13/22)
+```
+:::
+:::
+
+## Step 3
+
+Find the difference in the log-likelihoods
+
+```{r}
+(diff <- loglik2(25/48, 8/20, 13/22) - loglik1(46/90))
+```
+
+<br>
+
+. . .
+
+<center>**Is the difference in the maximum log-likelihoods statistically significant?**</center>
+
+## Likelihood Ratio Test {.midi}
+
+**Test statistic**
+
+$$\begin{aligned} LRT &= 2[\max\{\log(Lik(\text{larger model}))\} - \max\{\log(Lik(\text{reduced model}))\}]\\[10pt]
+&= 2\log\Bigg(\frac{\max\{(Lik(\text{larger model})\}}{\max\{(Lik(\text{reduced model})\}}\Bigg)\end{aligned}$$
+
+<br>
+
+. . .
+
+LRT follows a $\chi^2$ distribution where the degrees of freedom equal the difference in the number of parameters between the two models
+
+## Step 4
+
+```{r}
+(LRT <- 2 * (loglik2(25/48, 8/20, 13/22) - loglik1(46/90)))
+```
+
+. . .
+
+The test statistic follows a $\chi^2$ distribution with 2 degrees of freedom. Therefore, the p-value is $P(\chi^2 > LRT)$.
+
+```{r}
+pchisq(LRT, 2, lower.tail = FALSE)
+```
+
+. . .
+
+The p-value is very large, so we fail to reject $H_0$. We do not have convincing evidence that the conditional model is an improvement over the unconditional model. Therefore, we can stick with the unconditional model.
+
+# Comparing non-nested models
+
+## Comparing non-nested models {.midi}
+
+::: columns
+::: {.column width="50%"}
+AIC = -2(max logLik) + 2p
+
+```{r}
+(Model1_AIC <- 2 * loglik1(46/90) + 2 * 1)
+(Model2_AIC <-2 * loglik2(25/48, 8/20, 13/22) + 2 * 3)
+```
+:::
+
+::: {.column width="50%"}
+
+BIC = -2(max logLik) + plog(n)
+
+```{r}
+(Model1_BIC <- 2 * loglik1(46/90) + 1 * log(30))
+(Model2_BIC <-2 * loglik2(25/48, 8/20, 13/22) + 3 * log(30))
+```
+:::
+:::
+
+<br>
+
+. . .
+
+**Choose Model 1, the unconditional model, based on AIC and BIC**
+
+## Looking ahead {.midi}
+
+::: incremental
+-   Likelihoods help us answer the question of how likely we are to observe the data given different parameters
+
+-   In this example, we did not consider covariates, so in practice the parameters we want to estimate will look more similar to this
+
+$$p_H = \frac{e^{\beta_0 + \beta_1x_1 + \dots + \beta_px_p}}{1 + e^{\beta_0 + \beta_1x_1 + \dots + \beta_px_p}}$$
+
+-   Finding the MLE becomes much more complex and numerical methods may be required.
+    -   We will primarily rely on software to find the MLE, but the conceptual ideas will be the same
 :::
 
 ## Next time
 
--   Using likelihoods to compare models
-
--   Chapter 3: Distribution theory
+-   Poisson regression
 
 ## References

@@ -567,7 +567,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="02-mlr-review_files/figure-html/unnamed-chunk-2-1.png" style="width:100.0%"></p>
+<p><img data-src="02-mlr-review_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:100.0%"></p>
 <figcaption>Modified from Figure 1.1. in BMLR</figcaption>
 </figure>
 </div>
@@ -731,7 +731,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <section id="univariate-eda" class="slide level2">
 <h2>Univariate EDA</h2>
 
-<img data-src="02-mlr-review_files/figure-html/univar-eda-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="02-mlr-review_files/figure-revealjs/univar-eda-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="univariate-eda-code" class="slide level2">
 <h2>Univariate EDA code</h2>
 <div class="cell" data-layout-align="center">
@@ -754,7 +754,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <section id="bivariate-eda" class="slide level2">
 <h2>Bivariate EDA</h2>
 
-<img data-src="02-mlr-review_files/figure-html/bivar-eda-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="02-mlr-review_files/figure-revealjs/bivar-eda-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="bivariate-eda-code" class="slide level2">
 <h2>Bivariate EDA code</h2>
 <div class="cell" data-layout-align="center">
@@ -778,7 +778,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <h2>Scatterplot matrix</h2>
 <p>A <strong>scatterplot matrix</strong> helps quickly visualize relationships between many variable pairs. They are particularly useful to identify potentially correlated predictors.</p>
 
-<img data-src="02-mlr-review_files/figure-html/scatterplot-matrix-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="02-mlr-review_files/figure-revealjs/scatterplot-matrix-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="scatterplot-matrix-code" class="slide level2">
 <h2>Scatterplot matrix code</h2>
 <p>Create using the <code>ggpairs()</code> function in the GGally package.</p>
@@ -792,7 +792,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <h2>Multivariate EDA</h2>
 <p>Plot the relationship between the response and a predictor based on levels of another predictor to assess potential interactions.</p>
 
-<img data-src="02-mlr-review_files/figure-html/multivar-eda-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="02-mlr-review_files/figure-revealjs/multivar-eda-plot-1.png" style="width:90.0%" class="r-stretch quarto-figure-center"></section>
 <section id="multivariate-eda-code" class="slide level2">
 <h2>Multivariate EDA code</h2>
 <div class="cell" data-layout-align="center">
@@ -836,6 +836,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <div class="appex">
 <p>📋 <a href="../ae/ae-02-mlr-review.html">sta310-sp24.netlify.app/ae/ae-02-mlr-review</a></p>
 </div>
+<!--Stopped here in class in Spring 2024-->
 </section>
 
 <section>
@@ -1006,7 +1007,7 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
-Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in r</em>. CRC Press.
+Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple linear regression: applied generalized linear models and multilevel models in R</span></em>. CRC Press.
 </div>
 <div id="ref-stroup2012generalized" class="csl-entry" role="listitem">
 Stroup, Walter W. 2012. <em>Generalized Linear Mixed Models: Modern Concepts, Methods and Applications</em>. CRC press.
@@ -1229,6 +1230,44 @@ Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for 
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

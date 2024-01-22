@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 310 - Spring 2024 - HW 01: Multiple linear regression</title>
+<title>STA 310 - Spring 2024 - Finding the MLEs for Model 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +64,6 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../hw/hw-02.html" rel="next">
-<link href="../links.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -95,7 +108,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hw/hw-01.html">Homework</a></li><li class="breadcrumb-item"><a href="../hw/hw-01.html">HW 01</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Finding the MLEs for Model 2</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -174,16 +187,16 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Homework</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../hw/hw-01.html" class="sidebar-item-text sidebar-link active">
+  <a href="../hw/hw-01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 01</span></a>
   </div>
 </li>
@@ -264,30 +277,18 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#exercises1" id="toc-exercises1" class="nav-link" data-scroll-target="#exercises1">Exercises</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
-  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
-  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
-  </ul></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
-  <ul class="collapse">
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
+  <li><a href="#finding-mles-using-graphs" id="toc-finding-mles-using-graphs" class="nav-link active" data-scroll-target="#finding-mles-using-graphs">Finding MLEs using graphs</a></li>
+  <li><a href="#finding-mles-using-calculus" id="toc-finding-mles-using-calculus" class="nav-link" data-scroll-target="#finding-mles-using-calculus">Finding MLEs using calculus</a></li>
+  <li><a href="#finding-the-mles-using-r" id="toc-finding-the-mles-using-r" class="nav-link" data-scroll-target="#finding-the-mles-using-r">Finding the MLEs using R</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-01.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/slides/03-model2-mle.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW 01: Multiple linear regression</h1>
+<h1 class="title">Finding the MLEs for Model 2</h1>
 </div>
 
 
@@ -302,233 +303,105 @@ div.csl-indent {
 
 </header>
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>This document covers multiple ways to find the MLE for Model 2 the conditional model from <a href="../04-likelihoods/04-likelihoods.html">Lecture 04: Using likelihoods</a> and <a href="05-compare-models.html">Lecture 05: Using likelihoods to compare models</a>. See Lecture 04 for more details about the set up of the model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>refs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/04-refs.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This assignment is due on Wednesday, January 24 at 11:59pm on GitHub.</p>
-</div>
-</div>
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<ul>
-<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.</li>
-<li>Be sure all analysis code is displayed in the rendered pdf.</li>
-<li>If you are fitting a model, display the model output in a neatly formatted table. (The <code>tidy</code> and <code>kable</code> functions can help!)</li>
-<li>If you are creating a plot, use clear and informative labels and titles.</li>
-<li>Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
-<li>When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.</li>
-</ul>
+<p>The likelihood is</p>
+<p><span class="math display">\[\begin{aligned}Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}) &amp;= [(p_{H| N})^{25}(1 - p_{H|N})^{23}(p_{H| H Bias})^8 \\ &amp;(1 - p_{H| H Bias})^{12}(p_{H| V Bias})^{13}(1-p_{H|V Bias})^9]\end{aligned}\]</span></p>
+<p>The log-likelihood is</p>
+<p><span class="math display">\[\begin{aligned}\log (Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias})) &amp;= 25 \log(p_{H| N}) + 23 \log(1 - p_{H|N}) \\ &amp; + 8 \log(p_{H| H Bias}) + 12 \log(1 - p_{H| H Bias})\\ &amp;+ 13 \log(p_{H| V Bias}) + 9 \log(1-p_{H|V Bias})\end{aligned}\]</span></p>
+<p>We would like to find the MLEs for <span class="math inline">\(p_{H| N}, p_{H|H Bias}, \text{ and }p_{H |V Bias}\)</span>.</p>
+<section id="finding-mles-using-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="finding-mles-using-graphs">Finding MLEs using graphs</h2>
+<p>We need to find the MLEs for three parameters, therefore we would need to visualize a 4-dimensional object to find the MLEs from a graph. Given the difficulty of this task and the lack of precision in the estimates from this approach, we should rely on other approaches to find the MLEs in this instance.</p>
 </section>
-<section id="exercises1" class="level1">
-<h1>Exercises<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
-<section id="exercise-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<!--Adapted from BMLR Ch 1 Ex 1-->
-<p>Consider the following scenario:</p>
-<blockquote class="blockquote">
-<p>Researchers record the number of cricket chirps per minute and temperature during that time. They use linear regression to investigate whether the number of chirps varies with temperature.</p>
-</blockquote>
-<ol type="a">
-<li><p>Identify the response and predictor variable.</p></li>
-<li><p>Write the complete specification of the statistical model.</p></li>
-<li><p>Write the assumptions for linear regression in the context of the problem.</p></li>
-</ol>
+<section id="finding-mles-using-calculus" class="level2">
+<h2 class="anchored" data-anchor-id="finding-mles-using-calculus">Finding MLEs using calculus</h2>
+<p>We can find the MLE for each parameter using the partial derivative of the log-likelihood with respect to each parameter.</p>
+<p>To find the MLE for <span class="math inline">\(p_{H| N}\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}\frac{\partial \log(Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}))}{\partial p_{H|N}} &amp;= \frac{25}{p_{H|N}} - \frac{23}{1 - p_{H|N}} = 0\\[5pt]
+&amp;\Rightarrow \frac{25}{p_{H|N}} = \frac{23}{1 - p_{H|N}} \\[5pt]
+&amp;\Rightarrow 23p_{H|N} = 25(1 - p_{H|N}) \\[5pt]
+&amp;\Rightarrow 48p_{H|N} = 25 \\[5pt]
+&amp;\Rightarrow \hat{p}_{H|N} = \frac{25}{48} = 0.521\end{aligned}\]</span></p>
+<p>We can use a similar approach to find the MLEs for <span class="math inline">\(p_{H|H Bias}\)</span> and <span class="math inline">\(p_{H|V Bias}\)</span>.</p>
+<p><span class="math display">\[\hat{p}_{H|H Bias} = \frac{8}{20} = 0.4\]</span> <span class="math display">\[\hat{p}_{H|V Bias} = \frac{13}{22} = 0.591\]</span></p>
 </section>
-<section id="exercise-2" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<!--Adapted from BMLR Ch 1 Ex 2-->
-<p>Consider the following scenario:</p>
-<blockquote class="blockquote">
-<p>A randomized clinical trial investigated postnatal depression and the use of an estrogen patch. Patients were randomly assigned to either use the patch or not. Depression scores were recorded on 6 different visits.</p>
-</blockquote>
-<ol type="a">
-<li><p>Identify the response and predictor variables.</p></li>
-<li><p>Identify which model assumption(s) are violated. Briefly explain your choice.</p></li>
-</ol>
-</section>
-<section id="exercise-3" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
-<!--Adapted from Ch 1 Ex 3-->
-<p>Use the <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#review-of-multiple-linear-regression">Kentucky Derby case study</a> in Chapter 1 of <em>Beyond Multiple Linear Regression.</em></p>
-<ol type="a">
-<li>Consider <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#multiple-linear-regression-with-two-predictors">Equation (1.3)</a> in Section 1.6.3. Show why we have to be sure to say “holding year constant”, “after adjusting for year”, or an equivalent statement, when interpreting <span class="math inline">\(\beta_2\)</span>.</li>
-<li>Briefly explain why there is no error (random variation) term <span class="math inline">\(\epsilon_i\)</span> in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#multiple-linear-regression-with-an-interaction-term">Equation (1.4)</a> in Section 1.6.6?</li>
-</ol>
-</section>
-<section id="exercise-4" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
-<!--Adapted from Ch 1 Guided Ex 3-->
-<p>The data set <code>kingCountyHouses.csv</code> in the <code>data</code> folder contains data on over 20,000 houses sold in King County, Washington (<span class="citation" data-cites="kingcounty">Kaggle (<a href="#ref-kingcounty" role="doc-biblioref">2018</a>)</span>).</p>
-<p>We will use the following variables:</p>
-<ul>
-<li><code>price</code> = selling price of the house</li>
-<li><code>sqft</code> = interior square footage</li>
-</ul>
-<p><em>See Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.</em></p>
-<ol type="a">
-<li><p>Fit a linear regression model with <code>price</code> as the response variable and <code>sqft</code> as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when <code>sqft</code> increases by 100.</p></li>
-<li><p>Fit Model 2, where <code>logprice</code> (the natural log of price) is now the response variable and <code>sqft</code> is still the predictor variable. How is the <code>logprice</code> expected to change when <code>sqft</code> increases by 100?</p></li>
-<li><p>Recall that <span class="math inline">\(log(a) - log(b) = log(\frac{a}{b})\)</span>. Use this to derive how the <code>price</code> is expected to change when <code>sqft</code> increases by 100 based on Model 2.</p></li>
-<li><p>Fit Model 3, where <code>price</code> and <code>logsqft</code> (the natural log of sqft) are the response and predictor variables, respectively. How is the price expected to change when sqft increases by 10%? <em>As a hint, this is the same as multiplying sqft by 1.10.</em></p></li>
-</ol>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="finding-the-mles-using-r" class="level2">
+<h2 class="anchored" data-anchor-id="finding-the-mles-using-r">Finding the MLEs using R</h2>
+<p>We can write a function and do a grid search to find the values that maximize the log-likelihood.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>maxloglik<span class="ot">&lt;-</span> <span class="cf">function</span>(nvals){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#nvals specifies the number of values</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  phn <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> nvals)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  phh <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> nvals)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  phv <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> nvals)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  loglik <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(phn, phh, phv) </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(loglik) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"phn"</span>, <span class="st">"phh"</span>, <span class="st">"phv"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  loglik <span class="ot">&lt;-</span> loglik <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">loglik  =</span> <span class="fu">log</span>(phn<span class="sc">^</span><span class="dv">25</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phn)<span class="sc">^</span><span class="dv">23</span> <span class="sc">*</span> phh<span class="sc">^</span><span class="dv">8</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phh)<span class="sc">^</span><span class="dv">12</span> <span class="sc">*</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                           phv<span class="sc">^</span><span class="dv">13</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phv)<span class="sc">^</span><span class="dv">9</span>))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  loglik <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(loglik)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">maxloglik</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        phn       phh       phv    loglik
+1 0.5252525 0.4040404 0.5858586 -61.57691</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p><a href="https://github.com/STA210-Sp19/supplemental-notes/blob/master/log-transformations.pdf">Click here</a> for notes on interpreting model effects for log-transformed response and/or predictor variables.</p>
+<p>Depending on the number of parameters, it may be hard to conduct a granular enough search to find the exact values of the MLEs. Therefore, one could use the function above to conduct a crude search to find starting values for R’s <code>optim</code> function. The function <code>optim</code> differs from <code>optimize</code> in that it can optimize over multiple parameter values (The <code>optimize</code> function can only optimize over a single parameter value).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate log-likelihood that will be used in the optim function</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="cf">function</span>(params){</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  phn <span class="ot">&lt;-</span> params[<span class="dv">1</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  phh <span class="ot">&lt;-</span> params[<span class="dv">2</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  phv <span class="ot">&lt;-</span> params[<span class="dv">3</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(phn<span class="sc">^</span><span class="dv">25</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phn)<span class="sc">^</span><span class="dv">23</span> <span class="sc">*</span> phh<span class="sc">^</span><span class="dv">8</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phh)<span class="sc">^</span><span class="dv">12</span> <span class="sc">*</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                           phv<span class="sc">^</span><span class="dv">13</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phv)<span class="sc">^</span><span class="dv">9</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use manual search to get starting values </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>start_vals <span class="ot">&lt;-</span> <span class="fu">maxloglik</span>(<span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>loglik)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="exercise-5" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
-<p>The goal of this analysis is to use characteristics of 593 colleges and universities in the United States to understand variability in the early career pay, defined as the median salary for alumni with 0 - 5 years of experience. The data was obtained from <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-10/readme.md">TidyTuesday College tuition, diversity, and pay</a>, and was originaly collected from the <a href="https://www.payscale.com/college-salary-report/bachelors">PayScale College Salary Report</a>.</p>
-<p>The data set is located in <code>college-data.csv</code> in the <code>data</code> folder. We will focus on the following variables:</p>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 9%">
-<col style="width: 73%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">variable</th>
-<th style="text-align: left;">class</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">name</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">Name of school</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">state_name</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">state name</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">type</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">Public or private</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">early_career_pay</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">Median salary for alumni with 0 - 5 years experience (in US dollars)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stem_percent</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">Percent of degrees awarded in science, technology, engineering, or math subjects</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">out_of_state_total</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">Total cost for in-state residents in USD (sum of room &amp; board + out of state tuition)</td>
-</tr>
-</tbody>
-</table>
-<ol type="a">
-<li>Visualize the distribution of the response variable <code>early_career_pay</code>. Write 1 - 2 observations from the plot.</li>
-<li>Visualize the relationship between (i) <code>early_career_pay</code> and <code>type</code> and (ii) <code>early_career_pay</code> and <code>stem_percent</code>. Write an observation from each plot.</li>
-<li>Below is the specification of the statistical model for this analysis. Fit the model and neatly display the results using 3 digits. Display the 95% confidence interval for the coefficients.</li>
-</ol>
-<p><span class="math display">\[
-\begin{align}
-early\_career\_pay_{i} = \beta_0 &amp;+ \beta_1~out\_of\_state\_total_{i} \\ &amp;+ \beta_2 ~ type_i\\&amp;+ \beta_3 ~ stem\_percent_{i}\\ &amp;+ \beta_4 ~ type_i * stem\_percent_{i} \\ &amp;+ \epsilon_{i}, \hspace{5mm} \text{where } \epsilon_i \sim N(0, \sigma^2)
-\end{align}
-\]</span></p>
-<ol start="4" type="a">
-<li>How many degrees of freedom are there in the estimate of the regression standard error <span class="math inline">\(\sigma\)</span> for the model from part c?</li>
-<li>What is the 95% confidence interval for the amount in which the intercept for public institutions differs from private institutions?</li>
-</ol>
-</section>
-<section id="exercise-6" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
-<p>Use the analysis from the previous exercise to write a paragraph (~ 3 - 5 sentences) describing the differences in early career pay based on the institution characteristics. <em>The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit).</em></p>
-</section>
-</section>
-<section id="submission" class="level1">
-<h1>Submission</h1>
-<p>To submit the assignment, push your final changes to your GitHub repo. Then, you’re done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.</p>
-</section>
-<section id="grading" class="level1">
-<h1>Grading</h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th><strong>Total</strong></th>
-<th style="text-align: center;"><strong>50</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ex 1</td>
-<td style="text-align: center;">8</td>
-</tr>
-<tr class="even">
-<td>Ex 2</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="odd">
-<td>Ex 3</td>
-<td style="text-align: center;">7</td>
-</tr>
-<tr class="even">
-<td>Ex 4</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="odd">
-<td>Ex 5</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="even">
-<td>Ex 6</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="odd">
-<td>Workflow &amp; formatting</td>
-<td style="text-align: center;">3</td>
-</tr>
-</tbody>
-</table>
-<p>The “Workflow &amp; formatting” grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.</p>
-<section id="references" class="level2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use optim function in R to find the values to maximize the log-likelihood</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#set fnscale = -1 to maximize (the default is minimize)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">optim</span>(<span class="at">par =</span> start_vals, <span class="at">fn =</span> loglik, <span class="at">control=</span><span class="fu">list</span>(<span class="at">fnscale=</span><span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$par
+      phn       phh       phv 
+0.5208272 0.4000361 0.5909793 
 
+$value
+[1] -61.57319
 
+$counts
+function gradient 
+      66       NA 
+
+$convergence
+[1] 0
+
+$message
+NULL</code></pre>
+</div>
+</div>
 
 
 </section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-kingcounty" class="csl-entry" role="listitem">
-Kaggle. 2018. <span>“House Sales in King County, USA.”</span> https://www.kaggle.com/harlfoxem/housesalesprediction/home.
-</div>
-<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
-Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in r</em>. CRC Press.
-</div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Exercises 1 - 4 are adapted from exercises in Section 1.8 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#ref-roback2021beyond" role="doc-biblioref">2021</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -762,18 +635,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../links.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Useful links</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../hw/hw-02.html" class="pagination-link">
-        <span class="nav-page-text">HW 02</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

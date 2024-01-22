@@ -217,6 +217,13 @@
     "text": "Candidate models\nModel 1: Main effects model (year, condition, starters)\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\n\n\nModel 2: Main effects + \\(year^2\\), the quadratic effect of year\n\nmodel2 &lt;- lm(speed ~ starters + year + I(year^2) + condition,\n             data = derby)\n\n\n\n\nModel 3: Main effects + interaction between year and condition\n\nmodel3 &lt;- lm(speed ~ starters + year + condition + year * condition, \n             data = derby)"
   },
   {
+    "objectID": "slides/03-likelihoods.html#inference-for-regression",
+    "href": "slides/03-likelihoods.html#inference-for-regression",
+    "title": "Inference review +  using likelihoods",
+    "section": "Inference for regression",
+    "text": "Inference for regression\nUse statistical inference to\n\nEvaluate if predictors are statistically significant (not necessarily practically significant!)\nQuantify uncertainty in coefficient estimates\nQuantify uncertainty in model predictions\n\nIf LINE assumptions are met, we can use inferential methods based on mathematical models. If at least linearity and independence are met, we can use simulation-based inference methods."
+  },
+  {
     "objectID": "slides/03-likelihoods.html#inference-for-regression-1",
     "href": "slides/03-likelihoods.html#inference-for-regression-1",
     "title": "Inference review +  using likelihoods",
@@ -277,7 +284,7 @@
     "href": "slides/03-likelihoods.html#probability-function-vs.-likelihood",
     "title": "Inference review +  using likelihoods",
     "section": "Probability function vs. likelihood",
-    "text": "Probability function vs. likelihood\n\nProbability function: Fixed parameter value(s) + input possible outcomes \\(\\Rightarrow\\) probability of seeing the different outcomes given the parameter value(s)\nLikelihood: Fixed data + input possible parameter values \\(\\Rightarrow\\) probability of seeing the fixed data for each parameter value"
+    "text": "Probability function vs. likelihood\n\n\nProbability function: Fixed parameter value(s) + input possible outcomes \\(\\Rightarrow\\) probability of seeing the different outcomes given the parameter value(s)\nLikelihood: Fixed data + input possible parameter values \\(\\Rightarrow\\) probability of seeing the fixed data for each parameter value"
   },
   {
     "objectID": "slides/03-likelihoods.html#data-fouls-in-college-basketball-games",
@@ -389,7 +396,7 @@
     "href": "slides/03-likelihoods.html#model-2-likelihood-contributions",
     "title": "Inference review +  using likelihoods",
     "section": "Model 2: Likelihood contributions",
-    "text": "Model 2: Likelihood contributions\n\n\n\n\n\n\n\n\n\n\nFoul 1\nFoul 2\nFoul 3\nn\nLikelihood contribution\n\n\n\n\nH\nH\nH\n3\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(p_{H\\vert H Bias}) = (p_{H\\vert N})(p_{H\\vert H Bias})^2\\)\n\n\nH\nH\nV\n2\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(p_{H\\vert H Bias}) = (p_{H\\vert N})(p_{H\\vert H Bias})^2\\)\n\n\nH\nV\nH\n3\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(1 - p_{H\\vert H Bias})\\)\n\n\nH\nV\nV\n7\nA\n\n\nV\nH\nH\n7\nB\n\n\nV\nH\nV\n1\n\\((1 - p_{H\\vert N})(p_{H\\vert V Bias})(1 - p_{H\\vert N}) = (1 - p_{H\\vert N})^2(p_{H\\vert V Bias})\\)\n\n\nV\nV\nH\n5\n\\((1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(p_{H\\vert V Bias})\\)\n\n\nV\nV\nV\n2\n\\(\\begin{aligned}&(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(1-p_{H\\vert V Bias})\\\\ &=(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})^2\\end{aligned}\\)"
+    "text": "Model 2: Likelihood contributions\n\n\n\n\n\n\n\n\n\n\nFoul 1\nFoul 2\nFoul 3\nn\nLikelihood contribution\n\n\n\n\nH\nH\nH\n3\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(p_{H\\vert H Bias}) = (p_{H\\vert N})(p_{H\\vert H Bias})^2\\)\n\n\nH\nH\nV\n2\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(1-p_{H\\vert H Bias})\\)\n\n\nH\nV\nH\n3\n\\((p_{H\\vert N})(1 - p_{H \\vert HBias})(p_{H \\vert N}) = (p_{H \\vert N})^2(1 - p_{H \\vert HBias})\\)\n\n\nH\nV\nV\n7\nA\n\n\nV\nH\nH\n7\nB\n\n\nV\nH\nV\n1\n\\((1 - p_{H\\vert N})(p_{H\\vert V Bias})(1 - p_{H\\vert N}) = (1 - p_{H\\vert N})^2(p_{H\\vert V Bias})\\)\n\n\nV\nV\nH\n5\n\\((1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(p_{H\\vert V Bias})\\)\n\n\nV\nV\nV\n2\n\\(\\begin{aligned}&(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(1-p_{H\\vert V Bias})\\\\ &=(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})^2\\end{aligned}\\)"
   },
   {
     "objectID": "slides/03-likelihoods.html#likelihood-function",
@@ -410,7 +417,7 @@
     "href": "slides/03-likelihoods.html#maximum-likelihood-estimates",
     "title": "Inference review +  using likelihoods",
     "section": "Maximum likelihood estimates",
-    "text": "Maximum likelihood estimates\nThe maximum likelihood estimate (MLE) is the value between 0 and 1 where we are most likely to see the observed data.\n\n\n\nModel 1 (Unconditional Model)\n\n\\(\\hat{p}_H = 46/90 = 0.511\\)\n\n\nModel 2 (Conditional Model)\n\n\\(\\hat{p}_{H|N} = 25 / 48 = 0.521\\)\n\\(\\hat{p}_{H|H Bias} = 8 /20 = 0.4\\)\n\\(\\hat{p}_{H|V Bias} = 13/ 22 = 0.591\\)\n\n\n\n\nWhat is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?\nIs there a tendency for the referees to call more fouls on the visiting team or home team?\nIs there a tendency for referees to call a foul on the team that already has more fouls?"
+    "text": "Maximum likelihood estimates\nThe maximum likelihood estimate (MLE) is the value between 0 and 1 where we are most likely to see the observed data.\n\n\n\nModel 1 (Unconditional Model)\n\n\\(\\hat{p}_H = 46/90 = 0.511\\)\n\n\nModel 2 (Conditional Model)\n\n\\(\\hat{p}_{H|N} = 25 / 48 = 0.521\\)\n\\(\\hat{p}_{H|H Bias} = 8 /20 = 0.4\\)\n\\(\\hat{p}_{H|V Bias} = 13/ 22 = 0.591\\)\n\n\n\n\n\n\nWhat is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?\nIs there a tendency for the referees to call more fouls on the visiting team or home team?\nIs there a tendency for referees to call a foul on the team that already has more fouls?"
   },
   {
     "objectID": "slides/03-likelihoods.html#model-comparisons",
@@ -452,7 +459,7 @@
     "href": "slides/03-likelihoods.html#step-3",
     "title": "Inference review +  using likelihoods",
     "section": "Step 3",
-    "text": "Step 3\nFind the difference in the log-likelihoods\n\n(diff &lt;- loglik2(25/48, 8/20, 13/22) - loglik1(46/90))\n\n[1] 0.7878318\n\n\n\n\n\nIs the difference in the maximum log-likelihoods statistically significant?"
+    "text": "Step 3\nFind the difference in the log-likelihoods\n\\[\n\\log(Lik(Model 2)) - \\log(Lik(Model1))\n\\]\n\n(diff &lt;- loglik2(25/48, 8/20, 13/22) - loglik1(46/90))\n\n[1] 0.7878318\n\n\n\n\n\nIs the difference in the maximum log-likelihoods statistically significant?"
   },
   {
     "objectID": "slides/03-likelihoods.html#likelihood-ratio-test",
@@ -480,7 +487,7 @@
     "href": "slides/03-likelihoods.html#looking-ahead",
     "title": "Inference review +  using likelihoods",
     "section": "Looking ahead",
-    "text": "Looking ahead\n\n\nLikelihoods help us answer the question of how likely we are to observe the data given different parameters\nIn this example, we did not consider covariates, so in practice the parameters we want to estimate will look more similar to this\n\n\\[p_H = \\frac{e^{\\beta_0 + \\beta_1x_1 + \\dots + \\beta_px_p}}{1 + e^{\\beta_0 + \\beta_1x_1 + \\dots + \\beta_px_p}}\\]\n\nFinding the MLE becomes much more complex and numerical methods may be required.\n\nWe will primarily rely on software to find the MLE, but the conceptual ideas will be the same"
+    "text": "Looking ahead\n\nLikelihoods help us answer the question of how likely we are to observe the data given different parameters\nIn this example, we did not consider covariates, so in practice the parameters we want to estimate will look more similar to this\n\n\\[p_H = \\frac{e^{\\beta_0 + \\beta_1x_1 + \\dots + \\beta_px_p}}{1 + e^{\\beta_0 + \\beta_1x_1 + \\dots + \\beta_px_p}}\\]\n\nFinding the MLE becomes much more complex and numerical methods may be required.\n\nWe will primarily rely on software to find the MLE, but the conceptual ideas will be the same"
   },
   {
     "objectID": "slides/03-likelihoods.html#next-time",

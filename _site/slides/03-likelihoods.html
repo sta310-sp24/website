@@ -571,10 +571,9 @@ Prof.&nbsp;Maria Tackett
 <span id="cb6-2"><a href="#cb6-2"></a>             <span class="at">data =</span> derby)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="inference-for-regression" class="title-slide slide level1 center">
-<h1>Inference for regression</h1>
+</section>
+<section id="inference-for-regression" class="slide level2">
+<h2>Inference for regression</h2>
 <p>Use statistical inference to</p>
 <ul>
 <li><p>Evaluate if predictors are statistically significant (not necessarily practically significant!)</p></li>
@@ -747,10 +746,12 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </section>
 <section id="probability-function-vs.-likelihood" class="slide level2 incremental">
 <h2>Probability function vs.&nbsp;likelihood</h2>
+<div>
 <ul>
-<li><p><strong>Probability function:</strong> Fixed parameter value(s) + input possible outcomes <span class="math inline">\(\Rightarrow\)</span> probability of seeing the different outcomes given the parameter value(s)</p></li>
-<li><p><strong>Likelihood:</strong> Fixed data + input possible parameter values <span class="math inline">\(\Rightarrow\)</span> probability of seeing the fixed data for each parameter value</p></li>
+<li class="fragment"><p><strong>Probability function:</strong> Fixed parameter value(s) + input possible outcomes <span class="math inline">\(\Rightarrow\)</span> probability of seeing the different outcomes given the parameter value(s)</p></li>
+<li class="fragment"><p><strong>Likelihood:</strong> Fixed data + input possible parameter values <span class="math inline">\(\Rightarrow\)</span> probability of seeing the fixed data for each parameter value</p></li>
 </ul>
+</div>
 </section>
 <section id="data-fouls-in-college-basketball-games" class="slide level2 midi">
 <h2>Data: Fouls in college basketball games</h2>
@@ -1017,7 +1018,7 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_af6f1e82" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_7fe7645e" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1062,7 +1063,7 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <section class="slide level2">
 
 <div class="question">
-<p>What is your best guess for the MLE, $\hat{p}_H$?</p>
+<p>What is your best guess for the MLE, <span class="math inline">\(\hat{p}_H\)</span>?</p>
 <ol type="a">
 <li>0.489</li>
 <li>0.500</li>
@@ -1197,8 +1198,8 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <col style="width: 5%">
 <col style="width: 5%">
 <col style="width: 5%">
-<col style="width: 3%">
-<col style="width: 79%">
+<col style="width: 2%">
+<col style="width: 80%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1222,14 +1223,14 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <td>H</td>
 <td>V</td>
 <td>2</td>
-<td><p><span class="math inline">\((p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2\)</span></p></td>
+<td><p><span class="math inline">\((p_{H\vert N})(p_{H\vert H Bias})(1-p_{H\vert H Bias})\)</span></p></td>
 </tr>
 <tr class="odd">
 <td>H</td>
 <td>V</td>
 <td>H</td>
 <td>3</td>
-<td><p><span class="math inline">\((p_{H\vert N})(p_{H\vert H Bias})(1 - p_{H\vert H Bias})\)</span></p></td>
+<td><span class="math inline">\((p_{H\vert N})(1 - p_{H \vert HBias})(p_{H \vert N}) = (p_{H \vert N})^2(1 - p_{H \vert HBias})\)</span></td>
 </tr>
 <tr class="even">
 <td>H</td>
@@ -1293,18 +1294,6 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </ol>
 </div>
 </section>
-<section class="slide level2">
-
-<div class="question">
-<p>If there is a tendency for referees to call a foul on the team that already has more fouls, how would you expect <span class="math inline">\(\hat{p}_H\)</span>, <span class="math inline">\(\hat{p}_{H\vert H Bias}\)</span> and <span class="math inline">\(\hat{p}_{H\vert V Bias}\)</span> to compare?</p>
-<ol type="a">
-<li><p><span class="math inline">\(\hat{p}_H\)</span> is greater than <span class="math inline">\(\hat{p}_{H\vert H Bias}\)</span> and <span class="math inline">\(\hat{p}_{H \vert V Bias}\)</span></p></li>
-<li><p><span class="math inline">\(\hat{p}_{H\vert H Bias}\)</span> is greater than <span class="math inline">\(\hat{p}_H\)</span> and <span class="math inline">\(\hat{p}_{H \vert V Bias}\)</span></p></li>
-<li><p><span class="math inline">\(\hat{p}_{H\vert V Bias}\)</span> is greater than <span class="math inline">\(\hat{p}_H\)</span> and <span class="math inline">\(\hat{p}_{H \vert V Bias}\)</span></p></li>
-<li><p>They are all approximately equal.</p></li>
-</ol>
-</div>
-</section>
 <section id="mles-for-model-2" class="slide level2">
 <h2>MLEs for Model 2</h2>
 <p><a href="03-model2-mle.html">Click here</a> for details on finding MLEs for Model2.</p>
@@ -1333,6 +1322,8 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </ul>
 </div>
 </div>
+</div>
+<div class="fragment">
 <ul>
 <li>What is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?</li>
 <li>Is there a tendency for the referees to call more fouls on the visiting team or home team?</li>
@@ -1428,6 +1419,9 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <section id="step-3" class="slide level2">
 <h2>Step 3</h2>
 <p>Find the difference in the log-likelihoods</p>
+<p><span class="math display">\[
+\log(Lik(Model 2)) - \log(Lik(Model1))
+\]</span></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>(diff <span class="ot">&lt;-</span> <span class="fu">loglik2</span>(<span class="dv">25</span><span class="sc">/</span><span class="dv">48</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">20</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">22</span>) <span class="sc">-</span> <span class="fu">loglik1</span>(<span class="dv">46</span><span class="sc">/</span><span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1513,19 +1507,17 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </section>
 <section id="looking-ahead" class="slide level2 midi">
 <h2>Looking ahead</h2>
-<div>
 <ul>
-<li class="fragment"><p>Likelihoods help us answer the question of how likely we are to observe the data given different parameters</p></li>
-<li class="fragment"><p>In this example, we did not consider covariates, so in practice the parameters we want to estimate will look more similar to this</p></li>
+<li><p>Likelihoods help us answer the question of how likely we are to observe the data given different parameters</p></li>
+<li><p>In this example, we did not consider covariates, so in practice the parameters we want to estimate will look more similar to this</p></li>
 </ul>
 <p><span class="math display">\[p_H = \frac{e^{\beta_0 + \beta_1x_1 + \dots + \beta_px_p}}{1 + e^{\beta_0 + \beta_1x_1 + \dots + \beta_px_p}}\]</span></p>
 <ul>
-<li class="fragment">Finding the MLE becomes much more complex and numerical methods may be required.
+<li>Finding the MLE becomes much more complex and numerical methods may be required.
 <ul>
-<li class="fragment">We will primarily rely on software to find the MLE, but the conceptual ideas will be the same</li>
+<li>We will primarily rely on software to find the MLE, but the conceptual ideas will be the same</li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next time</h2>

@@ -137,7 +137,7 @@ model3 <- lm(speed ~ starters + year + condition + year * condition,
              data = derby)
 ```
 
-# Inference for regression
+## Inference for regression
 
 Use statistical inference to
 
@@ -300,9 +300,11 @@ A **likelihood** is a function that tells us how likely we are to observe our da
 
 ## Probability function vs. likelihood {.incremental}
 
+::: incremental
 -   **Probability function:** Fixed parameter value(s) + input possible outcomes $\Rightarrow$ probability of seeing the different outcomes given the parameter value(s)
 
 -   **Likelihood:** Fixed data + input possible parameter values $\Rightarrow$ probability of seeing the fixed data for each parameter value
+:::
 
 ## Data: Fouls in college basketball games {.midi}
 
@@ -449,7 +451,7 @@ ggplot(data = x, aes(x = p, y = lik)) +
 ------------------------------------------------------------------------
 
 ::: question
-What is your best guess for the MLE, \$\\hat{p}\_H\$?
+What is your best guess for the MLE, $\hat{p}_H$?
 
 a.  0.489
 b.  0.500
@@ -602,25 +604,25 @@ Define new parameters:
 
 ## Model 2: Likelihood contributions {.small}
 
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| Foul 1 | Foul 2 | Foul 3 | n   | Likelihood contribution                                                                                                                     |
-+========+========+========+=====+=============================================================================================================================================+
-| H      | H      | H      | 3   | | $(p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2$                                              |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| H      | H      | V      | 2   | | $(p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2$                                              |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| H      | V      | H      | 3   | | $(p_{H\vert N})(p_{H\vert H Bias})(1 - p_{H\vert H Bias})$                                                                                |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| H      | V      | V      | 7   | **A**                                                                                                                                       |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V      | H      | H      | 7   | **B**                                                                                                                                       |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V      | H      | V      | 1   | | $(1 - p_{H\vert N})(p_{H\vert V Bias})(1 - p_{H\vert N}) = (1 - p_{H\vert N})^2(p_{H\vert V Bias})$                                       |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V      | V      | H      | 5   | | $(1 - p_{H\vert N})(1-p_{H\vert V Bias})(p_{H\vert V Bias})$                                                                              |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
-| V      | V      | V      | 2   | | $\begin{aligned}&(1 - p_{H\vert N})(1-p_{H\vert V Bias})(1-p_{H\vert V Bias})\\ &=(1 - p_{H\vert N})(1-p_{H\vert V Bias})^2\end{aligned}$ |
-+--------+--------+--------+-----+---------------------------------------------------------------------------------------------------------------------------------------------+
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| Foul 1 | Foul 2 | Foul 3 | n | Likelihood contribution                                                                                                                     |
++========+========+========+===+=============================================================================================================================================+
+| H      | H      | H      | 3 | | $(p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2$                                              |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| H      | H      | V      | 2 | | $(p_{H\vert N})(p_{H\vert H Bias})(1-p_{H\vert H Bias})$                                                                                  |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| H      | V      | H      | 3 | $(p_{H\vert N})(1 - p_{H \vert HBias})(p_{H \vert N}) = (p_{H \vert N})^2(1 - p_{H \vert HBias})$                                           |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| H      | V      | V      | 7 | **A**                                                                                                                                       |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | H      | H      | 7 | **B**                                                                                                                                       |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | H      | V      | 1 | | $(1 - p_{H\vert N})(p_{H\vert V Bias})(1 - p_{H\vert N}) = (1 - p_{H\vert N})^2(p_{H\vert V Bias})$                                       |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | V      | H      | 5 | | $(1 - p_{H\vert N})(1-p_{H\vert V Bias})(p_{H\vert V Bias})$                                                                              |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
+| V      | V      | V      | 2 | | $\begin{aligned}&(1 - p_{H\vert N})(1-p_{H\vert V Bias})(1-p_{H\vert V Bias})\\ &=(1 - p_{H\vert N})(1-p_{H\vert V Bias})^2\end{aligned}$ |
++--------+--------+--------+---+---------------------------------------------------------------------------------------------------------------------------------------------+
 
 ::: footer
 :::
@@ -641,20 +643,6 @@ $$\begin{aligned}\log (Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias})) &= 25 \log(p_
 
 ::: question
 If fouls within a game are independent, how would you expect $\hat{p}_H$, $\hat{p}_{H\vert H Bias}$ and $\hat{p}_{H\vert V Bias}$ to compare?
-
-a.  $\hat{p}_H$ is greater than $\hat{p}_{H\vert H Bias}$ and $\hat{p}_{H \vert V Bias}$
-
-b.  $\hat{p}_{H\vert H Bias}$ is greater than $\hat{p}_H$ and $\hat{p}_{H \vert V Bias}$
-
-c.  $\hat{p}_{H\vert V Bias}$ is greater than $\hat{p}_H$ and $\hat{p}_{H \vert V Bias}$
-
-d.  They are all approximately equal.
-:::
-
----
-
-::: question
-If there is a tendency for referees to call a foul on the team that already has more fouls, how would you expect $\hat{p}_H$, $\hat{p}_{H\vert H Bias}$ and $\hat{p}_{H\vert V Bias}$ to compare?
 
 a.  $\hat{p}_H$ is greater than $\hat{p}_{H\vert H Bias}$ and $\hat{p}_{H \vert V Bias}$
 
@@ -702,6 +690,8 @@ The **maximum likelihood estimate (MLE)** is the value between 0 and 1 where we 
 -   $\hat{p}_{H|V Bias} = 13/ 22 = 0.591$
 :::
 :::
+
+. . .
 
 -   What is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?
 -   Is there a tendency for the referees to call more fouls on the visiting team or home team?
@@ -800,6 +790,10 @@ loglik2(25/48, 8/20, 13/22)
 
 Find the difference in the log-likelihoods
 
+$$
+\log(Lik(Model 2)) - \log(Lik(Model1))
+$$
+
 ```{r}
 (diff <- loglik2(25/48, 8/20, 13/22) - loglik1(46/90))
 ```
@@ -874,7 +868,6 @@ BIC = -2(max logLik) + plog(n)
 
 ## Looking ahead {.midi}
 
-::: incremental
 -   Likelihoods help us answer the question of how likely we are to observe the data given different parameters
 
 -   In this example, we did not consider covariates, so in practice the parameters we want to estimate will look more similar to this
@@ -883,7 +876,6 @@ $$p_H = \frac{e^{\beta_0 + \beta_1x_1 + \dots + \beta_px_p}}{1 + e^{\beta_0 + \b
 
 -   Finding the MLE becomes much more complex and numerical methods may be required.
     -   We will primarily rely on software to find the MLE, but the conceptual ideas will be the same
-:::
 
 ## Next time
 

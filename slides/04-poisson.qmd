@@ -177,15 +177,15 @@ The data [fHH1.csv](data/fHH1.csv) come from the 2015 Family Income and Expendit
 
 **Response**:
 
--    `total`: Number of people in the household other than the head
+-   `total`: Number of people in the household other than the head
 
 ::: columns
 ::: {.column width="50%"}
 **Predictors**:
 
 -   `location`: Where the house is located
--    `age`: Age of the head of household
--    `roof`: Type of roof on the residence (proxy for wealth)
+-   `age`: Age of the head of household
+-   `roof`: Type of roof on the residence (proxy for wealth)
 :::
 
 ::: {.column width="50%"}
@@ -362,7 +362,7 @@ tidy(model1) |>
 
 $$\log(\hat{\lambda}) = 1.5499  - 0.0047 ~ age$$
 
----
+------------------------------------------------------------------------
 
 ::: question
 The coefficient for `age` is -0.0047. Interpret this coefficient in context. Select all that apply.

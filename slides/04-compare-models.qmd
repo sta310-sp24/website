@@ -42,6 +42,7 @@ knitr::opts_chunk$set(fig.width = 8,
 -   HW 01 due Wednesday at 11:59pm. Grace period (i.e., no late penalty) until Thursday, January 25 at 6am.
     -   Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.
     -   You will have access to your HW repo again when grades are returned.
+-   Tomorrow's lab: Start Project 01
 
 ## Computing set up
 

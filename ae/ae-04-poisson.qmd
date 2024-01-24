@@ -1,0 +1,158 @@
+---
+title: "Lecture 04 AE: Poisson regression"
+date: "`r Sys.Date()`"
+---
+
+## Introduction
+
+Today's data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file `derbyplus.csv` in the `data` folder. It contains information for races 1896 - 2017.
+
+**Response variable**
+
+-   `speed`: Average speed of the winner in feet per second (ft/s)
+
+**Additional variable**
+
+-   `winner`: Winning horse
+
+**Predictor variables**
+
+-   `year`: Year of the race
+-   `condition`: Condition of the track (good, fast, slow)
+-   `starters`: Number of horses who raced
+
+**Goal: Understand variability in average winner speed based on characteristics of the race.**
+
+```{r}
+#| label: load-packages-data
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+
+derby <- read_csv("data/derbyplus.csv")
+```
+
+# Part 1
+
+## Model 1: Main effects model
+
+```{r}
+model1 <- lm(speed ~ starters + year + condition, data = derby)
+
+tidy(model1) |>
+  kable(digits = 3)
+```
+
+::: {.callout-note icon="false"}
+## Ex 1
+
+Write the equation of the fitted model.
+:::
+
+\[add response here\]
+
+::: {.callout-note icon="false"}
+## Ex 2
+
+Interpret the coefficient of `conditionslow` in the context of the data.
+:::
+
+\[add response here\]
+
+::: {.callout-note icon="false"}
+## Ex 3
+
+Does the intercept have a meaningful interpretation? If so, interpret it. If not...
+
+-   Refit the model so that the intercept has a meaningful interpretation.
+
+-   Interpret the intercept for the new model.
+:::
+
+\[add response here\]
+
+## Model 2: Main effects + quadratic effect for `year`
+
+::: {.callout-note icon="false"}
+## Ex 4
+
+Fit a model that includes all main effects and a quadratic term for `year`. Display the model.
+:::
+
+\[add response here\]
+
+::: callout-tip
+## Interpreting quadratic effects
+
+Suppose you have the following model:
+
+$$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 ~ x_1  + \hat{\beta}_2 ~ x_2 + \hat{\beta}_3 ~ x_2^2$$
+
+The interpretation of a variable's effect when there is a quadratic term in the model is
+
+*"When* $x_2$ *increases from a to b,* $y$ *is expected to change by* $\hat{\beta}_2(b - a) + \hat{\beta}_3(b^2 - a^2)$*, holding* $x_1$ *constant."*
+:::
+
+::: {.callout-note icon="false"}
+## Ex 5
+
+Interpret the effect of year for the 5 most recent years (2013 - 2017).
+:::
+
+\[add response here\]
+
+## Model 3: Main effects + interaction between `year` and `condition`
+
+::: {.callout-note icon="false"}
+## Ex 6
+
+Fit a model that includes all main effects and an interaction between `year` and `condition`. Do not include a quadratic term for `year`. Display the model.
+:::
+
+\[add response here\]
+
+::: {.callout-note icon="false"}
+## Ex 7
+
+Interpret `yearnew:conditiongood`.
+:::
+
+\[add response here\]
+
+::: {.callout-note icon="false"}
+## Ex 8
+
+Interpret the effect of `year` for slow track conditions.
+:::
+
+\[add response here\]
+
+# Part 2
+
+::: {.callout-note icon="false"}
+## Ex 9
+
+Display Model 3 with the 90% confidence intervals for the coefficients.
+:::
+
+\[add response here\]
+
+::: {.callout-note icon="false"}
+## Ex 10
+
+Complete the following for your assigned variable:
+
+1.  State the null and alternative hypotheses in words.
+2.  What is the test statistic? What does this value tell you?
+3.  What is the conclusion of the hypothesis test? Use the decision-making threshold $\alpha$ that corresponds to the confidence interval.
+4.  Interpret the confidence interval.
+
+Choose one person to put your group's response in Slack.
+
+Choose one person to share your group's response with the class.
+:::
+
+\[add response here\]

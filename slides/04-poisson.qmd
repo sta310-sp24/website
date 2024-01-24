@@ -378,14 +378,6 @@ The coefficient for `age` is -0.0047. Interpret this coefficient in context. Sel
 5.  The mean household size is predicted to decrease by 0.47% for each year older the head of the household is.
 :::
 
-------------------------------------------------------------------------
-
-## Understanding the interpretation
-
-Let's derive the change in predicted mean when we go from $x$ to $x+1$
-
-(see board)
-
 ## Is the coefficient of `age` statistically significant? {.midi}
 
 ```{r echo = F}
@@ -495,7 +487,7 @@ $$\text{deviance} = \sum(\text{deviance residual})_i^2$$
 
 ------------------------------------------------------------------------
 
-## Drop-in-Deviance Test
+## Drop-in-Deviance Test {.midi}
 
 We can use a **drop-in-deviance test** to compare two models. To conduct the test
 
@@ -534,7 +526,11 @@ Suppose we want to add `location` to the model, so we compare the following mode
 ::: question
 Which of the following are reliable ways to determine if `location` should be added to the model?
 
-\(1\) Drop-in-deviance test (2) Use the p-value for each coefficient (3) Likelihood ratio test (4) Nested F Test (5 ) BIC
+1.  Drop-in-deviance test
+2.  Use the p-value for each coefficient
+3.  Likelihood ratio test
+4.  Nested F Test
+5.  BIC
 :::
 
 ## Looking ahead

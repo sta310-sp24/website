@@ -504,13 +504,6 @@
     "text": "Model 1: Household vs. Age\n\nmodel1 &lt;- glm(total ~ age, data = hh_data, family = poisson)\n\ntidy(model1) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.5499\n0.0503\n30.8290\n0\n\n\nage\n-0.0047\n0.0009\n-5.0258\n0\n\n\n\n\n\n\\[\\log(\\hat{\\lambda}) = 1.5499  - 0.0047 ~ age\\]"
   },
   {
-    "objectID": "slides/04-poisson.html#understanding-the-interpretation",
-    "href": "slides/04-poisson.html#understanding-the-interpretation",
-    "title": "Poisson Regression",
-    "section": "Understanding the interpretation",
-    "text": "Understanding the interpretation\nLet’s derive the change in predicted mean when we go from \\(x\\) to \\(x+1\\)\n(see board)"
-  },
-  {
     "objectID": "slides/04-poisson.html#is-the-coefficient-of-age-statistically-significant",
     "href": "slides/04-poisson.html#is-the-coefficient-of-age-statistically-significant",
     "title": "Poisson Regression",
@@ -571,7 +564,7 @@
     "href": "slides/04-poisson.html#add-location-to-the-model",
     "title": "Poisson Regression",
     "section": "Add location to the model?",
-    "text": "Add location to the model?\nSuppose we want to add location to the model, so we compare the following models:\nModel A: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2\\)\nModel B: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2 + \\beta_3 ~ Loc1_i + \\beta_4 ~ Loc2_i + \\beta_5 ~ Loc3_i + \\beta_6 ~ Loc4_i\\)\n\nWhich of the following are reliable ways to determine if location should be added to the model?\n(1) Drop-in-deviance test (2) Use the p-value for each coefficient (3) Likelihood ratio test (4) Nested F Test (5 ) BIC"
+    "text": "Add location to the model?\nSuppose we want to add location to the model, so we compare the following models:\nModel A: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2\\)\nModel B: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2 + \\beta_3 ~ Loc1_i + \\beta_4 ~ Loc2_i + \\beta_5 ~ Loc3_i + \\beta_6 ~ Loc4_i\\)\n\nWhich of the following are reliable ways to determine if location should be added to the model?\n\nDrop-in-deviance test\nUse the p-value for each coefficient\nLikelihood ratio test\nNested F Test\nBIC"
   },
   {
     "objectID": "slides/04-poisson.html#looking-ahead",
@@ -861,23 +854,51 @@
     "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
   },
   {
-    "objectID": "prepare/jan-24.html",
-    "href": "prepare/jan-24.html",
-    "title": "Prepare for Jan 24 lecture",
+    "objectID": "prepare/jan-22.html",
+    "href": "prepare/jan-22.html",
+    "title": "Prepare for Jan 22 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/jan-29.html",
-    "href": "prepare/jan-29.html",
-    "title": "Prepare for Jan 29 lecture",
+    "objectID": "prepare/jan-31.html",
+    "href": "prepare/jan-31.html",
+    "title": "Prepare for Jan 31 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
   },
   {
-    "objectID": "hw/hw-02.html",
-    "href": "hw/hw-02.html",
-    "title": "HW 02",
+    "objectID": "prepare/jan-17.html",
+    "href": "prepare/jan-17.html",
+    "title": "Prepare for Jan 17 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+  },
+  {
+    "objectID": "hw/hw-03.html",
+    "href": "hw/hw-03.html",
+    "title": "HW 03",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-04.html",
+    "href": "hw/hw-04.html",
+    "title": "HW 04",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-06.html",
+    "href": "hw/hw-06.html",
+    "title": "HW 06",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-05.html",
+    "href": "hw/hw-05.html",
+    "title": "HW 05",
     "section": "",
     "text": "To be posted."
   },
@@ -938,53 +959,60 @@
     "text": "Footnotes\n\n\nExercises 1 - 4 are adapted from exercises in Section 1.8 of Roback and Legler (2021).↩︎"
   },
   {
-    "objectID": "hw/hw-05.html",
-    "href": "hw/hw-05.html",
-    "title": "HW 05",
+    "objectID": "hw/hw-02.html",
+    "href": "hw/hw-02.html",
+    "title": "HW 02",
     "section": "",
     "text": "To be posted."
   },
   {
-    "objectID": "hw/hw-06.html",
-    "href": "hw/hw-06.html",
-    "title": "HW 06",
+    "objectID": "prepare/jan-29.html",
+    "href": "prepare/jan-29.html",
+    "title": "Prepare for Jan 29 lecture",
     "section": "",
-    "text": "To be posted."
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
   },
   {
-    "objectID": "hw/hw-04.html",
-    "href": "hw/hw-04.html",
-    "title": "HW 04",
+    "objectID": "prepare/jan-24.html",
+    "href": "prepare/jan-24.html",
+    "title": "Prepare for Jan 24 lecture",
     "section": "",
-    "text": "To be posted."
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
   },
   {
-    "objectID": "hw/hw-03.html",
-    "href": "hw/hw-03.html",
-    "title": "HW 03",
+    "objectID": "ae/ae-04-poisson.html",
+    "href": "ae/ae-04-poisson.html",
+    "title": "Lecture 04 AE: Poisson regression",
     "section": "",
-    "text": "To be posted."
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
-    "objectID": "prepare/jan-17.html",
-    "href": "prepare/jan-17.html",
-    "title": "Prepare for Jan 17 lecture",
+    "objectID": "ae/ae-04-poisson.html#introduction",
+    "href": "ae/ae-04-poisson.html#introduction",
+    "title": "Lecture 04 AE: Poisson regression",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
-    "objectID": "prepare/jan-31.html",
-    "href": "prepare/jan-31.html",
-    "title": "Prepare for Jan 31 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
+    "objectID": "ae/ae-04-poisson.html#model-1-main-effects-model",
+    "href": "ae/ae-04-poisson.html#model-1-main-effects-model",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 1: Main effects model",
+    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
   },
   {
-    "objectID": "prepare/jan-22.html",
-    "href": "prepare/jan-22.html",
-    "title": "Prepare for Jan 22 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "objectID": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
+    "href": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 2: Main effects + quadratic effect for year",
+    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
+  },
+  {
+    "objectID": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
+    "href": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 3: Main effects + interaction between year and condition",
+    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
   },
   {
     "objectID": "support.html",
@@ -1467,7 +1495,7 @@
     "href": "slides/04-compare-models.html#steps-to-compare-models",
     "title": "Comparing models using likelihoods",
     "section": "Steps to compare models",
-    "text": "Steps to compare models\n1️⃣ Find the MLEs for each model.\n2️⃣ Plug the MLEs into the log-likelihood function for each model to get the maximum value of the log-likelihood for each model.\n3️⃣ Find the difference in the maximum log-likelihoods\n4️⃣ Use the Likelihood Ratio Test to determine if the difference is statistically significant"
+    "text": "Steps to compare models\n\nFind the MLEs for each model.\nPlug the MLEs into the log-likelihood function for each model to get the maximum value of the log-likelihood for each model.\nFind the difference in the maximum log-likelihoods\nUse the Likelihood Ratio Test to determine if the difference is statistically significant"
   },
   {
     "objectID": "slides/04-compare-models.html#steps-1---2",

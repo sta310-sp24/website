@@ -208,13 +208,13 @@ $$\begin{aligned}&H_0: p_{H| N} = p_{H| H Bias} = p_{H| V Bias} = p_H \\
 
 ## Steps to compare models
 
-`r emo::ji("one")` Find the MLEs for each model.
+1.  Find the MLEs for each model.
 
-`r emo::ji("two")` Plug the MLEs into the log-likelihood function for each model to get the maximum value of the log-likelihood for each model.
+2.  Plug the MLEs into the log-likelihood function for each model to get the maximum value of the log-likelihood for each model.
 
-`r emo::ji("three")` Find the difference in the maximum log-likelihoods
+3.  Find the difference in the maximum log-likelihoods
 
-`r emo::ji("four")` Use the Likelihood Ratio Test to determine if the difference is statistically significant
+4.  Use the Likelihood Ratio Test to determine if the difference is statistically significant
 
 ## Steps 1 - 2
 

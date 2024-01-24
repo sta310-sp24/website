@@ -1,0 +1,122 @@
+---
+title: "Lecture 04 AE: Estimating coefficients for Poisson Regression"
+date: "`r Sys.Date()`"
+---
+
+```{r}
+#| label: load-packages-data
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+
+hh_data <- read_csv("data/fHH1.csv")
+```
+
+# Introduction
+
+The data in `fHH1.csv` come from the 2015 Family Income and Expenditure Survey conducted by the Philippine Statistics Authority.
+
+The overall goal is understand the association between household size and various characteristics of the household.
+
+**Response**:
+
+-   `total`: Number of people in the household other than the head
+
+**Predictors**:
+
+-   `location`: Where the house is located
+-   `age`: Age of the head of household
+-   `roof`: Type of roof on the residence (proxy for wealth)
+
+**Other variables**:
+
+-   `numLT5`: Number in the household under 5 years old
+
+**We will focus on the relationship between `total` and `age` for this AE.**
+
+# Iteratively reweighted least squares
+
+## Step 1. Initial estimates of lambda
+
+Using `total + 0.1` instead of `total` as initial starting values to avoid dividing by 0 or taking the log of 0.
+
+```{r}
+hh_data <- hh_data |>
+  mutate(lambda = hh_data$total + 5)
+```
+
+## Step 2. Calculate the working response values $z_i$.
+
+For Poisson regression, $z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}$
+
+```{r}
+hh_data <- hh_data |>
+  mutate(z = log(lambda) + (hh_data$total - lambda) / lambda)
+```
+
+## Step 3. Calculate the working weights $W_i$
+
+For Poisson regression, $W_i = \lambda_i$ .
+
+```{r}
+hh_data <- hh_data |>
+  mutate(w = lambda)
+```
+
+```{r}
+hh_data |>
+  select(total, lambda, z, w) |>
+  slice(1:5)
+```
+
+## Step 4. Find the coefficient estimates of the weighted least squares model
+
+```{r}
+wls <- lm(z ~ age, weight = w, data = hh_data)
+tidy(wls) |>
+  kable(digits = 4)
+```
+
+## Use this model to get new estimates of lambda
+
+```{r}
+hh_data <- hh_data |>
+  mutate(lambda = exp(predict(wls)))
+```
+
+Repeat steps 2 - 4 until the estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ converge to their respective values.
+
+## IRLS automated
+
+```{r}
+nreps <- 10
+hh_data <- hh_data %>%
+  mutate(lambda = hh_data$total + 5)
+
+
+betas <- tibble(beta0 = rep(0, nreps), 
+                beta1 = rep(0, nreps))
+
+for(i in 1:nreps){
+  hh_data <- hh_data %>%
+    mutate(z = log(lambda) + (hh_data$total - lambda)/ lambda, 
+         w = lambda)
+  wls <- lm(z ~ age, weight = w, data = hh_data)
+  betas$beta0[i] = tidy(wls)$estimate[1]
+  betas$beta1[i] = tidy(wls)$estimate[2]
+  
+  hh_data <- hh_data %>% 
+    mutate(lambda = exp(predict(wls)))
+}
+  
+betas
+```
+
+## Fit using the `glm` function
+
+```{r}
+## add code here
+```

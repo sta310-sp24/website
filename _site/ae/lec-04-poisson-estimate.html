@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2024-01-24">
 
-<title>STA 310 - Spring 2024 - Lecture 04 AE: Poisson regression</title>
+<title>STA 310 - Spring 2024 - Lecture 04 AE: Estimating coefficients for Poisson Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lecture 04 AE: Poisson regression</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lecture 04 AE: Estimating coefficients for Poisson Regression</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -279,22 +279,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-1" id="toc-part-1" class="nav-link" data-scroll-target="#part-1">Part 1</a>
+  <li><a href="#iteratively-reweighted-least-squares" id="toc-iteratively-reweighted-least-squares" class="nav-link" data-scroll-target="#iteratively-reweighted-least-squares">Iteratively reweighted least squares</a>
   <ul class="collapse">
-  <li><a href="#model-1-main-effects-model" id="toc-model-1-main-effects-model" class="nav-link" data-scroll-target="#model-1-main-effects-model">Model 1: Main effects model</a></li>
-  <li><a href="#model-2-main-effects-quadratic-effect-for-year" id="toc-model-2-main-effects-quadratic-effect-for-year" class="nav-link" data-scroll-target="#model-2-main-effects-quadratic-effect-for-year">Model 2: Main effects + quadratic effect for <code>year</code></a></li>
-  <li><a href="#model-3-main-effects-interaction-between-year-and-condition" id="toc-model-3-main-effects-interaction-between-year-and-condition" class="nav-link" data-scroll-target="#model-3-main-effects-interaction-between-year-and-condition">Model 3: Main effects + interaction between <code>year</code> and <code>condition</code></a></li>
+  <li><a href="#step-1.-initial-estimates-of-lambda" id="toc-step-1.-initial-estimates-of-lambda" class="nav-link" data-scroll-target="#step-1.-initial-estimates-of-lambda">Step 1. Initial estimates of lambda</a></li>
+  <li><a href="#step-2.-calculate-the-working-response-values-z_i." id="toc-step-2.-calculate-the-working-response-values-z_i." class="nav-link" data-scroll-target="#step-2.-calculate-the-working-response-values-z_i.">Step 2. Calculate the working response values <span class="math inline">\(z_i\)</span>.</a></li>
+  <li><a href="#step-3.-calculate-the-working-weights-w_i" id="toc-step-3.-calculate-the-working-weights-w_i" class="nav-link" data-scroll-target="#step-3.-calculate-the-working-weights-w_i">Step 3. Calculate the working weights <span class="math inline">\(W_i\)</span></a></li>
+  <li><a href="#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model" id="toc-step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model" class="nav-link" data-scroll-target="#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model">Step 4. Find the coefficient estimates of the weighted least squares model</a></li>
+  <li><a href="#use-this-model-to-get-new-estimates-of-lambda" id="toc-use-this-model-to-get-new-estimates-of-lambda" class="nav-link" data-scroll-target="#use-this-model-to-get-new-estimates-of-lambda">Use this model to get new estimates of lambda</a></li>
+  <li><a href="#irls-automated" id="toc-irls-automated" class="nav-link" data-scroll-target="#irls-automated">IRLS automated</a></li>
+  <li><a href="#fit-using-the-glm-function" id="toc-fit-using-the-glm-function" class="nav-link" data-scroll-target="#fit-using-the-glm-function">Fit using the <code>glm</code> function</a></li>
   </ul></li>
-  <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/ae/ae-04-poisson.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/ae/lec-04-poisson-estimate.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture 04 AE: Poisson regression</h1>
+<h1 class="title">Lecture 04 AE: Estimating coefficients for Poisson Regression</h1>
 </div>
 
 
@@ -315,41 +318,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file <code>derbyplus.csv</code> in the <code>data</code> folder. It contains information for races 1896 - 2017.</p>
-<p><strong>Response variable</strong></p>
-<ul>
-<li><code>speed</code>: Average speed of the winner in feet per second (ft/s)</li>
-</ul>
-<p><strong>Additional variable</strong></p>
-<ul>
-<li><code>winner</code>: Winning horse</li>
-</ul>
-<p><strong>Predictor variables</strong></p>
-<ul>
-<li><code>year</code>: Year of the race</li>
-<li><code>condition</code>: Condition of the track (good, fast, slow)</li>
-<li><code>starters</code>: Number of horses who raced</li>
-</ul>
-<p><strong>Goal: Understand variability in average winner speed based on characteristics of the race.</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>derby <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/derbyplus.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>hh_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/fHH1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The data in <code>fHH1.csv</code> come from the 2015 Family Income and Expenditure Survey conducted by the Philippine Statistics Authority.</p>
+<p>The overall goal is understand the association between household size and various characteristics of the household.</p>
+<p><strong>Response</strong>:</p>
+<ul>
+<li><code>total</code>: Number of people in the household other than the head</li>
+</ul>
+<p><strong>Predictors</strong>:</p>
+<ul>
+<li><code>location</code>: Where the house is located</li>
+<li><code>age</code>: Age of the head of household</li>
+<li><code>roof</code>: Type of roof on the residence (proxy for wealth)</li>
+</ul>
+<p><strong>Other variables</strong>:</p>
+<ul>
+<li><code>numLT5</code>: Number in the household under 5 years old</li>
+</ul>
+<p><strong>We will focus on the relationship between <code>total</code> and <code>age</code> for this AE.</strong></p>
+</section>
+<section id="iteratively-reweighted-least-squares" class="level1">
+<h1>Iteratively reweighted least squares</h1>
+<section id="step-1.-initial-estimates-of-lambda" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-initial-estimates-of-lambda">Step 1. Initial estimates of lambda</h2>
+<p>Using <code>total + 0.1</code> instead of <code>total</code> as initial starting values to avoid dividing by 0 or taking the log of 0.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lambda =</span> hh_data<span class="sc">$</span>total <span class="sc">+</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="part-1" class="level1">
-<h1>Part 1</h1>
-<section id="model-1-main-effects-model" class="level2">
-<h2 class="anchored" data-anchor-id="model-1-main-effects-model">Model 1: Main effects model</h2>
+<section id="step-2.-calculate-the-working-response-values-z_i." class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-calculate-the-working-response-values-z_i.">Step 2. Calculate the working response values <span class="math inline">\(z_i\)</span>.</h2>
+<p>For Poisson regression, <span class="math inline">\(z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(speed <span class="sc">~</span> starters <span class="sc">+</span> year <span class="sc">+</span> condition, <span class="at">data =</span> derby)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model1) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fu">log</span>(lambda) <span class="sc">+</span> (hh_data<span class="sc">$</span>total <span class="sc">-</span> lambda) <span class="sc">/</span> lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3.-calculate-the-working-weights-w_i" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.-calculate-the-working-weights-w_i">Step 3. Calculate the working weights <span class="math inline">\(W_i\)</span></h2>
+<p>For Poisson regression, <span class="math inline">\(W_i = \lambda_i\)</span> .</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">w =</span> lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hh_data <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(total, lambda, z, w) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  total lambda     z     w
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0      5 0.609     5
+2     3      8 1.45      8
+3     4      9 1.64      9
+4     3      8 1.45      8
+5     3      8 1.45      8</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model" class="level2">
+<h2 class="anchored" data-anchor-id="step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model">Step 4. Find the coefficient estimates of the weighted least squares model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wls <span class="ot">&lt;-</span> <span class="fu">lm</span>(z <span class="sc">~</span> age, <span class="at">weight =</span> w, <span class="at">data =</span> hh_data)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(wls) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -364,223 +406,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">8.197</td>
-<td style="text-align: right;">4.508</td>
-<td style="text-align: right;">1.818</td>
-<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">1.7594</td>
+<td style="text-align: right;">0.0419</td>
+<td style="text-align: right;">41.9664</td>
+<td style="text-align: right;">0e+00</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">starters</td>
-<td style="text-align: right;">-0.005</td>
-<td style="text-align: right;">0.017</td>
-<td style="text-align: right;">-0.299</td>
-<td style="text-align: right;">0.766</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">year</td>
-<td style="text-align: right;">0.023</td>
-<td style="text-align: right;">0.002</td>
-<td style="text-align: right;">9.766</td>
-<td style="text-align: right;">0.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">conditiongood</td>
-<td style="text-align: right;">-0.443</td>
-<td style="text-align: right;">0.231</td>
-<td style="text-align: right;">-1.921</td>
-<td style="text-align: right;">0.057</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">conditionslow</td>
-<td style="text-align: right;">-1.543</td>
-<td style="text-align: right;">0.161</td>
-<td style="text-align: right;">-9.616</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">-0.0026</td>
+<td style="text-align: right;">0.0008</td>
+<td style="text-align: right;">-3.4172</td>
+<td style="text-align: right;">6e-04</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 1
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Write the equation of the fitted model.</p>
-</div>
-</div>
-<p>[add response here]</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 2
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Interpret the coefficient of <code>conditionslow</code> in the context of the data.</p>
-</div>
-</div>
-<p>[add response here]</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 3
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Does the intercept have a meaningful interpretation? If so, interpret it. If not…</p>
-<ul>
-<li><p>Refit the model so that the intercept has a meaningful interpretation.</p></li>
-<li><p>Interpret the intercept for the new model.</p></li>
-</ul>
-</div>
-</div>
-<p>[add response here]</p>
 </section>
-<section id="model-2-main-effects-quadratic-effect-for-year" class="level2">
-<h2 class="anchored" data-anchor-id="model-2-main-effects-quadratic-effect-for-year">Model 2: Main effects + quadratic effect for <code>year</code></h2>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<section id="use-this-model-to-get-new-estimates-of-lambda" class="level2">
+<h2 class="anchored" data-anchor-id="use-this-model-to-get-new-estimates-of-lambda">Use this model to get new estimates of lambda</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lambda =</span> <span class="fu">exp</span>(<span class="fu">predict</span>(wls)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-title-container flex-fill">
-Ex 4
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Fit a model that includes all main effects and a quadratic term for <code>year</code>. Display the model.</p>
-</div>
-</div>
-<p>[add response here]</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Interpreting quadratic effects
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Suppose you have the following model:</p>
-<p><span class="math display">\[\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 ~ x_1  + \hat{\beta}_2 ~ x_2 + \hat{\beta}_3 ~ x_2^2\]</span></p>
-<p>The interpretation of a variable’s effect when there is a quadratic term in the model is</p>
-<p><em>“When</em> <span class="math inline">\(x_2\)</span> <em>increases from a to b,</em> <span class="math inline">\(y\)</span> <em>is expected to change by</em> <span class="math inline">\(\hat{\beta}_2(b - a) + \hat{\beta}_3(b^2 - a^2)\)</span><em>, holding</em> <span class="math inline">\(x_1\)</span> <em>constant.”</em></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 5
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Interpret the effect of year for the 5 most recent years (2013 - 2017).</p>
-</div>
-</div>
-<p>[add response here]</p>
+<p>Repeat steps 2 - 4 until the estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> converge to their respective values.</p>
 </section>
-<section id="model-3-main-effects-interaction-between-year-and-condition" class="level2">
-<h2 class="anchored" data-anchor-id="model-3-main-effects-interaction-between-year-and-condition">Model 3: Main effects + interaction between <code>year</code> and <code>condition</code></h2>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 6
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Fit a model that includes all main effects and an interaction between <code>year</code> and <code>condition</code>. Do not include a quadratic term for <code>year</code>. Display the model.</p>
-</div>
-</div>
-<p>[add response here]</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 7
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Interpret <code>yearnew:conditiongood</code>.</p>
-</div>
-</div>
-<p>[add response here]</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 8
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Interpret the effect of <code>year</code> for slow track conditions.</p>
+<section id="irls-automated" class="level2">
+<h2 class="anchored" data-anchor-id="irls-automated">IRLS automated</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lambda =</span> hh_data<span class="sc">$</span>total <span class="sc">+</span> <span class="dv">5</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">beta0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, nreps), </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">beta1 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, nreps))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fu">log</span>(lambda) <span class="sc">+</span> (hh_data<span class="sc">$</span>total <span class="sc">-</span> lambda)<span class="sc">/</span> lambda, </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">w =</span> lambda)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  wls <span class="ot">&lt;-</span> <span class="fu">lm</span>(z <span class="sc">~</span> age, <span class="at">weight =</span> w, <span class="at">data =</span> hh_data)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  betas<span class="sc">$</span>beta0[i] <span class="ot">=</span> <span class="fu">tidy</span>(wls)<span class="sc">$</span>estimate[<span class="dv">1</span>]</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  betas<span class="sc">$</span>beta1[i] <span class="ot">=</span> <span class="fu">tidy</span>(wls)<span class="sc">$</span>estimate[<span class="dv">2</span>]</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lambda =</span> <span class="fu">exp</span>(<span class="fu">predict</span>(wls)))</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>betas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   beta0    beta1
+   &lt;dbl&gt;    &lt;dbl&gt;
+ 1  1.76 -0.00265
+ 2  1.57 -0.00414
+ 3  1.55 -0.00468
+ 4  1.55 -0.00471
+ 5  1.55 -0.00471
+ 6  1.55 -0.00471
+ 7  1.55 -0.00471
+ 8  1.55 -0.00471
+ 9  1.55 -0.00471
+10  1.55 -0.00471</code></pre>
 </div>
 </div>
-<p>[add response here]</p>
 </section>
-</section>
-<section id="part-2" class="level1">
-<h1>Part 2</h1>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<section id="fit-using-the-glm-function" class="level2">
+<h2 class="anchored" data-anchor-id="fit-using-the-glm-function">Fit using the <code>glm</code> function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-title-container flex-fill">
-Ex 9
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Display Model 3 with the 90% confidence intervals for the coefficients.</p>
-</div>
-</div>
-<p>[add response here]</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Ex 10
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Complete the following for your assigned variable:</p>
-<ol type="1">
-<li>State the null and alternative hypotheses in words.</li>
-<li>What is the test statistic? What does this value tell you?</li>
-<li>What is the conclusion of the hypothesis test? Use the decision-making threshold <span class="math inline">\(\alpha\)</span> that corresponds to the confidence interval.</li>
-<li>Interpret the confidence interval.</li>
-</ol>
-<p>Choose one person to put your group’s response in Slack.</p>
-<p>Choose one person to share your group’s response with the class.</p>
-</div>
-</div>
-<p>[add response here]</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

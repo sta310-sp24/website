@@ -698,7 +698,7 @@ Prof.&nbsp;Maria Tackett
 <div class="column" style="width:50%;">
 <p><strong>Poisson response</strong>: The response variable is a count per unit of time or space, described by a Poisson distribution, at each level of the predictor(s)</p>
 <p><strong>Independence</strong>: The observations must be independent of one another</p>
-<p><strong>Mean = Variance</strong>: The mean must equal the variance</p>
+<p><strong>Mean = Variance</strong>: The mean equals the variance</p>
 <p><strong>Linearity</strong>: The log of the mean rate, <span class="math inline">\(\log(\lambda)\)</span>, must be a linear function of the predictor(s)</p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -877,216 +877,179 @@ Prof.&nbsp;Maria Tackett
 <div class="question">
 <p>Interpret the interval in terms of the change in mean household size.</p>
 </div>
-</section>
-<section id="which-plot-can-best-help-us-determine-whether-model-1-is-a-good-fit" class="slide level2">
-<h2><strong>Which plot can best help us determine whether Model 1 is a good fit?</strong></h2>
+</section></section>
+<section>
+<section id="estimating-beta_0-and-beta_1" class="title-slide slide level1 center">
+<h1>Estimating <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></h1>
 
-<img data-src="04-poisson_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section>
-<section id="model-2-add-a-quadratic-effect-for-age" class="slide level2">
-<h2>Model 2: Add a quadratic effect for <code>age</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>hh_data <span class="ot">&lt;-</span> hh_data <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">mutate</span>(<span class="at">age2 =</span> age<span class="sc">*</span>age)</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a>model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age <span class="sc">+</span> age2, <span class="at">data =</span> hh_data, <span class="at">family =</span> poisson)</span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">tidy</span>(model2, <span class="at">conf.int =</span> T) <span class="sc">|&gt;</span> </span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table>
-<colgroup>
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: right;">conf.low</th>
-<th style="text-align: right;">conf.high</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.3325</td>
-<td style="text-align: right;">0.1788</td>
-<td style="text-align: right;">-1.8594</td>
-<td style="text-align: right;">0.063</td>
-<td style="text-align: right;">-0.6863</td>
-<td style="text-align: right;">0.0148</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age</td>
-<td style="text-align: right;">0.0709</td>
-<td style="text-align: right;">0.0069</td>
-<td style="text-align: right;">10.2877</td>
-<td style="text-align: right;">0.000</td>
-<td style="text-align: right;">0.0575</td>
-<td style="text-align: right;">0.0845</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">age2</td>
-<td style="text-align: right;">-0.0007</td>
-<td style="text-align: right;">0.0001</td>
-<td style="text-align: right;">-11.0578</td>
-<td style="text-align: right;">0.000</td>
-<td style="text-align: right;">-0.0008</td>
-<td style="text-align: right;">-0.0006</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </section>
-<section id="model-2-add-a-quadratic-effect-for-age-1" class="slide level2">
-<h2>Model 2: Add a quadratic effect for <code>age</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table>
-<colgroup>
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: right;">conf.low</th>
-<th style="text-align: right;">conf.high</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.3325</td>
-<td style="text-align: right;">0.1788</td>
-<td style="text-align: right;">-1.8594</td>
-<td style="text-align: right;">0.063</td>
-<td style="text-align: right;">-0.6863</td>
-<td style="text-align: right;">0.0148</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age</td>
-<td style="text-align: right;">0.0709</td>
-<td style="text-align: right;">0.0069</td>
-<td style="text-align: right;">10.2877</td>
-<td style="text-align: right;">0.000</td>
-<td style="text-align: right;">0.0575</td>
-<td style="text-align: right;">0.0845</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">age2</td>
-<td style="text-align: right;">-0.0007</td>
-<td style="text-align: right;">0.0001</td>
-<td style="text-align: right;">-11.0578</td>
-<td style="text-align: right;">0.000</td>
-<td style="text-align: right;">-0.0008</td>
-<td style="text-align: right;">-0.0006</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>We can determine whether to keep <span class="math inline">\(age^2\)</span> in the model in two ways:</p>
-<p>1️⃣ Use the p-value (or confidence interval) for the coefficient (since we are adding a single term to the model)</p>
-<p>2️⃣ Conduct a drop-in-deviance test</p>
-</section>
-<section id="deviance" class="slide level2">
-<h2>Deviance</h2>
-<p>A <strong>deviance</strong> is a way to measure how the observed data differs (deviates) from the model predictions.</p>
+<section id="estimating-beta_0-and-beta_1-1" class="slide level2 midi">
+<h2>Estimating <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></h2>
 <ul>
-<li><p>It’s a measure unexplained variability in the response variable (similar to SSE in linear regression )</p></li>
-<li><p>Lower deviance means the model is a better fit to the data</p></li>
+<li><p>1.5499 and -0.0047 are the estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> respectively.</p></li>
+<li><p>How were these values determined?</p></li>
+<li><p>Let’s take a look at the first five rows of data:</p></li>
 </ul>
 <div class="fragment">
-<p>We can calculate the “deviance residual” for each observation in the data (more on the formula later). Let <span class="math inline">\((\text{deviance residual}_i\)</span> be the deviance residual for the <span class="math inline">\(i^{th}\)</span> observation, then</p>
-<p><span class="math display">\[\text{deviance} = \sum(\text{deviance residual})_i^2\]</span></p>
-<p><em>Note: Deviance is also known as the “residual deviance”</em></p>
-</div>
-</section>
-<section id="drop-in-deviance-test" class="slide level2 midi">
-<h2>Drop-in-Deviance Test</h2>
-<p>We can use a <strong>drop-in-deviance test</strong> to compare two models. To conduct the test</p>
-<p>1️⃣ Compute the deviance for each model</p>
-<p>2️⃣ Calculate the drop in deviance</p>
-<p><span class="math display">\[\text{drop-in-deviance =  Deviance(reduced model) - Deviance(larger model)}\]</span></p>
-<p>3️⃣ Given the reduced model is the true model <span class="math inline">\((H_0 \text{ true})\)</span>, then <span class="math display">\[\text{drop-in-deviance} \sim \chi_d^2\]</span></p>
-<p>where <span class="math inline">\(d\)</span> is the difference in degrees of freedom between the two models (i.e., the difference in number of terms)</p>
-</section>
-<section id="drop-in-deviance-to-compare-model1-and-model2" class="slide level2">
-<h2>Drop-in-deviance to compare Model1 and Model2</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">anova</span>(model1, model2, <span class="at">test =</span> <span class="st">"Chisq"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Resid. Df</th>
-<th style="text-align: right;">Resid. Dev</th>
-<th style="text-align: right;">Df</th>
-<th style="text-align: right;">Deviance</th>
-<th style="text-align: right;">Pr(&gt;Chi)</th>
+<th style="text-align: left;">location</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: right;">total</th>
+<th style="text-align: right;">numLT5</th>
+<th style="text-align: left;">roof</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1498</td>
-<td style="text-align: right;">2337.089</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">CentralLuzon</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Predominantly Strong Material</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1497</td>
-<td style="text-align: right;">2200.944</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">136.145</td>
+<td style="text-align: left;">MetroManila</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">0</td>
+<td style="text-align: left;">Predominantly Strong Material</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DavaoRegion</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Predominantly Strong Material</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Visayas</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Predominantly Strong Material</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MetroManila</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Predominantly Strong Material</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="question">
-<ol type="a">
-<li>Write the null and alternative hypotheses.</li>
-<li>What does the value 2337.089 tell you?</li>
-<li>What does the value 1 tell you?</li>
-<li>What is your conclusion?</li>
-</ol>
 </div>
 </section>
-<section id="add-location-to-the-model" class="slide level2 midi">
-<h2>Add <code>location</code> to the model?</h2>
-<p>Suppose we want to add <code>location</code> to the model, so we compare the following models:</p>
-<p><strong>Model A</strong>: <span class="math inline">\(\lambda_i = \beta_0 + \beta_1 ~ age_i + \beta_2 ~ age_i^2\)</span></p>
-<p><strong>Model B</strong>: <span class="math inline">\(\lambda_i = \beta_0 + \beta_1 ~ age_i + \beta_2 ~ age_i^2 + \beta_3 ~ Loc1_i + \beta_4 ~ Loc2_i + \beta_5 ~ Loc3_i + \beta_6 ~ Loc4_i\)</span></p>
-<div class="question">
-<p>Which of the following are reliable ways to determine if <code>location</code> should be added to the model?</p>
+<section id="likelihood" class="slide level2">
+<h2>Likelihood</h2>
+<p>Then the likelihood for those five observations is</p>
+<p><span class="math display">\[Likelihood =P(Y_1 = 0)P(Y_2 = 3)P(Y_3 = 4)P(Y_4 = 3)P(Y_5 = 3)
+\]</span></p>
+<div class="fragment">
+<p>The Y’s follow a Poisson distribution, so this equals</p>
+<p><span class="math display">\[
+Likelihood = \frac{e^{-\lambda_1}\lambda_1^0}{0!} * \frac{e^{-\lambda_2}\lambda_2^3}{3!} * \frac{e^{-\lambda_3}\lambda_3^4}{4!} *\frac{e^{-\lambda_4}\lambda_4^3}{3!} * \frac{e^{-\lambda_5}\lambda_5^3}{3!}
+\]</span></p>
+<p>where <span class="math inline">\(\lambda_i\)</span> can differ for each household based on its value of <code>age</code>.</p>
+</div>
+</section>
+<section id="loglikelihood" class="slide level2">
+<h2>Loglikelihood</h2>
+<p>Let’s take the log of the likelihood, as this will be easier to maximize than the likelihood itself.</p>
+<p><span class="math display">\[
+\begin{align}
+logL =&amp; -\lambda_1 + 0\log(\lambda_1) - \lambda_2 + 3\log(\lambda_2) - \lambda_3 + 4\log(\lambda_3)\\ &amp;- \lambda_4 + 3\log(\lambda_4) - \lambda_5 + 3\log(\lambda_5) \\ &amp;+ C
+\end{align}
+\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>We are going to maximize with respect to <span class="math inline">\(\lambda\)</span>, we will drop the constant term <span class="math inline">\(C\)</span> moving forward.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="loglikelihood-1" class="slide level2 midi">
+<h2>Loglikelihood</h2>
+<p>Because we’re fitting a Poisson regression model, we know</p>
+<p><span class="math display">\[
+\log(\lambda_i) = \beta_0 + \beta_1~age_i \hspace{6mm} and \hspace{6mm} \lambda_i = e^{\beta_0 + \beta_1~age_i}
+\]</span></p>
+<div class="fragment">
+<p>Plugging these formulas and the respective ages into <span class="math inline">\(logL\)</span>, we have</p>
+<span class="math display">\[\begin{align}
+logL \propto&amp; - \exp^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\
+&amp;- \exp^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\
+&amp;- \exp^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\
+&amp; -\exp^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
+&amp;-\exp^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74)
+\end{align}\]</span>
+</div>
+</section>
+<section id="loglikelihood-2" class="slide level2">
+<h2>Loglikelihood</h2>
+<p>Expanding this to the entire data set, we have</p>
+<p><span class="math display">\[
+logL \propto \sum_{i=1}^{1500} -e^{\beta_0 + \beta_1age_i} + total_i (\beta_0 + \beta_1age_i)
+\]</span></p>
+<div class="fragment">
+<p>Can use different numerical methods to try different values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> and find the combination that maximizes <span class="math inline">\(logL\)</span> .</p>
+</div>
+</section>
+<section id="iteratively-reweighted-least-squares-irls" class="slide level2">
+<h2>Iteratively reweighted least-squares (IRLS)</h2>
+<ul>
+<li><p><strong>Iteratively reweighted least-squares (IRLS)</strong> is used to find the MLEs</p></li>
+<li><p><span class="citation" data-cites="nelder1972generalized">Nelder and Wedderburn (<a href="#/references" role="doc-biblioref" onclick="">1972</a>)</span> show that under certain specifications of the weights and a modified response variable, the estimates found using IRLS are equivalent to the MLEs.</p></li>
+</ul>
+</section>
+<section id="irls-procedure" class="slide level2 midi">
+<h2>IRLS procedure</h2>
 <ol type="1">
-<li>Drop-in-deviance test</li>
-<li>Use the p-value for each coefficient</li>
-<li>Likelihood ratio test</li>
-<li>Nested F Test</li>
-<li>BIC</li>
+<li><p>Find initial starting values <span class="math inline">\(\hat{\theta}_i\)</span>, the model parameter ( <span class="math inline">\(\hat{\theta}_i = \hat{\lambda}_i\)</span> in the case of Poisson regression)</p></li>
+<li><p>Calculate the working response values <span class="math inline">\(z_i\)</span>.</p></li>
+<li><p>Calculate the working weights <span class="math inline">\(W_i\)</span>.</p></li>
+<li><p>Find the coefficient estimates of the weighted least squares model.</p></li>
 </ol>
+<p><span class="math display">\[z_i = \beta_0 + \beta_1 x \hspace{5mm} \text{ with weights }W_i\]</span></p>
+<p>The estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the estimates for the model coefficients.</p>
+<div class="fragment">
+<p>Use <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> to calculate updated values of <span class="math inline">\(\hat{\theta}_i\)</span> and repeat steps 2 - 4 until convergence.</p>
+
+</div>
+<aside><div>
+<p>Steps from <span class="citation" data-cites="dunn2018generalized">Dunn, Smyth, et al. (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span>.</p>
+</div></aside></section>
+<section id="irls-set-up" class="slide level2 midi">
+<h2>IRLS Set up</h2>
+<p><strong>Working response</strong>: Modified response variable at each step of the iteration.</p>
+<p><span class="math display">\[z_i = g(\theta) + g'(\theta)(y_i - \theta_i)\]</span></p>
+<p>where <span class="math inline">\(g(\theta)\)</span> is the link function. (We will talk all about link functions in Chapter 5)</p>
+<div class="fragment">
+<p>For Poisson regression <span class="math inline">\(g(\theta) = \log(\lambda)\)</span></p>
+<p><span class="math display">\[z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Working Weights:</strong> Weights applied to the observations at each step of the iteration</p>
+<p><span class="math display">\[W_i = \frac{\theta^2}{Var(Y)} \hspace{5mm} \Rightarrow \hspace{5mm}  W_i = \frac{\lambda^2}{\lambda} =  \lambda \text{ for Poisson regression}\]</span></p>
+</div>
+</section></section>
+<section>
+<section id="application-exercise" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<div class="appex">
+<p>📋 <a href="../ae/lec-04-poisson-estimate.html">sta310-sp24.netlify.app/ae/lec-04-poisson-estimate</a></p>
 </div>
 </section>
 <section id="looking-ahead" class="slide level2">
@@ -1106,6 +1069,12 @@ Prof.&nbsp;Maria Tackett
 <p><a href="https://sta310-sp24.netlify.app">🔗 STA 310 - Spring 2024</a></p>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-dunn2018generalized" class="csl-entry" role="listitem">
+Dunn, Peter K, Gordon K Smyth, et al. 2018. <em>Generalized Linear Models with Examples in r</em>. Vol. 53. Springer.
+</div>
+<div id="ref-nelder1972generalized" class="csl-entry" role="listitem">
+Nelder, John Ashworth, and Robert WM Wedderburn. 1972. <span>“Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 135 (3): 370–84.
+</div>
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
 Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple linear regression: applied generalized linear models and multilevel models in R</span></em>. CRC Press.
 </div>

@@ -958,8 +958,8 @@ Likelihood = \frac{e^{-\lambda_1}\lambda_1^0}{0!} * \frac{e^{-\lambda_2}\lambda_
 <p>where <span class="math inline">\(\lambda_i\)</span> can differ for each household based on its value of <code>age</code>.</p>
 </div>
 </section>
-<section id="loglikelihood" class="slide level2">
-<h2>Loglikelihood</h2>
+<section id="log-likelihood" class="slide level2">
+<h2>Log-likelihood</h2>
 <p>Let’s take the log of the likelihood, as this will be easier to maximize than the likelihood itself.</p>
 <p><span class="math display">\[
 \begin{align}
@@ -980,8 +980,8 @@ logL =&amp; -\lambda_1 + 0\log(\lambda_1) - \lambda_2 + 3\log(\lambda_2) - \lamb
 </div>
 </div>
 </section>
-<section id="loglikelihood-1" class="slide level2 midi">
-<h2>Loglikelihood</h2>
+<section id="log-likelihood-1" class="slide level2 midi">
+<h2>Log-likelihood</h2>
 <p>Because we’re fitting a Poisson regression model, we know</p>
 <p><span class="math display">\[
 \log(\lambda_i) = \beta_0 + \beta_1~age_i \hspace{6mm} and \hspace{6mm} \lambda_i = e^{\beta_0 + \beta_1~age_i}
@@ -997,8 +997,8 @@ logL \propto&amp; - \exp^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\
 \end{align}\]</span>
 </div>
 </section>
-<section id="loglikelihood-2" class="slide level2">
-<h2>Loglikelihood</h2>
+<section id="log-likelihood-2" class="slide level2">
+<h2>Log-likelihood</h2>
 <p>Expanding this to the entire data set, we have</p>
 <p><span class="math display">\[
 logL \propto \sum_{i=1}^{1500} -e^{\beta_0 + \beta_1age_i} + total_i (\beta_0 + \beta_1age_i)

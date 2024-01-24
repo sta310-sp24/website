@@ -28,6 +28,7 @@ d |>
   select(-`Maria's notes`) |>
   mutate(
     date = as.Date(date),
+    dow = if_else(is.na(dow), "", dow),
     week = ifelse(is.na(week), "", week)
   ) |>
   gt() |>

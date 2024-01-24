@@ -11,7 +11,9 @@ bibliography: references.bib
 ---
 
 ::: callout-important
-This assignment is due on Wednesday, January 24 at 11:59pm on GitHub.
+-   This assignment is due on Wednesday, January 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, January 25 at 6am.
+    -   Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.
+    -   You will have access to your HW repo again when grades are returned.
 :::
 
 # Instructions

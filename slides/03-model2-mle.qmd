@@ -3,31 +3,30 @@ title: "Finding the MLEs for Model 2"
 output: pdf_document
 ---
 
-This document covers multiple ways to find the MLE for Model 2 the conditional model from [Lecture 04: Using likelihoods](../04-likelihoods/04-likelihoods.html) and [Lecture 05: Using likelihoods to compare models](05-compare-models.html). See Lecture 04 for more details about the set up of the model. 
+This document covers multiple ways to find the MLE for Model 2 the conditional model from [Lecture 03: Using likelihoods](../slides/03-likelihoods.html). See the lecture notes for more details about the set up of the model.
 
 ```{r warning = F, message = F}
 library(tidyverse)
 refs <- read_csv("data/04-refs.csv")
 ```
 
-The likelihood is 
+The likelihood is
 
-$$\begin{aligned}Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}) &= [(p_{H| N})^{25}(1 - p_{H|N})^{23}(p_{H| H Bias})^8 \\ &(1 - p_{H| H Bias})^{12}(p_{H| V Bias})^{13}(1-p_{H|V Bias})^9]\end{aligned}$$  
+$$\begin{aligned}Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}) &= [(p_{H| N})^{25}(1 - p_{H|N})^{23}(p_{H| H Bias})^8 \\ &(1 - p_{H| H Bias})^{12}(p_{H| V Bias})^{13}(1-p_{H|V Bias})^9]\end{aligned}$$
 
-The log-likelihood is 
+The log-likelihood is
 
-$$\begin{aligned}\log (Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias})) &= 25 \log(p_{H| N}) + 23 \log(1 - p_{H|N}) \\ & + 8 \log(p_{H| H Bias}) + 12 \log(1 - p_{H| H Bias})\\ &+ 13 \log(p_{H| V Bias}) + 9 \log(1-p_{H|V Bias})\end{aligned}$$   
+$$\begin{aligned}\log (Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias})) &= 25 \log(p_{H| N}) + 23 \log(1 - p_{H|N}) \\ & + 8 \log(p_{H| H Bias}) + 12 \log(1 - p_{H| H Bias})\\ &+ 13 \log(p_{H| V Bias}) + 9 \log(1-p_{H|V Bias})\end{aligned}$$
 
+We would like to find the MLEs for $p_{H| N}, p_{H|H Bias}, \text{ and }p_{H |V Bias}$.
 
-We would like to find the MLEs for $p_{H| N}, p_{H|H Bias}, \text{ and }p_{H |V Bias}$. 
-
-## Finding MLEs using graphs 
+## Finding MLEs using graphs
 
 We need to find the MLEs for three parameters, therefore we would need to visualize a 4-dimensional object to find the MLEs from a graph. Given the difficulty of this task and the lack of precision in the estimates from this approach, we should rely on other approaches to find the MLEs in this instance.
 
 ## Finding MLEs using calculus
 
-We can find the MLE for each parameter using the partial derivative of the log-likelihood with respect to each parameter. 
+We can find the MLE for each parameter using the partial derivative of the log-likelihood with respect to each parameter.
 
 To find the MLE for $p_{H| N}$:
 
@@ -37,10 +36,9 @@ $$\begin{aligned}\frac{\partial \log(Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}))
 &\Rightarrow 48p_{H|N} = 25 \\[5pt] 
 &\Rightarrow \hat{p}_{H|N} = \frac{25}{48} = 0.521\end{aligned}$$
 
-We can use a similar approach to find the MLEs for $p_{H|H Bias}$ and $p_{H|V Bias}$. 
+We can use a similar approach to find the MLEs for $p_{H|H Bias}$ and $p_{H|V Bias}$.
 
-$$\hat{p}_{H|H Bias} = \frac{8}{20} = 0.4$$
-$$\hat{p}_{H|V Bias} = \frac{13}{22} = 0.591$$
+$$\hat{p}_{H|H Bias} = \frac{8}{20} = 0.4$$ $$\hat{p}_{H|V Bias} = \frac{13}{22} = 0.591$$
 
 ## Finding the MLEs using R
 
@@ -83,7 +81,6 @@ loglik <- function(params){
                            phv^13 * (1 - phv)^9)
 }
 ```
-
 
 ```{r}
 # use manual search to get starting values 

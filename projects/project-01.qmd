@@ -16,9 +16,6 @@ You will work in small teams for this project. You will find the team assignment
 Before getting started, I encourage you to discuss the following as a group:
 
 -   Come up with a plan to communicate and work together outside of lab.
-
-<!-- -->
-
 -   Come up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings.
 
 ## Workflow
@@ -238,9 +235,9 @@ This portion of the grade will the average of the scores from the peer reviewers
 
 You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by **Thu, Feb 15 at noon.** `README.md`: 3 - 5 sentence summary of the project and citation for the article.
 
--   `/proposal/proposal.qmd`
+-   `proposal.qmd`
 
--   `/proposal/proposal.pdf`
+-   `proposal.pdf`
 
 -   `article-evaluation.qmd`
 

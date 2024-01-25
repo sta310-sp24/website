@@ -1117,7 +1117,7 @@
     "href": "projects/project-01.html#team-assignments",
     "title": "Project 01: Generalized Linear Models",
     "section": "Team assignments",
-    "text": "Team assignments\nYou will work in small teams for this project. You will find the team assignments in the #project-01 channel in Slack.\nBefore getting started, I encourage you to discuss the following as a group:\n\nCome up with a plan to communicate and work together outside of lab.\n\n\n\nCome up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings."
+    "text": "Team assignments\nYou will work in small teams for this project. You will find the team assignments in the #project-01 channel in Slack.\nBefore getting started, I encourage you to discuss the following as a group:\n\nCome up with a plan to communicate and work together outside of lab.\nCome up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings."
   },
   {
     "objectID": "projects/project-01.html#workflow",
@@ -1173,7 +1173,7 @@
     "href": "projects/project-01.html#github-repo-organization",
     "title": "Project 01: Generalized Linear Models",
     "section": "GitHub repo organization",
-    "text": "GitHub repo organization\nYou should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by Thu, Feb 15 at noon. README.md: 3 - 5 sentence summary of the project and citation for the article.\n\n/proposal/proposal.qmd\n/proposal/proposal.pdf\narticle-evaluation.qmd\narticle-evaluation.pdf\nwriteup.qmd\nwriteup.pdf\n/presentation\n\n/presentation/*: Presentation file (if not linked in README)\n/presentation/README.md: Link to project (if not in presentation folder)\n\n\nOptional\n\n*.bib: BibTex file for references\n/data/: Folder containing data"
+    "text": "GitHub repo organization\nYou should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by Thu, Feb 15 at noon. README.md: 3 - 5 sentence summary of the project and citation for the article.\n\nproposal.qmd\nproposal.pdf\narticle-evaluation.qmd\narticle-evaluation.pdf\nwriteup.qmd\nwriteup.pdf\n/presentation\n\n/presentation/*: Presentation file (if not linked in README)\n/presentation/README.md: Link to project (if not in presentation folder)\n\n\nOptional\n\n*.bib: BibTex file for references\n/data/: Folder containing data"
   },
   {
     "objectID": "projects/project-01.html#grading-100-points",

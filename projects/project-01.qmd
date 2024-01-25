@@ -273,7 +273,7 @@ You should have the following files and folders in the project repo. The repo an
 
 ## Tips on finding articles
 
-Below are tips to help you find articles based on information from [Jodi Psoter](https://directory.library.duke.edu/staff/jodi.psoter), the Librarian for Chemistry and Statistical Science at Duke Libraries.
+Below are tips to help you find articles based on information from [Jodi Psoter](https://directory.library.duke.edu/staff/jodi.psoter), the former Librarian for Chemistry and Statistical Science at Duke Libraries and current Head Librarian for the Marine Lab Library.
 
 ### PubMed
 
@@ -281,22 +281,20 @@ Below are tips to help you find articles based on information from [Jodi Psoter]
 
 The [PubMed heading tree](https://www.ncbi.nlm.nih.gov/mesh/68013223) lets you search by topic. The link will direct you to the results under the category of "Statistics as a Topic".
 
-1.  Click on the model / analysis of interest.
+1.  Click on the model or distribution of interest, e.g. "Logistic Models".
 2.  Click "Add to search builder" under the *PubMed Search Builder* in the top right corner. You should now see the model/analysis type you chose in the search box.
 3.  Click "Search PubMed", and a page of search results will appear.
-4.  There are options to narrow your results on the left-hand side. Under *Article Attributes*, check "Associated Data", to limit the results to articles with data sets available.
-
-You can use the other search options to narrow down results based on your team's interests.
+4.  There are options to narrow your results on the left-hand side based on your team's interest.
 
 ### PsycInfo
 
 *Articles in psychology*
 
-[PsycInfo](https://web-s-ebscohost-com.proxy.lib.duke.edu/ehost/search/advanced?vid=0&sid=b34cb1a4-7ba3-4cf4-8ec2-1da4f69a87a3%40redis) will allow users to search by analysis type.
+[PsycInfo](https://web-p-ebscohost-com.proxy.lib.duke.edu/ehost/search/advanced?vid=1&sid=2061752c-359b-411c-9ebd-aec4d285fee4%40redis) will allow users to search by analysis type.
 
 1.  Put the name of the model in the search bar, e.g., "Poisson Regression". Then, in the drop down menu next to the search bar, select "DE Subjects \[exact\]". Click Search.
 
-2.  On the left-hand side, under *Limit To*, check "Open Access". This will not guarantee the article has an associated data set, but a lot of open access articles will make the data available or utilize publicly accessible data you could pull from another source.
+2.  You can use the options on the left-hand size to narrow down the search results.
 
 ### Web of Science
 
@@ -304,37 +302,13 @@ You can use the other search options to narrow down results based on your team's
 
 [Web of Science Data Citation Index](https://www-webofscience-com.proxy.lib.duke.edu/wos/drci/basic-search) lets you search for data sets based on the topic of interest.
 
-1.  Use the search bar to search based on a topic of interest. You can also search for the model / analysis type.
+1.  Use the search bar to search based on a topic of interest. You can also search for the model or distribution name.
 
 2.  On the left-hand side, check "Data Set" under *Content Type* and check "Dataset" under *Data Types*. Click "Refine" to limit the results.
 
 3.Click on the article of interest.
 
-4.  Click the *DOI* link in the article metadata. The article should have a data availability statement or something similar with information on accessing the data.
-
-## Example articles
-
-Below are example articles you can use for the project. You are welcome to (but not required to) to use one of these articles. Up to two teams may use a given article for the project.
-
-### Articles
-
--   [*Spatial distribution and factors associated with low birth weight in Ethiopia using data from Ethiopian Demographic and Health Survey 2016: spatial and multilevel analysis*](https://bmjpaedsopen.bmj.com/content/5/1/e000968)
-
--   [*Longitudinal assessments of child growth: A six-year follow-up of a cluster-randomized maternal education trial*](https://www.clinicalnutritionjournal.com/article/S0261-5614(21)00387-3/fulltext#supplementaryMaterial)
-
--   [*A multi-level spatio-temporal analysis on prostate cancer outcomes*](https://www.sciencedirect.com/science/article/pii/S1877782121000564?via%3Dihub#sec0090)
-
--   [*Multilevel ordinal models for examination grades*](https://www.bristol.ac.uk/media-library/sites/cmm/migrated/documents/momeg.pdf)
-
-    -   [Click here](https://www.bristol.ac.uk/cmm/media/migrated/momeg.zip) for data.
-
--   [*A Longitudinal Assessment of the Persistence of Twitter Datasets*](https://arxiv.org/pdf/1709.09186.pdf)
-
-    -   [Click here](https://figshare.com/articles/Twitter_event_datasets_2012-2016_/5100460) for data. (*Note: The data set is large, so you can work with a subsample*)
-
--   [*Multilevel analysis of geographic variation among correlates of child undernutrition in India*](https://www.bristol.ac.uk/media-library/sites/cmm/migrated/documents/momeg.pdf)
-
-    -   [Click here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8189194/) for data.
+4.  You can use the options on the left-hand size to narrow down the search results.
 
 ### Acknowledgements
 

@@ -989,11 +989,11 @@ logL =&amp; -\lambda_1 + 0\log(\lambda_1) - \lambda_2 + 3\log(\lambda_2) - \lamb
 <div class="fragment">
 <p>Plugging these formulas and the respective ages into <span class="math inline">\(logL\)</span>, we have</p>
 <span class="math display">\[\begin{align}
-logL \propto&amp; - \exp^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\
-&amp;- \exp^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\
-&amp;- \exp^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\
-&amp; -\exp^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
-&amp;-\exp^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74)
+logL \propto&amp; - \e^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\
+&amp;- \e^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\
+&amp;- \e^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\
+&amp; -\e^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
+&amp;-\e^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74)
 \end{align}\]</span>
 </div>
 </section>
@@ -1038,7 +1038,7 @@ logL \propto \sum_{i=1}^{1500} -e^{\beta_0 + \beta_1age_i} + total_i (\beta_0 + 
 <p>where <span class="math inline">\(g(\theta)\)</span> is the link function. (We will talk all about link functions in Chapter 5)</p>
 <div class="fragment">
 <p>For Poisson regression <span class="math inline">\(g(\theta) = \log(\lambda)\)</span></p>
-<p><span class="math display">\[z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}\]</span></p>
+<p><span class="math display">\[z_i = \log(\lambda_i) + \frac{(y_i - \lambda_i)}{\lambda_i}\]</span></p>
 </div>
 <div class="fragment">
 <p><strong>Working Weights:</strong> Weights applied to the observations at each step of the iteration</p>

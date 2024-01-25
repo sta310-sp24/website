@@ -480,11 +480,11 @@ Plugging these formulas and the respective ages into $logL$, we have
 
 ```{=tex}
 \begin{align}
-logL \propto& - \exp^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\ 
-&- \exp^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\ 
-&- \exp^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\ 
-& -\exp^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
-&-\exp^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74) 
+logL \propto& - \e^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\ 
+&- \e^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\ 
+&- \e^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\ 
+& -\e^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
+&-\e^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74) 
 \end{align}
 ```
 ## Log-likelihood
@@ -539,7 +539,7 @@ where $g(\theta)$ is the link function. (We will talk all about link functions i
 
 For Poisson regression $g(\theta) = \log(\lambda)$
 
-$$z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}$$
+$$z_i = \log(\lambda_i) + \frac{(y_i - \lambda_i)}{\lambda_i}$$
 
 . . .
 
@@ -547,7 +547,7 @@ $$z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}$$
 
 $$W_i = \frac{\theta^2}{Var(Y)} \hspace{5mm} \Rightarrow \hspace{5mm}  W_i = \frac{\lambda^2}{\lambda} =  \lambda \text{ for Poisson regression}$$
 
-# Application exercise 
+# Application exercise
 
 ::: appex
 📋 [sta310-sp24.netlify.app/ae/lec-04-poisson-estimate](../ae/lec-04-poisson-estimate.html)

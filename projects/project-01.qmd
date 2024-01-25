@@ -1,5 +1,343 @@
 ---
-title: Project 01
+title: "Project 01: Generalized Linear Models"
 ---
 
-To be posted.
+For this project you and your team will be reading and evaluating a scholarly article that incorporates generalized linear models (GLMs) in the analysis.
+
+The learning objectives of the project are to
+
+-   Explore how GLMs are used in practice.
+-   Understand how statistical results are presented in scholarly research.
+
+## Team assignments
+
+You will work in small teams for this project. You will find the team assignments in the `#project-01` channel in Slack.
+
+Before getting started, I encourage you to discuss the following as a group:
+
+-   Come up with a plan to communicate and work together outside of lab.
+
+<!-- -->
+
+-   Come up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings.
+
+## Workflow
+
+-   **Project Week 01 (week of Mon, Jan 22)**: Select article and submit proposal.
+-   **Project Week 02 (week of Mon, Jan 29)**: Read article and complete article evaluation.
+-   **Project Week 03 (week of Mon, Feb 05 )**: Work on draft reports and presentations.
+-   **Project Week 04 (week of Mon, Feb 12)**: Presentations and submit report.
+
+## Due dates
+
+::: callout-note
+All work will be submitted in your team's project GitHub repo.
+:::
+
+-   **Proposal**: due Fri, Jan 25 at noon
+
+-   **Article evaluation**: due Sun, Feb 04 at noon
+
+-   **Presentation**: due Wed, Feb 14 at 3:05pm
+
+-   **Written report**: due Thu, Feb 15 at noon
+
+## Article
+
+The article for this project <u>must</u> be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must incorporate the use one or more generalized linear models, that is <u>not</u> a linear regression model, in the analysis.
+
+-   *Common GLMs are Poisson regression, Logistic regression, Probit regression, and Negative binomial regression.*
+-   *You can also look for models based on the distribution of the response variable: Binary, Binomial, Poisson, Exponential, Gamma, Geometric.*
+
+The model used in the paper does not have to be one we discuss in class. I'd encourage you to explore articles that use modeling beyond the scope of the class!
+
+Below are a few useful places to search for articles:
+
+-   [Duke Library](https://library.duke.edu/)
+-   [PLOS One](https://journals.plos.org/plosone/)
+-   [PubMed.gov](https://pubmed.ncbi.nlm.nih.gov/)
+
+See the [Tips on finding articles] for tips on searching journal databases to find an article.
+
+## Proposal
+
+The main goal of the proposal is to ensure you have an article that will set you up for a successful project. Include the following in the proposal.
+
+-   The citation for the article. *If you're using a `.bib` file you can use the default citation format in Quarto (Chicago author-date format). Otherwise, use MLA format.*
+
+-   Brief summary about why you chose this article.
+
+-   Brief summary of the article’s primary research objective.
+
+-   Name of the GLM(s) used in the article and a short description of the response variable for each model.
+
+You are only required to write the proposal for one article. Write the proposal in the file `proposal.qmd`, then push the `.qmd` and rendered PDF to the GitHub repo for submission.
+
+::: callout-important
+**The proposal is due on Fri, Jan 25 at noon.\
+\
+**You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.
+:::
+
+### Grading criteria
+
+The proposal will be graded based on the following:
+
+-   All required components of the proposal are included and accurate (8 pts)
+
+-   All team members have made meaningful contribution, as determined by Git commit history (2 pts)
+
+## Article evaluation
+
+The purpose of the article evaluation is for you to begin describing and evaluating the statistical analysis and argument in the article. Write your responses to the following questions in `article-evaluation.qmd`. The anticipated length is about 1 - 2 pages and should be no more than 4 pages. There is no minimum page requirement, as long as each section is comprehensively addressed.
+
+-   **Audience and purpose**
+
+    -   Who is the primary audience for this article, i.e., for what type of readers are the authors writing?
+    -   What is the general purpose of the article, e.g., to persuade the reader to do something, to prove something, to inform the reader, etc.?
+
+-   **Data**
+
+    -   How were the data generated - from an experiment, online survey, interviews, etc?
+    -   Under what conditions were the data collected, e.g., the time period, location, how subjects were selected, response rate / drop-out rate, etc.?
+
+-   **Graphs and tables**
+
+    -   Describe the types of visualizations and tables used in the article.
+    -   How are they primarily used - for exploratory data analysis, to support a candidatee, etc.?
+    -   What visualizations or tables might you add to the article? Briefly explain.
+
+-   **Generalized Linear Model**
+
+    *If your paper has multiple, GLMs you only have to write this section up for one model.*
+
+    -   What is the response variable, and what is its distribution?
+    -   What are the predictor variables? Which predictor(s) are of particularl interest in the research?
+    -   Write the statistical model in mathematical notation.
+
+-   **Overall argument**
+
+    -   Are there limitations or difficulties with generalizing beyond the data? Briefly explain.
+    -   When was the article published? Are the findings up-to-date, out-dated, or timeless? Briefly explain.
+    -   How does the study advance knowledge in the field?
+
+### Grading criteria
+
+The article evaluation will be graded based on the following
+
+-   All required components of the proposal are included and accurate (8 pts)
+
+-   All team members have made meaningful contribution, as determined by Git commit history (2 pts)
+
+::: callout-important
+**The article evaluation is due on Sun, Feb 04 at noon.\
+\
+**You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.
+:::
+
+## Write up
+
+The anticipated length is about 5 pages. There is no minimum or maximum page requirement as long as each section is accurately and comprehensively addressed.
+
+### Introduction
+
+Briefly summarize the article, the research objective and purpose, and key conclusions. Also include a description of the data used for the analysis.
+
+### Methods
+
+Describe the GLM used for the analysis. Describe the response variable and and its distribution. Describe predictor variables. Write the equation of the statistical models using mathematical notation.
+
+### Results
+
+Interpret the results form the model. Write the interpretations / conclusions from the mode, using estimates from the article when possible. If the article does not include estimates for some or all of the estimated effects effects, you can write general interpretations using the appropriate mathematical symbol (e.g., $\hat{\beta}_1$) in place of the estimated value.
+
+### Communication
+
+The objective of this section of the written report is to assess the authors' argument and communication. Reading and identifying how others communicate statistical results is a key way to develop your statistical writing skills. This section will include an assessment of the following:
+
+-   **Audience**: Describe the primary audience for the article.
+
+-   **Methods**: Consider the detail in the data and methods sections. What aspects of the analysis are mentioned in detail? What aspects are mentioned without detail? How does the level of detail correlate to the statistical background of the primary audience?
+
+-   **Graphs and figures**: How are the graphs, figures, and tables used to support the findings? How are they used for exploratory data analysis? How how are they used to assess or support modeling results? Would additional graphs, figures, or tables be helpful? If so, what kind?
+
+    -   Identify one key graph. Where is it located in the article? What message does it convey with respect to the objective and conclusion of the study? If there are no graphs in the article, describe one key graph you would include and how it would be used in the article (e.g., support conclusions, provide clarity, etc.).
+
+-   **Limitations**: Are there limitations or difficulties in generalizing beyond the data? How are these limitations noted, if at all? Do you have any other concerns about the study?
+
+-   **Impact**: According to the author, how does the study advance knowledge in the field? Taking into account the year the article was published, do the author’s claims seem adequately justified, overblown, or unduly cautious?
+
+You can use these questions as a guide to shape the narrative. This section should still be written in narrative form, not as a list of questions and answers.
+
+The questions in this section are adapted from *Communicating with Data: The Art of Writing for Data Science* by Deborah Nolan and Sara Stoudt. [Click here](https://sakai.duke.edu/access/content/group/ec265469-bdb3-47a7-beb0-317956b6f86f/Reading_Science_Articles.pdfhttps://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=787628) for more details about the questions and how to read scientific articles. You can borrow a copy of the book from Duke Libraries.
+
+### Grading criteria
+
+Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. (30 pts total)
+
+The report will also be assessed based on the following:
+
+-   Formatting: 3 pts
+    -   This is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.
+-   Reproducibility: 2 pts
+    -   This is an assessment of the reproducibility of the report. Is the PDF produced by rendering the Quarto document?
+
+::: callout-important
+The written report is due on **Thu, Feb 15 at noon**.
+
+You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.
+:::
+
+## Presentation
+
+**You will present on Wed, Feb 14 during lecture.** Each team will have up to 10 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.
+
+You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in the timeframe. A suggested outline is
+
+-   1 slide to introduce article
+-   1 - 2 slides to describe the model
+-   1 - 2 slides for key interpretations and results
+-   1 slide for key highlights about the communication and writing (e.g., what the authors did particularly well or areas of improvement)
+
+You will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the "Peers" scores for your team's presentation included in your presentation grade.
+
+The presentation order and peer review assignments will be given closer to the presentation date.
+
+### Grading criteria - Teaching Team (16 pts)
+
+This portion of the grade will the average of the scores from the members of the teaching team.
+
+-   **Professionalism** (5 pts)
+    -   Was the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?
+    -   Was the time reasonably divided among team members? Was the presentation within the time limit?
+    -   Did the team present a unified story?
+-   **Content** (6 pts): The content is presented in a clear and accurate way. This includes clearly and accurately describing
+    -   the primary research objective and intended audience for the article.
+    -   the data used in the analysis.
+    -   the observations and units at every level.
+    -   the model and primary conclusions
+    -   the effectiveness of tables, figures, and graphs in the article and argument of the contribution of the work (optional).
+-   **Slides** (10 pts)
+    -   Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?
+
+### Grading criteria - Peers (4 pts)
+
+This portion of the grade will the average of the scores from the peer reviewers. Peer review assignments will be posted on Slack.
+
+-   **Introduction** (1 pt)
+    -   Did the team clearly describe the primary research objective and intended audience for the article?
+-   **Data** (1 pt)
+    -   Did the team clearly describe the data used in the analysis?
+-   **Model** (1 pt)
+    -   Did the team clearly describe the observational units and variables at each level? Did they clearly describe the model?
+-   **Slides** (1 pt)
+    -   Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?
+
+## GitHub repo organization
+
+You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by **Thu, Feb 15 at noon.** `README.md`: 3 - 5 sentence summary of the project and citation for the article.
+
+-   `/proposal/proposal.qmd`
+
+-   `/proposal/proposal.pdf`
+
+-   `article-evaluation.qmd`
+
+-   `article-evaluation.pdf`
+
+-   `writeup.qmd`
+
+-   `writeup.pdf`
+
+-   `/presentation`
+
+    -   `/presentation/*`: Presentation file (if not linked in README)
+    -   `/presentation/README.md`: Link to project (if not in presentation folder)
+
+**Optional**
+
+-   `*.bib`: BibTex file for references
+
+-    `/data/`: Folder containing data
+
+## Grading (100 points)
+
+| Component                                   | Points |
+|---------------------------------------------|--------|
+| Proposal                                    | 10 pts |
+| Article evaluation                          | 20 pts |
+| Written report                              | 35 pts |
+| Presentation + Slides                       | 25 pts |
+| Repo organization                           | 5 pts  |
+| Teamwork evaluation (individually assessed) | 5 pts  |
+
+## Tips on finding articles
+
+Below are tips to help you find articles based on information from [Jodi Psoter](https://directory.library.duke.edu/staff/jodi.psoter), the Librarian for Chemistry and Statistical Science at Duke Libraries.
+
+### PubMed
+
+*Articles in health-related fields*
+
+The [PubMed heading tree](https://www.ncbi.nlm.nih.gov/mesh/68013223) lets you search by topic. The link will direct you to the results under the category of "Statistics as a Topic".
+
+1.  Click on the model / analysis of interest.
+2.  Click "Add to search builder" under the *PubMed Search Builder* in the top right corner. You should now see the model/analysis type you chose in the search box.
+3.  Click "Search PubMed", and a page of search results will appear.
+4.  There are options to narrow your results on the left-hand side. Under *Article Attributes*, check "Associated Data", to limit the results to articles with data sets available.
+
+You can use the other search options to narrow down results based on your team's interests.
+
+### PsycInfo
+
+*Articles in psychology*
+
+[PsycInfo](https://web-s-ebscohost-com.proxy.lib.duke.edu/ehost/search/advanced?vid=0&sid=b34cb1a4-7ba3-4cf4-8ec2-1da4f69a87a3%40redis) will allow users to search by analysis type.
+
+1.  Put the name of the model in the search bar, e.g., "Poisson Regression". Then, in the drop down menu next to the search bar, select "DE Subjects \[exact\]". Click Search.
+
+2.  On the left-hand side, under *Limit To*, check "Open Access". This will not guarantee the article has an associated data set, but a lot of open access articles will make the data available or utilize publicly accessible data you could pull from another source.
+
+### Web of Science
+
+*Articles on all topics*
+
+[Web of Science Data Citation Index](https://www-webofscience-com.proxy.lib.duke.edu/wos/drci/basic-search) lets you search for data sets based on the topic of interest.
+
+1.  Use the search bar to search based on a topic of interest. You can also search for the model / analysis type.
+
+2.  On the left-hand side, check "Data Set" under *Content Type* and check "Dataset" under *Data Types*. Click "Refine" to limit the results.
+
+3.Click on the article of interest.
+
+4.  Click the *DOI* link in the article metadata. The article should have a data availability statement or something similar with information on accessing the data.
+
+## Example articles
+
+Below are example articles you can use for the project. You are welcome to (but not required to) to use one of these articles. Up to two teams may use a given article for the project.
+
+### Articles
+
+-   [*Spatial distribution and factors associated with low birth weight in Ethiopia using data from Ethiopian Demographic and Health Survey 2016: spatial and multilevel analysis*](https://bmjpaedsopen.bmj.com/content/5/1/e000968)
+
+-   [*Longitudinal assessments of child growth: A six-year follow-up of a cluster-randomized maternal education trial*](https://www.clinicalnutritionjournal.com/article/S0261-5614(21)00387-3/fulltext#supplementaryMaterial)
+
+-   [*A multi-level spatio-temporal analysis on prostate cancer outcomes*](https://www.sciencedirect.com/science/article/pii/S1877782121000564?via%3Dihub#sec0090)
+
+-   [*Multilevel ordinal models for examination grades*](https://www.bristol.ac.uk/media-library/sites/cmm/migrated/documents/momeg.pdf)
+
+    -   [Click here](https://www.bristol.ac.uk/cmm/media/migrated/momeg.zip) for data.
+
+-   [*A Longitudinal Assessment of the Persistence of Twitter Datasets*](https://arxiv.org/pdf/1709.09186.pdf)
+
+    -   [Click here](https://figshare.com/articles/Twitter_event_datasets_2012-2016_/5100460) for data. (*Note: The data set is large, so you can work with a subsample*)
+
+-   [*Multilevel analysis of geographic variation among correlates of child undernutrition in India*](https://www.bristol.ac.uk/media-library/sites/cmm/migrated/documents/momeg.pdf)
+
+    -   [Click here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8189194/) for data.
+
+### Acknowledgements
+
+-   Grading criteria and the repo organization for this project were adapted from Project 1 on [vizdata.org](https://vizdata.org).
+-   Some questions for the *Article Evaluation* adapted from ["How to Evaluate Journal Articles"](https://libguides.colostate.edu/howtodo/evaluatejournals).
+-   Questions in the "Communication" section of the *Written Report* are adapted from *Communicating with Data: The Art of Writing for Data Science* by Deborah Nolan and Sara Stoudt.

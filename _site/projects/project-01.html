@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 310 - Spring 2024 - Project 01</title>
+<title>STA 310 - Spring 2024 - Project 01: Generalized Linear Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -239,14 +241,57 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#team-assignments" id="toc-team-assignments" class="nav-link active" data-scroll-target="#team-assignments">Team assignments</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
+  <li><a href="#due-dates" id="toc-due-dates" class="nav-link" data-scroll-target="#due-dates">Due dates</a></li>
+  <li><a href="#article" id="toc-article" class="nav-link" data-scroll-target="#article">Article</a></li>
+  <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal">Proposal</a>
+  <ul class="collapse">
+  <li><a href="#grading-criteria" id="toc-grading-criteria" class="nav-link" data-scroll-target="#grading-criteria">Grading criteria</a></li>
+  </ul></li>
+  <li><a href="#article-evaluation" id="toc-article-evaluation" class="nav-link" data-scroll-target="#article-evaluation">Article evaluation</a>
+  <ul class="collapse">
+  <li><a href="#grading-criteria-1" id="toc-grading-criteria-1" class="nav-link" data-scroll-target="#grading-criteria-1">Grading criteria</a></li>
+  </ul></li>
+  <li><a href="#write-up" id="toc-write-up" class="nav-link" data-scroll-target="#write-up">Write up</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">Communication</a></li>
+  <li><a href="#grading-criteria-2" id="toc-grading-criteria-2" class="nav-link" data-scroll-target="#grading-criteria-2">Grading criteria</a></li>
+  </ul></li>
+  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation">Presentation</a>
+  <ul class="collapse">
+  <li><a href="#grading-criteria---teaching-team-16-pts" id="toc-grading-criteria---teaching-team-16-pts" class="nav-link" data-scroll-target="#grading-criteria---teaching-team-16-pts">Grading criteria - Teaching Team (16 pts)</a></li>
+  <li><a href="#grading-criteria---peers-4-pts" id="toc-grading-criteria---peers-4-pts" class="nav-link" data-scroll-target="#grading-criteria---peers-4-pts">Grading criteria - Peers (4 pts)</a></li>
+  </ul></li>
+  <li><a href="#github-repo-organization" id="toc-github-repo-organization" class="nav-link" data-scroll-target="#github-repo-organization">GitHub repo organization</a></li>
+  <li><a href="#grading-100-points" id="toc-grading-100-points" class="nav-link" data-scroll-target="#grading-100-points">Grading (100 points)</a></li>
+  <li><a href="#tips-on-finding-articles" id="toc-tips-on-finding-articles" class="nav-link" data-scroll-target="#tips-on-finding-articles">Tips on finding articles</a>
+  <ul class="collapse">
+  <li><a href="#pubmed" id="toc-pubmed" class="nav-link" data-scroll-target="#pubmed">PubMed</a></li>
+  <li><a href="#psycinfo" id="toc-psycinfo" class="nav-link" data-scroll-target="#psycinfo">PsycInfo</a></li>
+  <li><a href="#web-of-science" id="toc-web-of-science" class="nav-link" data-scroll-target="#web-of-science">Web of Science</a></li>
+  </ul></li>
+  <li><a href="#example-articles" id="toc-example-articles" class="nav-link" data-scroll-target="#example-articles">Example articles</a>
+  <ul class="collapse">
+  <li><a href="#articles" id="toc-articles" class="nav-link" data-scroll-target="#articles">Articles</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/projects/project-01.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project 01</h1>
+<h1 class="title">Project 01: Generalized Linear Models</h1>
 </div>
 
 
@@ -261,9 +306,414 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>To be posted.</p>
+<p>For this project you and your team will be reading and evaluating a scholarly article that incorporates generalized linear models (GLMs) in the analysis.</p>
+<p>The learning objectives of the project are to</p>
+<ul>
+<li>Explore how GLMs are used in practice.</li>
+<li>Understand how statistical results are presented in scholarly research.</li>
+</ul>
+<section id="team-assignments" class="level2">
+<h2 class="anchored" data-anchor-id="team-assignments">Team assignments</h2>
+<p>You will work in small teams for this project. You will find the team assignments in the <code>#project-01</code> channel in Slack.</p>
+<p>Before getting started, I encourage you to discuss the following as a group:</p>
+<ul>
+<li>Come up with a plan to communicate and work together outside of lab.</li>
+</ul>
+<!-- -->
+<ul>
+<li>Come up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings.</li>
+</ul>
+</section>
+<section id="workflow" class="level2">
+<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<ul>
+<li><strong>Project Week 01 (week of Mon, Jan 22)</strong>: Select article and submit proposal.</li>
+<li><strong>Project Week 02 (week of Mon, Jan 29)</strong>: Read article and complete article evaluation.</li>
+<li><strong>Project Week 03 (week of Mon, Feb 05 )</strong>: Work on draft reports and presentations.</li>
+<li><strong>Project Week 04 (week of Mon, Feb 12)</strong>: Presentations and submit report.</li>
+</ul>
+</section>
+<section id="due-dates" class="level2">
+<h2 class="anchored" data-anchor-id="due-dates">Due dates</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All work will be submitted in your team’s project GitHub repo.</p>
+</div>
+</div>
+<ul>
+<li><p><strong>Proposal</strong>: due Fri, Jan 25 at noon</p></li>
+<li><p><strong>Article evaluation</strong>: due Sun, Feb 04 at noon</p></li>
+<li><p><strong>Presentation</strong>: due Wed, Feb 14 at 3:05pm</p></li>
+<li><p><strong>Written report</strong>: due Thu, Feb 15 at noon</p></li>
+</ul>
+</section>
+<section id="article" class="level2">
+<h2 class="anchored" data-anchor-id="article">Article</h2>
+<p>The article for this project <u>must</u> be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must incorporate the use one or more generalized linear models, that is <u>not</u> a linear regression model, in the analysis.</p>
+<ul>
+<li><em>Common GLMs are Poisson regression, Logistic regression, Probit regression, and Negative binomial regression.</em></li>
+<li><em>You can also look for models based on the distribution of the response variable: Binary, Binomial, Poisson, Exponential, Gamma, Geometric.</em></li>
+</ul>
+<p>The model used in the paper does not have to be one we discuss in class. I’d encourage you to explore articles that use modeling beyond the scope of the class!</p>
+<p>Below are a few useful places to search for articles:</p>
+<ul>
+<li><a href="https://library.duke.edu/">Duke Library</a></li>
+<li><a href="https://journals.plos.org/plosone/">PLOS One</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed.gov</a></li>
+</ul>
+<p>See the <a href="#tips-on-finding-articles">Tips on finding articles</a> for tips on searching journal databases to find an article.</p>
+</section>
+<section id="proposal" class="level2">
+<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
+<p>The main goal of the proposal is to ensure you have an article that will set you up for a successful project. Include the following in the proposal.</p>
+<ul>
+<li><p>The citation for the article. <em>If you’re using a <code>.bib</code> file you can use the default citation format in Quarto (Chicago author-date format). Otherwise, use MLA format.</em></p></li>
+<li><p>Brief summary about why you chose this article.</p></li>
+<li><p>Brief summary of the article’s primary research objective.</p></li>
+<li><p>Name of the GLM(s) used in the article and a short description of the response variable for each model.</p></li>
+</ul>
+<p>You are only required to write the proposal for one article. Write the proposal in the file <code>proposal.qmd</code>, then push the <code>.qmd</code> and rendered PDF to the GitHub repo for submission.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The proposal is due on Fri, Jan 25 at noon.<br>
+<br>
+</strong>You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.</p>
+</div>
+</div>
+<section id="grading-criteria" class="level3">
+<h3 class="anchored" data-anchor-id="grading-criteria">Grading criteria</h3>
+<p>The proposal will be graded based on the following:</p>
+<ul>
+<li><p>All required components of the proposal are included and accurate (8 pts)</p></li>
+<li><p>All team members have made meaningful contribution, as determined by Git commit history (2 pts)</p></li>
+</ul>
+</section>
+</section>
+<section id="article-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="article-evaluation">Article evaluation</h2>
+<p>The purpose of the article evaluation is for you to begin describing and evaluating the statistical analysis and argument in the article. Write your responses to the following questions in <code>article-evaluation.qmd</code>. The anticipated length is about 1 - 2 pages and should be no more than 4 pages. There is no minimum page requirement, as long as each section is comprehensively addressed.</p>
+<ul>
+<li><p><strong>Audience and purpose</strong></p>
+<ul>
+<li>Who is the primary audience for this article, i.e., for what type of readers are the authors writing?</li>
+<li>What is the general purpose of the article, e.g., to persuade the reader to do something, to prove something, to inform the reader, etc.?</li>
+</ul></li>
+<li><p><strong>Data</strong></p>
+<ul>
+<li>How were the data generated - from an experiment, online survey, interviews, etc?</li>
+<li>Under what conditions were the data collected, e.g., the time period, location, how subjects were selected, response rate / drop-out rate, etc.?</li>
+</ul></li>
+<li><p><strong>Graphs and tables</strong></p>
+<ul>
+<li>Describe the types of visualizations and tables used in the article.</li>
+<li>How are they primarily used - for exploratory data analysis, to support a candidatee, etc.?</li>
+<li>What visualizations or tables might you add to the article? Briefly explain.</li>
+</ul></li>
+<li><p><strong>Generalized Linear Model</strong></p>
+<p><em>If your paper has multiple, GLMs you only have to write this section up for one model.</em></p>
+<ul>
+<li>What is the response variable, and what is its distribution?</li>
+<li>What are the predictor variables? Which predictor(s) are of particularl interest in the research?</li>
+<li>Write the statistical model in mathematical notation.</li>
+</ul></li>
+<li><p><strong>Overall argument</strong></p>
+<ul>
+<li>Are there limitations or difficulties with generalizing beyond the data? Briefly explain.</li>
+<li>When was the article published? Are the findings up-to-date, out-dated, or timeless? Briefly explain.</li>
+<li>How does the study advance knowledge in the field?</li>
+</ul></li>
+</ul>
+<section id="grading-criteria-1" class="level3">
+<h3 class="anchored" data-anchor-id="grading-criteria-1">Grading criteria</h3>
+<p>The article evaluation will be graded based on the following</p>
+<ul>
+<li><p>All required components of the proposal are included and accurate (8 pts)</p></li>
+<li><p>All team members have made meaningful contribution, as determined by Git commit history (2 pts)</p></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The article evaluation is due on Sun, Feb 04 at noon.<br>
+<br>
+</strong>You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="write-up" class="level2">
+<h2 class="anchored" data-anchor-id="write-up">Write up</h2>
+<p>The anticipated length is about 5 pages. There is no minimum or maximum page requirement as long as each section is accurately and comprehensively addressed.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Briefly summarize the article, the research objective and purpose, and key conclusions. Also include a description of the data used for the analysis.</p>
+</section>
+<section id="methods" class="level3">
+<h3 class="anchored" data-anchor-id="methods">Methods</h3>
+<p>Describe the GLM used for the analysis. Describe the response variable and and its distribution. Describe predictor variables. Write the equation of the statistical models using mathematical notation.</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>Interpret the results form the model. Write the interpretations / conclusions from the mode, using estimates from the article when possible. If the article does not include estimates for some or all of the estimated effects effects, you can write general interpretations using the appropriate mathematical symbol (e.g., <span class="math inline">\(\hat{\beta}_1\)</span>) in place of the estimated value.</p>
+</section>
+<section id="communication" class="level3">
+<h3 class="anchored" data-anchor-id="communication">Communication</h3>
+<p>The objective of this section of the written report is to assess the authors’ argument and communication. Reading and identifying how others communicate statistical results is a key way to develop your statistical writing skills. This section will include an assessment of the following:</p>
+<ul>
+<li><p><strong>Audience</strong>: Describe the primary audience for the article.</p></li>
+<li><p><strong>Methods</strong>: Consider the detail in the data and methods sections. What aspects of the analysis are mentioned in detail? What aspects are mentioned without detail? How does the level of detail correlate to the statistical background of the primary audience?</p></li>
+<li><p><strong>Graphs and figures</strong>: How are the graphs, figures, and tables used to support the findings? How are they used for exploratory data analysis? How how are they used to assess or support modeling results? Would additional graphs, figures, or tables be helpful? If so, what kind?</p>
+<ul>
+<li>Identify one key graph. Where is it located in the article? What message does it convey with respect to the objective and conclusion of the study? If there are no graphs in the article, describe one key graph you would include and how it would be used in the article (e.g., support conclusions, provide clarity, etc.).</li>
+</ul></li>
+<li><p><strong>Limitations</strong>: Are there limitations or difficulties in generalizing beyond the data? How are these limitations noted, if at all? Do you have any other concerns about the study?</p></li>
+<li><p><strong>Impact</strong>: According to the author, how does the study advance knowledge in the field? Taking into account the year the article was published, do the author’s claims seem adequately justified, overblown, or unduly cautious?</p></li>
+</ul>
+<p>You can use these questions as a guide to shape the narrative. This section should still be written in narrative form, not as a list of questions and answers.</p>
+<p>The questions in this section are adapted from <em>Communicating with Data: The Art of Writing for Data Science</em> by Deborah Nolan and Sara Stoudt. <a href="https://sakai.duke.edu/access/content/group/ec265469-bdb3-47a7-beb0-317956b6f86f/Reading_Science_Articles.pdfhttps://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=787628">Click here</a> for more details about the questions and how to read scientific articles. You can borrow a copy of the book from Duke Libraries.</p>
+</section>
+<section id="grading-criteria-2" class="level3">
+<h3 class="anchored" data-anchor-id="grading-criteria-2">Grading criteria</h3>
+<p>Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. (30 pts total)</p>
+<p>The report will also be assessed based on the following:</p>
+<ul>
+<li>Formatting: 3 pts
+<ul>
+<li>This is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.</li>
+</ul></li>
+<li>Reproducibility: 2 pts
+<ul>
+<li>This is an assessment of the reproducibility of the report. Is the PDF produced by rendering the Quarto document?</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The written report is due on <strong>Thu, Feb 15 at noon</strong>.</p>
+<p>You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="presentation" class="level2">
+<h2 class="anchored" data-anchor-id="presentation">Presentation</h2>
+<p><strong>You will present on Wed, Feb 14 during lecture.</strong> Each team will have up to 10 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.</p>
+<p>You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in the timeframe. A suggested outline is</p>
+<ul>
+<li>1 slide to introduce article</li>
+<li>1 - 2 slides to describe the model</li>
+<li>1 - 2 slides for key interpretations and results</li>
+<li>1 slide for key highlights about the communication and writing (e.g., what the authors did particularly well or areas of improvement)</li>
+</ul>
+<p>You will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the “Peers” scores for your team’s presentation included in your presentation grade.</p>
+<p>The presentation order and peer review assignments will be given closer to the presentation date.</p>
+<section id="grading-criteria---teaching-team-16-pts" class="level3">
+<h3 class="anchored" data-anchor-id="grading-criteria---teaching-team-16-pts">Grading criteria - Teaching Team (16 pts)</h3>
+<p>This portion of the grade will the average of the scores from the members of the teaching team.</p>
+<ul>
+<li><strong>Professionalism</strong> (5 pts)
+<ul>
+<li>Was the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?</li>
+<li>Was the time reasonably divided among team members? Was the presentation within the time limit?</li>
+<li>Did the team present a unified story?</li>
+</ul></li>
+<li><strong>Content</strong> (6 pts): The content is presented in a clear and accurate way. This includes clearly and accurately describing
+<ul>
+<li>the primary research objective and intended audience for the article.</li>
+<li>the data used in the analysis.</li>
+<li>the observations and units at every level.</li>
+<li>the model and primary conclusions</li>
+<li>the effectiveness of tables, figures, and graphs in the article and argument of the contribution of the work (optional).</li>
+</ul></li>
+<li><strong>Slides</strong> (10 pts)
+<ul>
+<li>Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?</li>
+</ul></li>
+</ul>
+</section>
+<section id="grading-criteria---peers-4-pts" class="level3">
+<h3 class="anchored" data-anchor-id="grading-criteria---peers-4-pts">Grading criteria - Peers (4 pts)</h3>
+<p>This portion of the grade will the average of the scores from the peer reviewers. Peer review assignments will be posted on Slack.</p>
+<ul>
+<li><strong>Introduction</strong> (1 pt)
+<ul>
+<li>Did the team clearly describe the primary research objective and intended audience for the article?</li>
+</ul></li>
+<li><strong>Data</strong> (1 pt)
+<ul>
+<li>Did the team clearly describe the data used in the analysis?</li>
+</ul></li>
+<li><strong>Model</strong> (1 pt)
+<ul>
+<li>Did the team clearly describe the observational units and variables at each level? Did they clearly describe the model?</li>
+</ul></li>
+<li><strong>Slides</strong> (1 pt)
+<ul>
+<li>Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="github-repo-organization" class="level2">
+<h2 class="anchored" data-anchor-id="github-repo-organization">GitHub repo organization</h2>
+<p>You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by <strong>Thu, Feb 15 at noon.</strong> <code>README.md</code>: 3 - 5 sentence summary of the project and citation for the article.</p>
+<ul>
+<li><p><code>/proposal/proposal.qmd</code></p></li>
+<li><p><code>/proposal/proposal.pdf</code></p></li>
+<li><p><code>article-evaluation.qmd</code></p></li>
+<li><p><code>article-evaluation.pdf</code></p></li>
+<li><p><code>writeup.qmd</code></p></li>
+<li><p><code>writeup.pdf</code></p></li>
+<li><p><code>/presentation</code></p>
+<ul>
+<li><code>/presentation/*</code>: Presentation file (if not linked in README)</li>
+<li><code>/presentation/README.md</code>: Link to project (if not in presentation folder)</li>
+</ul></li>
+</ul>
+<p><strong>Optional</strong></p>
+<ul>
+<li><p><code>*.bib</code>: BibTex file for references</p></li>
+<li><p><code>/data/</code>: Folder containing data</p></li>
+</ul>
+</section>
+<section id="grading-100-points" class="level2">
+<h2 class="anchored" data-anchor-id="grading-100-points">Grading (100 points)</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Proposal</td>
+<td>10 pts</td>
+</tr>
+<tr class="even">
+<td>Article evaluation</td>
+<td>20 pts</td>
+</tr>
+<tr class="odd">
+<td>Written report</td>
+<td>35 pts</td>
+</tr>
+<tr class="even">
+<td>Presentation + Slides</td>
+<td>25 pts</td>
+</tr>
+<tr class="odd">
+<td>Repo organization</td>
+<td>5 pts</td>
+</tr>
+<tr class="even">
+<td>Teamwork evaluation (individually assessed)</td>
+<td>5 pts</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tips-on-finding-articles" class="level2">
+<h2 class="anchored" data-anchor-id="tips-on-finding-articles">Tips on finding articles</h2>
+<p>Below are tips to help you find articles based on information from <a href="https://directory.library.duke.edu/staff/jodi.psoter">Jodi Psoter</a>, the Librarian for Chemistry and Statistical Science at Duke Libraries.</p>
+<section id="pubmed" class="level3">
+<h3 class="anchored" data-anchor-id="pubmed">PubMed</h3>
+<p><em>Articles in health-related fields</em></p>
+<p>The <a href="https://www.ncbi.nlm.nih.gov/mesh/68013223">PubMed heading tree</a> lets you search by topic. The link will direct you to the results under the category of “Statistics as a Topic”.</p>
+<ol type="1">
+<li>Click on the model / analysis of interest.</li>
+<li>Click “Add to search builder” under the <em>PubMed Search Builder</em> in the top right corner. You should now see the model/analysis type you chose in the search box.</li>
+<li>Click “Search PubMed”, and a page of search results will appear.</li>
+<li>There are options to narrow your results on the left-hand side. Under <em>Article Attributes</em>, check “Associated Data”, to limit the results to articles with data sets available.</li>
+</ol>
+<p>You can use the other search options to narrow down results based on your team’s interests.</p>
+</section>
+<section id="psycinfo" class="level3">
+<h3 class="anchored" data-anchor-id="psycinfo">PsycInfo</h3>
+<p><em>Articles in psychology</em></p>
+<p><a href="https://web-s-ebscohost-com.proxy.lib.duke.edu/ehost/search/advanced?vid=0&amp;sid=b34cb1a4-7ba3-4cf4-8ec2-1da4f69a87a3%40redis">PsycInfo</a> will allow users to search by analysis type.</p>
+<ol type="1">
+<li><p>Put the name of the model in the search bar, e.g., “Poisson Regression”. Then, in the drop down menu next to the search bar, select “DE Subjects [exact]”. Click Search.</p></li>
+<li><p>On the left-hand side, under <em>Limit To</em>, check “Open Access”. This will not guarantee the article has an associated data set, but a lot of open access articles will make the data available or utilize publicly accessible data you could pull from another source.</p></li>
+</ol>
+</section>
+<section id="web-of-science" class="level3">
+<h3 class="anchored" data-anchor-id="web-of-science">Web of Science</h3>
+<p><em>Articles on all topics</em></p>
+<p><a href="https://www-webofscience-com.proxy.lib.duke.edu/wos/drci/basic-search">Web of Science Data Citation Index</a> lets you search for data sets based on the topic of interest.</p>
+<ol type="1">
+<li><p>Use the search bar to search based on a topic of interest. You can also search for the model / analysis type.</p></li>
+<li><p>On the left-hand side, check “Data Set” under <em>Content Type</em> and check “Dataset” under <em>Data Types</em>. Click “Refine” to limit the results.</p></li>
+</ol>
+<p>3.Click on the article of interest.</p>
+<ol start="4" type="1">
+<li>Click the <em>DOI</em> link in the article metadata. The article should have a data availability statement or something similar with information on accessing the data.</li>
+</ol>
+</section>
+</section>
+<section id="example-articles" class="level2">
+<h2 class="anchored" data-anchor-id="example-articles">Example articles</h2>
+<p>Below are example articles you can use for the project. You are welcome to (but not required to) to use one of these articles. Up to two teams may use a given article for the project.</p>
+<section id="articles" class="level3">
+<h3 class="anchored" data-anchor-id="articles">Articles</h3>
+<ul>
+<li><p><a href="https://bmjpaedsopen.bmj.com/content/5/1/e000968"><em>Spatial distribution and factors associated with low birth weight in Ethiopia using data from Ethiopian Demographic and Health Survey 2016: spatial and multilevel analysis</em></a></p></li>
+<li><p><a href="https://www.clinicalnutritionjournal.com/article/S0261-5614(21)00387-3/fulltext#supplementaryMaterial"><em>Longitudinal assessments of child growth: A six-year follow-up of a cluster-randomized maternal education trial</em></a></p></li>
+<li><p><a href="https://www.sciencedirect.com/science/article/pii/S1877782121000564?via%3Dihub#sec0090"><em>A multi-level spatio-temporal analysis on prostate cancer outcomes</em></a></p></li>
+<li><p><a href="https://www.bristol.ac.uk/media-library/sites/cmm/migrated/documents/momeg.pdf"><em>Multilevel ordinal models for examination grades</em></a></p>
+<ul>
+<li><a href="https://www.bristol.ac.uk/cmm/media/migrated/momeg.zip">Click here</a> for data.</li>
+</ul></li>
+<li><p><a href="https://arxiv.org/pdf/1709.09186.pdf"><em>A Longitudinal Assessment of the Persistence of Twitter Datasets</em></a></p>
+<ul>
+<li><a href="https://figshare.com/articles/Twitter_event_datasets_2012-2016_/5100460">Click here</a> for data. (<em>Note: The data set is large, so you can work with a subsample</em>)</li>
+</ul></li>
+<li><p><a href="https://www.bristol.ac.uk/media-library/sites/cmm/migrated/documents/momeg.pdf"><em>Multilevel analysis of geographic variation among correlates of child undernutrition in India</em></a></p>
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8189194/">Click here</a> for data.</li>
+</ul></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<ul>
+<li>Grading criteria and the repo organization for this project were adapted from Project 1 on <a href="https://vizdata.org">vizdata.org</a>.</li>
+<li>Some questions for the <em>Article Evaluation</em> adapted from <a href="https://libguides.colostate.edu/howtodo/evaluatejournals">“How to Evaluate Journal Articles”</a>.</li>
+<li>Questions in the “Communication” section of the <em>Written Report</em> are adapted from <em>Communicating with Data: The Art of Writing for Data Science</em> by Deborah Nolan and Sara Stoudt.</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -517,7 +967,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2024, Maria Tackett</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/projects/project-01.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">This site is built with <a href="https://quarto.org/">Quarto</a></div>
   </div>
 </footer>

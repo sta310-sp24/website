@@ -543,7 +543,7 @@
     "href": "slides/04-poisson.html#log-likelihood-1",
     "title": "Poisson Regression",
     "section": "Log-likelihood",
-    "text": "Log-likelihood\nBecause we’re fitting a Poisson regression model, we know\n\\[\n\\log(\\lambda_i) = \\beta_0 + \\beta_1~age_i \\hspace{6mm} and \\hspace{6mm} \\lambda_i = e^{\\beta_0 + \\beta_1~age_i}\n\\]\n\nPlugging these formulas and the respective ages into \\(logL\\), we have\n\\[\\begin{align}\nlogL \\propto& - \\exp^{\\beta_0 + \\beta_1*65} + 0*(\\beta_0 + \\beta_1*65)\\\\\n&- \\exp^{\\beta_0 + \\beta_1*75} + 3*(\\beta_0 + \\beta_1*75)\\\\\n&- \\exp^{\\beta_0 + \\beta_1*54} + 4*(\\beta_0 + \\beta_1*54)\\\\\n& -\\exp^{\\beta_0 + \\beta_1*49}  + 3*(\\beta_0 + \\beta_1*49) \\\\\n&-\\exp^{\\beta_0 + \\beta_1*74} + 3*(\\beta_0 + \\beta_1*74)\n\\end{align}\\]"
+    "text": "Log-likelihood\nBecause we’re fitting a Poisson regression model, we know\n\\[\n\\log(\\lambda_i) = \\beta_0 + \\beta_1~age_i \\hspace{6mm} and \\hspace{6mm} \\lambda_i = e^{\\beta_0 + \\beta_1~age_i}\n\\]\n\nPlugging these formulas and the respective ages into \\(logL\\), we have\n\\[\\begin{align}\nlogL \\propto& - \\e^{\\beta_0 + \\beta_1*65} + 0*(\\beta_0 + \\beta_1*65)\\\\\n&- \\e^{\\beta_0 + \\beta_1*75} + 3*(\\beta_0 + \\beta_1*75)\\\\\n&- \\e^{\\beta_0 + \\beta_1*54} + 4*(\\beta_0 + \\beta_1*54)\\\\\n& -\\e^{\\beta_0 + \\beta_1*49}  + 3*(\\beta_0 + \\beta_1*49) \\\\\n&-\\e^{\\beta_0 + \\beta_1*74} + 3*(\\beta_0 + \\beta_1*74)\n\\end{align}\\]"
   },
   {
     "objectID": "slides/04-poisson.html#log-likelihood-2",
@@ -571,7 +571,7 @@
     "href": "slides/04-poisson.html#irls-set-up",
     "title": "Poisson Regression",
     "section": "IRLS Set up",
-    "text": "IRLS Set up\nWorking response: Modified response variable at each step of the iteration.\n\\[z_i = g(\\theta) + g'(\\theta)(y_i - \\theta_i)\\]\nwhere \\(g(\\theta)\\) is the link function. (We will talk all about link functions in Chapter 5)\n\nFor Poisson regression \\(g(\\theta) = \\log(\\lambda)\\)\n\\[z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\]\n\n\nWorking Weights: Weights applied to the observations at each step of the iteration\n\\[W_i = \\frac{\\theta^2}{Var(Y)} \\hspace{5mm} \\Rightarrow \\hspace{5mm}  W_i = \\frac{\\lambda^2}{\\lambda} =  \\lambda \\text{ for Poisson regression}\\]"
+    "text": "IRLS Set up\nWorking response: Modified response variable at each step of the iteration.\n\\[z_i = g(\\theta) + g'(\\theta)(y_i - \\theta_i)\\]\nwhere \\(g(\\theta)\\) is the link function. (We will talk all about link functions in Chapter 5)\n\nFor Poisson regression \\(g(\\theta) = \\log(\\lambda)\\)\n\\[z_i = \\log(\\lambda_i) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\]\n\n\nWorking Weights: Weights applied to the observations at each step of the iteration\n\\[W_i = \\frac{\\theta^2}{Var(Y)} \\hspace{5mm} \\Rightarrow \\hspace{5mm}  W_i = \\frac{\\lambda^2}{\\lambda} =  \\lambda \\text{ for Poisson regression}\\]"
   },
   {
     "objectID": "slides/04-poisson.html#looking-ahead",
@@ -1108,9 +1108,93 @@
   {
     "objectID": "projects/project-01.html",
     "href": "projects/project-01.html",
-    "title": "Project 01",
+    "title": "Project 01: Generalized Linear Models",
     "section": "",
-    "text": "To be posted."
+    "text": "For this project you and your team will be reading and evaluating a scholarly article that incorporates generalized linear models (GLMs) in the analysis.\nThe learning objectives of the project are to"
+  },
+  {
+    "objectID": "projects/project-01.html#team-assignments",
+    "href": "projects/project-01.html#team-assignments",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Team assignments",
+    "text": "Team assignments\nYou will work in small teams for this project. You will find the team assignments in the #project-01 channel in Slack.\nBefore getting started, I encourage you to discuss the following as a group:\n\nCome up with a plan to communicate and work together outside of lab.\n\n\n\nCome up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings."
+  },
+  {
+    "objectID": "projects/project-01.html#workflow",
+    "href": "projects/project-01.html#workflow",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Workflow",
+    "text": "Workflow\n\nProject Week 01 (week of Mon, Jan 22): Select article and submit proposal.\nProject Week 02 (week of Mon, Jan 29): Read article and complete article evaluation.\nProject Week 03 (week of Mon, Feb 05 ): Work on draft reports and presentations.\nProject Week 04 (week of Mon, Feb 12): Presentations and submit report."
+  },
+  {
+    "objectID": "projects/project-01.html#due-dates",
+    "href": "projects/project-01.html#due-dates",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Due dates",
+    "text": "Due dates\n\n\n\n\n\n\nNote\n\n\n\nAll work will be submitted in your team’s project GitHub repo.\n\n\n\nProposal: due Fri, Jan 25 at noon\nArticle evaluation: due Sun, Feb 04 at noon\nPresentation: due Wed, Feb 14 at 3:05pm\nWritten report: due Thu, Feb 15 at noon"
+  },
+  {
+    "objectID": "projects/project-01.html#article",
+    "href": "projects/project-01.html#article",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Article",
+    "text": "Article\nThe article for this project must be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must incorporate the use one or more generalized linear models, that is not a linear regression model, in the analysis.\n\nCommon GLMs are Poisson regression, Logistic regression, Probit regression, and Negative binomial regression.\nYou can also look for models based on the distribution of the response variable: Binary, Binomial, Poisson, Exponential, Gamma, Geometric.\n\nThe model used in the paper does not have to be one we discuss in class. I’d encourage you to explore articles that use modeling beyond the scope of the class!\nBelow are a few useful places to search for articles:\n\nDuke Library\nPLOS One\nPubMed.gov\n\nSee the Tips on finding articles for tips on searching journal databases to find an article."
+  },
+  {
+    "objectID": "projects/project-01.html#proposal",
+    "href": "projects/project-01.html#proposal",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Proposal",
+    "text": "Proposal\nThe main goal of the proposal is to ensure you have an article that will set you up for a successful project. Include the following in the proposal.\n\nThe citation for the article. If you’re using a .bib file you can use the default citation format in Quarto (Chicago author-date format). Otherwise, use MLA format.\nBrief summary about why you chose this article.\nBrief summary of the article’s primary research objective.\nName of the GLM(s) used in the article and a short description of the response variable for each model.\n\nYou are only required to write the proposal for one article. Write the proposal in the file proposal.qmd, then push the .qmd and rendered PDF to the GitHub repo for submission.\n\n\n\n\n\n\nImportant\n\n\n\nThe proposal is due on Fri, Jan 25 at noon.\n\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.\n\n\n\nGrading criteria\nThe proposal will be graded based on the following:\n\nAll required components of the proposal are included and accurate (8 pts)\nAll team members have made meaningful contribution, as determined by Git commit history (2 pts)"
+  },
+  {
+    "objectID": "projects/project-01.html#article-evaluation",
+    "href": "projects/project-01.html#article-evaluation",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Article evaluation",
+    "text": "Article evaluation\nThe purpose of the article evaluation is for you to begin describing and evaluating the statistical analysis and argument in the article. Write your responses to the following questions in article-evaluation.qmd. The anticipated length is about 1 - 2 pages and should be no more than 4 pages. There is no minimum page requirement, as long as each section is comprehensively addressed.\n\nAudience and purpose\n\nWho is the primary audience for this article, i.e., for what type of readers are the authors writing?\nWhat is the general purpose of the article, e.g., to persuade the reader to do something, to prove something, to inform the reader, etc.?\n\nData\n\nHow were the data generated - from an experiment, online survey, interviews, etc?\nUnder what conditions were the data collected, e.g., the time period, location, how subjects were selected, response rate / drop-out rate, etc.?\n\nGraphs and tables\n\nDescribe the types of visualizations and tables used in the article.\nHow are they primarily used - for exploratory data analysis, to support a candidatee, etc.?\nWhat visualizations or tables might you add to the article? Briefly explain.\n\nGeneralized Linear Model\nIf your paper has multiple, GLMs you only have to write this section up for one model.\n\nWhat is the response variable, and what is its distribution?\nWhat are the predictor variables? Which predictor(s) are of particularl interest in the research?\nWrite the statistical model in mathematical notation.\n\nOverall argument\n\nAre there limitations or difficulties with generalizing beyond the data? Briefly explain.\nWhen was the article published? Are the findings up-to-date, out-dated, or timeless? Briefly explain.\nHow does the study advance knowledge in the field?\n\n\n\nGrading criteria\nThe article evaluation will be graded based on the following\n\nAll required components of the proposal are included and accurate (8 pts)\nAll team members have made meaningful contribution, as determined by Git commit history (2 pts)\n\n\n\n\n\n\n\nImportant\n\n\n\nThe article evaluation is due on Sun, Feb 04 at noon.\n\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo."
+  },
+  {
+    "objectID": "projects/project-01.html#write-up",
+    "href": "projects/project-01.html#write-up",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Write up",
+    "text": "Write up\nThe anticipated length is about 5 pages. There is no minimum or maximum page requirement as long as each section is accurately and comprehensively addressed.\n\nIntroduction\nBriefly summarize the article, the research objective and purpose, and key conclusions. Also include a description of the data used for the analysis.\n\n\nMethods\nDescribe the GLM used for the analysis. Describe the response variable and and its distribution. Describe predictor variables. Write the equation of the statistical models using mathematical notation.\n\n\nResults\nInterpret the results form the model. Write the interpretations / conclusions from the mode, using estimates from the article when possible. If the article does not include estimates for some or all of the estimated effects effects, you can write general interpretations using the appropriate mathematical symbol (e.g., \\(\\hat{\\beta}_1\\)) in place of the estimated value.\n\n\nCommunication\nThe objective of this section of the written report is to assess the authors’ argument and communication. Reading and identifying how others communicate statistical results is a key way to develop your statistical writing skills. This section will include an assessment of the following:\n\nAudience: Describe the primary audience for the article.\nMethods: Consider the detail in the data and methods sections. What aspects of the analysis are mentioned in detail? What aspects are mentioned without detail? How does the level of detail correlate to the statistical background of the primary audience?\nGraphs and figures: How are the graphs, figures, and tables used to support the findings? How are they used for exploratory data analysis? How how are they used to assess or support modeling results? Would additional graphs, figures, or tables be helpful? If so, what kind?\n\nIdentify one key graph. Where is it located in the article? What message does it convey with respect to the objective and conclusion of the study? If there are no graphs in the article, describe one key graph you would include and how it would be used in the article (e.g., support conclusions, provide clarity, etc.).\n\nLimitations: Are there limitations or difficulties in generalizing beyond the data? How are these limitations noted, if at all? Do you have any other concerns about the study?\nImpact: According to the author, how does the study advance knowledge in the field? Taking into account the year the article was published, do the author’s claims seem adequately justified, overblown, or unduly cautious?\n\nYou can use these questions as a guide to shape the narrative. This section should still be written in narrative form, not as a list of questions and answers.\nThe questions in this section are adapted from Communicating with Data: The Art of Writing for Data Science by Deborah Nolan and Sara Stoudt. Click here for more details about the questions and how to read scientific articles. You can borrow a copy of the book from Duke Libraries.\n\n\nGrading criteria\nEach section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. (30 pts total)\nThe report will also be assessed based on the following:\n\nFormatting: 3 pts\n\nThis is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.\n\nReproducibility: 2 pts\n\nThis is an assessment of the reproducibility of the report. Is the PDF produced by rendering the Quarto document?\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe written report is due on Thu, Feb 15 at noon.\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo."
+  },
+  {
+    "objectID": "projects/project-01.html#presentation",
+    "href": "projects/project-01.html#presentation",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Presentation",
+    "text": "Presentation\nYou will present on Wed, Feb 14 during lecture. Each team will have up to 10 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.\nYou can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in the timeframe. A suggested outline is\n\n1 slide to introduce article\n1 - 2 slides to describe the model\n1 - 2 slides for key interpretations and results\n1 slide for key highlights about the communication and writing (e.g., what the authors did particularly well or areas of improvement)\n\nYou will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the “Peers” scores for your team’s presentation included in your presentation grade.\nThe presentation order and peer review assignments will be given closer to the presentation date.\n\nGrading criteria - Teaching Team (16 pts)\nThis portion of the grade will the average of the scores from the members of the teaching team.\n\nProfessionalism (5 pts)\n\nWas the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?\nWas the time reasonably divided among team members? Was the presentation within the time limit?\nDid the team present a unified story?\n\nContent (6 pts): The content is presented in a clear and accurate way. This includes clearly and accurately describing\n\nthe primary research objective and intended audience for the article.\nthe data used in the analysis.\nthe observations and units at every level.\nthe model and primary conclusions\nthe effectiveness of tables, figures, and graphs in the article and argument of the contribution of the work (optional).\n\nSlides (10 pts)\n\nAre the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?\n\n\n\n\nGrading criteria - Peers (4 pts)\nThis portion of the grade will the average of the scores from the peer reviewers. Peer review assignments will be posted on Slack.\n\nIntroduction (1 pt)\n\nDid the team clearly describe the primary research objective and intended audience for the article?\n\nData (1 pt)\n\nDid the team clearly describe the data used in the analysis?\n\nModel (1 pt)\n\nDid the team clearly describe the observational units and variables at each level? Did they clearly describe the model?\n\nSlides (1 pt)\n\nAre the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?"
+  },
+  {
+    "objectID": "projects/project-01.html#github-repo-organization",
+    "href": "projects/project-01.html#github-repo-organization",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "GitHub repo organization",
+    "text": "GitHub repo organization\nYou should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by Thu, Feb 15 at noon. README.md: 3 - 5 sentence summary of the project and citation for the article.\n\n/proposal/proposal.qmd\n/proposal/proposal.pdf\narticle-evaluation.qmd\narticle-evaluation.pdf\nwriteup.qmd\nwriteup.pdf\n/presentation\n\n/presentation/*: Presentation file (if not linked in README)\n/presentation/README.md: Link to project (if not in presentation folder)\n\n\nOptional\n\n*.bib: BibTex file for references\n/data/: Folder containing data"
+  },
+  {
+    "objectID": "projects/project-01.html#grading-100-points",
+    "href": "projects/project-01.html#grading-100-points",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Grading (100 points)",
+    "text": "Grading (100 points)\n\n\n\nComponent\nPoints\n\n\n\n\nProposal\n10 pts\n\n\nArticle evaluation\n20 pts\n\n\nWritten report\n35 pts\n\n\nPresentation + Slides\n25 pts\n\n\nRepo organization\n5 pts\n\n\nTeamwork evaluation (individually assessed)\n5 pts"
+  },
+  {
+    "objectID": "projects/project-01.html#tips-on-finding-articles",
+    "href": "projects/project-01.html#tips-on-finding-articles",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Tips on finding articles",
+    "text": "Tips on finding articles\nBelow are tips to help you find articles based on information from Jodi Psoter, the Librarian for Chemistry and Statistical Science at Duke Libraries.\n\nPubMed\nArticles in health-related fields\nThe PubMed heading tree lets you search by topic. The link will direct you to the results under the category of “Statistics as a Topic”.\n\nClick on the model / analysis of interest.\nClick “Add to search builder” under the PubMed Search Builder in the top right corner. You should now see the model/analysis type you chose in the search box.\nClick “Search PubMed”, and a page of search results will appear.\nThere are options to narrow your results on the left-hand side. Under Article Attributes, check “Associated Data”, to limit the results to articles with data sets available.\n\nYou can use the other search options to narrow down results based on your team’s interests.\n\n\nPsycInfo\nArticles in psychology\nPsycInfo will allow users to search by analysis type.\n\nPut the name of the model in the search bar, e.g., “Poisson Regression”. Then, in the drop down menu next to the search bar, select “DE Subjects [exact]”. Click Search.\nOn the left-hand side, under Limit To, check “Open Access”. This will not guarantee the article has an associated data set, but a lot of open access articles will make the data available or utilize publicly accessible data you could pull from another source.\n\n\n\nWeb of Science\nArticles on all topics\nWeb of Science Data Citation Index lets you search for data sets based on the topic of interest.\n\nUse the search bar to search based on a topic of interest. You can also search for the model / analysis type.\nOn the left-hand side, check “Data Set” under Content Type and check “Dataset” under Data Types. Click “Refine” to limit the results.\n\n3.Click on the article of interest.\n\nClick the DOI link in the article metadata. The article should have a data availability statement or something similar with information on accessing the data."
+  },
+  {
+    "objectID": "projects/project-01.html#example-articles",
+    "href": "projects/project-01.html#example-articles",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Example articles",
+    "text": "Example articles\nBelow are example articles you can use for the project. You are welcome to (but not required to) to use one of these articles. Up to two teams may use a given article for the project.\n\nArticles\n\nSpatial distribution and factors associated with low birth weight in Ethiopia using data from Ethiopian Demographic and Health Survey 2016: spatial and multilevel analysis\nLongitudinal assessments of child growth: A six-year follow-up of a cluster-randomized maternal education trial\nA multi-level spatio-temporal analysis on prostate cancer outcomes\nMultilevel ordinal models for examination grades\n\nClick here for data.\n\nA Longitudinal Assessment of the Persistence of Twitter Datasets\n\nClick here for data. (Note: The data set is large, so you can work with a subsample)\n\nMultilevel analysis of geographic variation among correlates of child undernutrition in India\n\nClick here for data.\n\n\n\n\nAcknowledgements\n\nGrading criteria and the repo organization for this project were adapted from Project 1 on vizdata.org.\nSome questions for the Article Evaluation adapted from “How to Evaluate Journal Articles”.\nQuestions in the “Communication” section of the Written Report are adapted from Communicating with Data: The Art of Writing for Data Science by Deborah Nolan and Sara Stoudt."
   },
   {
     "objectID": "course-overview.html",

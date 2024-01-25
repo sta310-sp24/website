@@ -48,6 +48,7 @@ The article for this project <u>must</u> be published in a scholarly journal. Pl
 
 -   *Common GLMs are Poisson regression, Logistic regression, Probit regression, and Negative binomial regression.*
 -   *You can also look for models based on the distribution of the response variable: Binary, Binomial, Poisson, Exponential, Gamma, Geometric.*
+-   See [Section 3.6 in Beyond Multiple Linear Regression](https://bookdown.org/roback/bookdown-BeyondMLR/ch-distthry.html#additional-resources) for a list of types of GLMs.
 
 The model used in the paper does not have to be one we discuss in class. I'd encourage you to explore articles that use modeling beyond the scope of the class!
 
@@ -258,7 +259,7 @@ You should have the following files and folders in the project repo. The repo an
 
 -   `*.bib`: BibTex file for references
 
--    `/data/`: Folder containing data
+-   `/data/`: Folder containing data
 
 ## Grading (100 points)
 

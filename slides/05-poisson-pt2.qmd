@@ -31,11 +31,9 @@ bibliography: references.bib
 
 ## Announcements
 
--   Quiz 01: \[ADD DATES\]
+-   Quiz 01: Tue, Jan 29 \~ 9am  - Thu, Jan 31 at noon
 
-    -   ADD NOTE ABOUT CONTENT
-
-    -   ADD NOTE ABOUT RESOURCES
+    <!--add note about content + allowed resources-->
 
 ```{r setup, include = F}
 knitr::opts_chunk$set(fig.width = 8,

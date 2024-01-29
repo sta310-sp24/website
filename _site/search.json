@@ -847,6 +847,13 @@
     "text": "Household vs. age and location\n\n\n\n\n\n\n\n\n\n\n\nVisualization recreated from Figure 4.6 in Roback and Legler (2021)."
   },
   {
+    "objectID": "slides/05-poisson-pt2.html#add-age2-and-location-to-model",
+    "href": "slides/05-poisson-pt2.html#add-age2-and-location-to-model",
+    "title": "Poisson Regression",
+    "section": "Add \\(age^2\\) and \\(location\\) to model?",
+    "text": "Add \\(age^2\\) and \\(location\\) to model?\n\nhh_age_loc &lt;- glm(total ~ age + I(age^2) + location, \n                  data = hh_data, family = poisson)\n\n\n\nUse Likelihood Ratio Test\n\nanova(hh_age, hh_age_loc, test = \"LRT\") |&gt;\n  kable(digits = 3)\n\n\n\n\nResid. Df\nResid. Dev\nDf\nDeviance\nPr(&gt;Chi)\n\n\n\n\n1498\n2337.089\nNA\nNA\nNA\n\n\n1493\n2187.800\n5\n149.289\n0"
+  },
+  {
     "objectID": "slides/05-poisson-pt2.html#selected-model",
     "href": "slides/05-poisson-pt2.html#selected-model",
     "title": "Poisson Regression",
@@ -914,14 +921,14 @@
     "href": "slides/05-poisson-pt2.html#dispersion-parameter",
     "title": "Poisson Regression",
     "section": "Dispersion parameter",
-    "text": "Dispersion parameter\nThe dispersion parameter is represented by \\(\\phi\\) \\[\\hat{\\phi} =\\frac{\\text{deviance}}{\\text{residual df}} = \\frac{\\sum_{i=1}^{n}(\\text{Pearson residuals})^2}{n - p}\\]\nwhere \\(p\\) is the number of terms in the model (including the intercept)\n\n\nIf there is no overdispersion \\(\\hat{\\phi} = 1\\)\nIf there is overdispersion \\(\\hat{\\phi} &gt; 1\\)"
+    "text": "Dispersion parameter\nThe dispersion parameter is represented by \\(\\phi\\) \\[\\hat{\\phi} = \\frac{\\sum_{i=1}^{n}(\\text{Pearson residuals})^2}{n - p}\\]\nwhere \\(p\\) is the number of terms in the model (including the intercept)\n\n\nIf there is no overdispersion \\(\\hat{\\phi} = 1\\)\nIf there is overdispersion \\(\\hat{\\phi} &gt; 1\\)"
   },
   {
     "objectID": "slides/05-poisson-pt2.html#accounting-for-dispersion",
     "href": "slides/05-poisson-pt2.html#accounting-for-dispersion",
     "title": "Poisson Regression",
     "section": "Accounting for dispersion",
-    "text": "Accounting for dispersion\n\nWe inflate the standard errors of the coefficient by multiplying the variance by \\(\\sqrt{\\hat{\\phi}}\\)\n\n\\[SE_{Q}(\\hat{\\beta}) = \\sqrt{\\hat{\\phi}}  * SE(\\hat{\\beta})\\]\n“Q” stands for quasi-Poisson, since this is an ad-hoc solution - The process for model building and model comparison is called quasilikelihood (similar to likelihood without exact underlying distributions)"
+    "text": "Accounting for dispersion\n\nWe inflate the standard errors of the coefficient by multiplying the variance by \\(\\hat{\\phi}\\)\n\n\\[SE_{Q}(\\hat{\\beta}) = \\sqrt{\\hat{\\phi}}  * SE(\\hat{\\beta})\\]\n“Q” stands for quasi-Poisson, since this is an ad-hoc solution - The process for model building and model comparison is called quasilikelihood (similar to likelihood without exact underlying distributions)"
   },
   {
     "objectID": "slides/05-poisson-pt2.html#quasi-poisson-model",
@@ -949,21 +956,21 @@
     "href": "slides/05-poisson-pt2.html#quasi-poisson-model-1",
     "title": "Poisson Regression",
     "section": "Quasi-Poisson model",
-    "text": "Quasi-Poisson model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.2166\n-1.7744\n0.0762\n-0.8134\n0.0358\n\n\nage\n0.0704\n0.0082\n8.5665\n0.0000\n0.0544\n0.0866\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.2000\n0.0000\n-0.0009\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0640\n-0.3030\n0.7619\n-0.1451\n0.1058\n\n\nlocationIlocosRegion\n0.0610\n0.0626\n0.9735\n0.3304\n-0.0620\n0.1837\n\n\nlocationMetroManila\n0.0545\n0.0561\n0.9703\n0.3320\n-0.0552\n0.1649\n\n\nlocationVisayas\n0.1121\n0.0497\n2.2574\n0.0241\n0.0156\n0.2103"
+    "text": "Quasi-Poisson model\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.2166\n-1.7744\n0.0762\n-0.8134\n0.0358\n\n\nage\n0.0704\n0.0082\n8.5665\n0.0000\n0.0544\n0.0866\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.2000\n0.0000\n-0.0009\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0640\n-0.3030\n0.7619\n-0.1451\n0.1058\n\n\nlocationIlocosRegion\n0.0610\n0.0626\n0.9735\n0.3304\n-0.0620\n0.1837\n\n\nlocationMetroManila\n0.0545\n0.0561\n0.9703\n0.3320\n-0.0552\n0.1649\n\n\nlocationVisayas\n0.1121\n0.0497\n2.2574\n0.0241\n0.0156\n0.2103"
   },
   {
     "objectID": "slides/05-poisson-pt2.html#negative-binomial-regression-model-1",
     "href": "slides/05-poisson-pt2.html#negative-binomial-regression-model-1",
     "title": "Poisson Regression",
     "section": "Negative binomial regression model",
-    "text": "Negative binomial regression model\nAnother approach to handle overdispersion is to use a negative binomial regression model\n\nThis has more flexibility than the quasi-Poisson model, because there is a new parameter in addition to \\(\\lambda\\)\n\n\n\nLet \\(Y\\) be a negative binomial random variable, \\(Y\\sim NegBinom(r, p)\\), then\n\\[P(Y = y_i) = {y_i + r - 1 \\choose r - 1}(1-p)^{y_i}p^r \\hspace{5mm} y_i = 0, 1, 2, \\ldots, \\infty\\]"
+    "text": "Negative binomial regression model\nAnother approach to handle overdispersion is to use a negative binomial regression model\n\nThis has more flexibility than the quasi-Poisson model, because there is a new parameter in addition to \\(\\lambda\\)\n\n\n\nLet \\(Y\\) be a negative binomial random variable, \\(Y\\sim NegBinom(r, p)\\), then\n\\[\\begin{align}P(Y = y_i) = {y_i + r - 1 \\choose r - 1}(1-p)^{y_i}p^r \\hspace{5mm} y_i = 0, 1, 2, \\ldots, \\infty \\\\\nE(Y) = \\frac{r(1-p)}{p} \\hspace{8mm} SD(Y) = \\sqrt{\\frac{r(1-p)}{p^2}}\\end{align}\\]"
   },
   {
     "objectID": "slides/05-poisson-pt2.html#negative-binomial-regression-model-2",
     "href": "slides/05-poisson-pt2.html#negative-binomial-regression-model-2",
     "title": "Poisson Regression",
     "section": "Negative binomial regression model",
-    "text": "Negative binomial regression model\n\nMain idea: Generate a \\(\\lambda\\) for each observation (household) and generate a count using the Poisson random variable with parameter \\(\\lambda\\)\n\nMakes the counts more dispersed than with a single parameter\n\nThink of it as a Poisson model such that \\(\\lambda\\) is also random \\[\\begin{aligned} &\\text{If }\\hspace{2mm} Y|\\lambda \\sim Poisson(\\lambda)\\\\\n&\\text{ and } \\lambda \\sim Gamma\\bigg(r, \\frac{1-p}{p}\\bigg)\\\\\n&\\text{ then } Y \\sim NegBinom(r, p)\\end{aligned}\\]"
+    "text": "Negative binomial regression model\n\n\nMain idea: Generate a \\(\\lambda\\) for each observation (household) and generate a count using the Poisson random variable with parameter \\(\\lambda\\)\n\nMakes the counts more dispersed than with a single parameter\n\nThink of it as a Poisson model such that \\(\\lambda\\) is also random \\[\\begin{aligned} &\\text{If }\\hspace{2mm} Y|\\lambda \\sim Poisson(\\lambda)\\\\\n&\\text{ and } \\lambda \\sim Gamma\\bigg(r, \\frac{1-p}{p}\\bigg)\\\\\n&\\text{ then } Y \\sim NegBinom(r, p)\\end{aligned}\\]"
   },
   {
     "objectID": "slides/05-poisson-pt2.html#negative-binomial-regression-in-r",
@@ -978,6 +985,13 @@
     "title": "Poisson Regression",
     "section": "Negative binomial regression in R",
     "text": "Negative binomial regression in R\n\nhh_age_loc_nb &lt;- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)\ntidy(hh_age_loc_nb) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.3753\n0.2076\n-1.8081\n0.0706\n\n\nage\n0.0699\n0.0079\n8.8981\n0.0000\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.5756\n0.0000\n\n\nlocationDavaoRegion\n-0.0219\n0.0625\n-0.3501\n0.7262\n\n\nlocationIlocosRegion\n0.0577\n0.0615\n0.9391\n0.3477\n\n\nlocationMetroManila\n0.0562\n0.0551\n1.0213\n0.3071\n\n\nlocationVisayas\n0.1104\n0.0487\n2.2654\n0.0235"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#negative-binomial-vs.-quasi-poisson",
+    "href": "slides/05-poisson-pt2.html#negative-binomial-vs.-quasi-poisson",
+    "title": "Poisson Regression",
+    "section": "Negative binomial vs. Quasi-Poisson",
+    "text": "Negative binomial vs. Quasi-Poisson\n\n\n\nQuasi-Poisson\n\n\n\n\n\n\nterm\nestimate\nstd.error\n\n\n\n\n(Intercept)\n-0.3843\n0.2166\n\n\nage\n0.0704\n0.0082\n\n\nI(age^2)\n-0.0007\n0.0001\n\n\nlocationDavaoRegion\n-0.0194\n0.0640\n\n\nlocationIlocosRegion\n0.0610\n0.0626\n\n\nlocationMetroManila\n0.0545\n0.0561\n\n\nlocationVisayas\n0.1121\n0.0497\n\n\n\n\n\n\n\n\n\nNegative binomial\n\n\n\n\n\n\nestimate\nstd.error\n\n\n\n\n-0.3753\n0.2076\n\n\n0.0699\n0.0079\n\n\n-0.0007\n0.0001\n\n\n-0.0219\n0.0625\n\n\n0.0577\n0.0615\n\n\n0.0562\n0.0551\n\n\n0.1104\n0.0487"
   },
   {
     "objectID": "slides/05-poisson-pt2.html#references",
@@ -1204,23 +1218,51 @@
     "text": "Fit using the glm function\n\n## add code here"
   },
   {
-    "objectID": "prepare/jan-24.html",
-    "href": "prepare/jan-24.html",
-    "title": "Prepare for Jan 24 lecture",
+    "objectID": "prepare/jan-22.html",
+    "href": "prepare/jan-22.html",
+    "title": "Prepare for Jan 22 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/jan-29.html",
-    "href": "prepare/jan-29.html",
-    "title": "Prepare for Jan 29 lecture",
+    "objectID": "prepare/jan-31.html",
+    "href": "prepare/jan-31.html",
+    "title": "Prepare for Jan 31 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
   },
   {
-    "objectID": "hw/hw-02.html",
-    "href": "hw/hw-02.html",
-    "title": "HW 02",
+    "objectID": "prepare/jan-17.html",
+    "href": "prepare/jan-17.html",
+    "title": "Prepare for Jan 17 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+  },
+  {
+    "objectID": "hw/hw-03.html",
+    "href": "hw/hw-03.html",
+    "title": "HW 03",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-04.html",
+    "href": "hw/hw-04.html",
+    "title": "HW 04",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-06.html",
+    "href": "hw/hw-06.html",
+    "title": "HW 06",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-05.html",
+    "href": "hw/hw-05.html",
+    "title": "HW 05",
     "section": "",
     "text": "To be posted."
   },
@@ -1281,53 +1323,60 @@
     "text": "Footnotes\n\n\nExercises 1 - 4 are adapted from exercises in Section 1.8 of Roback and Legler (2021).↩︎"
   },
   {
-    "objectID": "hw/hw-05.html",
-    "href": "hw/hw-05.html",
-    "title": "HW 05",
+    "objectID": "hw/hw-02.html",
+    "href": "hw/hw-02.html",
+    "title": "HW 02",
     "section": "",
     "text": "To be posted."
   },
   {
-    "objectID": "hw/hw-06.html",
-    "href": "hw/hw-06.html",
-    "title": "HW 06",
+    "objectID": "prepare/jan-29.html",
+    "href": "prepare/jan-29.html",
+    "title": "Prepare for Jan 29 lecture",
     "section": "",
-    "text": "To be posted."
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
   },
   {
-    "objectID": "hw/hw-04.html",
-    "href": "hw/hw-04.html",
-    "title": "HW 04",
+    "objectID": "prepare/jan-24.html",
+    "href": "prepare/jan-24.html",
+    "title": "Prepare for Jan 24 lecture",
     "section": "",
-    "text": "To be posted."
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
   },
   {
-    "objectID": "hw/hw-03.html",
-    "href": "hw/hw-03.html",
-    "title": "HW 03",
+    "objectID": "ae/lec-05-overdisp.html",
+    "href": "ae/lec-05-overdisp.html",
+    "title": "Lecture 05 AE: Poisson Regression",
     "section": "",
-    "text": "To be posted."
+    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(knitr)\n# add other packages as needed\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
   },
   {
-    "objectID": "prepare/jan-17.html",
-    "href": "prepare/jan-17.html",
-    "title": "Prepare for Jan 17 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "objectID": "ae/lec-05-overdisp.html#household-vs.-age-age2-and-location",
+    "href": "ae/lec-05-overdisp.html#household-vs.-age-age2-and-location",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Household vs. age, age^2, and location",
+    "text": "Household vs. age, age^2, and location\n\nhh_age_loc &lt;- glm(total ~ age + I(age^2) + location, \n                  data = hh_data, family = poisson)\n\ntidy(hh_age_loc, conf.int = T) |&gt; \n  kable(digits = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.1821\n-2.1107\n0.0348\n-0.7444\n-0.0306\n\n\nage\n0.0704\n0.0069\n10.1900\n0.0000\n0.0569\n0.0840\n\n\nI(age^2)\n-0.0007\n0.0001\n-10.9437\n0.0000\n-0.0008\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0538\n-0.3605\n0.7185\n-0.1250\n0.0859\n\n\nlocationIlocosRegion\n0.0610\n0.0527\n1.1580\n0.2468\n-0.0423\n0.1641\n\n\nlocationMetroManila\n0.0545\n0.0472\n1.1542\n0.2484\n-0.0378\n0.1473\n\n\nlocationVisayas\n0.1121\n0.0417\n2.6853\n0.0072\n0.0308\n0.1945\n\n\n\n\n\n\n\n\n\n\n\nCalculating residuals in R\n\n\n\nYou can get the residuals in two ways:\n\nresiduals function with type = \"pearson\" or type = \"deviance\".\naugment function with type.residuals = \"pearson\" or type.residuals = deviance."
   },
   {
-    "objectID": "prepare/jan-31.html",
-    "href": "prepare/jan-31.html",
-    "title": "Prepare for Jan 31 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
+    "objectID": "ae/lec-05-overdisp.html#calculate-model-deviance-goodness-of-fit",
+    "href": "ae/lec-05-overdisp.html#calculate-model-deviance-goodness-of-fit",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Calculate model deviance & Goodness-of-fit",
+    "text": "Calculate model deviance & Goodness-of-fit\n\n\n\n\n\n\nEx 1\n\n\n\nUse the deviance residuals to calculate the model deviance.\n\n\n\n# Calculate model deviance\n\n\n\n\n\n\n\nEx 2\n\n\n\nCheck your work above using the glance function.\n\n\n\n# Get deviance using glance function\n\n\n\n\n\n\n\nEx 3\n\n\n\nConduct a goodness-of-fit test\n\n\n\n# Conduct goodness-of-fit test"
   },
   {
-    "objectID": "prepare/jan-22.html",
-    "href": "prepare/jan-22.html",
-    "title": "Prepare for Jan 22 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "objectID": "ae/lec-05-overdisp.html#quasi-poisson",
+    "href": "ae/lec-05-overdisp.html#quasi-poisson",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Quasi-Poisson",
+    "text": "Quasi-Poisson\n\nhh_age_loc_q &lt;- glm(total ~ age + I(age^2) + location, \n                    data = hh_data, family = quasipoisson)\n\n\n\n\n\n\n\nEx 4\n\n\n\nWhat do we expect the dispersion parameter to be if there is no overdispersion?\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nUse the Pearson residuals to calculate the dispersion parameter.\n\n\n\n# Calculate dispersion parameter \n\n\n\n\n\n\n\nEx 6\n\n\n\nView the dispersion parameter in the model output\n\n\n\n#summary(hh_age_loc_q)"
+  },
+  {
+    "objectID": "ae/lec-05-overdisp.html#negative-binomial-regression-model",
+    "href": "ae/lec-05-overdisp.html#negative-binomial-regression-model",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Negative binomial regression model",
+    "text": "Negative binomial regression model\n\nhh_age_loc_nb &lt;- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)\ntidy(hh_age_loc_nb) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.3753\n0.2076\n-1.8081\n0.0706\n\n\nage\n0.0699\n0.0079\n8.8981\n0.0000\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.5756\n0.0000\n\n\nlocationDavaoRegion\n-0.0219\n0.0625\n-0.3501\n0.7262\n\n\nlocationIlocosRegion\n0.0577\n0.0615\n0.9391\n0.3477\n\n\nlocationMetroManila\n0.0562\n0.0551\n1.0213\n0.3071\n\n\nlocationVisayas\n0.1104\n0.0487\n2.2654\n0.0235"
   },
   {
     "objectID": "ae/ae-02-mlr-review.html",

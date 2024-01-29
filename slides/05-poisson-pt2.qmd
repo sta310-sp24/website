@@ -137,7 +137,7 @@ hh_data |>
             logmntotal = log(mntotal), n=n()) |>
   ggplot(aes(x = age, y = logmntotal, color = location, 
              linetype = location, shape = location)) +
-  geom_point()+
+  geom_point(alpha = 0.4)+
   geom_smooth(method = "loess", se = FALSE)+
   labs(title = "Household vs. age", 
        subtitle = "by location",
@@ -154,11 +154,23 @@ hh_data |>
 Visualization recreated from [Figure 4.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html#linear-least-squares-vs.-poisson-regression) in @roback2021beyond.
 :::
 
-# Application exercise
+## Add $age^2$ and $location$ to model?
 
-<!--Use likleihood ratio test to determine if age^2 and location should be added to the model-->
+```{r}
+hh_age_loc <- glm(total ~ age + I(age^2) + location, 
+                  data = hh_data, family = poisson)
+```
 
-<!--Calc by hand and also use the anova function with LRT as test = ""-->
+<br>
+
+. . .
+
+**Use Likelihood Ratio Test**
+
+```{r}
+anova(hh_age, hh_age_loc, test = "LRT") |>
+  kable(digits = 3)
+```
 
 ## Selected model {.midi}
 
@@ -228,7 +240,7 @@ p2 <-  ggplot(data = hh_age_loc_aug_deviance, aes(x = .fitted, y = .resid)) +
 p1 + p2
 ```
 
-## Goodness-of-fit {.midi}
+## Goodness-of-fit {.small}
 
 -   **Goal**: Use the (residual) deviance to assess how much the predicted values differ from the observed values.
 
@@ -246,6 +258,12 @@ where $df$ is the model's residual degrees of freedom
 -   **Question to answer**: What is the probability of observing a deviance larger than the one we've observed, given this model sufficiently fits the data?
 
 $$P(\chi^2_{df} > \text{ deviance})$$
+
+# Application exercise
+
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-05-overdisp](../ae/lec-05-overdisp)
+:::
 
 ## Goodness-of-fit calculations
 
@@ -337,7 +355,7 @@ We can take overdispersion into account by
 
 ## Dispersion parameter
 
-The **dispersion parameter** is represented by $\phi$ $$\hat{\phi} =\frac{\text{deviance}}{\text{residual df}} = \frac{\sum_{i=1}^{n}(\text{Pearson residuals})^2}{n - p}$$
+The **dispersion parameter** is represented by $\phi$ $$\hat{\phi} = \frac{\sum_{i=1}^{n}(\text{Pearson residuals})^2}{n - p}$$
 
 where $p$ is the number of terms in the model (including the intercept)
 
@@ -349,7 +367,7 @@ where $p$ is the number of terms in the model (including the intercept)
 
 ## Accounting for dispersion
 
--   We inflate the standard errors of the coefficient by multiplying the variance by $\sqrt{\hat{\phi}}$
+-   We inflate the standard errors of the coefficient by multiplying the variance by $\hat{\phi}$
 
 $$SE_{Q}(\hat{\beta}) = \sqrt{\hat{\phi}}  * SE(\hat{\beta})$$
 
@@ -367,7 +385,7 @@ hh_age_loc_q <- glm(total ~ age + I(age^2) + location, data = hh_data,
 tidy(hh_age_loc_q, conf.int = T) |> kable(digits = 4)
 ```
 
-## Poisson vs. Quasi-Poisson models
+## Poisson vs. Quasi-Poisson models {.midi}
 
 ::: columns
 ::: {.column width="50%"}
@@ -393,7 +411,7 @@ tidy(hh_age_loc_q) |>
 :::
 :::
 
-## Quasi-Poisson: Inference for coefficients
+## Quasi-Poisson: Inference for coefficients {.midi}
 
 ::: columns
 ::: {.column width="50%"}
@@ -419,9 +437,18 @@ $$t = \frac{\hat{\beta} - 0}{SE_{Q}(\hat{\beta})} \sim t_{n-p}$$
 ```{r}
 #| echo: false
 
-tidy(hh_age_loc_q, conf.int = T) |> kable(digits = 4)
+library(kableExtra)
+tidy(hh_age_loc_q, conf.int = T) |> 
+  kable(digits = 4) |>
+  row_spec(7, background = "#B5BA72")
 
 ```
+
+# Application exercise
+
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-05-overdisp](../ae/lec-05-overdisp)
+:::
 
 # Negative binomial regression model
 
@@ -437,10 +464,12 @@ Another approach to handle overdispersion is to use a **negative binomial regres
 
 Let $Y$ be a **negative binomial random variable**, $Y\sim NegBinom(r, p)$, then
 
-$$P(Y = y_i) = {y_i + r - 1 \choose r - 1}(1-p)^{y_i}p^r \hspace{5mm} y_i = 0, 1, 2, \ldots, \infty$$
+$$\begin{align}P(Y = y_i) = {y_i + r - 1 \choose r - 1}(1-p)^{y_i}p^r \hspace{5mm} y_i = 0, 1, 2, \ldots, \infty \\
+E(Y) = \frac{r(1-p)}{p} \hspace{8mm} SD(Y) = \sqrt{\frac{r(1-p)}{p^2}}\end{align}$$
 
-## Negative binomial regression model
+## Negative binomial regression model {.midi}
 
+::: incremental
 -   **Main idea**: Generate a $\lambda$ for each observation (household) and generate a count using the Poisson random variable with parameter $\lambda$
 
     -   Makes the counts more dispersed than with a single parameter
@@ -448,11 +477,6 @@ $$P(Y = y_i) = {y_i + r - 1 \choose r - 1}(1-p)^{y_i}p^r \hspace{5mm} y_i = 0, 1
 -   Think of it as a Poisson model such that $\lambda$ is also random $$\begin{aligned} &\text{If }\hspace{2mm} Y|\lambda \sim Poisson(\lambda)\\
     &\text{ and } \lambda \sim Gamma\bigg(r, \frac{1-p}{p}\bigg)\\
     &\text{ then } Y \sim NegBinom(r, p)\end{aligned}$$
-
-# Application exercise
-
-::: appex
-📋 Complete the Negative binomial regression exercise in R
 :::
 
 ## Negative binomial regression in R
@@ -472,5 +496,31 @@ hh_age_loc_nb <- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)
 tidy(hh_age_loc_nb) |> 
   kable(digits = 4)
 ```
+
+## Negative binomial vs. Quasi-Poisson {.midi}
+
+::: columns
+::: {.column width="50%"}
+<center><b>Quasi-Poisson</b></center>
+
+```{r}
+#| echo: false
+tidy(hh_age_loc_q) |>
+  select(term, estimate, std.error) |>
+  kable(digits = 4)
+```
+:::
+
+::: {.column width="50%"}
+<center><b>Negative binomial</b></center>
+
+```{r}
+#| echo: false
+tidy(hh_age_loc_nb) |>
+  select(estimate, std.error) |>
+  kable(digits = 4)
+```
+:::
+:::
 
 ## References

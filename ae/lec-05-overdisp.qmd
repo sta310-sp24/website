@@ -1,0 +1,120 @@
+---
+title: "Lecture 05 AE: Poisson Regression"
+subtitle: "Goodness-of-fit and overdispersion"
+date: "2024-01-29"
+execute: 
+  warning: false
+  message: false
+---
+
+```{r load-packages}
+#| label: load-packages
+
+
+library(tidyverse)
+library(broom)
+library(knitr)
+# add other packages as needed
+```
+
+```{r}
+#| label: load-data
+hh_data <- read_csv("data/fHH1.csv")
+```
+
+## Household vs. age, age\^2, and location
+
+```{r}
+hh_age_loc <- glm(total ~ age + I(age^2) + location, 
+                  data = hh_data, family = poisson)
+
+tidy(hh_age_loc, conf.int = T) |> 
+  kable(digits = 4)
+```
+
+::: callout-tip
+## Calculating residuals in R
+
+You can get the residuals in two ways:
+
+1.  `residuals` function with `type = "pearson"` or `type = "deviance"`.
+
+2.  `augment` function with `type.residuals = "pearson"` or `type.residuals = deviance`.
+:::
+
+## Calculate model deviance & Goodness-of-fit
+
+::: callout-note
+## Ex 1
+
+Use the deviance residuals to calculate the model deviance.
+:::
+
+```{r}
+# Calculate model deviance
+
+```
+
+::: callout-note
+## Ex 2
+
+Check your work above using the `glance` function.
+:::
+
+```{r}
+# Get deviance using glance function
+
+```
+
+::: callout-note
+## Ex 3
+
+Conduct a goodness-of-fit test
+:::
+
+```{r}
+# Conduct goodness-of-fit test
+
+```
+
+## Quasi-Poisson
+
+```{r}
+hh_age_loc_q <- glm(total ~ age + I(age^2) + location, 
+                    data = hh_data, family = quasipoisson)
+```
+
+::: callout-note
+## Ex 4
+
+What do we expect the dispersion parameter to be if there is no overdispersion?
+:::
+
+::: callout-note
+## Ex 5
+
+Use the Pearson residuals to calculate the dispersion parameter.
+:::
+
+```{r}
+# Calculate dispersion parameter 
+
+```
+
+::: callout-note
+## Ex 6
+
+View the dispersion parameter in the model output
+:::
+
+```{r}
+#summary(hh_age_loc_q)
+```
+
+## Negative binomial regression model
+
+```{r}
+hh_age_loc_nb <- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)
+tidy(hh_age_loc_nb) |> 
+  kable(digits = 4)
+```

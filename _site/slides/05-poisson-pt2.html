@@ -412,6 +412,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Poisson Regression</h1>
+  <p class="subtitle">Goodness-of-fit &amp; overdispersion</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -421,133 +422,34 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 
-  <p class="date">Jan 24, 2024</p>
+  <p class="date">Jan 29, 2024</p>
 </section>
-<section id="computing-set-up" class="slide level2">
-<h2>Computing set up</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>colors <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">green =</span> <span class="st">"#B5BA72"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li><p>Quiz 01: [ADD DATES]</p>
+<ul>
+<li><p>ADD NOTE ABOUT CONTENT</p></li>
+<li><p>ADD NOTE ABOUT RESOURCES</p></li>
+</ul></li>
+</ul>
 </section>
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
 <ul>
-<li><p>Describe properties of the Poisson random variable</p></li>
-<li><p>Write the mathematical equation of the Poisson regression model</p></li>
-<li><p>Describe how the Poisson regression differs from least-squares regression</p></li>
-<li><p>Interpret the coefficients for the Poisson regression model</p></li>
-<li><p>Compare two Poisson regression models</p></li>
+<li><p>Define and calculate residuals for the Poisson regression model</p></li>
+<li><p>Use Goodness-of-fit to assess model fit</p></li>
+<li><p>Identify overdispersion</p></li>
+<li><p>Apply modeling approaches to deal with overdispersion</p>
+<ul>
+<li><p>Quasi-Poisson</p></li>
+<li><p>Negative binomial</p></li>
+</ul></li>
 </ul>
 
 <aside><div>
-<p>Notes based on Section 4.4 - 4.5 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> unless noted otherwise.</p>
+<p>Notes based on Sections 4.4 and 4.9 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> unless noted otherwise.</p>
 </div></aside></section>
-<section id="scenarios-to-use-poisson-regression" class="slide level2">
-<h2>Scenarios to use Poisson regression</h2>
-<ul>
-<li><p>Does the number of employers conducting on-campus interviews during a year differ for public and private colleges?</p></li>
-<li><p>Does the daily number of asthma-related visits to an Emergency Room differ depending on air pollution indices?</p></li>
-<li><p>Does the number of paint defects per square foot of wall differ based on the years of experience of the painter?</p></li>
-</ul>
-</section>
-<section id="scenarios-to-use-poisson-regression-1" class="slide level2">
-<h2>Scenarios to use Poisson regression</h2>
-<ul>
-<li><p>Does the <strong>number of employers conducting on-campus interviews during a year</strong> differ for public and private colleges?</p></li>
-<li><p>Does the <strong>daily number of asthma-related visits to an Emergency Room</strong> differ depending on air pollution indices?</p></li>
-<li><p>Does the number of paint defects per square foot of wall differ based on the years of experience of the painter?</p></li>
-</ul>
-<p><br></p>
-<div class="fragment">
-<p>Each response variable is a <strong>count per a unit of time or space.</strong></p>
-</div>
-</section>
-<section id="poisson-distribution" class="slide level2 midi">
-<h2>Poisson distribution</h2>
-<p>Let <span class="math inline">\(Y\)</span> be the number of events in a given unit of time or space. Then <span class="math inline">\(Y\)</span> can be modeled using a <strong>Poisson distribution</strong></p>
-<p><span class="math display">\[P(Y=y) = \frac{e^{-\lambda}\lambda^y}{y!} \hspace{10mm} y=0,1,2,\ldots, \infty\]</span></p>
-<div class="fragment">
-<p><strong>Features</strong></p>
-<ul>
-<li><span class="math inline">\(E(Y) = Var(Y) = \lambda\)</span></li>
-<li>The distribution is typically skewed right, particularly if <span class="math inline">\(\lambda\)</span> is small</li>
-<li>The distribution becomes more symmetric as <span class="math inline">\(\lambda\)</span> increases
-<ul>
-<li>If <span class="math inline">\(\lambda\)</span> is sufficiently large, it can be approximated using a normal distribution (<a href="https://online.stat.psu.edu/stat414/lesson/28/28.2">Click here</a> for an example.)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section class="slide level2">
-
-
-<img data-src="04-poisson_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"><div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Mean</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Variance</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">lambda = 1</td>
-<td style="text-align: right;">0.99351</td>
-<td style="text-align: right;">0.9902178</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">lambda = 5</td>
-<td style="text-align: right;">4.99367</td>
-<td style="text-align: right;">4.9865798</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">lambda = 50</td>
-<td style="text-align: right;">49.99288</td>
-<td style="text-align: right;">49.8962683</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</section>
-<section id="example1" class="slide level2 midi">
-<h2>Example<sup>1</sup></h2>
-<p>The annual number of earthquakes registering at least 2.5 on the Richter Scale and having an epicenter within 40 miles of downtown Memphis follows a Poisson distribution with mean 6.5. <strong>What is the probability there will be at 3 or fewer such earthquakes next year?</strong></p>
-<div class="fragment">
-<p><span class="math display">\[P(Y \leq 3) = P(Y = 0) + P(Y = 1) + P(Y = 2) + P(Y = 3)\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[ = \frac{e^{-6.5}6.5^0}{0!} + \frac{e^{-6.5}6.5^1}{1!} + \frac{e^{-6.5}6.5^2}{2!} + \frac{e^{-6.5}6.5^3}{3!}\]</span></p>
-<p><span class="math display">\[ = 0.112\]</span></p>
-</div>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ppois</span>(<span class="dv">3</span>, <span class="fl">6.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1118496</code></pre>
-</div>
-</div>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Example adapted from <a href="https://online.stat.psu.edu/stat414/lesson/28/28.2">Introduction to Probability Theory Example 28-2</a></p></li></ol></aside></section>
-<section>
-<section id="poisson-regression" class="title-slide slide level1 center">
-<h1>Poisson regression</h1>
-
-</section>
 <section id="the-data-household-size-in-the-philippines" class="slide level2 midi">
 <h2>The data: Household size in the Philippines</h2>
 <p>The data <a href="data/fHH1.csv">fHH1.csv</a> come from the 2015 Family Income and Expenditure Survey conducted by the Philippine Statistics Authority.</p>
@@ -572,99 +474,6 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 </section>
-<section id="the-data" class="slide level2 midi">
-<h2>The data</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>hh_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/fHH1.csv"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>hh_data <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">location</th>
-<th style="text-align: right;">age</th>
-<th style="text-align: right;">total</th>
-<th style="text-align: right;">numLT5</th>
-<th style="text-align: left;">roof</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">CentralLuzon</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">MetroManila</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">DavaoRegion</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Visayas</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">MetroManila</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="response-variable" class="slide level2">
-<h2>Response variable</h2>
-
-<img data-src="04-poisson_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"><div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">var</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">3.685</td>
-<td style="text-align: right;">5.534</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="why-the-least-squares-model-doesnt-work" class="slide level2 midi">
-<h2>Why the least-squares model doesn’t work</h2>
-<p>The goal is to model <span class="math inline">\(\lambda\)</span>, the expected number of people in the household (other than the head), as a function of the predictors (covariates)</p>
-<div class="fragment">
-<p>We might be tempted to try a linear model <span class="math display">\[\lambda_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_px_{ip}\]</span></p>
-</div>
-<div class="fragment">
-<p>This model won’t work because…</p>
-<ul>
-<li>It could produce negative values of <span class="math inline">\(\lambda\)</span> for certain values of the predictors</li>
-<li>The equal variance assumption required to conduct inference for linear regression is violated.</li>
-</ul>
-</div>
-</section>
 <section id="poisson-regression-model" class="slide level2">
 <h2>Poisson regression model</h2>
 <p>If <span class="math inline">\(Y_i \sim Poisson\)</span> with <span class="math inline">\(\lambda = \lambda_i\)</span> for the given values <span class="math inline">\(x_{i1}, \ldots, x_{ip}\)</span>, then</p>
@@ -676,50 +485,13 @@ Prof.&nbsp;Maria Tackett
 </ul>
 </div>
 </section>
-<section id="poisson-vs.-multiple-linear-regression" class="slide level2">
-<h2>Poisson vs.&nbsp;multiple linear regression</h2>
+<section id="household-vs.-age" class="slide level2">
+<h2>Household vs.&nbsp;Age</h2>
 <div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="04-poisson_files/figure-revealjs/OLSpois-1.png" style="width:60.0%"></p>
-<figcaption>Regression models: Linear regression (left) and Poisson regression (right).</figcaption>
-</figure>
-</div>
-</div>
-</div>
-
-<aside><div>
-<p>Figures recreated from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html#a-graphical-look-at-poisson-regression">BMLR Figure 4.1</a></p>
-</div></aside></section>
-<section id="assumptions-for-poisson-regression" class="slide level2 small">
-<h2>Assumptions for Poisson regression</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Poisson response</strong>: The response variable is a count per unit of time or space, described by a Poisson distribution, at each level of the predictor(s)</p>
-<p><strong>Independence</strong>: The observations must be independent of one another</p>
-<p><strong>Mean = Variance</strong>: The mean equals the variance</p>
-<p><strong>Linearity</strong>: The log of the mean rate, <span class="math inline">\(\log(\lambda)\)</span>, must be a linear function of the predictor(s)</p>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="04-poisson_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="model-1-household-vs.-age" class="slide level2">
-<h2>Model 1: Household vs.&nbsp;Age</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age, <span class="at">data =</span> hh_data, <span class="at">family =</span> poisson)</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">tidy</span>(model1) <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>hh_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age, <span class="at">data =</span> hh_data, <span class="at">family =</span> poisson)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">tidy</span>(hh_age) <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -751,33 +523,42 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 <p><span class="math display">\[\log(\hat{\lambda}) = 1.5499  - 0.0047 ~ age\]</span></p>
+<p>The mean household size is predicted to decrease by 0.47% (multiply by a factor of <span class="math inline">\(e^{-0.0047}\)</span>) for each year older the head of the household is.</p>
 </section>
-<section class="slide level2">
+<section id="household-vs.-age-and-location" class="slide level2">
+<h2>Household vs.&nbsp;age and location</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-poisson-pt2_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 
-<div class="question">
-<p>The coefficient for <code>age</code> is -0.0047. Interpret this coefficient in context. Select all that apply.</p>
-<ol type="1">
-<li><p>The mean household size is predicted to decrease by 0.0047 for each year older the head of the household is.</p></li>
-<li><p>The mean household size is predicted to multiply by a factor of 0.9953 for each year older the head of the household is.</p></li>
-<li><p>The mean household size is predicted to decrease by 0.9953 for each year older the head of the household is.</p></li>
-<li><p>The mean household size is predicted to multiply by a factor of 0.47% for each year older the head of the household is.</p></li>
-<li><p>The mean household size is predicted to decrease by 0.47% for each year older the head of the household is.</p></li>
-</ol>
-</div>
+<aside><div>
+<p>Visualization recreated from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html#linear-least-squares-vs.-poisson-regression">Figure 4.6</a> in <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>.</p>
+</div></aside></section>
+<section>
+<section id="application-exercise" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<!--Use likleihood ratio test to determine if age^2 and location should be added to the model-->
+<!--Calc by hand and also use the anova function with LRT as test = ""-->
 </section>
-<section id="is-the-coefficient-of-age-statistically-significant" class="slide level2 midi">
-<h2>Is the coefficient of <code>age</code> statistically significant?</h2>
+<section id="selected-model" class="slide level2 midi">
+<h2>Selected model</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table>
 <colgroup>
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 27%">
 <col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -793,273 +574,770 @@ Prof.&nbsp;Maria Tackett
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">1.5499</td>
-<td style="text-align: right;">0.0503</td>
-<td style="text-align: right;">30.8290</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.4512</td>
-<td style="text-align: right;">1.6482</td>
+<td style="text-align: right;">-0.3843</td>
+<td style="text-align: right;">0.1821</td>
+<td style="text-align: right;">-2.1107</td>
+<td style="text-align: right;">0.0348</td>
+<td style="text-align: right;">-0.7444</td>
+<td style="text-align: right;">-0.0306</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">age</td>
-<td style="text-align: right;">-0.0047</td>
-<td style="text-align: right;">0.0009</td>
-<td style="text-align: right;">-5.0258</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">-0.0065</td>
-<td style="text-align: right;">-0.0029</td>
+<td style="text-align: right;">0.0704</td>
+<td style="text-align: right;">0.0069</td>
+<td style="text-align: right;">10.1900</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.0569</td>
+<td style="text-align: right;">0.0840</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><span class="math display">\[H_0: \beta_1 = 0 \hspace{2mm} \text{ vs. } \hspace{2mm} H_a: \beta_1 \neq 0\]</span></p>
-<div class="fragment">
-<p><strong>Test statistic</strong></p>
-<p><span class="math display">\[Z = \frac{\hat{\beta}_1 - 0}{SE(\hat{\beta}_1)} = \frac{-0.0047 - 0}{0.0009} = -5.026 \text{ (using exact values)}\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>P-value</strong></p>
-<p><span class="math display">\[P(|Z| &gt; |-5.026|) = 5.01 \times 10^{-7} \approx 0\]</span></p>
-</div>
-</section>
-<section id="what-are-plausible-values-for-the-coefficient-of-age" class="slide level2 midi">
-<h2>What are plausible values for the coefficient of <code>age</code>?</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table>
-<colgroup>
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: right;">conf.low</th>
-<th style="text-align: right;">conf.high</th>
-</tr>
-</thead>
-<tbody>
 <tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">1.5499</td>
-<td style="text-align: right;">0.0503</td>
-<td style="text-align: right;">30.8290</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.4512</td>
-<td style="text-align: right;">1.6482</td>
+<td style="text-align: left;">I(age^2)</td>
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">-10.9437</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">-0.0008</td>
+<td style="text-align: right;">-0.0006</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">age</td>
-<td style="text-align: right;">-0.0047</td>
-<td style="text-align: right;">0.0009</td>
-<td style="text-align: right;">-5.0258</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">-0.0065</td>
-<td style="text-align: right;">-0.0029</td>
+<td style="text-align: left;">locationDavaoRegion</td>
+<td style="text-align: right;">-0.0194</td>
+<td style="text-align: right;">0.0538</td>
+<td style="text-align: right;">-0.3605</td>
+<td style="text-align: right;">0.7185</td>
+<td style="text-align: right;">-0.1250</td>
+<td style="text-align: right;">0.0859</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationIlocosRegion</td>
+<td style="text-align: right;">0.0610</td>
+<td style="text-align: right;">0.0527</td>
+<td style="text-align: right;">1.1580</td>
+<td style="text-align: right;">0.2468</td>
+<td style="text-align: right;">-0.0423</td>
+<td style="text-align: right;">0.1641</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationMetroManila</td>
+<td style="text-align: right;">0.0545</td>
+<td style="text-align: right;">0.0472</td>
+<td style="text-align: right;">1.1542</td>
+<td style="text-align: right;">0.2484</td>
+<td style="text-align: right;">-0.0378</td>
+<td style="text-align: right;">0.1473</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationVisayas</td>
+<td style="text-align: right;">0.1121</td>
+<td style="text-align: right;">0.0417</td>
+<td style="text-align: right;">2.6853</td>
+<td style="text-align: right;">0.0072</td>
+<td style="text-align: right;">0.0308</td>
+<td style="text-align: right;">0.1945</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p><strong>95% confidence interval for the coefficient of <code>age</code></strong></p>
-<p><span class="math display">\[\hat{\beta}_1 \pm z^{*}\times SE(\hat{\beta}_1)\]</span></p>
-<p>where <span class="math inline">\(z^* \sim N(0, 1)\)</span> <span class="math display">\[-0.0047 \pm 1.96 \times 0.0009 = \mathbf{(-.0065, -0.0029)}\]</span></p>
-<div class="question">
-<p>Interpret the interval in terms of the change in mean household size.</p>
+<div class="fragment">
+<p><strong>Does this model sufficiently explain the variability in the mean household size?</strong></p>
 </div>
 </section></section>
 <section>
-<section id="estimating-beta_0-and-beta_1" class="title-slide slide level1 center">
-<h1>Estimating <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></h1>
+<section id="goodness-of-fit" class="title-slide slide level1 center">
+<h1>Goodness-of-fit</h1>
 
 </section>
-<section id="estimating-beta_0-and-beta_1-1" class="slide level2 midi">
-<h2>Estimating <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></h2>
-<ul>
-<li><p>1.5499 and -0.0047 are the estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> respectively.</p></li>
-<li><p>How were these values determined?</p></li>
-<li><p>Let’s take a look at the first five rows of data:</p></li>
-</ul>
+<section id="pearson-residuals" class="slide level2 midi">
+<h2>Pearson residuals</h2>
+<p>We can calculate two types of residuals for Poisson regression: Pearson residuals and deviance residuals<br>
+<br>
+<span class="math display">\[\text{Pearson residual}_i = \frac{\text{observed} - \text{predicted}}{\text{std. error}} = \frac{Y_i - \hat{\lambda}_i}{\sqrt{\hat{\lambda}_i}}\]</span></p>
 <div class="fragment">
+<ul>
+<li><p>Similar interpretation as standardized residuals from linear regression</p></li>
+<li><p>Expect most to fall between -2 and 2</p></li>
+<li><p>Used to calculate overdispersion parameter (more on this soon)</p></li>
+</ul>
+</div>
+</section>
+<section id="deviance-residuals" class="slide level2 small">
+<h2>Deviance residuals</h2>
+<ul>
+<li>The <strong>deviance residual</strong> describes how the observed data deviates from the fitted model <span class="math display">\[\text{deviance residual}_i = \text{sign}(Y_i - \hat{\lambda}_i)\sqrt{2\Bigg[Y_i\log\bigg(\frac{Y_i}{\hat{\lambda}_i}\bigg) - (Y_i - \hat{\lambda}_i)\Bigg]}\]</span></li>
+</ul>
+<p>where</p>
+<p><span class="math display">\[\text{sign}(Y_i - \hat{\lambda}_i)  =  \begin{cases}
+1 &amp; \text{ if }(Y_i - \hat{\lambda}_i) &gt; 0 \\
+-1 &amp; \text{ if }(Y_i - \hat{\lambda}_i) &lt; 0 \\
+0 &amp; \text{ if }(Y_i - \hat{\lambda}_i) = 0
+\end{cases}\]</span></p>
+<ul>
+<li>Good fitting models <span class="math inline">\(\Rightarrow\)</span> small deviances</li>
+</ul>
+</section>
+<section id="selected-model-residual-plots" class="slide level2">
+<h2>Selected model: Residual plots</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>hh_age_loc_aug_pearson <span class="ot">&lt;-</span> <span class="fu">augment</span>(hh_age_loc, <span class="at">type.residuals =</span> <span class="st">"pearson"</span>) </span>
+<span id="cb2-2"><a href="#cb2-2"></a>hh_age_loc_aug_deviance <span class="ot">&lt;-</span> <span class="fu">augment</span>(hh_age_loc, <span class="at">type.residuals =</span> <span class="st">"deviance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="05-poisson-pt2_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section>
+<section id="goodness-of-fit-1" class="slide level2 midi">
+<h2>Goodness-of-fit</h2>
+<ul>
+<li><p><strong>Goal</strong>: Use the (residual) deviance to assess how much the predicted values differ from the observed values.</p>
+<p><span class="math display">\[
+\text{deviance} = \sum_{i=1}^{n}(\text{deviance residual})_i^2
+\]</span></p></li>
+<li><p>When a model is true, we expect<br>
+<span class="math display">\[\text{deviance} \sim \chi^2_{df}\]</span></p></li>
+</ul>
+<p>where <span class="math inline">\(df\)</span> is the model’s residual degrees of freedom</p>
+<div class="fragment">
+<ul>
+<li><strong>Question to answer</strong>: What is the probability of observing a deviance larger than the one we’ve observed, given this model sufficiently fits the data?</li>
+</ul>
+<p><span class="math display">\[P(\chi^2_{df} &gt; \text{ deviance})\]</span></p>
+</div>
+</section>
+<section id="goodness-of-fit-calculations" class="slide level2">
+<h2>Goodness-of-fit calculations</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>hh_age_loc<span class="sc">$</span>deviance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2187.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>hh_age_loc<span class="sc">$</span>df.residual</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1493</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">pchisq</span>(hh_age_loc<span class="sc">$</span>deviance, hh_age_loc<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.153732e-29</code></pre>
+</div>
+</div>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>The probability of observing a deviance greater than 2187.8 is <span class="math inline">\(\approx 0\)</span>, so there is significant evidence of <strong>lack-of-fit</strong>.</p>
+</div>
+</section>
+<section id="lack-of-fit" class="slide level2">
+<h2>Lack-of-fit</h2>
+<p>There are a few potential reasons for observing lack-of-fit:</p>
+<ul>
+<li><p>Missing important interactions or higher-order terms</p></li>
+<li><p>Missing important variables (perhaps this means a more comprehensive data set is required)</p></li>
+<li><p>There could be extreme observations causing the deviance to be larger than expected (assess based on the residual plots)</p></li>
+<li><p>There could be a problem with the Poisson model</p>
+<ul>
+<li><p>Only one parameter <span class="math inline">\(\lambda\)</span> to describe mean and variance</p></li>
+<li><p>May need more flexibility in the model to handle <strong>overdispersion</strong></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="overdispersion" class="slide level2">
+<h2>Overdispersion</h2>
+<p><strong>Overdispersion</strong>: There is more variability in the response than what is implied by the Poisson model</p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<b>Overall</b>
+</center>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3.685</td>
+<td style="text-align: right;">5.534</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<b>by Location</b>
+</center>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">location</th>
-<th style="text-align: right;">age</th>
-<th style="text-align: right;">total</th>
-<th style="text-align: right;">numLT5</th>
-<th style="text-align: left;">roof</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">var</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">CentralLuzon</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
+<td style="text-align: right;">3.402</td>
+<td style="text-align: right;">4.152</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">MetroManila</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">DavaoRegion</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Visayas</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
+<td style="text-align: right;">3.390</td>
+<td style="text-align: right;">4.723</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">IlocosRegion</td>
+<td style="text-align: right;">3.586</td>
+<td style="text-align: right;">5.402</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">MetroManila</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">Predominantly Strong Material</td>
+<td style="text-align: right;">3.707</td>
+<td style="text-align: right;">4.863</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Visayas</td>
+<td style="text-align: right;">3.902</td>
+<td style="text-align: right;">6.602</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-</section>
-<section id="likelihood" class="slide level2">
-<h2>Likelihood</h2>
-<p>Then the likelihood for those five observations is</p>
-<p><span class="math display">\[Likelihood =P(Y_1 = 0)P(Y_2 = 3)P(Y_3 = 4)P(Y_4 = 3)P(Y_5 = 3)
-\]</span></p>
-<div class="fragment">
-<p>The Y’s follow a Poisson distribution, so this equals</p>
-<p><span class="math display">\[
-Likelihood = \frac{e^{-\lambda_1}\lambda_1^0}{0!} * \frac{e^{-\lambda_2}\lambda_2^3}{3!} * \frac{e^{-\lambda_3}\lambda_3^4}{4!} *\frac{e^{-\lambda_4}\lambda_4^3}{3!} * \frac{e^{-\lambda_5}\lambda_5^3}{3!}
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_i\)</span> can differ for each household based on its value of <code>age</code>.</p>
 </div>
 </section>
-<section id="log-likelihood" class="slide level2">
-<h2>Log-likelihood</h2>
-<p>Let’s take the log of the likelihood, as this will be easier to maximize than the likelihood itself.</p>
-<p><span class="math display">\[
-\begin{align}
-logL =&amp; -\lambda_1 + 0\log(\lambda_1) - \lambda_2 + 3\log(\lambda_2) - \lambda_3 + 4\log(\lambda_3)\\ &amp;- \lambda_4 + 3\log(\lambda_4) - \lambda_5 + 3\log(\lambda_5) \\ &amp;+ C
-\end{align}
-\]</span></p>
-<div class="callout callout-note callout-titled callout-style-default">
+<section id="why-overdispersion-matters" class="slide level2">
+<h2>Why overdispersion matters</h2>
+<p>If there is overdispersion, then there is more variation in the response than what’s implied by a Poisson model. This means</p>
+<p>The standard errors of the model coefficients are artificially small</p>
+<p><span class="math inline">\(\Rightarrow\)</span> The p-values are artificially small</p>
+<p><span class="math inline">\(\Rightarrow\)</span> Could lead to models that are more complex than what is needed</p>
+<div class="fragment">
+<p>We can take overdispersion into account by</p>
+<ul>
+<li>inflating standard errors by multiplying them by a dispersion factor</li>
+<li>using a negative-binomial regression model</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="quasi-poisson" class="title-slide slide level1 center">
+<h1>Quasi-Poisson</h1>
+
+</section>
+<section id="dispersion-parameter" class="slide level2">
+<h2>Dispersion parameter</h2>
+<p>The <strong>dispersion parameter</strong> is represented by <span class="math inline">\(\phi\)</span> <span class="math display">\[\hat{\phi} =\frac{\text{deviance}}{\text{residual df}} = \frac{\sum_{i=1}^{n}(\text{Pearson residuals})^2}{n - p}\]</span></p>
+<p>where <span class="math inline">\(p\)</span> is the number of terms in the model (including the intercept)</p>
+<div class="fragment">
+<ul>
+<li><p>If there is no overdispersion <span class="math inline">\(\hat{\phi} = 1\)</span></p></li>
+<li><p>If there is overdispersion <span class="math inline">\(\hat{\phi} &gt; 1\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="accounting-for-dispersion" class="slide level2">
+<h2>Accounting for dispersion</h2>
+<ul>
+<li>We inflate the standard errors of the coefficient by multiplying the variance by <span class="math inline">\(\sqrt{\hat{\phi}}\)</span></li>
+</ul>
+<p><span class="math display">\[SE_{Q}(\hat{\beta}) = \sqrt{\hat{\phi}}  * SE(\hat{\beta})\]</span></p>
+<p>“Q” stands for <strong>quasi-Poisson</strong>, since this is an ad-hoc solution - The process for model building and model comparison is called <strong>quasilikelihood</strong> (similar to likelihood without exact underlying distributions)</p>
+</section>
+<section id="quasi-poisson-model" class="slide level2 midi">
+<h2>Quasi-Poisson model</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>hh_age_loc_q <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, <span class="at">data =</span> hh_data, </span>
+<span id="cb9-2"><a href="#cb9-2"></a>                <span class="at">family =</span> quasipoisson) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.3843</td>
+<td style="text-align: right;">0.2166</td>
+<td style="text-align: right;">-1.7744</td>
+<td style="text-align: right;">0.0762</td>
+<td style="text-align: right;">-0.8134</td>
+<td style="text-align: right;">0.0358</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0.0704</td>
+<td style="text-align: right;">0.0082</td>
+<td style="text-align: right;">8.5665</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.0544</td>
+<td style="text-align: right;">0.0866</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I(age^2)</td>
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">-9.2000</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">-0.0009</td>
+<td style="text-align: right;">-0.0006</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationDavaoRegion</td>
+<td style="text-align: right;">-0.0194</td>
+<td style="text-align: right;">0.0640</td>
+<td style="text-align: right;">-0.3030</td>
+<td style="text-align: right;">0.7619</td>
+<td style="text-align: right;">-0.1451</td>
+<td style="text-align: right;">0.1058</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationIlocosRegion</td>
+<td style="text-align: right;">0.0610</td>
+<td style="text-align: right;">0.0626</td>
+<td style="text-align: right;">0.9735</td>
+<td style="text-align: right;">0.3304</td>
+<td style="text-align: right;">-0.0620</td>
+<td style="text-align: right;">0.1837</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationMetroManila</td>
+<td style="text-align: right;">0.0545</td>
+<td style="text-align: right;">0.0561</td>
+<td style="text-align: right;">0.9703</td>
+<td style="text-align: right;">0.3320</td>
+<td style="text-align: right;">-0.0552</td>
+<td style="text-align: right;">0.1649</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationVisayas</td>
+<td style="text-align: right;">0.1121</td>
+<td style="text-align: right;">0.0497</td>
+<td style="text-align: right;">2.2574</td>
+<td style="text-align: right;">0.0241</td>
+<td style="text-align: right;">0.0156</td>
+<td style="text-align: right;">0.2103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="poisson-vs.-quasi-poisson-models" class="slide level2">
+<h2>Poisson vs.&nbsp;Quasi-Poisson models</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<b>Poisson</b>
+</center>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.3843</td>
+<td style="text-align: right;">0.1821</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0.0704</td>
+<td style="text-align: right;">0.0069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I(age^2)</td>
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationDavaoRegion</td>
+<td style="text-align: right;">-0.0194</td>
+<td style="text-align: right;">0.0538</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationIlocosRegion</td>
+<td style="text-align: right;">0.0610</td>
+<td style="text-align: right;">0.0527</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationMetroManila</td>
+<td style="text-align: right;">0.0545</td>
+<td style="text-align: right;">0.0472</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationVisayas</td>
+<td style="text-align: right;">0.1121</td>
+<td style="text-align: right;">0.0417</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<b>Quasi-Poisson</b>
+</center>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-0.3843</td>
+<td style="text-align: right;">0.2166</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0704</td>
+<td style="text-align: right;">0.0082</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0001</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-0.0194</td>
+<td style="text-align: right;">0.0640</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.0610</td>
+<td style="text-align: right;">0.0626</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0545</td>
+<td style="text-align: right;">0.0561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.1121</td>
+<td style="text-align: right;">0.0497</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quasi-poisson-inference-for-coefficients" class="slide level2">
+<h2>Quasi-Poisson: Inference for coefficients</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.3843</td>
+<td style="text-align: right;">0.2166</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0.0704</td>
+<td style="text-align: right;">0.0082</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I(age^2)</td>
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationDavaoRegion</td>
+<td style="text-align: right;">-0.0194</td>
+<td style="text-align: right;">0.0640</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationIlocosRegion</td>
+<td style="text-align: right;">0.0610</td>
+<td style="text-align: right;">0.0626</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationMetroManila</td>
+<td style="text-align: right;">0.0545</td>
+<td style="text-align: right;">0.0561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationVisayas</td>
+<td style="text-align: right;">0.1121</td>
+<td style="text-align: right;">0.0497</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<b>Test statistic</b>
+</center>
+<p><span class="math display">\[t = \frac{\hat{\beta} - 0}{SE_{Q}(\hat{\beta})} \sim t_{n-p}\]</span></p>
+</div>
+</div>
+</section>
+<section id="quasi-poisson-model-1" class="slide level2 midi">
+<h2>Quasi-Poisson model</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.3843</td>
+<td style="text-align: right;">0.2166</td>
+<td style="text-align: right;">-1.7744</td>
+<td style="text-align: right;">0.0762</td>
+<td style="text-align: right;">-0.8134</td>
+<td style="text-align: right;">0.0358</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0.0704</td>
+<td style="text-align: right;">0.0082</td>
+<td style="text-align: right;">8.5665</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.0544</td>
+<td style="text-align: right;">0.0866</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I(age^2)</td>
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">-9.2000</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">-0.0009</td>
+<td style="text-align: right;">-0.0006</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationDavaoRegion</td>
+<td style="text-align: right;">-0.0194</td>
+<td style="text-align: right;">0.0640</td>
+<td style="text-align: right;">-0.3030</td>
+<td style="text-align: right;">0.7619</td>
+<td style="text-align: right;">-0.1451</td>
+<td style="text-align: right;">0.1058</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationIlocosRegion</td>
+<td style="text-align: right;">0.0610</td>
+<td style="text-align: right;">0.0626</td>
+<td style="text-align: right;">0.9735</td>
+<td style="text-align: right;">0.3304</td>
+<td style="text-align: right;">-0.0620</td>
+<td style="text-align: right;">0.1837</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationMetroManila</td>
+<td style="text-align: right;">0.0545</td>
+<td style="text-align: right;">0.0561</td>
+<td style="text-align: right;">0.9703</td>
+<td style="text-align: right;">0.3320</td>
+<td style="text-align: right;">-0.0552</td>
+<td style="text-align: right;">0.1649</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationVisayas</td>
+<td style="text-align: right;">0.1121</td>
+<td style="text-align: right;">0.0497</td>
+<td style="text-align: right;">2.2574</td>
+<td style="text-align: right;">0.0241</td>
+<td style="text-align: right;">0.0156</td>
+<td style="text-align: right;">0.2103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section></section>
+<section>
+<section id="negative-binomial-regression-model" class="title-slide slide level1 center">
+<h1>Negative binomial regression model</h1>
+
+</section>
+<section id="negative-binomial-regression-model-1" class="slide level2 midi">
+<h2>Negative binomial regression model</h2>
+<p>Another approach to handle overdispersion is to use a <strong>negative binomial regression model</strong></p>
+<ul>
+<li>This has more flexibility than the quasi-Poisson model, because there is a new parameter in addition to <span class="math inline">\(\lambda\)</span></li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<p>Let <span class="math inline">\(Y\)</span> be a <strong>negative binomial random variable</strong>, <span class="math inline">\(Y\sim NegBinom(r, p)\)</span>, then</p>
+<p><span class="math display">\[P(Y = y_i) = {y_i + r - 1 \choose r - 1}(1-p)^{y_i}p^r \hspace{5mm} y_i = 0, 1, 2, \ldots, \infty\]</span></p>
+</div>
+</section>
+<section id="negative-binomial-regression-model-2" class="slide level2">
+<h2>Negative binomial regression model</h2>
+<ul>
+<li><p><strong>Main idea</strong>: Generate a <span class="math inline">\(\lambda\)</span> for each observation (household) and generate a count using the Poisson random variable with parameter <span class="math inline">\(\lambda\)</span></p>
+<ul>
+<li>Makes the counts more dispersed than with a single parameter</li>
+</ul></li>
+<li><p>Think of it as a Poisson model such that <span class="math inline">\(\lambda\)</span> is also random <span class="math display">\[\begin{aligned} &amp;\text{If }\hspace{2mm} Y|\lambda \sim Poisson(\lambda)\\
+&amp;\text{ and } \lambda \sim Gamma\bigg(r, \frac{1-p}{p}\bigg)\\
+&amp;\text{ then } Y \sim NegBinom(r, p)\end{aligned}\]</span></p></li>
+</ul>
+</section></section>
+<section>
+<section id="application-exercise-1" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<div class="appex">
+<p>📋 Complete the Negative binomial regression exercise in R</p>
+</div>
+</section>
+<section id="negative-binomial-regression-in-r" class="slide level2">
+<h2>Negative binomial regression in R</h2>
+<p>Use the <code>glm.nb</code> function in the <strong>MASS</strong> R package.</p>
+<p><br></p>
+<div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Caution</strong></p>
 </div>
 <div class="callout-content">
-<p>We are going to maximize with respect to <span class="math inline">\(\lambda\)</span>, we will drop the constant term <span class="math inline">\(C\)</span> moving forward.</p>
+<p>The <strong>MASS</strong> package has a <code>select</code> function that conflicts with the <code>select</code> function in <strong>dplyr</strong>. You can avoid this by (1) always loading <strong>tidyverse</strong> after <strong>MASS</strong>, or (2) use <code>MASS::glm.nb</code> instead of loading the package.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="log-likelihood-1" class="slide level2 midi">
-<h2>Log-likelihood</h2>
-<p>Because we’re fitting a Poisson regression model, we know</p>
-<p><span class="math display">\[
-\log(\lambda_i) = \beta_0 + \beta_1~age_i \hspace{6mm} and \hspace{6mm} \lambda_i = e^{\beta_0 + \beta_1~age_i}
-\]</span></p>
-<div class="fragment">
-<p>Plugging these formulas and the respective ages into <span class="math inline">\(logL\)</span>, we have</p>
-<span class="math display">\[\begin{align}
-logL \propto&amp; - \e^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\
-&amp;- \e^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\
-&amp;- \e^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\
-&amp; -\e^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
-&amp;-\e^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74)
-\end{align}\]</span>
+<section id="negative-binomial-regression-in-r-1" class="slide level2">
+<h2>Negative binomial regression in R</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>hh_age_loc_nb <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, <span class="at">data =</span> hh_data)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">tidy</span>(hh_age_loc_nb) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.3753</td>
+<td style="text-align: right;">0.2076</td>
+<td style="text-align: right;">-1.8081</td>
+<td style="text-align: right;">0.0706</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0.0699</td>
+<td style="text-align: right;">0.0079</td>
+<td style="text-align: right;">8.8981</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I(age^2)</td>
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">-9.5756</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationDavaoRegion</td>
+<td style="text-align: right;">-0.0219</td>
+<td style="text-align: right;">0.0625</td>
+<td style="text-align: right;">-0.3501</td>
+<td style="text-align: right;">0.7262</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationIlocosRegion</td>
+<td style="text-align: right;">0.0577</td>
+<td style="text-align: right;">0.0615</td>
+<td style="text-align: right;">0.9391</td>
+<td style="text-align: right;">0.3477</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locationMetroManila</td>
+<td style="text-align: right;">0.0562</td>
+<td style="text-align: right;">0.0551</td>
+<td style="text-align: right;">1.0213</td>
+<td style="text-align: right;">0.3071</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">locationVisayas</td>
+<td style="text-align: right;">0.1104</td>
+<td style="text-align: right;">0.0487</td>
+<td style="text-align: right;">2.2654</td>
+<td style="text-align: right;">0.0235</td>
+</tr>
+</tbody>
+</table>
 </div>
-</section>
-<section id="log-likelihood-2" class="slide level2">
-<h2>Log-likelihood</h2>
-<p>Expanding this to the entire data set, we have</p>
-<p><span class="math display">\[
-logL \propto \sum_{i=1}^{1500} -e^{\beta_0 + \beta_1age_i} + total_i (\beta_0 + \beta_1age_i)
-\]</span></p>
-<div class="fragment">
-<p>Can use different numerical methods to try different values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> and find the combination that maximizes <span class="math inline">\(logL\)</span> .</p>
 </div>
-</section>
-<section id="iteratively-reweighted-least-squares-irls" class="slide level2">
-<h2>Iteratively reweighted least-squares (IRLS)</h2>
-<ul>
-<li><p><strong>Iteratively reweighted least-squares (IRLS)</strong> is used to find the MLEs</p></li>
-<li><p><span class="citation" data-cites="nelder1972generalized">Nelder and Wedderburn (<a href="#/references" role="doc-biblioref" onclick="">1972</a>)</span> show that under certain specifications of the weights and a modified response variable, the estimates found using IRLS are equivalent to the MLEs.</p></li>
-</ul>
-</section>
-<section id="irls-procedure" class="slide level2 midi">
-<h2>IRLS procedure</h2>
-<ol type="1">
-<li><p>Find initial starting values <span class="math inline">\(\hat{\theta}_i\)</span>, the model parameter ( <span class="math inline">\(\hat{\theta}_i = \hat{\lambda}_i\)</span> in the case of Poisson regression)</p></li>
-<li><p>Calculate the working response values <span class="math inline">\(z_i\)</span>.</p></li>
-<li><p>Calculate the working weights <span class="math inline">\(W_i\)</span>.</p></li>
-<li><p>Find the coefficient estimates of the weighted least squares model.</p></li>
-</ol>
-<p><span class="math display">\[z_i = \beta_0 + \beta_1 x \hspace{5mm} \text{ with weights }W_i\]</span></p>
-<p>The estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the estimates for the model coefficients.</p>
-<div class="fragment">
-<p>Use <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> to calculate updated values of <span class="math inline">\(\hat{\theta}_i\)</span> and repeat steps 2 - 4 until convergence.</p>
-
-</div>
-<aside><div>
-<p>Steps from <span class="citation" data-cites="dunn2018generalized">Dunn, Smyth, et al. (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span>.</p>
-</div></aside></section>
-<section id="irls-set-up" class="slide level2 midi">
-<h2>IRLS Set up</h2>
-<p><strong>Working response</strong>: Modified response variable at each step of the iteration.</p>
-<p><span class="math display">\[z_i = g(\theta) + g'(\theta)(y_i - \theta_i)\]</span></p>
-<p>where <span class="math inline">\(g(\theta)\)</span> is the link function. (We will talk all about link functions in Chapter 5)</p>
-<div class="fragment">
-<p>For Poisson regression <span class="math inline">\(g(\theta) = \log(\lambda)\)</span></p>
-<p><span class="math display">\[z_i = \log(\lambda_i) + \frac{(y_i - \lambda_i)}{\lambda_i}\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>Working Weights:</strong> Weights applied to the observations at each step of the iteration</p>
-<p><span class="math display">\[W_i = \frac{\theta^2}{Var(Y)} \hspace{5mm} \Rightarrow \hspace{5mm}  W_i = \frac{\lambda^2}{\lambda} =  \lambda \text{ for Poisson regression}\]</span></p>
-</div>
-</section></section>
-<section>
-<section id="application-exercise" class="title-slide slide level1 center">
-<h1>Application exercise</h1>
-<div class="appex">
-<p>📋 <a href="../ae/lec-04-poisson-estimate.html">sta310-sp24.netlify.app/ae/lec-04-poisson-estimate</a></p>
-</div>
-</section>
-<section id="looking-ahead" class="slide level2">
-<h2>Looking ahead</h2>
-<ul>
-<li>For next time - <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html">Chapter 4 - Poisson Regression</a>
-<ul>
-<li>Sections 4.6, 4.10</li>
-</ul></li>
-</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -1069,18 +1347,11 @@ logL \propto \sum_{i=1}^{1500} -e^{\beta_0 + \beta_1age_i} + total_i (\beta_0 + 
 <p><a href="https://sta310-sp24.netlify.app">🔗 STA 310 - Spring 2024</a></p>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-dunn2018generalized" class="csl-entry" role="listitem">
-Dunn, Peter K, Gordon K Smyth, et al. 2018. <em>Generalized Linear Models with Examples in r</em>. Vol. 53. Springer.
-</div>
-<div id="ref-nelder1972generalized" class="csl-entry" role="listitem">
-Nelder, John Ashworth, and Robert WM Wedderburn. 1972. <span>“Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 135 (3): 370–84.
-</div>
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
 Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple linear regression: applied generalized linear models and multilevel models in R</span></em>. CRC Press.
 </div>
 </div>
 </section></section>
-
     </div>
   </div>
 

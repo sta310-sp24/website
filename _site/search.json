@@ -417,7 +417,7 @@
     "href": "slides/04-poisson.html#topics",
     "title": "Poisson Regression",
     "section": "Topics",
-    "text": "Topics\n\nDescribe properties of the Poisson random variable\nWrite the mathematical equation of the Poisson regression model\nDescribe how the Poisson regression differs from least-squares regression\nInterpret the coefficients for the Poisson regression model\nCompare two Poisson regression models\n\n\n\nNotes based on Section 4.4 - 4.5, and 4.9 of Roback and Legler (2021) unless noted otherwise."
+    "text": "Topics\n\nDescribe properties of the Poisson random variable\nWrite the mathematical equation of the Poisson regression model\nDescribe how the Poisson regression differs from least-squares regression\nInterpret the coefficients for the Poisson regression model\nCompare two Poisson regression models\n\n\n\nNotes based on Section 4.4 - 4.5 of Roback and Legler (2021) unless noted otherwise."
   },
   {
     "objectID": "slides/04-poisson.html#scenarios-to-use-poisson-regression",
@@ -805,242 +805,284 @@
     "text": "To do before next time\n\nInstall RStudio and configure git (or reserve container). See computing page for instructions.\n\nWill do application exercise next class\n\nRead syllabus and let me know if you have any questions\nSee Prepare for Jan 17 lecture\n\n\n\n\n🔗 STA 310 - Spring 2024"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "STA 310: Generalized Linear Models",
+    "objectID": "slides/05-poisson-pt2.html#announcements",
+    "href": "slides/05-poisson-pt2.html#announcements",
+    "title": "Poisson Regression",
+    "section": "Announcements",
+    "text": "Announcements\n\nQuiz 01: [ADD DATES]\n\nADD NOTE ABOUT CONTENT\nADD NOTE ABOUT RESOURCES"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#topics",
+    "href": "slides/05-poisson-pt2.html#topics",
+    "title": "Poisson Regression",
+    "section": "Topics",
+    "text": "Topics\n\nDefine and calculate residuals for the Poisson regression model\nUse Goodness-of-fit to assess model fit\nIdentify overdispersion\nApply modeling approaches to deal with overdispersion\n\nQuasi-Poisson\nNegative binomial\n\n\n\n\nNotes based on Sections 4.4 and 4.9 of Roback and Legler (2021) unless noted otherwise."
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#the-data-household-size-in-the-philippines",
+    "href": "slides/05-poisson-pt2.html#the-data-household-size-in-the-philippines",
+    "title": "Poisson Regression",
+    "section": "The data: Household size in the Philippines",
+    "text": "The data: Household size in the Philippines\nThe data fHH1.csv come from the 2015 Family Income and Expenditure Survey conducted by the Philippine Statistics Authority.\nGoal: Understand the association between household size and various characteristics of the household\nResponse:\n\ntotal: Number of people in the household other than the head\n\n\n\nPredictors:\n\nlocation: Where the house is located\nage: Age of the head of household\nroof: Type of roof on the residence (proxy for wealth)\n\n\nOther variables:\n\nnumLT5: Number in the household under 5 years old"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#poisson-regression-model",
+    "href": "slides/05-poisson-pt2.html#poisson-regression-model",
+    "title": "Poisson Regression",
+    "section": "Poisson regression model",
+    "text": "Poisson regression model\nIf \\(Y_i \\sim Poisson\\) with \\(\\lambda = \\lambda_i\\) for the given values \\(x_{i1}, \\ldots, x_{ip}\\), then\n\\[\\log(\\lambda_i) = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\dots + \\beta_p x_{ip}\\]\n\n\nEach observation can have a different value of \\(\\lambda\\) based on its value of the predictors \\(x_1, \\ldots, x_p\\)\n\\(\\lambda\\) determines the mean and variance, so we don’t need to estimate a separate error term"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#household-vs.-age",
+    "href": "slides/05-poisson-pt2.html#household-vs.-age",
+    "title": "Poisson Regression",
+    "section": "Household vs. Age",
+    "text": "Household vs. Age\n\nhh_age &lt;- glm(total ~ age, data = hh_data, family = poisson)\n\ntidy(hh_age) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.5499\n0.0503\n30.8290\n0\n\n\nage\n-0.0047\n0.0009\n-5.0258\n0\n\n\n\n\n\n\\[\\log(\\hat{\\lambda}) = 1.5499  - 0.0047 ~ age\\]\nThe mean household size is predicted to decrease by 0.47% (multiply by a factor of \\(e^{-0.0047}\\)) for each year older the head of the household is."
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#household-vs.-age-and-location",
+    "href": "slides/05-poisson-pt2.html#household-vs.-age-and-location",
+    "title": "Poisson Regression",
+    "section": "Household vs. age and location",
+    "text": "Household vs. age and location\n\n\n\n\n\n\n\n\n\n\n\nVisualization recreated from Figure 4.6 in Roback and Legler (2021)."
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#selected-model",
+    "href": "slides/05-poisson-pt2.html#selected-model",
+    "title": "Poisson Regression",
+    "section": "Selected model",
+    "text": "Selected model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.1821\n-2.1107\n0.0348\n-0.7444\n-0.0306\n\n\nage\n0.0704\n0.0069\n10.1900\n0.0000\n0.0569\n0.0840\n\n\nI(age^2)\n-0.0007\n0.0001\n-10.9437\n0.0000\n-0.0008\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0538\n-0.3605\n0.7185\n-0.1250\n0.0859\n\n\nlocationIlocosRegion\n0.0610\n0.0527\n1.1580\n0.2468\n-0.0423\n0.1641\n\n\nlocationMetroManila\n0.0545\n0.0472\n1.1542\n0.2484\n-0.0378\n0.1473\n\n\nlocationVisayas\n0.1121\n0.0417\n2.6853\n0.0072\n0.0308\n0.1945\n\n\n\n\n\n\nDoes this model sufficiently explain the variability in the mean household size?"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#pearson-residuals",
+    "href": "slides/05-poisson-pt2.html#pearson-residuals",
+    "title": "Poisson Regression",
+    "section": "Pearson residuals",
+    "text": "Pearson residuals\nWe can calculate two types of residuals for Poisson regression: Pearson residuals and deviance residuals\n\n\\[\\text{Pearson residual}_i = \\frac{\\text{observed} - \\text{predicted}}{\\text{std. error}} = \\frac{Y_i - \\hat{\\lambda}_i}{\\sqrt{\\hat{\\lambda}_i}}\\]\n\n\nSimilar interpretation as standardized residuals from linear regression\nExpect most to fall between -2 and 2\nUsed to calculate overdispersion parameter (more on this soon)"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#deviance-residuals",
+    "href": "slides/05-poisson-pt2.html#deviance-residuals",
+    "title": "Poisson Regression",
+    "section": "Deviance residuals",
+    "text": "Deviance residuals\n\nThe deviance residual describes how the observed data deviates from the fitted model \\[\\text{deviance residual}_i = \\text{sign}(Y_i - \\hat{\\lambda}_i)\\sqrt{2\\Bigg[Y_i\\log\\bigg(\\frac{Y_i}{\\hat{\\lambda}_i}\\bigg) - (Y_i - \\hat{\\lambda}_i)\\Bigg]}\\]\n\nwhere\n\\[\\text{sign}(Y_i - \\hat{\\lambda}_i)  =  \\begin{cases}\n1 & \\text{ if }(Y_i - \\hat{\\lambda}_i) &gt; 0 \\\\\n-1 & \\text{ if }(Y_i - \\hat{\\lambda}_i) &lt; 0 \\\\\n0 & \\text{ if }(Y_i - \\hat{\\lambda}_i) = 0\n\\end{cases}\\]\n\nGood fitting models \\(\\Rightarrow\\) small deviances"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#selected-model-residual-plots",
+    "href": "slides/05-poisson-pt2.html#selected-model-residual-plots",
+    "title": "Poisson Regression",
+    "section": "Selected model: Residual plots",
+    "text": "Selected model: Residual plots\n\nhh_age_loc_aug_pearson &lt;- augment(hh_age_loc, type.residuals = \"pearson\") \nhh_age_loc_aug_deviance &lt;- augment(hh_age_loc, type.residuals = \"deviance\")"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#goodness-of-fit-1",
+    "href": "slides/05-poisson-pt2.html#goodness-of-fit-1",
+    "title": "Poisson Regression",
+    "section": "Goodness-of-fit",
+    "text": "Goodness-of-fit\n\nGoal: Use the (residual) deviance to assess how much the predicted values differ from the observed values.\n\\[\n\\text{deviance} = \\sum_{i=1}^{n}(\\text{deviance residual})_i^2\n\\]\nWhen a model is true, we expect\n\\[\\text{deviance} \\sim \\chi^2_{df}\\]\n\nwhere \\(df\\) is the model’s residual degrees of freedom\n\n\nQuestion to answer: What is the probability of observing a deviance larger than the one we’ve observed, given this model sufficiently fits the data?\n\n\\[P(\\chi^2_{df} &gt; \\text{ deviance})\\]"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#goodness-of-fit-calculations",
+    "href": "slides/05-poisson-pt2.html#goodness-of-fit-calculations",
+    "title": "Poisson Regression",
+    "section": "Goodness-of-fit calculations",
+    "text": "Goodness-of-fit calculations\n\nhh_age_loc$deviance\n\n[1] 2187.8\n\nhh_age_loc$df.residual\n\n[1] 1493\n\n\n\n\npchisq(hh_age_loc$deviance, hh_age_loc$df.residual, lower.tail = FALSE)\n\n[1] 3.153732e-29\n\n\n\n\n\nThe probability of observing a deviance greater than 2187.8 is \\(\\approx 0\\), so there is significant evidence of lack-of-fit."
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#lack-of-fit",
+    "href": "slides/05-poisson-pt2.html#lack-of-fit",
+    "title": "Poisson Regression",
+    "section": "Lack-of-fit",
+    "text": "Lack-of-fit\nThere are a few potential reasons for observing lack-of-fit:\n\nMissing important interactions or higher-order terms\nMissing important variables (perhaps this means a more comprehensive data set is required)\nThere could be extreme observations causing the deviance to be larger than expected (assess based on the residual plots)\nThere could be a problem with the Poisson model\n\nOnly one parameter \\(\\lambda\\) to describe mean and variance\nMay need more flexibility in the model to handle overdispersion"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#overdispersion",
+    "href": "slides/05-poisson-pt2.html#overdispersion",
+    "title": "Poisson Regression",
+    "section": "Overdispersion",
+    "text": "Overdispersion\nOverdispersion: There is more variability in the response than what is implied by the Poisson model\n\n\n\n\nOverall\n\n\n\n\n\n\nmean\nvar\n\n\n\n\n3.685\n5.534\n\n\n\n\n\n\n\nby Location\n\n\n\n\n\n\nlocation\nmean\nvar\n\n\n\n\nCentralLuzon\n3.402\n4.152\n\n\nDavaoRegion\n3.390\n4.723\n\n\nIlocosRegion\n3.586\n5.402\n\n\nMetroManila\n3.707\n4.863\n\n\nVisayas\n3.902\n6.602"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#why-overdispersion-matters",
+    "href": "slides/05-poisson-pt2.html#why-overdispersion-matters",
+    "title": "Poisson Regression",
+    "section": "Why overdispersion matters",
+    "text": "Why overdispersion matters\nIf there is overdispersion, then there is more variation in the response than what’s implied by a Poisson model. This means\nThe standard errors of the model coefficients are artificially small\n\\(\\Rightarrow\\) The p-values are artificially small\n\\(\\Rightarrow\\) Could lead to models that are more complex than what is needed\n\nWe can take overdispersion into account by\n\ninflating standard errors by multiplying them by a dispersion factor\nusing a negative-binomial regression model"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#dispersion-parameter",
+    "href": "slides/05-poisson-pt2.html#dispersion-parameter",
+    "title": "Poisson Regression",
+    "section": "Dispersion parameter",
+    "text": "Dispersion parameter\nThe dispersion parameter is represented by \\(\\phi\\) \\[\\hat{\\phi} =\\frac{\\text{deviance}}{\\text{residual df}} = \\frac{\\sum_{i=1}^{n}(\\text{Pearson residuals})^2}{n - p}\\]\nwhere \\(p\\) is the number of terms in the model (including the intercept)\n\n\nIf there is no overdispersion \\(\\hat{\\phi} = 1\\)\nIf there is overdispersion \\(\\hat{\\phi} &gt; 1\\)"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#accounting-for-dispersion",
+    "href": "slides/05-poisson-pt2.html#accounting-for-dispersion",
+    "title": "Poisson Regression",
+    "section": "Accounting for dispersion",
+    "text": "Accounting for dispersion\n\nWe inflate the standard errors of the coefficient by multiplying the variance by \\(\\sqrt{\\hat{\\phi}}\\)\n\n\\[SE_{Q}(\\hat{\\beta}) = \\sqrt{\\hat{\\phi}}  * SE(\\hat{\\beta})\\]\n“Q” stands for quasi-Poisson, since this is an ad-hoc solution - The process for model building and model comparison is called quasilikelihood (similar to likelihood without exact underlying distributions)"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#quasi-poisson-model",
+    "href": "slides/05-poisson-pt2.html#quasi-poisson-model",
+    "title": "Poisson Regression",
+    "section": "Quasi-Poisson model",
+    "text": "Quasi-Poisson model\n\nhh_age_loc_q &lt;- glm(total ~ age + I(age^2) + location, data = hh_data, \n                family = quasipoisson) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.2166\n-1.7744\n0.0762\n-0.8134\n0.0358\n\n\nage\n0.0704\n0.0082\n8.5665\n0.0000\n0.0544\n0.0866\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.2000\n0.0000\n-0.0009\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0640\n-0.3030\n0.7619\n-0.1451\n0.1058\n\n\nlocationIlocosRegion\n0.0610\n0.0626\n0.9735\n0.3304\n-0.0620\n0.1837\n\n\nlocationMetroManila\n0.0545\n0.0561\n0.9703\n0.3320\n-0.0552\n0.1649\n\n\nlocationVisayas\n0.1121\n0.0497\n2.2574\n0.0241\n0.0156\n0.2103"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#poisson-vs.-quasi-poisson-models",
+    "href": "slides/05-poisson-pt2.html#poisson-vs.-quasi-poisson-models",
+    "title": "Poisson Regression",
+    "section": "Poisson vs. Quasi-Poisson models",
+    "text": "Poisson vs. Quasi-Poisson models\n\n\n\nPoisson\n\n\n\n\n\n\nterm\nestimate\nstd.error\n\n\n\n\n(Intercept)\n-0.3843\n0.1821\n\n\nage\n0.0704\n0.0069\n\n\nI(age^2)\n-0.0007\n0.0001\n\n\nlocationDavaoRegion\n-0.0194\n0.0538\n\n\nlocationIlocosRegion\n0.0610\n0.0527\n\n\nlocationMetroManila\n0.0545\n0.0472\n\n\nlocationVisayas\n0.1121\n0.0417\n\n\n\n\n\n\n\nQuasi-Poisson\n\n\n\n\n\n\nestimate\nstd.error\n\n\n\n\n-0.3843\n0.2166\n\n\n0.0704\n0.0082\n\n\n-0.0007\n0.0001\n\n\n-0.0194\n0.0640\n\n\n0.0610\n0.0626\n\n\n0.0545\n0.0561\n\n\n0.1121\n0.0497"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#quasi-poisson-inference-for-coefficients",
+    "href": "slides/05-poisson-pt2.html#quasi-poisson-inference-for-coefficients",
+    "title": "Poisson Regression",
+    "section": "Quasi-Poisson: Inference for coefficients",
+    "text": "Quasi-Poisson: Inference for coefficients\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\n\n\n\n\n(Intercept)\n-0.3843\n0.2166\n\n\nage\n0.0704\n0.0082\n\n\nI(age^2)\n-0.0007\n0.0001\n\n\nlocationDavaoRegion\n-0.0194\n0.0640\n\n\nlocationIlocosRegion\n0.0610\n0.0626\n\n\nlocationMetroManila\n0.0545\n0.0561\n\n\nlocationVisayas\n0.1121\n0.0497\n\n\n\n\n\n\n\nTest statistic\n\n\\[t = \\frac{\\hat{\\beta} - 0}{SE_{Q}(\\hat{\\beta})} \\sim t_{n-p}\\]"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#quasi-poisson-model-1",
+    "href": "slides/05-poisson-pt2.html#quasi-poisson-model-1",
+    "title": "Poisson Regression",
+    "section": "Quasi-Poisson model",
+    "text": "Quasi-Poisson model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.2166\n-1.7744\n0.0762\n-0.8134\n0.0358\n\n\nage\n0.0704\n0.0082\n8.5665\n0.0000\n0.0544\n0.0866\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.2000\n0.0000\n-0.0009\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0640\n-0.3030\n0.7619\n-0.1451\n0.1058\n\n\nlocationIlocosRegion\n0.0610\n0.0626\n0.9735\n0.3304\n-0.0620\n0.1837\n\n\nlocationMetroManila\n0.0545\n0.0561\n0.9703\n0.3320\n-0.0552\n0.1649\n\n\nlocationVisayas\n0.1121\n0.0497\n2.2574\n0.0241\n0.0156\n0.2103"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#negative-binomial-regression-model-1",
+    "href": "slides/05-poisson-pt2.html#negative-binomial-regression-model-1",
+    "title": "Poisson Regression",
+    "section": "Negative binomial regression model",
+    "text": "Negative binomial regression model\nAnother approach to handle overdispersion is to use a negative binomial regression model\n\nThis has more flexibility than the quasi-Poisson model, because there is a new parameter in addition to \\(\\lambda\\)\n\n\n\nLet \\(Y\\) be a negative binomial random variable, \\(Y\\sim NegBinom(r, p)\\), then\n\\[P(Y = y_i) = {y_i + r - 1 \\choose r - 1}(1-p)^{y_i}p^r \\hspace{5mm} y_i = 0, 1, 2, \\ldots, \\infty\\]"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#negative-binomial-regression-model-2",
+    "href": "slides/05-poisson-pt2.html#negative-binomial-regression-model-2",
+    "title": "Poisson Regression",
+    "section": "Negative binomial regression model",
+    "text": "Negative binomial regression model\n\nMain idea: Generate a \\(\\lambda\\) for each observation (household) and generate a count using the Poisson random variable with parameter \\(\\lambda\\)\n\nMakes the counts more dispersed than with a single parameter\n\nThink of it as a Poisson model such that \\(\\lambda\\) is also random \\[\\begin{aligned} &\\text{If }\\hspace{2mm} Y|\\lambda \\sim Poisson(\\lambda)\\\\\n&\\text{ and } \\lambda \\sim Gamma\\bigg(r, \\frac{1-p}{p}\\bigg)\\\\\n&\\text{ then } Y \\sim NegBinom(r, p)\\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#negative-binomial-regression-in-r",
+    "href": "slides/05-poisson-pt2.html#negative-binomial-regression-in-r",
+    "title": "Poisson Regression",
+    "section": "Negative binomial regression in R",
+    "text": "Negative binomial regression in R\nUse the glm.nb function in the MASS R package.\n\n\n\n\n\n\n\nCaution\n\n\nThe MASS package has a select function that conflicts with the select function in dplyr. You can avoid this by (1) always loading tidyverse after MASS, or (2) use MASS::glm.nb instead of loading the package."
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#negative-binomial-regression-in-r-1",
+    "href": "slides/05-poisson-pt2.html#negative-binomial-regression-in-r-1",
+    "title": "Poisson Regression",
+    "section": "Negative binomial regression in R",
+    "text": "Negative binomial regression in R\n\nhh_age_loc_nb &lt;- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)\ntidy(hh_age_loc_nb) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.3753\n0.2076\n-1.8081\n0.0706\n\n\nage\n0.0699\n0.0079\n8.8981\n0.0000\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.5756\n0.0000\n\n\nlocationDavaoRegion\n-0.0219\n0.0625\n-0.3501\n0.7262\n\n\nlocationIlocosRegion\n0.0577\n0.0615\n0.9391\n0.3477\n\n\nlocationMetroManila\n0.0562\n0.0551\n1.0213\n0.3071\n\n\nlocationVisayas\n0.1104\n0.0487\n2.2654\n0.0235"
+  },
+  {
+    "objectID": "slides/05-poisson-pt2.html#references",
+    "href": "slides/05-poisson-pt2.html#references",
+    "title": "Poisson Regression",
+    "section": "References",
+    "text": "References\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
+  },
+  {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "Course overview",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      ae\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n    \nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n    3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n    \nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\nHW 01 due\n    \n\n\nPoisson regression\n\n\n\n\n\n\n\n    \nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n    \nTh\nFeb 1\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nPoisson: ZIP models cont'd\n\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period"
+    "text": "STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 students will be introduced to generalized linear models (GLMs), a broad modeling framework that includes linear and logistic models, among others. Students will learn the basic theory of GLMs and how they can used to model a variety of response variables with non-normal distributions. Students will also learn an extension of GLMs that can be applied to modeling data with correlated observations, such as data with repeated measures."
   },
   {
-    "objectID": "projects/project-02.html",
-    "href": "projects/project-02.html",
-    "title": "Project 02",
+    "objectID": "course-overview.html#teaching-assistant",
+    "href": "course-overview.html#teaching-assistant",
+    "title": "Course overview",
+    "section": "Teaching assistant",
+    "text": "Teaching assistant\nThe teaching assistant for this course is Hun Kang. He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.\n\n\n\n\nLocation\n\n\n\n\nTue 3 - 5pm\nOld Chem 203B"
+  },
+  {
+    "objectID": "projects/project-01.html",
+    "href": "projects/project-01.html",
+    "title": "Project 01: Generalized Linear Models",
     "section": "",
-    "text": "To be posted."
+    "text": "For this project you and your team will be reading and evaluating a scholarly article that incorporates generalized linear models (GLMs) in the analysis.\nThe learning objectives of the project are to"
   },
   {
-    "objectID": "projects/final-project.html",
-    "href": "projects/final-project.html",
-    "title": "Final project",
-    "section": "",
-    "text": "To be posted."
+    "objectID": "projects/project-01.html#team-assignments",
+    "href": "projects/project-01.html#team-assignments",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Team assignments",
+    "text": "Team assignments\nYou will work in small teams for this project. You will find the team assignments in the #project-01 channel in Slack.\nBefore getting started, I encourage you to discuss the following as a group:\n\nCome up with a plan to communicate and work together outside of lab.\nCome up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings."
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html",
-    "href": "ae/ae-02-mlr-review.html",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "",
-    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+    "objectID": "projects/project-01.html#workflow",
+    "href": "projects/project-01.html#workflow",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Workflow",
+    "text": "Workflow\n\nProject Week 01 (week of Mon, Jan 22): Select article and submit proposal.\nProject Week 02 (week of Mon, Jan 29): Read article and complete article evaluation.\nProject Week 03 (week of Mon, Feb 05 ): Work on draft reports and presentations.\nProject Week 04 (week of Mon, Feb 12): Presentations and submit report."
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#introduction",
-    "href": "ae/ae-02-mlr-review.html#introduction",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "",
-    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+    "objectID": "projects/project-01.html#due-dates",
+    "href": "projects/project-01.html#due-dates",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Due dates",
+    "text": "Due dates\n\n\n\n\n\n\nNote\n\n\n\nAll work will be submitted in your team’s project GitHub repo.\n\n\n\nProposal: due Fri, Jan 26 at noon\nArticle evaluation: due Sun, Feb 04 at noon\nPresentation: due Wed, Feb 14 at 3:05pm\nWritten report: due Thu, Feb 15 at noon"
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
-    "href": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "Model 1: Main effects model",
-    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
+    "objectID": "projects/project-01.html#article",
+    "href": "projects/project-01.html#article",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Article",
+    "text": "Article\nThe article for this project must be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must incorporate the use one or more generalized linear models, that is not a linear regression model, in the analysis.\n\nCommon GLMs are Poisson regression, Logistic regression, Probit regression, and Negative binomial regression.\nYou can also look for models based on the distribution of the response variable: Binary, Binomial, Poisson, Exponential, Gamma, Geometric.\nSee Section 3.6 in Beyond Multiple Linear Regression for a list of types of GLMs.\n\nThe model used in the paper does not have to be one we discuss in class. I’d encourage you to explore articles that use modeling beyond the scope of the class!\nBelow are a few useful places to search for articles:\n\nDuke Library\nPLOS One\nPubMed.gov\n\nSee the Tips on finding articles for tips on searching journal databases to find an article."
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
-    "href": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "Model 2: Main effects + quadratic effect for year",
-    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
+    "objectID": "projects/project-01.html#proposal",
+    "href": "projects/project-01.html#proposal",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Proposal",
+    "text": "Proposal\nThe main goal of the proposal is to ensure you have an article that will set you up for a successful project. Include the following in the proposal.\n\nThe citation for the article. If you’re using a .bib file you can use the default citation format in Quarto (Chicago author-date format). Otherwise, use MLA format.\nBrief summary about why you chose this article.\nBrief summary of the article’s primary research objective.\nName of the GLM(s) used in the article and a short description of the response variable for each model.\n\nYou are only required to write the proposal for one article. Write the proposal in the file proposal.qmd, then push the .qmd and rendered PDF to the GitHub repo for submission.\n\n\n\n\n\n\nImportant\n\n\n\nThe proposal is due on Fri, Jan 25 at noon.\n\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.\n\n\n\nGrading criteria\nThe proposal will be graded based on the following:\n\nAll required components of the proposal are included and accurate (8 pts)\nAll team members have made meaningful contribution, as determined by Git commit history (2 pts)"
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
-    "href": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "Model 3: Main effects + interaction between year and condition",
-    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
+    "objectID": "projects/project-01.html#article-evaluation",
+    "href": "projects/project-01.html#article-evaluation",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Article evaluation",
+    "text": "Article evaluation\nThe purpose of the article evaluation is for you to begin describing and evaluating the statistical analysis and argument in the article. Write your responses to the following questions in article-evaluation.qmd. The anticipated length is about 1 - 2 pages and should be no more than 4 pages. There is no minimum page requirement, as long as each section is comprehensively addressed.\n\nAudience and purpose\n\nWho is the primary audience for this article, i.e., for what type of readers are the authors writing?\nWhat is the general purpose of the article, e.g., to persuade the reader to do something, to prove something, to inform the reader, etc.?\n\nData\n\nHow were the data generated - from an experiment, online survey, interviews, etc?\nUnder what conditions were the data collected, e.g., the time period, location, how subjects were selected, response rate / drop-out rate, etc.?\n\nGraphs and tables\n\nDescribe the types of visualizations and tables used in the article.\nHow are they primarily used - for exploratory data analysis, to support a candidatee, etc.?\nWhat visualizations or tables might you add to the article? Briefly explain.\n\nGeneralized Linear Model\nIf your paper has multiple, GLMs you only have to write this section up for one model.\n\nWhat is the response variable, and what is its distribution?\nWhat are the predictor variables? Which predictor(s) are of particularl interest in the research?\nWrite the statistical model in mathematical notation.\n\nOverall argument\n\nAre there limitations or difficulties with generalizing beyond the data? Briefly explain.\nWhen was the article published? Are the findings up-to-date, out-dated, or timeless? Briefly explain.\nHow does the study advance knowledge in the field?\n\n\n\nGrading criteria\nThe article evaluation will be graded based on the following\n\nAll required components of the proposal are included and accurate (8 pts)\nAll team members have made meaningful contribution, as determined by Git commit history (2 pts)\n\n\n\n\n\n\n\nImportant\n\n\n\nThe article evaluation is due on Sun, Feb 04 at noon.\n\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo."
   },
   {
-    "objectID": "prepare/jan-22.html",
-    "href": "prepare/jan-22.html",
-    "title": "Prepare for Jan 22 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "objectID": "projects/project-01.html#write-up",
+    "href": "projects/project-01.html#write-up",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Write up",
+    "text": "Write up\nThe anticipated length is about 5 pages. There is no minimum or maximum page requirement as long as each section is accurately and comprehensively addressed.\n\nIntroduction\nBriefly summarize the article, the research objective and purpose, and key conclusions. Also include a description of the data used for the analysis.\n\n\nMethods\nDescribe the GLM used for the analysis. Describe the response variable and and its distribution. Describe predictor variables. Write the equation of the statistical models using mathematical notation.\n\n\nResults\nInterpret the results form the model. Write the interpretations / conclusions from the mode, using estimates from the article when possible. If the article does not include estimates for some or all of the estimated effects effects, you can write general interpretations using the appropriate mathematical symbol (e.g., \\(\\hat{\\beta}_1\\)) in place of the estimated value.\n\n\nCommunication\nThe objective of this section of the written report is to assess the authors’ argument and communication. Reading and identifying how others communicate statistical results is a key way to develop your statistical writing skills. This section will include an assessment of the following:\n\nAudience: Describe the primary audience for the article.\nMethods: Consider the detail in the data and methods sections. What aspects of the analysis are mentioned in detail? What aspects are mentioned without detail? How does the level of detail correlate to the statistical background of the primary audience?\nGraphs and figures: How are the graphs, figures, and tables used to support the findings? How are they used for exploratory data analysis? How how are they used to assess or support modeling results? Would additional graphs, figures, or tables be helpful? If so, what kind?\n\nIdentify one key graph. Where is it located in the article? What message does it convey with respect to the objective and conclusion of the study? If there are no graphs in the article, describe one key graph you would include and how it would be used in the article (e.g., support conclusions, provide clarity, etc.).\n\nLimitations: Are there limitations or difficulties in generalizing beyond the data? How are these limitations noted, if at all? Do you have any other concerns about the study?\nImpact: According to the author, how does the study advance knowledge in the field? Taking into account the year the article was published, do the author’s claims seem adequately justified, overblown, or unduly cautious?\n\nYou can use these questions as a guide to shape the narrative. This section should still be written in narrative form, not as a list of questions and answers.\nThe questions in this section are adapted from Communicating with Data: The Art of Writing for Data Science by Deborah Nolan and Sara Stoudt. Click here for more details about the questions and how to read scientific articles. You can borrow a copy of the book from Duke Libraries.\n\n\nGrading criteria\nEach section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. (30 pts total)\nThe report will also be assessed based on the following:\n\nFormatting: 3 pts\n\nThis is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.\n\nReproducibility: 2 pts\n\nThis is an assessment of the reproducibility of the report. Is the PDF produced by rendering the Quarto document?\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe written report is due on Thu, Feb 15 at noon.\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo."
   },
   {
-    "objectID": "prepare/jan-31.html",
-    "href": "prepare/jan-31.html",
-    "title": "Prepare for Jan 31 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
+    "objectID": "projects/project-01.html#presentation",
+    "href": "projects/project-01.html#presentation",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Presentation",
+    "text": "Presentation\nYou will present on Wed, Feb 14 during lecture. Each team will have up to 10 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.\nYou can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in the timeframe. A suggested outline is\n\n1 slide to introduce article\n1 - 2 slides to describe the model\n1 - 2 slides for key interpretations and results\n1 slide for key highlights about the communication and writing (e.g., what the authors did particularly well or areas of improvement)\n\nYou will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the “Peers” scores for your team’s presentation included in your presentation grade.\nThe presentation order and peer review assignments will be given closer to the presentation date.\n\nGrading criteria - Teaching Team (16 pts)\nThis portion of the grade will the average of the scores from the members of the teaching team.\n\nProfessionalism (5 pts)\n\nWas the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?\nWas the time reasonably divided among team members? Was the presentation within the time limit?\nDid the team present a unified story?\n\nContent (6 pts): The content is presented in a clear and accurate way. This includes clearly and accurately describing\n\nthe primary research objective and intended audience for the article.\nthe data used in the analysis.\nthe observations and units at every level.\nthe model and primary conclusions\nthe effectiveness of tables, figures, and graphs in the article and argument of the contribution of the work (optional).\n\nSlides (10 pts)\n\nAre the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?\n\n\n\n\nGrading criteria - Peers (4 pts)\nThis portion of the grade will the average of the scores from the peer reviewers. Peer review assignments will be posted on Slack.\n\nIntroduction (1 pt)\n\nDid the team clearly describe the primary research objective and intended audience for the article?\n\nData (1 pt)\n\nDid the team clearly describe the data used in the analysis?\n\nModel (1 pt)\n\nDid the team clearly describe the observational units and variables at each level? Did they clearly describe the model?\n\nSlides (1 pt)\n\nAre the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?"
   },
   {
-    "objectID": "prepare/jan-17.html",
-    "href": "prepare/jan-17.html",
-    "title": "Prepare for Jan 17 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "objectID": "projects/project-01.html#github-repo-organization",
+    "href": "projects/project-01.html#github-repo-organization",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "GitHub repo organization",
+    "text": "GitHub repo organization\nYou should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by Thu, Feb 15 at noon. README.md: 3 - 5 sentence summary of the project and citation for the article.\n\nproposal.qmd\nproposal.pdf\narticle-evaluation.qmd\narticle-evaluation.pdf\nwriteup.qmd\nwriteup.pdf\n/presentation\n\n/presentation/*: Presentation file (if not linked in README)\n/presentation/README.md: Link to project (if not in presentation folder)\n\n\nOptional\n\n*.bib: BibTex file for references\n/data/: Folder containing data"
   },
   {
-    "objectID": "hw/hw-03.html",
-    "href": "hw/hw-03.html",
-    "title": "HW 03",
-    "section": "",
-    "text": "To be posted."
+    "objectID": "projects/project-01.html#grading-100-points",
+    "href": "projects/project-01.html#grading-100-points",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Grading (100 points)",
+    "text": "Grading (100 points)\n\n\n\nComponent\nPoints\n\n\n\n\nProposal\n10 pts\n\n\nArticle evaluation\n20 pts\n\n\nWritten report\n35 pts\n\n\nPresentation + Slides\n25 pts\n\n\nRepo organization\n5 pts\n\n\nTeamwork evaluation (individually assessed)\n5 pts"
   },
   {
-    "objectID": "hw/hw-04.html",
-    "href": "hw/hw-04.html",
-    "title": "HW 04",
-    "section": "",
-    "text": "To be posted."
-  },
-  {
-    "objectID": "hw/hw-06.html",
-    "href": "hw/hw-06.html",
-    "title": "HW 06",
-    "section": "",
-    "text": "To be posted."
-  },
-  {
-    "objectID": "hw/hw-05.html",
-    "href": "hw/hw-05.html",
-    "title": "HW 05",
-    "section": "",
-    "text": "To be posted."
-  },
-  {
-    "objectID": "hw/hw-01.html",
-    "href": "hw/hw-01.html",
-    "title": "HW 01: Multiple linear regression",
-    "section": "",
-    "text": "Important\n\n\n\n\nThis assignment is due on Wednesday, January 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, January 25 at 6am.\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned."
-  },
-  {
-    "objectID": "hw/hw-01.html#exercise-1",
-    "href": "hw/hw-01.html#exercise-1",
-    "title": "HW 01: Multiple linear regression",
-    "section": "Exercise 1",
-    "text": "Exercise 1\n\nConsider the following scenario:\n\nResearchers record the number of cricket chirps per minute and temperature during that time. They use linear regression to investigate whether the number of chirps varies with temperature.\n\n\nIdentify the response and predictor variable.\nWrite the complete specification of the statistical model.\nWrite the assumptions for linear regression in the context of the problem."
-  },
-  {
-    "objectID": "hw/hw-01.html#exercise-2",
-    "href": "hw/hw-01.html#exercise-2",
-    "title": "HW 01: Multiple linear regression",
-    "section": "Exercise 2",
-    "text": "Exercise 2\n\nConsider the following scenario:\n\nA randomized clinical trial investigated postnatal depression and the use of an estrogen patch. Patients were randomly assigned to either use the patch or not. Depression scores were recorded on 6 different visits.\n\n\nIdentify the response and predictor variables.\nIdentify which model assumption(s) are violated. Briefly explain your choice."
-  },
-  {
-    "objectID": "hw/hw-01.html#exercise-3",
-    "href": "hw/hw-01.html#exercise-3",
-    "title": "HW 01: Multiple linear regression",
-    "section": "Exercise 3",
-    "text": "Exercise 3\n\nUse the Kentucky Derby case study in Chapter 1 of Beyond Multiple Linear Regression.\n\nConsider Equation (1.3) in Section 1.6.3. Show why we have to be sure to say “holding year constant”, “after adjusting for year”, or an equivalent statement, when interpreting \\(\\beta_2\\).\nBriefly explain why there is no error (random variation) term \\(\\epsilon_i\\) in Equation (1.4) in Section 1.6.6?"
-  },
-  {
-    "objectID": "hw/hw-01.html#exercise-4",
-    "href": "hw/hw-01.html#exercise-4",
-    "title": "HW 01: Multiple linear regression",
-    "section": "Exercise 4",
-    "text": "Exercise 4\n\nThe data set kingCountyHouses.csv in the data folder contains data on over 20,000 houses sold in King County, Washington (Kaggle (2018)).\nWe will use the following variables:\n\nprice = selling price of the house\nsqft = interior square footage\n\nSee Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.\n\nFit a linear regression model with price as the response variable and sqft as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when sqft increases by 100.\nFit Model 2, where logprice (the natural log of price) is now the response variable and sqft is still the predictor variable. How is the logprice expected to change when sqft increases by 100?\nRecall that \\(log(a) - log(b) = log(\\frac{a}{b})\\). Use this to derive how the price is expected to change when sqft increases by 100 based on Model 2.\nFit Model 3, where price and logsqft (the natural log of sqft) are the response and predictor variables, respectively. How is the price expected to change when sqft increases by 10%? As a hint, this is the same as multiplying sqft by 1.10.\n\n\n\n\n\n\n\nTip\n\n\n\nClick here for notes on interpreting model effects for log-transformed response and/or predictor variables."
-  },
-  {
-    "objectID": "hw/hw-01.html#exercise-5",
-    "href": "hw/hw-01.html#exercise-5",
-    "title": "HW 01: Multiple linear regression",
-    "section": "Exercise 5",
-    "text": "Exercise 5\nThe goal of this analysis is to use characteristics of 593 colleges and universities in the United States to understand variability in the early career pay, defined as the median salary for alumni with 0 - 5 years of experience. The data was obtained from TidyTuesday College tuition, diversity, and pay, and was originaly collected from the PayScale College Salary Report.\nThe data set is located in college-data.csv in the data folder. We will focus on the following variables:\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\nname\ncharacter\nName of school\n\n\nstate_name\ncharacter\nstate name\n\n\ntype\ncharacter\nPublic or private\n\n\nearly_career_pay\ndouble\nMedian salary for alumni with 0 - 5 years experience (in US dollars)\n\n\nstem_percent\ndouble\nPercent of degrees awarded in science, technology, engineering, or math subjects\n\n\nout_of_state_total\ndouble\nTotal cost for in-state residents in USD (sum of room & board + out of state tuition)\n\n\n\n\nVisualize the distribution of the response variable early_career_pay. Write 1 - 2 observations from the plot.\nVisualize the relationship between (i) early_career_pay and type and (ii) early_career_pay and stem_percent. Write an observation from each plot.\nBelow is the specification of the statistical model for this analysis. Fit the model and neatly display the results using 3 digits. Display the 95% confidence interval for the coefficients.\n\n\\[\n\\begin{align}\nearly\\_career\\_pay_{i} = \\beta_0 &+ \\beta_1~out\\_of\\_state\\_total_{i} \\\\ &+ \\beta_2 ~ type_i\\\\&+ \\beta_3 ~ stem\\_percent_{i}\\\\ &+ \\beta_4 ~ type_i * stem\\_percent_{i} \\\\ &+ \\epsilon_{i}, \\hspace{5mm} \\text{where } \\epsilon_i \\sim N(0, \\sigma^2)\n\\end{align}\n\\]\n\nHow many degrees of freedom are there in the estimate of the regression standard error \\(\\sigma\\) for the model from part c?\nWhat is the 95% confidence interval for the amount in which the intercept for public institutions differs from private institutions?"
-  },
-  {
-    "objectID": "hw/hw-01.html#exercise-6",
-    "href": "hw/hw-01.html#exercise-6",
-    "title": "HW 01: Multiple linear regression",
-    "section": "Exercise 6",
-    "text": "Exercise 6\nUse the analysis from the previous exercise to write a paragraph (~ 3 - 5 sentences) describing the differences in early career pay based on the institution characteristics. The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit)."
-  },
-  {
-    "objectID": "hw/hw-01.html#footnotes",
-    "href": "hw/hw-01.html#footnotes",
-    "title": "HW 01: Multiple linear regression",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nExercises 1 - 4 are adapted from exercises in Section 1.8 of Roback and Legler (2021).↩︎"
-  },
-  {
-    "objectID": "hw/hw-02.html",
-    "href": "hw/hw-02.html",
-    "title": "HW 02",
-    "section": "",
-    "text": "To be posted."
-  },
-  {
-    "objectID": "prepare/jan-29.html",
-    "href": "prepare/jan-29.html",
-    "title": "Prepare for Jan 29 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
-  },
-  {
-    "objectID": "prepare/jan-24.html",
-    "href": "prepare/jan-24.html",
-    "title": "Prepare for Jan 24 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html",
-    "href": "ae/lec-04-poisson-estimate.html",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
-    "href": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 1. Initial estimates of lambda",
-    "text": "Step 1. Initial estimates of lambda\nUsing total + 0.1 instead of total as initial starting values to avoid dividing by 0 or taking the log of 0.\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = hh_data$total + 5)"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
-    "href": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 2. Calculate the working response values \\(z_i\\).",
-    "text": "Step 2. Calculate the working response values \\(z_i\\).\nFor Poisson regression, \\(z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\)\n\nhh_data &lt;- hh_data |&gt;\n  mutate(z = log(lambda) + (hh_data$total - lambda) / lambda)"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
-    "href": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 3. Calculate the working weights \\(W_i\\)",
-    "text": "Step 3. Calculate the working weights \\(W_i\\)\nFor Poisson regression, \\(W_i = \\lambda_i\\) .\n\nhh_data &lt;- hh_data |&gt;\n  mutate(w = lambda)\n\n\nhh_data |&gt;\n  select(total, lambda, z, w) |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 4\n  total lambda     z     w\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0      5 0.609     5\n2     3      8 1.45      8\n3     4      9 1.64      9\n4     3      8 1.45      8\n5     3      8 1.45      8"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
-    "href": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 4. Find the coefficient estimates of the weighted least squares model",
-    "text": "Step 4. Find the coefficient estimates of the weighted least squares model\n\nwls &lt;- lm(z ~ age, weight = w, data = hh_data)\ntidy(wls) |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.7594\n0.0419\n41.9664\n0e+00\n\n\nage\n-0.0026\n0.0008\n-3.4172\n6e-04"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
-    "href": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Use this model to get new estimates of lambda",
-    "text": "Use this model to get new estimates of lambda\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = exp(predict(wls)))\n\nRepeat steps 2 - 4 until the estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) converge to their respective values."
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#irls-automated",
-    "href": "ae/lec-04-poisson-estimate.html#irls-automated",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "IRLS automated",
-    "text": "IRLS automated\n\nnreps &lt;- 10\nhh_data &lt;- hh_data %&gt;%\n  mutate(lambda = hh_data$total + 5)\n\n\nbetas &lt;- tibble(beta0 = rep(0, nreps), \n                beta1 = rep(0, nreps))\n\nfor(i in 1:nreps){\n  hh_data &lt;- hh_data %&gt;%\n    mutate(z = log(lambda) + (hh_data$total - lambda)/ lambda, \n         w = lambda)\n  wls &lt;- lm(z ~ age, weight = w, data = hh_data)\n  betas$beta0[i] = tidy(wls)$estimate[1]\n  betas$beta1[i] = tidy(wls)$estimate[2]\n  \n  hh_data &lt;- hh_data %&gt;% \n    mutate(lambda = exp(predict(wls)))\n}\n  \nbetas\n\n# A tibble: 10 × 2\n   beta0    beta1\n   &lt;dbl&gt;    &lt;dbl&gt;\n 1  1.76 -0.00265\n 2  1.57 -0.00414\n 3  1.55 -0.00468\n 4  1.55 -0.00471\n 5  1.55 -0.00471\n 6  1.55 -0.00471\n 7  1.55 -0.00471\n 8  1.55 -0.00471\n 9  1.55 -0.00471\n10  1.55 -0.00471"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
-    "href": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Fit using the glm function",
-    "text": "Fit using the glm function\n\n## add code here"
+    "objectID": "projects/project-01.html#tips-on-finding-articles",
+    "href": "projects/project-01.html#tips-on-finding-articles",
+    "title": "Project 01: Generalized Linear Models",
+    "section": "Tips on finding articles",
+    "text": "Tips on finding articles\nBelow are tips to help you find articles based on information from Jodi Psoter, the former Librarian for Chemistry and Statistical Science at Duke Libraries and current Head Librarian for the Marine Lab Library.\n\nPubMed\nArticles in health-related fields\nThe PubMed heading tree lets you search by topic. The link will direct you to the results under the category of “Statistics as a Topic”.\n\nClick on the model or distribution of interest, e.g. “Logistic Models”.\nClick “Add to search builder” under the PubMed Search Builder in the top right corner. You should now see the model/analysis type you chose in the search box.\nClick “Search PubMed”, and a page of search results will appear.\nThere are options to narrow your results on the left-hand side based on your team’s interest.\n\n\n\nPsycInfo\nArticles in psychology\nPsycInfo will allow users to search by analysis type.\n\nPut the name of the model in the search bar, e.g., “Poisson Regression”. Then, in the drop down menu next to the search bar, select “DE Subjects [exact]”. Click Search.\nYou can use the options on the left-hand size to narrow down the search results.\n\n\n\nWeb of Science\nArticles on all topics\nWeb of Science Data Citation Index lets you search for data sets based on the topic of interest.\n\nUse the search bar to search based on a topic of interest. You can also search for the model or distribution name.\nOn the left-hand side, check “Data Set” under Content Type and check “Dataset” under Data Types. Click “Refine” to limit the results.\n\n3.Click on the article of interest.\n\nYou can use the options on the left-hand size to narrow down the search results.\n\n\n\nAcknowledgements\n\nGrading criteria and the repo organization for this project were adapted from Project 1 on vizdata.org.\nSome questions for the Article Evaluation adapted from “How to Evaluate Journal Articles”.\nQuestions in the “Communication” section of the Written Report are adapted from Communicating with Data: The Art of Writing for Data Science by Deborah Nolan and Sara Stoudt."
   },
   {
     "objectID": "support.html",
@@ -1106,102 +1148,242 @@
     "text": "Course materials costs\nThere are no costs associated with this course. All readings will come from freely available, open resources (open-source textbooks, journal articles, etc.)."
   },
   {
-    "objectID": "projects/project-01.html",
-    "href": "projects/project-01.html",
-    "title": "Project 01: Generalized Linear Models",
+    "objectID": "ae/lec-04-poisson-estimate.html",
+    "href": "ae/lec-04-poisson-estimate.html",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
     "section": "",
-    "text": "For this project you and your team will be reading and evaluating a scholarly article that incorporates generalized linear models (GLMs) in the analysis.\nThe learning objectives of the project are to"
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
   },
   {
-    "objectID": "projects/project-01.html#team-assignments",
-    "href": "projects/project-01.html#team-assignments",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Team assignments",
-    "text": "Team assignments\nYou will work in small teams for this project. You will find the team assignments in the #project-01 channel in Slack.\nBefore getting started, I encourage you to discuss the following as a group:\n\nCome up with a plan to communicate and work together outside of lab.\nCome up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings."
+    "objectID": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
+    "href": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 1. Initial estimates of lambda",
+    "text": "Step 1. Initial estimates of lambda\nUsing total + 0.1 instead of total as initial starting values to avoid dividing by 0 or taking the log of 0.\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = hh_data$total + 5)"
   },
   {
-    "objectID": "projects/project-01.html#workflow",
-    "href": "projects/project-01.html#workflow",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Workflow",
-    "text": "Workflow\n\nProject Week 01 (week of Mon, Jan 22): Select article and submit proposal.\nProject Week 02 (week of Mon, Jan 29): Read article and complete article evaluation.\nProject Week 03 (week of Mon, Feb 05 ): Work on draft reports and presentations.\nProject Week 04 (week of Mon, Feb 12): Presentations and submit report."
+    "objectID": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
+    "href": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 2. Calculate the working response values \\(z_i\\).",
+    "text": "Step 2. Calculate the working response values \\(z_i\\).\nFor Poisson regression, \\(z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\)\n\nhh_data &lt;- hh_data |&gt;\n  mutate(z = log(lambda) + (hh_data$total - lambda) / lambda)"
   },
   {
-    "objectID": "projects/project-01.html#due-dates",
-    "href": "projects/project-01.html#due-dates",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Due dates",
-    "text": "Due dates\n\n\n\n\n\n\nNote\n\n\n\nAll work will be submitted in your team’s project GitHub repo.\n\n\n\nProposal: due Fri, Jan 25 at noon\nArticle evaluation: due Sun, Feb 04 at noon\nPresentation: due Wed, Feb 14 at 3:05pm\nWritten report: due Thu, Feb 15 at noon"
+    "objectID": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
+    "href": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 3. Calculate the working weights \\(W_i\\)",
+    "text": "Step 3. Calculate the working weights \\(W_i\\)\nFor Poisson regression, \\(W_i = \\lambda_i\\) .\n\nhh_data &lt;- hh_data |&gt;\n  mutate(w = lambda)\n\n\nhh_data |&gt;\n  select(total, lambda, z, w) |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 4\n  total lambda     z     w\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0      5 0.609     5\n2     3      8 1.45      8\n3     4      9 1.64      9\n4     3      8 1.45      8\n5     3      8 1.45      8"
   },
   {
-    "objectID": "projects/project-01.html#article",
-    "href": "projects/project-01.html#article",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Article",
-    "text": "Article\nThe article for this project must be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must incorporate the use one or more generalized linear models, that is not a linear regression model, in the analysis.\n\nCommon GLMs are Poisson regression, Logistic regression, Probit regression, and Negative binomial regression.\nYou can also look for models based on the distribution of the response variable: Binary, Binomial, Poisson, Exponential, Gamma, Geometric.\nSee Section 3.6 in Beyond Multiple Linear Regression for a list of types of GLMs.\n\nThe model used in the paper does not have to be one we discuss in class. I’d encourage you to explore articles that use modeling beyond the scope of the class!\nBelow are a few useful places to search for articles:\n\nDuke Library\nPLOS One\nPubMed.gov\n\nSee the Tips on finding articles for tips on searching journal databases to find an article."
+    "objectID": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
+    "href": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 4. Find the coefficient estimates of the weighted least squares model",
+    "text": "Step 4. Find the coefficient estimates of the weighted least squares model\n\nwls &lt;- lm(z ~ age, weight = w, data = hh_data)\ntidy(wls) |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.7594\n0.0419\n41.9664\n0e+00\n\n\nage\n-0.0026\n0.0008\n-3.4172\n6e-04"
   },
   {
-    "objectID": "projects/project-01.html#proposal",
-    "href": "projects/project-01.html#proposal",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Proposal",
-    "text": "Proposal\nThe main goal of the proposal is to ensure you have an article that will set you up for a successful project. Include the following in the proposal.\n\nThe citation for the article. If you’re using a .bib file you can use the default citation format in Quarto (Chicago author-date format). Otherwise, use MLA format.\nBrief summary about why you chose this article.\nBrief summary of the article’s primary research objective.\nName of the GLM(s) used in the article and a short description of the response variable for each model.\n\nYou are only required to write the proposal for one article. Write the proposal in the file proposal.qmd, then push the .qmd and rendered PDF to the GitHub repo for submission.\n\n\n\n\n\n\nImportant\n\n\n\nThe proposal is due on Fri, Jan 25 at noon.\n\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.\n\n\n\nGrading criteria\nThe proposal will be graded based on the following:\n\nAll required components of the proposal are included and accurate (8 pts)\nAll team members have made meaningful contribution, as determined by Git commit history (2 pts)"
+    "objectID": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
+    "href": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Use this model to get new estimates of lambda",
+    "text": "Use this model to get new estimates of lambda\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = exp(predict(wls)))\n\nRepeat steps 2 - 4 until the estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) converge to their respective values."
   },
   {
-    "objectID": "projects/project-01.html#article-evaluation",
-    "href": "projects/project-01.html#article-evaluation",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Article evaluation",
-    "text": "Article evaluation\nThe purpose of the article evaluation is for you to begin describing and evaluating the statistical analysis and argument in the article. Write your responses to the following questions in article-evaluation.qmd. The anticipated length is about 1 - 2 pages and should be no more than 4 pages. There is no minimum page requirement, as long as each section is comprehensively addressed.\n\nAudience and purpose\n\nWho is the primary audience for this article, i.e., for what type of readers are the authors writing?\nWhat is the general purpose of the article, e.g., to persuade the reader to do something, to prove something, to inform the reader, etc.?\n\nData\n\nHow were the data generated - from an experiment, online survey, interviews, etc?\nUnder what conditions were the data collected, e.g., the time period, location, how subjects were selected, response rate / drop-out rate, etc.?\n\nGraphs and tables\n\nDescribe the types of visualizations and tables used in the article.\nHow are they primarily used - for exploratory data analysis, to support a candidatee, etc.?\nWhat visualizations or tables might you add to the article? Briefly explain.\n\nGeneralized Linear Model\nIf your paper has multiple, GLMs you only have to write this section up for one model.\n\nWhat is the response variable, and what is its distribution?\nWhat are the predictor variables? Which predictor(s) are of particularl interest in the research?\nWrite the statistical model in mathematical notation.\n\nOverall argument\n\nAre there limitations or difficulties with generalizing beyond the data? Briefly explain.\nWhen was the article published? Are the findings up-to-date, out-dated, or timeless? Briefly explain.\nHow does the study advance knowledge in the field?\n\n\n\nGrading criteria\nThe article evaluation will be graded based on the following\n\nAll required components of the proposal are included and accurate (8 pts)\nAll team members have made meaningful contribution, as determined by Git commit history (2 pts)\n\n\n\n\n\n\n\nImportant\n\n\n\nThe article evaluation is due on Sun, Feb 04 at noon.\n\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo."
+    "objectID": "ae/lec-04-poisson-estimate.html#irls-automated",
+    "href": "ae/lec-04-poisson-estimate.html#irls-automated",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "IRLS automated",
+    "text": "IRLS automated\n\nnreps &lt;- 10\nhh_data &lt;- hh_data %&gt;%\n  mutate(lambda = hh_data$total + 5)\n\n\nbetas &lt;- tibble(beta0 = rep(0, nreps), \n                beta1 = rep(0, nreps))\n\nfor(i in 1:nreps){\n  hh_data &lt;- hh_data %&gt;%\n    mutate(z = log(lambda) + (hh_data$total - lambda)/ lambda, \n         w = lambda)\n  wls &lt;- lm(z ~ age, weight = w, data = hh_data)\n  betas$beta0[i] = tidy(wls)$estimate[1]\n  betas$beta1[i] = tidy(wls)$estimate[2]\n  \n  hh_data &lt;- hh_data %&gt;% \n    mutate(lambda = exp(predict(wls)))\n}\n  \nbetas\n\n# A tibble: 10 × 2\n   beta0    beta1\n   &lt;dbl&gt;    &lt;dbl&gt;\n 1  1.76 -0.00265\n 2  1.57 -0.00414\n 3  1.55 -0.00468\n 4  1.55 -0.00471\n 5  1.55 -0.00471\n 6  1.55 -0.00471\n 7  1.55 -0.00471\n 8  1.55 -0.00471\n 9  1.55 -0.00471\n10  1.55 -0.00471"
   },
   {
-    "objectID": "projects/project-01.html#write-up",
-    "href": "projects/project-01.html#write-up",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Write up",
-    "text": "Write up\nThe anticipated length is about 5 pages. There is no minimum or maximum page requirement as long as each section is accurately and comprehensively addressed.\n\nIntroduction\nBriefly summarize the article, the research objective and purpose, and key conclusions. Also include a description of the data used for the analysis.\n\n\nMethods\nDescribe the GLM used for the analysis. Describe the response variable and and its distribution. Describe predictor variables. Write the equation of the statistical models using mathematical notation.\n\n\nResults\nInterpret the results form the model. Write the interpretations / conclusions from the mode, using estimates from the article when possible. If the article does not include estimates for some or all of the estimated effects effects, you can write general interpretations using the appropriate mathematical symbol (e.g., \\(\\hat{\\beta}_1\\)) in place of the estimated value.\n\n\nCommunication\nThe objective of this section of the written report is to assess the authors’ argument and communication. Reading and identifying how others communicate statistical results is a key way to develop your statistical writing skills. This section will include an assessment of the following:\n\nAudience: Describe the primary audience for the article.\nMethods: Consider the detail in the data and methods sections. What aspects of the analysis are mentioned in detail? What aspects are mentioned without detail? How does the level of detail correlate to the statistical background of the primary audience?\nGraphs and figures: How are the graphs, figures, and tables used to support the findings? How are they used for exploratory data analysis? How how are they used to assess or support modeling results? Would additional graphs, figures, or tables be helpful? If so, what kind?\n\nIdentify one key graph. Where is it located in the article? What message does it convey with respect to the objective and conclusion of the study? If there are no graphs in the article, describe one key graph you would include and how it would be used in the article (e.g., support conclusions, provide clarity, etc.).\n\nLimitations: Are there limitations or difficulties in generalizing beyond the data? How are these limitations noted, if at all? Do you have any other concerns about the study?\nImpact: According to the author, how does the study advance knowledge in the field? Taking into account the year the article was published, do the author’s claims seem adequately justified, overblown, or unduly cautious?\n\nYou can use these questions as a guide to shape the narrative. This section should still be written in narrative form, not as a list of questions and answers.\nThe questions in this section are adapted from Communicating with Data: The Art of Writing for Data Science by Deborah Nolan and Sara Stoudt. Click here for more details about the questions and how to read scientific articles. You can borrow a copy of the book from Duke Libraries.\n\n\nGrading criteria\nEach section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. (30 pts total)\nThe report will also be assessed based on the following:\n\nFormatting: 3 pts\n\nThis is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.\n\nReproducibility: 2 pts\n\nThis is an assessment of the reproducibility of the report. Is the PDF produced by rendering the Quarto document?\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe written report is due on Thu, Feb 15 at noon.\nYou will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo."
+    "objectID": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
+    "href": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Fit using the glm function",
+    "text": "Fit using the glm function\n\n## add code here"
   },
   {
-    "objectID": "projects/project-01.html#presentation",
-    "href": "projects/project-01.html#presentation",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Presentation",
-    "text": "Presentation\nYou will present on Wed, Feb 14 during lecture. Each team will have up to 10 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.\nYou can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in the timeframe. A suggested outline is\n\n1 slide to introduce article\n1 - 2 slides to describe the model\n1 - 2 slides for key interpretations and results\n1 slide for key highlights about the communication and writing (e.g., what the authors did particularly well or areas of improvement)\n\nYou will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the “Peers” scores for your team’s presentation included in your presentation grade.\nThe presentation order and peer review assignments will be given closer to the presentation date.\n\nGrading criteria - Teaching Team (16 pts)\nThis portion of the grade will the average of the scores from the members of the teaching team.\n\nProfessionalism (5 pts)\n\nWas the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?\nWas the time reasonably divided among team members? Was the presentation within the time limit?\nDid the team present a unified story?\n\nContent (6 pts): The content is presented in a clear and accurate way. This includes clearly and accurately describing\n\nthe primary research objective and intended audience for the article.\nthe data used in the analysis.\nthe observations and units at every level.\nthe model and primary conclusions\nthe effectiveness of tables, figures, and graphs in the article and argument of the contribution of the work (optional).\n\nSlides (10 pts)\n\nAre the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?\n\n\n\n\nGrading criteria - Peers (4 pts)\nThis portion of the grade will the average of the scores from the peer reviewers. Peer review assignments will be posted on Slack.\n\nIntroduction (1 pt)\n\nDid the team clearly describe the primary research objective and intended audience for the article?\n\nData (1 pt)\n\nDid the team clearly describe the data used in the analysis?\n\nModel (1 pt)\n\nDid the team clearly describe the observational units and variables at each level? Did they clearly describe the model?\n\nSlides (1 pt)\n\nAre the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?"
-  },
-  {
-    "objectID": "projects/project-01.html#github-repo-organization",
-    "href": "projects/project-01.html#github-repo-organization",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "GitHub repo organization",
-    "text": "GitHub repo organization\nYou should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by Thu, Feb 15 at noon. README.md: 3 - 5 sentence summary of the project and citation for the article.\n\nproposal.qmd\nproposal.pdf\narticle-evaluation.qmd\narticle-evaluation.pdf\nwriteup.qmd\nwriteup.pdf\n/presentation\n\n/presentation/*: Presentation file (if not linked in README)\n/presentation/README.md: Link to project (if not in presentation folder)\n\n\nOptional\n\n*.bib: BibTex file for references\n/data/: Folder containing data"
-  },
-  {
-    "objectID": "projects/project-01.html#grading-100-points",
-    "href": "projects/project-01.html#grading-100-points",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Grading (100 points)",
-    "text": "Grading (100 points)\n\n\n\nComponent\nPoints\n\n\n\n\nProposal\n10 pts\n\n\nArticle evaluation\n20 pts\n\n\nWritten report\n35 pts\n\n\nPresentation + Slides\n25 pts\n\n\nRepo organization\n5 pts\n\n\nTeamwork evaluation (individually assessed)\n5 pts"
-  },
-  {
-    "objectID": "projects/project-01.html#tips-on-finding-articles",
-    "href": "projects/project-01.html#tips-on-finding-articles",
-    "title": "Project 01: Generalized Linear Models",
-    "section": "Tips on finding articles",
-    "text": "Tips on finding articles\nBelow are tips to help you find articles based on information from Jodi Psoter, the former Librarian for Chemistry and Statistical Science at Duke Libraries and current Head Librarian for the Marine Lab Library.\n\nPubMed\nArticles in health-related fields\nThe PubMed heading tree lets you search by topic. The link will direct you to the results under the category of “Statistics as a Topic”.\n\nClick on the model or distribution of interest, e.g. “Logistic Models”.\nClick “Add to search builder” under the PubMed Search Builder in the top right corner. You should now see the model/analysis type you chose in the search box.\nClick “Search PubMed”, and a page of search results will appear.\nThere are options to narrow your results on the left-hand side based on your team’s interest.\n\n\n\nPsycInfo\nArticles in psychology\nPsycInfo will allow users to search by analysis type.\n\nPut the name of the model in the search bar, e.g., “Poisson Regression”. Then, in the drop down menu next to the search bar, select “DE Subjects [exact]”. Click Search.\nYou can use the options on the left-hand size to narrow down the search results.\n\n\n\nWeb of Science\nArticles on all topics\nWeb of Science Data Citation Index lets you search for data sets based on the topic of interest.\n\nUse the search bar to search based on a topic of interest. You can also search for the model or distribution name.\nOn the left-hand side, check “Data Set” under Content Type and check “Dataset” under Data Types. Click “Refine” to limit the results.\n\n3.Click on the article of interest.\n\nYou can use the options on the left-hand size to narrow down the search results.\n\n\n\nAcknowledgements\n\nGrading criteria and the repo organization for this project were adapted from Project 1 on vizdata.org.\nSome questions for the Article Evaluation adapted from “How to Evaluate Journal Articles”.\nQuestions in the “Communication” section of the Written Report are adapted from Communicating with Data: The Art of Writing for Data Science by Deborah Nolan and Sara Stoudt."
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "Course overview",
+    "objectID": "prepare/jan-24.html",
+    "href": "prepare/jan-24.html",
+    "title": "Prepare for Jan 24 lecture",
     "section": "",
-    "text": "STA 310 builds upon the content in STA 210: Regression Analysis. In STA 310 students will be introduced to generalized linear models (GLMs), a broad modeling framework that includes linear and logistic models, among others. Students will learn the basic theory of GLMs and how they can used to model a variety of response variables with non-normal distributions. Students will also learn an extension of GLMs that can be applied to modeling data with correlated observations, such as data with repeated measures."
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
   },
   {
-    "objectID": "course-overview.html#teaching-assistant",
-    "href": "course-overview.html#teaching-assistant",
-    "title": "Course overview",
-    "section": "Teaching assistant",
-    "text": "Teaching assistant\nThe teaching assistant for this course is Hun Kang. He is a PhD student in Statistics, and his research interests include scalable model selection, Bayesian nonparametrics and correlated and longitudinal data analysis.\n\n\n\n\nLocation\n\n\n\n\nTue 3 - 5pm\nOld Chem 203B"
+    "objectID": "prepare/jan-29.html",
+    "href": "prepare/jan-29.html",
+    "title": "Prepare for Jan 29 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
+  },
+  {
+    "objectID": "hw/hw-02.html",
+    "href": "hw/hw-02.html",
+    "title": "HW 02",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-01.html",
+    "href": "hw/hw-01.html",
+    "title": "HW 01: Multiple linear regression",
+    "section": "",
+    "text": "Important\n\n\n\n\nThis assignment is due on Wednesday, January 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, January 25 at 6am.\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-1",
+    "href": "hw/hw-01.html#exercise-1",
+    "title": "HW 01: Multiple linear regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nConsider the following scenario:\n\nResearchers record the number of cricket chirps per minute and temperature during that time. They use linear regression to investigate whether the number of chirps varies with temperature.\n\n\nIdentify the response and predictor variable.\nWrite the complete specification of the statistical model.\nWrite the assumptions for linear regression in the context of the problem."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-2",
+    "href": "hw/hw-01.html#exercise-2",
+    "title": "HW 01: Multiple linear regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nConsider the following scenario:\n\nA randomized clinical trial investigated postnatal depression and the use of an estrogen patch. Patients were randomly assigned to either use the patch or not. Depression scores were recorded on 6 different visits.\n\n\nIdentify the response and predictor variables.\nIdentify which model assumption(s) are violated. Briefly explain your choice."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-3",
+    "href": "hw/hw-01.html#exercise-3",
+    "title": "HW 01: Multiple linear regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nUse the Kentucky Derby case study in Chapter 1 of Beyond Multiple Linear Regression.\n\nConsider Equation (1.3) in Section 1.6.3. Show why we have to be sure to say “holding year constant”, “after adjusting for year”, or an equivalent statement, when interpreting \\(\\beta_2\\).\nBriefly explain why there is no error (random variation) term \\(\\epsilon_i\\) in Equation (1.4) in Section 1.6.6?"
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-4",
+    "href": "hw/hw-01.html#exercise-4",
+    "title": "HW 01: Multiple linear regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nThe data set kingCountyHouses.csv in the data folder contains data on over 20,000 houses sold in King County, Washington (Kaggle (2018)).\nWe will use the following variables:\n\nprice = selling price of the house\nsqft = interior square footage\n\nSee Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.\n\nFit a linear regression model with price as the response variable and sqft as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when sqft increases by 100.\nFit Model 2, where logprice (the natural log of price) is now the response variable and sqft is still the predictor variable. How is the logprice expected to change when sqft increases by 100?\nRecall that \\(log(a) - log(b) = log(\\frac{a}{b})\\). Use this to derive how the price is expected to change when sqft increases by 100 based on Model 2.\nFit Model 3, where price and logsqft (the natural log of sqft) are the response and predictor variables, respectively. How is the price expected to change when sqft increases by 10%? As a hint, this is the same as multiplying sqft by 1.10.\n\n\n\n\n\n\n\nTip\n\n\n\nClick here for notes on interpreting model effects for log-transformed response and/or predictor variables."
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-5",
+    "href": "hw/hw-01.html#exercise-5",
+    "title": "HW 01: Multiple linear regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nThe goal of this analysis is to use characteristics of 593 colleges and universities in the United States to understand variability in the early career pay, defined as the median salary for alumni with 0 - 5 years of experience. The data was obtained from TidyTuesday College tuition, diversity, and pay, and was originaly collected from the PayScale College Salary Report.\nThe data set is located in college-data.csv in the data folder. We will focus on the following variables:\n\n\n\n\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\nname\ncharacter\nName of school\n\n\nstate_name\ncharacter\nstate name\n\n\ntype\ncharacter\nPublic or private\n\n\nearly_career_pay\ndouble\nMedian salary for alumni with 0 - 5 years experience (in US dollars)\n\n\nstem_percent\ndouble\nPercent of degrees awarded in science, technology, engineering, or math subjects\n\n\nout_of_state_total\ndouble\nTotal cost for in-state residents in USD (sum of room & board + out of state tuition)\n\n\n\n\nVisualize the distribution of the response variable early_career_pay. Write 1 - 2 observations from the plot.\nVisualize the relationship between (i) early_career_pay and type and (ii) early_career_pay and stem_percent. Write an observation from each plot.\nBelow is the specification of the statistical model for this analysis. Fit the model and neatly display the results using 3 digits. Display the 95% confidence interval for the coefficients.\n\n\\[\n\\begin{align}\nearly\\_career\\_pay_{i} = \\beta_0 &+ \\beta_1~out\\_of\\_state\\_total_{i} \\\\ &+ \\beta_2 ~ type_i\\\\&+ \\beta_3 ~ stem\\_percent_{i}\\\\ &+ \\beta_4 ~ type_i * stem\\_percent_{i} \\\\ &+ \\epsilon_{i}, \\hspace{5mm} \\text{where } \\epsilon_i \\sim N(0, \\sigma^2)\n\\end{align}\n\\]\n\nHow many degrees of freedom are there in the estimate of the regression standard error \\(\\sigma\\) for the model from part c?\nWhat is the 95% confidence interval for the amount in which the intercept for public institutions differs from private institutions?"
+  },
+  {
+    "objectID": "hw/hw-01.html#exercise-6",
+    "href": "hw/hw-01.html#exercise-6",
+    "title": "HW 01: Multiple linear regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nUse the analysis from the previous exercise to write a paragraph (~ 3 - 5 sentences) describing the differences in early career pay based on the institution characteristics. The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit)."
+  },
+  {
+    "objectID": "hw/hw-01.html#footnotes",
+    "href": "hw/hw-01.html#footnotes",
+    "title": "HW 01: Multiple linear regression",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nExercises 1 - 4 are adapted from exercises in Section 1.8 of Roback and Legler (2021).↩︎"
+  },
+  {
+    "objectID": "hw/hw-05.html",
+    "href": "hw/hw-05.html",
+    "title": "HW 05",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-06.html",
+    "href": "hw/hw-06.html",
+    "title": "HW 06",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-04.html",
+    "href": "hw/hw-04.html",
+    "title": "HW 04",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "hw/hw-03.html",
+    "href": "hw/hw-03.html",
+    "title": "HW 03",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "prepare/jan-17.html",
+    "href": "prepare/jan-17.html",
+    "title": "Prepare for Jan 17 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+  },
+  {
+    "objectID": "prepare/jan-31.html",
+    "href": "prepare/jan-31.html",
+    "title": "Prepare for Jan 31 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
+  },
+  {
+    "objectID": "prepare/jan-22.html",
+    "href": "prepare/jan-22.html",
+    "title": "Prepare for Jan 22 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html",
+    "href": "ae/ae-02-mlr-review.html",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "",
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#introduction",
+    "href": "ae/ae-02-mlr-review.html#introduction",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "",
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
+    "href": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "Model 1: Main effects model",
+    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
+    "href": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "Model 2: Main effects + quadratic effect for year",
+    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
+  },
+  {
+    "objectID": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
+    "href": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "Model 3: Main effects + interaction between year and condition",
+    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
+  },
+  {
+    "objectID": "projects/final-project.html",
+    "href": "projects/final-project.html",
+    "title": "Final project",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "projects/project-02.html",
+    "href": "projects/project-02.html",
+    "title": "Project 02",
+    "section": "",
+    "text": "To be posted."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "STA 310: Generalized Linear Models",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      ae\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n    \nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n    3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n    \nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\nHW 01 due\n    \n\n\nPoisson regression\n\n\n\n\n\n\n\n    \nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n    \nTh\nFeb 1\nLab: Project 01\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nPoisson: ZIP models cont'd\n\n\n\n\n\n\n\n    \nW\nFeb 7\nUnifying framework for GLMs\n\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\n\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nLogistic regression\n\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nBinomial + ordinal regression\n\n\n\n\n\n\n\n    \nW\nFeb 21\nModeling correlated observations\n\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period"
   },
   {
     "objectID": "slides/lab-01.html#meet-your-ta",

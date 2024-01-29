@@ -31,7 +31,7 @@ Before getting started, I encourage you to discuss the following as a group:
 All work will be submitted in your team's project GitHub repo.
 :::
 
--   **Proposal**: due Fri, Jan 25 at noon
+-   **Proposal**: due Fri, Jan 26 at noon
 
 -   **Article evaluation**: due Sun, Feb 04 at noon
 

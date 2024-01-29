@@ -71,7 +71,7 @@ colors <- tibble::tibble(green = "#B5BA72")
 -   Compare two Poisson regression models
 
 ::: aside
-Notes based on Section 4.4 - 4.5, and 4.9 of @roback2021beyond unless noted otherwise.
+Notes based on Section 4.4 - 4.5 of @roback2021beyond unless noted otherwise.
 :::
 
 ## Scenarios to use Poisson regression

@@ -31,7 +31,7 @@ bibliography: references.bib
 
 ## Announcements
 
-Quiz 01: Tue, Jan 29 \~ 9am - Thu, Jan 31 at noon
+Quiz 01: Tue, Jan 30 \~ 9am - Thu, Feb 01 at noon
 
 -   The quiz is not timed and will be administered through Canvas
 

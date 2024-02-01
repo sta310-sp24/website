@@ -140,7 +140,7 @@ d.  Repeat (d), but include an interaction in both parts. Interpret the interact
 
 <!--Sec 4.11.3, Ex 1-->
 
-a.  @Awad2017 scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set `NYCairbnb.csv`. The codebook is in the `data` folder of the `hw-02` repo.
+a.  @airbnb2017 scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set `NYCairbnb.csv`. The codebook is in the `data` folder of the `hw-02` repo.
 
     Perform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews.
 

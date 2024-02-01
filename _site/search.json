@@ -851,7 +851,7 @@
     "href": "hw/hw-02.html#exercise-6",
     "title": "HW 02: Poisson regression",
     "section": "Exercise 6",
-    "text": "Exercise 6\n\n\n(Awad2017?) scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set NYCairbnb.csv. The codebook is in the data folder of the hw-02 repo.\nPerform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews."
+    "text": "Exercise 6\n\n\nAwad, Lebo, and Linden (2017) scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set NYCairbnb.csv. The codebook is in the data folder of the hw-02 repo.\nPerform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews."
   },
   {
     "objectID": "hw/hw-02.html#footnotes",

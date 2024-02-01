@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 310 - Spring 2024 - HW 02</title>
+<title>STA 310 - Spring 2024 - HW 02: Poisson regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -62,6 +115,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -239,14 +294,32 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
+  </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-02.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW 02</h1>
+<h1 class="title">HW 02: Poisson regression</h1>
 </div>
 
 
@@ -261,11 +334,219 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>To be posted.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>This assignment is due on Wednesday, February 7 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, February 8 noon (12pm).
+<ul>
+<li>Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.</li>
+<li>You will have access to your HW repo again when grades are returned.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<ul>
+<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.</li>
+<li>Be sure all analysis code is displayed in the rendered pdf.</li>
+<li>If you are fitting a model, display the model output in a neatly formatted table. (The <code>tidy</code> and <code>kable</code> functions can help!)</li>
+<li>If you are creating a plot, use clear and informative labels and titles.</li>
+<li>Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
+<li>When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.</li>
+</ul>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All exercises in this assignment were adapted from exercises in Chapter 4 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#ref-roback2021beyond" role="doc-biblioref">2021</a>)</span>.</p>
+</div>
+</div>
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
+<!--BMLR Sec 4.11.1 Ex 11-->
+<p><em>Answer parts a - d in the context of the following study:</em></p>
+<p>A state wildlife biologist collected data from 250 park visitors as they left at the end of their stay. Each was asked to report the number of fish they caught during their one-week stay. On average, visitors caught 21.5 fish per week.</p>
+<ol type="a">
+<li><p>Define the response.</p></li>
+<li><p>What are the possible values for the response?</p></li>
+<li><p>What does <span class="math inline">\(\lambda\)</span> represent?</p></li>
+<li><p>Would a zero-inflated model be considered here? If so, what would be a “true zero”?</p></li>
+</ol>
+</section>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
+<!--From Sec. 4.11.2, Ex. 2-->
+<p><span class="citation" data-cites="brockmann1996">Brockmann (<a href="#ref-brockmann1996" role="doc-biblioref">1996</a>)</span> carried out a study of nesting female horseshoe crabs. Female horseshoe crabs often have male crabs attached to a female’s nest known as <em>satellites</em>. One objective of the study was to determine which characteristics of the female were associated with the number of satellites. Of particular interest is the relationship between the width of the female carapace and satellites.</p>
+<p>The data can be found in <code>crab.csv</code> in the data folder. It includes the following variables:</p>
+<ul>
+<li><code>Satellite</code> = number of satellites</li>
+<li><code>Width</code> = carapace width (cm)</li>
+<li><code>Weight</code> = weight (kg)</li>
+<li><code>Spine</code> = spine condition (1 = both good, 2 = one worn or broken, 3 = both worn or broken)</li>
+<li><code>Color</code> = color (1 = light medium, 2 = medium, 3 = dark medium, 4 = dark)</li>
+</ul>
+<p><strong>Make sure to convert <code>Spine</code> and <code>Color</code> to the appropriate data types in R before doing the analysis.</strong></p>
+<ol type="a">
+<li><p>Create a histogram of <code>Satellite</code>. Is there preliminary evidence the number of satellites could be modeled as a Poisson response? Briefly explain.</p></li>
+<li><p>Fit a Poisson regression model including <code>Width</code>, <code>Weight</code>, and <code>Spine</code> as predictors. Display the model with the 95% confidence interval for each coefficient.</p></li>
+<li><p>Describe the effect of <code>Spine</code> in terms of the mean number of satellites.</p></li>
+</ol>
+</section>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
+<p>Use the scenario from the previous exercise to answer questions (a) - (d).</p>
+<ol type="a">
+<li><p>We would like to fit a quasi-Poisson regression model for this data. Briefly explain why we may want to consider fitting a quasi-Poisson regression model for this data.</p></li>
+<li><p>Fit a quasi-Poisson regression model that corresponds with the model chosen the previous exercise. Display the model.</p></li>
+<li><p>What is the estimated dispersion parameter? Show how this value is calculated.</p></li>
+<li><p>How do the estimated coefficients change compared to the model chosen in the previous exercise? How do the standard errors change?</p></li>
+</ol>
+</section>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
+<p>The goal of this exercise is to use simulation to understand the equivalency between a gamma-Poisson mixture and a negative binomial distribution.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember to set a seed so your simulations are reproducible!</p>
+</div>
+</div>
+<!--BMLR Sec 3.7.2, Ex 2-->
+<ol type="a">
+<li><p>Use the R function <code>rpois()</code> to generate 10,000 <span class="math inline">\(x_i\)</span> from a regular Poisson distribution, <span class="math inline">\(X \sim \textrm{Poisson}(\lambda=1.5)\)</span>. Plot a histogram of this distribution and note its mean and variance. Next, let <span class="math inline">\(Y \sim \textrm{Gamma}(r = 3, \lambda = 2)\)</span> and use <code>rgamma()</code> to generate 10,000 random <span class="math inline">\(y_i\)</span> from this distribution.</p>
+<p>Now, consider 10,000 different Poisson distributions where <span class="math inline">\(\lambda_i = y_i\)</span>. Randomly generate one <span class="math inline">\(z_i\)</span> from each Poisson distribution. Plot a histogram of these <span class="math inline">\(z_i\)</span> and compare it to your original histogram of <span class="math inline">\(X\)</span> (where <span class="math inline">\(X \sim \textrm{Poisson}(1.5)\)</span>). How do the means and variances compare?</p></li>
+<li><p>A negative binomial distribution can actually be expressed as a gamma-Poisson mixture. In Part a, you looked at a gamma-Poisson mixture <span class="math inline">\(Z \sim \textrm{Poisson}(\lambda)\)</span> where <span class="math inline">\(\lambda \sim \textrm{Gamma}(r = 3, \lambda' = 2)\)</span>.</p>
+<p>Find the parameters of a negative binomial distribution <span class="math inline">\(X \sim \textrm{NegBinom}(r, p)\)</span> such that <span class="math inline">\(X\)</span> is equivalent to <span class="math inline">\(Z\)</span>. As a hint, the means of both distributions must be the same, so <span class="math inline">\(\frac{r(1-p)}{p} = \frac{3}{2}\)</span>.</p>
+<p>Show through histograms and summary statistics that your negative binomial distribution is equivalent to the gamma-Poisson mixture. You can use <code>rnbinom()</code> in R.</p></li>
+<li><p>Make an argument that if you want a <span class="math inline">\(\textrm{NegBinom}(r, p)\)</span> random variable, you can instead sample from a Poisson distribution, where the <span class="math inline">\(\lambda\)</span> values are themselves sampled from a gamma distribution with parameters <span class="math inline">\(r\)</span> and <span class="math inline">\(\lambda' = \frac{p}{1-p}\)</span>.</p></li>
+</ol>
+</section>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<p>In a 2018 study, Chapp et al.&nbsp;(<a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html#ref-Chapp2018">2018</a>) scraped every issue statement from webpages of candidates for the U.S. House of Representatives, counting the number of issues candidates commented on and scoring the level of ambiguity of each statement. We will focus on the issue counts, and determining which attributes (of both the district as a whole and the candidates themselves) are associated with candidate silence (commenting on 0 issues) and a willingness to comment on a greater number of issues. The data set is in <code>ambiguity.csv</code> in the <code>data</code> folder . This analysis will focus on the following variables:</p>
+<ul>
+<li><code>name</code> : candidate name</li>
+<li><code>distID</code> : unique identification number for Congressional district</li>
+<li><code>ideology</code> : candidate left-right orientation</li>
+<li><code>democrat</code> : 1 if Democrat, 0 if Republican</li>
+<li><code>totalIssuePages</code> : number of issues candidates commented on (response)</li>
+</ul>
+<p>See <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#ref-roback2021beyond" role="doc-biblioref">2021</a>)</span> for the full list of variables.</p>
+<p>We will use a <strong>hurdle model</strong> to analyze the data. A hurdle model is similar to a zero-inflated Poisson model, but instead of assuming that “zeros” are comprised of two distinct groups—those who would always be 0 and those who happen to be 0 on this occasion—the hurdle model assumes that “zeros” are a single entity. Therefore, in a hurdle model, cases are classified as either “zeros” or “non-zeros”, where “non-zeros” <em>hurdle</em> the 0 threshold—they must always have counts of 1 or above.</p>
+<p>We will use the <code>pscl</code> package and the <code>hurdle</code> function in it to analyze a hurdle model. Note that coefficients in the “zero hurdle model” section of the output relate predictors to the log-odds of being a <em>non-zero</em> (i.e., having at least one issue statement), which is opposite of the ZIP model.</p>
+<ol type="a">
+<li><p>Visualize the distribution of the response variable <code>totalIssuePages</code>. Why might we consider using a hurdle model compared to a Poisson model? Why is a zero-inflated Poisson model not appropriate in this scenario?</p></li>
+<li><p>Create a plot of the empirical log odds of having at least one issue statement by ideology. You may want to group ideology values first. What can you conclude from this plot?</p></li>
+<li><p>Create a hurdle model with <code>ideology</code> and <code>democrat</code> as predictors in both parts.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Display the model. Interpret <code>ideology</code> in both parts of the model.</p></li>
+<li><p>Repeat (d), but include an interaction in both parts. Interpret the interaction in the zero hurdle part of the model.</p></li>
+</ol>
+</section>
+<section id="exercise-6" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
+<!--Sec 4.11.3, Ex 1-->
+<ol type="a">
+<li><p><span class="citation" data-cites="Awad2017">(<a href="#ref-Awad2017" role="doc-biblioref"><strong>Awad2017?</strong></a>)</span> scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set <code>NYCairbnb.csv</code>. The codebook is in the <code>data</code> folder of the <code>hw-02</code> repo.</p>
+<p>Perform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews.</p></li>
+</ol>
+</section>
+</section>
+<section id="submission" class="level1">
+<h1>Submission</h1>
+<p>To submit the assignment, push your final changes to your GitHub repo. Then, you’re done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.</p>
+</section>
+<section id="grading" class="level1">
+<h1>Grading</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Total</strong></th>
+<th style="text-align: center;"><strong>50</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ex 1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td>Ex 2</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="odd">
+<td>Ex 3</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td>Ex 4</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td>Ex 5</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td>Ex 6</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="odd">
+<td>Workflow &amp; formatting</td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+<p>The “Workflow &amp; formatting” grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.</p>
+</section>
+<section id="references" class="level1">
 
 
 
-</main> <!-- /main -->
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-brockmann1996" class="csl-entry" role="listitem">
+Brockmann, H. Jane. 1996. <span>“Satellite Male Groups in Horseshoe Crabs, <span><em>Limulus Polyphemus</em></span>.”</span> <em>Ethology</em> 102 (1): 1–21. <a href="https://doi.org/10.1111/j.1439-0310.1996.tb01099.x">https://doi.org/10.1111/j.1439-0310.1996.tb01099.x</a>.
+</div>
+<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
+Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in r</em>. CRC Press.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The R syntax in the <code>hurlde</code> function is similar to the syntax for the zero-inflated Poisson model. You will need to specify the distributions for the count and hurdle portions of the model, using <code>dist = "poisson"</code> and <code>zero.dist = "binomial".</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -517,7 +798,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2024, Maria Tackett</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-02.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">This site is built with <a href="https://quarto.org/">Quarto</a></div>
   </div>
 </footer>

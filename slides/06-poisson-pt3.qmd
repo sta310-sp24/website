@@ -283,7 +283,7 @@ airbnb_model_q <- glm(number_of_reviews ~ price + room_type,
 summary(airbnb_model_q)
 ```
 
-## Quasi-Poisson model 
+## Quasi-Poisson model
 
 ```{r}
 tidy(airbnb_model_q) |>

@@ -2175,5 +2175,145 @@
     "title": "Final project tips + resources",
     "section": "",
     "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your title\"\nauthor: \"Your names\"\nformat:\n  pdf:\n    fig-width: 7\n    fig-height: 5\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#announcements",
+    "href": "slides/07-glm-theory.html#announcements",
+    "title": "Unifying theory of GLMs",
+    "section": "Announcements",
+    "text": "Announcements"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#topics",
+    "href": "slides/07-glm-theory.html#topics",
+    "title": "Unifying theory of GLMs",
+    "section": "Topics",
+    "text": "Topics\n\nIdentify the components common to all generalized linear models\nFind the canonical link based on the distribution of the response variable\nExplain how coefficients are estimated using iteratively reweighted least squares (IWLS)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#many-models-one-family",
+    "href": "slides/07-glm-theory.html#many-models-one-family",
+    "title": "Unifying theory of GLMs",
+    "section": "Many models; one family",
+    "text": "Many models; one family\nWe have studied models for a variety of response variables\n\nLeast squares (Normal)\nLogistic (Bernoulli, Binomial, Multinomial)\nLog-linear (Poisson, Negative Binomial)\n\nThese models are all examples of generalized linear models.\nGLMs have a similar structure for their likelihoods, MLEs, variances, so we can use a generalized approach to find the model estimates and associated uncertainty."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#components-of-a-glm",
+    "href": "slides/07-glm-theory.html#components-of-a-glm",
+    "title": "Unifying theory of GLMs",
+    "section": "Components of a GLM",
+    "text": "Components of a GLM\nNelder and Wdderburn (1972) defines a broad class of models called generalized linear models that generalizes multiple linear regression. GLMs are characterized by three components:\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form (random component)\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\) (systematic component)\n3️⃣ A link function \\(g(\\theta)\\) that connects \\(\\theta\\) to \\(\\eta\\)\n.footnote[Nelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#exponential-family-form",
+    "href": "slides/07-glm-theory.html#exponential-family-form",
+    "title": "Unifying theory of GLMs",
+    "section": "Exponential family form",
+    "text": "Exponential family form\nSuppose a probability (mass or density) function has a parameter \\(\\theta\\). It is said to have a one-parameter exponential family form if\n✅ The support (set of possible values) does not depend on \\(\\theta\\), and\n✅ The probability function can be written in the following form"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#fytheta-eaybtheta-ctheta-dy",
+    "href": "slides/07-glm-theory.html#fytheta-eaybtheta-ctheta-dy",
+    "title": "Unifying theory of GLMs",
+    "section": "\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]",
+    "text": "\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]\nUsing this form:\n\\[E(Y) = -\\frac{c'(\\theta)}{b'(\\theta)} \\hspace{20mm} Var(Y) = \\frac{b''(\\theta)c'(\\theta) - c''(\\theta)b'(\\theta)}{[b'(\\theta)]^3}\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
+    "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
+    "title": "Unifying theory of GLMs",
+    "section": "Poisson in exponential family form",
+    "text": "Poisson in exponential family form\n\\[P(Y = y) = \\frac{e^{-\\lambda}\\lambda^y}{y!} \\hspace{10mm} y = 0, 1, 2, \\ldots, \\infty\\]\n\n\\[\\begin{aligned}P(Y = y) &= e^{-\\lambda}e^{y\\log(\\lambda)}e^{-\\log(y!)}\\\\\n& = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\end{aligned}\\]\n\n\nRecall the form: \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\), where the parameter \\(\\theta = \\lambda\\) for the Poisson distribution\n\n\n\n\\(a(y) = y\\)\n\\(b(\\lambda) = \\log(\\lambda)\\)\n\\(c(\\lambda) = -\\lambda\\)\n\\(d(y) = -\\log(y!)\\)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
+    "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
+    "title": "Unifying theory of GLMs",
+    "section": "Poisson in exponential family form",
+    "text": "Poisson in exponential family form\n\nThe support for the Poisson distribution is \\(y = 0, 1, 2, \\ldots, \\infty\\). This does not depend on the parameter \\(\\lambda\\).\nThe probability mass function can be written in the form \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\)\n\n\nThe Poisson distribution can be written in one-parameter exponential family form."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#canonical-link",
+    "href": "slides/07-glm-theory.html#canonical-link",
+    "title": "Unifying theory of GLMs",
+    "section": "Canonical link",
+    "text": "Canonical link\nSuppose there is a response variable \\(Y\\) from a distribution with parameter \\(\\theta\\) and a set of predictors that can be written as a linear combination \\(\\eta = \\sum_{j=1}^{p}\\beta_jx_j = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\nA link function, \\(g()\\), is a monotonic and differentiable function that connects \\(\\theta\\) to \\(\\eta\\)\nThe canonical link is a link function such that \\(g(\\theta) = \\eta\\) - When working with a member of the one-parameter exponential family, the canonical link is \\(b(\\theta)\\)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#canonical-link-for-poisson",
+    "href": "slides/07-glm-theory.html#canonical-link-for-poisson",
+    "title": "Unifying theory of GLMs",
+    "section": "Canonical link for Poisson",
+    "text": "Canonical link for Poisson\nRecall\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\nthen the canonical link is \\(b(\\lambda) = \\log(\\lambda)\\)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
+    "href": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
+    "title": "Unifying theory of GLMs",
+    "section": "GLM framework: Poisson response variable",
+    "text": "GLM framework: Poisson response variable\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n\n\n\n\n\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\n\n\n\n3️⃣ A function \\(g(\\lambda)\\) that connects \\(\\lambda\\) and \\(\\eta\\)\n\\[\\log(\\lambda) = \\eta =  \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#activity-identifying-canonical-link",
+    "href": "slides/07-glm-theory.html#activity-identifying-canonical-link",
+    "title": "Unifying theory of GLMs",
+    "section": "Activity: Identifying canonical link",
+    "text": "Activity: Identifying canonical link\nFor the distribution\n\nDescribe an example of a setting where this random variable may be used.\nIdentify the parameter.\nWrite the pmf or pdf in one-parameter exponential form.\nIdentify the canonical link function\nOne person from each group: Write your response on the board."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#activity",
+    "href": "slides/07-glm-theory.html#activity",
+    "title": "Unifying theory of GLMs",
+    "section": "Activity",
+    "text": "Activity\nDistributions\n\nBinary\nExponential\nNegative binomial (with fixed \\(r\\))\nGeometric\nNormal (with fixed \\(\\sigma\\))\n\n\nIf your group finishes early, try identifying the canonical link for the other distributions.\nSee BMLR - Section 3.6 for details on the distributions.\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#data-noisy-miners",
+    "href": "slides/07-glm-theory.html#data-noisy-miners",
+    "title": "Unifying theory of GLMs",
+    "section": "Data: Noisy Miners",
+    "text": "Data: Noisy Miners\nThe dataset nminer contains information about the number of noisy miners (small Australian bird) detected in two woodland patches within the Wimmera Plains of Victoria, Australia. It was obtained from the GLMsdata R package. We will use the following variables:\n\nMinerab: The number of noisy miners (abundance) observed in three 20 minute surveys\nEucs: The number of eucalyptus trees in each 2 hectare area (about 4.94 acres)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#noisy-miner-model",
+    "href": "slides/07-glm-theory.html#noisy-miner-model",
+    "title": "Unifying theory of GLMs",
+    "section": "Noisy Miner Model",
+    "text": "Noisy Miner Model\n\n\n\n\n\nEucs\nMinerab\n\n\n\n\n2\n0\n\n\n10\n0\n\n\n16\n3\n\n\n20\n2\n\n\n19\n8\n\n\n\n\n\nOur goal is to use a Poisson regression model to predict the number of noisy miners observed in three 20 minute surveys based on the number of eucalyptus trees.\n\\[\\log(\\lambda_{Minearab}) = \\beta_0 + \\beta_1 ~ Euc\\] .center[ What are the best estimates of \\(\\beta_0\\) and \\(\\beta_1\\)?]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#iteratively-reweighted-least-squares-iwls-1",
+    "href": "slides/07-glm-theory.html#iteratively-reweighted-least-squares-iwls-1",
+    "title": "Unifying theory of GLMs",
+    "section": "Iteratively reweighted least squares (IWLS)",
+    "text": "Iteratively reweighted least squares (IWLS)\n\nThe estimates of \\(\\beta_0\\) and \\(\\beta_1\\) are found using maximum likelihood estimation.\nIteratively reweighted least-squares (IWLS) is used to find the MLEs\n\nNelder and Wedderburn (1972) show that under certain specifications of the weights and a modified response variable, the estimates found using IWLS are equivalent to the MLEs."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#iwls-set-up",
+    "href": "slides/07-glm-theory.html#iwls-set-up",
+    "title": "Unifying theory of GLMs",
+    "section": "IWLS Set up",
+    "text": "IWLS Set up\nWorking response: Modified response variable at each step of the iteration.\n\\[z_i = g(\\theta) + g'(\\theta)(y_i - \\theta_i)\\]\nFor Poisson regression, this is\n\\[z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\]\n\nWorking Weights: Weights applied to the observations at each step of the iteration\n\\[W_i = \\frac{\\theta^2}{Var(Y)} \\hspace{5mm} \\Rightarrow \\hspace{5mm}  W_i = \\frac{\\lambda^2}{\\lambda} =  \\lambda \\text{ for Poisson regression}\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#iwls-procedure",
+    "href": "slides/07-glm-theory.html#iwls-procedure",
+    "title": "Unifying theory of GLMs",
+    "section": "IWLS procedure",
+    "text": "IWLS procedure\n\nFind initial starting values \\(\\hat{\\theta}_i\\).\nCalculate the working response values \\(z_i\\).\nCalculate the working weights \\(W_i\\).\nFind the coefficient estimates of the weighted least squares model.\n\n\\[z_i = \\beta_0 + \\beta_1 x \\hspace{5mm} \\text{ with weights }W_i\\]\nThe estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are the estimates for the model coefficients.\n\nUse \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) to calculate updated values of \\(\\hat{\\theta}_i\\) and repeat steps 2 - 4 until convergence."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#newton-raphson",
+    "href": "slides/07-glm-theory.html#newton-raphson",
+    "title": "Unifying theory of GLMs",
+    "section": "Newton Raphson",
+    "text": "Newton Raphson"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#acknowledgements",
+    "href": "slides/07-glm-theory.html#acknowledgements",
+    "title": "Unifying theory of GLMs",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThese slides are based on content in\n\nBMLR: Chapter 5 - Generalized Linear Models: A Unifying Theory\nNelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.\nGeneralized Linear Models with Examples in R\n\nChapter 5 - Generalized Linear Models: Structure\nChapter 6 - Generalized Linear Models: Estimation\n\n\n\n\n\n🔗 STA 310 - Spring 2024"
   }
 ]

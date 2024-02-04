@@ -2181,14 +2181,14 @@
     "href": "slides/07-glm-theory.html#announcements",
     "title": "Unifying theory of GLMs",
     "section": "Announcements",
-    "text": "Announcements"
+    "text": "Announcements\n\nHW 02 due Wed, Feb 07 at 11:59pm\nProject 01 presentations in class Wed, Feb 14"
   },
   {
     "objectID": "slides/07-glm-theory.html#topics",
     "href": "slides/07-glm-theory.html#topics",
     "title": "Unifying theory of GLMs",
     "section": "Topics",
-    "text": "Topics\n\nIdentify the components common to all generalized linear models\nFind the canonical link based on the distribution of the response variable\nExplain how coefficients are estimated using iteratively reweighted least squares (IWLS)"
+    "text": "Topics\n\nIdentify the components common to all generalized linear models\nFind the canonical link based on the distribution of the response variable\nExplain how coefficients are estimated using iteratively reweighted least squares (IRLS) and Newton Raphson"
   },
   {
     "objectID": "slides/07-glm-theory.html#many-models-one-family",
@@ -2202,14 +2202,14 @@
     "href": "slides/07-glm-theory.html#components-of-a-glm",
     "title": "Unifying theory of GLMs",
     "section": "Components of a GLM",
-    "text": "Components of a GLM\nNelder and Wdderburn (1972) defines a broad class of models called generalized linear models that generalizes multiple linear regression. GLMs are characterized by three components:\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form (random component)\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\) (systematic component)\n3️⃣ A link function \\(g(\\theta)\\) that connects \\(\\theta\\) to \\(\\eta\\)\n.footnote[Nelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.]"
+    "text": "Components of a GLM\nNelder and Wedderburn (1972) defines a broad class of models called generalized linear models that generalizes multiple linear regression. GLMs are characterized by three components:\n\n\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form (random component)\n\n\n\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\) (systematic component)\n\n\n\n3️⃣ A link function \\(g(\\theta)\\) that connects \\(\\theta\\) to \\(\\eta\\)"
   },
   {
     "objectID": "slides/07-glm-theory.html#exponential-family-form",
     "href": "slides/07-glm-theory.html#exponential-family-form",
     "title": "Unifying theory of GLMs",
     "section": "Exponential family form",
-    "text": "Exponential family form\nSuppose a probability (mass or density) function has a parameter \\(\\theta\\). It is said to have a one-parameter exponential family form if\n✅ The support (set of possible values) does not depend on \\(\\theta\\), and\n✅ The probability function can be written in the following form"
+    "text": "Exponential family form\nSuppose a probability (mass or density) function has a parameter \\(\\theta\\). It is said to have a one-parameter exponential family form if\n\n✅ The support (set of possible values) does not depend on \\(\\theta\\), and\n✅ The probability function can be written in the following form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]"
   },
   {
     "objectID": "slides/07-glm-theory.html#fytheta-eaybtheta-ctheta-dy",
@@ -2230,28 +2230,28 @@
     "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
     "title": "Unifying theory of GLMs",
     "section": "Poisson in exponential family form",
-    "text": "Poisson in exponential family form\n\nThe support for the Poisson distribution is \\(y = 0, 1, 2, \\ldots, \\infty\\). This does not depend on the parameter \\(\\lambda\\).\nThe probability mass function can be written in the form \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\)\n\n\nThe Poisson distribution can be written in one-parameter exponential family form."
+    "text": "Poisson in exponential family form\n✅ The support for the Poisson distribution is \\(y = 0, 1, 2, \\ldots, \\infty\\). This does not depend on the parameter \\(\\lambda\\).\n\n✅ The probability mass function can be written in the form \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\)\n\n\n\nThe Poisson distribution can be written in one-parameter exponential family form."
   },
   {
     "objectID": "slides/07-glm-theory.html#canonical-link",
     "href": "slides/07-glm-theory.html#canonical-link",
     "title": "Unifying theory of GLMs",
     "section": "Canonical link",
-    "text": "Canonical link\nSuppose there is a response variable \\(Y\\) from a distribution with parameter \\(\\theta\\) and a set of predictors that can be written as a linear combination \\(\\eta = \\sum_{j=1}^{p}\\beta_jx_j = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\nA link function, \\(g()\\), is a monotonic and differentiable function that connects \\(\\theta\\) to \\(\\eta\\)\nThe canonical link is a link function such that \\(g(\\theta) = \\eta\\) - When working with a member of the one-parameter exponential family, the canonical link is \\(b(\\theta)\\)"
+    "text": "Canonical link\nSuppose there is a response variable \\(Y\\) from a distribution with parameter \\(\\theta\\) and a set of predictors that can be written as a linear combination \\(\\eta = \\beta_0 + \\sum_{j=1}^{p}\\beta_jx_j = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\n\n\nA link function, \\(g()\\), is a monotonic and differentiable function that connects \\(\\theta\\) to \\(\\eta\\)\nThe canonical link is a link function such that\n\nWhen working with a member of the one-parameter exponential family, the canonical link is \\(b(\\theta)\\)"
   },
   {
     "objectID": "slides/07-glm-theory.html#canonical-link-for-poisson",
     "href": "slides/07-glm-theory.html#canonical-link-for-poisson",
     "title": "Unifying theory of GLMs",
     "section": "Canonical link for Poisson",
-    "text": "Canonical link for Poisson\nRecall\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\nthen the canonical link is \\(b(\\lambda) = \\log(\\lambda)\\)"
+    "text": "Canonical link for Poisson\nRecall the exponential family form:\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n\nthen the canonical link is \\(b(\\lambda) = \\log(\\lambda)\\)"
   },
   {
     "objectID": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
     "href": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
     "title": "Unifying theory of GLMs",
     "section": "GLM framework: Poisson response variable",
-    "text": "GLM framework: Poisson response variable\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n\n\n\n\n\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\n\n\n\n3️⃣ A function \\(g(\\lambda)\\) that connects \\(\\lambda\\) and \\(\\eta\\)\n\\[\\log(\\lambda) = \\eta =  \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]"
+    "text": "GLM framework: Poisson response variable\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n2️⃣ A linear combination of predictors, \\[\\eta = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]\n\n3️⃣ A function \\(g(\\lambda)\\) that connects \\(\\lambda\\) and \\(\\eta\\)\n\\[\\log(\\lambda) = \\eta =  \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]"
   },
   {
     "objectID": "slides/07-glm-theory.html#activity-identifying-canonical-link",
@@ -2314,6 +2314,27 @@
     "href": "slides/07-glm-theory.html#acknowledgements",
     "title": "Unifying theory of GLMs",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\nThese slides are based on content in\n\nBMLR: Chapter 5 - Generalized Linear Models: A Unifying Theory\nNelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.\nGeneralized Linear Models with Examples in R\n\nChapter 5 - Generalized Linear Models: Structure\nChapter 6 - Generalized Linear Models: Estimation\n\n\n\n\n\n🔗 STA 310 - Spring 2024"
+    "text": "Acknowledgements\nThese slides are based on content in\n\nBMLR: Chapter 5 - Generalized Linear Models: A Unifying Theory\nNelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.\nGeneralized Linear Models with Examples in R\n\nChapter 5 - Generalized Linear Models: Structure\nChapter 6 - Generalized Linear Models: Estimation"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#mean-and-variance",
+    "href": "slides/07-glm-theory.html#mean-and-variance",
+    "title": "Unifying theory of GLMs",
+    "section": "Mean and variance",
+    "text": "Mean and variance\nExponential family form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]\nUsing this form:\n\n\\[E(Y) = -\\frac{c'(\\theta)}{b'(\\theta)} \\hspace{20mm} Var(Y) = \\frac{b''(\\theta)c'(\\theta) - c''(\\theta)b'(\\theta)}{[b'(\\theta)]^3}\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models",
+    "href": "slides/07-glm-theory.html#activity-generalized-linear-models",
+    "title": "Unifying theory of GLMs",
+    "section": "Activity: Generalized linear models",
+    "text": "Activity: Generalized linear models\nUPDATE INSTRUCTIONS!!\n\nFor your group’s distribution\n\nDescribe an example of a setting where this random variable may be used.\nIdentify the parameter.\nWrite the pmf or pdf in one-parameter exponential form.\nIdentify the canonical link function\nFind the mean and variance"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
+    "href": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
+    "title": "Unifying theory of GLMs",
+    "section": "Activity: Generalized linear models",
+    "text": "Activity: Generalized linear models\n\nDistributions\n\nExponential\nGamma (with fixed \\(r\\))\nGeometric\nNormal (with fixed \\(\\sigma\\))\n\n\n\nIf your group finishes early, try identifying the canonical link for the other distributions.\nSee BMLR - Section 3.6 for details on the distributions.\n\n\n\n\n−+\n10:00"
   }
 ]

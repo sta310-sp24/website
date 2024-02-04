@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
-  <meta name="author" content="Professor Maria Tackett">
+  <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 310 - Spring 2024 - Unifying theory of GLMs</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -29,7 +29,26 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -334,7 +353,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Professor Maria Tackett 
+Prof.&nbsp;Maria Tackett 
 </div>
 </div>
 </div>
@@ -343,13 +362,17 @@ Professor Maria Tackett
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
+<ul>
+<li><p>HW 02 due Wed, Feb 07 at 11:59pm</p></li>
+<li><p>Project 01 presentations in class Wed, Feb 14</p></li>
+</ul>
 </section>
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
 <ul>
 <li><p>Identify the components common to all generalized linear models</p></li>
 <li><p>Find the canonical link based on the distribution of the response variable</p></li>
-<li><p>Explain how coefficients are estimated using iteratively reweighted least squares (IWLS)</p></li>
+<li><p>Explain how coefficients are estimated using iteratively reweighted least squares (IRLS) and Newton Raphson</p></li>
 </ul>
 </section>
 <section>
@@ -370,24 +393,38 @@ Professor Maria Tackett
 </section>
 <section id="components-of-a-glm" class="slide level2">
 <h2>Components of a GLM</h2>
-<p><a href="https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=786531">Nelder and Wdderburn (1972)</a> defines a broad class of models called <strong>generalized linear models</strong> that generalizes multiple linear regression. GLMs are characterized by three components:</p>
+<p><span class="citation" data-cites="nelder1972generalized">Nelder and Wedderburn (<a href="#/references" role="doc-biblioref" onclick="">1972</a>)</span> defines a broad class of models called <strong>generalized linear models</strong> that generalizes multiple linear regression. GLMs are characterized by three components:</p>
+<p><br></p>
+<div class="fragment">
 <p>1️⃣ Response variable with parameter <span class="math inline">\(\theta\)</span> whose probability function can be written in exponential family form (<strong>random component</strong>)</p>
+<p><br></p>
+</div>
+<div class="fragment">
 <p>2️⃣ A linear combination of predictors, <span class="math inline">\(\eta = \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p\)</span> (<strong>systematic component</strong>)</p>
+<p><br></p>
+</div>
+<div class="fragment">
 <p>3️⃣ A <strong>link</strong> function <span class="math inline">\(g(\theta)\)</span> that connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\eta\)</span></p>
-<p>.footnote[Nelder, J. A., &amp; Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.]</p>
+</div>
 </section>
 <section id="exponential-family-form" class="slide level2">
 <h2>Exponential family form</h2>
 <p>Suppose a probability (mass or density) function has a parameter <span class="math inline">\(\theta\)</span>. It is said to have a <strong>one-parameter exponential family form</strong> if</p>
+<p><br></p>
 <p>✅ The support (set of possible values) does not depend on <span class="math inline">\(\theta\)</span>, and</p>
 <p>✅ The probability function can be written in the following form</p>
+<p><span class="math display">\[f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}\]</span></p>
 </section>
-<section id="fytheta-eaybtheta-ctheta-dy" class="slide level2">
-<h2><span class="math display">\[f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}\]</span></h2>
+<section id="mean-and-variance" class="slide level2">
+<h2>Mean and variance</h2>
+<p><strong>Exponential family form</strong></p>
+<p><span class="math display">\[f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}\]</span></p>
 <p>Using this form:</p>
+<div class="fragment">
 <p><span class="math display">\[E(Y) = -\frac{c'(\theta)}{b'(\theta)} \hspace{20mm} Var(Y) = \frac{b''(\theta)c'(\theta) - c''(\theta)b'(\theta)}{[b'(\theta)]^3}\]</span></p>
+</div>
 </section>
-<section id="poisson-in-exponential-family-form" class="slide level2">
+<section id="poisson-in-exponential-family-form" class="slide level2 midi">
 <h2>Poisson in exponential family form</h2>
 <p><span class="math display">\[P(Y = y) = \frac{e^{-\lambda}\lambda^y}{y!} \hspace{10mm} y = 0, 1, 2, \ldots, \infty\]</span></p>
 <div class="fragment">
@@ -408,71 +445,78 @@ Professor Maria Tackett
 </section>
 <section id="poisson-in-exponential-family-form-1" class="slide level2">
 <h2>Poisson in exponential family form</h2>
-<ul>
-<li><p>The support for the Poisson distribution is <span class="math inline">\(y = 0, 1, 2, \ldots, \infty\)</span>. This does not depend on the parameter <span class="math inline">\(\lambda\)</span>.</p></li>
-<li><p>The probability mass function can be written in the form <span class="math inline">\(f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}\)</span></p></li>
-</ul>
+<p>✅ The support for the Poisson distribution is <span class="math inline">\(y = 0, 1, 2, \ldots, \infty\)</span>. This does not depend on the parameter <span class="math inline">\(\lambda\)</span>.</p>
+<div class="fragment">
+<p>✅ The probability mass function can be written in the form <span class="math inline">\(f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}\)</span></p>
+<p><br></p>
+</div>
 <div class="fragment">
 <p><strong>The Poisson distribution can be written in one-parameter exponential family form.</strong></p>
 </div>
 </section>
 <section id="canonical-link" class="slide level2">
 <h2>Canonical link</h2>
-<p>Suppose there is a response variable <span class="math inline">\(Y\)</span> from a distribution with parameter <span class="math inline">\(\theta\)</span> and a set of predictors that can be written as a linear combination <span class="math inline">\(\eta = \sum_{j=1}^{p}\beta_jx_j = \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p\)</span></p>
-<p>A <strong>link function</strong>, <span class="math inline">\(g()\)</span>, is a monotonic and differentiable function that connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\eta\)</span></p>
-<p>The <strong>canonical link</strong> is a link function such that <span class="math inline">\(g(\theta) = \eta\)</span> - When working with a member of the one-parameter exponential family, the canonical link is <span class="math inline">\(b(\theta)\)</span></p>
+<p>Suppose there is a response variable <span class="math inline">\(Y\)</span> from a distribution with parameter <span class="math inline">\(\theta\)</span> and a set of predictors that can be written as a linear combination <span class="math inline">\(\eta = \beta_0 + \sum_{j=1}^{p}\beta_jx_j = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p\)</span></p>
+<p><br></p>
+<ul>
+<li><p>A <strong>link function</strong>, <span class="math inline">\(g()\)</span>, is a monotonic and differentiable function that connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\eta\)</span></p></li>
+<li><p>The <strong>canonical link</strong> is a link function such that</p>
+<ul>
+<li>When working with a member of the one-parameter exponential family, the canonical link is <span class="math inline">\(b(\theta)\)</span></li>
+</ul></li>
+</ul>
 </section>
 <section id="canonical-link-for-poisson" class="slide level2">
 <h2>Canonical link for Poisson</h2>
-<p>Recall</p>
+<p>Recall the exponential family form:</p>
 <p><span class="math display">\[P(Y = y) = e^{y\log(\lambda) - \lambda - \log(y!)}\]</span></p>
+<p><br></p>
+<div class="fragment">
 <p>then the canonical link is <span class="math inline">\(b(\lambda) = \log(\lambda)\)</span></p>
+</div>
 </section>
-<section id="glm-framework-poisson-response-variable" class="slide level2">
+<section id="glm-framework-poisson-response-variable" class="slide level2 midi">
 <h2>GLM framework: Poisson response variable</h2>
 <p>1️⃣ Response variable with parameter <span class="math inline">\(\theta\)</span> whose probability function can be written in exponential family form</p>
 <p><span class="math display">\[P(Y = y) = e^{y\log(\lambda) - \lambda - \log(y!)}\]</span></p>
-<table>
-<colgroup>
-<col style="width: 100%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>2️⃣ A linear combination of predictors, <span class="math inline">\(\eta = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p\)</span></td>
-</tr>
-</tbody>
-</table>
+<p><br></p>
+<p>2️⃣ A linear combination of predictors, <span class="math display">\[\eta = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p\]</span></p>
+<p><br></p>
 <p>3️⃣ A function <span class="math inline">\(g(\lambda)\)</span> that connects <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\eta\)</span></p>
 <p><span class="math display">\[\log(\lambda) = \eta =  \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p\]</span></p>
 </section>
-<section id="activity-identifying-canonical-link" class="slide level2">
-<h2>Activity: Identifying canonical link</h2>
-<p>For the distribution</p>
+<section id="activity-generalized-linear-models" class="slide level2">
+<h2>Activity: Generalized linear models</h2>
+<p>UPDATE INSTRUCTIONS!!</p>
+<div class="question">
+<p>For your group’s distribution</p>
 <ul>
 <li><p>Describe an example of a setting where this random variable may be used.</p></li>
 <li><p>Identify the parameter.</p></li>
 <li><p>Write the pmf or pdf in one-parameter exponential form.</p></li>
 <li><p>Identify the canonical link function</p></li>
-<li><p>One person from each group: Write your response on the board.</p></li>
+<li><p>Find the mean and variance</p></li>
 </ul>
+</div>
 </section>
-<section id="activity" class="slide level2">
-<h2>Activity</h2>
+<section id="activity-generalized-linear-models-1" class="slide level2">
+<h2>Activity: Generalized linear models</h2>
+<div class="question">
 <p><strong>Distributions</strong></p>
 <ol type="1">
-<li>Binary</li>
 <li>Exponential</li>
-<li>Negative binomial (with fixed <span class="math inline">\(r\)</span>)</li>
+<li>Gamma (with fixed <span class="math inline">\(r\)</span>)</li>
 <li>Geometric</li>
 <li>Normal (with fixed <span class="math inline">\(\sigma\)</span>)</li>
 </ol>
+</div>
 <ul>
 <li><p>If your group finishes early, try identifying the canonical link for the other distributions.</p></li>
 <li><p>See <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-distthry.html#additional-resources">BMLR - Section 3.6</a> for details on the distributions.</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1e3821eb" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_55b88274" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -586,12 +630,20 @@ Professor Maria Tackett
 <li>Chapter 6 - Generalized Linear Models: Estimation</li>
 </ul></li>
 </ul>
+</section></section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>References</h1>
 
 
 <img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://sta310-sp24.netlify.app">🔗 STA 310 - Spring 2024</a></p>
 </div>
-</section></section>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-nelder1972generalized" class="csl-entry" role="listitem">
+Nelder, John Ashworth, and Robert WM Wedderburn. 1972. <span>“Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 135 (3): 370–84.
+</div>
+</div>
+</section>
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 ---
 title: "Unifying theory of GLMs"
-author: "Professor Maria Tackett"
+author: "Prof. Maria Tackett"
 date: "February 5, 2024"
 date-format: "MMM DD, YYYY"
 footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
@@ -48,11 +48,11 @@ library(knitr)
 library(viridis)
 ```
 
-
 ## Announcements
 
+-   HW 02 due Wed, Feb 07 at 11:59pm
 
-
+-   Project 01 presentations in class Wed, Feb 14
 
 ## Topics
 
@@ -60,8 +60,7 @@ library(viridis)
 
 -   Find the canonical link based on the distribution of the response variable
 
--   Explain how coefficients are estimated using iteratively reweighted least squares (IWLS)
-
+-   Explain how coefficients are estimated using iteratively reweighted least squares (IRLS) and Newton Raphson
 
 # Unifying theory of GLMs
 
@@ -79,32 +78,51 @@ GLMs have a similar structure for their likelihoods, MLEs, variances, so we can 
 
 ## Components of a GLM
 
-[Nelder and Wdderburn (1972)](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=786531) defines a broad class of models called **generalized linear models** that generalizes multiple linear regression. GLMs are characterized by three components:
+@nelder1972generalized defines a broad class of models called **generalized linear models** that generalizes multiple linear regression. GLMs are characterized by three components:
+
+<br>
+
+. . .
 
 `r emo::ji("one")` Response variable with parameter $\theta$ whose probability function can be written in exponential family form (**random component**)
 
+<br>
+
+. . .
+
 `r emo::ji("two")` A linear combination of predictors, $\eta = \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p$ (**systematic component**)
 
-`r emo::ji("three")` A **link** function $g(\theta)$ that connects $\theta$ to $\eta$
+<br>
 
-.footnote\[Nelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.\]
+. . .
+
+`r emo::ji("three")` A **link** function $g(\theta)$ that connects $\theta$ to $\eta$
 
 ## Exponential family form
 
 Suppose a probability (mass or density) function has a parameter $\theta$. It is said to have a **one-parameter exponential family form** if
 
+<br>
+
 `r emo::ji("white_check_mark")` The support (set of possible values) does not depend on $\theta$, and
 
 `r emo::ji("white_check_mark")` The probability function can be written in the following form
 
-## $$f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$$
+$$f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$$
+
+## Mean and variance
+
+**Exponential family form**
+
+$$f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$$
 
 Using this form:
 
+. . .
+
 $$E(Y) = -\frac{c'(\theta)}{b'(\theta)} \hspace{20mm} Var(Y) = \frac{b''(\theta)c'(\theta) - c''(\theta)b'(\theta)}{[b'(\theta)]^3}$$
 
-
-## Poisson in exponential family form
+## Poisson in exponential family form {.midi}
 
 $$P(Y = y) = \frac{e^{-\lambda}\lambda^y}{y!} \hspace{10mm} y = 0, 1, 2, \ldots, \infty$$
 
@@ -124,56 +142,66 @@ Recall the form: $f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$, where t
 -   $c(\lambda) = -\lambda$
 -   $d(y) = -\log(y!)$
 
-
 ## Poisson in exponential family form
 
--   The support for the Poisson distribution is $y = 0, 1, 2, \ldots, \infty$. This does not depend on the parameter $\lambda$.
+✅ The support for the Poisson distribution is $y = 0, 1, 2, \ldots, \infty$. This does not depend on the parameter $\lambda$.
 
--   The probability mass function can be written in the form $f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$
+. . .
+
+✅ The probability mass function can be written in the form $f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$
+
+<br>
 
 . . .
 
 **The Poisson distribution can be written in one-parameter exponential family form.**
 
-
 ## Canonical link
 
-Suppose there is a response variable $Y$ from a distribution with parameter $\theta$ and a set of predictors that can be written as a linear combination $\eta = \sum_{j=1}^{p}\beta_jx_j = \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p$
+Suppose there is a response variable $Y$ from a distribution with parameter $\theta$ and a set of predictors that can be written as a linear combination $\eta = \beta_0 + \sum_{j=1}^{p}\beta_jx_j = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p$
 
-A **link function**, $g()$, is a monotonic and differentiable function that connects $\theta$ to $\eta$
+<br>
 
-The **canonical link** is a link function such that $g(\theta) = \eta$ - When working with a member of the one-parameter exponential family, the canonical link is $b(\theta)$
+-   A **link function**, $g()$, is a monotonic and differentiable function that connects $\theta$ to $\eta$
 
+-   The **canonical link** is a link function such that
 
+    -   When working with a member of the one-parameter exponential family, the canonical link is $b(\theta)$
 
 ## Canonical link for Poisson
 
-Recall
+Recall the exponential family form:
 
 $$P(Y = y) = e^{y\log(\lambda) - \lambda - \log(y!)}$$
+
+<br>
+
+. . .
 
 then the canonical link is $b(\lambda) = \log(\lambda)$
 
+## GLM framework: Poisson response variable {.midi}
 
-## GLM framework: Poisson response variable
-
-`r emo::ji("one")` Response variable with parameter $\theta$ whose probability function can be written in exponential family form
+1️⃣ Response variable with parameter $\theta$ whose probability function can be written in exponential family form
 
 $$P(Y = y) = e^{y\log(\lambda) - \lambda - \log(y!)}$$
 
-|                                                                                                                           |
-|------------------------------------------------------------------------|
-| `r emo::ji("two")` A linear combination of predictors, $\eta = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p$ |
+<br>
 
-`r emo::ji("three")` A function $g(\lambda)$ that connects $\lambda$ and $\eta$
+2️⃣ A linear combination of predictors, $$\eta = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p$$
+
+<br>
+
+3️⃣ A function $g(\lambda)$ that connects $\lambda$ and $\eta$
 
 $$\log(\lambda) = \eta =  \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p$$
 
+## Activity: Generalized linear models
 
+UPDATE INSTRUCTIONS!!
 
-## Activity: Identifying canonical link
-
-For the distribution
+::: question
+For your group's distribution
 
 -   Describe an example of a setting where this random variable may be used.
 
@@ -183,17 +211,19 @@ For the distribution
 
 -   Identify the canonical link function
 
--   One person from each group: Write your response on the board.
+-   Find the mean and variance
+:::
 
-## Activity
+## Activity: Generalized linear models
 
+::: question
 **Distributions**
 
-1.  Binary
-2.  Exponential
-3.  Negative binomial (with fixed $r$)
-4.  Geometric
-5.  Normal (with fixed $\sigma$)
+1.  Exponential
+2.  Gamma (with fixed $r$)
+3.  Geometric
+4.  Normal (with fixed $\sigma$)
+:::
 
 -   If your group finishes early, try identifying the canonical link for the other distributions.
 
@@ -205,9 +235,7 @@ countdown(minutes = 10, seconds = 0,
           margin = "5%")
 ```
 
-
 # Iteratively reweighted least squares (IWLS)
-
 
 ## Data: Noisy Miners
 
@@ -215,8 +243,6 @@ The dataset [`nminer`](data/nminer.csv) contains information about the number of
 
 -   **`Minerab`**: The number of noisy miners (abundance) observed in three 20 minute surveys
 -   **`Eucs`**: The number of eucalyptus trees in each 2 hectare area (about 4.94 acres)
-
-
 
 ## Noisy Miner Model
 
@@ -230,7 +256,6 @@ Our goal is to use a Poisson regression model to predict the number of noisy min
 
 $$\log(\lambda_{Minearab}) = \beta_0 + \beta_1 ~ Euc$$ .center\[ **What are the best estimates of** $\beta_0$ and $\beta_1$?\]
 
-
 ## Iteratively reweighted least squares (IWLS)
 
 -   The estimates of $\beta_0$ and $\beta_1$ are found using maximum likelihood estimation.
@@ -238,7 +263,6 @@ $$\log(\lambda_{Minearab}) = \beta_0 + \beta_1 ~ Euc$$ .center\[ **What are the 
 -   **Iteratively reweighted least-squares (IWLS)** is used to find the MLEs
 
     -   Nelder and Wedderburn (1972) show that under certain specifications of the weights and a modified response variable, the estimates found using IWLS are equivalent to the MLEs.
-
 
 ## IWLS Set up
 
@@ -255,7 +279,6 @@ $$z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}$$
 **Working Weights:** Weights applied to the observations at each step of the iteration
 
 $$W_i = \frac{\theta^2}{Var(Y)} \hspace{5mm} \Rightarrow \hspace{5mm}  W_i = \frac{\lambda^2}{\lambda} =  \lambda \text{ for Poisson regression}$$
-
 
 ## IWLS procedure
 
@@ -275,11 +298,9 @@ The estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ are the estimates for the mode
 
 Use $\hat{\beta}_0$ and $\hat{\beta}_1$ to calculate updated values of $\hat{\theta}_i$ and repeat steps 2 - 4 until convergence.
 
-
 # Demo in `lecture-11` repo
 
 ## Newton Raphson
-
 
 ## Acknowledgements
 
@@ -290,3 +311,5 @@ These slides are based on content in
 -   Generalized Linear Models with Examples in R
     -   Chapter 5 - Generalized Linear Models: Structure
     -   Chapter 6 - Generalized Linear Models: Estimation
+
+# References

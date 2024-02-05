@@ -60,7 +60,11 @@ library(viridis)
 
 -   Find the canonical link based on the distribution of the response variable
 
--   Explain how coefficients are estimated using iteratively reweighted least squares (IRLS) and Newton Raphson
+-   Properties of GLMs
+
+::: aside
+Notes based on Chapter 5 @roback2021beyond unless noted otherwise.
+:::
 
 # Unifying theory of GLMs
 
@@ -198,23 +202,19 @@ $$\log(\lambda) = \eta =  \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p 
 
 ## Activity: Generalized linear models
 
-UPDATE INSTRUCTIONS!!
-
 ::: question
 For your group's distribution
 
--   Describe an example of a setting where this random variable may be used.
-
--   Identify the parameter.
-
 -   Write the pmf or pdf in one-parameter exponential form.
+
+-   Describe an example of a setting where this random variable may be used.
 
 -   Identify the canonical link function
 
--   Find the mean and variance
+-   Compute $E(Y)$ and $Var(Y)$ based on the exponential family form.
 :::
 
-## Activity: Generalized linear models
+## Activity: Generalized linear models {.midi}
 
 ::: question
 **Distributions**
@@ -223,11 +223,11 @@ For your group's distribution
 2.  Gamma (with fixed $r$)
 3.  Geometric
 4.  Normal (with fixed $\sigma$)
+
+See [BMLR - Section 3.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-distthry.html#additional-resources) for details on the distributions.
 :::
 
--   If your group finishes early, try identifying the canonical link for the other distributions.
-
--   See [BMLR - Section 3.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-distthry.html#additional-resources) for details on the distributions.
+If your group finishes early, try completing the exercise for another distribution.
 
 ```{r echo = F}
 library(countdown)
@@ -235,81 +235,16 @@ countdown(minutes = 10, seconds = 0,
           margin = "5%")
 ```
 
-# Iteratively reweighted least squares (IWLS)
+## Using the exponential family form 
 
-## Data: Noisy Miners
+The exponential family form is utilized for
 
-The dataset [`nminer`](data/nminer.csv) contains information about the number of noisy miners (small Australian bird) detected in two woodland patches within the Wimmera Plains of Victoria, Australia. It was obtained from the **GLMsdata** R package. We will use the following variables:
+-   Calculating MLEs of coefficients (recall iteratively reweighted least squares)
 
--   **`Minerab`**: The number of noisy miners (abundance) observed in three 20 minute surveys
--   **`Eucs`**: The number of eucalyptus trees in each 2 hectare area (about 4.94 acres)
+-   Inference for coefficients
 
-## Noisy Miner Model
+-   Calculating residuals
 
-```{r echo = F}
-nminer <- read_csv("data/nminer.csv")
-nminer %>%
-  slice(1:5) %>% select(Eucs, Minerab) %>% kable(digits = 1)
-```
-
-Our goal is to use a Poisson regression model to predict the number of noisy miners observed in three 20 minute surveys based on the number of eucalyptus trees.
-
-$$\log(\lambda_{Minearab}) = \beta_0 + \beta_1 ~ Euc$$ .center\[ **What are the best estimates of** $\beta_0$ and $\beta_1$?\]
-
-## Iteratively reweighted least squares (IWLS)
-
--   The estimates of $\beta_0$ and $\beta_1$ are found using maximum likelihood estimation.
-
--   **Iteratively reweighted least-squares (IWLS)** is used to find the MLEs
-
-    -   Nelder and Wedderburn (1972) show that under certain specifications of the weights and a modified response variable, the estimates found using IWLS are equivalent to the MLEs.
-
-## IWLS Set up
-
-**Working response**: Modified response variable at each step of the iteration.
-
-$$z_i = g(\theta) + g'(\theta)(y_i - \theta_i)$$
-
-For Poisson regression, this is
-
-$$z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}$$
-
-. . .
-
-**Working Weights:** Weights applied to the observations at each step of the iteration
-
-$$W_i = \frac{\theta^2}{Var(Y)} \hspace{5mm} \Rightarrow \hspace{5mm}  W_i = \frac{\lambda^2}{\lambda} =  \lambda \text{ for Poisson regression}$$
-
-## IWLS procedure
-
-1.  Find initial starting values $\hat{\theta}_i$.
-
-2.  Calculate the working response values $z_i$.
-
-3.  Calculate the working weights $W_i$.
-
-4.  Find the coefficient estimates of the weighted least squares model.
-
-$$z_i = \beta_0 + \beta_1 x \hspace{5mm} \text{ with weights }W_i$$
-
-The estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ are the estimates for the model coefficients.
-
-. . .
-
-Use $\hat{\beta}_0$ and $\hat{\beta}_1$ to calculate updated values of $\hat{\theta}_i$ and repeat steps 2 - 4 until convergence.
-
-# Demo in `lecture-11` repo
-
-## Newton Raphson
-
-## Acknowledgements
-
-These slides are based on content in
-
--   [BMLR: Chapter 5 - Generalized Linear Models: A Unifying Theory](https://bookdown.org/roback/bookdown-BeyondMLR/ch-glms.html)
--   Nelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.
--   Generalized Linear Models with Examples in R
-    -   Chapter 5 - Generalized Linear Models: Structure
-    -   Chapter 6 - Generalized Linear Models: Estimation
+The specific calculations are beyond the scope of this course. See Section 4.6 of @dunn2018generalized for more detail (available at Duke library).
 
 # References

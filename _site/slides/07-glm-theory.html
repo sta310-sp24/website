@@ -372,9 +372,12 @@ Prof.&nbsp;Maria Tackett
 <ul>
 <li><p>Identify the components common to all generalized linear models</p></li>
 <li><p>Find the canonical link based on the distribution of the response variable</p></li>
-<li><p>Explain how coefficients are estimated using iteratively reweighted least squares (IRLS) and Newton Raphson</p></li>
+<li><p>Properties of GLMs</p></li>
 </ul>
-</section>
+
+<aside><div>
+<p>Notes based on Chapter 5 <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> unless noted otherwise.</p>
+</div></aside></section>
 <section>
 <section id="unifying-theory-of-glms" class="title-slide slide level1 center">
 <h1>Unifying theory of GLMs</h1>
@@ -487,19 +490,17 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="activity-generalized-linear-models" class="slide level2">
 <h2>Activity: Generalized linear models</h2>
-<p>UPDATE INSTRUCTIONS!!</p>
 <div class="question">
 <p>For your group’s distribution</p>
 <ul>
-<li><p>Describe an example of a setting where this random variable may be used.</p></li>
-<li><p>Identify the parameter.</p></li>
 <li><p>Write the pmf or pdf in one-parameter exponential form.</p></li>
+<li><p>Describe an example of a setting where this random variable may be used.</p></li>
 <li><p>Identify the canonical link function</p></li>
-<li><p>Find the mean and variance</p></li>
+<li><p>Compute <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(Var(Y)\)</span> based on the exponential family form.</p></li>
 </ul>
 </div>
 </section>
-<section id="activity-generalized-linear-models-1" class="slide level2">
+<section id="activity-generalized-linear-models-1" class="slide level2 midi">
 <h2>Activity: Generalized linear models</h2>
 <div class="question">
 <p><strong>Distributions</strong></p>
@@ -509,127 +510,27 @@ Prof.&nbsp;Maria Tackett
 <li>Geometric</li>
 <li>Normal (with fixed <span class="math inline">\(\sigma\)</span>)</li>
 </ol>
+<p>See <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-distthry.html#additional-resources">BMLR - Section 3.6</a> for details on the distributions.</p>
 </div>
-<ul>
-<li><p>If your group finishes early, try identifying the canonical link for the other distributions.</p></li>
-<li><p>See <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-distthry.html#additional-resources">BMLR - Section 3.6</a> for details on the distributions.</p></li>
-</ul>
+<p>If your group finishes early, try completing the exercise for another distribution.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_55b88274" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_c69197ec" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="iteratively-reweighted-least-squares-iwls" class="title-slide slide level1 center">
-<h1>Iteratively reweighted least squares (IWLS)</h1>
-
 </section>
-<section id="data-noisy-miners" class="slide level2">
-<h2>Data: Noisy Miners</h2>
-<p>The dataset <a href="data/nminer.csv"><code>nminer</code></a> contains information about the number of noisy miners (small Australian bird) detected in two woodland patches within the Wimmera Plains of Victoria, Australia. It was obtained from the <strong>GLMsdata</strong> R package. We will use the following variables:</p>
+<section id="using-the-exponential-family-form" class="slide level2">
+<h2>Using the exponential family form</h2>
+<p>The exponential family form is utilized for</p>
 <ul>
-<li><strong><code>Minerab</code></strong>: The number of noisy miners (abundance) observed in three 20 minute surveys</li>
-<li><strong><code>Eucs</code></strong>: The number of eucalyptus trees in each 2 hectare area (about 4.94 acres)</li>
+<li><p>Calculating MLEs of coefficients (recall iteratively reweighted least squares)</p></li>
+<li><p>Inference for coefficients</p></li>
+<li><p>Calculating residuals</p></li>
 </ul>
-</section>
-<section id="noisy-miner-model" class="slide level2">
-<h2>Noisy Miner Model</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">Eucs</th>
-<th style="text-align: right;">Minerab</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">8</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Our goal is to use a Poisson regression model to predict the number of noisy miners observed in three 20 minute surveys based on the number of eucalyptus trees.</p>
-<p><span class="math display">\[\log(\lambda_{Minearab}) = \beta_0 + \beta_1 ~ Euc\]</span> .center[ <strong>What are the best estimates of</strong> <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>?]</p>
-</section>
-<section id="iteratively-reweighted-least-squares-iwls-1" class="slide level2">
-<h2>Iteratively reweighted least squares (IWLS)</h2>
-<ul>
-<li><p>The estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are found using maximum likelihood estimation.</p></li>
-<li><p><strong>Iteratively reweighted least-squares (IWLS)</strong> is used to find the MLEs</p>
-<ul>
-<li>Nelder and Wedderburn (1972) show that under certain specifications of the weights and a modified response variable, the estimates found using IWLS are equivalent to the MLEs.</li>
-</ul></li>
-</ul>
-</section>
-<section id="iwls-set-up" class="slide level2">
-<h2>IWLS Set up</h2>
-<p><strong>Working response</strong>: Modified response variable at each step of the iteration.</p>
-<p><span class="math display">\[z_i = g(\theta) + g'(\theta)(y_i - \theta_i)\]</span></p>
-<p>For Poisson regression, this is</p>
-<p><span class="math display">\[z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}\]</span></p>
-<div class="fragment">
-<p><strong>Working Weights:</strong> Weights applied to the observations at each step of the iteration</p>
-<p><span class="math display">\[W_i = \frac{\theta^2}{Var(Y)} \hspace{5mm} \Rightarrow \hspace{5mm}  W_i = \frac{\lambda^2}{\lambda} =  \lambda \text{ for Poisson regression}\]</span></p>
-</div>
-</section>
-<section id="iwls-procedure" class="slide level2">
-<h2>IWLS procedure</h2>
-<ol type="1">
-<li><p>Find initial starting values <span class="math inline">\(\hat{\theta}_i\)</span>.</p></li>
-<li><p>Calculate the working response values <span class="math inline">\(z_i\)</span>.</p></li>
-<li><p>Calculate the working weights <span class="math inline">\(W_i\)</span>.</p></li>
-<li><p>Find the coefficient estimates of the weighted least squares model.</p></li>
-</ol>
-<p><span class="math display">\[z_i = \beta_0 + \beta_1 x \hspace{5mm} \text{ with weights }W_i\]</span></p>
-<p>The estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the estimates for the model coefficients.</p>
-<div class="fragment">
-<p>Use <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> to calculate updated values of <span class="math inline">\(\hat{\theta}_i\)</span> and repeat steps 2 - 4 until convergence.</p>
-</div>
-</section></section>
-<section>
-<section id="demo-in-lecture-11-repo" class="title-slide slide level1 center">
-<h1>Demo in <code>lecture-11</code> repo</h1>
-
-</section>
-<section id="newton-raphson" class="slide level2">
-<h2>Newton Raphson</h2>
-</section>
-<section id="acknowledgements" class="slide level2">
-<h2>Acknowledgements</h2>
-<p>These slides are based on content in</p>
-<ul>
-<li><a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-glms.html">BMLR: Chapter 5 - Generalized Linear Models: A Unifying Theory</a></li>
-<li>Nelder, J. A., &amp; Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.</li>
-<li>Generalized Linear Models with Examples in R
-<ul>
-<li>Chapter 5 - Generalized Linear Models: Structure</li>
-<li>Chapter 6 - Generalized Linear Models: Estimation</li>
-</ul></li>
-</ul>
+<p>The specific calculations are beyond the scope of this course. See Section 4.6 of <span class="citation" data-cites="dunn2018generalized">Dunn, Smyth, et al. (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span> for more detail (available at Duke library).</p>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -639,8 +540,14 @@ Prof.&nbsp;Maria Tackett
 <p><a href="https://sta310-sp24.netlify.app">🔗 STA 310 - Spring 2024</a></p>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-dunn2018generalized" class="csl-entry" role="listitem">
+Dunn, Peter K, Gordon K Smyth, et al. 2018. <em>Generalized Linear Models with Examples in r</em>. Vol. 53. Springer.
+</div>
 <div id="ref-nelder1972generalized" class="csl-entry" role="listitem">
 Nelder, John Ashworth, and Robert WM Wedderburn. 1972. <span>“Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 135 (3): 370–84.
+</div>
+<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
+Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple linear regression: applied generalized linear models and multilevel models in R</span></em>. CRC Press.
 </div>
 </div>
 </section>

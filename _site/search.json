@@ -665,6 +665,97 @@
     "text": "Finding the MLEs using R\nWe can write a function and do a grid search to find the values that maximize the log-likelihood.\n\nmaxloglik&lt;- function(nvals){\n  #nvals specifies the number of values\n  phn &lt;- seq(0, 1, length = nvals)\n  phh &lt;- seq(0, 1, length = nvals)\n  phv &lt;- seq(0, 1, length = nvals)\n  \n  loglik &lt;- expand.grid(phn, phh, phv) \n  colnames(loglik) &lt;- c(\"phn\", \"phh\", \"phv\")\n  \n  loglik &lt;- loglik %&gt;%\n    mutate(loglik  = log(phn^25 * (1 - phn)^23 * phh^8 * (1 - phh)^12 * \n                           phv^13 * (1 - phv)^9))\n  \n  loglik %&gt;%\n    arrange(desc(loglik)) %&gt;%\n    slice(1)\n}\n\n\nmaxloglik(100)\n\n        phn       phh       phv    loglik\n1 0.5252525 0.4040404 0.5858586 -61.57691\n\n\nDepending on the number of parameters, it may be hard to conduct a granular enough search to find the exact values of the MLEs. Therefore, one could use the function above to conduct a crude search to find starting values for R’s optim function. The function optim differs from optimize in that it can optimize over multiple parameter values (The optimize function can only optimize over a single parameter value).\n\n# Function to calculate log-likelihood that will be used in the optim function\nloglik &lt;- function(params){\n  phn &lt;- params[1]\n  phh &lt;- params[2]\n  phv &lt;- params[3]\n\n  log(phn^25 * (1 - phn)^23 * phh^8 * (1 - phh)^12 * \n                           phv^13 * (1 - phv)^9)\n}\n\n\n# use manual search to get starting values \nstart_vals &lt;- maxloglik(50) %&gt;% select(-loglik)\n\n\n# Use optim function in R to find the values to maximize the log-likelihood\n#set fnscale = -1 to maximize (the default is minimize)\noptim(par = start_vals, fn = loglik, control=list(fnscale=-1))\n\n$par\n      phn       phh       phv \n0.5208272 0.4000361 0.5909793 \n\n$value\n[1] -61.57319\n\n$counts\nfunction gradient \n      66       NA \n\n$convergence\n[1] 0\n\n$message\nNULL"
   },
   {
+    "objectID": "slides/07-logistic-intro.html#topics",
+    "href": "slides/07-logistic-intro.html#topics",
+    "title": "Logistic regression",
+    "section": "Topics",
+    "text": "Topics\n\nIdentify Bernoulli and binomial random variables\nWrite GLM for binomial response variable\nInterpret the coefficients for a logistic regression model\n\n\n\nNotes based on Chapter 6 Roback and Legler (2021) unless noted otherwise."
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#bernoulli-binomial-random-variables",
+    "href": "slides/07-logistic-intro.html#bernoulli-binomial-random-variables",
+    "title": "Logistic regression",
+    "section": "Bernoulli + Binomial random variables",
+    "text": "Bernoulli + Binomial random variables\nLogistic regression is used to analyze data with two types of responses:\n\nBinary: These responses take on two values success \\((Y = 1)\\) or failure \\((Y = 0)\\), yes \\((Y = 1)\\) or no \\((Y = 0)\\), etc.\n\n\\[P(Y = y) = p^y(1-p)^{1-y} \\hspace{10mm} y = 0, 1\\]\n\nBinomial: Number of successes in a Bernoulli process, \\(n\\) independent trials with a constant probability of success \\(p\\).\n\n\\[P(Y = y) = {n \\choose y}p^{y}(1-p)^{n - y} \\hspace{10mm} y = 0, 1, \\ldots, n\\]\n\nIn both instances, the goal is to model \\(p\\) the probability of success."
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#binary-vs.-binomial-data",
+    "href": "slides/07-logistic-intro.html#binary-vs.-binomial-data",
+    "title": "Logistic regression",
+    "section": "Binary vs. Binomial data",
+    "text": "Binary vs. Binomial data\n\nFor each example, identify if the response is a Bernoulli or Binomial response:\n\nUse median age and unemployment rate in a county to predict the percent of Obama votes in the county in the 2008 presidential election.\nUse GPA and MCAT scores to estimate the probability a student is accepted into medical school.\nUse sex, age, and smoking history to estimate the probability an individual has lung cancer.\nUse offensive and defensive statistics from the 2017-2018 NBA season to predict a team’s winning percentage.\n\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#logistic-regression-model",
+    "href": "slides/07-logistic-intro.html#logistic-regression-model",
+    "title": "Logistic regression",
+    "section": "Logistic regression model",
+    "text": "Logistic regression model\n\\[\n\\log\\Big(\\frac{p}{1-p}\\Big) = \\beta_0 + \\beta_1x_1 + \\beta_2x_2 + \\dots + \\beta_px_p\n\\]\n\n\nThe response variable, \\(\\log\\Big(\\frac{p}{1-p}\\Big)\\), is the log(odds) of success, i.e. the logit\n\n\n\n\nUse the model to calculate the probability of success \\[\\hat{p} = \\frac{e^{\\beta_0 + \\beta_1x_1 + \\beta_2x_2 + \\dots + \\beta_px_p}}{1 + e^{\\beta_0 + \\beta_1x_1 + \\beta_2x_2 + \\dots + \\beta_px_p}}\\]\n\n\n\n\nWhen the response is a Bernoulli random variable, the probabilities can be used to classify each observation as a success or failure"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#logistic-vs-linear-regression-model",
+    "href": "slides/07-logistic-intro.html#logistic-vs-linear-regression-model",
+    "title": "Logistic regression",
+    "section": "Logistic vs linear regression model",
+    "text": "Logistic vs linear regression model\n\nGraph from BMLR Chapter 6"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#logit-link",
+    "href": "slides/07-logistic-intro.html#logit-link",
+    "title": "Logistic regression",
+    "section": "Logit link",
+    "text": "Logit link\nBernoulli and Binomial random variables can be written in one-parameter exponential family form, \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\)\nBernoulli\n\\[f(y;p) = e^{y\\log(\\frac{p}{1-p}) + \\log(1-p)}\\]\nBinomial\n\\[f(y;n,p) = e^{y\\log(\\frac{p}{1-p}) + n\\log(1-p) + \\log{n \\choose y}}\\]\n\nThey have the same canonical link \\(b(p) = \\log\\big(\\frac{p}{1-p}\\big)\\)"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#assumptions-for-logistic-regression",
+    "href": "slides/07-logistic-intro.html#assumptions-for-logistic-regression",
+    "title": "Logistic regression",
+    "section": "Assumptions for logistic regression",
+    "text": "Assumptions for logistic regression\nThe following assumptions need to be satisfied to use logistic regression to make inferences\n1️⃣ \\(\\hspace{0.5mm}\\) Binary response: The response is dichotomous (has two possible outcomes) or is the sum of dichotomous responses\n\n2️⃣ \\(\\hspace{0.5mm}\\) Independence: The observations must be independent of one another\n\n\n3️⃣ \\(\\hspace{0.5mm}\\) Variance structure: Variance of a binomial random variable is \\(np(1-p)\\) \\((n = 1 \\text{ for Bernoulli})\\) , so the variability is highest when \\(p = 0.5\\)\n\n\n4️⃣ \\(\\hspace{0.5mm}\\) Linearity: The log of the odds ratio, \\(\\log\\big(\\frac{p}{1-p}\\big)\\), must be a linear function of the predictors \\(x_1, \\ldots, x_p\\)"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#covid-19-infection-prevention-practices-at-food-establishments",
+    "href": "slides/07-logistic-intro.html#covid-19-infection-prevention-practices-at-food-establishments",
+    "title": "Logistic regression",
+    "section": "COVID-19 infection prevention practices at food establishments",
+    "text": "COVID-19 infection prevention practices at food establishments\nResearchers at Wollo Univeristy in Ethiopia conducted a study in July and August 2020 to understand factors associated with good COVID-19 infection prevention practices at food establishments. Their study is published in Andualem et al. (2022) .\n\nThey were particularly interested in the understanding implementation of prevention practices at food establishments, given the workers’ increased risk due to daily contact with customers."
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#the-data",
+    "href": "slides/07-logistic-intro.html#the-data",
+    "title": "Logistic regression",
+    "section": "The data",
+    "text": "The data\n“An institution-based cross-sectional study was conducted among 422 food handlers in Dessie City and Kombolcha Town food and drink establishments in July and August 2020. The study participants were selected using a simple random sampling technique. Data were collected by trained data collectors using a pretested structured questionnaire and an on-the-spot observational checklist.”"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#response-variable",
+    "href": "slides/07-logistic-intro.html#response-variable",
+    "title": "Logistic regression",
+    "section": "Response variable",
+    "text": "Response variable\n“The outcome variable of this study was the good or poor practices of COVID-19 infection prevention among food handlers. Nine yes/no questions, one observational checklist and five multiple choice infection prevention practices questions were asked with a minimum score of 1 and maximum score of 25. Good infection prevention practice (the variable of interest) was determined for food handlers who scored 75% or above, whereas poor infection prevention practices refers to those food handlers who scored below 75% on the practice questions.”"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#results",
+    "href": "slides/07-logistic-intro.html#results",
+    "title": "Logistic regression",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#interpreting-the-results",
+    "href": "slides/07-logistic-intro.html#interpreting-the-results",
+    "title": "Logistic regression",
+    "section": "Interpreting the results",
+    "text": "Interpreting the results\n\n\nIs the response a Bernoulli or Binomial?\nWhat is the strongest predictor of having good COVID-19 infection prevention practices?\n\nIt’s often unreliable to look answer this question just based on the model output. Why are we able to answer this question based on the model output in this case?\n\nDescribe the effect (coefficient interpretation and inference) of having COVID-19 infection prevention policies available at the food establishment.\nThe intercept describes what group of food handlers?\n\n\n\n\n\n−+\n04:30"
+  },
+  {
+    "objectID": "slides/07-logistic-intro.html#references",
+    "href": "slides/07-logistic-intro.html#references",
+    "title": "Logistic regression",
+    "section": "References",
+    "text": "References\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\nAndualem, Atsedemariam, Belachew Tegegne, Sewunet Ademe, Tarikuwa Natnael, Gete Berihun, Masresha Abebe, Yeshiwork Alemnew, et al. 2022. “COVID-19 Infection Prevention Practices Among a Sample of Food Handlers of Food and Drink Establishments in Ethiopia.” PLoS One 17 (1): e0259851.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
+  },
+  {
     "objectID": "slides/lab-01.html#meet-your-ta",
     "href": "slides/lab-01.html#meet-your-ta",
     "title": "Welcome to STA 310 Labs!",
@@ -704,7 +795,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      ae\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n    \nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n    3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n    \nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\nHW 01 due\n    \n\n\nPoisson regression\n\n\n\n\n\n\n\n    \nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n    \nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n    \nW\nFeb 7\nLogistic regression\n\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nBinomial + ordinal regression\n\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nModeling correlated observations\n\n\n\n\n\n\n\n    \nW\nFeb 21\nFixed + random effects\n\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period"
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n  \n    \n    \n      week\n      dow\n      date\n      topic\n      prepare\n      lectures\n      ae\n      hw\n      quiz\n      project\n      notes\n    \n  \n  \n    1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n    \nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n    2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n    \nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n    \nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n    3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n    \nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\nHW 01 due\n    \n\n\nPoisson regression\n\n\n\n\n\n\n\n    \nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n    4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n    \nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n    \nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\nQuiz 01 due at 12pm\n    5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n    \n\n\nLogistic regression\n\n\n\n\n\n\n\n    \nW\nFeb 7\nLogistic regression\n\n\n\n\n\n\nHW 02 due\n    \nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n    6\nM\nFeb 12\nBinomial + ordinal regression\n\n\n\n\n\n\n\n    \nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n    \nTh\nFeb 15\n\n\n\n\n\n\n\n\n    7\nM\nFeb 19\nModeling correlated observations\n\n\n\n\n\n\n\n    \nW\nFeb 21\nFixed + random effects\n\n\n\n\n\n\n\n    \nTh\nFeb 22\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n    8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n    \nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\nHW 03 due\n    \nTh\nFeb 28\n\n\n\n\n\n\n\n\n    9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n    \nTh\nMar 7\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n    10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n    \nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n    11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n    \nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\nHW 04 due\n    \nTh\nMar 21\n\n\n\n\n\n\n\n\n    12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n    \nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n    \nTh\nMar 28\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n    13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n    \nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\nHW 05 due\n    \nTh\nApr 4\n\n\n\n\n\n\n\n\n    14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n    \nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n    \nTh\nApr 11\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n    15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n    \nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\nHW 06 due\n    \nTh\nApr 18\n\n\n\n\n\n\n\n\n    16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n    \nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\nQuiz 06 due at 12pm\n    Exam period"
   },
   {
     "objectID": "projects/project-02.html",
@@ -1617,6 +1708,104 @@
     "text": "To do before next time\n\nInstall RStudio and configure git (or reserve container). See computing page for instructions.\n\nWill do application exercise next class\n\nRead syllabus and let me know if you have any questions\nSee Prepare for Jan 17 lecture\n\n\n\n\n🔗 STA 310 - Spring 2024"
   },
   {
+    "objectID": "slides/07-glm-theory.html#announcements",
+    "href": "slides/07-glm-theory.html#announcements",
+    "title": "Unifying theory of GLMs",
+    "section": "Announcements",
+    "text": "Announcements\n\nHW 02 due Wed, Feb 07 at 11:59pm\nProject 01 presentations in class Wed, Feb 14"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#topics",
+    "href": "slides/07-glm-theory.html#topics",
+    "title": "Unifying theory of GLMs",
+    "section": "Topics",
+    "text": "Topics\n\nIdentify the components common to all generalized linear models\nFind the canonical link based on the distribution of the response variable\nProperties of GLMs\n\n\n\nNotes based on Chapter 5 Roback and Legler (2021) unless noted otherwise."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#many-models-one-family",
+    "href": "slides/07-glm-theory.html#many-models-one-family",
+    "title": "Unifying theory of GLMs",
+    "section": "Many models; one family",
+    "text": "Many models; one family\nWe have studied models for a variety of response variables\n\nLeast squares (Normal)\nLogistic (Bernoulli, Binomial, Multinomial)\nLog-linear (Poisson, Negative Binomial)\n\nThese models are all examples of generalized linear models.\nGLMs have a similar structure for their likelihoods, MLEs, variances, so we can use a generalized approach to find the model estimates and associated uncertainty."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#components-of-a-glm",
+    "href": "slides/07-glm-theory.html#components-of-a-glm",
+    "title": "Unifying theory of GLMs",
+    "section": "Components of a GLM",
+    "text": "Components of a GLM\nNelder and Wedderburn (1972) defines a broad class of models called generalized linear models that generalizes multiple linear regression. GLMs are characterized by three components:\n\n\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form (random component)\n\n\n\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\) (systematic component)\n\n\n\n3️⃣ A link function \\(g(\\theta)\\) that connects \\(\\theta\\) to \\(\\eta\\)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#exponential-family-form",
+    "href": "slides/07-glm-theory.html#exponential-family-form",
+    "title": "Unifying theory of GLMs",
+    "section": "Exponential family form",
+    "text": "Exponential family form\nSuppose a probability (mass or density) function has a parameter \\(\\theta\\). It is said to have a one-parameter exponential family form if\n\n✅ The support (set of possible values) does not depend on \\(\\theta\\), and\n✅ The probability function can be written in the following form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#mean-and-variance",
+    "href": "slides/07-glm-theory.html#mean-and-variance",
+    "title": "Unifying theory of GLMs",
+    "section": "Mean and variance",
+    "text": "Mean and variance\nExponential family form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]\nUsing this form:\n\n\\[E(Y) = -\\frac{c'(\\theta)}{b'(\\theta)} \\hspace{20mm} Var(Y) = \\frac{b''(\\theta)c'(\\theta) - c''(\\theta)b'(\\theta)}{[b'(\\theta)]^3}\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
+    "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
+    "title": "Unifying theory of GLMs",
+    "section": "Poisson in exponential family form",
+    "text": "Poisson in exponential family form\n\\[P(Y = y) = \\frac{e^{-\\lambda}\\lambda^y}{y!} \\hspace{10mm} y = 0, 1, 2, \\ldots, \\infty\\]\n\n\\[\\begin{aligned}P(Y = y) &= e^{-\\lambda}e^{y\\log(\\lambda)}e^{-\\log(y!)}\\\\\n& = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\end{aligned}\\]\n\n\nRecall the form: \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\), where the parameter \\(\\theta = \\lambda\\) for the Poisson distribution\n\n\n\n\\(a(y) = y\\)\n\\(b(\\lambda) = \\log(\\lambda)\\)\n\\(c(\\lambda) = -\\lambda\\)\n\\(d(y) = -\\log(y!)\\)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
+    "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
+    "title": "Unifying theory of GLMs",
+    "section": "Poisson in exponential family form",
+    "text": "Poisson in exponential family form\n✅ The support for the Poisson distribution is \\(y = 0, 1, 2, \\ldots, \\infty\\). This does not depend on the parameter \\(\\lambda\\).\n\n✅ The probability mass function can be written in the form \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\)\n\n\n\nThe Poisson distribution can be written in one-parameter exponential family form."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#canonical-link",
+    "href": "slides/07-glm-theory.html#canonical-link",
+    "title": "Unifying theory of GLMs",
+    "section": "Canonical link",
+    "text": "Canonical link\nSuppose there is a response variable \\(Y\\) from a distribution with parameter \\(\\theta\\) and a set of predictors that can be written as a linear combination \\(\\eta = \\beta_0 + \\sum_{j=1}^{p}\\beta_jx_j = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\n\n\nA link function, \\(g()\\), is a monotonic and differentiable function that connects \\(\\theta\\) to \\(\\eta\\)\nThe canonical link is a link function such that\n\nWhen working with a member of the one-parameter exponential family, the canonical link is \\(b(\\theta)\\)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#canonical-link-for-poisson",
+    "href": "slides/07-glm-theory.html#canonical-link-for-poisson",
+    "title": "Unifying theory of GLMs",
+    "section": "Canonical link for Poisson",
+    "text": "Canonical link for Poisson\nRecall the exponential family form:\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n\nthen the canonical link is \\(b(\\lambda) = \\log(\\lambda)\\)"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
+    "href": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
+    "title": "Unifying theory of GLMs",
+    "section": "GLM framework: Poisson response variable",
+    "text": "GLM framework: Poisson response variable\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n2️⃣ A linear combination of predictors, \\[\\eta = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]\n\n3️⃣ A function \\(g(\\lambda)\\) that connects \\(\\lambda\\) and \\(\\eta\\)\n\\[\\log(\\lambda) = \\eta =  \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models",
+    "href": "slides/07-glm-theory.html#activity-generalized-linear-models",
+    "title": "Unifying theory of GLMs",
+    "section": "Activity: Generalized linear models",
+    "text": "Activity: Generalized linear models\n\nFor your group’s distribution\n\nWrite the pmf or pdf in one-parameter exponential form.\nDescribe an example of a setting where this random variable may be used.\nIdentify the canonical link function\nCompute \\(E(Y)\\) and \\(Var(Y)\\) based on the exponential family form."
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
+    "href": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
+    "title": "Unifying theory of GLMs",
+    "section": "Activity: Generalized linear models",
+    "text": "Activity: Generalized linear models\n\nDistributions\n\nExponential\nGamma (with fixed \\(r\\))\nGeometric\nNormal (with fixed \\(\\sigma\\))\n\nSee BMLR - Section 3.6 for details on the distributions.\n\nIf your group finishes early, try completing the exercise for another distribution.\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#using-the-exponential-family-form",
+    "href": "slides/07-glm-theory.html#using-the-exponential-family-form",
+    "title": "Unifying theory of GLMs",
+    "section": "Using the exponential family form",
+    "text": "Using the exponential family form\nThe exponential family form is utilized for\n\nCalculating MLEs of coefficients (recall iteratively reweighted least squares)\nInference for coefficients\nCalculating residuals\n\nThe specific calculations are beyond the scope of this course. See Section 4.6 of Dunn, Smyth, et al. (2018) for more detail (available at Duke library)."
+  },
+  {
     "objectID": "slides/04-poisson.html#computing-set-up",
     "href": "slides/04-poisson.html#computing-set-up",
     "title": "Poisson Regression",
@@ -2175,166 +2364,5 @@
     "title": "Final project tips + resources",
     "section": "",
     "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your title\"\nauthor: \"Your names\"\nformat:\n  pdf:\n    fig-width: 7\n    fig-height: 5\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#announcements",
-    "href": "slides/07-glm-theory.html#announcements",
-    "title": "Unifying theory of GLMs",
-    "section": "Announcements",
-    "text": "Announcements\n\nHW 02 due Wed, Feb 07 at 11:59pm\nProject 01 presentations in class Wed, Feb 14"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#topics",
-    "href": "slides/07-glm-theory.html#topics",
-    "title": "Unifying theory of GLMs",
-    "section": "Topics",
-    "text": "Topics\n\nIdentify the components common to all generalized linear models\nFind the canonical link based on the distribution of the response variable\nExplain how coefficients are estimated using iteratively reweighted least squares (IRLS) and Newton Raphson"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#many-models-one-family",
-    "href": "slides/07-glm-theory.html#many-models-one-family",
-    "title": "Unifying theory of GLMs",
-    "section": "Many models; one family",
-    "text": "Many models; one family\nWe have studied models for a variety of response variables\n\nLeast squares (Normal)\nLogistic (Bernoulli, Binomial, Multinomial)\nLog-linear (Poisson, Negative Binomial)\n\nThese models are all examples of generalized linear models.\nGLMs have a similar structure for their likelihoods, MLEs, variances, so we can use a generalized approach to find the model estimates and associated uncertainty."
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#components-of-a-glm",
-    "href": "slides/07-glm-theory.html#components-of-a-glm",
-    "title": "Unifying theory of GLMs",
-    "section": "Components of a GLM",
-    "text": "Components of a GLM\nNelder and Wedderburn (1972) defines a broad class of models called generalized linear models that generalizes multiple linear regression. GLMs are characterized by three components:\n\n\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form (random component)\n\n\n\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\) (systematic component)\n\n\n\n3️⃣ A link function \\(g(\\theta)\\) that connects \\(\\theta\\) to \\(\\eta\\)"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#exponential-family-form",
-    "href": "slides/07-glm-theory.html#exponential-family-form",
-    "title": "Unifying theory of GLMs",
-    "section": "Exponential family form",
-    "text": "Exponential family form\nSuppose a probability (mass or density) function has a parameter \\(\\theta\\). It is said to have a one-parameter exponential family form if\n\n✅ The support (set of possible values) does not depend on \\(\\theta\\), and\n✅ The probability function can be written in the following form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#fytheta-eaybtheta-ctheta-dy",
-    "href": "slides/07-glm-theory.html#fytheta-eaybtheta-ctheta-dy",
-    "title": "Unifying theory of GLMs",
-    "section": "\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]",
-    "text": "\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]\nUsing this form:\n\\[E(Y) = -\\frac{c'(\\theta)}{b'(\\theta)} \\hspace{20mm} Var(Y) = \\frac{b''(\\theta)c'(\\theta) - c''(\\theta)b'(\\theta)}{[b'(\\theta)]^3}\\]"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
-    "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
-    "title": "Unifying theory of GLMs",
-    "section": "Poisson in exponential family form",
-    "text": "Poisson in exponential family form\n\\[P(Y = y) = \\frac{e^{-\\lambda}\\lambda^y}{y!} \\hspace{10mm} y = 0, 1, 2, \\ldots, \\infty\\]\n\n\\[\\begin{aligned}P(Y = y) &= e^{-\\lambda}e^{y\\log(\\lambda)}e^{-\\log(y!)}\\\\\n& = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\end{aligned}\\]\n\n\nRecall the form: \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\), where the parameter \\(\\theta = \\lambda\\) for the Poisson distribution\n\n\n\n\\(a(y) = y\\)\n\\(b(\\lambda) = \\log(\\lambda)\\)\n\\(c(\\lambda) = -\\lambda\\)\n\\(d(y) = -\\log(y!)\\)"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
-    "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
-    "title": "Unifying theory of GLMs",
-    "section": "Poisson in exponential family form",
-    "text": "Poisson in exponential family form\n✅ The support for the Poisson distribution is \\(y = 0, 1, 2, \\ldots, \\infty\\). This does not depend on the parameter \\(\\lambda\\).\n\n✅ The probability mass function can be written in the form \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\)\n\n\n\nThe Poisson distribution can be written in one-parameter exponential family form."
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#canonical-link",
-    "href": "slides/07-glm-theory.html#canonical-link",
-    "title": "Unifying theory of GLMs",
-    "section": "Canonical link",
-    "text": "Canonical link\nSuppose there is a response variable \\(Y\\) from a distribution with parameter \\(\\theta\\) and a set of predictors that can be written as a linear combination \\(\\eta = \\beta_0 + \\sum_{j=1}^{p}\\beta_jx_j = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\n\n\nA link function, \\(g()\\), is a monotonic and differentiable function that connects \\(\\theta\\) to \\(\\eta\\)\nThe canonical link is a link function such that\n\nWhen working with a member of the one-parameter exponential family, the canonical link is \\(b(\\theta)\\)"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#canonical-link-for-poisson",
-    "href": "slides/07-glm-theory.html#canonical-link-for-poisson",
-    "title": "Unifying theory of GLMs",
-    "section": "Canonical link for Poisson",
-    "text": "Canonical link for Poisson\nRecall the exponential family form:\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n\nthen the canonical link is \\(b(\\lambda) = \\log(\\lambda)\\)"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
-    "href": "slides/07-glm-theory.html#glm-framework-poisson-response-variable",
-    "title": "Unifying theory of GLMs",
-    "section": "GLM framework: Poisson response variable",
-    "text": "GLM framework: Poisson response variable\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form\n\\[P(Y = y) = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\]\n\n2️⃣ A linear combination of predictors, \\[\\eta = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]\n\n3️⃣ A function \\(g(\\lambda)\\) that connects \\(\\lambda\\) and \\(\\eta\\)\n\\[\\log(\\lambda) = \\eta =  \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\]"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#activity-identifying-canonical-link",
-    "href": "slides/07-glm-theory.html#activity-identifying-canonical-link",
-    "title": "Unifying theory of GLMs",
-    "section": "Activity: Identifying canonical link",
-    "text": "Activity: Identifying canonical link\nFor the distribution\n\nDescribe an example of a setting where this random variable may be used.\nIdentify the parameter.\nWrite the pmf or pdf in one-parameter exponential form.\nIdentify the canonical link function\nOne person from each group: Write your response on the board."
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#activity",
-    "href": "slides/07-glm-theory.html#activity",
-    "title": "Unifying theory of GLMs",
-    "section": "Activity",
-    "text": "Activity\nDistributions\n\nBinary\nExponential\nNegative binomial (with fixed \\(r\\))\nGeometric\nNormal (with fixed \\(\\sigma\\))\n\n\nIf your group finishes early, try identifying the canonical link for the other distributions.\nSee BMLR - Section 3.6 for details on the distributions.\n\n\n\n\n−+\n10:00"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#data-noisy-miners",
-    "href": "slides/07-glm-theory.html#data-noisy-miners",
-    "title": "Unifying theory of GLMs",
-    "section": "Data: Noisy Miners",
-    "text": "Data: Noisy Miners\nThe dataset nminer contains information about the number of noisy miners (small Australian bird) detected in two woodland patches within the Wimmera Plains of Victoria, Australia. It was obtained from the GLMsdata R package. We will use the following variables:\n\nMinerab: The number of noisy miners (abundance) observed in three 20 minute surveys\nEucs: The number of eucalyptus trees in each 2 hectare area (about 4.94 acres)"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#noisy-miner-model",
-    "href": "slides/07-glm-theory.html#noisy-miner-model",
-    "title": "Unifying theory of GLMs",
-    "section": "Noisy Miner Model",
-    "text": "Noisy Miner Model\n\n\n\n\n\nEucs\nMinerab\n\n\n\n\n2\n0\n\n\n10\n0\n\n\n16\n3\n\n\n20\n2\n\n\n19\n8\n\n\n\n\n\nOur goal is to use a Poisson regression model to predict the number of noisy miners observed in three 20 minute surveys based on the number of eucalyptus trees.\n\\[\\log(\\lambda_{Minearab}) = \\beta_0 + \\beta_1 ~ Euc\\] .center[ What are the best estimates of \\(\\beta_0\\) and \\(\\beta_1\\)?]"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#iteratively-reweighted-least-squares-iwls-1",
-    "href": "slides/07-glm-theory.html#iteratively-reweighted-least-squares-iwls-1",
-    "title": "Unifying theory of GLMs",
-    "section": "Iteratively reweighted least squares (IWLS)",
-    "text": "Iteratively reweighted least squares (IWLS)\n\nThe estimates of \\(\\beta_0\\) and \\(\\beta_1\\) are found using maximum likelihood estimation.\nIteratively reweighted least-squares (IWLS) is used to find the MLEs\n\nNelder and Wedderburn (1972) show that under certain specifications of the weights and a modified response variable, the estimates found using IWLS are equivalent to the MLEs."
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#iwls-set-up",
-    "href": "slides/07-glm-theory.html#iwls-set-up",
-    "title": "Unifying theory of GLMs",
-    "section": "IWLS Set up",
-    "text": "IWLS Set up\nWorking response: Modified response variable at each step of the iteration.\n\\[z_i = g(\\theta) + g'(\\theta)(y_i - \\theta_i)\\]\nFor Poisson regression, this is\n\\[z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\]\n\nWorking Weights: Weights applied to the observations at each step of the iteration\n\\[W_i = \\frac{\\theta^2}{Var(Y)} \\hspace{5mm} \\Rightarrow \\hspace{5mm}  W_i = \\frac{\\lambda^2}{\\lambda} =  \\lambda \\text{ for Poisson regression}\\]"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#iwls-procedure",
-    "href": "slides/07-glm-theory.html#iwls-procedure",
-    "title": "Unifying theory of GLMs",
-    "section": "IWLS procedure",
-    "text": "IWLS procedure\n\nFind initial starting values \\(\\hat{\\theta}_i\\).\nCalculate the working response values \\(z_i\\).\nCalculate the working weights \\(W_i\\).\nFind the coefficient estimates of the weighted least squares model.\n\n\\[z_i = \\beta_0 + \\beta_1 x \\hspace{5mm} \\text{ with weights }W_i\\]\nThe estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are the estimates for the model coefficients.\n\nUse \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) to calculate updated values of \\(\\hat{\\theta}_i\\) and repeat steps 2 - 4 until convergence."
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#newton-raphson",
-    "href": "slides/07-glm-theory.html#newton-raphson",
-    "title": "Unifying theory of GLMs",
-    "section": "Newton Raphson",
-    "text": "Newton Raphson"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#acknowledgements",
-    "href": "slides/07-glm-theory.html#acknowledgements",
-    "title": "Unifying theory of GLMs",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nThese slides are based on content in\n\nBMLR: Chapter 5 - Generalized Linear Models: A Unifying Theory\nNelder, J. A., & Wedderburn, R. W. (1972). Generalized linear models. Journal of the Royal Statistical Society: Series A (General), 135(3), 370-384.\nGeneralized Linear Models with Examples in R\n\nChapter 5 - Generalized Linear Models: Structure\nChapter 6 - Generalized Linear Models: Estimation"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#mean-and-variance",
-    "href": "slides/07-glm-theory.html#mean-and-variance",
-    "title": "Unifying theory of GLMs",
-    "section": "Mean and variance",
-    "text": "Mean and variance\nExponential family form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]\nUsing this form:\n\n\\[E(Y) = -\\frac{c'(\\theta)}{b'(\\theta)} \\hspace{20mm} Var(Y) = \\frac{b''(\\theta)c'(\\theta) - c''(\\theta)b'(\\theta)}{[b'(\\theta)]^3}\\]"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models",
-    "href": "slides/07-glm-theory.html#activity-generalized-linear-models",
-    "title": "Unifying theory of GLMs",
-    "section": "Activity: Generalized linear models",
-    "text": "Activity: Generalized linear models\nUPDATE INSTRUCTIONS!!\n\nFor your group’s distribution\n\nDescribe an example of a setting where this random variable may be used.\nIdentify the parameter.\nWrite the pmf or pdf in one-parameter exponential form.\nIdentify the canonical link function\nFind the mean and variance"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
-    "href": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
-    "title": "Unifying theory of GLMs",
-    "section": "Activity: Generalized linear models",
-    "text": "Activity: Generalized linear models\n\nDistributions\n\nExponential\nGamma (with fixed \\(r\\))\nGeometric\nNormal (with fixed \\(\\sigma\\))\n\n\n\nIf your group finishes early, try identifying the canonical link for the other distributions.\nSee BMLR - Section 3.6 for details on the distributions.\n\n\n\n\n−+\n10:00"
   }
 ]

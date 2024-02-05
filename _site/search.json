@@ -1796,7 +1796,7 @@
     "href": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
     "title": "Unifying theory of GLMs",
     "section": "Activity: Generalized linear models",
-    "text": "Activity: Generalized linear models\n\nDistributions\n\nExponential\nGamma (with fixed \\(r\\))\nGeometric\nNormal (with fixed \\(\\sigma\\))\n\nSee BMLR - Section 3.6 for details on the distributions.\n\nIf your group finishes early, try completing the exercise for another distribution.\n\n\n\n−+\n10:00"
+    "text": "Activity: Generalized linear models\n\nDistributions\n\nExponential\nGamma (with fixed \\(r\\))\nGeometric\nBinary\n\nSee BMLR - Section 3.6 for details on the distributions.\n\nIf your group finishes early, try completing the exercise for another distribution.\n\n\n\n−+\n10:00"
   },
   {
     "objectID": "slides/07-glm-theory.html#using-the-exponential-family-form",

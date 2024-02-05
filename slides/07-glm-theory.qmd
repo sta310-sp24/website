@@ -226,7 +226,7 @@ For your group's distribution
 1.  Exponential
 2.  Gamma (with fixed $r$)
 3.  Geometric
-4.  Normal (with fixed $\sigma$)
+4.  Binary
 
 See [BMLR - Section 3.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-distthry.html#additional-resources) for details on the distributions.
 :::

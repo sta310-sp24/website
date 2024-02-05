@@ -67,6 +67,7 @@ Notes based on Chapter 6 @roback2021beyond unless noted otherwise.
 
 Logistic regression is used to analyze data with two types of responses:
 
+::: incremental
 -   **Binary**: These responses take on two values success $(Y = 1)$ or failure $(Y = 0)$, yes $(Y = 1)$ or no $(Y = 0)$, etc.
 
 $$P(Y = y) = p^y(1-p)^{1-y} \hspace{10mm} y = 0, 1$$
@@ -74,6 +75,7 @@ $$P(Y = y) = p^y(1-p)^{1-y} \hspace{10mm} y = 0, 1$$
 -   **Binomial**: Number of successes in a Bernoulli process, $n$ independent trials with a constant probability of success $p$.
 
 $$P(Y = y) = {n \choose y}p^{y}(1-p)^{n - y} \hspace{10mm} y = 0, 1, \ldots, n$$
+:::
 
 . . .
 
@@ -96,7 +98,7 @@ countdown(minutes = 3, seconds = 0,
           margin = "1.25%")
 ```
 
-## Logistic regression model  {.midi}
+## Logistic regression model {.midi}
 
 $$
 \log\Big(\frac{p}{1-p}\Big) = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_px_p
@@ -171,13 +173,19 @@ The following assumptions need to be satisfied to use logistic regression to mak
 
 `r emo::ji("one")` $\hspace{0.5mm}$ **Binary response**: The response is dichotomous (has two possible outcomes) or is the sum of dichotomous responses
 
+<br>
+
 . . .
 
 `r emo::ji("two")` $\hspace{0.5mm}$ **Independence**: The observations must be independent of one another
 
+<br>
+
 . . .
 
 `r emo::ji("three")` $\hspace{0.5mm}$ **Variance structure**: Variance of a binomial random variable is $np(1-p)$ $(n = 1 \text{ for Bernoulli})$ , so the variability is highest when $p = 0.5$
+
+<br>
 
 . . .
 
@@ -191,7 +199,7 @@ Researchers at Wollo Univeristy in Ethiopia conducted a study in July and August
 
 They were particularly interested in the understanding implementation of prevention practices at food establishments, given the workers' increased risk due to daily contact with customers.
 
-## The data {.midi}
+## The data
 
 *"An institution-based cross-sectional study was conducted among* <b>*422 food handlers in Dessie City and Kombolcha Town food and drink establishments in July and August 2020.*</b> *The study participants were selected using a* <b>*simple random sampling*</b> *technique. Data were collected by trained data collectors using a pretested structured questionnaire and an on-the-spot observational checklist."*
 

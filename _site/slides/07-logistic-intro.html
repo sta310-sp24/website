@@ -379,14 +379,16 @@ Prof.&nbsp;Maria Tackett
 <section id="bernoulli-binomial-random-variables" class="slide level2 small">
 <h2>Bernoulli + Binomial random variables</h2>
 <p>Logistic regression is used to analyze data with two types of responses:</p>
+<div>
 <ul>
-<li><strong>Binary</strong>: These responses take on two values success <span class="math inline">\((Y = 1)\)</span> or failure <span class="math inline">\((Y = 0)\)</span>, yes <span class="math inline">\((Y = 1)\)</span> or no <span class="math inline">\((Y = 0)\)</span>, etc.</li>
+<li class="fragment"><strong>Binary</strong>: These responses take on two values success <span class="math inline">\((Y = 1)\)</span> or failure <span class="math inline">\((Y = 0)\)</span>, yes <span class="math inline">\((Y = 1)\)</span> or no <span class="math inline">\((Y = 0)\)</span>, etc.</li>
 </ul>
 <p><span class="math display">\[P(Y = y) = p^y(1-p)^{1-y} \hspace{10mm} y = 0, 1\]</span></p>
 <ul>
-<li><strong>Binomial</strong>: Number of successes in a Bernoulli process, <span class="math inline">\(n\)</span> independent trials with a constant probability of success <span class="math inline">\(p\)</span>.</li>
+<li class="fragment"><strong>Binomial</strong>: Number of successes in a Bernoulli process, <span class="math inline">\(n\)</span> independent trials with a constant probability of success <span class="math inline">\(p\)</span>.</li>
 </ul>
 <p><span class="math display">\[P(Y = y) = {n \choose y}p^{y}(1-p)^{n - y} \hspace{10mm} y = 0, 1, \ldots, n\]</span></p>
+</div>
 <div class="fragment">
 <p>In both instances, the goal is to model <span class="math inline">\(p\)</span> the probability of success.</p>
 </div>
@@ -404,7 +406,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_05115268" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_f95fc003" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -451,11 +453,14 @@ Prof.&nbsp;Maria Tackett
 <h2>Assumptions for logistic regression</h2>
 <p>The following assumptions need to be satisfied to use logistic regression to make inferences</p>
 <p>1️⃣ <span class="math inline">\(\hspace{0.5mm}\)</span> <strong>Binary response</strong>: The response is dichotomous (has two possible outcomes) or is the sum of dichotomous responses</p>
+<p><br></p>
 <div class="fragment">
 <p>2️⃣ <span class="math inline">\(\hspace{0.5mm}\)</span> <strong>Independence</strong>: The observations must be independent of one another</p>
+<p><br></p>
 </div>
 <div class="fragment">
 <p>3️⃣ <span class="math inline">\(\hspace{0.5mm}\)</span> <strong>Variance structure</strong>: Variance of a binomial random variable is <span class="math inline">\(np(1-p)\)</span> <span class="math inline">\((n = 1 \text{ for Bernoulli})\)</span> , so the variability is highest when <span class="math inline">\(p = 0.5\)</span></p>
+<p><br></p>
 </div>
 <div class="fragment">
 <p>4️⃣ <span class="math inline">\(\hspace{0.5mm}\)</span> <strong>Linearity</strong>: The log of the odds ratio, <span class="math inline">\(\log\big(\frac{p}{1-p}\big)\)</span>, must be a linear function of the predictors <span class="math inline">\(x_1, \ldots, x_p\)</span></p>
@@ -467,7 +472,7 @@ Prof.&nbsp;Maria Tackett
 <p><br></p>
 <p>They were particularly interested in the understanding implementation of prevention practices at food establishments, given the workers’ increased risk due to daily contact with customers.</p>
 </section>
-<section id="the-data" class="slide level2 midi">
+<section id="the-data" class="slide level2">
 <h2>The data</h2>
 <p><em>“An institution-based cross-sectional study was conducted among</em> <b><em>422 food handlers in Dessie City and Kombolcha Town food and drink establishments in July and August 2020.</em></b> <em>The study participants were selected using a</em> <b><em>simple random sampling</em></b> <em>technique. Data were collected by trained data collectors using a pretested structured questionnaire and an on-the-spot observational checklist.”</em></p>
 </section>
@@ -494,7 +499,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d8afc1e5" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_08343ef6" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>

@@ -52,7 +52,11 @@ library(viridis)
 
 -   HW 02 due Wed, Feb 07 at 11:59pm
 
--   Project 01 presentations in class Wed, Feb 14
+-   Project 01
+
+    -   presentations in class Wed, Feb 14
+
+    -   write up due Thu, Feb 15 at noon
 
 ## Topics
 
@@ -102,7 +106,7 @@ GLMs have a similar structure for their likelihoods, MLEs, variances, so we can 
 
 `r emo::ji("three")` A **link** function $g(\theta)$ that connects $\theta$ to $\eta$
 
-## Exponential family form
+## One-parameter exponential family form
 
 Suppose a probability (mass or density) function has a parameter $\theta$. It is said to have a **one-parameter exponential family form** if
 
@@ -116,7 +120,7 @@ $$f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$$
 
 ## Mean and variance
 
-**Exponential family form**
+**On-parameter exponential family form**
 
 $$f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}$$
 
@@ -126,7 +130,7 @@ Using this form:
 
 $$E(Y) = -\frac{c'(\theta)}{b'(\theta)} \hspace{20mm} Var(Y) = \frac{b''(\theta)c'(\theta) - c''(\theta)b'(\theta)}{[b'(\theta)]^3}$$
 
-## Poisson in exponential family form {.midi}
+## Poisson in one-parameter exponential family form {.midi}
 
 $$P(Y = y) = \frac{e^{-\lambda}\lambda^y}{y!} \hspace{10mm} y = 0, 1, 2, \ldots, \infty$$
 
@@ -168,9 +172,9 @@ Suppose there is a response variable $Y$ from a distribution with parameter $\th
 
 -   A **link function**, $g()$, is a monotonic and differentiable function that connects $\theta$ to $\eta$
 
--   The **canonical link** is a link function such that
+-   When working with a member of the one-parameter exponential family, $b(\theta)$ is called the **canonical link**
 
-    -   When working with a member of the one-parameter exponential family, the canonical link is $b(\theta)$
+    -   Most commonly used link function
 
 ## Canonical link for Poisson
 
@@ -209,7 +213,7 @@ For your group's distribution
 
 -   Describe an example of a setting where this random variable may be used.
 
--   Identify the canonical link function
+-   Identify the canonical link function.
 
 -   Compute $E(Y)$ and $Var(Y)$ based on the exponential family form.
 :::
@@ -235,15 +239,15 @@ countdown(minutes = 10, seconds = 0,
           margin = "5%")
 ```
 
-## Using the exponential family form 
+## Using the exponential family form
 
-The exponential family form is utilized for
+The one-parameter exponential family form is utilized for
 
 -   Calculating MLEs of coefficients (recall iteratively reweighted least squares)
 
 -   Inference for coefficients
 
--   Calculating residuals
+-   Likelihood ratio and drop-in-deviance tests
 
 The specific calculations are beyond the scope of this course. See Section 4.6 of @dunn2018generalized for more detail (available at Duke library).
 

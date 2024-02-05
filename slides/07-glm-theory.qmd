@@ -214,8 +214,6 @@ For your group's distribution
 -   Describe an example of a setting where this random variable may be used.
 
 -   Identify the canonical link function.
-
--   Compute $E(Y)$ and $Var(Y)$ based on the exponential family form.
 :::
 
 ## Activity: Generalized linear models {.midi}
@@ -235,7 +233,7 @@ If your group finishes early, try completing the exercise for another distributi
 
 ```{r echo = F}
 library(countdown)
-countdown(minutes = 10, seconds = 0,
+countdown(minutes = 8, seconds = 0,
           margin = "5%")
 ```
 

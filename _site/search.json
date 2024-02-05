@@ -1789,14 +1789,14 @@
     "href": "slides/07-glm-theory.html#activity-generalized-linear-models",
     "title": "Unifying theory of GLMs",
     "section": "Activity: Generalized linear models",
-    "text": "Activity: Generalized linear models\n\nFor your group’s distribution\n\nWrite the pmf or pdf in one-parameter exponential form.\nDescribe an example of a setting where this random variable may be used.\nIdentify the canonical link function.\nCompute \\(E(Y)\\) and \\(Var(Y)\\) based on the exponential family form."
+    "text": "Activity: Generalized linear models\n\nFor your group’s distribution\n\nWrite the pmf or pdf in one-parameter exponential form.\nDescribe an example of a setting where this random variable may be used.\nIdentify the canonical link function."
   },
   {
     "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
     "href": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
     "title": "Unifying theory of GLMs",
     "section": "Activity: Generalized linear models",
-    "text": "Activity: Generalized linear models\n\nDistributions\n\nExponential\nGamma (with fixed \\(r\\))\nGeometric\nBinary\n\nSee BMLR - Section 3.6 for details on the distributions.\n\nIf your group finishes early, try completing the exercise for another distribution.\n\n\n\n−+\n10:00"
+    "text": "Activity: Generalized linear models\n\nDistributions\n\nExponential\nGamma (with fixed \\(r\\))\nGeometric\nBinary\n\nSee BMLR - Section 3.6 for details on the distributions.\n\nIf your group finishes early, try completing the exercise for another distribution.\n\n\n\n−+\n08:00"
   },
   {
     "objectID": "slides/07-glm-theory.html#using-the-exponential-family-form",

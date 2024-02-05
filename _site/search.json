@@ -1943,7 +1943,7 @@
     "href": "slides/04-poisson.html#log-likelihood-1",
     "title": "Poisson Regression",
     "section": "Log-likelihood",
-    "text": "Log-likelihood\nBecause we’re fitting a Poisson regression model, we know\n\\[\n\\log(\\lambda_i) = \\beta_0 + \\beta_1~age_i \\hspace{6mm} and \\hspace{6mm} \\lambda_i = e^{\\beta_0 + \\beta_1~age_i}\n\\]\n\nPlugging these formulas and the respective ages into \\(logL\\), we have\n\\[\\begin{align}\nlogL \\propto& - \\e^{\\beta_0 + \\beta_1*65} + 0*(\\beta_0 + \\beta_1*65)\\\\\n&- \\e^{\\beta_0 + \\beta_1*75} + 3*(\\beta_0 + \\beta_1*75)\\\\\n&- \\e^{\\beta_0 + \\beta_1*54} + 4*(\\beta_0 + \\beta_1*54)\\\\\n& -\\e^{\\beta_0 + \\beta_1*49}  + 3*(\\beta_0 + \\beta_1*49) \\\\\n&-\\e^{\\beta_0 + \\beta_1*74} + 3*(\\beta_0 + \\beta_1*74)\n\\end{align}\\]"
+    "text": "Log-likelihood\nBecause we’re fitting a Poisson regression model, we know\n\\[\n\\log(\\lambda_i) = \\beta_0 + \\beta_1~age_i \\hspace{6mm} and \\hspace{6mm} \\lambda_i = e^{\\beta_0 + \\beta_1~age_i}\n\\]\n\nPlugging these formulas and the respective ages into \\(logL\\), we have\n\\[\\begin{align}\nlogL \\propto& - \\e^{\\beta_0 + \\beta_1*65} + 0*(\\beta_0 + \\beta_1*65)\\\\\n&- e^{\\beta_0 + \\beta_1*75} + 3*(\\beta_0 + \\beta_1*75)\\\\\n&- e^{\\beta_0 + \\beta_1*54} + 4*(\\beta_0 + \\beta_1*54)\\\\\n& -e^{\\beta_0 + \\beta_1*49}  + 3*(\\beta_0 + \\beta_1*49) \\\\\n&-e^{\\beta_0 + \\beta_1*74} + 3*(\\beta_0 + \\beta_1*74)\n\\end{align}\\]"
   },
   {
     "objectID": "slides/04-poisson.html#log-likelihood-2",
@@ -1964,7 +1964,7 @@
     "href": "slides/04-poisson.html#irls-procedure",
     "title": "Poisson Regression",
     "section": "IRLS procedure",
-    "text": "IRLS procedure\n\nFind initial starting values \\(\\hat{\\theta}_i\\), the model parameter ( \\(\\hat{\\theta}_i = \\hat{\\lambda}_i\\) in the case of Poisson regression)\nCalculate the working response values \\(z_i\\).\nCalculate the working weights \\(W_i\\).\nFind the coefficient estimates of the weighted least squares model.\n\n\\[z_i = \\beta_0 + \\beta_1 x \\hspace{5mm} \\text{ with weights }W_i\\]\nThe estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are the estimates for the model coefficients.\n\nUse \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) to calculate updated values of \\(\\hat{\\theta}_i\\) and repeat steps 2 - 4 until convergence.\n\n\n\nSteps from Dunn, Smyth, et al. (2018)."
+    "text": "IRLS procedure\n\nFind initial starting values \\(\\hat{\\theta}_i\\), the model parameter ( \\(\\hat{\\theta}_i = \\hat{\\lambda}_i\\)) in the case of Poisson regression)\nCalculate the working response values \\(z_i\\).\nCalculate the working weights \\(W_i\\).\nFind the coefficient estimates of the weighted least squares model.\n\n\\[z_i = \\beta_0 + \\beta_1 x \\hspace{5mm} \\text{ with weights }W_i\\]\nThe estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are the estimates for the model coefficients.\n\nUse \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) to calculate updated values of \\(\\hat{\\theta}_i\\) and repeat steps 2 - 4 until convergence.\n\n\n\nSteps from Dunn, Smyth, et al. (2018)."
   },
   {
     "objectID": "slides/04-poisson.html#irls-set-up",

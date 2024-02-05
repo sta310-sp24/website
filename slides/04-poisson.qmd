@@ -481,10 +481,10 @@ Plugging these formulas and the respective ages into $logL$, we have
 ```{=tex}
 \begin{align}
 logL \propto& - \e^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\ 
-&- \e^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\ 
-&- \e^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\ 
-& -\e^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
-&-\e^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74) 
+&- e^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\ 
+&- e^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\ 
+& -e^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
+&-e^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74) 
 \end{align}
 ```
 ## Log-likelihood
@@ -507,7 +507,7 @@ Can use different numerical methods to try different values of $\beta_0$ and $\b
 
 ## IRLS procedure {.midi}
 
-1.  Find initial starting values $\hat{\theta}_i$, the model parameter ( $\hat{\theta}_i = \hat{\lambda}_i$ in the case of Poisson regression)
+1.  Find initial starting values $\hat{\theta}_i$, the model parameter ( $\hat{\theta}_i = \hat{\lambda}_i$) in the case of Poisson regression)
 
 2.  Calculate the working response values $z_i$.
 

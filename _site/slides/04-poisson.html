@@ -990,10 +990,10 @@ logL =&amp; -\lambda_1 + 0\log(\lambda_1) - \lambda_2 + 3\log(\lambda_2) - \lamb
 <p>Plugging these formulas and the respective ages into <span class="math inline">\(logL\)</span>, we have</p>
 <span class="math display">\[\begin{align}
 logL \propto&amp; - \e^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\
-&amp;- \e^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\
-&amp;- \e^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\
-&amp; -\e^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
-&amp;-\e^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74)
+&amp;- e^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\
+&amp;- e^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\
+&amp; -e^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
+&amp;-e^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74)
 \end{align}\]</span>
 </div>
 </section>
@@ -1017,7 +1017,7 @@ logL \propto \sum_{i=1}^{1500} -e^{\beta_0 + \beta_1age_i} + total_i (\beta_0 + 
 <section id="irls-procedure" class="slide level2 midi">
 <h2>IRLS procedure</h2>
 <ol type="1">
-<li><p>Find initial starting values <span class="math inline">\(\hat{\theta}_i\)</span>, the model parameter ( <span class="math inline">\(\hat{\theta}_i = \hat{\lambda}_i\)</span> in the case of Poisson regression)</p></li>
+<li><p>Find initial starting values <span class="math inline">\(\hat{\theta}_i\)</span>, the model parameter ( <span class="math inline">\(\hat{\theta}_i = \hat{\lambda}_i\)</span>) in the case of Poisson regression)</p></li>
 <li><p>Calculate the working response values <span class="math inline">\(z_i\)</span>.</p></li>
 <li><p>Calculate the working weights <span class="math inline">\(W_i\)</span>.</p></li>
 <li><p>Find the coefficient estimates of the weighted least squares model.</p></li>

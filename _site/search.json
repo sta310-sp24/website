@@ -676,7 +676,7 @@
     "href": "slides/07-logistic-intro.html#bernoulli-binomial-random-variables",
     "title": "Logistic regression",
     "section": "Bernoulli + Binomial random variables",
-    "text": "Bernoulli + Binomial random variables\nLogistic regression is used to analyze data with two types of responses:\n\nBinary: These responses take on two values success \\((Y = 1)\\) or failure \\((Y = 0)\\), yes \\((Y = 1)\\) or no \\((Y = 0)\\), etc.\n\n\\[P(Y = y) = p^y(1-p)^{1-y} \\hspace{10mm} y = 0, 1\\]\n\nBinomial: Number of successes in a Bernoulli process, \\(n\\) independent trials with a constant probability of success \\(p\\).\n\n\\[P(Y = y) = {n \\choose y}p^{y}(1-p)^{n - y} \\hspace{10mm} y = 0, 1, \\ldots, n\\]\n\nIn both instances, the goal is to model \\(p\\) the probability of success."
+    "text": "Bernoulli + Binomial random variables\nLogistic regression is used to analyze data with two types of responses:\n\n\nBinary: These responses take on two values success \\((Y = 1)\\) or failure \\((Y = 0)\\), yes \\((Y = 1)\\) or no \\((Y = 0)\\), etc.\n\n\\[P(Y = y) = p^y(1-p)^{1-y} \\hspace{10mm} y = 0, 1\\]\n\nBinomial: Number of successes in a Bernoulli process, \\(n\\) independent trials with a constant probability of success \\(p\\).\n\n\\[P(Y = y) = {n \\choose y}p^{y}(1-p)^{n - y} \\hspace{10mm} y = 0, 1, \\ldots, n\\]\n\n\nIn both instances, the goal is to model \\(p\\) the probability of success."
   },
   {
     "objectID": "slides/07-logistic-intro.html#binary-vs.-binomial-data",
@@ -711,7 +711,7 @@
     "href": "slides/07-logistic-intro.html#assumptions-for-logistic-regression",
     "title": "Logistic regression",
     "section": "Assumptions for logistic regression",
-    "text": "Assumptions for logistic regression\nThe following assumptions need to be satisfied to use logistic regression to make inferences\n1️⃣ \\(\\hspace{0.5mm}\\) Binary response: The response is dichotomous (has two possible outcomes) or is the sum of dichotomous responses\n\n2️⃣ \\(\\hspace{0.5mm}\\) Independence: The observations must be independent of one another\n\n\n3️⃣ \\(\\hspace{0.5mm}\\) Variance structure: Variance of a binomial random variable is \\(np(1-p)\\) \\((n = 1 \\text{ for Bernoulli})\\) , so the variability is highest when \\(p = 0.5\\)\n\n\n4️⃣ \\(\\hspace{0.5mm}\\) Linearity: The log of the odds ratio, \\(\\log\\big(\\frac{p}{1-p}\\big)\\), must be a linear function of the predictors \\(x_1, \\ldots, x_p\\)"
+    "text": "Assumptions for logistic regression\nThe following assumptions need to be satisfied to use logistic regression to make inferences\n1️⃣ \\(\\hspace{0.5mm}\\) Binary response: The response is dichotomous (has two possible outcomes) or is the sum of dichotomous responses\n\n\n2️⃣ \\(\\hspace{0.5mm}\\) Independence: The observations must be independent of one another\n\n\n\n3️⃣ \\(\\hspace{0.5mm}\\) Variance structure: Variance of a binomial random variable is \\(np(1-p)\\) \\((n = 1 \\text{ for Bernoulli})\\) , so the variability is highest when \\(p = 0.5\\)\n\n\n\n4️⃣ \\(\\hspace{0.5mm}\\) Linearity: The log of the odds ratio, \\(\\log\\big(\\frac{p}{1-p}\\big)\\), must be a linear function of the predictors \\(x_1, \\ldots, x_p\\)"
   },
   {
     "objectID": "slides/07-logistic-intro.html#covid-19-infection-prevention-practices-at-food-establishments",
@@ -1712,7 +1712,7 @@
     "href": "slides/07-glm-theory.html#announcements",
     "title": "Unifying theory of GLMs",
     "section": "Announcements",
-    "text": "Announcements\n\nHW 02 due Wed, Feb 07 at 11:59pm\nProject 01 presentations in class Wed, Feb 14"
+    "text": "Announcements\n\nHW 02 due Wed, Feb 07 at 11:59pm\nProject 01\n\npresentations in class Wed, Feb 14\nwrite up due Thu, Feb 15 at noon"
   },
   {
     "objectID": "slides/07-glm-theory.html#topics",
@@ -1736,29 +1736,29 @@
     "text": "Components of a GLM\nNelder and Wedderburn (1972) defines a broad class of models called generalized linear models that generalizes multiple linear regression. GLMs are characterized by three components:\n\n\n1️⃣ Response variable with parameter \\(\\theta\\) whose probability function can be written in exponential family form (random component)\n\n\n\n2️⃣ A linear combination of predictors, \\(\\eta = \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\) (systematic component)\n\n\n\n3️⃣ A link function \\(g(\\theta)\\) that connects \\(\\theta\\) to \\(\\eta\\)"
   },
   {
-    "objectID": "slides/07-glm-theory.html#exponential-family-form",
-    "href": "slides/07-glm-theory.html#exponential-family-form",
+    "objectID": "slides/07-glm-theory.html#one-parameter-exponential-family-form",
+    "href": "slides/07-glm-theory.html#one-parameter-exponential-family-form",
     "title": "Unifying theory of GLMs",
-    "section": "Exponential family form",
-    "text": "Exponential family form\nSuppose a probability (mass or density) function has a parameter \\(\\theta\\). It is said to have a one-parameter exponential family form if\n\n✅ The support (set of possible values) does not depend on \\(\\theta\\), and\n✅ The probability function can be written in the following form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]"
+    "section": "One-parameter exponential family form",
+    "text": "One-parameter exponential family form\nSuppose a probability (mass or density) function has a parameter \\(\\theta\\). It is said to have a one-parameter exponential family form if\n\n✅ The support (set of possible values) does not depend on \\(\\theta\\), and\n✅ The probability function can be written in the following form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]"
   },
   {
     "objectID": "slides/07-glm-theory.html#mean-and-variance",
     "href": "slides/07-glm-theory.html#mean-and-variance",
     "title": "Unifying theory of GLMs",
     "section": "Mean and variance",
-    "text": "Mean and variance\nExponential family form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]\nUsing this form:\n\n\\[E(Y) = -\\frac{c'(\\theta)}{b'(\\theta)} \\hspace{20mm} Var(Y) = \\frac{b''(\\theta)c'(\\theta) - c''(\\theta)b'(\\theta)}{[b'(\\theta)]^3}\\]"
+    "text": "Mean and variance\nOn-parameter exponential family form\n\\[f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\]\nUsing this form:\n\n\\[E(Y) = -\\frac{c'(\\theta)}{b'(\\theta)} \\hspace{20mm} Var(Y) = \\frac{b''(\\theta)c'(\\theta) - c''(\\theta)b'(\\theta)}{[b'(\\theta)]^3}\\]"
+  },
+  {
+    "objectID": "slides/07-glm-theory.html#poisson-in-one-parameter-exponential-family-form",
+    "href": "slides/07-glm-theory.html#poisson-in-one-parameter-exponential-family-form",
+    "title": "Unifying theory of GLMs",
+    "section": "Poisson in one-parameter exponential family form",
+    "text": "Poisson in one-parameter exponential family form\n\\[P(Y = y) = \\frac{e^{-\\lambda}\\lambda^y}{y!} \\hspace{10mm} y = 0, 1, 2, \\ldots, \\infty\\]\n\n\\[\\begin{aligned}P(Y = y) &= e^{-\\lambda}e^{y\\log(\\lambda)}e^{-\\log(y!)}\\\\\n& = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\end{aligned}\\]\n\n\nRecall the form: \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\), where the parameter \\(\\theta = \\lambda\\) for the Poisson distribution\n\n\n\n\\(a(y) = y\\)\n\\(b(\\lambda) = \\log(\\lambda)\\)\n\\(c(\\lambda) = -\\lambda\\)\n\\(d(y) = -\\log(y!)\\)"
   },
   {
     "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
     "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form",
-    "title": "Unifying theory of GLMs",
-    "section": "Poisson in exponential family form",
-    "text": "Poisson in exponential family form\n\\[P(Y = y) = \\frac{e^{-\\lambda}\\lambda^y}{y!} \\hspace{10mm} y = 0, 1, 2, \\ldots, \\infty\\]\n\n\\[\\begin{aligned}P(Y = y) &= e^{-\\lambda}e^{y\\log(\\lambda)}e^{-\\log(y!)}\\\\\n& = e^{y\\log(\\lambda) - \\lambda - \\log(y!)}\\end{aligned}\\]\n\n\nRecall the form: \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\), where the parameter \\(\\theta = \\lambda\\) for the Poisson distribution\n\n\n\n\\(a(y) = y\\)\n\\(b(\\lambda) = \\log(\\lambda)\\)\n\\(c(\\lambda) = -\\lambda\\)\n\\(d(y) = -\\log(y!)\\)"
-  },
-  {
-    "objectID": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
-    "href": "slides/07-glm-theory.html#poisson-in-exponential-family-form-1",
     "title": "Unifying theory of GLMs",
     "section": "Poisson in exponential family form",
     "text": "Poisson in exponential family form\n✅ The support for the Poisson distribution is \\(y = 0, 1, 2, \\ldots, \\infty\\). This does not depend on the parameter \\(\\lambda\\).\n\n✅ The probability mass function can be written in the form \\(f(y;\\theta) = e^{[a(y)b(\\theta) + c(\\theta) + d(y)]}\\)\n\n\n\nThe Poisson distribution can be written in one-parameter exponential family form."
@@ -1768,7 +1768,7 @@
     "href": "slides/07-glm-theory.html#canonical-link",
     "title": "Unifying theory of GLMs",
     "section": "Canonical link",
-    "text": "Canonical link\nSuppose there is a response variable \\(Y\\) from a distribution with parameter \\(\\theta\\) and a set of predictors that can be written as a linear combination \\(\\eta = \\beta_0 + \\sum_{j=1}^{p}\\beta_jx_j = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\n\n\nA link function, \\(g()\\), is a monotonic and differentiable function that connects \\(\\theta\\) to \\(\\eta\\)\nThe canonical link is a link function such that\n\nWhen working with a member of the one-parameter exponential family, the canonical link is \\(b(\\theta)\\)"
+    "text": "Canonical link\nSuppose there is a response variable \\(Y\\) from a distribution with parameter \\(\\theta\\) and a set of predictors that can be written as a linear combination \\(\\eta = \\beta_0 + \\sum_{j=1}^{p}\\beta_jx_j = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_p x_p\\)\n\n\nA link function, \\(g()\\), is a monotonic and differentiable function that connects \\(\\theta\\) to \\(\\eta\\)\nWhen working with a member of the one-parameter exponential family, \\(b(\\theta)\\) is called the canonical link\n\nMost commonly used link function"
   },
   {
     "objectID": "slides/07-glm-theory.html#canonical-link-for-poisson",
@@ -1789,7 +1789,7 @@
     "href": "slides/07-glm-theory.html#activity-generalized-linear-models",
     "title": "Unifying theory of GLMs",
     "section": "Activity: Generalized linear models",
-    "text": "Activity: Generalized linear models\n\nFor your group’s distribution\n\nWrite the pmf or pdf in one-parameter exponential form.\nDescribe an example of a setting where this random variable may be used.\nIdentify the canonical link function\nCompute \\(E(Y)\\) and \\(Var(Y)\\) based on the exponential family form."
+    "text": "Activity: Generalized linear models\n\nFor your group’s distribution\n\nWrite the pmf or pdf in one-parameter exponential form.\nDescribe an example of a setting where this random variable may be used.\nIdentify the canonical link function.\nCompute \\(E(Y)\\) and \\(Var(Y)\\) based on the exponential family form."
   },
   {
     "objectID": "slides/07-glm-theory.html#activity-generalized-linear-models-1",
@@ -1803,7 +1803,7 @@
     "href": "slides/07-glm-theory.html#using-the-exponential-family-form",
     "title": "Unifying theory of GLMs",
     "section": "Using the exponential family form",
-    "text": "Using the exponential family form\nThe exponential family form is utilized for\n\nCalculating MLEs of coefficients (recall iteratively reweighted least squares)\nInference for coefficients\nCalculating residuals\n\nThe specific calculations are beyond the scope of this course. See Section 4.6 of Dunn, Smyth, et al. (2018) for more detail (available at Duke library)."
+    "text": "Using the exponential family form\nThe one-parameter exponential family form is utilized for\n\nCalculating MLEs of coefficients (recall iteratively reweighted least squares)\nInference for coefficients\nLikelihood ratio and drop-in-deviance tests\n\nThe specific calculations are beyond the scope of this course. See Section 4.6 of Dunn, Smyth, et al. (2018) for more detail (available at Duke library)."
   },
   {
     "objectID": "slides/04-poisson.html#computing-set-up",

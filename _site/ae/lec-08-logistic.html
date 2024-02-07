@@ -276,7 +276,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-1" id="toc-part-1" class="nav-link active" data-scroll-target="#part-1">Part 1</a></li>
+  <li><a href="#data-supporting-railroads-in-the-1870s" id="toc-data-supporting-railroads-in-the-1870s" class="nav-link active" data-scroll-target="#data-supporting-railroads-in-the-1870s">Data: Supporting railroads in the 1870s</a></li>
+  <li><a href="#part-1" id="toc-part-1" class="nav-link" data-scroll-target="#part-1">Part 1</a></li>
   <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sta310-sp24/website/edit/main/ae/lec-08-logistic.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -315,6 +316,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add other packages as needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="data-supporting-railroads-in-the-1870s" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="data-supporting-railroads-in-the-1870s">Data: Supporting railroads in the 1870s</h2>
+<p>The data set <a href="data/RR_Data_Hale.csv"><code>RR_Data_Hale.csv</code></a> contains information on support for referendums related to railroad subsidies for 11 communities in Hale County, Alabama in the 1870s. The data were originally collected from the US Census by historian Michael Fitzgerald and analyzed as part of a thesis project by a student at St.&nbsp;Olaf College. The variables in the data are</p>
+<ul>
+<li><code>pctBlack</code>: percentage of Black residents in the county</li>
+<li><code>distance</code>: distance the proposed railroad is from the community (in miles)</li>
+<li><code>YesVotes</code>: number of “yes” votes in favor of the proposed railroad line</li>
+<li><code>NumVotes</code>: number of votes cast in the election</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/RR_Data_Hale.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -323,6 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">emp_logit =</span> <span class="fu">log</span>(pctYes <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> pctYes)), </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">inFavor =</span> <span class="fu">if_else</span>(pctYes <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="part-1" class="level1">
 <h1>Part 1</h1>
 <div class="cell">

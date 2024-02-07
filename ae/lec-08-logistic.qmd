@@ -17,6 +17,15 @@ library(knitr)
 # add other packages as needed
 ```
 
+## Data: Supporting railroads in the 1870s {.midi}
+
+The data set [`RR_Data_Hale.csv`](data/RR_Data_Hale.csv) contains information on support for referendums related to railroad subsidies for 11 communities in Hale County, Alabama in the 1870s. The data were originally collected from the US Census by historian Michael Fitzgerald and analyzed as part of a thesis project by a student at St. Olaf College. The variables in the data are
+
+-   `pctBlack`: percentage of Black residents in the county
+-   `distance`: distance the proposed railroad is from the community (in miles)
+-   `YesVotes`: number of "yes" votes in favor of the proposed railroad line
+-   `NumVotes`: number of votes cast in the election
+
 ```{r}
 #| label: load-data
 

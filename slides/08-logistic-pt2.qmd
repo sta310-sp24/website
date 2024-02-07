@@ -1,0 +1,379 @@
+---
+title: "Logistic regression"
+subtitle: "Binomial responses + overdispersion"
+author: "Prof. Maria Tackett"
+date: "February 7, 2024"
+date-format: "MMM DD, YYYY"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+library(viridis)
+```
+
+## Announcements
+
+-   HW 02 due TODAY at 11:59pm
+
+-   Project 01
+
+    -   presentations in class Wed, Feb 14
+
+    -   write up due Thu, Feb 15 at noon
+
+## Learning goals
+
+-   Visualizations for logistic regression
+
+-   Fit and interpret logistic regression model for binomial response variable
+
+-   Explore diagnostics for logistic regression
+
+-   Summarize GLMs for independent observations
+
+::: aside
+Notes based on Chapter 6 @roback2021beyond unless noted otherwise.
+:::
+
+# Logistic regression
+
+## Bernoulli + Binomial random variables {.small}
+
+Logistic regression is used to analyze data with two types of responses:
+
+-   **Bernoulli (Binary)**: These responses take on two values success $(Y = 1)$ or failure $(Y = 0)$, yes $(Y = 1)$ or no $(Y = 0)$, etc.
+
+$$P(Y = y) = p^y(1-p)^{1-y} \hspace{10mm} y = 0, 1$$
+
+-   **Binomial**: Number of successes in a Bernoulli process, $n$ independent trials with a constant probability of success $p$.
+
+$$P(Y = y) = {n \choose y}p^{y}(1-p)^{n - y} \hspace{10mm} y = 0, 1, \ldots, n$$
+
+. . .
+
+In both instances, the goal is to model $p$ the probability of success.
+
+## Logistic regression model {.midi}
+
+$$
+\log\Big(\frac{p}{1-p}\Big) = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_px_p
+$$
+
+-   The response variable, $\log\Big(\frac{p}{1-p}\Big)$, is the log(odds) of success, i.e. the logit
+-   Use the model to calculate the probability of success $$\hat{p} = \frac{e^{\beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_px_p}}{1 + e^{\beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_px_p}}$$
+-   When the response is a Bernoulli random variable, the probabilities can be used to classify each observation as a success or failure
+
+## Interpreting coefficients
+
+$$
+\log\Big(\frac{\hat{p}}{1-\hat{p}}\Big) = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_2 + \dots + \hat{\beta}_px_p
+$$
+
+-   $\hat{\beta}_j$ is predicted change in the log-odds when going from $x_j$ to $x_j + 1$, holding all else constant
+
+-   $e^{\beta_j}$ is the predicted change the odds when going from $x_j$ to $x_j + 1$, holding all else constant (**odds ratio)**
+
+## COVID-19 infection prevention practices at food establishments
+
+Researchers at Wollo Univeristy in Ethiopia conducted a study in July and August 2020 to understand factors associated with good COVID-19 infection prevention practices at food establishments. Their study is published in @andualem2022covid .
+
+<br>
+
+They were particularly interested in the understanding implementation of prevention practices at food establishments, given the workers' increased risk due to daily contact with customers.
+
+## Results
+
+![](images/07/logistic-output.PNG){fig-align="center"}
+
+## Interpretation
+
+::: incremental
+-   The (adjusted) odds ratio for availability of COVID-19 infection prevention guidelines is 2.68 with 95% CI (1.52, 4.75).
+
+-   The odds ratio between workers at a restaurant with such guidelines and those at a restaurant without the guidelines is 2.68.
+
+-   **Interpretation**: The odds a worker at a restaurant with COVID-19 infection prevention guidelines uses good infection prevention practices is 2.68 times the odds of a worker at a restaurant without the guidelines, holding all other factors constant.
+:::
+
+# Visualizations for logistic regression
+
+## Access to personal protective equipment
+
+We will use the data from @andualem2022covid to explore the association between age, sex, years of service, and whether someone works at a food establishment with access to personal protective equipment (PPE) as of August 2020. We will use access to PPE as a proxy for wearing PPE.
+
+```{r echo = F}
+covid_df <- read_csv("data/covid-prevention-study.csv") |>
+  rename(age = "Age of food handlers", 
+         years = "Years of service", 
+         ppe_access = "Availability of PPEs") |>
+  mutate(sex = factor(if_else(Sex == 2, "Female", "Male"))) |>
+  select(age, sex, years, ppe_access) 
+
+covid_df |> slice(1:5) |> kable()
+```
+
+## EDA for binary response
+
+```{r, out.width = "60%"}
+library(Stat2Data)
+par(mfrow = c(1, 2))
+emplogitplot1(ppe_access ~ age, data = covid_df, ngroups = 10)
+emplogitplot1(ppe_access ~ years, data = covid_df, ngroups = 5)
+```
+
+## EDA for binary response
+
+```{r, out.width = "60%"}
+library(viridis)
+ggplot(data = covid_df, aes(x = sex, fill = factor(ppe_access))) + 
+  geom_bar(position = "fill")  +
+  labs(x = "Sex", 
+       fill = "PPE Access", 
+       title = "PPE Access by Sex") + 
+  scale_fill_viridis_d()
+```
+
+## Model results {.midi}
+
+```{r}
+ppe_model <- glm(factor(ppe_access) ~ age + sex + years, 
+                 data = covid_df, family = binomial)
+tidy(ppe_model, conf.int = TRUE) |>
+  kable(digits = 3)
+```
+
+## Visualizing coefficient estimates {.midi}
+
+```{r}
+model_odds_ratios <- tidy(ppe_model, exponentiate = TRUE, conf.int = TRUE)
+```
+
+```{r, out.width = "55%"}
+ggplot(data = model_odds_ratios, aes(x = term, y = estimate)) +
+  geom_point() +
+  geom_hline(yintercept = 1, lty = 2) + 
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  labs(title = "Adjusted odds ratios", 
+       y = "", 
+       x = "Estimated AOR") +
+  coord_flip()
+```
+
+# Logistic regression for binomial response variable
+
+## Data: Supporting railroads in the 1870s {.midi}
+
+The data set [`RR_Data_Hale.csv`](data/RR_Data_Hale.csv) contains information on support for referendums related to railroad subsidies for 11 communities in Hale County, Alabama in the 1870s. The data were originally collected from the US Census by historian Michael Fitzgerald and analyzed as part of a thesis project by a student at St. Olaf College. The variables in the data are
+
+-   `pctBlack`: percentage of Black residents in the county
+-   `distance`: distance the proposed railroad is from the community (in miles)
+-   `YesVotes`: number of "yes" votes in favor of the proposed railroad line
+-   `NumVotes`: number of votes cast in the election
+
+. . .
+
+**Primary question**: Was voting on the railroad referendum related to the distance from the proposed railroad line, after adjusting for the demographics of a county?
+
+## The data {.midi}
+
+```{r}
+rr <- read_csv("data/RR_Data_Hale.csv")
+rr |> slice(1:5) |> kable()
+```
+
+## Exploratory data analysis
+
+```{r}
+rr <- rr |>
+  mutate(pctYes = YesVotes/NumVotes, 
+         emp_logit = log(pctYes / (1 - pctYes)))
+```
+
+```{r echo = F, out.width = "70%"}
+p1 <- ggplot(data = rr, aes(x = distance, y = emp_logit)) + 
+  geom_point() + 
+  geom_smooth(method  = "lm", se = FALSE) + 
+  labs(x = "Distance to proposed railroad", 
+       y = " ")
+  
+p2 <- ggplot(data = rr, aes(x = pctBlack, y = emp_logit)) + 
+  geom_point() + 
+  geom_smooth(method  = "lm", se = FALSE) + 
+  labs(x = "% Black residents", 
+       y = "")
+p1 + p2 + plot_annotation(title = "Log(odds yes vote) vs. predictor variables")
+```
+
+## Exploratory data analysis
+
+```{r}
+rr <- rr |>
+  mutate(inFavor = if_else(pctYes > 0.5, "Yes", "No"))
+```
+
+```{r echo = F, out.width = "70%"}
+ggplot(data = rr, aes(x = distance, y = pctBlack, color = inFavor)) + 
+  geom_point() + 
+  geom_smooth(method  = "lm", se = FALSE, aes(lty = inFavor)) + 
+  labs(x = "Distance to proposed railroad", 
+       y = "% Black residents",
+       title = "% Black residents vs. distance", 
+       subtitle = "Based on vote outcome") + 
+  scale_color_viridis_d(end = 0.85)
+```
+
+Check for potential multicollinearity and interaction effect.
+
+## Model {.midi}
+
+Let $p$ be the percent of yes votes in a county. We'll start by fitting the following model:
+
+$$\log\Big(\frac{p}{1-p}\Big)  = \beta_0 + \beta_1 ~ dist + \beta_2 ~ pctBlack$$
+
+. . .
+
+**Likelihood**
+
+$$\begin{aligned}L(p) &= \prod_{i=1}^{n} {m_i \choose y_i}p_i^{y_i}(1 - p_i)^{m_i - y_i} \\ 
+&= \prod_{i=1}^{n} {m_i \choose y_i}\Big[\frac{e^{\beta_0 + \beta_1 ~ dist_i + \beta_2 ~ pctBlack_i}}{1 + e^{\beta_0 + \beta_1 ~ dist_i + \beta_2 ~ pctBlack_i}}\Big]^{y_i}\Big[\frac{1}{e^{\beta_0 + \beta_1 ~ dist_i + \beta_2 ~ pctBlack_i}}\Big]^{m_i - y_i} \\\end{aligned}$$
+
+Use IRLS to find $\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2$.
+
+## Model in R
+
+```{r}
+rr_model <- glm(cbind(YesVotes, NumVotes - YesVotes) ~ distance + pctBlack, 
+                data = rr, family = binomial)
+tidy(rr_model, conf.int = TRUE) |>
+  kable(digits = 3)
+```
+
+$$\log\Big(\frac{\hat{p}}{1-\hat{p}}\Big)  = 4.22 - 0.292 ~ dist - 0.013 ~ pctBlack$$
+
+# Application exercise
+
+```{r echo = F}
+library(countdown)
+countdown(minutes = 10, seconds = 00,
+          margin = "1.25%")
+```
+
+## Residuals {.midi}
+
+Similar to Poisson regression, there are two types of residuals: Pearson and deviance residuals
+
+. . .
+
+**Pearson residuals**
+
+$$
+\text{Pearson residual}_i = \frac{\text{actual count} - \text{predicted count}}{\text{SD count}} = \frac{Y_i - m_i\hat{p}_i}{\sqrt{m_i\hat{p}_i(1 - \hat{p}_i)}}
+$$
+
+. . .
+
+**Deviance residuals**
+
+$$
+d_i = \text{sign}(Y_i - m_i\hat{p}_i)\sqrt{2\Big[Y_i\log\Big(\frac{Y_i}{m_i\hat{p}_i}\Big) + (m_i - Y_i)\log\Big(\frac{m_i - Y_i}{m_i - m_i\hat{p}_i}\Big)\Big]}
+$$
+
+## Plot of deviance residuals
+
+```{r echo = F}
+rr_int_model <- glm(cbind(YesVotes, NumVotes - YesVotes) ~ distance + pctBlack +
+                      distance*pctBlack, 
+                data = rr, family = binomial)
+```
+
+```{r}
+rr_int_aug <- augment(rr_int_model, type.predict = "response", 
+                        type.residuals = "deviance")
+```
+
+```{r echo = F}
+ggplot(data = rr_int_aug, aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red") + 
+  labs(x = "Fitted values", 
+       y = "Deviance residuals", 
+       title = "Deviance residuals vs. fitted", 
+       subtitle = "for model with interaction term")
+```
+
+## Goodness of fit {.midi}
+
+Similar to Poisson regression, the sum of the squared deviance residuals is used to assess goodness of fit.
+
+$$\begin{aligned} &H_0: \text{ Model is a good fit} \\
+&H_a: \text{ Model is not a good fit}\end{aligned}$$
+
+. . .
+
+-   When $m_i$'s are large and the model is a good fit $(H_0 \text{ true})$ the residual deviance follows a $\chi^2$ distribution with $n - p$ degrees of freedom.
+    -   Recall $n - p$ is the residual degrees of freedom.
+
+. . .
+
+-   If the model fits, we expect the residual deviance to be approximately what value?
+
+# Overdispersion
+
+## Adjusting for overdispersion
+
+-   Overdispersion occurs when there is **extra-binomial variation**, i.e. the variance is greater than what we would expect, $np(1-p)$.
+
+-   Similar to Poisson regression, we can adjust for overdispersion in the binomial regression model by using a dispersion parameter $$\hat{\phi} = \sum \frac{(\text{Pearson residuals})^2}{n-p}$$
+
+    -   By multiplying by $\hat{\phi}$, we are accounting for the reduction in information we would expect from independent observations.
+
+## Adjusting for overdispersion
+
+-   We adjust for overdispersion using a **quasibinomial** model.
+    -   "Quasi" reflects the fact we are no longer using a binomial model with true likelihood.
+
+-   The standard errors of the coefficients are $SE_{Q}(\hat{\beta}_j) = \sqrt{\hat{\phi}} SE(\hat{\beta})$
+    -   Inference is done using the $t$ distribution to account for extra variability
+
+# Application exercise
+
+## References

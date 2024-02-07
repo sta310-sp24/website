@@ -291,6 +291,12 @@ $$\log\Big(\frac{\hat{p}}{1-\hat{p}}\Big)  = 4.22 - 0.292 ~ dist - 0.013 ~ pctBl
 
 # Application exercise
 
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-08-logistic](https://sta310-sp24.netlify.app/ae/lec-08-logistic)\
+\
+Part 1
+:::
+
 ```{r echo = F}
 library(countdown)
 countdown(minutes = 10, seconds = 00,
@@ -375,5 +381,18 @@ $$\begin{aligned} &H_0: \text{ Model is a good fit} \\
     -   Inference is done using the $t$ distribution to account for extra variability
 
 # Application exercise
+
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-08-logistic](https://sta310-sp24.netlify.app/ae/lec-08-logistic)\
+\
+Part 2
+:::
+
+```{r}
+#| echo: false
+library(countdown)
+countdown(minutes = 6, seconds = 00,
+          margin = "1.25%")
+```
 
 ## References

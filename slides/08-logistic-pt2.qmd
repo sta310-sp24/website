@@ -129,14 +129,14 @@ They were particularly interested in the understanding implementation of prevent
 ::: incremental
 -   The (adjusted) odds ratio for availability of COVID-19 infection prevention guidelines is 2.68 with 95% CI (1.52, 4.75).
 
--   The odds ratio between workers at a restaurant with such guidelines and those at a restaurant without the guidelines is 2.68.
+-   The odds ratio between workers at a restaurant with such guidelines and those at a restaurant without the guidelines is 2.68, after adjusting for the other factors.
 
 -   **Interpretation**: The odds a worker at a restaurant with COVID-19 infection prevention guidelines uses good infection prevention practices is 2.68 times the odds of a worker at a restaurant without the guidelines, holding all other factors constant.
 :::
 
 # Visualizations for logistic regression
 
-## Access to personal protective equipment
+## Access to personal protective equipment {.midi}
 
 We will use the data from @andualem2022covid to explore the association between age, sex, years of service, and whether someone works at a food establishment with access to personal protective equipment (PPE) as of August 2020. We will use access to PPE as a proxy for wearing PPE.
 
@@ -192,9 +192,9 @@ ggplot(data = model_odds_ratios, aes(x = term, y = estimate)) +
   geom_point() +
   geom_hline(yintercept = 1, lty = 2) + 
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  labs(title = "Adjusted odds ratios", 
-       y = "", 
-       x = "Estimated AOR") +
+  labs(title = "Adjusted odds ratios",
+       x = "",
+       y = "Estimated AOR") +
   coord_flip()
 ```
 
@@ -376,7 +376,6 @@ $$\begin{aligned} &H_0: \text{ Model is a good fit} \\
 
 -   We adjust for overdispersion using a **quasibinomial** model.
     -   "Quasi" reflects the fact we are no longer using a binomial model with true likelihood.
-
 -   The standard errors of the coefficients are $SE_{Q}(\hat{\beta}_j) = \sqrt{\hat{\phi}} SE(\hat{\beta})$
     -   Inference is done using the $t$ distribution to account for extra variability
 

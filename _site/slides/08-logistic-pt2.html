@@ -505,7 +505,7 @@ Prof.&nbsp;Maria Tackett
 <div>
 <ul>
 <li class="fragment"><p>The (adjusted) odds ratio for availability of COVID-19 infection prevention guidelines is 2.68 with 95% CI (1.52, 4.75).</p></li>
-<li class="fragment"><p>The odds ratio between workers at a restaurant with such guidelines and those at a restaurant without the guidelines is 2.68.</p></li>
+<li class="fragment"><p>The odds ratio between workers at a restaurant with such guidelines and those at a restaurant without the guidelines is 2.68, after adjusting for the other factors.</p></li>
 <li class="fragment"><p><strong>Interpretation</strong>: The odds a worker at a restaurant with COVID-19 infection prevention guidelines uses good infection prevention practices is 2.68 times the odds of a worker at a restaurant without the guidelines, holding all other factors constant.</p></li>
 </ul>
 </div>
@@ -515,7 +515,7 @@ Prof.&nbsp;Maria Tackett
 <h1>Visualizations for logistic regression</h1>
 
 </section>
-<section id="access-to-personal-protective-equipment" class="slide level2">
+<section id="access-to-personal-protective-equipment" class="slide level2 midi">
 <h2>Access to personal protective equipment</h2>
 <p>We will use the data from <span class="citation" data-cites="andualem2022covid">Andualem et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> to explore the association between age, sex, years of service, and whether someone works at a food establishment with access to personal protective equipment (PPE) as of August 2020. We will use access to PPE as a proxy for wearing PPE.</p>
 <div class="cell" data-layout-align="center">
@@ -669,9 +669,9 @@ Prof.&nbsp;Maria Tackett
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high))<span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Adjusted odds ratios"</span>, </span>
-<span id="cb5-6"><a href="#cb5-6"></a>       <span class="at">y =</span> <span class="st">""</span>, </span>
-<span id="cb5-7"><a href="#cb5-7"></a>       <span class="at">x =</span> <span class="st">"Estimated AOR"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Adjusted odds ratios"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb5-7"><a href="#cb5-7"></a>       <span class="at">y =</span> <span class="st">"Estimated AOR"</span>) <span class="sc">+</span></span>
 <span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
@@ -881,7 +881,7 @@ Part 1</p>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9ad16fe7" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_0a429523" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -969,7 +969,7 @@ Part 2</p>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c199445a" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_c0319c88" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

@@ -809,7 +809,7 @@
     "href": "slides/08-logistic-pt2.html#interpretation",
     "title": "Logistic regression",
     "section": "Interpretation",
-    "text": "Interpretation\n\n\nThe (adjusted) odds ratio for availability of COVID-19 infection prevention guidelines is 2.68 with 95% CI (1.52, 4.75).\nThe odds ratio between workers at a restaurant with such guidelines and those at a restaurant without the guidelines is 2.68.\nInterpretation: The odds a worker at a restaurant with COVID-19 infection prevention guidelines uses good infection prevention practices is 2.68 times the odds of a worker at a restaurant without the guidelines, holding all other factors constant."
+    "text": "Interpretation\n\n\nThe (adjusted) odds ratio for availability of COVID-19 infection prevention guidelines is 2.68 with 95% CI (1.52, 4.75).\nThe odds ratio between workers at a restaurant with such guidelines and those at a restaurant without the guidelines is 2.68, after adjusting for the other factors.\nInterpretation: The odds a worker at a restaurant with COVID-19 infection prevention guidelines uses good infection prevention practices is 2.68 times the odds of a worker at a restaurant without the guidelines, holding all other factors constant."
   },
   {
     "objectID": "slides/08-logistic-pt2.html#access-to-personal-protective-equipment",
@@ -844,7 +844,7 @@
     "href": "slides/08-logistic-pt2.html#visualizing-coefficient-estimates",
     "title": "Logistic regression",
     "section": "Visualizing coefficient estimates",
-    "text": "Visualizing coefficient estimates\n\nmodel_odds_ratios &lt;- tidy(ppe_model, exponentiate = TRUE, conf.int = TRUE)\n\n\nggplot(data = model_odds_ratios, aes(x = term, y = estimate)) +\n  geom_point() +\n  geom_hline(yintercept = 1, lty = 2) + \n  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+\n  labs(title = \"Adjusted odds ratios\", \n       y = \"\", \n       x = \"Estimated AOR\") +\n  coord_flip()"
+    "text": "Visualizing coefficient estimates\n\nmodel_odds_ratios &lt;- tidy(ppe_model, exponentiate = TRUE, conf.int = TRUE)\n\n\nggplot(data = model_odds_ratios, aes(x = term, y = estimate)) +\n  geom_point() +\n  geom_hline(yintercept = 1, lty = 2) + \n  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+\n  labs(title = \"Adjusted odds ratios\",\n       x = \"\",\n       y = \"Estimated AOR\") +\n  coord_flip()"
   },
   {
     "objectID": "slides/08-logistic-pt2.html#data-supporting-railroads-in-the-1870s",

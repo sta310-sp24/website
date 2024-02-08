@@ -1,0 +1,29 @@
+---
+title: "Resources for learning R"
+---
+
+## Books (free online)
+
+-   [*R for Data Science*](https://r4ds.had.co.nz/) by Hadley Wickham & Garrett Grolemund
+
+-   [*Tidy Modeling with R*](https://tmwr.org) by Max Kuhn & Julia Silge
+
+## RStudio Primers
+
+Tutorials most relevant to this course:
+
+-   [The Basics](https://rstudio.cloud/learn/primers/1)
+
+-   [Work with Data](https://rstudio.cloud/learn/primers/2)
+
+-   [Visualize Data](https://rstudio.cloud/learn/primers/3)
+
+-   [Tidy your Data](https://rstudio.cloud/learn/primers/4)
+
+[Click here](https://rstudio.cloud/learn/primers) for full list of tutorials.
+
+## Additional resources
+
+-   [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+
+-   [R Fun](https://rfun.library.duke.edu/#portfolio) workshops and videos by Duke Center for Data and Visualization Sciences.

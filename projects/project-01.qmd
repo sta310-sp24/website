@@ -37,7 +37,7 @@ All work will be submitted in your team's project GitHub repo.
 
 -   **Presentation**: due Wed, Feb 14 at 3:05pm
 
--   **Written report**: due Thu, Feb 15 at noon
+-   **Written report**: due Thu, Feb 15 at 9pm
 
 ## Article
 
@@ -102,7 +102,7 @@ The purpose of the article evaluation is for you to begin describing and evaluat
 -   **Graphs and tables**
 
     -   Describe the types of visualizations and tables used in the article.
-    -   How are they primarily used - for exploratory data analysis, to support a candidatee, etc.?
+    -   How are they primarily used - for exploratory data analysis, to support a candidate, etc.?
     -   What visualizations or tables might you add to the article? Briefly explain.
 
 -   **Generalized Linear Model**
@@ -110,7 +110,7 @@ The purpose of the article evaluation is for you to begin describing and evaluat
     *If your paper has multiple, GLMs you only have to write this section up for one model.*
 
     -   What is the response variable, and what is its distribution?
-    -   What are the predictor variables? Which predictor(s) are of particularl interest in the research?
+    -   What are the predictor variables? Which predictor(s) are of particular interest in the research?
     -   Write the statistical model in mathematical notation.
 
 -   **Overall argument**
@@ -123,7 +123,7 @@ The purpose of the article evaluation is for you to begin describing and evaluat
 
 The article evaluation will be graded based on the following
 
--   All required components of the article evaulation are included and accurate (15 pts)
+-   All required components of the article evaluation are included and accurate (15 pts)
 
 -   The team has worked collaboratively using GitHub and all all team members have made a meaningful contribution, as determined by Git commit history (5 pts)
 
@@ -147,7 +147,7 @@ Describe the GLM used for the analysis. Describe the response variable and and i
 
 ### Results
 
-Interpret the results form the model. Write the interpretations / conclusions from the mode, using estimates from the article when possible. If the article does not include estimates for some or all of the estimated effects effects, you can write general interpretations using the appropriate mathematical symbol (e.g., $\hat{\beta}_1$) in place of the estimated value.
+Interpret the results form the model. Write the interpretations / conclusions from the model, using estimates from the article when possible. If the article does not include estimates for some or all of the estimated effects effects, you can write general interpretations using the appropriate mathematical symbol (e.g., $\hat{\beta}_1$) in place of the estimated value.
 
 ### Communication
 
@@ -171,17 +171,17 @@ The questions in this section are adapted from *Communicating with Data: The Art
 
 ### Grading criteria
 
-Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. (30 pts total)
+Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. (35 pts total)
 
 The report will also be assessed based on the following:
 
--   Formatting: 3 pts
-    -   This is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.
--   Reproducibility: 2 pts
-    -   This is an assessment of the reproducibility of the report. Is the PDF produced by rendering the Quarto document?
+-   Formatting & reproducibility: 3 pts
+    -   This is an assessment of the overall presentation and formatting of the written report, along with reproducibility. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, and being able to obtain the PDF by rendering the Quarto document.
+-   Collaboration: 3 pts
+    -   The team has worked collaboratively using GitHub and all all team members have made a meaningful contribution, as determined by Git commit history
 
 ::: callout-important
-The written report is due on **Thu, Feb 15 at noon**.
+The written report is due on **Thu, Feb 15 at 9pm.**
 
 You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.
 :::
@@ -190,7 +190,7 @@ You will not be able to commit new work to your GitHub repo after the deadline u
 
 **You will present on Wed, Feb 14 during lecture.** Each team will have up to 10 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.
 
-You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in the timeframe. A suggested outline is
+You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in the time frame. A suggested outline is
 
 -   1 slide to introduce article
 -   1 - 2 slides to describe the model
@@ -201,39 +201,46 @@ You will be assigned two presentations to peer review. You must submit the peer 
 
 The presentation order and peer review assignments will be given closer to the presentation date.
 
-### Grading criteria - Teaching Team (16 pts)
+The presentation is worth 25 points. The points are broken down as follows:
+
+-   Teaching team grading: 18 pts
+-   Peer grading: 4 pts
+-   Providing presentation comments: 3pts
+
+### Grading criteria - Teaching Team (18 pts)
 
 This portion of the grade will the average of the scores from the members of the teaching team.
 
--   **Professionalism** (5 pts)
+-   **Professionalism** (3 pts)
     -   Was the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?
     -   Was the time reasonably divided among team members? Was the presentation within the time limit?
     -   Did the team present a unified story?
--   **Content** (6 pts): The content is presented in a clear and accurate way. This includes clearly and accurately describing
-    -   the primary research objective and intended audience for the article.
-    -   the data used in the analysis.
-    -   the observations and units at every level.
-    -   the model and primary conclusions
-    -   the effectiveness of tables, figures, and graphs in the article and argument of the contribution of the work (optional).
--   **Slides** (10 pts)
-    -   Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?
+-   **Content** (10 pts): Is the content presented in a clear and accurate way? This includes clearly and accurately describing the components described in the presentation outline.
+-   **Slides** (5 pts): Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?
 
 ### Grading criteria - Peers (4 pts)
 
 This portion of the grade will the average of the scores from the peer reviewers. Peer review assignments will be posted on Slack.
 
 -   **Introduction** (1 pt)
-    -   Did the team clearly describe the primary research objective and intended audience for the article?
+
+    -   Did the team clearly describe the primary research objective, primary takeaways, and intended audience for the article?
+
 -   **Data** (1 pt)
+
     -   Did the team clearly describe the data used in the analysis?
+
 -   **Model** (1 pt)
-    -   Did the team clearly describe the observational units and variables at each level? Did they clearly describe the model?
+
+    -   Did the team clearly and accurately describe the model?
+
 -   **Slides** (1 pt)
+
     -   Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?
 
 ## GitHub repo organization
 
-You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by **Thu, Feb 15 at noon.** `README.md`: 3 - 5 sentence summary of the project and citation for the article.
+You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by **Thu, Feb 15 at pm.** `README.md`: 3 - 5 sentence summary of the project and citation for the article.
 
 -   `proposal.qmd`
 
@@ -265,7 +272,7 @@ You should have the following files and folders in the project repo. The repo an
 | Proposal                                    | 10 pts |
 | Article evaluation                          | 20 pts |
 | Written report                              | 35 pts |
-| Presentation + Slides                       | 25 pts |
+| Presentation                                | 25 pts |
 | Repo organization                           | 5 pts  |
 | Teamwork evaluation (individually assessed) | 5 pts  |
 

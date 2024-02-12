@@ -723,168 +723,182 @@
   {
     "objectID": "slides/09-prop-odds-probit.html#announcements",
     "href": "slides/09-prop-odds-probit.html#announcements",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Announcements",
     "text": "Announcements\n\nProject 01\n\npresentations in class Wed, Feb 14\nwrite up due Thu, Feb 15 at 9pm\n\nQuiz 02: Tue, Feb 20 - Thu, Feb 22\n\nCovers readings & lectures: Jan 24 - Feb 12\nPoisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#learning-goals",
     "href": "slides/09-prop-odds-probit.html#learning-goals",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Learning goals",
     "text": "Learning goals\n\nIntroduce proportional odds and probit regression models\nUnderstand how these models are related to logistic regression models\nInterpret coefficients in context of the data\nSee how these models are applied in research contexts\n\n\n\nNotes based on Chapters 6 and 7 of McNulty (2021) unless stated otherwise."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#predicting-ed-wait-and-treatment-times",
     "href": "slides/09-prop-odds-probit.html#predicting-ed-wait-and-treatment-times",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Predicting ED wait and treatment times",
-    "text": "Predicting ED wait and treatment times\nAtaman and Sarıyer (2021) use ordinal logistic regression to predict patient wait and treatment times in an emergency department (ED). The goal is to identify relevant factors that can be used to inform recommendations for reducing wait and treatment times, thus improving the quality of care in the ED.\nData: Daily records for ED arrivals in August 2018 at a public hospital in Izmir, Turkey."
+    "text": "Predicting ED wait and treatment times\nAtaman and Sarıyer (2021) use ordinal logistic regression to predict patient wait and treatment times in an emergency department (ED). The goal is to identify relevant factors that can be used to inform recommendations for reducing wait and treatment times, thus improving the quality of care in the ED.\nData: Daily records for ED arrivals in August 2018 at a public hospital in Izmir, Turkey.\n\n\n\nClick here to access the article on Canvas."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#predicting-ed-wait-and-treatment-times-1",
     "href": "slides/09-prop-odds-probit.html#predicting-ed-wait-and-treatment-times-1",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Predicting ED wait and treatment times",
-    "text": "Predicting ED wait and treatment times\nResponse variables:\n\nWait time:\n\nPatients who wait less than 10 minutes\nPatients whose waiting time is in the range of 10-60 minutes\nPatients who wait more than 60 minutes\n\nTreatment time:\n\nPatients who are treated for up to 10 minutes\nPatients whose treatment time is in the range of 10 - 120 minutes\nPatients who are treated for longer than 120 minutes"
+    "text": "Predicting ED wait and treatment times\nResponse variables:\n\nWait time:\n\nPatients who wait less than 10 minutes\nPatients whose waiting time is in the range of 10 - 60 minutes\nPatients who wait more than 60 minutes\n\nTreatment time:\n\nPatients who are treated for up to 10 minutes\nPatients whose treatment time is in the range of 10 - 120 minutes\nPatients who are treated for longer than 120 minutes"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#predicting-ed-wait-and-treatment-times-2",
     "href": "slides/09-prop-odds-probit.html#predicting-ed-wait-and-treatment-times-2",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Predicting ED wait and treatment times",
-    "text": "Predicting ED wait and treatment times\nPredictor variables:\n\nGender (sex): Male, Female\nAge: [0-14], [15-64], [65-84], \\(\\geq\\) 85\nArrival mode: Walk in, Ambulance\nTriage level: Red (urgent), Green (non-urgent)\nICD-10 diagnosis: Codes specifying patient’s diagnosis"
+    "text": "Predicting ED wait and treatment times\nPredictor variables:\n\n\n\nGender:\n\nMale\nFemale\n\nAge:\n\n0 - 14\n15 - 64\n65 - 84\n\\(\\geq\\) 85\n\nArrival mode:\n\nWalk-in\nAmbulance\n\n\n\n\nTriage level:\n\nRed (urgent)\nGreen (non-urgent)\n\nICD-10 diagnosis: Codes specifying patient’s diagnosis"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#ordered-vs.-unordered-variables",
     "href": "slides/09-prop-odds-probit.html#ordered-vs.-unordered-variables",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Ordered vs. unordered variables",
-    "text": "Ordered vs. unordered variables\nCategorical variables with 3+ levels\n\n\nUnordered\n\nVoting choice in election with multiple candidates\nType of cell phone owned by adult sin the U.S.\nFavorite social media platform among undergraduate students\n\n\nOrdered\n\nWait and treatment times in the emergency department\nLikert scale ratings on a survey\nEmployee job performance ratings"
+    "text": "Ordered vs. unordered variables\nCategorical variables with 3+ levels\n\n\nUnordered (Nominal)\n\nVoting choice in election with multiple candidates\nType of cell phone owned by adults in the U.S.\nFavorite social media platform among undergraduate students\n\n\nOrdered (Ordinal)\n\nWait and treatment times in the emergency department\nLikert scale ratings on a survey\nEmployee job performance ratings"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#proportional-odds-model",
     "href": "slides/09-prop-odds-probit.html#proportional-odds-model",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Proportional odds model",
     "text": "Proportional odds model\nLet \\(Y\\) be an ordinal response variable that takes levels \\(1, 2, \\ldots, J\\) with associated probabilities \\(p_1, p_2, \\ldots, p_J\\)\n\nThe proportional odds model can be written as the following:\n\\[\\begin{aligned}&\\log\\Big(\\frac{P(Y\n\\leq 1)}{P(Y &gt; 1)}\\Big) = \\beta_{01} - \\beta_1x_1 - \\dots -  \\beta_px_p \\\\\n& \\log\\Big(\\frac{P(Y\\leq 2)}{P(Y &gt; 2)}\\Big) = \\beta_{02} -\\beta_1x_1 - \\dots -  \\beta_px_p \\\\\n& \\dots \\\\\n& \\log\\Big(\\frac{P(Y\\leq J-1)}{P(Y &gt; J-1)}\\Big) = \\beta_{0{J-1}} - \\beta_1x_1 - \\dots - \\beta_px_p\\end{aligned}\\]\n\nWhat does \\(\\beta_{01}\\) mean? What does \\(\\beta_1\\) mean?"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#proportional-odds-model-1",
     "href": "slides/09-prop-odds-probit.html#proportional-odds-model-1",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Proportional odds model",
-    "text": "Proportional odds model\nLet’s consider one portion of the model:\n\\[\n\\log\\Big(\\frac{P(Y\\leq k)}{P(Y &gt; k)}\\Big) = \\beta_{0k} - \\beta_1x_1 - \\dots -  \\beta_px_p\n\\]\n\n\nThe response variable is \\(logit(Y\\leq k)\\), the log-odds of observing an outcome less than or equal to category \\(k\\).\n\\(\\beta_j &gt; 0\\) is associated with increased log-odds of being in a higher category of \\(Y\\)\n\n\\(e^{\\beta_j}\\) associated with an increased odds of being in a higher category of \\(Y\\)\n\nEffective of one unit increase in \\(x_j\\) the same regardless of which category of \\(Y\\)"
-  },
-  {
-    "objectID": "slides/09-prop-odds-probit.html#multinomial-logistic-model",
-    "href": "slides/09-prop-odds-probit.html#multinomial-logistic-model",
-    "title": "Proportional odds + Probit regressions",
-    "section": "Multinomial logistic model",
-    "text": "Multinomial logistic model\n\nSuppose the outcome variable \\(Y\\) is categorical and can take values \\(1, 2, \\ldots, K\\) such that\n\\[\nP(Y = 1) = p_1, \\ldots , P(Y = K) = p_K  \\hspace{5mm} \\text{ and } \\hspace{5mm}  \\sum_{k = 1}^{K} p_k = 1\n\\]\nChoose baseline category. Let’s choose \\(Y = 1\\) . Then\n\\[\\begin{aligned}&\\log\\Big(\\frac{P(Y = 2)}{P(Y = 1)}\\Big) = \\beta_{02} - \\beta_{12}x_1 - \\dots -  \\beta_{p2}x_p \\\\\n& \\log\\Big(\\frac{P(Y = 3)}{P(Y =1)}\\Big) = \\beta_{03} -\\beta_{13}x_1 - \\dots -  \\beta_{p3}x_p \\\\\n& \\dots \\\\\n& \\log\\Big(\\frac{P(Y = K)}{P(Y = 1)}\\Big) = \\beta_{0{K}} - \\beta_{1K}x_1 - \\dots - \\beta_{pK}x_{p}\\end{aligned}\\]"
-  },
-  {
-    "objectID": "slides/09-prop-odds-probit.html#multinomial-logistic-vs.-proportional-odds",
-    "href": "slides/09-prop-odds-probit.html#multinomial-logistic-vs.-proportional-odds",
-    "title": "Proportional odds + Probit regressions",
-    "section": "Multinomial logistic vs. proportional odds",
-    "text": "Multinomial logistic vs. proportional odds\n\nHow is the proportional odds model similar to the multinomial logistic model? How is it different? What is an advantage of each model? What is a disadvantage?\n\n\n\n\n−+\n03:00"
+    "text": "Proportional odds model\nLet’s consider one portion of the model:\n\\[\n\\log\\Big(\\frac{P(Y\\leq k)}{P(Y &gt; k)}\\Big) = \\beta_{0k} - \\beta_1x_1 - \\dots -  \\beta_px_p\n\\]\n\n\n\nThe response variable is \\(logit(Y\\leq k)\\), the log-odds of observing an outcome less than or equal to category \\(k\\).\n\\(\\beta_j &gt; 0\\) is associated with increased log-odds of being in a higher category of \\(Y\\)\n\n\\(e^{\\beta_j}\\) associated with an increased odds of being in a higher category of \\(Y\\)\n\nEffect of one unit increase in \\(x_j\\) the same regardless of which category of \\(Y\\)"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#effect-of-arrival-mode-on-waiting-time",
     "href": "slides/09-prop-odds-probit.html#effect-of-arrival-mode-on-waiting-time",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Effect of arrival mode on waiting time",
-    "text": "Effect of arrival mode on waiting time\n\nWaiting time model output from Ataman and Sarıyer (2021)\nThe variable arrival modehas two possible values: ambulance and walk-in. Describe the effect of arrival mode on waiting time. Note: The baseline category is walk-in."
+    "text": "Effect of arrival mode on waiting time\n\nWaiting time model output from Ataman and Sarıyer (2021)\nThe variable arrival mode has two possible values: ambulance and walk-in. Describe the effect of arrival mode on waiting time. Note: The baseline category is walk-in."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#effect-of-triage-level",
     "href": "slides/09-prop-odds-probit.html#effect-of-triage-level",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Effect of triage level",
     "text": "Effect of triage level\nConsider the full output with the ordinal logistic models for wait and treatment times.\n\nWaiting and treatment time model output from Ataman and Sarıyer (2021).\nUse the results from both models to describe the effect of triage level on waiting and treatment times. Note: The baseline category is green.\n\n\n\n\n−+\n02:00"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#fitting-proportional-odds-models-in-r",
     "href": "slides/09-prop-odds-probit.html#fitting-proportional-odds-models-in-r",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Fitting proportional odds models in R",
     "text": "Fitting proportional odds models in R\nFit proportional odds models using the polr function in the MASS package:\n\nproportional_model &lt;- polr(Y ~ x1 + x2 + x3, data = my_data)"
   },
   {
+    "objectID": "slides/09-prop-odds-probit.html#multinomial-logistic-model",
+    "href": "slides/09-prop-odds-probit.html#multinomial-logistic-model",
+    "title": "Proportional odds + Probit regression",
+    "section": "Multinomial logistic model",
+    "text": "Multinomial logistic model\nSuppose the outcome variable \\(Y\\) is categorical and can take values \\(1, 2, \\ldots, K\\) such that\n\\[\nP(Y = 1) = p_1, \\ldots , P(Y = K) = p_K  \\hspace{5mm} \\text{ and } \\hspace{5mm}  \\sum_{k = 1}^{K} p_k = 1\n\\]\n\nChoose baseline category. Let’s choose \\(Y = 1\\) . Then\n\n\n\\[\\begin{aligned}&\\log\\Big(\\frac{P(Y = 2)}{P(Y = 1)}\\Big) = \\beta_{02} - \\beta_{12}x_1 - \\dots -  \\beta_{p2}x_p \\\\\n& \\log\\Big(\\frac{P(Y = 3)}{P(Y =1)}\\Big) = \\beta_{03} -\\beta_{13}x_1 - \\dots -  \\beta_{p3}x_p \\\\\n& \\dots \\\\\n& \\log\\Big(\\frac{P(Y = K)}{P(Y = 1)}\\Big) = \\beta_{0{K}} - \\beta_{1K}x_1 - \\dots - \\beta_{pK}x_{p}\\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/09-prop-odds-probit.html#multinomial-logistic-vs.-proportional-odds",
+    "href": "slides/09-prop-odds-probit.html#multinomial-logistic-vs.-proportional-odds",
+    "title": "Proportional odds + Probit regression",
+    "section": "Multinomial logistic vs. proportional odds",
+    "text": "Multinomial logistic vs. proportional odds\n\nHow is the proportional odds model similar to the multinomial logistic model? How is it different? What is an advantage of each model? What is a disadvantage?\n\n\n\n\n−+\n03:00"
+  },
+  {
     "objectID": "slides/09-prop-odds-probit.html#impact-of-nature-documentary-on-recycling",
     "href": "slides/09-prop-odds-probit.html#impact-of-nature-documentary-on-recycling",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Impact of nature documentary on recycling",
-    "text": "Impact of nature documentary on recycling\nIbanez and Roussel (2022) conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video focused about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants were asked to dispose of their headphone coverings in a recycle bin available at the end of the experiment."
+    "text": "Impact of nature documentary on recycling\nIbanez and Roussel (2022) conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants were asked to dispose of their headphone coverings in a recycle bin available at the end of the experiment.\n\n\nClick here to access the article on Canvas."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#impact-of-nature-documentary-on-recycling-1",
     "href": "slides/09-prop-odds-probit.html#impact-of-nature-documentary-on-recycling-1",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Impact of nature documentary on recycling",
     "text": "Impact of nature documentary on recycling\nResponse variable: Recycle headphone coverings vs. not\nPredictor variables:\n\nAge\nGender\nStudent\nMade donation to environmental organization in previous part of experiment\nEnvironmental beliefs measured by the new ecological paradigm scale (NEP)"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#probit-regression-1",
     "href": "slides/09-prop-odds-probit.html#probit-regression-1",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Probit regression",
-    "text": "Probit regression\nLet \\(Y\\) be a binary response variable that takes values 0 or 1, and let \\(p = P(Y = 1 | x_1, \\ldots, x_p)\\)\n\\[\nprobit(p) = \\Phi^{-1}(p) = \\beta_0 + \\beta_1 x_1+ \\dots + \\beta_px_p\n\\]\nwhere \\(\\Phi^{-1}\\) is the inverse normal distribution function.\n\n\nThe outcome is a z-score at which the cumulative probability is equal to \\(p\\)\n\ne.g. \\(probit(0.975) = \\Phi^{-1}(0.975) = 1.96\\)"
+    "text": "Probit regression\nLet \\(Y\\) be a binary response variable that takes values 0 or 1, and let \\(p = P(Y = 1 | x_1, \\ldots, x_p)\\)\n\\[\nprobit(p) = \\Phi^{-1}(p) = \\beta_0 + \\beta_1 x_1+ \\dots + \\beta_px_p\n\\]\nwhere \\(\\Phi^{-1}\\) is the inverse normal distribution function.\n\n\nThe outcome is the z-score at which the cumulative probability is equal to \\(p\\)\n\ne.g. \\(probit(0.975) = \\Phi^{-1}(0.975) = 1.96\\)"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#interpretation",
     "href": "slides/09-prop-odds-probit.html#interpretation",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Interpretation",
     "text": "Interpretation\n\n\\(\\hat{\\beta}_j\\) is the estimated change in z-score for each unit increase in \\(x_j\\), holding all other factors constant.\nThis is a fairly clunky interpretation, so the (average) marginal effect of \\(x_j\\) is often interpreted instead\nThe marginal effect of \\(x_j\\) is essentially the change the probability from variable \\(x_j\\)"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#impact-of-nature-documentary",
     "href": "slides/09-prop-odds-probit.html#impact-of-nature-documentary",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Impact of nature documentary",
-    "text": "Impact of nature documentary\n\n\n\n\n\nRecycling model from Ibanez and Roussel (2022)\n\n\n\n\nInterpret the effect of watching the nature documentary Nature(T2) on recycling."
+    "text": "Impact of nature documentary\n\n\n\n\n\nRecycling model from Ibanez and Roussel (2022)\n\n\n\n\nInterpret the effect of watching the nature documentary Nature (T2) on recycling."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#probit-vs.-logistic-regression",
     "href": "slides/09-prop-odds-probit.html#probit-vs.-logistic-regression",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Probit vs. logistic regression",
-    "text": "Probit vs. logistic regression\nPros of probit regression:\n\nSome statisticians like assuming the normal distribution over the logistic distribution.\nEasier to work with in more advanced settings, such as multivariate and Bayesian modeling\n\nCons of probit regression:\n\nZ-scores are not as straightforward to interpret as the outcomes of a linear probability model.\nWe can’t use odds ratios to describe findings.\nIt’s more mathematically complicated than logistic regression.\nIt does not work well for response variable with 3+ categories\n\n\n\nList adapted from Categorical Regression."
+    "text": "Probit vs. logistic regression\nPros of probit regression:\n\nSome statisticians like assuming the normal distribution over the logistic distribution.\nEasier to work with in more advanced settings, such as multivariate and Bayesian modeling\n\n\nCons of probit regression:\n\nZ-scores are not as straightforward to interpret as the outcomes of a logistic model.\nWe can’t use odds ratios to describe findings.\nIt’s more mathematically complicated than logistic regression.\nIt does not work well for response variable with 3+ categories\n\n\n\n\nList adapted from Categorical Regression."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#fitting-probit-regression-models-in-r",
     "href": "slides/09-prop-odds-probit.html#fitting-probit-regression-models-in-r",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Fitting probit regression models in R",
     "text": "Fitting probit regression models in R\nFit probit regression models using the glm function with family = binomial(link = probit).\n\nCalculate marginal effects using the margins function from the margins R package.\n\nmargins(my_model, variables = \"my_variables\")"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#ideology-vs.-issue-statements",
     "href": "slides/09-prop-odds-probit.html#ideology-vs.-issue-statements",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Ideology vs. issue statements",
-    "text": "Ideology vs. issue statements\nLet’s look at the model using ideology and party ID to explain the number of issue statements by politicians. We will use probit regression for the “hurdle” part of the model - the likelihood a candidate comments on at least one issue.\n\nlibrary(margins)\npolitics &lt;- read_csv(\"data/ambiguity.csv\") |&gt;\n  select(ideology, democrat, totalIssuePages) |&gt;\n  drop_na() |&gt;\n  mutate(has_issue_stmt = factor(if_else(totalIssuePages &gt; 0, 1, 0)), democrat = as_factor(democrat))\n\n\nhurdle &lt;- glm(has_issue_stmt ~ ideology + democrat, \n             data = politics, \n             family = binomial(link = probit))\n\n\n\nSee Section 4.11.2 of Roback and Legler (2021) for more detail."
+    "text": "Ideology vs. issue statements\nLet’s look at the model using ideology and party ID to explain the number of issue statements by politicians. We will use probit regression for the “hurdle” part of the model - the likelihood a candidate comments on at least one issue (has_issue_stmt)\n\n\nhurdle_probit &lt;- glm(has_issue_stmt ~ ideology + democrat, \n             data = politics, \n             family = binomial(link = probit))\n\n\n\n\nSee Section 4.11.2 of Roback and Legler (2021) for more detail about the data."
   },
   {
-    "objectID": "slides/09-prop-odds-probit.html#ideology-vs.-issue-statements-1",
-    "href": "slides/09-prop-odds-probit.html#ideology-vs.-issue-statements-1",
-    "title": "Proportional odds + Probit regressions",
-    "section": "Ideology vs. issue statements",
-    "text": "Ideology vs. issue statements\n\ntidy(hurdle) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.272\n0.117\n10.829\n0.000\n\n\nideology\n0.262\n0.089\n2.926\n0.003\n\n\ndemocrat1\n0.149\n0.180\n0.827\n0.408\n\n\n\n\nmargins(hurdle, variables = \"democrat\")\n\n democrat1\n   0.02333\n\n\n\nInterpret the marginal effect of democrat on commenting on at least one issue."
+    "objectID": "slides/09-prop-odds-probit.html#hurdle-using-probit-regression",
+    "href": "slides/09-prop-odds-probit.html#hurdle-using-probit-regression",
+    "title": "Proportional odds + Probit regression",
+    "section": "Hurdle (using probit regression)",
+    "text": "Hurdle (using probit regression)\n\ntidy(hurdle_probit) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.272\n0.117\n10.829\n0.000\n\n\nideology\n0.262\n0.089\n2.926\n0.003\n\n\ndemocrat1\n0.149\n0.180\n0.827\n0.408\n\n\n\n\nmargins(hurdle_probit)\n\n ideology democrat1\n  0.04071   0.02333\n\n\n\nInterpret the effect of democrat on commenting on at least one issue."
+  },
+  {
+    "objectID": "slides/09-prop-odds-probit.html#hurdle-using-logistic-regression",
+    "href": "slides/09-prop-odds-probit.html#hurdle-using-logistic-regression",
+    "title": "Proportional odds + Probit regression",
+    "section": "Hurdle (using logistic regression)",
+    "text": "Hurdle (using logistic regression)\n\nhurdle_logistic &lt;- glm(has_issue_stmt ~ ideology + democrat, \n             data = politics, \n             family = binomial)\n\ntidy(hurdle_logistic) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n2.127\n0.225\n9.465\n0.000\n\n\nideology\n0.575\n0.167\n3.446\n0.001\n\n\ndemocrat1\n0.428\n0.349\n1.225\n0.221"
+  },
+  {
+    "objectID": "slides/09-prop-odds-probit.html#probit-vs.-logistic-models",
+    "href": "slides/09-prop-odds-probit.html#probit-vs.-logistic-models",
+    "title": "Proportional odds + Probit regression",
+    "section": "Probit vs. logistic models",
+    "text": "Probit vs. logistic models\n\n\nProbit model\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n1.272\n\n\nideology\n0.262\n\n\ndemocrat1\n0.149\n\n\n\n\n\n\nLogistic model\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n2.127\n\n\nideology\n0.575\n\n\ndemocrat1\n0.428\n\n\n\n\n\n\n\n\n\nSuppose there is democratic representative with ideology score -2.5. Based on the probit model, what is the probability they will comment on at least one issue? What is the probability based on the logistic model?\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#wrap-up",
     "href": "slides/09-prop-odds-probit.html#wrap-up",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "Wrap up",
-    "text": "Wrap up\n\nCovered fitting, interpreting, and drawing conclusions from GLMs\n\nLooked at Poisson, Negative Binomial, and Logistic (binary, binomial, ordinal) in detail\n\nUsed Pearson and deviance residuals to assess model fit and determine if new variables should be added to the model\nAddressed issues of overdispersion and zero-inflation\nUsed the properties of the one-parameter exponential family to identify the best link function for any GLM\n\n\nEverything we’ve done thus far as been under the assumption that the observations are independent. Looking ahead we will consider models for data with dependent (correlated) observations."
+    "text": "Wrap up\n\nCovered fitting, interpreting, and drawing conclusions from GLMs\n\nLooked at Poisson, Negative Binomial, and Logistic, Proportional odds, and Probit models in detail\n\nUsed Pearson and deviance residuals to assess model fit and determine if new variables should be added to the model\nAddressed issues of overdispersion and zero-inflation\nUsed the properties of the one-parameter exponential family to identify the best link function for any GLM\n\n\nEverything we’ve done thus far as been under the assumption that the observations are independent. Looking ahead we will consider models for data with dependent (correlated) observations."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#references",
     "href": "slides/09-prop-odds-probit.html#references",
-    "title": "Proportional odds + Probit regressions",
+    "title": "Proportional odds + Probit regression",
     "section": "References",
     "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nAtaman, Mustafa Gökalp, and Görkem Sarıyer. 2021. “Predicting Waiting and Treatment Times in Emergency Departments Using Ordinal Logistic Regression Models.” The American Journal of Emergency Medicine 46: 45–50.\n\n\nIbanez, Lisette, and Sébastien Roussel. 2022. “The Impact of Nature Video Exposure on Pro-Environmental Behavior: An Experimental Investigation.” Plos One 17 (11): e0275806.\n\n\nMcNulty, Keith. 2021. Handbook of Regression Modeling in People Analytics: With Examples in r and Python. CRC Press.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
   },

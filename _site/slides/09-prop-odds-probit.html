@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
-  <title>STA 310 - Spring 2024 - Proportional odds + Probit regressions</title>
+  <title>STA 310 - Spring 2024 - Proportional odds + Probit regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -415,7 +415,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Proportional odds + Probit regressions</h1>
+  <h1 class="title">Proportional odds + Probit regression</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -462,8 +462,12 @@ Prof.&nbsp;Maria Tackett
 <section id="predicting-ed-wait-and-treatment-times" class="slide level2">
 <h2>Predicting ED wait and treatment times</h2>
 <p><span class="citation" data-cites="ataman2021predicting">Ataman and Sarıyer (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> use ordinal logistic regression to predict patient wait and treatment times in an emergency department (ED). The goal is to identify relevant factors that can be used to inform recommendations for reducing wait and treatment times, thus improving the quality of care in the ED.</p>
-<p><strong>Data</strong>: Daily records for ED arrivals in August 2018 at a public hospital in Izmir, Turkey.</p>
-</section>
+<p><strong>Data</strong>: Daily records for ED arrivals in August 2018 at a public hospital in Izmir, Turkey.<br>
+</p>
+
+<aside><div>
+<p><a href="https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=897957">Click here</a> to access the article on Canvas.</p>
+</div></aside></section>
 <section id="predicting-ed-wait-and-treatment-times-1" class="slide level2 midi">
 <h2>Predicting ED wait and treatment times</h2>
 <p><strong>Response variables:</strong></p>
@@ -471,7 +475,7 @@ Prof.&nbsp;Maria Tackett
 <li><p><code>Wait time</code>:</p>
 <ul>
 <li>Patients who wait less than 10 minutes</li>
-<li>Patients whose waiting time is in the range of 10-60 minutes</li>
+<li>Patients whose waiting time is in the range of 10 - 60 minutes</li>
 <li>Patients who wait more than 60 minutes</li>
 </ul></li>
 <li><p><code>Treatment time</code>:</p>
@@ -485,27 +489,52 @@ Prof.&nbsp;Maria Tackett
 <section id="predicting-ed-wait-and-treatment-times-2" class="slide level2 midi">
 <h2>Predicting ED wait and treatment times</h2>
 <p><strong>Predictor variables:</strong></p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li><code>Gender</code> (sex): Male, Female</li>
-<li><code>Age</code>: [0-14], [15-64], [65-84], <span class="math inline">\(\geq\)</span> 85</li>
-<li><code>Arrival mode</code>: Walk in, Ambulance</li>
-<li><code>Triage level</code>: Red (urgent), Green (non-urgent)</li>
-<li><code>ICD-10 diagnosis</code>: Codes specifying patient’s diagnosis</li>
+<li><code>Gender</code>:
+<ul>
+<li>Male</li>
+<li>Female</li>
+</ul></li>
+<li><code>Age</code>:
+<ul>
+<li>0 - 14</li>
+<li>15 - 64</li>
+<li>65 - 84</li>
+<li><span class="math inline">\(\geq\)</span> 85</li>
+</ul></li>
+<li><code>Arrival mode</code>:
+<ul>
+<li>Walk-in</li>
+<li>Ambulance</li>
+</ul></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><code>Triage level</code>:</p>
+<ul>
+<li>Red (urgent)</li>
+<li>Green (non-urgent)</li>
+</ul></li>
+<li><p><code>ICD-10 diagnosis</code>: Codes specifying patient’s diagnosis</p></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="ordered-vs.-unordered-variables" class="slide level2 midi">
 <h2>Ordered vs.&nbsp;unordered variables</h2>
 <p><strong>Categorical variables with 3+ levels</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Unordered</strong></p>
+<p><strong>Unordered (Nominal)</strong></p>
 <ul>
 <li><p>Voting choice in election with multiple candidates</p></li>
-<li><p>Type of cell phone owned by adult sin the U.S.</p></li>
+<li><p>Type of cell phone owned by adults in the U.S.</p></li>
 <li><p>Favorite social media platform among undergraduate students</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><strong>Ordered</strong></p>
+<p><strong>Ordered (Ordinal)</strong></p>
 <ul>
 <li><p>Wait and treatment times in the emergency department</p></li>
 <li><p>Likert scale ratings on a survey</p></li>
@@ -536,41 +565,15 @@ Prof.&nbsp;Maria Tackett
 \log\Big(\frac{P(Y\leq k)}{P(Y &gt; k)}\Big) = \beta_{0k} - \beta_1x_1 - \dots -  \beta_px_p
 \]</span></p>
 <div class="fragment">
+<div>
 <ul>
-<li><p>The response variable is <span class="math inline">\(logit(Y\leq k)\)</span>, the log-odds of observing an outcome less than or equal to category <span class="math inline">\(k\)</span>.</p></li>
-<li><p><span class="math inline">\(\beta_j &gt; 0\)</span> is associated with increased log-odds of being in a <strong>higher</strong> category of <span class="math inline">\(Y\)</span></p>
+<li class="fragment"><p>The response variable is <span class="math inline">\(logit(Y\leq k)\)</span>, the log-odds of observing an outcome less than or equal to category <span class="math inline">\(k\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(\beta_j &gt; 0\)</span> is associated with increased <strong>log-odds</strong> of being in a <strong>higher</strong> category of <span class="math inline">\(Y\)</span></p>
 <ul>
-<li><span class="math inline">\(e^{\beta_j}\)</span> associated with an increased odds of being in a higher category of <span class="math inline">\(Y\)</span></li>
+<li class="fragment"><span class="math inline">\(e^{\beta_j}\)</span> associated with an increased <strong>odds</strong> of being in a <strong>higher</strong> category of <span class="math inline">\(Y\)</span></li>
 </ul></li>
-<li><p>Effective of one unit increase in <span class="math inline">\(x_j\)</span> the same regardless of which category of <span class="math inline">\(Y\)</span></p></li>
+<li class="fragment"><p>Effect of one unit increase in <span class="math inline">\(x_j\)</span> the same regardless of which category of <span class="math inline">\(Y\)</span></p></li>
 </ul>
-</div>
-</section>
-<section id="multinomial-logistic-model" class="slide level2 midi">
-<h2>Multinomial logistic model</h2>
-<ul>
-<li><p>Suppose the outcome variable <span class="math inline">\(Y\)</span> is categorical and can take values <span class="math inline">\(1, 2, \ldots, K\)</span> such that</p>
-<p><span class="math display">\[
-P(Y = 1) = p_1, \ldots , P(Y = K) = p_K  \hspace{5mm} \text{ and } \hspace{5mm}  \sum_{k = 1}^{K} p_k = 1
-\]</span></p></li>
-<li><p>Choose baseline category. Let’s choose <span class="math inline">\(Y = 1\)</span> . Then</p>
-<p><span class="math display">\[\begin{aligned}&amp;\log\Big(\frac{P(Y = 2)}{P(Y = 1)}\Big) = \beta_{02} - \beta_{12}x_1 - \dots -  \beta_{p2}x_p \\
-&amp; \log\Big(\frac{P(Y = 3)}{P(Y =1)}\Big) = \beta_{03} -\beta_{13}x_1 - \dots -  \beta_{p3}x_p \\
-&amp; \dots \\
-&amp; \log\Big(\frac{P(Y = K)}{P(Y = 1)}\Big) = \beta_{0{K}} - \beta_{1K}x_1 - \dots - \beta_{pK}x_{p}\end{aligned}\]</span></p></li>
-</ul>
-</section>
-<section id="multinomial-logistic-vs.-proportional-odds" class="slide level2">
-<h2>Multinomial logistic vs.&nbsp;proportional odds</h2>
-<div class="question">
-<p>How is the proportional odds model similar to the multinomial logistic model? How is it different? What is an advantage of each model? What is a disadvantage?</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="countdown" id="timer_e0b9317c" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
 </div>
 </div>
 </section>
@@ -578,7 +581,7 @@ P(Y = 1) = p_1, \ldots , P(Y = K) = p_K  \hspace{5mm} \text{ and } \hspace{5mm} 
 <h2>Effect of arrival mode on waiting time</h2>
 
 <img data-src="images/09/oridinal-logistic-output.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Waiting time model output from <span class="citation" data-cites="ataman2021predicting">Ataman and Sarıyer (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p><div class="question">
-<p>The variable <code>arrival mode</code>has two possible values: ambulance and walk-in. Describe the effect of arrival mode on waiting time. Note: The baseline category is walk-in.</p>
+<p>The variable <code>arrival mode</code> has two possible values: ambulance and walk-in. Describe the effect of arrival mode on waiting time. Note: The baseline category is walk-in.</p>
 </div>
 </section>
 <section id="effect-of-triage-level" class="slide level2">
@@ -590,7 +593,7 @@ P(Y = 1) = p_1, \ldots , P(Y = K) = p_K  \hspace{5mm} \text{ and } \hspace{5mm} 
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7ac7ae98" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_98091047" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -605,6 +608,36 @@ P(Y = 1) = p_1, \ldots , P(Y = K) = p_K  \hspace{5mm} \text{ and } \hspace{5mm} 
 </div>
 <!--Do the soccer data example from the people analytics book -->
 <!--https://peopleanalytics-regression-book.org/ord-reg.html#ord-walkthrough-->
+</section>
+<section id="multinomial-logistic-model" class="slide level2 midi">
+<h2>Multinomial logistic model</h2>
+<p>Suppose the outcome variable <span class="math inline">\(Y\)</span> is categorical and can take values <span class="math inline">\(1, 2, \ldots, K\)</span> such that</p>
+<p><span class="math display">\[
+P(Y = 1) = p_1, \ldots , P(Y = K) = p_K  \hspace{5mm} \text{ and } \hspace{5mm}  \sum_{k = 1}^{K} p_k = 1
+\]</span></p>
+<div class="fragment">
+<p>Choose baseline category. Let’s choose <span class="math inline">\(Y = 1\)</span> . Then</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\begin{aligned}&amp;\log\Big(\frac{P(Y = 2)}{P(Y = 1)}\Big) = \beta_{02} - \beta_{12}x_1 - \dots -  \beta_{p2}x_p \\
+&amp; \log\Big(\frac{P(Y = 3)}{P(Y =1)}\Big) = \beta_{03} -\beta_{13}x_1 - \dots -  \beta_{p3}x_p \\
+&amp; \dots \\
+&amp; \log\Big(\frac{P(Y = K)}{P(Y = 1)}\Big) = \beta_{0{K}} - \beta_{1K}x_1 - \dots - \beta_{pK}x_{p}\end{aligned}\]</span></p>
+</div>
+</section>
+<section id="multinomial-logistic-vs.-proportional-odds" class="slide level2">
+<h2>Multinomial logistic vs.&nbsp;proportional odds</h2>
+<div class="question">
+<p>How is the proportional odds model similar to the multinomial logistic model? How is it different? What is an advantage of each model? What is a disadvantage?</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="countdown" id="timer_50d536dc" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="probit-regression" class="title-slide slide level1 midi center">
@@ -613,8 +646,11 @@ P(Y = 1) = p_1, \ldots , P(Y = K) = p_K  \hspace{5mm} \text{ and } \hspace{5mm} 
 </section>
 <section id="impact-of-nature-documentary-on-recycling" class="slide level2">
 <h2>Impact of nature documentary on recycling</h2>
-<p><span class="citation" data-cites="ibanez2022impact">Ibanez and Roussel (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video focused about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants were asked to dispose of their headphone coverings in a recycle bin available at the end of the experiment.</p>
-</section>
+<p><span class="citation" data-cites="ibanez2022impact">Ibanez and Roussel (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants were asked to dispose of their headphone coverings in a recycle bin available at the end of the experiment.</p>
+
+<aside><div>
+<p><a href="https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=897959">Click here</a> to access the article on Canvas.</p>
+</div></aside></section>
 <section id="impact-of-nature-documentary-on-recycling-1" class="slide level2">
 <h2>Impact of nature documentary on recycling</h2>
 <p><strong>Response variable</strong>: Recycle headphone coverings vs.&nbsp;not</p>
@@ -636,7 +672,7 @@ probit(p) = \Phi^{-1}(p) = \beta_0 + \beta_1 x_1+ \dots + \beta_px_p
 <p>where <span class="math inline">\(\Phi^{-1}\)</span> is the inverse normal distribution function.</p>
 <p><br></p>
 <div class="fragment">
-<p>The outcome is a z-score at which the cumulative probability is equal to <span class="math inline">\(p\)</span></p>
+<p>The outcome is the z-score at which the cumulative probability is equal to <span class="math inline">\(p\)</span></p>
 <ul>
 <li>e.g.&nbsp;<span class="math inline">\(probit(0.975) = \Phi^{-1}(0.975) = 1.96\)</span></li>
 </ul>
@@ -653,16 +689,16 @@ probit(p) = \Phi^{-1}(p) = \beta_0 + \beta_1 x_1+ \dots + \beta_px_p
 <section id="impact-of-nature-documentary" class="slide level2">
 <h2>Impact of nature documentary</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/09/probit-regression-model.PNG" class="quarto-figure quarto-figure-center" style="width:200.0%"></p>
 <figcaption>Recycling model from <span class="citation" data-cites="ibanez2022impact">Ibanez and Roussel (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
 </figure>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:40%;">
 <div class="question">
-<p>Interpret the effect of watching the nature documentary <code>Nature(T2)</code> on recycling.</p>
+<p>Interpret the effect of watching the nature documentary <code>Nature (T2)</code> on recycling.</p>
 </div>
 </div>
 </div>
@@ -674,14 +710,16 @@ probit(p) = \Phi^{-1}(p) = \beta_0 + \beta_1 x_1+ \dots + \beta_px_p
 <li><p>Some statisticians like assuming the normal distribution over the logistic distribution.</p></li>
 <li><p>Easier to work with in more advanced settings, such as multivariate and Bayesian modeling</p></li>
 </ul>
+<div class="fragment">
 <p><strong>Cons of probit regression:</strong></p>
 <ul>
-<li><p>Z-scores are not as straightforward to interpret as the outcomes of a linear probability model.</p></li>
+<li><p>Z-scores are not as straightforward to interpret as the outcomes of a logistic model.</p></li>
 <li><p>We can’t use odds ratios to describe findings.</p></li>
 <li><p>It’s more mathematically complicated than logistic regression.</p></li>
 <li><p>It does not work well for response variable with 3+ categories</p></li>
 </ul>
 
+</div>
 <aside><div>
 <p>List adapted from <a href="https://bookdown.org/sarahwerth2024/CategoricalBook/probit-regression-r.html">Categorical Regression</a>.</p>
 </div></aside></section>
@@ -696,27 +734,22 @@ probit(p) = \Phi^{-1}(p) = \beta_0 + \beta_1 x_1+ \dots + \beta_px_p
 </section>
 <section id="ideology-vs.-issue-statements" class="slide level2">
 <h2>Ideology vs.&nbsp;issue statements</h2>
-<p>Let’s look at the model using ideology and party ID to explain the number of issue statements by politicians. We will use probit regression for the “hurdle” part of the model - the likelihood a candidate comments on at least one issue.</p>
+<p>Let’s look at the model using ideology and party ID to explain the number of issue statements by politicians. We will use probit regression for the “hurdle” part of the model - the likelihood a candidate comments on at least one issue (<code>has_issue_stmt</code>)</p>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(margins)</span>
-<span id="cb3-2"><a></a>politics <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ambiguity.csv"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">select</span>(ideology, democrat, totalIssuePages) <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a></a>  <span class="fu">mutate</span>(<span class="at">has_issue_stmt =</span> <span class="fu">factor</span>(<span class="fu">if_else</span>(totalIssuePages <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)), <span class="at">democrat =</span> <span class="fu">as_factor</span>(democrat))</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a>hurdle <span class="ot">&lt;-</span> <span class="fu">glm</span>(has_issue_stmt <span class="sc">~</span> ideology <span class="sc">+</span> democrat, </span>
-<span id="cb3-9"><a></a>             <span class="at">data =</span> politics, </span>
-<span id="cb3-10"><a></a>             <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>hurdle_probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(has_issue_stmt <span class="sc">~</span> ideology <span class="sc">+</span> democrat, </span>
+<span id="cb3-2"><a></a>             <span class="at">data =</span> politics, </span>
+<span id="cb3-3"><a></a>             <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+</div>
 <aside><div>
-<p>See Section 4.11.2 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> for more detail.</p>
+<p>See Section 4.11.2 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> for more detail about the data.</p>
 </div></aside></section>
-<section id="ideology-vs.-issue-statements-1" class="slide level2">
-<h2>Ideology vs.&nbsp;issue statements</h2>
+<section id="hurdle-using-probit-regression" class="slide level2">
+<h2>Hurdle (using probit regression)</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">tidy</span>(hurdle) <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">tidy</span>(hurdle_probit) <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
@@ -754,14 +787,135 @@ probit(p) = \Phi^{-1}(p) = \beta_0 + \beta_1 x_1+ \dots + \beta_px_p
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">margins</span>(hurdle, <span class="at">variables =</span> <span class="st">"democrat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">margins</span>(hurdle_probit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> democrat1
-   0.02333</code></pre>
+<pre><code> ideology democrat1
+  0.04071   0.02333</code></pre>
 </div>
 </div>
 <div class="question">
-<p>Interpret the marginal effect of <code>democrat</code> on commenting on at least one issue.</p>
+<p>Interpret the effect of <code>democrat</code> on commenting on at least one issue.</p>
+</div>
+</section>
+<section id="hurdle-using-logistic-regression" class="slide level2">
+<h2>Hurdle (using logistic regression)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>hurdle_logistic <span class="ot">&lt;-</span> <span class="fu">glm</span>(has_issue_stmt <span class="sc">~</span> ideology <span class="sc">+</span> democrat, </span>
+<span id="cb7-2"><a></a>             <span class="at">data =</span> politics, </span>
+<span id="cb7-3"><a></a>             <span class="at">family =</span> binomial)</span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a><span class="fu">tidy</span>(hurdle_logistic) <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">2.127</td>
+<td style="text-align: right;">0.225</td>
+<td style="text-align: right;">9.465</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ideology</td>
+<td style="text-align: right;">0.575</td>
+<td style="text-align: right;">0.167</td>
+<td style="text-align: right;">3.446</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">democrat1</td>
+<td style="text-align: right;">0.428</td>
+<td style="text-align: right;">0.349</td>
+<td style="text-align: right;">1.225</td>
+<td style="text-align: right;">0.221</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="probit-vs.-logistic-models" class="slide level2">
+<h2>Probit vs.&nbsp;logistic models</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Probit model</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">1.272</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ideology</td>
+<td style="text-align: right;">0.262</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">democrat1</td>
+<td style="text-align: right;">0.149</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Logistic model</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">2.127</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ideology</td>
+<td style="text-align: right;">0.575</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">democrat1</td>
+<td style="text-align: right;">0.428</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="question">
+<p>Suppose there is democratic representative with ideology score -2.5. Based on the probit model, what is the probability they will comment on at least one issue? What is the probability based on the logistic model?</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="countdown" id="timer_e9f24a3a" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
 </div>
 </section></section>
 <section>
@@ -774,7 +928,7 @@ probit(p) = \Phi^{-1}(p) = \beta_0 + \beta_1 x_1+ \dots + \beta_px_p
 <ul>
 <li><p>Covered fitting, interpreting, and drawing conclusions from GLMs</p>
 <ul>
-<li>Looked at Poisson, Negative Binomial, and Logistic (binary, binomial, ordinal) in detail</li>
+<li>Looked at Poisson, Negative Binomial, and Logistic, Proportional odds, and Probit models in detail</li>
 </ul></li>
 <li><p>Used Pearson and deviance residuals to assess model fit and determine if new variables should be added to the model</p></li>
 <li><p>Addressed issues of overdispersion and zero-inflation</p></li>

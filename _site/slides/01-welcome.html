@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 310 - Spring 2024 - Welcome to STA 310!</title>
@@ -158,7 +158,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -413,7 +414,7 @@ Prof.&nbsp;Maria Tackett
 <h2>GLMs in practice</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/01/rhd-article.png" style="width:65.0%"></p>
+<p><img data-src="images/01/rhd-article.png" class="quarto-figure quarto-figure-center" style="width:65.0%"></p>
 </figure>
 </div>
 <p><em>“…we used <strong>negative binomial regression</strong> to model the association between the number of questions produced, race, and group after adjusting for the additional covariates age and years of education. <strong>Poisson and zero-inflated Poisson regression models</strong> were also considered…the negative binomial model was a good fit for the data given the <strong>overdispersion</strong> in the distribution of number of questions asked.”</em><sup>1</sup></p>
@@ -422,7 +423,7 @@ Prof.&nbsp;Maria Tackett
 <h2>GLMs in practice</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/01/ncaa-fouls-article.png" style="width:90.0%"></p>
+<p><img data-src="images/01/ncaa-fouls-article.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
 </figure>
 </div>
 <p><em>” …a <strong>logistic regression model</strong> is used to test how the likelihood of a foul is affected by which team is the home team, the foul differential, and the score differential…The logistic regression was run under several specifications … using <strong>clustered observation standard errors</strong>, with each game as a cluster. This is done as an attempt to adjust for the fact that <strong>observations may not be independent</strong> as required under the logistic specification.</em><sup>1</sup></p>
@@ -480,7 +481,7 @@ Prof.&nbsp;Maria Tackett
 <section id="course-toolkit" class="slide level2">
 <h2>Course toolkit</h2>
 
-<img data-src="images/01/website.png" style="width:100.0%" alt="Homepage of STA 310 home page" class="r-stretch quarto-figure-center"><center>
+<img data-src="images/01/website.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Homepage of STA 310 home page"><center>
 <a href="https://sta310-sp24.netlify.app">sta310-sp24.netlify.app</a>
 </center>
 </section>
@@ -529,7 +530,7 @@ Prof.&nbsp;Maria Tackett
 <div class="column" style="width:30%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/01/bmlr.jpeg" alt="Cover of the book Beyond Multiple Linear Regression"></p>
+<p><img data-src="images/01/bmlr.jpeg" class="quarto-figure quarto-figure-center" alt="Cover of the book Beyond Multiple Linear Regression"></p>
 </figure>
 </div>
 </div><div class="column" style="width:70%;">
@@ -809,9 +810,11 @@ Prof.&nbsp;Maria Tackett
 <li><p>See <a href="../prepare/jan-17.html">Prepare for Jan 17 lecture</a></p></li>
 </ul>
 
-
-<img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="../images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://sta310-sp24.netlify.app">🔗 STA 310 - Spring 2024</a></p>
+</div>
 </div>
 </section></section>
 
@@ -842,7 +845,6 @@ Prof.&nbsp;Maria Tackett
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1142,10 +1144,9 @@ Prof.&nbsp;Maria Tackett
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1155,8 +1156,17 @@ Prof.&nbsp;Maria Tackett
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

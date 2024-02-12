@@ -96,7 +96,7 @@ The goal of this analysis is to use characteristics of 593 colleges and universi
 The data set is located in `college-data.csv` in the `data` folder. We will focus on the following variables:
 
 | variable           | class     | description                                                                           |
-|:------------|:------------|:---------------------------------------------|
+|:-------------------|:----------|:--------------------------------------------------------------------------------------|
 | name               | character | Name of school                                                                        |
 | state_name         | character | state name                                                                            |
 | type               | character | Public or private                                                                     |

@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 310 - Spring 2024 - Poisson Regression</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -98,6 +98,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -242,7 +243,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -405,7 +407,6 @@
       margin-right: 0; 
     }
   </style>
-  
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
@@ -495,10 +496,10 @@ Prof.&nbsp;Maria Tackett
 <section id="household-vs.-age" class="slide level2">
 <h2>Household vs.&nbsp;Age</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>hh_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age, <span class="at">data =</span> hh_data, <span class="at">family =</span> poisson)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">tidy</span>(hh_age) <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>hh_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age, <span class="at">data =</span> hh_data, <span class="at">family =</span> poisson)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="fu">tidy</span>(hh_age) <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -538,7 +539,7 @@ Prof.&nbsp;Maria Tackett
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="05-poisson-pt2_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:70.0%"></p>
+<p><img data-src="05-poisson-pt2_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -550,15 +551,15 @@ Prof.&nbsp;Maria Tackett
 <section id="add-age2-and-location-to-model" class="slide level2">
 <h2>Add <span class="math inline">\(age^2\)</span> and <span class="math inline">\(location\)</span> to model?</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>hh_age_loc <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, </span>
-<span id="cb2-2"><a href="#cb2-2"></a>                  <span class="at">data =</span> hh_data, <span class="at">family =</span> poisson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>hh_age_loc <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, </span>
+<span id="cb2-2"><a></a>                  <span class="at">data =</span> hh_data, <span class="at">family =</span> poisson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p><strong>Use Likelihood Ratio Test</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">anova</span>(hh_age, hh_age_loc, <span class="at">test =</span> <span class="st">"LRT"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">anova</span>(hh_age, hh_age_loc, <span class="at">test =</span> <span class="st">"LRT"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -724,11 +725,11 @@ Prof.&nbsp;Maria Tackett
 <section id="selected-model-residual-plots" class="slide level2">
 <h2>Selected model: Residual plots</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>hh_age_loc_aug_pearson <span class="ot">&lt;-</span> <span class="fu">augment</span>(hh_age_loc, <span class="at">type.residuals =</span> <span class="st">"pearson"</span>) </span>
-<span id="cb4-2"><a href="#cb4-2"></a>hh_age_loc_aug_deviance <span class="ot">&lt;-</span> <span class="fu">augment</span>(hh_age_loc, <span class="at">type.residuals =</span> <span class="st">"deviance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>hh_age_loc_aug_pearson <span class="ot">&lt;-</span> <span class="fu">augment</span>(hh_age_loc, <span class="at">type.residuals =</span> <span class="st">"pearson"</span>) </span>
+<span id="cb4-2"><a></a>hh_age_loc_aug_deviance <span class="ot">&lt;-</span> <span class="fu">augment</span>(hh_age_loc, <span class="at">type.residuals =</span> <span class="st">"deviance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="05-poisson-pt2_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="05-poisson-pt2_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
 <section id="goodness-of-fit-1" class="slide level2 small">
 <h2>Goodness-of-fit</h2>
 <ul>
@@ -757,18 +758,18 @@ Prof.&nbsp;Maria Tackett
 <section id="goodness-of-fit-calculations" class="slide level2">
 <h2>Goodness-of-fit calculations</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>hh_age_loc<span class="sc">$</span>deviance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>hh_age_loc<span class="sc">$</span>deviance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2187.8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>hh_age_loc<span class="sc">$</span>df.residual</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>hh_age_loc<span class="sc">$</span>df.residual</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1493</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">pchisq</span>(hh_age_loc<span class="sc">$</span>deviance, hh_age_loc<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">pchisq</span>(hh_age_loc<span class="sc">$</span>deviance, hh_age_loc<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.153732e-29</code></pre>
 </div>
@@ -908,8 +909,8 @@ Prof.&nbsp;Maria Tackett
 <section id="quasi-poisson-model" class="slide level2 midi">
 <h2>Quasi-Poisson model</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>hh_age_loc_q <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, <span class="at">data =</span> hh_data, </span>
-<span id="cb11-2"><a href="#cb11-2"></a>                <span class="at">family =</span> quasipoisson) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>hh_age_loc_q <span class="ot">&lt;-</span> <span class="fu">glm</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, <span class="at">data =</span> hh_data, </span>
+<span id="cb11-2"><a></a>                <span class="at">family =</span> quasipoisson) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1318,9 +1319,9 @@ E(Y) = \frac{r(1-p)}{p} \hspace{8mm} SD(Y) = \sqrt{\frac{r(1-p)}{p^2}}\end{align
 <section id="negative-binomial-regression-in-r-1" class="slide level2">
 <h2>Negative binomial regression in R</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>hh_age_loc_nb <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, <span class="at">data =</span> hh_data)</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">tidy</span>(hh_age_loc_nb) <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>hh_age_loc_nb <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(total <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> location, <span class="at">data =</span> hh_data)</span>
+<span id="cb12-2"><a></a><span class="fu">tidy</span>(hh_age_loc_nb) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -1502,11 +1503,13 @@ E(Y) = \frac{r(1-p)}{p} \hspace{8mm} SD(Y) = \sqrt{\frac{r(1-p)}{p^2}}\end{align
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
-
-<img src="../images/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="../images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://sta310-sp24.netlify.app">🔗 STA 310 - Spring 2024</a></p>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
 Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple linear regression: applied generalized linear models and multilevel models in R</span></em>. CRC Press.
 </div>
@@ -1539,7 +1542,6 @@ Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple l
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1839,10 +1841,9 @@ Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple l
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1852,8 +1853,17 @@ Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple l
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

@@ -325,7 +325,7 @@ The outcome is the z-score at which the cumulative probability is equal to $p$
 
 ::: {.column width="40%"}
 ::: question
-Interpret the effect of watching the nature documentary `Nature (T2)` on recycling.
+Interpret the effect of watching the nature documentary `Nature (T2)` on recycling. Assume NEP is low, `NEP-High` = 0.
 :::
 :::
 :::

@@ -31,9 +31,6 @@ website:
       - icon: person-fill
         href: https://canvas.duke.edu/courses/25310
         text: "Canvas"
-      # - icon: file-play
-      #   href: https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=82374550-c813-415d-be91-b06f010856ce
-      #   text: "Panopto"
     style: "docked"
     search: true
     collapse-level: 1
@@ -74,7 +71,7 @@ website:
           text: Project 02
         - href: projects/final-project.qmd
           text: Final Project
-        - href: project-tips.qmd
+        - href: projects/project-tips.qmd
           text: Tips + resources
 
 format:

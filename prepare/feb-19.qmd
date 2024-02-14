@@ -1,0 +1,5 @@
+---
+title: "Prepare for Feb 19 lecture"
+---
+
+-   Read [BMLR: Sec 7.1 - 7.8](https://bookdown.org/roback/bookdown-BeyondMLR/ch-corrdata.html#case-study-tree-growth)

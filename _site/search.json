@@ -844,7 +844,7 @@
     "href": "slides/09-prop-odds-probit.html#impact-of-nature-documentary",
     "title": "Proportional odds + Probit regression",
     "section": "Impact of nature documentary",
-    "text": "Impact of nature documentary\n\n\n\n\n\nRecycling model from Ibanez and Roussel (2022)\n\n\n\n\nInterpret the effect of watching the nature documentary Nature (T2) on recycling."
+    "text": "Impact of nature documentary\n\n\n\n\n\nRecycling model from Ibanez and Roussel (2022)\n\n\n\n\nInterpret the effect of watching the nature documentary Nature (T2) on recycling. Assume NEP is low, NEP-High = 0."
   },
   {
     "objectID": "slides/09-prop-odds-probit.html#probit-vs.-logistic-regression",
@@ -1341,7 +1341,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nModeling correlated observations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nFixed + random effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nModeling correlated observations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -1352,7 +1352,11 @@
     "href": "projects/project-tips.html",
     "title": "Final project tips + resources",
     "section": "",
-    "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your title\"\nauthor: \"Your names\"\nformat:\n  pdf:\n    fig-width: 7\n    fig-height: 5\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package"
+    "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies\n\n\n\n\nTips\n\nAsk questions if any of the expectations are unclear.\nCode: In your write up your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your Qmd file I should be able to obtain the results you presented.\n\nException: If you want to highlight something specific about a piece of code, you’re welcome to show that portion.\n\nMerge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.\nMake sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).\nAll team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.\n\n\n\nFormatting + communication tips\n\nSuppress Code, Warnings, & Messages\n\nInclude the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header {r set-up, include = FALSE} to suppress this set up code.\n\nknitr::opts_chunk$set(echo = FALSE,\n                      warning = FALSE, \n                      message = FALSE)\n\nAn alternative approach is to add the following code to the YAML:\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\n\n\n\nHeaders\n\nUse headers to clearly label each section. Make sure there is a space between the last # and the title, so the header renders correctly. For example, ###Section Title will not render as header, but ### Section Title will.\n\n\n\nReferences\n\nInclude all references in a section called “References” at the end of the report.\nThis course does not have specific requirements for formatting citations and references.\n\n\n\nAppendix\n\nIf you have additional work that does not fit or does not belong in the body of the report, you may put it at the end of the document in section called “Appendix”.\nThe items in the appendix should be properly labeled.\nThe appendix should only be for additional material. The reader should be able to fully understand your report without viewing content in the appendix.\n\n\n\nResize figures\n\nResize plots and figures, so you have more space for the narrative.\n\nResize individual figures: Use the code chunk header {r plot1, fig.height = 3, fig.width = 5}, replacing plot1 with a meaningful label and the height and width with values appropriate for your write up.\nResize all figures: Include the fig_width and fig_height options in your YAML header as shown below:\n\n\n\n---\ntitle: \"Your title\"\nauthor: \"Your names\"\nformat:\n  pdf:\n    fig-width: 7\n    fig-height: 5\n---\nReplace the height and width values with values appropriate for your write up.\n\n\nArranging plots\nArrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.\n\nIf you’re using ggplot2 functions, the patchwork package makes it easy to arrange plots in a grid. See the documentation and examples here.\nIf you’re using base R function, i.e. when using the emplogit functions, put the code par(mfrow = c(rows,columns)) before the code to make the plots. For example, par(mfrow = c(2,3)) will arrange plots in a grid with 2 rows and 3 columns.\n\n\n\nPlot titles and axis labels\nBe sure all plot titles and axis labels are visible and easy to read.\n\nUse informative titles, not variable names, for titles and axis labels.\nUse coord_flip() to flip the x and y axes on the plot. This is useful if you a bar plot with an x-axis that is difficult to read due to overlapping text.\n\n❌ NO! The x-axis is hard to read because the names overlap.\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n✅ YES! Names are readable\n\nggplot(data = mpg, aes(x = manufacturer)) +\n  geom_bar() +\n  coord_flip()\n\n\n\n\n\n\n\n\n\n\nDo a little more to make the plot look professional!\n\nInformative title and axis labels\nFlipped coordinates to make names readable\nArranged bars based on count\nCapitalized manufacturer names\nOptional: Added color - Use a coordinated color scheme throughout paper / presentation\nOptional: Applied a theme - Use same theme throughout paper / presentation\n\n\nmpg |&gt;\n  count(manufacturer) |&gt;\n  mutate(manufacturer = str_to_title(manufacturer)) |&gt;\n  ggplot(aes(x = fct_reorder(manufacturer,n), y = n)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(x = \"Manufacturer\", \n       y = \"Count\", \n       title = \"The most common manufacturer is Dodge\") +\n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nTables and model output\n\nUse the kable function from the knitr package to neatly output all tables and model output. This will also ensure all model coefficients are displayed.\n\nUse the digits argument to display only 3 or 4 significant digits.\nUse the caption argument to add captions to your table.\n\n\n\nmodel &lt;- lm(mpg ~ hp, data = mtcars)\ntidy(model) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n30.099\n1.634\n18.421\n0\n\n\nhp\n-0.068\n0.010\n-6.742\n0\n\n\n\n\n\n\n\nGuidelines for communicating results\n\nDon’t use variable names in your narrative! Use descriptive terms, so the reader understands your narrative without relying on the data dictionary.\n\n❌ There is a negative linear relationship between mpg and hp.\n✅ There is a negative linear relationship between a car’s fuel economy (in miles per gallon) and its horsepower.\n\nKnow your audience: Your report should be written for a general audience who has an understanding of statistics at the level of STA 210.\nAvoid subject matter jargon: Don’t assume the audience knows all of the specific terminology related to your subject area. If you must use jargon, include a brief definition the first time you introduce a term.\nTell the “so what”: Your report and presentation should be more than a list of interpretations and technical definitions. Focus on what the results mean, i.e. what you want the audience to know about your topic after reading your report or viewing your presentation.\n\n❌ For every one unit increase in horsepower, we expect the miles per gallon to decrease by 0.068 units, on average.\n✅ If the priority is to have good fuel economy, then one should choose a car with lower horsepower. Based on our model, the fuel economy is expected to decrease, on average, by 0.68 miles per gallon for every 10 additional horsepower.\n\nTell a story: All visualizations, tables, model output, and narrative should tell a cohesive story!\nUse one voice: Though multiple people are writing the report, it should read as if it’s from a single author. At least one team member should read through the report before submission to ensure it reads like a cohesive document.\n\n\n\n\nAdditional resources\n\nExploring RStudio’s Visual Markdown Editor\nR for Data Science\nQuarto documentation:\n\nQuarto PDF Basics\nPresentations in Quarto\n\nData visualization\n\nggplot2 Reference\nggplot2: Elegant Graphics for Data Analysis\nData Visualization: A Practice Introduction\nPatchwork R Package",
+    "crumbs": [
+      "Projects",
+      "Tips + resources"
+    ]
   },
   {
     "objectID": "projects/project-01.html",
@@ -1649,96 +1653,112 @@
     "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/sep-13.html",
-    "href": "prepare/sep-13.html",
-    "title": "September 13 lecture",
+    "objectID": "prepare/jan-31.html",
+    "href": "prepare/jan-31.html",
+    "title": "Prepare for Jan 31 lecture",
     "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
   },
   {
-    "objectID": "prepare/sep-13.html#assigned-reading",
-    "href": "prepare/sep-13.html#assigned-reading",
-    "title": "September 13 lecture",
+    "objectID": "prepare/jan-17.html",
+    "href": "prepare/jan-17.html",
+    "title": "Prepare for Jan 17 lecture",
     "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/sep-11.html",
-    "href": "prepare/sep-11.html",
-    "title": "September 11 lecture",
+    "objectID": "prepare/feb-26.html",
+    "href": "prepare/feb-26.html",
+    "title": "Prepare for Feb 26 lecture",
     "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
+    "text": "Read BMLR: Section 8.5 - 8.12"
   },
   {
-    "objectID": "prepare/sep-11.html#assigned-reading",
-    "href": "prepare/sep-11.html#assigned-reading",
-    "title": "September 11 lecture",
+    "objectID": "hw/hw-02.html",
+    "href": "hw/hw-02.html",
+    "title": "HW 02: Poisson regression",
     "section": "",
-    "text": "📖 IMS, Sec 24.2: Randomization test for the slope\n📖 IMS, Sec 24.3: Bootstrap confidence interval for the slope"
-  },
-  {
-    "objectID": "prepare/jan-29.html",
-    "href": "prepare/jan-29.html",
-    "title": "Prepare for Jan 29 lecture",
-    "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
-  },
-  {
-    "objectID": "prepare/oct-09.html",
-    "href": "prepare/oct-09.html",
-    "title": "October 09 & 11 lectures",
-    "section": "",
-    "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
-  },
-  {
-    "objectID": "prepare/oct-09.html#assigned-reading",
-    "href": "prepare/oct-09.html#assigned-reading",
-    "title": "October 09 & 11 lectures",
-    "section": "",
-    "text": "📖 Tidy Modeling withr R, Ch 8:Feature engineering with recipes"
-  },
-  {
-    "objectID": "hw/hw-03.html",
-    "href": "hw/hw-03.html",
-    "title": "HW 03",
-    "section": "",
-    "text": "To be posted.",
+    "text": "library(tidyverse)\nlibrary(knitr)\nlibrary(kableExtra)",
     "crumbs": [
       "Homework",
-      "HW 03"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-04.html",
-    "href": "hw/hw-04.html",
-    "title": "HW 04",
-    "section": "",
-    "text": "To be posted.",
+    "objectID": "hw/hw-02.html#exercise-1",
+    "href": "hw/hw-02.html#exercise-1",
+    "title": "HW 02: Poisson regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nAnswer parts a - d in the context of the following study:\nA state wildlife biologist collected data from 250 park visitors as they left at the end of their stay. Each was asked to report the number of fish they caught during their one-week stay. On average, visitors caught 21.5 fish per week.\n\nDefine the response.\nWhat are the possible values for the response?\nWhat does \\(\\lambda\\) represent?\nWould a zero-inflated model be considered here? If so, what would be a “true zero”?",
     "crumbs": [
       "Homework",
-      "HW 04"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-06.html",
-    "href": "hw/hw-06.html",
-    "title": "HW 06",
-    "section": "",
-    "text": "To be posted.",
+    "objectID": "hw/hw-02.html#exercise-2",
+    "href": "hw/hw-02.html#exercise-2",
+    "title": "HW 02: Poisson regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nBrockmann (1996) carried out a study of nesting female horseshoe crabs. Female horseshoe crabs often have male crabs attached to a female’s nest known as satellites. One objective of the study was to determine which characteristics of the female were associated with the number of satellites. Of particular interest is the relationship between the width of the female carapace and satellites.\nThe data can be found in crab.csv in the data folder. It includes the following variables:\n\nSatellite = number of satellites\nWidth = carapace width (cm)\nWeight = weight (kg)\nSpine = spine condition (1 = both good, 2 = one worn or broken, 3 = both worn or broken)\nColor = color (1 = light medium, 2 = medium, 3 = dark medium, 4 = dark)\n\nMake sure to convert Spine and Color to the appropriate data types in R before doing the analysis.\n\nCreate a histogram of Satellite. Is there preliminary evidence the number of satellites could be modeled as a Poisson response? Briefly explain.\nFit a Poisson regression model including Width, Weight, and Spine as predictors. Display the model with the 95% confidence interval for each coefficient.\nDescribe the effect of Spine in terms of the mean number of satellites.",
     "crumbs": [
       "Homework",
-      "HW 06"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-05.html",
-    "href": "hw/hw-05.html",
-    "title": "HW 05",
-    "section": "",
-    "text": "To be posted.",
+    "objectID": "hw/hw-02.html#exercise-3",
+    "href": "hw/hw-02.html#exercise-3",
+    "title": "HW 02: Poisson regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nUse the scenario from the previous exercise to answer questions (a) - (d).\n\nWe would like to fit a quasi-Poisson regression model for this data. Briefly explain why we may want to consider fitting a quasi-Poisson regression model for this data.\nFit a quasi-Poisson regression model that corresponds with the model chosen the previous exercise. Display the model.\nWhat is the estimated dispersion parameter? Show how this value is calculated.\nHow do the estimated coefficients change compared to the model chosen in the previous exercise? How do the standard errors change?",
     "crumbs": [
       "Homework",
-      "HW 05"
+      "HW 02"
+    ]
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-4",
+    "href": "hw/hw-02.html#exercise-4",
+    "title": "HW 02: Poisson regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nThe goal of this exercise is to use simulation to understand the equivalency between a gamma-Poisson mixture and a negative binomial distribution.\n\n\n\n\n\n\nTip\n\n\n\nRemember to set a seed so your simulations are reproducible!\n\n\n\n\nUse the R function rpois() to generate 10,000 \\(x_i\\) from a regular Poisson distribution, \\(X \\sim \\textrm{Poisson}(\\lambda=1.5)\\). Plot a histogram of this distribution and note its mean and variance. Next, let \\(Y \\sim \\textrm{Gamma}(r = 3, \\lambda = 2)\\) and use rgamma() to generate 10,000 random \\(y_i\\) from this distribution.\nNow, consider 10,000 different Poisson distributions where \\(\\lambda_i = y_i\\). Randomly generate one \\(z_i\\) from each Poisson distribution. Plot a histogram of these \\(z_i\\) and compare it to your original histogram of \\(X\\) (where \\(X \\sim \\textrm{Poisson}(1.5)\\)). How do the means and variances compare?\nA negative binomial distribution can actually be expressed as a gamma-Poisson mixture. In Part a, you looked at a gamma-Poisson mixture \\(Z \\sim \\textrm{Poisson}(\\lambda)\\) where \\(\\lambda \\sim \\textrm{Gamma}(r = 3, \\lambda' = 2)\\).\nFind the parameters of a negative binomial distribution \\(X \\sim \\textrm{NegBinom}(r, p)\\) such that \\(X\\) is equivalent to \\(Z\\). As a hint, the means of both distributions must be the same, so \\(\\frac{r(1-p)}{p} = \\frac{3}{2}\\).\nShow through histograms and summary statistics that your negative binomial distribution is equivalent to the gamma-Poisson mixture. You can use rnbinom() in R.\nMake an argument that if you want a \\(\\textrm{NegBinom}(r, p)\\) random variable, you can instead sample from a Poisson distribution, where the \\(\\lambda\\) values are themselves sampled from a gamma distribution with parameters \\(r\\) and \\(\\lambda' = \\frac{p}{1-p}\\).",
+    "crumbs": [
+      "Homework",
+      "HW 02"
+    ]
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-5",
+    "href": "hw/hw-02.html#exercise-5",
+    "title": "HW 02: Poisson regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nIn a 2018 study, Chapp et al. (2018) scraped every issue statement from webpages of candidates for the U.S. House of Representatives, counting the number of issues candidates commented on and scoring the level of ambiguity of each statement. We will focus on the issue counts, and determining which attributes (of both the district as a whole and the candidates themselves) are associated with candidate silence (commenting on 0 issues) and a willingness to comment on a greater number of issues. The data set is in ambiguity.csv in the data folder . This analysis will focus on the following variables:\n\nname : candidate name\ndistID : unique identification number for Congressional district\nideology : candidate left-right orientation\ndemocrat : 1 if Democrat, 0 if Republican\ntotalIssuePages : number of issues candidates commented on (response)\n\nSee Roback and Legler (2021) for the full list of variables.\nWe will use a hurdle model to analyze the data. A hurdle model is similar to a zero-inflated Poisson model, but instead of assuming that “zeros” are comprised of two distinct groups—those who would always be 0 and those who happen to be 0 on this occasion—the hurdle model assumes that “zeros” are a single entity. Therefore, in a hurdle model, cases are classified as either “zeros” or “non-zeros”, where “non-zeros” hurdle the 0 threshold—they must always have counts of 1 or above.\nWe will use the pscl package and the hurdle function in it to analyze a hurdle model. Note that coefficients in the “zero hurdle model” section of the output relate predictors to the log-odds of being a non-zero (i.e., having at least one issue statement), which is opposite of the ZIP model.\n\nVisualize the distribution of the response variable totalIssuePages. Why might we consider using a hurdle model compared to a Poisson model? Why is a zero-inflated Poisson model not appropriate in this scenario?\nCreate a plot of the empirical log odds of having at least one issue statement by ideology. You may want to group ideology values first. What can you conclude from this plot?\nCreate a hurdle model with ideology and democrat as predictors in both parts.1 Display the model. Interpret ideology in both parts of the model.\nRepeat (d), but include an interaction in both parts. Interpret the interaction in the zero hurdle part of the model.",
+    "crumbs": [
+      "Homework",
+      "HW 02"
+    ]
+  },
+  {
+    "objectID": "hw/hw-02.html#exercise-6",
+    "href": "hw/hw-02.html#exercise-6",
+    "title": "HW 02: Poisson regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\n\nAwad, Lebo, and Linden (2017) scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set NYCairbnb.csv. The codebook is in the data folder of the hw-02 repo.\nPerform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews.",
+    "crumbs": [
+      "Homework",
+      "HW 02"
+    ]
+  },
+  {
+    "objectID": "hw/hw-02.html#footnotes",
+    "href": "hw/hw-02.html#footnotes",
+    "title": "HW 02: Poisson regression",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe R syntax in the hurlde function is similar to the syntax for the zero-inflated Poisson model. You will need to specify the distributions for the count and hurdle portions of the model, using dist = \"poisson\" and zero.dist = \"binomial\".↩︎",
+    "crumbs": [
+      "Homework",
+      "HW 02"
     ]
   },
   {
@@ -1830,106 +1850,69 @@
     ]
   },
   {
-    "objectID": "hw/hw-02.html",
-    "href": "hw/hw-02.html",
-    "title": "HW 02: Poisson regression",
+    "objectID": "hw/hw-05.html",
+    "href": "hw/hw-05.html",
+    "title": "HW 05",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(knitr)\nlibrary(kableExtra)",
+    "text": "To be posted.",
     "crumbs": [
       "Homework",
-      "HW 02"
+      "HW 05"
     ]
   },
   {
-    "objectID": "hw/hw-02.html#exercise-1",
-    "href": "hw/hw-02.html#exercise-1",
-    "title": "HW 02: Poisson regression",
-    "section": "Exercise 1",
-    "text": "Exercise 1\n\nAnswer parts a - d in the context of the following study:\nA state wildlife biologist collected data from 250 park visitors as they left at the end of their stay. Each was asked to report the number of fish they caught during their one-week stay. On average, visitors caught 21.5 fish per week.\n\nDefine the response.\nWhat are the possible values for the response?\nWhat does \\(\\lambda\\) represent?\nWould a zero-inflated model be considered here? If so, what would be a “true zero”?",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "hw/hw-02.html#exercise-2",
-    "href": "hw/hw-02.html#exercise-2",
-    "title": "HW 02: Poisson regression",
-    "section": "Exercise 2",
-    "text": "Exercise 2\n\nBrockmann (1996) carried out a study of nesting female horseshoe crabs. Female horseshoe crabs often have male crabs attached to a female’s nest known as satellites. One objective of the study was to determine which characteristics of the female were associated with the number of satellites. Of particular interest is the relationship between the width of the female carapace and satellites.\nThe data can be found in crab.csv in the data folder. It includes the following variables:\n\nSatellite = number of satellites\nWidth = carapace width (cm)\nWeight = weight (kg)\nSpine = spine condition (1 = both good, 2 = one worn or broken, 3 = both worn or broken)\nColor = color (1 = light medium, 2 = medium, 3 = dark medium, 4 = dark)\n\nMake sure to convert Spine and Color to the appropriate data types in R before doing the analysis.\n\nCreate a histogram of Satellite. Is there preliminary evidence the number of satellites could be modeled as a Poisson response? Briefly explain.\nFit a Poisson regression model including Width, Weight, and Spine as predictors. Display the model with the 95% confidence interval for each coefficient.\nDescribe the effect of Spine in terms of the mean number of satellites.",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "hw/hw-02.html#exercise-3",
-    "href": "hw/hw-02.html#exercise-3",
-    "title": "HW 02: Poisson regression",
-    "section": "Exercise 3",
-    "text": "Exercise 3\nUse the scenario from the previous exercise to answer questions (a) - (d).\n\nWe would like to fit a quasi-Poisson regression model for this data. Briefly explain why we may want to consider fitting a quasi-Poisson regression model for this data.\nFit a quasi-Poisson regression model that corresponds with the model chosen the previous exercise. Display the model.\nWhat is the estimated dispersion parameter? Show how this value is calculated.\nHow do the estimated coefficients change compared to the model chosen in the previous exercise? How do the standard errors change?",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "hw/hw-02.html#exercise-4",
-    "href": "hw/hw-02.html#exercise-4",
-    "title": "HW 02: Poisson regression",
-    "section": "Exercise 4",
-    "text": "Exercise 4\nThe goal of this exercise is to use simulation to understand the equivalency between a gamma-Poisson mixture and a negative binomial distribution.\n\n\n\n\n\n\nTip\n\n\n\nRemember to set a seed so your simulations are reproducible!\n\n\n\n\nUse the R function rpois() to generate 10,000 \\(x_i\\) from a regular Poisson distribution, \\(X \\sim \\textrm{Poisson}(\\lambda=1.5)\\). Plot a histogram of this distribution and note its mean and variance. Next, let \\(Y \\sim \\textrm{Gamma}(r = 3, \\lambda = 2)\\) and use rgamma() to generate 10,000 random \\(y_i\\) from this distribution.\nNow, consider 10,000 different Poisson distributions where \\(\\lambda_i = y_i\\). Randomly generate one \\(z_i\\) from each Poisson distribution. Plot a histogram of these \\(z_i\\) and compare it to your original histogram of \\(X\\) (where \\(X \\sim \\textrm{Poisson}(1.5)\\)). How do the means and variances compare?\nA negative binomial distribution can actually be expressed as a gamma-Poisson mixture. In Part a, you looked at a gamma-Poisson mixture \\(Z \\sim \\textrm{Poisson}(\\lambda)\\) where \\(\\lambda \\sim \\textrm{Gamma}(r = 3, \\lambda' = 2)\\).\nFind the parameters of a negative binomial distribution \\(X \\sim \\textrm{NegBinom}(r, p)\\) such that \\(X\\) is equivalent to \\(Z\\). As a hint, the means of both distributions must be the same, so \\(\\frac{r(1-p)}{p} = \\frac{3}{2}\\).\nShow through histograms and summary statistics that your negative binomial distribution is equivalent to the gamma-Poisson mixture. You can use rnbinom() in R.\nMake an argument that if you want a \\(\\textrm{NegBinom}(r, p)\\) random variable, you can instead sample from a Poisson distribution, where the \\(\\lambda\\) values are themselves sampled from a gamma distribution with parameters \\(r\\) and \\(\\lambda' = \\frac{p}{1-p}\\).",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "hw/hw-02.html#exercise-5",
-    "href": "hw/hw-02.html#exercise-5",
-    "title": "HW 02: Poisson regression",
-    "section": "Exercise 5",
-    "text": "Exercise 5\nIn a 2018 study, Chapp et al. (2018) scraped every issue statement from webpages of candidates for the U.S. House of Representatives, counting the number of issues candidates commented on and scoring the level of ambiguity of each statement. We will focus on the issue counts, and determining which attributes (of both the district as a whole and the candidates themselves) are associated with candidate silence (commenting on 0 issues) and a willingness to comment on a greater number of issues. The data set is in ambiguity.csv in the data folder . This analysis will focus on the following variables:\n\nname : candidate name\ndistID : unique identification number for Congressional district\nideology : candidate left-right orientation\ndemocrat : 1 if Democrat, 0 if Republican\ntotalIssuePages : number of issues candidates commented on (response)\n\nSee Roback and Legler (2021) for the full list of variables.\nWe will use a hurdle model to analyze the data. A hurdle model is similar to a zero-inflated Poisson model, but instead of assuming that “zeros” are comprised of two distinct groups—those who would always be 0 and those who happen to be 0 on this occasion—the hurdle model assumes that “zeros” are a single entity. Therefore, in a hurdle model, cases are classified as either “zeros” or “non-zeros”, where “non-zeros” hurdle the 0 threshold—they must always have counts of 1 or above.\nWe will use the pscl package and the hurdle function in it to analyze a hurdle model. Note that coefficients in the “zero hurdle model” section of the output relate predictors to the log-odds of being a non-zero (i.e., having at least one issue statement), which is opposite of the ZIP model.\n\nVisualize the distribution of the response variable totalIssuePages. Why might we consider using a hurdle model compared to a Poisson model? Why is a zero-inflated Poisson model not appropriate in this scenario?\nCreate a plot of the empirical log odds of having at least one issue statement by ideology. You may want to group ideology values first. What can you conclude from this plot?\nCreate a hurdle model with ideology and democrat as predictors in both parts.1 Display the model. Interpret ideology in both parts of the model.\nRepeat (d), but include an interaction in both parts. Interpret the interaction in the zero hurdle part of the model.",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "hw/hw-02.html#exercise-6",
-    "href": "hw/hw-02.html#exercise-6",
-    "title": "HW 02: Poisson regression",
-    "section": "Exercise 6",
-    "text": "Exercise 6\n\n\nAwad, Lebo, and Linden (2017) scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set NYCairbnb.csv. The codebook is in the data folder of the hw-02 repo.\nPerform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews.",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "hw/hw-02.html#footnotes",
-    "href": "hw/hw-02.html#footnotes",
-    "title": "HW 02: Poisson regression",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe R syntax in the hurlde function is similar to the syntax for the zero-inflated Poisson model. You will need to specify the distributions for the count and hurdle portions of the model, using dist = \"poisson\" and zero.dist = \"binomial\".↩︎",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "prepare/jan-17.html",
-    "href": "prepare/jan-17.html",
-    "title": "Prepare for Jan 17 lecture",
+    "objectID": "hw/hw-06.html",
+    "href": "hw/hw-06.html",
+    "title": "HW 06",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "text": "To be posted.",
+    "crumbs": [
+      "Homework",
+      "HW 06"
+    ]
   },
   {
-    "objectID": "prepare/jan-31.html",
-    "href": "prepare/jan-31.html",
-    "title": "Prepare for Jan 31 lecture",
+    "objectID": "hw/hw-04.html",
+    "href": "hw/hw-04.html",
+    "title": "HW 04",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
+    "text": "To be posted.",
+    "crumbs": [
+      "Homework",
+      "HW 04"
+    ]
+  },
+  {
+    "objectID": "hw/hw-03.html",
+    "href": "hw/hw-03.html",
+    "title": "HW 03",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Homework",
+      "HW 03"
+    ]
+  },
+  {
+    "objectID": "prepare/feb-21.html",
+    "href": "prepare/feb-21.html",
+    "title": "Prepare for Feb 21 lecture",
+    "section": "",
+    "text": "Read BMLR: Section 8.1 - 8.4"
+  },
+  {
+    "objectID": "prepare/feb-19.html",
+    "href": "prepare/feb-19.html",
+    "title": "Prepare for Feb 19 lecture",
+    "section": "",
+    "text": "Read BMLR: Sec 7.1 - 7.8"
+  },
+  {
+    "objectID": "prepare/jan-29.html",
+    "href": "prepare/jan-29.html",
+    "title": "Prepare for Jan 29 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
   },
   {
     "objectID": "prepare/jan-24.html",
@@ -1937,27 +1920,6 @@
     "title": "Prepare for Jan 24 lecture",
     "section": "",
     "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
-  },
-  {
-    "objectID": "prepare/week-02.html",
-    "href": "prepare/week-02.html",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#assigned-reading",
-    "href": "prepare/week-02.html#assigned-reading",
-    "title": "September 06 lecture",
-    "section": "",
-    "text": "📖 STA 210 Notes: Ch 1: Simple linear regression"
-  },
-  {
-    "objectID": "prepare/week-02.html#additional-resources-optional",
-    "href": "prepare/week-02.html#additional-resources-optional",
-    "title": "September 06 lecture",
-    "section": "Additional resources (optional)",
-    "text": "Additional resources (optional)\n📖 Introduction to Modern Statistics (IMS) Ch 7: Linear regression with a single predictor"
   },
   {
     "objectID": "prepare/feb-12.html",

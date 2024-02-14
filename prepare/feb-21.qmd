@@ -1,0 +1,5 @@
+---
+title: "Prepare for Feb 21 lecture"
+---
+
+-   Read [BMLR: Section 8.1 - 8.4](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html)

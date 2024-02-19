@@ -1110,7 +1110,7 @@
     "href": "slides/10-correlated-data.html#announcements",
     "title": "Correlated data",
     "section": "Announcements",
-    "text": "Announcements\n\nQuiz 02: Tue, Feb 20, 9am - Thu, Feb 22, 12pm (noon)\n\nCovers readings & lectures: Jan 24 - Feb 12\nPoisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression"
+    "text": "Announcements\n\nQuiz 02: Tue, Feb 20, 9am - Thu, Feb 22, 12pm (noon)\n\nCovers readings & lectures: Jan 24 - Feb 12\nPoisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression\n\nRead Sadler and Miller 2010 as part of Feb 26 prepare assignment"
   },
   {
     "objectID": "slides/10-correlated-data.html#learning-goals",
@@ -1777,7 +1777,7 @@
     "href": "prepare/feb-26.html",
     "title": "Prepare for Feb 26 lecture",
     "section": "",
-    "text": "Read BMLR: Sections 8.5 - 8.12"
+    "text": "Read BMLR: Sections 8.5 - 8.12\nSadler, Michael E., and Christopher J. Miller. 2010. “Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians.” Social Psychological and Personality Science 1 (3): 280–87.\n\nClick here to access the paper on Canvas"
   },
   {
     "objectID": "hw/hw-02.html",

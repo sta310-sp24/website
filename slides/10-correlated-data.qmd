@@ -60,6 +60,8 @@ library(kableExtra)
 
     -   Poisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression
 
+-   Read Sadler and Miller (2010) as part of [Feb 26 prepare](../prepare/feb-26.html) assignment
+
 ## Learning goals
 
 -   Recognize a potential for correlation in a data set
@@ -100,7 +102,7 @@ Correlation among outcomes within the same group (teacher, patient, household) i
     -   **Level two**: Groups formed from aggregated level-one observations
 :::
 
-## Multilevel data example 
+## Multilevel data example
 
 Example: education study
 
@@ -146,7 +148,7 @@ Radon is a carcinogen – a naturally occurring radioactive gas whose decay prod
 ::: question
 1.  What are the level one and level two observational units?
 
-2.   What is the response variable and what is its type (normal, Poisson, etc.)?
+2.  What is the response variable and what is its type (normal, Poisson, etc.)?
 
 3.  Describe the within-group correlation.
 
@@ -170,7 +172,7 @@ Each dam produced 10 rat pups and the presence of a deformity was noted for each
 
 **Goal**: Understand the association between teratogen exposure and the probability a pup is born with a deformity.
 
-## Sources of variation  {.midi}
+## Sources of variation {.midi}
 
 ::: incremental
 -   **Dose effect:** Studying whether different dose levels are associated with different probabilities of birth defects in the pups.
@@ -224,7 +226,7 @@ tibble(x = 1:24, pi_1b) |>
          x = "Probability of Deformity")
 ```
 
----
+------------------------------------------------------------------------
 
 ::: question
 1.  Would you expect the number of pups with a deformity for dams in Scenario 1a to follow a distribution similar to the binomial distribution with $n=10$ and $p=0.5$? Why or why not?
@@ -234,7 +236,7 @@ tibble(x = 1:24, pi_1b) |>
 3.  Which scenario do you think is more realistic - Scenario 1a or 1b?
 :::
 
----
+------------------------------------------------------------------------
 
 ```{r echo = F, out.width = "65%"}
 scenario_1 <- 
@@ -418,7 +420,7 @@ kable(scenario2Tab, booktabs = T,
 From Table 7.2 in BMLR
 :::
 
----
+------------------------------------------------------------------------
 
 ::: question
 1.  In Scenario 2a, dams produced 4.79 deformed pups on average, with standard deviation 3.20. Scenario 2b saw an average of 4.67 with standard deviation 3.58. Why are comparisons by dose more meaningful than these overall comparisons?
@@ -445,14 +447,13 @@ The estimated effect of dose and the 95% CI from the binomial and quasibinomial 
 | Binomial      | 4.311      | (3.086, 6.271) |
 | Quasibinomial | 4.311      | (2.735, 7.352) |
 
----
+------------------------------------------------------------------------
 
 ::: question
 1.  Describe how the quasibinomial analysis of Scenario 2b differs from the binomial analysis of the same simulated data. Do confidence intervals contain the true model parameters? Is this what you expected? Why?
 
-```{=html}
 <!-- -->
-```
+
 2.  Why does Scenario 2b contain correlated data that we must account for, while Scenario 2a does not?
 :::
 
@@ -460,7 +461,7 @@ The estimated effect of dose and the 95% CI from the binomial and quasibinomial 
 
 ![From Figure 7.4 in BMLR](images/10/pups-data-structure.png){fig-align="center"}
 
-##  Preview: Fit model with random effect
+## Preview: Fit model with random effect
 
 ```{r echo = F}
 scenario2_raw <- read_csv("data/scenario-2-raw-data.csv") |>

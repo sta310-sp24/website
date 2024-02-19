@@ -269,13 +269,12 @@ scenario_1 |>
 Let's take a look at a binomial and quasibinomial model for Scenarios 1a and 1b.
 
 ::: appex
-📋
+📋 [sta310-sp24.netlify.app/ae/lec-10-correlated](https://sta310-sp24.netlify.app/ae/lec-10-correlated.html)
 :::
 
 ```{r echo = F}
 library(countdown)
-countdown(minutes = 10, seconds = 0,
-          margin = "5%")
+countdown(minutes = 8, seconds = 0)
 ```
 
 # Scenario 2: Dose effect

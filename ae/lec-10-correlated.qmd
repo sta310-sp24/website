@@ -1,0 +1,190 @@
+---
+title: "Lecture 10: Correlated data"
+date: "2024-02-19"
+execute: 
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: load-packages
+
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+```
+
+# Scenario 1
+
+```{r}
+#| label: ch7Seed
+#| include: false
+
+set.seed(2)
+```
+
+```{r}
+#| label: dam-Scenario1
+#| include: false
+
+
+pi_1a <- rep(0.5, 24)
+count_1a <- rbinom(24, 10, pi_1a)
+
+pi_1b <- rbeta(24, 0.5 ,0.5)  
+count_1b <- rbinom(24, 10, pi_1b)  
+```
+
+```{r}
+#| label: scenario1-Plot
+#| include: false
+
+
+scenario_1 <- 
+  tibble(pi_1a, count_1a, pi_1b, count_1b) %>%
+  mutate(phat_1a = count_1a / 10, 
+         phat_1b = count_1b / 10)
+
+hist_1a <- ggplot(data = scenario_1, aes(x = count_1a)) + 
+  geom_histogram(bins = 5, color = "black", fill = "steelblue") +
+  coord_cartesian(xlim = c(0, 10)) +
+  labs(title = "Scenario 1a: Binomial, p = 0.5",
+       x = "Count of deformed pups per dam")
+
+hist_1b <- ggplot(data = scenario_1, aes(x = count_1b)) + 
+  geom_histogram(bins = 5, color = "black", fill = "steelblue") +
+  coord_cartesian(xlim = c(0, 10)) +
+  labs(title = "Scenario 1b: Binomial, p ~ Beta(0.5, 0.5)",
+       x = "Count of deformed pups per dam")
+
+hist_1a / hist_1b
+```
+
+```{r}
+#| label: senario1-Summary
+#| include: false
+
+scenario_1 %>% 
+  summarise(mean_1a = mean(count_1a), sd_1a = sd(count_1a),
+            mean_1b = mean(count_1b), sd_1b = sd(count_1b) )
+```
+
+## Scenario 1a
+
+Below is the code for the binomial logistic regression model and confidence intervals calculated using the profile likelihood approach (confidence intervals calculated based on likelihood function with no assumptions on the distribution of the parameter of interest, $\beta_0$).
+
+```{r}
+#| label: logistic-1a
+model_1a <- glm(phat_1a ~ 1, family = binomial, weight = rep(10,24), 
+                data = scenario_1)
+
+tidy(model_1a) |>
+  kable(digits = 3)
+```
+
+95% CI of the **odds** of a pup with deformity
+
+```{r}
+#| label: pred-odds-1a
+
+
+exp(confint(model_1a))
+```
+
+The 95% CI of the **probability** of a pup with deformity
+
+```{r}
+#| label: pred-prob-1a
+
+exp(confint(model_1a)) / (1 + exp(confint(model_1a)))
+```
+
+Next we fit a quasibinomial model
+
+```{r}
+#| label: quasi-binom-1a
+
+quasi_model_1a <- glm(phat_1a ~ 1, family = quasibinomial,
+                      weight = rep(10,24), data = scenario_1)
+
+tidy(quasi_model_1a)
+```
+
+95% CI of the **odds** of a pup with deformity
+
+```{r}
+#| label: pred-odds-1a-quasi
+
+exp(confint(quasi_model_1a))
+```
+
+The 95% CI of the **probability** of a pup with deformity
+
+```{r}
+#| label: pred-prob-1a-quasi
+
+
+exp(confint(quasi_model_1a)) / (1 + exp(confint(quasi_model_1a)))
+```
+
+## Scenario 1b
+
+::: callout-note
+### Fit models for Scenario 1b
+
+\
+Fit the binomial and quasibinomial models for the data generated under Scenario 1b. Calculate the 95% CI for $p$ for each model.
+:::
+
+```{r}
+#| label: binomial-model-1b
+
+# add code here
+```
+
+```{r}
+#| label:  quasi-binomial-model-1b
+
+# add code here
+```
+
+## Questions
+
+::: callout-note
+## Question 1
+
+How do the quasibinomial analysis for Scenario 1b differ from the binomial analysis for Scenario 1b? Consider the coefficient estimates, standard error, predicted probabilities and associated 95% CI.
+:::
+
+::: callout-note
+## Question 2
+
+Why are differences between the quasibinomial and binomial models of Scenario 1a less noticeable than the differences in Scenario 1b?
+:::
+
+# Scenario 2: Random effects model
+
+```{r}
+#| label: scenario-2-data
+
+
+scenario2_raw <- read_csv("data/scenario-2-raw-data.csv") %>%
+  mutate(deformity = factor(deformity),
+         dam = factor(dam))
+```
+
+You will need the **lme4** R package for random effects models and the **broom.mixed** package to tidy the output. Once the package is installed, remove `eval = F` from the code chunk options.
+
+```{r random-effect-model}
+#| label: random-effects-model
+#| eval: false
+
+library(lme4)
+library(broom.mixed)
+
+random_effects_model <- glmer(deformity ~ dose + (1|dam), 
+                          family = binomial, data = scenario2_raw)
+tidy(random_effects_model, conf.int = 3) |>
+  kable(digits = 3)
+```

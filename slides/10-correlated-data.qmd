@@ -54,6 +54,12 @@ library(kableExtra)
 
 ## Announcements
 
+-   Quiz 02: Tue, Feb 20, 9am - Thu, Feb 22, 12pm (noon)
+
+    -   Covers readings & lectures: Jan 24 - Feb 12
+
+    -   Poisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression
+
 ## Learning goals
 
 -   Recognize a potential for correlation in a data set
@@ -70,7 +76,7 @@ Notes based on Chapter 7 of @roback2021beyond unless noted otherwise.
 ## Examples of correlated data {.midi}
 
 ::: incremental
--   In an education study, scores for students from a particular teacher are typically more similar than scores of other students with a different teacher
+-   In an education study, test scores for students from a particular teacher are typically more similar than test scores of other students with a different teacher
 -   In a study measuring depression indices weekly over a month, the four measures for the same patient tend to be more similar than depression indices from other patients
 -   In political polling, opinions of members from the same household tend to be more similar than opinions of members from another household
 :::
@@ -91,14 +97,24 @@ Correlation among outcomes within the same group (teacher, patient, household) i
 -   For now we will focus on data with two levels:
 
     -   **Level one**: Most basic level of observation
-
     -   **Level two**: Groups formed from aggregated level-one observations
-
--   Example: political polling
-
-    -   Level one: individual members of household
-    -   Level two: household
 :::
+
+## Multilevel data example 
+
+Example: education study
+
+-   **Level one**
+
+    -   **Observational units**: students
+
+    -   **Level-one covariates**: test scores (response), year in school, demographics
+
+-   **Level two**
+
+    -   **Observational units**: teachers
+
+    -   **Level-two covariates**:years of experience
 
 ## Two types of effects in model
 
@@ -121,9 +137,9 @@ Researchers are interested in understanding the effect social media has on opini
 
 ## Practice {.midi}
 
-Researchers conducted a randomized controlled study where patients were randomly assigned to either an anti-epileptic drug or a placebo. For each patient, the number of seizures at baseline was measured over a 2-week period. For four consecutive visits the number of seizures were determined over the past 2-week period. Patient age and sex along with visit number were recorded.[^1]
+Radon is a carcinogen – a naturally occurring radioactive gas whose decay products are also radioactive – known to cause lung cancer in high concentrations. The EPA sampled more than 80,000 homes across the U.S. Each house came from a randomly selected county and measurements were made on each level of each home. Uranium measurements at the county level were included to improve the radon estimates.[^1]
 
-[^1]: Ex. 1 from Section 7.10.1 in BMLR
+[^1]: From Ex. 1 in Section 7.10.1 of BMLR
 
 . . .
 
@@ -132,7 +148,7 @@ Researchers conducted a randomized controlled study where patients were randomly
 
 2.   What is the response variable and what is its type (normal, Poisson, etc.)?
 
-3.  Describe the within-group variation.
+3.  Describe the within-group correlation.
 
 4.  What are the fixed effects? What are the random effects?
 :::
@@ -148,11 +164,25 @@ Today's data are simulated results of an experiment with 24 dams (mother rats) r
 -   Low dose (1 mg)
 -   No dose (Control)
 
-Each dam produced 10 rat pups and the presence of a deformity was noted.
+Each dam produced 10 rat pups and the presence of a deformity was noted for each pup.
 
 . . .
 
 **Goal**: Understand the association between teratogen exposure and the probability a pup is born with a deformity.
+
+## Sources of variation  {.midi}
+
+::: incremental
+-   **Dose effect:** Studying whether different dose levels are associated with different probabilities of birth defects in the pups.
+
+    -   Dose is a **fixed effect**. Study is interested in defect rate at specific dose levels.
+
+-   **Dam (litter) effect:** Different dams may have different propensity to produce pups with defects, i.e. pups from same litter are more likely to be similar than pups from different litters.
+
+    -   Dam is a **random effect.** Study is not interested in defect rate for each specific dam in the study but is interested in variability between litters.
+
+-   **Pup-to-pup variability**: Within litter pup differences. This is the unexplained variability.
+:::
 
 ## Scenario 1: No dose effect {.midi}
 
@@ -265,7 +295,7 @@ We will assume the true relationship between $p$ and dose is the following:
 
 $$\log\Big(\frac{p}{1-p}\Big) = -2 + 1.33 ~ dose$$
 
-## Scenario 2
+## Scenario 2 {.midi}
 
 **Scenario 2a.**
 
@@ -279,7 +309,9 @@ $$p \sim Beta\Big(\frac{2p}{(1-p)}, 2\Big)$$
 
 . . .
 
-On average, dams who receive dose $x$ have the same probability of deformed pup as dams with dose $x$ under Scenario 2a.
+On average, dams who receive dose $x$ have the same probability of pup born with deformity as dams with dose $x$ under Scenario 2a.
+
+-   e.g., If `dose = 1`, the probability of a pup born with deformity is 0.338 in Scenario 2a and the mean is 0.338 in Scenario 2b.
 
 ## Distributions under Scenario 2
 
@@ -422,10 +454,14 @@ The estimated effect of dose and the 95% CI from the binomial and quasibinomial 
 ```{=html}
 <!-- -->
 ```
-2.  Why are differences between quasibinomial and binomial models of Scenario 2a less noticeable than the differences in Scenario 2b?
+2.  Why does Scenario 2b contain correlated data that we must account for, while Scenario 2a does not?
 :::
 
-## Preview: Fit model with random effect for dam
+## Data structure
+
+![From Figure 7.4 in BMLR](images/10/pups-data-structure.png){fig-align="center"}
+
+##  Preview: Fit model with random effect
 
 ```{r echo = F}
 scenario2_raw <- read_csv("data/scenario-2-raw-data.csv") |>

@@ -431,6 +431,13 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
+<ul>
+<li><p>Quiz 02: Tue, Feb 20, 9am - Thu, Feb 22, 12pm (noon)</p>
+<ul>
+<li><p>Covers readings &amp; lectures: Jan 24 - Feb 12</p></li>
+<li><p>Poisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression</p></li>
+</ul></li>
+</ul>
 </section>
 <section id="learning-goals" class="slide level2">
 <h2>Learning goals</h2>
@@ -453,7 +460,7 @@ Prof.&nbsp;Maria Tackett
 <h2>Examples of correlated data</h2>
 <div>
 <ul>
-<li class="fragment">In an education study, scores for students from a particular teacher are typically more similar than scores of other students with a different teacher</li>
+<li class="fragment">In an education study, test scores for students from a particular teacher are typically more similar than test scores of other students with a different teacher</li>
 <li class="fragment">In a study measuring depression indices weekly over a month, the four measures for the same patient tend to be more similar than depression indices from other patients</li>
 <li class="fragment">In political polling, opinions of members from the same household tend to be more similar than opinions of members from another household</li>
 </ul>
@@ -473,16 +480,27 @@ Prof.&nbsp;Maria Tackett
 </ul></li>
 <li class="fragment"><p>For now we will focus on data with two levels:</p>
 <ul>
-<li class="fragment"><p><strong>Level one</strong>: Most basic level of observation</p></li>
-<li class="fragment"><p><strong>Level two</strong>: Groups formed from aggregated level-one observations</p></li>
-</ul></li>
-<li class="fragment"><p>Example: political polling</p>
-<ul>
-<li class="fragment">Level one: individual members of household</li>
-<li class="fragment">Level two: household</li>
+<li class="fragment"><strong>Level one</strong>: Most basic level of observation</li>
+<li class="fragment"><strong>Level two</strong>: Groups formed from aggregated level-one observations</li>
 </ul></li>
 </ul>
 </div>
+</section>
+<section id="multilevel-data-example" class="slide level2">
+<h2>Multilevel data example</h2>
+<p>Example: education study</p>
+<ul>
+<li><p><strong>Level one</strong></p>
+<ul>
+<li><p><strong>Observational units</strong>: students</p></li>
+<li><p><strong>Level-one covariates</strong>: test scores (response), year in school, demographics</p></li>
+</ul></li>
+<li><p><strong>Level two</strong></p>
+<ul>
+<li><p><strong>Observational units</strong>: teachers</p></li>
+<li><p><strong>Level-two covariates</strong>:years of experience</p></li>
+</ul></li>
+</ul>
 </section>
 <section id="two-types-of-effects-in-model" class="slide level2">
 <h2>Two types of effects in model</h2>
@@ -513,18 +531,18 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="practice" class="slide level2 midi">
 <h2>Practice</h2>
-<p>Researchers conducted a randomized controlled study where patients were randomly assigned to either an anti-epileptic drug or a placebo. For each patient, the number of seizures at baseline was measured over a 2-week period. For four consecutive visits the number of seizures were determined over the past 2-week period. Patient age and sex along with visit number were recorded.<sup>1</sup></p>
+<p>Radon is a carcinogen – a naturally occurring radioactive gas whose decay products are also radioactive – known to cause lung cancer in high concentrations. The EPA sampled more than 80,000 homes across the U.S. Each house came from a randomly selected county and measurements were made on each level of each home. Uranium measurements at the county level were included to improve the radon estimates.<sup>1</sup></p>
 <div class="fragment">
 <div class="question">
 <ol type="1">
 <li><p>What are the level one and level two observational units?</p></li>
 <li><p>What is the response variable and what is its type (normal, Poisson, etc.)?</p></li>
-<li><p>Describe the within-group variation.</p></li>
+<li><p>Describe the within-group correlation.</p></li>
 <li><p>What are the fixed effects? What are the random effects?</p></li>
 </ol>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Ex. 1 from Section 7.10.1 in BMLR</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>From Ex. 1 in Section 7.10.1 of BMLR</p></li></ol></aside></section></section>
 <section>
 <section id="teratogen-and-rat-pups" class="title-slide slide level1 center">
 <h1>Teratogen and rat pups</h1>
@@ -539,9 +557,25 @@ Prof.&nbsp;Maria Tackett
 <li>Low dose (1 mg)</li>
 <li>No dose (Control)</li>
 </ul>
-<p>Each dam produced 10 rat pups and the presence of a deformity was noted.</p>
+<p>Each dam produced 10 rat pups and the presence of a deformity was noted for each pup.</p>
 <div class="fragment">
 <p><strong>Goal</strong>: Understand the association between teratogen exposure and the probability a pup is born with a deformity.</p>
+</div>
+</section>
+<section id="sources-of-variation" class="slide level2 midi">
+<h2>Sources of variation</h2>
+<div>
+<ul>
+<li class="fragment"><p><strong>Dose effect:</strong> Studying whether different dose levels are associated with different probabilities of birth defects in the pups.</p>
+<ul>
+<li class="fragment">Dose is a <strong>fixed effect</strong>. Study is interested in defect rate at specific dose levels.</li>
+</ul></li>
+<li class="fragment"><p><strong>Dam (litter) effect:</strong> Different dams may have different propensity to produce pups with defects, i.e.&nbsp;pups from same litter are more likely to be similar than pups from different litters.</p>
+<ul>
+<li class="fragment">Dam is a <strong>random effect.</strong> Study is not interested in defect rate for each specific dam in the study but is interested in variability between litters.</li>
+</ul></li>
+<li class="fragment"><p><strong>Pup-to-pup variability</strong>: Within litter pup differences. This is the unexplained variability.</p></li>
+</ul>
 </div>
 </section>
 <section id="scenario-1-no-dose-effect" class="slide level2 midi">
@@ -609,7 +643,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_eff7b3f6" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_627a3bad" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -636,7 +670,7 @@ Prof.&nbsp;Maria Tackett
 <p><span class="math display">\[\log\Big(\frac{p}{1-p}\Big) = -2 + 1.33 ~ dose\]</span></p>
 </div>
 </section>
-<section id="scenario-2" class="slide level2">
+<section id="scenario-2" class="slide level2 midi">
 <h2>Scenario 2</h2>
 <p><strong>Scenario 2a.</strong></p>
 <p><span class="math display">\[p = \frac{e^{-2 + 1.33 ~ dose}}{1 + e^{-2 + 1.33 ~ dose}}\]</span></p>
@@ -645,7 +679,10 @@ Prof.&nbsp;Maria Tackett
 <p><span class="math display">\[p \sim Beta\Big(\frac{2p}{(1-p)}, 2\Big)\]</span></p>
 </div>
 <div class="fragment">
-<p>On average, dams who receive dose <span class="math inline">\(x\)</span> have the same probability of deformed pup as dams with dose <span class="math inline">\(x\)</span> under Scenario 2a.</p>
+<p>On average, dams who receive dose <span class="math inline">\(x\)</span> have the same probability of pup born with deformity as dams with dose <span class="math inline">\(x\)</span> under Scenario 2a.</p>
+<ul>
+<li>e.g., If <code>dose = 1</code>, the probability of a pup born with deformity is 0.338 in Scenario 2a and the mean is 0.338 in Scenario 2b.</li>
+</ul>
 </div>
 </section>
 <section id="distributions-under-scenario-2" class="slide level2">
@@ -815,12 +852,16 @@ Scenario 2b
 </ol>
 <!-- -->
 <ol start="2" type="1">
-<li>Why are differences between quasibinomial and binomial models of Scenario 2a less noticeable than the differences in Scenario 2b?</li>
+<li>Why does Scenario 2b contain correlated data that we must account for, while Scenario 2a does not?</li>
 </ol>
 </div>
 </section>
-<section id="preview-fit-model-with-random-effect-for-dam" class="slide level2">
-<h2>Preview: Fit model with random effect for dam</h2>
+<section id="data-structure" class="slide level2">
+<h2>Data structure</h2>
+
+<img data-src="images/10/pups-data-structure.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From Figure 7.4 in BMLR</p></section>
+<section id="preview-fit-model-with-random-effect" class="slide level2">
+<h2>Preview: Fit model with random effect</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(lme4)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(broom.mixed)</span>

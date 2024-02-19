@@ -1110,7 +1110,7 @@
     "href": "slides/10-correlated-data.html#announcements",
     "title": "Correlated data",
     "section": "Announcements",
-    "text": "Announcements"
+    "text": "Announcements\n\nQuiz 02: Tue, Feb 20, 9am - Thu, Feb 22, 12pm (noon)\n\nCovers readings & lectures: Jan 24 - Feb 12\nPoisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression"
   },
   {
     "objectID": "slides/10-correlated-data.html#learning-goals",
@@ -1124,14 +1124,21 @@
     "href": "slides/10-correlated-data.html#examples-of-correlated-data",
     "title": "Correlated data",
     "section": "Examples of correlated data",
-    "text": "Examples of correlated data\n\n\nIn an education study, scores for students from a particular teacher are typically more similar than scores of other students with a different teacher\nIn a study measuring depression indices weekly over a month, the four measures for the same patient tend to be more similar than depression indices from other patients\nIn political polling, opinions of members from the same household tend to be more similar than opinions of members from another household\n\n\n\nCorrelation among outcomes within the same group (teacher, patient, household) is called intraclass correlation"
+    "text": "Examples of correlated data\n\n\nIn an education study, test scores for students from a particular teacher are typically more similar than test scores of other students with a different teacher\nIn a study measuring depression indices weekly over a month, the four measures for the same patient tend to be more similar than depression indices from other patients\nIn political polling, opinions of members from the same household tend to be more similar than opinions of members from another household\n\n\n\nCorrelation among outcomes within the same group (teacher, patient, household) is called intraclass correlation"
   },
   {
     "objectID": "slides/10-correlated-data.html#multilevel-data",
     "href": "slides/10-correlated-data.html#multilevel-data",
     "title": "Correlated data",
     "section": "Multilevel data",
-    "text": "Multilevel data\n\n\nWe can think of correlated data as a multilevel structure\n\nPopulation elements are aggregated into groups\nThere are observational units and measurements at each level\n\nFor now we will focus on data with two levels:\n\nLevel one: Most basic level of observation\nLevel two: Groups formed from aggregated level-one observations\n\nExample: political polling\n\nLevel one: individual members of household\nLevel two: household"
+    "text": "Multilevel data\n\n\nWe can think of correlated data as a multilevel structure\n\nPopulation elements are aggregated into groups\nThere are observational units and measurements at each level\n\nFor now we will focus on data with two levels:\n\nLevel one: Most basic level of observation\nLevel two: Groups formed from aggregated level-one observations"
+  },
+  {
+    "objectID": "slides/10-correlated-data.html#multilevel-data-example",
+    "href": "slides/10-correlated-data.html#multilevel-data-example",
+    "title": "Correlated data",
+    "section": "Multilevel data example",
+    "text": "Multilevel data example\nExample: education study\n\nLevel one\n\nObservational units: students\nLevel-one covariates: test scores (response), year in school, demographics\n\nLevel two\n\nObservational units: teachers\nLevel-two covariates:years of experience"
   },
   {
     "objectID": "slides/10-correlated-data.html#two-types-of-effects-in-model",
@@ -1152,14 +1159,21 @@
     "href": "slides/10-correlated-data.html#practice",
     "title": "Correlated data",
     "section": "Practice",
-    "text": "Practice\nResearchers conducted a randomized controlled study where patients were randomly assigned to either an anti-epileptic drug or a placebo. For each patient, the number of seizures at baseline was measured over a 2-week period. For four consecutive visits the number of seizures were determined over the past 2-week period. Patient age and sex along with visit number were recorded.1\n\n\n\nWhat are the level one and level two observational units?\nWhat is the response variable and what is its type (normal, Poisson, etc.)?\nDescribe the within-group variation.\nWhat are the fixed effects? What are the random effects?\n\n\n\nEx. 1 from Section 7.10.1 in BMLR"
+    "text": "Practice\nRadon is a carcinogen – a naturally occurring radioactive gas whose decay products are also radioactive – known to cause lung cancer in high concentrations. The EPA sampled more than 80,000 homes across the U.S. Each house came from a randomly selected county and measurements were made on each level of each home. Uranium measurements at the county level were included to improve the radon estimates.1\n\n\n\nWhat are the level one and level two observational units?\nWhat is the response variable and what is its type (normal, Poisson, etc.)?\nDescribe the within-group correlation.\nWhat are the fixed effects? What are the random effects?\n\n\n\nFrom Ex. 1 in Section 7.10.1 of BMLR"
   },
   {
     "objectID": "slides/10-correlated-data.html#data-teratogen-and-rat-pups",
     "href": "slides/10-correlated-data.html#data-teratogen-and-rat-pups",
     "title": "Correlated data",
     "section": "Data: Teratogen and rat pups",
-    "text": "Data: Teratogen and rat pups\nToday’s data are simulated results of an experiment with 24 dams (mother rats) randomly divided into four groups that received different doses of teratogen, a substance that could potentially cause harm to developing fetuses. The four groups are\n\nHigh dose (3 mg)\nMedium dose (2 mg)\nLow dose (1 mg)\nNo dose (Control)\n\nEach dam produced 10 rat pups and the presence of a deformity was noted.\n\nGoal: Understand the association between teratogen exposure and the probability a pup is born with a deformity."
+    "text": "Data: Teratogen and rat pups\nToday’s data are simulated results of an experiment with 24 dams (mother rats) randomly divided into four groups that received different doses of teratogen, a substance that could potentially cause harm to developing fetuses. The four groups are\n\nHigh dose (3 mg)\nMedium dose (2 mg)\nLow dose (1 mg)\nNo dose (Control)\n\nEach dam produced 10 rat pups and the presence of a deformity was noted for each pup.\n\nGoal: Understand the association between teratogen exposure and the probability a pup is born with a deformity."
+  },
+  {
+    "objectID": "slides/10-correlated-data.html#sources-of-variation",
+    "href": "slides/10-correlated-data.html#sources-of-variation",
+    "title": "Correlated data",
+    "section": "Sources of variation",
+    "text": "Sources of variation\n\n\nDose effect: Studying whether different dose levels are associated with different probabilities of birth defects in the pups.\n\nDose is a fixed effect. Study is interested in defect rate at specific dose levels.\n\nDam (litter) effect: Different dams may have different propensity to produce pups with defects, i.e. pups from same litter are more likely to be similar than pups from different litters.\n\nDam is a random effect. Study is not interested in defect rate for each specific dam in the study but is interested in variability between litters.\n\nPup-to-pup variability: Within litter pup differences. This is the unexplained variability."
   },
   {
     "objectID": "slides/10-correlated-data.html#scenario-1-no-dose-effect",
@@ -1180,7 +1194,7 @@
     "href": "slides/10-correlated-data.html#scenario-2",
     "title": "Correlated data",
     "section": "Scenario 2",
-    "text": "Scenario 2\nScenario 2a.\n\\[p = \\frac{e^{-2 + 1.33 ~ dose}}{1 + e^{-2 + 1.33 ~ dose}}\\]\n\nScenario 2b.\n\\[p \\sim Beta\\Big(\\frac{2p}{(1-p)}, 2\\Big)\\]\n\n\nOn average, dams who receive dose \\(x\\) have the same probability of deformed pup as dams with dose \\(x\\) under Scenario 2a."
+    "text": "Scenario 2\nScenario 2a.\n\\[p = \\frac{e^{-2 + 1.33 ~ dose}}{1 + e^{-2 + 1.33 ~ dose}}\\]\n\nScenario 2b.\n\\[p \\sim Beta\\Big(\\frac{2p}{(1-p)}, 2\\Big)\\]\n\n\nOn average, dams who receive dose \\(x\\) have the same probability of pup born with deformity as dams with dose \\(x\\) under Scenario 2a.\n\ne.g., If dose = 1, the probability of a pup born with deformity is 0.338 in Scenario 2a and the mean is 0.338 in Scenario 2b."
   },
   {
     "objectID": "slides/10-correlated-data.html#distributions-under-scenario-2",
@@ -1204,11 +1218,18 @@
     "text": "Scenario 2: Estimated odds ratio\nThe estimated effect of dose and the 95% CI from the binomial and quasibinomial models are below:\nScenario 2a\n\n\n\n\nOdds Ratio\n95% CI\n\n\n\n\nBinomial\n3.536\n(2.604, 4.958)\n\n\nQuasibinomial\n3.536\n(2.512, 5.186)\n\n\n\nScenario 2b\n\n\n\n\nOdds Ratio\n95% CI\n\n\n\n\nBinomial\n4.311\n(3.086, 6.271)\n\n\nQuasibinomial\n4.311\n(2.735, 7.352)"
   },
   {
-    "objectID": "slides/10-correlated-data.html#preview-fit-model-with-random-effect-for-dam",
-    "href": "slides/10-correlated-data.html#preview-fit-model-with-random-effect-for-dam",
+    "objectID": "slides/10-correlated-data.html#data-structure",
+    "href": "slides/10-correlated-data.html#data-structure",
     "title": "Correlated data",
-    "section": "Preview: Fit model with random effect for dam",
-    "text": "Preview: Fit model with random effect for dam\n\nlibrary(lme4)\nlibrary(broom.mixed)\nrandom_effect_model &lt;- glmer(deformity ~ dose + (1|dam), \n                          family = binomial, data = scenario2_raw)\ntidy(random_effect_model, conf.int = TRUE) |&gt; \n  kable(digits = 3)\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\nfixed\nNA\n(Intercept)\n-2.819\n0.528\n-5.343\n0\n-3.853\n-1.785\n\n\nfixed\nNA\ndose\n1.691\n0.282\n5.992\n0\n1.138\n2.244\n\n\nran_pars\ndam\nsd__(Intercept)\n0.834\nNA\nNA\nNA\nNA\nNA"
+    "section": "Data structure",
+    "text": "Data structure\n\nFrom Figure 7.4 in BMLR"
+  },
+  {
+    "objectID": "slides/10-correlated-data.html#preview-fit-model-with-random-effect",
+    "href": "slides/10-correlated-data.html#preview-fit-model-with-random-effect",
+    "title": "Correlated data",
+    "section": "Preview: Fit model with random effect",
+    "text": "Preview: Fit model with random effect\n\nlibrary(lme4)\nlibrary(broom.mixed)\nrandom_effect_model &lt;- glmer(deformity ~ dose + (1|dam), \n                          family = binomial, data = scenario2_raw)\ntidy(random_effect_model, conf.int = TRUE) |&gt; \n  kable(digits = 3)\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\nfixed\nNA\n(Intercept)\n-2.819\n0.528\n-5.343\n0\n-3.853\n-1.785\n\n\nfixed\nNA\ndose\n1.691\n0.282\n5.992\n0\n1.138\n2.244\n\n\nran_pars\ndam\nsd__(Intercept)\n0.834\nNA\nNA\nNA\nNA\nNA"
   },
   {
     "objectID": "slides/10-correlated-data.html#summary",

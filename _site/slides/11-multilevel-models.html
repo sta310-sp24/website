@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
-  <title>STA 310 - Spring 2024 - Correlated data</title>
+  <title>STA 310 - Spring 2024 - Multilevel models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -409,15 +409,13 @@
   </style>
   <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
   <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
-  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Correlated data</h1>
+  <h1 class="title">Multilevel models</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -427,84 +425,61 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 
-  <p class="date">Feb 19, 2024</p>
+  <p class="date">Feb 21, 2024</p>
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Quiz 02: Tue, Feb 20, 9am - Thu, Feb 22, 12pm (noon)</p>
+<li><p>Quiz 02: <strong>due Thu, Feb 22, 12pm (noon)</strong></p>
 <ul>
 <li><p>Covers readings &amp; lectures: Jan 24 - Feb 12</p></li>
 <li><p>Poisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression</p></li>
 </ul></li>
+<li><p>HW 02 returned</p>
+<ul>
+<li>Close issue in your GitHub after you’ve reviewed feedback</li>
+</ul></li>
+<li><p>HW 03 released tomorrow and due Wed, Feb 28</p></li>
 <li><p>Read Sadler and Miller (2010) as part of <a href="../prepare/feb-26.html">Feb 26 prepare</a> assignment</p></li>
 </ul>
 </section>
-<section id="learning-goals" class="slide level2">
-<h2>Learning goals</h2>
+<section id="topics" class="slide level2">
+<h2>Topics</h2>
 <ul>
-<li>Recognize a potential for correlation in a data set</li>
-<li>Identify observational units at varying levels</li>
-<li>Understand issues correlated data may cause in modeling</li>
-<li>Understand how random effects models can be used to take correlation into account</li>
+<li><p>Understand how multilevel models can be used to take correlation into account</p></li>
+<li><p>Conduct univariate and bivariate EDA for multilevel models</p></li>
+<li><p>Write multilevel model, including assumptions about variance components</p>
+<ul>
+<li>In by-level and composite forms</li>
+</ul></li>
+<li><p>Interpret the model parameters, fixed effects, and variance components</p></li>
 </ul>
 
 <aside><div>
-<p>Notes based on Chapter 7 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> unless noted otherwise.</p>
+<p>Notes based on Chapter 8 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> unless noted otherwise.</p>
 </div></aside></section>
 <section>
 <section id="correlated-observations" class="title-slide slide level1 center">
 <h1>Correlated observations</h1>
 
 </section>
-<section id="examples-of-correlated-data" class="slide level2 midi">
-<h2>Examples of correlated data</h2>
-<div>
-<ul>
-<li class="fragment">In an education study, test scores for students from a particular teacher are typically more similar than test scores of other students with a different teacher</li>
-<li class="fragment">In a study measuring depression indices weekly over a month, the four measures for the same patient tend to be more similar than depression indices from other patients</li>
-<li class="fragment">In political polling, opinions of members from the same household tend to be more similar than opinions of members from another household</li>
-</ul>
-</div>
-<div class="fragment">
-<p>Correlation among outcomes within the same group (teacher, patient, household) is called <strong>intraclass correlation</strong></p>
-</div>
-</section>
-<section id="multilevel-data" class="slide level2 midi">
+<section id="multilevel-data" class="slide level2">
 <h2>Multilevel data</h2>
-<div>
 <ul>
-<li class="fragment"><p>We can think of correlated data as a multilevel structure</p>
+<li><p>We can think of correlated data as a multilevel structure</p>
 <ul>
-<li class="fragment"><p>Population elements are aggregated into groups</p></li>
-<li class="fragment"><p>There are observational units and measurements at each level</p></li>
+<li>Population elements are aggregated into groups</li>
+<li>There are observational units and measurements at each level</li>
 </ul></li>
-<li class="fragment"><p>For now we will focus on data with two levels:</p>
+<li><p>For now we will focus on data with two levels:</p>
 <ul>
-<li class="fragment"><strong>Level one</strong>: Most basic level of observation</li>
-<li class="fragment"><strong>Level two</strong>: Groups formed from aggregated level-one observations</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="multilevel-data-example" class="slide level2">
-<h2>Multilevel data example</h2>
-<p>Example: education study</p>
-<ul>
-<li><p><strong>Level one</strong></p>
-<ul>
-<li><p><strong>Observational units</strong>: students</p></li>
-<li><p><strong>Level-one covariates</strong>: test scores (response), year in school, demographics</p></li>
-</ul></li>
-<li><p><strong>Level two</strong></p>
-<ul>
-<li><p><strong>Observational units</strong>: teachers</p></li>
-<li><p><strong>Level-two covariates</strong>:years of experience</p></li>
+<li><strong>Level one</strong>: Most basic level of observation</li>
+<li><strong>Level two</strong>: Groups formed from aggregated level-one observations</li>
 </ul></li>
 </ul>
 </section>
-<section id="two-types-of-effects-in-model" class="slide level2">
-<h2>Two types of effects in model</h2>
+<section id="two-types-of-effects" class="slide level2">
+<h2>Two types of effects</h2>
 <ul>
 <li><strong>Fixed effects</strong>: Effects that are of interest in the study
 <ul>
@@ -519,371 +494,657 @@ Prof.&nbsp;Maria Tackett
 </ul></li>
 </ul>
 </div>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p>Researchers are interested in understanding the effect social media has on opinions about a proposed economic plan. They randomly select 1000 households. They ask each adult in the household how many minutes they spend on social media daily and whether they support the proposed economic plan.</p>
-<div class="fragment">
-<ul>
-<li>daily minutes on social media is the fixed effect</li>
-<li>household is the random effect</li>
-</ul>
-</div>
-</section>
-<section id="practice" class="slide level2 midi">
-<h2>Practice</h2>
-<!--maybe different example since this is a three level model-->
-<p>Radon is a carcinogen – a naturally occurring radioactive gas whose decay products are also radioactive – known to cause lung cancer in high concentrations. The EPA sampled more than 80,000 homes across the U.S. Each house came from a randomly selected county and measurements were made on each level of each home. Uranium measurements at the county level were included to improve the radon estimates.<sup>1</sup></p>
-<div class="fragment">
-<div class="question">
-<ol type="1">
-<li><p>What are the level one and level two observational units?</p></li>
-<li><p>What is the response variable and what is its type (normal, Poisson, etc.)?</p></li>
-<li><p>Describe the within-group correlation.</p></li>
-<li><p>What are the fixed effects? What are the random effects?</p></li>
-</ol>
-</div>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>From Ex. 1 in Section 7.10.1 of BMLR</p></li></ol></aside></section></section>
-<section>
-<section id="teratogen-and-rat-pups" class="title-slide slide level1 center">
-<h1>Teratogen and rat pups</h1>
-
-</section>
-<section id="data-teratogen-and-rat-pups" class="slide level2 midi">
-<h2>Data: Teratogen and rat pups</h2>
-<p>Today’s data are simulated results of an experiment with 24 dams (mother rats) randomly divided into four groups that received different doses of teratogen, a substance that could potentially cause harm to developing fetuses. The four groups are</p>
-<ul>
-<li>High dose (3 mg)</li>
-<li>Medium dose (2 mg)</li>
-<li>Low dose (1 mg)</li>
-<li>No dose (Control)</li>
-</ul>
-<p>Each dam produced 10 rat pups and the presence of a deformity was noted for each pup.</p>
-<div class="fragment">
-<p><strong>Goal</strong>: Understand the association between teratogen exposure and the probability a pup is born with a deformity.</p>
-</div>
-</section>
-<section id="sources-of-variation" class="slide level2 midi">
-<h2>Sources of variation</h2>
-<div>
-<ul>
-<li class="fragment"><p><strong>Dose effect:</strong> Studying whether different dose levels are associated with different probabilities of birth defects in the pups.</p>
-<ul>
-<li class="fragment">Dose is a <strong>fixed effect</strong>. Study is interested in defect rate at specific dose levels.</li>
-</ul></li>
-<li class="fragment"><p><strong>Dam (litter) effect:</strong> Different dams may have different propensity to produce pups with defects, i.e.&nbsp;pups from same litter are more likely to be similar than pups from different litters.</p>
-<ul>
-<li class="fragment">Dam is a <strong>random effect.</strong> Study is not interested in defect rate for each specific dam in the study but is interested in variability between litters.</li>
-</ul></li>
-<li class="fragment"><p><strong>Pup-to-pup variability</strong>: Within litter pup differences. This is the unexplained variability.</p></li>
-</ul>
-</div>
-</section>
-<section id="scenario-1-no-dose-effect" class="slide level2 midi">
-<h2>Scenario 1: No dose effect</h2>
-<p>Assume dose has <u>no</u> effect on, <span class="math inline">\(p\)</span>, the probability of a pup born with a deformity.</p>
-<ul>
-<li><p><strong>Scenario 1a.</strong>: <span class="math inline">\(p = 0.5\)</span> for each dam</p></li>
-<li><p><strong>Scenario 1b.</strong>: <span class="math inline">\(p \sim Beta(0.5, 0.5)\)</span> (expected value = 0.5)</p></li>
-</ul>
-<div class="fragment">
-<div class="cell" data-layout-align="center" data-fig-caption="From Figure 7.1 in BMLR">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="10-correlated-data_files/figure-revealjs/scenario1ProbabilityPlot-1.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="question">
-<ol type="1">
-<li><p>Would you expect the number of pups with a deformity for dams in Scenario 1a to follow a distribution similar to the binomial distribution with <span class="math inline">\(n=10\)</span> and <span class="math inline">\(p=0.5\)</span>? Why or why not?</p></li>
-<li><p>Would you expect the number of pups with a deformity for dams in Scenario 1b to follow a distribution similar to the binomial distribution with <span class="math inline">\(n=10\)</span> and <span class="math inline">\(p=0.5\)</span>? Why or why not?</p></li>
-<li><p>Which scenario do you think is more realistic - Scenario 1a or 1b?</p></li>
-</ol>
-</div>
-</section>
-<section class="slide level2">
-
-
-<img data-src="10-correlated-data_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%"><div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">mean_1a</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">sd_1a</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">mean_1b</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">sd_1b</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">5.166667</td>
-<td style="text-align: right;">1.493949</td>
-<td style="text-align: right;">5.666667</td>
-<td style="text-align: right;">4.103727</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
 </section></section>
-<section id="application-exercise" class="title-slide slide level1 center">
-<h1>Application exercise</h1>
-<p>Let’s take a look at a binomial and quasibinomial model for Scenarios 1a and 1b.</p>
-<div class="appex">
-<p>📋 <a href="https://sta310-sp24.netlify.app/ae/lec-10-correlated.html">sta310-sp24.netlify.app/ae/lec-10-correlated</a></p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="countdown" id="timer_c11e7557" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</section>
-
 <section>
-<section id="scenario-2-dose-effect" class="title-slide slide level1 center">
-<h1>Scenario 2: Dose effect</h1>
+<section id="multilevel-models" class="title-slide slide level1 center">
+<h1>Multilevel models</h1>
 
 </section>
-<section id="scenario-2-dose-effect-1" class="slide level2 midi">
-<h2>Scenario 2: Dose effect</h2>
-<p>Now we will consider the effect of the dose of teratogen on the probability of a pup born with a deformity. The 24 pups have been randomly divided into four groups:</p>
+<section id="data-music-performance-anxiety" class="slide level2 midi">
+<h2>Data: Music performance anxiety</h2>
+<p>The data <a href="data/musicdata.csv"><code>musicdata.csv</code></a> come from the study by <span class="citation" data-cites="sadler2010performance">Sadler and Miller (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span> of the emotional state of musicians before performances. The dataset contains information collected from 37 undergraduate music majors who completed the Positive Affect Negative Affect Schedule (PANAS), an instrument produces a measure of anxiety (negative affect) and a measure of happiness (positive affect). This analysis will focus on negative affect as a measure of performance anxiety.</p>
+<div class="fragment">
+<p>The primary variables we’ll use are</p>
 <ul>
-<li>High dose (<code>dose = 3</code>)</li>
-<li>Medium dose (<code>dose = 2</code>)</li>
-<li>Low dose (<code>dose = 1</code>)</li>
-<li>No dose (<code>dose = 0</code>)</li>
-</ul>
-<div class="fragment">
-<p>We will assume the true relationship between <span class="math inline">\(p\)</span> and dose is the following:</p>
-<p><span class="math display">\[\log\Big(\frac{p}{1-p}\Big) = -2 + 1.33 ~ dose\]</span></p>
-</div>
-</section>
-<section id="scenario-2" class="slide level2 midi">
-<h2>Scenario 2</h2>
-<p><strong>Scenario 2a.</strong></p>
-<p><span class="math display">\[p = \frac{e^{-2 + 1.33 ~ dose}}{1 + e^{-2 + 1.33 ~ dose}}\]</span></p>
-<div class="fragment">
-<p><strong>Scenario 2b.</strong></p>
-<p><span class="math display">\[p \sim Beta\Big(\frac{2p}{(1-p)}, 2\Big)\]</span></p>
-</div>
-<div class="fragment">
-<p>On average, dams who receive dose <span class="math inline">\(x\)</span> have the same probability of pup born with deformity as dams with dose <span class="math inline">\(x\)</span> under Scenario 2a.</p>
-<ul>
-<li>e.g., If <code>dose = 1</code>, the probability of a pup born with deformity is 0.338 in Scenario 2a and the mean is 0.338 in Scenario 2b.</li>
+<li><p><strong><code>na</code></strong>: negative affect score on PANAS (the response variable)</p></li>
+<li><p><strong><code>perform_type</code></strong>: type of performance (Solo, Large Ensemble, Small Ensemble)</p></li>
+<li><p><strong><code>instrument</code></strong>: type of instrument (Voice, Orchestral, Piano)</p></li>
 </ul>
 </div>
 </section>
-<section id="distributions-under-scenario-2" class="slide level2">
-<h2>Distributions under Scenario 2</h2>
-
-<img data-src="10-correlated-data_files/figure-revealjs/scenario2bPlot-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
-<section id="scenario-2-summary-statistics" class="slide level2 midi">
-<h2>Scenario 2 summary statistics</h2>
+<section id="look-at-data" class="slide level2 midi">
+<h2>Look at data</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
-<caption>Summary statistics of Scenario 2 by dose.</caption>
-<colgroup>
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-</colgroup>
+<table>
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: right; empty-cells: hide; border-bottom: hidden;"></th>
-<th colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Scenario 2a
-</div></th>
-<th colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Scenario 2b
-</div></th>
-</tr>
-<tr class="odd">
-<th style="text-align: right;" data-quarto-table-cell-role="th">Dosage</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Mean p</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">SD p</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Mean Count</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">SD Count</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Mean p</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">SD p</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Mean Count</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">SD Count</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">diary</th>
+<th style="text-align: left;">perform_type</th>
+<th style="text-align: right;">na</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">instrument</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0.119</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right; width: 1cm;">1.333</td>
-<td style="text-align: right; width: 1cm;">1.366</td>
-<td style="text-align: right;">0.061</td>
-<td style="text-align: right;">0.069</td>
-<td style="text-align: right; width: 1cm;">0.500</td>
-<td style="text-align: right; width: 1cm;">0.837</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">voice</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.339</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right; width: 1cm;">3.167</td>
-<td style="text-align: right; width: 1cm;">1.835</td>
-<td style="text-align: right;">0.239</td>
-<td style="text-align: right;">0.208</td>
-<td style="text-align: right; width: 1cm;">3.500</td>
-<td style="text-align: right; width: 1cm;">2.881</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0.661</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right; width: 1cm;">5.833</td>
-<td style="text-align: right; width: 1cm;">1.472</td>
-<td style="text-align: right;">0.615</td>
-<td style="text-align: right;">0.195</td>
-<td style="text-align: right; width: 1cm;">5.833</td>
-<td style="text-align: right; width: 1cm;">1.941</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">voice</td>
 </tr>
-<tr class="even">
+<tr class="odd">
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">0.881</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right; width: 1cm;">8.833</td>
-<td style="text-align: right; width: 1cm;">1.169</td>
-<td style="text-align: right;">0.872</td>
-<td style="text-align: right;">0.079</td>
-<td style="text-align: right; width: 1cm;">8.833</td>
-<td style="text-align: right; width: 1cm;">1.169</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-
-<aside><div>
-<p>From Table 7.2 in BMLR</p>
-</div></aside></section>
-<section class="slide level2">
-
-<div class="question">
-<ol type="1">
-<li>In Scenario 2a, dams produced 4.79 deformed pups on average, with standard deviation 3.20. Scenario 2b saw an average of 4.67 with standard deviation 3.58. Why are comparisons by dose more meaningful than these overall comparisons?</li>
-<li>We will use binomial and quasibinomial regression to model the relationship between dose and probability of pup born with a deformity. What can you say about the center and the width of the confidence intervals under Scenarios 2a and 2b?
-<ol type="1">
-<li>Which will be similar and why?</li>
-<li>Which will be different and how?</li>
-</ol></li>
-</ol>
-</div>
-</section>
-<section id="scenario-2-estimated-odds-ratio" class="slide level2 midi">
-<h2>Scenario 2: Estimated odds ratio</h2>
-<p>The estimated effect of dose and the 95% CI from the binomial and quasibinomial models are below:</p>
-<p><strong>Scenario 2a</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Odds Ratio</th>
-<th>95% CI</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Binomial</td>
-<td>3.536</td>
-<td>(2.604, 4.958)</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">voice</td>
 </tr>
 <tr class="even">
-<td>Quasibinomial</td>
-<td>3.536</td>
-<td>(2.512, 5.186)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">orchestral instrument</td>
 </tr>
-</tbody>
-</table>
-<p><strong>Scenario 2b</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Odds Ratio</th>
-<th>95% CI</th>
-</tr>
-</thead>
-<tbody>
 <tr class="odd">
-<td>Binomial</td>
-<td>4.311</td>
-<td>(3.086, 6.271)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">orchestral instrument</td>
 </tr>
 <tr class="even">
-<td>Quasibinomial</td>
-<td>4.311</td>
-<td>(2.735, 7.352)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Small Ensemble</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">orchestral instrument</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section class="slide level2">
-
+</div>
+</div>
 <div class="question">
-<ol type="1">
-<li>Describe how the quasibinomial analysis of Scenario 2b differs from the binomial analysis of the same simulated data. Do confidence intervals contain the true model parameters? Is this what you expected? Why?</li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li>Why does Scenario 2b contain correlated data that we must account for, while Scenario 2a does not?</li>
-</ol>
+<ul>
+<li>What are the Level One and Level Two observational units?</li>
+<li>What variables are measured at each level?</li>
+</ul>
 </div>
 </section>
-<section id="data-structure" class="slide level2">
-<h2>Data structure</h2>
-
-<img data-src="images/10/pups-data-structure.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From Figure 7.4 in BMLR</p></section>
-<section id="preview-fit-model-with-random-effect" class="slide level2">
-<h2>Preview: Fit model with random effect</h2>
+<section id="univariate-exploratory-data-analysis" class="slide level2 midi">
+<h2>Univariate exploratory data analysis</h2>
+<p><strong>Level One variables</strong></p>
+<p>Two ways to approach univariate EDA (visualizations and summary statistics) for Level One variables:</p>
+<ul>
+<li><p>Use individual observations (i.e., treat observations as independent)</p></li>
+<li><p>Use aggregated values for each Level Two observation</p></li>
+</ul>
+<div class="fragment">
+<p><strong>Level Two variables</strong></p>
+<ul>
+<li>Use a data set that contains one row per Level Two observation</li>
+</ul>
+</div>
+</section>
+<section id="bivariate-exploratory-data-analysis" class="slide level2 midi">
+<h2>Bivariate exploratory data analysis</h2>
+<p><strong>Goals</strong></p>
+<ul>
+<li>Explore general association between the predictor and response variable</li>
+<li>Explore whether subjects at a given level of the predictor tend to have similar mean responses</li>
+<li>Explore whether variation in response differs at different levels of a predictor</li>
+</ul>
+<p>There are two ways to visualize these associations:</p>
+<ul>
+<li><p>One plot of individual observations (i.e., treat observations as independent)</p></li>
+<li><p>Separate plots of responses vs.&nbsp;predictor for each Level Two observation (lattice plots)</p></li>
+</ul>
+</section></section>
+<section id="application-exercise" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(lme4)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(broom.mixed)</span>
-<span id="cb1-3"><a></a>random_effect_model <span class="ot">&lt;-</span> <span class="fu">glmer</span>(deformity <span class="sc">~</span> dose <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>dam), </span>
-<span id="cb1-4"><a></a>                          <span class="at">family =</span> binomial, <span class="at">data =</span> scenario2_raw)</span>
-<span id="cb1-5"><a></a><span class="fu">tidy</span>(random_effect_model, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true">
+<div class="countdown" id="timer_0e9a710f" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="fitting-the-model" class="title-slide slide level1 center">
+<h1>Fitting the model</h1>
+
+</section>
+<section id="questions-we-want-to-answer" class="slide level2 midi">
+<h2>Questions we want to answer</h2>
+<p>What is the association between performance type (large ensemble or not) and performance anxiety? Does the association differ based on instrument type (orchestral or not)?</p>
+<p><br></p>
+<div class="fragment">
+<p><strong>What is the problem with an ordinary least squares model to draw conclusions?</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">effect</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">group</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">std.error</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">conf.low</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">conf.high</th>
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">15.721</td>
+<td style="text-align: right;">0.359</td>
+<td style="text-align: right;">43.778</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">orchestra</td>
+<td style="text-align: right;">1.789</td>
+<td style="text-align: right;">0.552</td>
+<td style="text-align: right;">3.243</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">large_ensemble</td>
+<td style="text-align: right;">-0.277</td>
+<td style="text-align: right;">0.791</td>
+<td style="text-align: right;">-0.350</td>
+<td style="text-align: right;">0.727</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">orchestra:large_ensemble</td>
+<td style="text-align: right;">-1.709</td>
+<td style="text-align: right;">1.062</td>
+<td style="text-align: right;">-1.609</td>
+<td style="text-align: right;">0.108</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="other-modeling-approaches" class="slide level2 midi">
+<h2>Other modeling approaches</h2>
+<p>1️⃣ Condense each musician’s set of responses into a single outcome (e.g., mean max, last observation, etc.) and fit a linear model on these condensed observations</p>
+<ul>
+<li>Leaves few observations (37) to fit the model</li>
+<li>Ignoring a lot of information in the multiple observations for each musician</li>
+</ul>
+<div class="fragment">
+<p>2️⃣ Fit a separate model for each musician understand the association between performance type (Level One models). Then fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).</p>
+</div>
+<div class="fragment">
+<p><strong>Let’s look at approach #2</strong></p>
+</div>
+</section>
+<section id="level-one-model" class="slide level2">
+<h2>Level One model</h2>
+<p>We’ll start with the Level One model to understand the association between performance type and performance anxiety for the <span class="math inline">\(i^{th}\)</span> musician and the <span class="math inline">\(j^{th}\)</span> perfromance <span class="math display">\[na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_i, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)\]</span></p>
+<p><br></p>
+<p><strong>Why is it more meaningful to use performance type for the Level One model than instrument?</strong></p>
+<div class="fragment">
+<p>For now, estimate <span class="math inline">\(a_i\)</span> and <span class="math inline">\(b_i\)</span> using least-squares regression.</p>
+</div>
+</section>
+<section id="example-level-one-model" class="slide level2">
+<h2>Example Level One model</h2>
+<p>Below is data for <code>id</code> #22</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">diary</th>
+<th style="text-align: left;">perform_type</th>
+<th style="text-align: left;">instrument</th>
+<th style="text-align: right;">na</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Small Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">Large Ensemble</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">Solo</td>
+<td style="text-align: left;">orchestral instrument</td>
+<td style="text-align: right;">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="level-one-model-1" class="slide level2">
+<h2>Level One model</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>music <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">filter</span>(id <span class="sc">==</span> <span class="dv">22</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a></a>  <span class="fu">lm</span>(na <span class="sc">~</span> large_ensemble, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a></a>  <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">24.500</td>
+<td style="text-align: right;">1.96</td>
+<td style="text-align: right;">12.503</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">large_ensemble</td>
+<td style="text-align: right;">-7.833</td>
+<td style="text-align: right;">2.53</td>
+<td style="text-align: right;">-3.097</td>
+<td style="text-align: right;">0.009</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="question">
+<p><strong>Repeat for all 37 musicians. See Part 3: Level One Models in AE.</strong></p>
+</div>
+</div>
+</section>
+<section id="level-one-models" class="slide level2">
+<h2>Level One models</h2>
+
+<img data-src="11-multilevel-models_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from BMLR Figure 8.9</p><div class="fragment">
+<p><strong>Now let’s consider if there is an association between the estimated slopes, estimated intercepts, and the type of instrument</strong></p>
+</div>
+</section>
+<section id="level-two-model" class="slide level2">
+<h2>Level Two Model</h2>
+<p>The slope and intercept for the <span class="math inline">\(i^{th}\)</span> musician can be modeled as <span class="math display">\[\begin{aligned}&amp;a_i = \alpha_0 + \alpha_1 ~ Orchestra_i + u_i \\
+&amp;b_i = \beta_0 + \beta_1 ~ Orchestra_i + v_i\end{aligned}\]</span></p>
+<p>Note the response variable in the Level Two models are not observed outcomes but the (fitted) slope and intercept from each musician</p>
+<p><strong>See Part 4: Level Two Models in AE.</strong></p>
+</section>
+<section id="estimated-coefficients-by-instrument" class="slide level2">
+<h2>Estimated coefficients by instrument</h2>
+
+<img data-src="11-multilevel-models_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="level-two-model-1" class="slide level2">
+<h2>Level Two model</h2>
+<p><strong>Model for intercepts</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">16.283</td>
+<td style="text-align: right;">0.671</td>
+<td style="text-align: right;">24.249</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">orchestra</td>
+<td style="text-align: right;">1.411</td>
+<td style="text-align: right;">0.991</td>
+<td style="text-align: right;">1.424</td>
+<td style="text-align: right;">0.163</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br></p>
+<p><strong>Model for slopes</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.771</td>
+<td style="text-align: right;">0.851</td>
+<td style="text-align: right;">-0.906</td>
+<td style="text-align: right;">0.373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">orchestra</td>
+<td style="text-align: right;">-1.406</td>
+<td style="text-align: right;">1.203</td>
+<td style="text-align: right;">-1.168</td>
+<td style="text-align: right;">0.253</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="writing-out-the-models" class="slide level2">
+<h2>Writing out the models</h2>
+<p><strong>Level One</strong></p>
+<p><span class="math display">\[\hat{na}_{ij}  = \hat{a}_i + \hat{b}_i ~ LargeEnsemble_{ij}\]</span></p>
+<p><br></p>
+<div class="fragment">
+<p><strong>Level Two</strong></p>
+<p><span class="math display">\[\begin{aligned}&amp;\hat{a}_i = 16.283 + 1.441 ~ Orchestra_i \\
+&amp;\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\end{aligned}\]</span></p>
+</div>
+</section>
+<section id="estimated-composite-model" class="slide level2 midi">
+<h2>Estimated composite model</h2>
+<p><span class="math display">\[
+\begin{aligned}\hat{na}_{ij} &amp;= 16.283 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
+&amp;- 1.406 ~ Orchestra:LargeEnsemble_{ij}\end{aligned}
+\]</span></p>
+<p>(Note that we also have the error terms <span class="math inline">\(\epsilon_{ij}, u_i, v_i\)</span> that we will discuss later)</p>
+<p><br></p>
+<div class="question">
+<ol type="1">
+<li><p>What is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who place orchestral instruments?</p></li>
+<li><p>What is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?</p></li>
+</ol>
+</div>
+</section>
+<section id="disadvantages-to-this-approach" class="slide level2">
+<h2>Disadvantages to this approach</h2>
+<p>⚠️ Weighs each musician the same regardless of number of diary entries</p>
+<p>⚠️ Drops subjects who have missing values for slope (7 individuals who didn’t play a large ensemble performance)</p>
+<p>⚠️ Does not share strength effectively across individuals (look at <span class="math inline">\(R^2\)</span> values in Part 3: Level One Models of AE)</p>
+<p><br></p>
+<div class="fragment">
+<p><strong>We will use a unified approach that utilizes likelihood-based methods to address some of these drawbacks.</strong></p>
+</div>
+</section></section>
+<section>
+<section id="unified-approach-to-modeling-multilevel-data" class="title-slide slide level1 center">
+<h1>Unified approach to modeling multilevel data</h1>
+
+</section>
+<section id="framework" class="slide level2 midi">
+<h2>Framework</h2>
+<p>Let <span class="math inline">\(Y_{ij}\)</span> be the performance anxiety for the <span class="math inline">\(i^{th}\)</span> musician before performance <span class="math inline">\(j\)</span>.</p>
+<p><strong>Level One</strong></p>
+<p><span class="math display">\[Y_{ij} = a_i + b_i ~ LargeEnsemble + \epsilon_{ij}\]</span></p>
+<div class="fragment">
+<p><strong>Level Two</strong></p>
+<p><span class="math display">\[\begin{aligned}&amp;a_i = \alpha_0 + \alpha_1 ~ Orchestra_i+ u_i\\
+&amp;b_i = \beta_0 + \beta_1~Orchestra_i + v_i\end{aligned}\]</span></p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>This approach uses likelihood-based methods (instead of least squares) to address the previously mentioned disadvantages</p>
+</div>
+</section>
+<section id="composite-model" class="slide level2 midi">
+<h2>Composite model</h2>
+<p>Plug in the equations for <span class="math inline">\(a_i\)</span> and <span class="math inline">\(b_i\)</span> to get the <strong>composite model</strong> <span class="math display">\[\begin{aligned}Y_{ij} &amp;= (\alpha_0 + \alpha_1 ~ Orchestra_i + \beta_0 ~ LargeEnsemble_{ij} \\
+&amp;+ \beta_1 ~ Orchestra_i:LargeEnsemble_{ij})\\
+&amp;+ (u_i + v_i ~ LargeEnsemble_{ij} + \epsilon_{ij})\end{aligned}\]</span></p>
+<div class="fragment">
+<ul>
+<li>The <strong>fixed effects</strong> to estimate are <span class="math inline">\(\alpha_0, \alpha_1, \beta_0, \beta_1\)</span></li>
+<li>The <strong>error terms</strong> are <span class="math inline">\(u_i, v_i, \epsilon_{ij}\)</span>
+<ul>
+<li><span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> are associated with student random effect</li>
+<li><span class="math inline">\(\epsilon_{ij}\)</span> is what’s left unexplained</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Note that we no longer need to estimate <span class="math inline">\(a_i\)</span> and <span class="math inline">\(b_i\)</span> directly as we did earlier. They conceptually connect the Level One and Level Two models.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="notation" class="slide level2">
+<h2>Notation</h2>
+<div>
+<ul>
+<li class="fragment"><p>Greek letters denote the fixed effect model parameters to be estimated</p>
+<ul>
+<li class="fragment">e.g., <span class="math inline">\(\alpha_0, \alpha_1, \beta_0, \beta_1\)</span></li>
+</ul></li>
+<li class="fragment"><p>Roman letters denote the preliminary fixed effects at lower levels (not directly estimated)</p>
+<ul>
+<li class="fragment">e.g.&nbsp;<span class="math inline">\(a_i, b_i\)</span></li>
+</ul></li>
+<li class="fragment"><p><span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\rho\)</span> denote variance components that will be estimated</p></li>
+<li class="fragment"><p><span class="math inline">\(\epsilon_{ij}, u_i, v_i\)</span> denote error terms (not directly estimated)</p></li>
+</ul>
+</div>
+</section>
+<section id="error-terms" class="slide level2 midi">
+<h2>Error terms</h2>
+<div>
+<ul>
+<li class="fragment">We generally assume that the error terms are normally distributed, e.g.&nbsp;error associated with each performance of a given musician is <span class="math inline">\(\epsilon_{ij} \sim N(0, \sigma^2)\)</span></li>
+<li class="fragment">For the Level Two models, the errors are
+<ul>
+<li class="fragment"><span class="math inline">\(u_i\)</span>: deviation of musician <span class="math inline">\(i\)</span> from the mean performance anxiety before solos and small ensembles after accounting for the instrument</li>
+<li class="fragment"><span class="math inline">\(v_i\)</span>: deviance of musician <span class="math inline">\(i\)</span> from the mean difference in performance anxiety between large ensembles and other performance types after accounting for instrument</li>
+</ul></li>
+<li class="fragment">Need to account for fact that <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> are correlated for the <span class="math inline">\(i^{th}\)</span> musician</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="11-multilevel-models_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from Figure 8.11</p><div class="question">
+<div class="midi">
+<p>Describe what we learn about the association between the slopes and intercepts based on this plot.</p>
+</div>
+</div>
+</section>
+<section id="distribution-of-level-two-errors" class="slide level2">
+<h2>Distribution of Level Two errors</h2>
+<p>Use a <strong>multivariate normal</strong> distribution for the Level Two error terms <span class="math display">\[\left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} &amp; \rho_{uv}\sigma_{u}\sigma_v \\
+            \rho_{uv}\sigma_{u}\sigma_v &amp; \sigma_{v}^{2}
+          \end{array} \right] \right)\]</span></p>
+<p>where <span class="math inline">\(\sigma^2_u\)</span> and <span class="math inline">\(\sigma^2_v\)</span> are the variance of <span class="math inline">\(u_i\)</span>’s and <span class="math inline">\(v_i\)</span>’s respectively, and <span class="math inline">\(\sigma_{uv} = \rho_{uv}\sigma_u\sigma_v\)</span> is covariance between <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span></p>
+<div class="fragment">
+<ul>
+<li>What does it mean for <span class="math inline">\(\rho_{uv} &gt; 0\)</span>?</li>
+<li>What does it mean for <span class="math inline">\(\rho_{uv} &lt; 0\)</span>?</li>
+</ul>
+</div>
+</section>
+<section id="visualizing-multivariate-normal-distribution" class="slide level2">
+<h2>Visualizing multivariate normal distribution</h2>
+
+<img data-src="11-multilevel-models_files/figure-revealjs/contour-boundary-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p class="caption">Recreated from Figure 8.12</p></section>
+<section id="fit-the-model" class="slide level2">
+<h2>Fit the model</h2>
+<p>Fit multilevel model using the <code>lmer</code> function from the <strong>lme4</strong> package. Display results using the <code>tidy()</code> function from the <strong>broom.mixed</strong> package.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(lme4)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(broom.mixed)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>music_model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(na <span class="sc">~</span> orchestra <span class="sc">+</span> large_ensemble <span class="sc">+</span> </span>
+<span id="cb2-5"><a></a>                      orchestra<span class="sc">:</span>large_ensemble <span class="sc">+</span></span>
+<span id="cb2-6"><a></a>                      (large_ensemble<span class="sc">|</span>id), </span>
+<span id="cb2-7"><a></a>                    <span class="at">REML =</span> <span class="cn">TRUE</span>, <span class="at">data =</span> music)</span>
+<span id="cb2-8"><a></a></span>
+<span id="cb2-9"><a></a><span class="fu">tidy</span>(music_model) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fitted-model" class="slide level2">
+<h2>Fitted model</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 40%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">effect</th>
+<th style="text-align: left;">group</th>
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
 </tr>
 </thead>
 <tbody>
@@ -891,50 +1152,89 @@ Scenario 2b
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-2.819</td>
-<td style="text-align: right;">0.528</td>
-<td style="text-align: right;">-5.343</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">-3.853</td>
-<td style="text-align: right;">-1.785</td>
+<td style="text-align: right;">15.930</td>
+<td style="text-align: right;">0.641</td>
+<td style="text-align: right;">24.833</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">dose</td>
-<td style="text-align: right;">1.691</td>
-<td style="text-align: right;">0.282</td>
-<td style="text-align: right;">5.992</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.138</td>
-<td style="text-align: right;">2.244</td>
+<td style="text-align: left;">orchestra</td>
+<td style="text-align: right;">1.693</td>
+<td style="text-align: right;">0.945</td>
+<td style="text-align: right;">1.791</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">large_ensemble</td>
+<td style="text-align: right;">-0.911</td>
+<td style="text-align: right;">0.845</td>
+<td style="text-align: right;">-1.077</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">orchestra:large_ensemble</td>
+<td style="text-align: right;">-1.424</td>
+<td style="text-align: right;">1.099</td>
+<td style="text-align: right;">-1.295</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ran_pars</td>
-<td style="text-align: left;">dam</td>
+<td style="text-align: left;">id</td>
 <td style="text-align: left;">sd__(Intercept)</td>
-<td style="text-align: right;">0.834</td>
+<td style="text-align: right;">2.378</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ran_pars</td>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">cor__(Intercept).large_ensemble</td>
+<td style="text-align: right;">-0.635</td>
 <td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ran_pars</td>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">sd__large_ensemble</td>
+<td style="text-align: right;">0.672</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ran_pars</td>
+<td style="text-align: left;">Residual</td>
+<td style="text-align: left;">sd__Observation</td>
+<td style="text-align: right;">4.670</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 </tr>
 </tbody>
 </table>
-
-
 </div>
 </div>
 </section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li><p>The structure of the data set may imply correlation between observations.</p></li>
-<li><p>Correlated observations provide less information than independent observations; we need to account for this reduction in information.</p></li>
-<li><p>Failing to account for this reduction could result in underestimating standard error, thus resulting in overstating significance and the precision of the estimates.</p></li>
-<li><p>We showed how we can account for this by incorporating the dispersion parameter or a random effect.</p></li>
-</ul>
+<section id="fitted-model-1" class="slide level2 midi">
+<h2>Fitted model</h2>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{na}_{ij} &amp;= 15.930 + 1.693 ~ Orchestra_i - 0.911 ~ LargeEnsemble_{ij} \\
+&amp;- 1.424 ~ Orchestra_i:LargeEnsemble_{ij} \\[30pt]&amp;\left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            2.378^{2} &amp; -0.635 *2.378 *0.672 \\
+            -0.635 *2.378 *0.672 &amp; 0.672^{2}
+          \end{array} \right] \right) \\[30pt]
+&amp;\epsilon_{ij} \sim N(0, 4.670^2)
+\end{aligned}
+\]</span></p>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -949,9 +1249,11 @@ Scenario 2b
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
 Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple linear regression: applied generalized linear models and multilevel models in R</span></em>. CRC Press.
 </div>
+<div id="ref-sadler2010performance" class="csl-entry" role="listitem">
+Sadler, Michael E, and Christopher J Miller. 2010. <span>“Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians.”</span> <em>Social Psychological and Personality Science</em> 1 (3): 280–87.
+</div>
 </div>
 </section></section>
-
     </div>
   </div>
 

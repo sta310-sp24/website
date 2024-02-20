@@ -139,6 +139,8 @@ Researchers are interested in understanding the effect social media has on opini
 
 ## Practice {.midi}
 
+<!--maybe different example since this is a three level model-->
+
 Radon is a carcinogen – a naturally occurring radioactive gas whose decay products are also radioactive – known to cause lung cancer in high concentrations. The EPA sampled more than 80,000 homes across the U.S. Each house came from a randomly selected county and measurements were made on each level of each home. Uranium measurements at the county level were included to improve the radon estimates.[^1]
 
 [^1]: From Ex. 1 in Section 7.10.1 of BMLR

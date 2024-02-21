@@ -72,7 +72,7 @@ Make a single scatterplot of the negative affect versus number of previous perfo
 ::: callout-note
 ## Ex 4
 
-Make a separate scatterplot of negative affect versus number of previous performances (`previous`) for each musician (`id`). Use `geom_smooth(method = "lm", se = FALSE)` to add a linear regression line to each plot.
+Make a separate scatterplot of negative affect versus number of previous performances (`previous`) for each musician (`id`). Use `geom_smooth()` to add a linear regression line to each plot.
 :::
 
 ```{r}
@@ -95,7 +95,7 @@ What are some advantages of each plot? What are some disadvantages?
 
 ## Part 3: Level One Models
 
-Code to fit and display the Level One model for Observation 22 is below.
+Fit and display the Level One model for musician 22.
 
 ```{r}
 #| label: level-one-id22
@@ -106,7 +106,7 @@ music |>
   kable(digits = 3)
 ```
 
-The code below fits the Level One models to obtain the fitted slope, intercept, and $R^2$ value for each musician.
+Fit the Level One models to obtain the fitted slope, intercept, and $R^2$ value for each musician.
 
 ```{r}
 #| label: fit-level-one-models
@@ -129,6 +129,7 @@ num_perform_types <- level_one_data |>
   nrow() 
 
 if(num_perform_types > 1){
+  #if more than one performance type, calculate all model statistics
 
 level_one_model <- lm(na ~ large_ensemble, 
                       data = level_one_data)
@@ -138,9 +139,16 @@ level_one_model_tidy <- tidy(level_one_model)
 model_stats$slopes[i] <- level_one_model_tidy$estimate[2]
 model_stats$intercepts[i] <- level_one_model_tidy$estimate[1]
 model_stats$r.squared[i] <- glance(level_one_model)$r.squared
+}else{
+  # if only one performance type, calculate intercept and R^2
+  model_stats$intercepts[i] <- mean(level_one_data$na)
+  model_stats$r.squared[i] <- 0
 }
 }
 ```
+
+
+Plot the estimated intercepts, slopes and, $R^2$ values.
 
 ```{r}
 level_one_int <- ggplot(model_stats, aes(x = intercepts)) + 

@@ -442,7 +442,7 @@ Ex 4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Make a separate scatterplot of negative affect versus number of previous performances (<code>previous</code>) for each musician (<code>id</code>). Use <code>geom_smooth(method = "lm", se = FALSE)</code> to add a linear regression line to each plot.</p>
+<p>Make a separate scatterplot of negative affect versus number of previous performances (<code>previous</code>) for each musician (<code>id</code>). Use <code>geom_smooth()</code> to add a linear regression line to each plot.</p>
 </div>
 </div>
 <div class="cell">
@@ -477,7 +477,7 @@ Ex 6
 </section>
 <section id="part-3-level-one-models" class="level2">
 <h2 class="anchored" data-anchor-id="part-3-level-one-models">Part 3: Level One Models</h2>
-<p>Code to fit and display the Level One model for Observation 22 is below.</p>
+<p>Fit and display the Level One model for musician 22.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>music <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">==</span> <span class="dv">22</span>) <span class="sc">|&gt;</span></span>
@@ -514,7 +514,7 @@ Ex 6
 </table>
 </div>
 </div>
-<p>The code below fits the Level One models to obtain the fitted slope, intercept, and <span class="math inline">\(R^2\)</span> value for each musician.</p>
+<p>Fit the Level One models to obtain the fitted slope, intercept, and <span class="math inline">\(R^2\)</span> value for each musician.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set up tibble for fitted values</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>model_stats <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">slopes =</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="dv">37</span>), </span>
@@ -534,18 +534,24 @@ Ex 6
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>() </span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(num_perform_types <span class="sc">&gt;</span> <span class="dv">1</span>){</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>level_one_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(na <span class="sc">~</span> large_ensemble, </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> level_one_data)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>level_one_model_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(level_one_model)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>model_stats<span class="sc">$</span>slopes[i] <span class="ot">&lt;-</span> level_one_model_tidy<span class="sc">$</span>estimate[<span class="dv">2</span>]</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>model_stats<span class="sc">$</span>intercepts[i] <span class="ot">&lt;-</span> level_one_model_tidy<span class="sc">$</span>estimate[<span class="dv">1</span>]</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>model_stats<span class="sc">$</span>r.squared[i] <span class="ot">&lt;-</span> <span class="fu">glance</span>(level_one_model)<span class="sc">$</span>r.squared</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#if more than one performance type, calculate all model statistics</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>level_one_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(na <span class="sc">~</span> large_ensemble, </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> level_one_data)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>level_one_model_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(level_one_model)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>model_stats<span class="sc">$</span>slopes[i] <span class="ot">&lt;-</span> level_one_model_tidy<span class="sc">$</span>estimate[<span class="dv">2</span>]</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>model_stats<span class="sc">$</span>intercepts[i] <span class="ot">&lt;-</span> level_one_model_tidy<span class="sc">$</span>estimate[<span class="dv">1</span>]</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>model_stats<span class="sc">$</span>r.squared[i] <span class="ot">&lt;-</span> <span class="fu">glance</span>(level_one_model)<span class="sc">$</span>r.squared</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if only one performance type, calculate intercept and R^2</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  model_stats<span class="sc">$</span>intercepts[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(level_one_data<span class="sc">$</span>na)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  model_stats<span class="sc">$</span>r.squared[i] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Plot the estimated intercepts, slopes and, <span class="math inline">\(R^2\)</span> values.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>level_one_int <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(model_stats, <span class="fu">aes</span>(<span class="at">x =</span> intercepts)) <span class="sc">+</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
@@ -610,17 +616,17 @@ Ex 6
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">15.706</td>
-<td style="text-align: right;">0.789</td>
-<td style="text-align: right;">19.919</td>
+<td style="text-align: right;">16.283</td>
+<td style="text-align: right;">0.671</td>
+<td style="text-align: right;">24.249</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">orchestra1</td>
-<td style="text-align: right;">2.205</td>
-<td style="text-align: right;">1.115</td>
-<td style="text-align: right;">1.978</td>
-<td style="text-align: right;">0.058</td>
+<td style="text-align: right;">1.411</td>
+<td style="text-align: right;">0.991</td>
+<td style="text-align: right;">1.424</td>
+<td style="text-align: right;">0.163</td>
 </tr>
 </tbody>
 </table>

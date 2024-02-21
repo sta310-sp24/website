@@ -271,6 +271,8 @@ music |>
 
 ```{r echo = F}
 
+#| label: fit-level-one-models
+
 # set up tibble for fitted values
 model_stats <- tibble(slopes = rep(NA,37), 
                intercepts = rep(NA,37), 
@@ -289,6 +291,7 @@ num_perform_types <- level_one_data |>
   nrow() 
 
 if(num_perform_types > 1){
+  #if more than one performance type, calculate all model statistics
 
 level_one_model <- lm(na ~ large_ensemble, 
                       data = level_one_data)
@@ -298,6 +301,10 @@ level_one_model_tidy <- tidy(level_one_model)
 model_stats$slopes[i] <- level_one_model_tidy$estimate[2]
 model_stats$intercepts[i] <- level_one_model_tidy$estimate[1]
 model_stats$r.squared[i] <- glance(level_one_model)$r.squared
+}else{
+  # if only one performance type, calculate intercept and R^2
+  model_stats$intercepts[i] <- mean(level_one_data$na)
+  model_stats$r.squared[i] <- 0
 }
 }
 ```
@@ -384,13 +391,13 @@ $$\hat{na}_{ij}  = \hat{a}_i + \hat{b}_i ~ LargeEnsemble_{ij}$$
 
 **Level Two**
 
-$$\begin{aligned}&\hat{a}_i = 15.706 + 2.205 ~ Orchestra_i \\
+$$\begin{aligned}&\hat{a}_i = 16.283 + 1.411 ~ Orchestra_i \\
 &\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\end{aligned}$$
 
 ## Estimated composite model {.midi}
 
 $$
-\begin{aligned}\hat{na}_{ij} &= 15.706 + 2.205 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
+\begin{aligned}\hat{na}_{ij} &= 16.283 + 1.411 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
 &- 1.406 ~ Orchestra_i:LargeEnsemble_{ij}\end{aligned}
 $$
 

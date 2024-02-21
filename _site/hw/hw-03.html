@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -246,7 +266,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
+  <ul class="collapse">
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -270,11 +306,113 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>To be posted.</p>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<ul>
+<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the problem.</li>
+<li>Display all analysis code in the PDF.</li>
+<li>If you are fitting a model, display the model output in a neatly formatted table. (The <code>tidy</code> and <code>kable</code> functions can help!)</li>
+<li>If you are creating a plot, use clear labels for all axes, titles, etc.</li>
+<li>Commit and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
+<li>When you’re done, we should be able to knit the final version of the R Markdown document in your GitHub repo to get a copy of the PDF submitted to Gradescope.</li>
+</ul>
+<!--probit regression (replicate model from paper?) + proportional odds model-->
+<!--logistic regression-->
+<!--ch 6 NBA data-->
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
+<!--Sec 8.13.1, Ex 1 - 3-->
+<p><span class="citation" data-cites="brown2004hierarchical">Brown and Uyar (<a href="#ref-brown2004hierarchical" role="doc-biblioref">2004</a>)</span> describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.</p>
+<ol type="a">
+<li><p>Give the observational units at Level One and Level Two based on the title of the paper.</p></li>
+<li><p>Why can’t we assume all houses in the data set are independent? What would be the potential implications to our analysis of assuming independence among houses?</p></li>
+<li><p>Suppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.</p>
+<p>Write the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.</p></li>
+<li><p>Write the composite model corresponding to part(c)</p></li>
+<li><p>List the fixed effects that must be estimated in the model in part (d).</p></li>
+<li><p>Describe the variance components that must be estimated in the model in part (d).</p></li>
+</ol>
+</section>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
+<!--from BMLR Sec 8.13.3 Ex 4-->
+<ol type="a">
+<li>Try to reproduce Model 2 presented in Table 2 of <span class="citation" data-cites="sadler2010performance">Sadler and Miller (<a href="#ref-sadler2010performance" role="doc-biblioref">2010</a>)</span>. We expect small differences in parameter estimates, since they use SAS (with an unstructured covariance structure) instead of R.</li>
+<li>How do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?</li>
+</ol>
+</section>
+</section>
+<section id="submission" class="level1">
+<h1>Submission</h1>
+<p><strong>Before you wrap up the assignment, make sure all documents are updated in your GitHub repo.</strong></p>
+<p>To submit your assignment:</p>
+<ul>
+<li><p>Go to http://www.gradescope.com and click <em>Log in</em> in the top right corner.</p></li>
+<li><p>Click <em>School Credentials</em> <code>r emo::ji("arrow_right")</code> <em>Duke NetID</em> and log in using your NetID credentials.</p></li>
+<li><p>Click on your <em>STA 310</em> course.</p></li>
+<li><p>Click on the assignment, and you’ll be prompted to submit it.</p></li>
+<li><p><strong>Mark the pages associated with each exercise. All of the pages of your assignment should be associated with at least one question (i.e., should be “checked”).</strong></p></li>
+<li><p>Select the first page of your .PDF submission to be associated with the <em>“Workflow &amp; formatting”</em> section.</p></li>
+</ul>
+<p><strong>The PDF must be submitted to Gradescope by the deadline to be considered on time.</strong></p>
+</section>
+<section id="grading" class="level1">
+<h1>Grading</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Total</strong></th>
+<th style="text-align: center;"><strong>50</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ex 1</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td>Ex 2</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="odd">
+<td>Ex 3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td>Ex 4</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td>Ex 5</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td>Workflow &amp; formatting</td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+<p>The “Workflow &amp; formatting” grade is based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible R Markdown document that can be knitted to reproduce the submitted PDF and implementing version control using multiple commits with informative commit messages.</p>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Exercises 1 - 4 are pulled or adapted from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/"><em>Beyond Multiple Linear Regression</em></a>.</p>
+</section>
+<section id="references" class="level2">
 
 
 
-</main> <!-- /main -->
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-brown2004hierarchical" class="csl-entry" role="listitem">
+Brown, Kenneth, and Bulent Uyar. 2004. <span>“A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices.”</span> <em>Journal of Real Estate Practice and Education</em> 7 (1): 15–24.
+</div>
+<div id="ref-sadler2010performance" class="csl-entry" role="listitem">
+Sadler, Michael E, and Christopher J Miller. 2010. <span>“Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians.”</span> <em>Social Psychological and Personality Science</em> 1 (3): 280–87.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -682,7 +820,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This site is built with <a href="https://quarto.org/">Quarto</a></p>
 </div>

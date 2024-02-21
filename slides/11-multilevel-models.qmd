@@ -107,20 +107,26 @@ Notes based on Chapter 8 of @roback2021beyond unless noted otherwise.
 -   **Random effects**: Not interested in studying effects of specific values in the data but we want to understand the variability
     -   Can think of these as effects whose interpretations would not necessarily be included in a write up of the study
 
+## Example
+
+Researchers are interested in understanding the effect social media has on opinions about a proposed economic plan. They randomly select 1000 households. They ask each adult in the household how many minutes they spend on social media daily and whether they support the proposed economic plan.
+
+-   daily minutes on social media is the fixed effect
+-   household is the random effect
+
 # Multilevel models
 
 ## Data: Music performance anxiety {.midi}
 
-The data [`musicdata.csv`](data/musicdata.csv) come from the study by @sadler2010performance of the emotional state of musicians before performances. The dataset contains information collected from 37 undergraduate music majors who completed the Positive Affect Negative Affect Schedule (PANAS), an instrument produces a measure of anxiety (negative affect) and a measure of happiness (positive affect). This analysis will focus on negative affect as a measure of performance anxiety.
+Todya's data come from the study by @sadler2010performance of the emotional state of musicians before performances. The data set contains information collected from 37 undergraduate music majors who completed the Positive Affect Negative Affect Schedule (PANAS), an instrument produces a measure of anxiety (negative affect) and a measure of happiness (positive affect). This analysis will focus on negative affect as a measure of performance anxiety.
 
 . . .
 
 The primary variables we'll use are
 
+-   **`id`**: unique musician identification number
 -   **`na`**: negative affect score on PANAS (the response variable)
-
 -   **`perform_type`**: type of performance (Solo, Large Ensemble, Small Ensemble)
-
 -   **`instrument`**: type of instrument (Voice, Orchestral, Piano)
 
 ## Look at data {.midi}
@@ -164,16 +170,18 @@ Two ways to approach univariate EDA (visualizations and summary statistics) for 
 -   Explore whether subjects at a given level of the predictor tend to have similar mean responses
 -   Explore whether variation in response differs at different levels of a predictor
 
+. . .
+
 There are two ways to visualize these associations:
 
--   One plot of individual observations (i.e., treat observations as independent)
+-   One plot of response vs. predictor for individual observations (i.e., treat observations as independent)
 
 -   Separate plots of responses vs. predictor for each Level Two observation (lattice plots)
 
 # Application exercise
 
 ::: appex
-📋 [sta310-sp24.netlify.app/ae/lec-11-mutlilevel](https://sta310-sp24.netlify.app/ae/lec-11-mutlilevel.html)
+📋 [sta310-sp24.netlify.app/ae/lec-11-multilevel](https://sta310-sp24.netlify.app/ae/lec-11-multilevel)
 :::
 
 ```{r echo = F}
@@ -206,14 +214,14 @@ tidy(ols) |> kable(digits = 3)
 
 ## Other modeling approaches {.midi}
 
-`r emo::ji("one")` Condense each musician's set of responses into a single outcome (e.g., mean max, last observation, etc.) and fit a linear model on these condensed observations
+`r emo::ji("one")` Condense each musician's set of responses into a single outcome (e.g., mean, max, last observation, etc.), and fit a linear model on these condensed observations
 
--   Leaves few observations (37) to fit the model
+-   Leaves only a few observations (37) to fit the model
 -   Ignoring a lot of information in the multiple observations for each musician
 
 . . .
 
-`r emo::ji("two")` Fit a separate model for each musician understand the association between performance type (Level One models). Then fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).
+`r emo::ji("two")` Fit a separate model for each musician understand the association between performance type (Level One models) and anxiety. Then fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).
 
 . . .
 
@@ -221,7 +229,7 @@ tidy(ols) |> kable(digits = 3)
 
 ## Level One model
 
-We'll start with the Level One model to understand the association between performance type and performance anxiety for the $i^{th}$ musician and the $j^{th}$ performance $$na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_i, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)$$
+We'll start with the Level One model to understand the association between performance type and performance anxiety for the $i^{th}$ musician and the $j^{th}$ performance $$na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_{ij}, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)$$
 
 <br>
 
@@ -238,8 +246,7 @@ Below is data for `id` #22
 ```{r echo = F}
 music |>
   filter(id == 22) |>
-  select(id, diary, perform_type, instrument, na) |>
-  kable()
+  select(id, diary, perform_type, instrument, na)
 ```
 
 ## Level One model
@@ -384,7 +391,7 @@ $$\begin{aligned}&\hat{a}_i = 15.706 + 2.205 ~ Orchestra_i \\
 
 $$
 \begin{aligned}\hat{na}_{ij} &= 15.706 + 2.205 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
-&- 1.406 ~ Orchestra:LargeEnsemble_{ij}\end{aligned}
+&- 1.406 ~ Orchestra_i:LargeEnsemble_{ij}\end{aligned}
 $$
 
 (Note that we also have the error terms $\epsilon_{ij}, u_i, v_i$ that we will discuss later)
@@ -392,7 +399,7 @@ $$
 <br>
 
 ::: question
-1.  What is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who place orchestral instruments?
+1.  What is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who play orchestral instruments?
 
 2.  What is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?
 :::
@@ -419,7 +426,9 @@ Let $Y_{ij}$ be the performance anxiety for the $i^{th}$ musician before perform
 
 **Level One**
 
-$$Y_{ij} = a_i + b_i ~ LargeEnsemble + \epsilon_{ij}$$
+$$Y_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_{ij}$$
+
+<br>
 
 . . .
 
@@ -428,11 +437,9 @@ $$Y_{ij} = a_i + b_i ~ LargeEnsemble + \epsilon_{ij}$$
 $$\begin{aligned}&a_i = \alpha_0 + \alpha_1 ~ Orchestra_i+ u_i\\
 &b_i = \beta_0 + \beta_1~Orchestra_i + v_i\end{aligned}$$
 
-<br>
-
-. . .
-
-This approach uses likelihood-based methods (instead of least squares) to address the previously mentioned disadvantages
+::: callout-note
+We will discuss the distribution of the error terms $\epsilon_{ij}, u_i, v_i$ shortly.
+:::
 
 ## Composite model {.midi}
 
@@ -444,7 +451,7 @@ Plug in the equations for $a_i$ and $b_i$ to get the **composite model** $$\begi
 
 -   The **fixed effects** to estimate are $\alpha_0, \alpha_1, \beta_0, \beta_1$
 -   The **error terms** are $u_i, v_i, \epsilon_{ij}$
-    -   $u_i$ and $v_i$ are associated with student random effect
+    -   $u_i$ and $v_i$ are associated with musician random effect
     -   $\epsilon_{ij}$ is what's left unexplained
 
 ::: {.callout-note appearance="minimal"}
@@ -473,7 +480,9 @@ Note that we no longer need to estimate $a_i$ and $b_i$ directly as we did earli
 -   We generally assume that the error terms are normally distributed, e.g. error associated with each performance of a given musician is $\epsilon_{ij} \sim N(0, \sigma^2)$
 -   For the Level Two models, the errors are
     -   $u_i$: deviation of musician $i$ from the mean performance anxiety before solos and small ensembles after accounting for the instrument
+        -   musician-to-musician differences in intercept
     -   $v_i$: deviance of musician $i$ from the mean difference in performance anxiety between large ensembles and other performance types after accounting for instrument
+        -   musician-to-musician differences in intercept
 -   Need to account for fact that $u_i$ and $v_i$ are correlated for the $i^{th}$ musician
 :::
 
@@ -561,6 +570,8 @@ con.1 + con.2
 ## Fit the model
 
 Fit multilevel model using the `lmer` function from the **lme4** package. Display results using the `tidy()` function from the **broom.mixed** package.
+
+<br>
 
 ```{r eval = F}
 library(lme4)

@@ -1664,7 +1664,40 @@
     "href": "hw/hw-03.html",
     "title": "HW 03",
     "section": "",
-    "text": "To be posted.",
+    "text": "Write all narrative using full sentences. Write all interpretations and conclusions in the context of the problem.\nDisplay all analysis code in the PDF.\nIf you are fitting a model, display the model output in a neatly formatted table. (The tidy and kable functions can help!)\nIf you are creating a plot, use clear labels for all axes, titles, etc.\nCommit and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.\nWhen you’re done, we should be able to knit the final version of the R Markdown document in your GitHub repo to get a copy of the PDF submitted to Gradescope.\n\n\n\n\n\n\n\nBrown and Uyar (2004) describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.\n\nGive the observational units at Level One and Level Two based on the title of the paper.\nWhy can’t we assume all houses in the data set are independent? What would be the potential implications to our analysis of assuming independence among houses?\nSuppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.\nWrite the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.\nWrite the composite model corresponding to part(c)\nList the fixed effects that must be estimated in the model in part (d).\nDescribe the variance components that must be estimated in the model in part (d).\n\n\n\n\n\n\nTry to reproduce Model 2 presented in Table 2 of Sadler and Miller (2010). We expect small differences in parameter estimates, since they use SAS (with an unstructured covariance structure) instead of R.\nHow do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?",
+    "crumbs": [
+      "Homework",
+      "HW 03"
+    ]
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-1",
+    "href": "hw/hw-03.html#exercise-1",
+    "title": "HW 03",
+    "section": "",
+    "text": "Brown and Uyar (2004) describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.\n\nGive the observational units at Level One and Level Two based on the title of the paper.\nWhy can’t we assume all houses in the data set are independent? What would be the potential implications to our analysis of assuming independence among houses?\nSuppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.\nWrite the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.\nWrite the composite model corresponding to part(c)\nList the fixed effects that must be estimated in the model in part (d).\nDescribe the variance components that must be estimated in the model in part (d).",
+    "crumbs": [
+      "Homework",
+      "HW 03"
+    ]
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-2",
+    "href": "hw/hw-03.html#exercise-2",
+    "title": "HW 03",
+    "section": "",
+    "text": "Try to reproduce Model 2 presented in Table 2 of Sadler and Miller (2010). We expect small differences in parameter estimates, since they use SAS (with an unstructured covariance structure) instead of R.\nHow do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?",
+    "crumbs": [
+      "Homework",
+      "HW 03"
+    ]
+  },
+  {
+    "objectID": "hw/hw-03.html#acknowledgements",
+    "href": "hw/hw-03.html#acknowledgements",
+    "title": "HW 03",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nExercises 1 - 4 are pulled or adapted from Beyond Multiple Linear Regression.",
     "crumbs": [
       "Homework",
       "HW 03"
@@ -3527,11 +3560,18 @@
     "text": "Two types of effects\n\nFixed effects: Effects that are of interest in the study\n\nCan think of these as effects whose interpretations would be included in a write up of the study\n\n\n\n\nRandom effects: Not interested in studying effects of specific values in the data but we want to understand the variability\n\nCan think of these as effects whose interpretations would not necessarily be included in a write up of the study"
   },
   {
+    "objectID": "slides/11-multilevel-models.html#example",
+    "href": "slides/11-multilevel-models.html#example",
+    "title": "Multilevel models",
+    "section": "Example",
+    "text": "Example\nResearchers are interested in understanding the effect social media has on opinions about a proposed economic plan. They randomly select 1000 households. They ask each adult in the household how many minutes they spend on social media daily and whether they support the proposed economic plan.\n\ndaily minutes on social media is the fixed effect\nhousehold is the random effect"
+  },
+  {
     "objectID": "slides/11-multilevel-models.html#data-music-performance-anxiety",
     "href": "slides/11-multilevel-models.html#data-music-performance-anxiety",
     "title": "Multilevel models",
     "section": "Data: Music performance anxiety",
-    "text": "Data: Music performance anxiety\nThe data musicdata.csv come from the study by Sadler and Miller (2010) of the emotional state of musicians before performances. The dataset contains information collected from 37 undergraduate music majors who completed the Positive Affect Negative Affect Schedule (PANAS), an instrument produces a measure of anxiety (negative affect) and a measure of happiness (positive affect). This analysis will focus on negative affect as a measure of performance anxiety.\n\nThe primary variables we’ll use are\n\nna: negative affect score on PANAS (the response variable)\nperform_type: type of performance (Solo, Large Ensemble, Small Ensemble)\ninstrument: type of instrument (Voice, Orchestral, Piano)"
+    "text": "Data: Music performance anxiety\nTodya’s data come from the study by Sadler and Miller (2010) of the emotional state of musicians before performances. The data set contains information collected from 37 undergraduate music majors who completed the Positive Affect Negative Affect Schedule (PANAS), an instrument produces a measure of anxiety (negative affect) and a measure of happiness (positive affect). This analysis will focus on negative affect as a measure of performance anxiety.\n\nThe primary variables we’ll use are\n\nid: unique musician identification number\nna: negative affect score on PANAS (the response variable)\nperform_type: type of performance (Solo, Large Ensemble, Small Ensemble)\ninstrument: type of instrument (Voice, Orchestral, Piano)"
   },
   {
     "objectID": "slides/11-multilevel-models.html#look-at-data",
@@ -3552,7 +3592,7 @@
     "href": "slides/11-multilevel-models.html#bivariate-exploratory-data-analysis",
     "title": "Multilevel models",
     "section": "Bivariate exploratory data analysis",
-    "text": "Bivariate exploratory data analysis\nGoals\n\nExplore general association between the predictor and response variable\nExplore whether subjects at a given level of the predictor tend to have similar mean responses\nExplore whether variation in response differs at different levels of a predictor\n\nThere are two ways to visualize these associations:\n\nOne plot of individual observations (i.e., treat observations as independent)\nSeparate plots of responses vs. predictor for each Level Two observation (lattice plots)"
+    "text": "Bivariate exploratory data analysis\nGoals\n\nExplore general association between the predictor and response variable\nExplore whether subjects at a given level of the predictor tend to have similar mean responses\nExplore whether variation in response differs at different levels of a predictor\n\n\nThere are two ways to visualize these associations:\n\nOne plot of response vs. predictor for individual observations (i.e., treat observations as independent)\nSeparate plots of responses vs. predictor for each Level Two observation (lattice plots)"
   },
   {
     "objectID": "slides/11-multilevel-models.html#questions-we-want-to-answer",
@@ -3566,21 +3606,21 @@
     "href": "slides/11-multilevel-models.html#other-modeling-approaches",
     "title": "Multilevel models",
     "section": "Other modeling approaches",
-    "text": "Other modeling approaches\n1️⃣ Condense each musician’s set of responses into a single outcome (e.g., mean max, last observation, etc.) and fit a linear model on these condensed observations\n\nLeaves few observations (37) to fit the model\nIgnoring a lot of information in the multiple observations for each musician\n\n\n2️⃣ Fit a separate model for each musician understand the association between performance type (Level One models). Then fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).\n\n\nLet’s look at approach #2"
+    "text": "Other modeling approaches\n1️⃣ Condense each musician’s set of responses into a single outcome (e.g., mean, max, last observation, etc.), and fit a linear model on these condensed observations\n\nLeaves only a few observations (37) to fit the model\nIgnoring a lot of information in the multiple observations for each musician\n\n\n2️⃣ Fit a separate model for each musician understand the association between performance type (Level One models) and anxiety. Then fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).\n\n\nLet’s look at approach #2"
   },
   {
     "objectID": "slides/11-multilevel-models.html#level-one-model",
     "href": "slides/11-multilevel-models.html#level-one-model",
     "title": "Multilevel models",
     "section": "Level One model",
-    "text": "Level One model\nWe’ll start with the Level One model to understand the association between performance type and performance anxiety for the \\(i^{th}\\) musician and the \\(j^{th}\\) performance \\[na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \\epsilon_i, \\hspace{5mm} \\epsilon_{ij} \\sim N(0,\\sigma^2)\\]\n\nWhy is it more meaningful to use performance type for the Level One model than instrument?\n\nFor now, estimate \\(a_i\\) and \\(b_i\\) using least-squares regression."
+    "text": "Level One model\nWe’ll start with the Level One model to understand the association between performance type and performance anxiety for the \\(i^{th}\\) musician and the \\(j^{th}\\) performance \\[na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \\epsilon_{ij}, \\hspace{5mm} \\epsilon_{ij} \\sim N(0,\\sigma^2)\\]\n\nWhy is it more meaningful to use performance type for the Level One model than instrument?\n\nFor now, estimate \\(a_i\\) and \\(b_i\\) using least-squares regression."
   },
   {
     "objectID": "slides/11-multilevel-models.html#example-level-one-model",
     "href": "slides/11-multilevel-models.html#example-level-one-model",
     "title": "Multilevel models",
     "section": "Example Level One model",
-    "text": "Example Level One model\nBelow is data for id #22\n\n\n\n\n\nid\ndiary\nperform_type\ninstrument\nna\n\n\n\n\n22\n1\nSolo\norchestral instrument\n24\n\n\n22\n2\nLarge Ensemble\norchestral instrument\n21\n\n\n22\n3\nLarge Ensemble\norchestral instrument\n14\n\n\n22\n4\nLarge Ensemble\norchestral instrument\n15\n\n\n22\n5\nLarge Ensemble\norchestral instrument\n10\n\n\n22\n6\nSolo\norchestral instrument\n24\n\n\n22\n7\nSolo\norchestral instrument\n24\n\n\n22\n8\nSolo\norchestral instrument\n16\n\n\n22\n9\nSmall Ensemble\norchestral instrument\n34\n\n\n22\n10\nLarge Ensemble\norchestral instrument\n22\n\n\n22\n11\nLarge Ensemble\norchestral instrument\n19\n\n\n22\n12\nLarge Ensemble\norchestral instrument\n18\n\n\n22\n13\nLarge Ensemble\norchestral instrument\n12\n\n\n22\n14\nLarge Ensemble\norchestral instrument\n19\n\n\n22\n15\nSolo\norchestral instrument\n25"
+    "text": "Example Level One model\nBelow is data for id #22\n\n\n# A tibble: 15 × 5\n      id diary perform_type   instrument               na\n   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                 &lt;dbl&gt;\n 1    22     1 Solo           orchestral instrument    24\n 2    22     2 Large Ensemble orchestral instrument    21\n 3    22     3 Large Ensemble orchestral instrument    14\n 4    22     4 Large Ensemble orchestral instrument    15\n 5    22     5 Large Ensemble orchestral instrument    10\n 6    22     6 Solo           orchestral instrument    24\n 7    22     7 Solo           orchestral instrument    24\n 8    22     8 Solo           orchestral instrument    16\n 9    22     9 Small Ensemble orchestral instrument    34\n10    22    10 Large Ensemble orchestral instrument    22\n11    22    11 Large Ensemble orchestral instrument    19\n12    22    12 Large Ensemble orchestral instrument    18\n13    22    13 Large Ensemble orchestral instrument    12\n14    22    14 Large Ensemble orchestral instrument    19\n15    22    15 Solo           orchestral instrument    25"
   },
   {
     "objectID": "slides/11-multilevel-models.html#level-one-model-1",
@@ -3629,7 +3669,7 @@
     "href": "slides/11-multilevel-models.html#estimated-composite-model",
     "title": "Multilevel models",
     "section": "Estimated composite model",
-    "text": "Estimated composite model\n\\[\n\\begin{aligned}\\hat{na}_{ij} &= 15.706 + 2.205 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\\\\n&- 1.406 ~ Orchestra:LargeEnsemble_{ij}\\end{aligned}\n\\]\n(Note that we also have the error terms \\(\\epsilon_{ij}, u_i, v_i\\) that we will discuss later)\n\n\n\nWhat is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who place orchestral instruments?\nWhat is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?"
+    "text": "Estimated composite model\n\\[\n\\begin{aligned}\\hat{na}_{ij} &= 15.706 + 2.205 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\\\\n&- 1.406 ~ Orchestra_i:LargeEnsemble_{ij}\\end{aligned}\n\\]\n(Note that we also have the error terms \\(\\epsilon_{ij}, u_i, v_i\\) that we will discuss later)\n\n\n\nWhat is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who play orchestral instruments?\nWhat is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?"
   },
   {
     "objectID": "slides/11-multilevel-models.html#disadvantages-to-this-approach",
@@ -3643,14 +3683,14 @@
     "href": "slides/11-multilevel-models.html#framework",
     "title": "Multilevel models",
     "section": "Framework",
-    "text": "Framework\nLet \\(Y_{ij}\\) be the performance anxiety for the \\(i^{th}\\) musician before performance \\(j\\).\nLevel One\n\\[Y_{ij} = a_i + b_i ~ LargeEnsemble + \\epsilon_{ij}\\]\n\nLevel Two\n\\[\\begin{aligned}&a_i = \\alpha_0 + \\alpha_1 ~ Orchestra_i+ u_i\\\\\n&b_i = \\beta_0 + \\beta_1~Orchestra_i + v_i\\end{aligned}\\]\n\n\n\nThis approach uses likelihood-based methods (instead of least squares) to address the previously mentioned disadvantages"
+    "text": "Framework\nLet \\(Y_{ij}\\) be the performance anxiety for the \\(i^{th}\\) musician before performance \\(j\\).\nLevel One\n\\[Y_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \\epsilon_{ij}\\]\n\n\nLevel Two\n\\[\\begin{aligned}&a_i = \\alpha_0 + \\alpha_1 ~ Orchestra_i+ u_i\\\\\n&b_i = \\beta_0 + \\beta_1~Orchestra_i + v_i\\end{aligned}\\]\n\n\n\n\n\n\nNote\n\n\nWe will discuss the distribution of the error terms \\(\\epsilon_{ij}, u_i, v_i\\) shortly."
   },
   {
     "objectID": "slides/11-multilevel-models.html#composite-model",
     "href": "slides/11-multilevel-models.html#composite-model",
     "title": "Multilevel models",
     "section": "Composite model",
-    "text": "Composite model\nPlug in the equations for \\(a_i\\) and \\(b_i\\) to get the composite model \\[\\begin{aligned}Y_{ij} &= (\\alpha_0 + \\alpha_1 ~ Orchestra_i + \\beta_0 ~ LargeEnsemble_{ij} \\\\\n&+ \\beta_1 ~ Orchestra_i:LargeEnsemble_{ij})\\\\\n&+ (u_i + v_i ~ LargeEnsemble_{ij} + \\epsilon_{ij})\\end{aligned}\\]\n\n\nThe fixed effects to estimate are \\(\\alpha_0, \\alpha_1, \\beta_0, \\beta_1\\)\nThe error terms are \\(u_i, v_i, \\epsilon_{ij}\\)\n\n\\(u_i\\) and \\(v_i\\) are associated with student random effect\n\\(\\epsilon_{ij}\\) is what’s left unexplained\n\n\n\n\n\nNote that we no longer need to estimate \\(a_i\\) and \\(b_i\\) directly as we did earlier. They conceptually connect the Level One and Level Two models."
+    "text": "Composite model\nPlug in the equations for \\(a_i\\) and \\(b_i\\) to get the composite model \\[\\begin{aligned}Y_{ij} &= (\\alpha_0 + \\alpha_1 ~ Orchestra_i + \\beta_0 ~ LargeEnsemble_{ij} \\\\\n&+ \\beta_1 ~ Orchestra_i:LargeEnsemble_{ij})\\\\\n&+ (u_i + v_i ~ LargeEnsemble_{ij} + \\epsilon_{ij})\\end{aligned}\\]\n\n\nThe fixed effects to estimate are \\(\\alpha_0, \\alpha_1, \\beta_0, \\beta_1\\)\nThe error terms are \\(u_i, v_i, \\epsilon_{ij}\\)\n\n\\(u_i\\) and \\(v_i\\) are associated with musician random effect\n\\(\\epsilon_{ij}\\) is what’s left unexplained\n\n\n\n\n\nNote that we no longer need to estimate \\(a_i\\) and \\(b_i\\) directly as we did earlier. They conceptually connect the Level One and Level Two models."
   },
   {
     "objectID": "slides/11-multilevel-models.html#notation",
@@ -3664,7 +3704,7 @@
     "href": "slides/11-multilevel-models.html#error-terms",
     "title": "Multilevel models",
     "section": "Error terms",
-    "text": "Error terms\n\n\nWe generally assume that the error terms are normally distributed, e.g. error associated with each performance of a given musician is \\(\\epsilon_{ij} \\sim N(0, \\sigma^2)\\)\nFor the Level Two models, the errors are\n\n\\(u_i\\): deviation of musician \\(i\\) from the mean performance anxiety before solos and small ensembles after accounting for the instrument\n\\(v_i\\): deviance of musician \\(i\\) from the mean difference in performance anxiety between large ensembles and other performance types after accounting for instrument\n\nNeed to account for fact that \\(u_i\\) and \\(v_i\\) are correlated for the \\(i^{th}\\) musician"
+    "text": "Error terms\n\n\nWe generally assume that the error terms are normally distributed, e.g. error associated with each performance of a given musician is \\(\\epsilon_{ij} \\sim N(0, \\sigma^2)\\)\nFor the Level Two models, the errors are\n\n\\(u_i\\): deviation of musician \\(i\\) from the mean performance anxiety before solos and small ensembles after accounting for the instrument\n\nmusician-to-musician differences in intercept\n\n\\(v_i\\): deviance of musician \\(i\\) from the mean difference in performance anxiety between large ensembles and other performance types after accounting for instrument\n\nmusician-to-musician differences in intercept\n\n\nNeed to account for fact that \\(u_i\\) and \\(v_i\\) are correlated for the \\(i^{th}\\) musician"
   },
   {
     "objectID": "slides/11-multilevel-models.html#distribution-of-level-two-errors",
@@ -3685,7 +3725,7 @@
     "href": "slides/11-multilevel-models.html#fit-the-model",
     "title": "Multilevel models",
     "section": "Fit the model",
-    "text": "Fit the model\nFit multilevel model using the lmer function from the lme4 package. Display results using the tidy() function from the broom.mixed package.\n\nlibrary(lme4)\nlibrary(broom.mixed)\n\nmusic_model &lt;- lmer(na ~ orchestra + large_ensemble + \n                      orchestra:large_ensemble +\n                      (large_ensemble|id), \n                    REML = TRUE, data = music)\n\ntidy(music_model) |&gt; kable(digits = 3)"
+    "text": "Fit the model\nFit multilevel model using the lmer function from the lme4 package. Display results using the tidy() function from the broom.mixed package.\n\n\nlibrary(lme4)\nlibrary(broom.mixed)\n\nmusic_model &lt;- lmer(na ~ orchestra + large_ensemble + \n                      orchestra:large_ensemble +\n                      (large_ensemble|id), \n                    REML = TRUE, data = music)\n\ntidy(music_model) |&gt; kable(digits = 3)"
   },
   {
     "objectID": "slides/11-multilevel-models.html#fitted-model",

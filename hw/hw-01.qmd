@@ -11,9 +11,7 @@ bibliography: references.bib
 ---
 
 ::: callout-important
--   This assignment is due on Wednesday, January 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, January 25 at 6am.
-    -   Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.
-    -   You will have access to your HW repo again when grades are returned.
+This assignment is due on Wednesday, January 24 at 11:59pm on GitHub.
 :::
 
 # Instructions
@@ -96,7 +94,7 @@ The goal of this analysis is to use characteristics of 593 colleges and universi
 The data set is located in `college-data.csv` in the `data` folder. We will focus on the following variables:
 
 | variable           | class     | description                                                                           |
-|:--------------|:--------------|:-----------------------------------------|
+|:-------------------|:----------|:--------------------------------------------------------------------------------------|
 | name               | character | Name of school                                                                        |
 | state_name         | character | state name                                                                            |
 | type               | character | Public or private                                                                     |
@@ -110,20 +108,20 @@ c.  Below is the specification of the statistical model for this analysis. Fit t
 
 $$
 \begin{align}
-early\_career\_pay_{i} = \beta_0 &+ \beta_1~out\_of\_state\_total_{i} \\ &+ \beta_2 ~ type_i\\&+ \beta_3 ~ stem\_percent_{i}\\ &+ \beta_4 ~ type_i * stem\_percent_{i} \\ &+ \epsilon_{i}, \hspace{5mm} \text{where } \epsilon_i \sim N(0, \sigma^2)
+early\_career\_pay_{i} = \beta_0 &+ \beta_1~out\_of\_state\_total_{i} + \beta_2 ~ type\\&+ \beta_3 ~ stem\_percent_{i} + \beta_4 ~ type * stem\_percent_{i} \\ &+ \epsilon_{i}, \hspace{5mm} \text{where } \epsilon_i \sim N(0, \sigma^2)
 \end{align}
 $$
 
-d.  How many degrees of freedom are there in the estimate of the regression standard error $\sigma$ for the model from part c?
+d.  How many degrees of freedom are there in the estimate of the regression standard error $\sigma$?
 e.  What is the 95% confidence interval for the amount in which the intercept for public institutions differs from private institutions?
 
 ## Exercise 6
 
-Use the analysis from the previous exercise to write a paragraph (\~ 3 - 5 sentences) describing the differences in early career pay based on the institution characteristics. *The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit).*
+Use the analysis from the previous exercise to write a paragraph (\~ 4 - 5 sentences) describing the differences in early career pay based on the institution characteristics. *The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit).*
 
 # Submission
 
-To submit the assignment, push your final changes to your GitHub repo. Then, you're done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.
+To submit the assignment, push your final changes to your GitHub repo. Then, you're done! We will grade the files that were pushed to the GitHub repo unless otherwise notified that you wish to submit late work.
 
 # Grading
 

@@ -377,13 +377,13 @@ $$\hat{na}_{ij}  = \hat{a}_i + \hat{b}_i ~ LargeEnsemble_{ij}$$
 
 **Level Two**
 
-$$\begin{aligned}&\hat{a}_i = 15.721 + 1.441 ~ Orchestra_i \\
+$$\begin{aligned}&\hat{a}_i = 15.706 + 2.205 ~ Orchestra_i \\
 &\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\end{aligned}$$
 
 ## Estimated composite model {.midi}
 
 $$
-\begin{aligned}\hat{na}_{ij} &= 15.721 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
+\begin{aligned}\hat{na}_{ij} &= 15.706 + 2.205 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
 &- 1.406 ~ Orchestra:LargeEnsemble_{ij}\end{aligned}
 $$
 

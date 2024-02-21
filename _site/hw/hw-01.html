@@ -349,13 +349,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>This assignment is due on Wednesday, January 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, January 25 at 6am.
-<ul>
-<li>Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.</li>
-<li>You will have access to your HW repo again when grades are returned.</li>
-</ul></li>
-</ul>
+<p>This assignment is due on Wednesday, January 24 at 11:59pm on GitHub.</p>
 </div>
 </div>
 <section id="instructions" class="level1">
@@ -441,9 +435,9 @@ Tip
 <p>The data set is located in <code>college-data.csv</code> in the <code>data</code> folder. We will focus on the following variables:</p>
 <table class="table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 58%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 73%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -492,22 +486,22 @@ Tip
 </ol>
 <p><span class="math display">\[
 \begin{align}
-early\_career\_pay_{i} = \beta_0 &amp;+ \beta_1~out\_of\_state\_total_{i} \\ &amp;+ \beta_2 ~ type_i\\&amp;+ \beta_3 ~ stem\_percent_{i}\\ &amp;+ \beta_4 ~ type_i * stem\_percent_{i} \\ &amp;+ \epsilon_{i}, \hspace{5mm} \text{where } \epsilon_i \sim N(0, \sigma^2)
+early\_career\_pay_{i} = \beta_0 &amp;+ \beta_1~out\_of\_state\_total_{i} + \beta_2 ~ type\\&amp;+ \beta_3 ~ stem\_percent_{i} + \beta_4 ~ type * stem\_percent_{i} \\ &amp;+ \epsilon_{i}, \hspace{5mm} \text{where } \epsilon_i \sim N(0, \sigma^2)
 \end{align}
 \]</span></p>
 <ol start="4" type="a">
-<li>How many degrees of freedom are there in the estimate of the regression standard error <span class="math inline">\(\sigma\)</span> for the model from part c?</li>
+<li>How many degrees of freedom are there in the estimate of the regression standard error <span class="math inline">\(\sigma\)</span>?</li>
 <li>What is the 95% confidence interval for the amount in which the intercept for public institutions differs from private institutions?</li>
 </ol>
 </section>
 <section id="exercise-6" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
-<p>Use the analysis from the previous exercise to write a paragraph (~ 3 - 5 sentences) describing the differences in early career pay based on the institution characteristics. <em>The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit).</em></p>
+<p>Use the analysis from the previous exercise to write a paragraph (~ 4 - 5 sentences) describing the differences in early career pay based on the institution characteristics. <em>The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit).</em></p>
 </section>
 </section>
 <section id="submission" class="level1">
 <h1>Submission</h1>
-<p>To submit the assignment, push your final changes to your GitHub repo. Then, you’re done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.</p>
+<p>To submit the assignment, push your final changes to your GitHub repo. Then, you’re done! We will grade the files that were pushed to the GitHub repo unless otherwise notified that you wish to submit late work.</p>
 </section>
 <section id="grading" class="level1">
 <h1>Grading</h1>

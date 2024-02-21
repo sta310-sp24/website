@@ -618,9 +618,12 @@ Prof.&nbsp;Maria Tackett
 </section></section>
 <section id="application-exercise" class="title-slide slide level1 center">
 <h1>Application exercise</h1>
+<div class="appex">
+<p>📋 <a href="https://sta310-sp24.netlify.app/ae/lec-11-mutlilevel.html">sta310-sp24.netlify.app/ae/lec-11-mutlilevel</a></p>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_0e9a710f" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_b1b4b55d" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -660,21 +663,21 @@ Prof.&nbsp;Maria Tackett
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">orchestra</td>
+<td style="text-align: left;">orchestra1</td>
 <td style="text-align: right;">1.789</td>
 <td style="text-align: right;">0.552</td>
 <td style="text-align: right;">3.243</td>
 <td style="text-align: right;">0.001</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">large_ensemble</td>
+<td style="text-align: left;">large_ensemble1</td>
 <td style="text-align: right;">-0.277</td>
 <td style="text-align: right;">0.791</td>
 <td style="text-align: right;">-0.350</td>
 <td style="text-align: right;">0.727</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">orchestra:large_ensemble</td>
+<td style="text-align: left;">orchestra1:large_ensemble1</td>
 <td style="text-align: right;">-1.709</td>
 <td style="text-align: right;">1.062</td>
 <td style="text-align: right;">-1.609</td>
@@ -702,7 +705,7 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="level-one-model" class="slide level2">
 <h2>Level One model</h2>
-<p>We’ll start with the Level One model to understand the association between performance type and performance anxiety for the <span class="math inline">\(i^{th}\)</span> musician and the <span class="math inline">\(j^{th}\)</span> perfromance <span class="math display">\[na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_i, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)\]</span></p>
+<p>We’ll start with the Level One model to understand the association between performance type and performance anxiety for the <span class="math inline">\(i^{th}\)</span> musician and the <span class="math inline">\(j^{th}\)</span> performance <span class="math display">\[na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_i, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)\]</span></p>
 <p><br></p>
 <p><strong>Why is it more meaningful to use performance type for the Level One model than instrument?</strong></p>
 <div class="fragment">
@@ -863,7 +866,7 @@ Prof.&nbsp;Maria Tackett
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">large_ensemble</td>
+<td style="text-align: left;">large_ensemble1</td>
 <td style="text-align: right;">-7.833</td>
 <td style="text-align: right;">2.53</td>
 <td style="text-align: right;">-3.097</td>
@@ -916,17 +919,17 @@ Prof.&nbsp;Maria Tackett
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">16.283</td>
-<td style="text-align: right;">0.671</td>
-<td style="text-align: right;">24.249</td>
+<td style="text-align: right;">15.706</td>
+<td style="text-align: right;">0.789</td>
+<td style="text-align: right;">19.919</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">orchestra</td>
-<td style="text-align: right;">1.411</td>
-<td style="text-align: right;">0.991</td>
-<td style="text-align: right;">1.424</td>
-<td style="text-align: right;">0.163</td>
+<td style="text-align: left;">orchestra1</td>
+<td style="text-align: right;">2.205</td>
+<td style="text-align: right;">1.115</td>
+<td style="text-align: right;">1.978</td>
+<td style="text-align: right;">0.058</td>
 </tr>
 </tbody>
 </table>
@@ -955,7 +958,7 @@ Prof.&nbsp;Maria Tackett
 <td style="text-align: right;">0.373</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">orchestra</td>
+<td style="text-align: left;">orchestra1</td>
 <td style="text-align: right;">-1.406</td>
 <td style="text-align: right;">1.203</td>
 <td style="text-align: right;">-1.168</td>
@@ -973,14 +976,14 @@ Prof.&nbsp;Maria Tackett
 <p><br></p>
 <div class="fragment">
 <p><strong>Level Two</strong></p>
-<p><span class="math display">\[\begin{aligned}&amp;\hat{a}_i = 16.283 + 1.441 ~ Orchestra_i \\
+<p><span class="math display">\[\begin{aligned}&amp;\hat{a}_i = 15.721 + 1.441 ~ Orchestra_i \\
 &amp;\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\end{aligned}\]</span></p>
 </div>
 </section>
 <section id="estimated-composite-model" class="slide level2 midi">
 <h2>Estimated composite model</h2>
 <p><span class="math display">\[
-\begin{aligned}\hat{na}_{ij} &amp;= 16.283 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
+\begin{aligned}\hat{na}_{ij} &amp;= 15.721 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
 &amp;- 1.406 ~ Orchestra:LargeEnsemble_{ij}\end{aligned}
 \]</span></p>
 <p>(Note that we also have the error terms <span class="math inline">\(\epsilon_{ij}, u_i, v_i\)</span> that we will discuss later)</p>
@@ -1132,7 +1135,7 @@ Prof.&nbsp;Maria Tackett
 <colgroup>
 <col style="width: 11%">
 <col style="width: 11%">
-<col style="width: 40%">
+<col style="width: 41%">
 <col style="width: 11%">
 <col style="width: 12%">
 <col style="width: 12%">
@@ -1159,7 +1162,7 @@ Prof.&nbsp;Maria Tackett
 <tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">orchestra</td>
+<td style="text-align: left;">orchestra1</td>
 <td style="text-align: right;">1.693</td>
 <td style="text-align: right;">0.945</td>
 <td style="text-align: right;">1.791</td>
@@ -1167,7 +1170,7 @@ Prof.&nbsp;Maria Tackett
 <tr class="odd">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">large_ensemble</td>
+<td style="text-align: left;">large_ensemble1</td>
 <td style="text-align: right;">-0.911</td>
 <td style="text-align: right;">0.845</td>
 <td style="text-align: right;">-1.077</td>
@@ -1175,7 +1178,7 @@ Prof.&nbsp;Maria Tackett
 <tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">orchestra:large_ensemble</td>
+<td style="text-align: left;">orchestra1:large_ensemble1</td>
 <td style="text-align: right;">-1.424</td>
 <td style="text-align: right;">1.099</td>
 <td style="text-align: right;">-1.295</td>
@@ -1191,7 +1194,7 @@ Prof.&nbsp;Maria Tackett
 <tr class="even">
 <td style="text-align: left;">ran_pars</td>
 <td style="text-align: left;">id</td>
-<td style="text-align: left;">cor__(Intercept).large_ensemble</td>
+<td style="text-align: left;">cor__(Intercept).large_ensemble1</td>
 <td style="text-align: right;">-0.635</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -1199,7 +1202,7 @@ Prof.&nbsp;Maria Tackett
 <tr class="odd">
 <td style="text-align: left;">ran_pars</td>
 <td style="text-align: left;">id</td>
-<td style="text-align: left;">sd__large_ensemble</td>
+<td style="text-align: left;">sd__large_ensemble1</td>
 <td style="text-align: right;">0.672</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>

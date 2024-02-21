@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-01-24">
 
-<title>STA 310 - Spring 2024 - HW 01: Multiple linear regression</title>
+<title>STA 310 - Spring 2024 - Lecture 04 AE: Poisson regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +65,6 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../hw/hw-02.html" rel="next">
-<link href="../links.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -130,7 +143,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hw/hw-01.html">Homework</a></li><li class="breadcrumb-item"><a href="../hw/hw-01.html">HW 01</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lecture 04 AE: Poisson regression</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,16 +222,16 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Homework</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../hw/hw-01.html" class="sidebar-item-text sidebar-link active">
+  <a href="../hw/hw-01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HW 01</span></a>
   </div>
 </li>
@@ -299,30 +312,23 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#exercises1" id="toc-exercises1" class="nav-link" data-scroll-target="#exercises1">Exercises</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#part-1" id="toc-part-1" class="nav-link" data-scroll-target="#part-1">Part 1</a>
   <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
-  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
-  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
+  <li><a href="#model-1-main-effects-model" id="toc-model-1-main-effects-model" class="nav-link" data-scroll-target="#model-1-main-effects-model">Model 1: Main effects model</a></li>
+  <li><a href="#model-2-main-effects-quadratic-effect-for-year" id="toc-model-2-main-effects-quadratic-effect-for-year" class="nav-link" data-scroll-target="#model-2-main-effects-quadratic-effect-for-year">Model 2: Main effects + quadratic effect for <code>year</code></a></li>
+  <li><a href="#model-3-main-effects-interaction-between-year-and-condition" id="toc-model-3-main-effects-interaction-between-year-and-condition" class="nav-link" data-scroll-target="#model-3-main-effects-interaction-between-year-and-condition">Model 3: Main effects + interaction between <code>year</code> and <code>condition</code></a></li>
   </ul></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
-  <ul class="collapse">
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
+  <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/ae/ae-04-poisson.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hw/hw-01.html">Homework</a></li><li class="breadcrumb-item"><a href="../hw/hw-01.html">HW 01</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW 01: Multiple linear regression</h1>
+<h1 class="title">Lecture 04 AE: Poisson regression</h1>
 </div>
 
 
@@ -330,6 +336,12 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 24, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -339,239 +351,275 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file <code>derbyplus.csv</code> in the <code>data</code> folder. It contains information for races 1896 - 2017.</p>
+<p><strong>Response variable</strong></p>
+<ul>
+<li><code>speed</code>: Average speed of the winner in feet per second (ft/s)</li>
+</ul>
+<p><strong>Additional variable</strong></p>
+<ul>
+<li><code>winner</code>: Winning horse</li>
+</ul>
+<p><strong>Predictor variables</strong></p>
+<ul>
+<li><code>year</code>: Year of the race</li>
+<li><code>condition</code>: Condition of the track (good, fast, slow)</li>
+<li><code>starters</code>: Number of horses who raced</li>
+</ul>
+<p><strong>Goal: Understand variability in average winner speed based on characteristics of the race.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>derby <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/derbyplus.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="part-1" class="level1">
+<h1>Part 1</h1>
+<section id="model-1-main-effects-model" class="level2">
+<h2 class="anchored" data-anchor-id="model-1-main-effects-model">Model 1: Main effects model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(speed <span class="sc">~</span> starters <span class="sc">+</span> year <span class="sc">+</span> condition, <span class="at">data =</span> derby)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model1) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">8.197</td>
+<td style="text-align: right;">4.508</td>
+<td style="text-align: right;">1.818</td>
+<td style="text-align: right;">0.072</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">starters</td>
+<td style="text-align: right;">-0.005</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: right;">-0.299</td>
+<td style="text-align: right;">0.766</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">year</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">9.766</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">conditiongood</td>
+<td style="text-align: right;">-0.443</td>
+<td style="text-align: right;">0.231</td>
+<td style="text-align: right;">-1.921</td>
+<td style="text-align: right;">0.057</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">conditionslow</td>
+<td style="text-align: right;">-1.543</td>
+<td style="text-align: right;">0.161</td>
+<td style="text-align: right;">-9.616</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Ex 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>Write the equation of the fitted model.</p>
+</div>
+</div>
+<p>[add response here]</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interpret the coefficient of <code>conditionslow</code> in the context of the data.</p>
+</div>
+</div>
+<p>[add response here]</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Does the intercept have a meaningful interpretation? If so, interpret it. If not…</p>
 <ul>
-<li>This assignment is due on Wednesday, January 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, January 25 at 6am.
-<ul>
-<li>Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.</li>
-<li>You will have access to your HW repo again when grades are returned.</li>
-</ul></li>
+<li><p>Refit the model so that the intercept has a meaningful interpretation.</p></li>
+<li><p>Interpret the intercept for the new model.</p></li>
 </ul>
 </div>
 </div>
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<ul>
-<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.</li>
-<li>Be sure all analysis code is displayed in the rendered pdf.</li>
-<li>If you are fitting a model, display the model output in a neatly formatted table. (The <code>tidy</code> and <code>kable</code> functions can help!)</li>
-<li>If you are creating a plot, use clear and informative labels and titles.</li>
-<li>Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
-<li>When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.</li>
-</ul>
+<p>[add response here]</p>
 </section>
-<section id="exercises1" class="level1">
-<h1>Exercises<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
-<section id="exercise-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<!--Adapted from BMLR Ch 1 Ex 1-->
-<p>Consider the following scenario:</p>
-<blockquote class="blockquote">
-<p>Researchers record the number of cricket chirps per minute and temperature during that time. They use linear regression to investigate whether the number of chirps varies with temperature.</p>
-</blockquote>
-<ol type="a">
-<li><p>Identify the response and predictor variable.</p></li>
-<li><p>Write the complete specification of the statistical model.</p></li>
-<li><p>Write the assumptions for linear regression in the context of the problem.</p></li>
-</ol>
-</section>
-<section id="exercise-2" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<!--Adapted from BMLR Ch 1 Ex 2-->
-<p>Consider the following scenario:</p>
-<blockquote class="blockquote">
-<p>A randomized clinical trial investigated postnatal depression and the use of an estrogen patch. Patients were randomly assigned to either use the patch or not. Depression scores were recorded on 6 different visits.</p>
-</blockquote>
-<ol type="a">
-<li><p>Identify the response and predictor variables.</p></li>
-<li><p>Identify which model assumption(s) are violated. Briefly explain your choice.</p></li>
-</ol>
-</section>
-<section id="exercise-3" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
-<!--Adapted from Ch 1 Ex 3-->
-<p>Use the <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#review-of-multiple-linear-regression">Kentucky Derby case study</a> in Chapter 1 of <em>Beyond Multiple Linear Regression.</em></p>
-<ol type="a">
-<li>Consider <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#multiple-linear-regression-with-two-predictors">Equation (1.3)</a> in Section 1.6.3. Show why we have to be sure to say “holding year constant”, “after adjusting for year”, or an equivalent statement, when interpreting <span class="math inline">\(\beta_2\)</span>.</li>
-<li>Briefly explain why there is no error (random variation) term <span class="math inline">\(\epsilon_i\)</span> in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html#multiple-linear-regression-with-an-interaction-term">Equation (1.4)</a> in Section 1.6.6?</li>
-</ol>
-</section>
-<section id="exercise-4" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
-<!--Adapted from Ch 1 Guided Ex 3-->
-<p>The data set <code>kingCountyHouses.csv</code> in the <code>data</code> folder contains data on over 20,000 houses sold in King County, Washington (<span class="citation" data-cites="kingcounty">Kaggle (<a href="#ref-kingcounty" role="doc-biblioref">2018</a>)</span>).</p>
-<p>We will use the following variables:</p>
-<ul>
-<li><code>price</code> = selling price of the house</li>
-<li><code>sqft</code> = interior square footage</li>
-</ul>
-<p><em>See Section 1.8 of Beyond Multiple Linear Regression for the full list of variables.</em></p>
-<ol type="a">
-<li><p>Fit a linear regression model with <code>price</code> as the response variable and <code>sqft</code> as the predictor variable (Model 1). Interpret the slope coefficient in terms of the expected change in price when <code>sqft</code> increases by 100.</p></li>
-<li><p>Fit Model 2, where <code>logprice</code> (the natural log of price) is now the response variable and <code>sqft</code> is still the predictor variable. How is the <code>logprice</code> expected to change when <code>sqft</code> increases by 100?</p></li>
-<li><p>Recall that <span class="math inline">\(log(a) - log(b) = log(\frac{a}{b})\)</span>. Use this to derive how the <code>price</code> is expected to change when <code>sqft</code> increases by 100 based on Model 2.</p></li>
-<li><p>Fit Model 3, where <code>price</code> and <code>logsqft</code> (the natural log of sqft) are the response and predictor variables, respectively. How is the price expected to change when sqft increases by 10%? <em>As a hint, this is the same as multiplying sqft by 1.10.</em></p></li>
-</ol>
+<section id="model-2-main-effects-quadratic-effect-for-year" class="level2">
+<h2 class="anchored" data-anchor-id="model-2-main-effects-quadratic-effect-for-year">Model 2: Main effects + quadratic effect for <code>year</code></h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fit a model that includes all main effects and a quadratic term for <code>year</code>. Display the model.</p>
+</div>
+</div>
+<p>[add response here]</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Interpreting quadratic effects
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="https://github.com/STA210-Sp19/supplemental-notes/blob/master/log-transformations.pdf">Click here</a> for notes on interpreting model effects for log-transformed response and/or predictor variables.</p>
+<p>Suppose you have the following model:</p>
+<p><span class="math display">\[\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 ~ x_1  + \hat{\beta}_2 ~ x_2 + \hat{\beta}_3 ~ x_2^2\]</span></p>
+<p>The interpretation of a variable’s effect when there is a quadratic term in the model is</p>
+<p><em>“When</em> <span class="math inline">\(x_2\)</span> <em>increases from a to b,</em> <span class="math inline">\(y\)</span> <em>is expected to change by</em> <span class="math inline">\(\hat{\beta}_2(b - a) + \hat{\beta}_3(b^2 - a^2)\)</span><em>, holding</em> <span class="math inline">\(x_1\)</span> <em>constant.”</em></p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 5
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interpret the effect of year for the 5 most recent years (2013 - 2017).</p>
+</div>
+</div>
+<p>[add response here]</p>
 </section>
-<section id="exercise-5" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
-<p>The goal of this analysis is to use characteristics of 593 colleges and universities in the United States to understand variability in the early career pay, defined as the median salary for alumni with 0 - 5 years of experience. The data was obtained from <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-10/readme.md">TidyTuesday College tuition, diversity, and pay</a>, and was originaly collected from the <a href="https://www.payscale.com/college-salary-report/bachelors">PayScale College Salary Report</a>.</p>
-<p>The data set is located in <code>college-data.csv</code> in the <code>data</code> folder. We will focus on the following variables:</p>
-<table class="table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 58%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">variable</th>
-<th style="text-align: left;">class</th>
-<th style="text-align: left;">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">name</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">Name of school</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">state_name</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">state name</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">type</td>
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">Public or private</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">early_career_pay</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">Median salary for alumni with 0 - 5 years experience (in US dollars)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stem_percent</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">Percent of degrees awarded in science, technology, engineering, or math subjects</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">out_of_state_total</td>
-<td style="text-align: left;">double</td>
-<td style="text-align: left;">Total cost for in-state residents in USD (sum of room &amp; board + out of state tuition)</td>
-</tr>
-</tbody>
-</table>
-<ol type="a">
-<li>Visualize the distribution of the response variable <code>early_career_pay</code>. Write 1 - 2 observations from the plot.</li>
-<li>Visualize the relationship between (i) <code>early_career_pay</code> and <code>type</code> and (ii) <code>early_career_pay</code> and <code>stem_percent</code>. Write an observation from each plot.</li>
-<li>Below is the specification of the statistical model for this analysis. Fit the model and neatly display the results using 3 digits. Display the 95% confidence interval for the coefficients.</li>
+<section id="model-3-main-effects-interaction-between-year-and-condition" class="level2">
+<h2 class="anchored" data-anchor-id="model-3-main-effects-interaction-between-year-and-condition">Model 3: Main effects + interaction between <code>year</code> and <code>condition</code></h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 6
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fit a model that includes all main effects and an interaction between <code>year</code> and <code>condition</code>. Do not include a quadratic term for <code>year</code>. Display the model.</p>
+</div>
+</div>
+<p>[add response here]</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 7
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interpret <code>yearnew:conditiongood</code>.</p>
+</div>
+</div>
+<p>[add response here]</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 8
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interpret the effect of <code>year</code> for slow track conditions.</p>
+</div>
+</div>
+<p>[add response here]</p>
+</section>
+</section>
+<section id="part-2" class="level1">
+<h1>Part 2</h1>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 9
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Display Model 3 with the 90% confidence intervals for the coefficients.</p>
+</div>
+</div>
+<p>[add response here]</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ex 10
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Complete the following for your assigned variable:</p>
+<ol type="1">
+<li>State the null and alternative hypotheses in words.</li>
+<li>What is the test statistic? What does this value tell you?</li>
+<li>What is the conclusion of the hypothesis test? Use the decision-making threshold <span class="math inline">\(\alpha\)</span> that corresponds to the confidence interval.</li>
+<li>Interpret the confidence interval.</li>
 </ol>
-<p><span class="math display">\[
-\begin{align}
-early\_career\_pay_{i} = \beta_0 &amp;+ \beta_1~out\_of\_state\_total_{i} \\ &amp;+ \beta_2 ~ type_i\\&amp;+ \beta_3 ~ stem\_percent_{i}\\ &amp;+ \beta_4 ~ type_i * stem\_percent_{i} \\ &amp;+ \epsilon_{i}, \hspace{5mm} \text{where } \epsilon_i \sim N(0, \sigma^2)
-\end{align}
-\]</span></p>
-<ol start="4" type="a">
-<li>How many degrees of freedom are there in the estimate of the regression standard error <span class="math inline">\(\sigma\)</span> for the model from part c?</li>
-<li>What is the 95% confidence interval for the amount in which the intercept for public institutions differs from private institutions?</li>
-</ol>
-</section>
-<section id="exercise-6" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
-<p>Use the analysis from the previous exercise to write a paragraph (~ 3 - 5 sentences) describing the differences in early career pay based on the institution characteristics. <em>The summary should be consistent with the results from the previous exercise, comprehensive, answers the primary analysis question, and tells a cohesive story (e.g., a list of interpretations will not receive full credit).</em></p>
-</section>
-</section>
-<section id="submission" class="level1">
-<h1>Submission</h1>
-<p>To submit the assignment, push your final changes to your GitHub repo. Then, you’re done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.</p>
-</section>
-<section id="grading" class="level1">
-<h1>Grading</h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th><strong>Total</strong></th>
-<th style="text-align: center;"><strong>50</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ex 1</td>
-<td style="text-align: center;">8</td>
-</tr>
-<tr class="even">
-<td>Ex 2</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="odd">
-<td>Ex 3</td>
-<td style="text-align: center;">7</td>
-</tr>
-<tr class="even">
-<td>Ex 4</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="odd">
-<td>Ex 5</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="even">
-<td>Ex 6</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="odd">
-<td>Workflow &amp; formatting</td>
-<td style="text-align: center;">3</td>
-</tr>
-</tbody>
-</table>
-<p>The “Workflow &amp; formatting” grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.</p>
-<section id="references" class="level2">
-
-
-
-
-</section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-kingcounty" class="csl-entry" role="listitem">
-Kaggle. 2018. <span>“House Sales in King County, USA.”</span> https://www.kaggle.com/harlfoxem/housesalesprediction/home.
+<p>Choose one person to put your group’s response in Slack.</p>
+<p>Choose one person to share your group’s response with the class.</p>
 </div>
-<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
-Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in r</em>. CRC Press.
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<p>[add response here]</p>
 
-<ol>
-<li id="fn1"><p>Exercises 1 - 4 are adapted from exercises in Section 1.8 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#ref-roback2021beyond" role="doc-biblioref">2021</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -959,18 +1007,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../links.html" class="pagination-link  aria-label=" useful="" links"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Useful links</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../hw/hw-02.html" class="pagination-link" aria-label="HW 02">
-        <span class="nav-page-text">HW 02</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -979,7 +1015,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/ae/ae-04-poisson.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This site is built with <a href="https://quarto.org/">Quarto</a></p>
 </div>

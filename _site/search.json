@@ -550,7 +550,7 @@
     "href": "slides/04-poisson.html#assumptions-for-poisson-regression",
     "title": "Poisson Regression",
     "section": "Assumptions for Poisson regression",
-    "text": "Assumptions for Poisson regression\n\n\nPoisson response: The response variable is a count per unit of time or space, described by a Poisson distribution, at each level of the predictor(s)\nIndependence: The observations must be independent of one another\nMean = Variance: The mean must equal the variance\nLinearity: The log of the mean rate, \\(\\log(\\lambda)\\), must be a linear function of the predictor(s)"
+    "text": "Assumptions for Poisson regression\n\n\nPoisson response: The response variable is a count per unit of time or space, described by a Poisson distribution, at each level of the predictor(s)\nIndependence: The observations must be independent of one another\nMean = Variance: The mean equals the variance\nLinearity: The log of the mean rate, \\(\\log(\\lambda)\\), must be a linear function of the predictor(s)"
   },
   {
     "objectID": "slides/04-poisson.html#model-1-household-vs.-age",
@@ -574,53 +574,60 @@
     "text": "What are plausible values for the coefficient of age?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n1.5499\n0.0503\n30.8290\n0\n1.4512\n1.6482\n\n\nage\n-0.0047\n0.0009\n-5.0258\n0\n-0.0065\n-0.0029\n\n\n\n\n\n95% confidence interval for the coefficient of age\n\\[\\hat{\\beta}_1 \\pm z^{*}\\times SE(\\hat{\\beta}_1)\\]\nwhere \\(z^* \\sim N(0, 1)\\) \\[-0.0047 \\pm 1.96 \\times 0.0009 = \\mathbf{(-.0065, -0.0029)}\\]\n\nInterpret the interval in terms of the change in mean household size."
   },
   {
-    "objectID": "slides/04-poisson.html#which-plot-can-best-help-us-determine-whether-model-1-is-a-good-fit",
-    "href": "slides/04-poisson.html#which-plot-can-best-help-us-determine-whether-model-1-is-a-good-fit",
+    "objectID": "slides/04-poisson.html#estimating-beta_0-and-beta_1-1",
+    "href": "slides/04-poisson.html#estimating-beta_0-and-beta_1-1",
     "title": "Poisson Regression",
-    "section": "Which plot can best help us determine whether Model 1 is a good fit?",
-    "text": "Which plot can best help us determine whether Model 1 is a good fit?"
+    "section": "Estimating \\(\\beta_0\\) and \\(\\beta_1\\)",
+    "text": "Estimating \\(\\beta_0\\) and \\(\\beta_1\\)\n\n1.5499 and -0.0047 are the estimates of \\(\\beta_0\\) and \\(\\beta_1\\) respectively.\nHow were these values determined?\nLet’s take a look at the first five rows of data:\n\n\n\n\n\n\n\nlocation\nage\ntotal\nnumLT5\nroof\n\n\n\n\nCentralLuzon\n65\n0\n0\nPredominantly Strong Material\n\n\nMetroManila\n75\n3\n0\nPredominantly Strong Material\n\n\nDavaoRegion\n54\n4\n0\nPredominantly Strong Material\n\n\nVisayas\n49\n3\n0\nPredominantly Strong Material\n\n\nMetroManila\n74\n3\n0\nPredominantly Strong Material"
   },
   {
-    "objectID": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age",
-    "href": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age",
+    "objectID": "slides/04-poisson.html#likelihood",
+    "href": "slides/04-poisson.html#likelihood",
     "title": "Poisson Regression",
-    "section": "Model 2: Add a quadratic effect for age",
-    "text": "Model 2: Add a quadratic effect for age\n\nhh_data &lt;- hh_data |&gt; \n  mutate(age2 = age*age)\n\nmodel2 &lt;- glm(total ~ age + age2, data = hh_data, family = poisson)\ntidy(model2, conf.int = T) |&gt; \n  kable(digits = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3325\n0.1788\n-1.8594\n0.063\n-0.6863\n0.0148\n\n\nage\n0.0709\n0.0069\n10.2877\n0.000\n0.0575\n0.0845\n\n\nage2\n-0.0007\n0.0001\n-11.0578\n0.000\n-0.0008\n-0.0006"
+    "section": "Likelihood",
+    "text": "Likelihood\nThen the likelihood for those five observations is\n\\[Likelihood =P(Y_1 = 0)P(Y_2 = 3)P(Y_3 = 4)P(Y_4 = 3)P(Y_5 = 3)\n\\]\n\nThe Y’s follow a Poisson distribution, so this equals\n\\[\nLikelihood = \\frac{e^{-\\lambda_1}\\lambda_1^0}{0!} * \\frac{e^{-\\lambda_2}\\lambda_2^3}{3!} * \\frac{e^{-\\lambda_3}\\lambda_3^4}{4!} *\\frac{e^{-\\lambda_4}\\lambda_4^3}{3!} * \\frac{e^{-\\lambda_5}\\lambda_5^3}{3!}\n\\]\nwhere \\(\\lambda_i\\) can differ for each household based on its value of age."
   },
   {
-    "objectID": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age-1",
-    "href": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age-1",
+    "objectID": "slides/04-poisson.html#log-likelihood",
+    "href": "slides/04-poisson.html#log-likelihood",
     "title": "Poisson Regression",
-    "section": "Model 2: Add a quadratic effect for age",
-    "text": "Model 2: Add a quadratic effect for age\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3325\n0.1788\n-1.8594\n0.063\n-0.6863\n0.0148\n\n\nage\n0.0709\n0.0069\n10.2877\n0.000\n0.0575\n0.0845\n\n\nage2\n-0.0007\n0.0001\n-11.0578\n0.000\n-0.0008\n-0.0006\n\n\n\n\n\nWe can determine whether to keep \\(age^2\\) in the model in two ways:\n1️⃣ Use the p-value (or confidence interval) for the coefficient (since we are adding a single term to the model)\n2️⃣ Conduct a drop-in-deviance test"
+    "section": "Log-likelihood",
+    "text": "Log-likelihood\nLet’s take the log of the likelihood, as this will be easier to maximize than the likelihood itself.\n\\[\n\\begin{align}\nlogL =& -\\lambda_1 + 0\\log(\\lambda_1) - \\lambda_2 + 3\\log(\\lambda_2) - \\lambda_3 + 4\\log(\\lambda_3)\\\\ &- \\lambda_4 + 3\\log(\\lambda_4) - \\lambda_5 + 3\\log(\\lambda_5) \\\\ &+ C\n\\end{align}\n\\]\n\n\n\n\n\n\nNote\n\n\nWe are going to maximize with respect to \\(\\lambda\\), we will drop the constant term \\(C\\) moving forward."
   },
   {
-    "objectID": "slides/04-poisson.html#deviance",
-    "href": "slides/04-poisson.html#deviance",
+    "objectID": "slides/04-poisson.html#log-likelihood-1",
+    "href": "slides/04-poisson.html#log-likelihood-1",
     "title": "Poisson Regression",
-    "section": "Deviance",
-    "text": "Deviance\nA deviance is a way to measure how the observed data differs (deviates) from the model predictions.\n\nIt’s a measure unexplained variability in the response variable (similar to SSE in linear regression )\nLower deviance means the model is a better fit to the data\n\n\nWe can calculate the “deviance residual” for each observation in the data (more on the formula later). Let \\((\\text{deviance residual}_i\\) be the deviance residual for the \\(i^{th}\\) observation, then\n\\[\\text{deviance} = \\sum(\\text{deviance residual})_i^2\\]\nNote: Deviance is also known as the “residual deviance”"
+    "section": "Log-likelihood",
+    "text": "Log-likelihood\nBecause we’re fitting a Poisson regression model, we know\n\\[\n\\log(\\lambda_i) = \\beta_0 + \\beta_1~age_i \\hspace{6mm} and \\hspace{6mm} \\lambda_i = e^{\\beta_0 + \\beta_1~age_i}\n\\]\n\nPlugging these formulas and the respective ages into \\(logL\\), we have\n\\[\\begin{align}\nlogL \\propto& - \\exp^{\\beta_0 + \\beta_1*65} + 0*(\\beta_0 + \\beta_1*65)\\\\\n&- \\exp^{\\beta_0 + \\beta_1*75} + 3*(\\beta_0 + \\beta_1*75)\\\\\n&- \\exp^{\\beta_0 + \\beta_1*54} + 4*(\\beta_0 + \\beta_1*54)\\\\\n& -\\exp^{\\beta_0 + \\beta_1*49}  + 3*(\\beta_0 + \\beta_1*49) \\\\\n&-\\exp^{\\beta_0 + \\beta_1*74} + 3*(\\beta_0 + \\beta_1*74)\n\\end{align}\\]"
   },
   {
-    "objectID": "slides/04-poisson.html#drop-in-deviance-test",
-    "href": "slides/04-poisson.html#drop-in-deviance-test",
+    "objectID": "slides/04-poisson.html#log-likelihood-2",
+    "href": "slides/04-poisson.html#log-likelihood-2",
     "title": "Poisson Regression",
-    "section": "Drop-in-Deviance Test",
-    "text": "Drop-in-Deviance Test\nWe can use a drop-in-deviance test to compare two models. To conduct the test\n1️⃣ Compute the deviance for each model\n2️⃣ Calculate the drop in deviance\n\\[\\text{drop-in-deviance =  Deviance(reduced model) - Deviance(larger model)}\\]\n3️⃣ Given the reduced model is the true model \\((H_0 \\text{ true})\\), then \\[\\text{drop-in-deviance} \\sim \\chi_d^2\\]\nwhere \\(d\\) is the difference in degrees of freedom between the two models (i.e., the difference in number of terms)"
+    "section": "Log-likelihood",
+    "text": "Log-likelihood\nExpanding this to the entire data set, we have\n\\[\nlogL \\propto \\sum_{i=1}^{1500} -e^{\\beta_0 + \\beta_1age_i} + total_i (\\beta_0 + \\beta_1age_i)\n\\]\n\nCan use different numerical methods to try different values of \\(\\beta_0\\) and \\(\\beta_1\\) and find the combination that maximizes \\(logL\\) ."
   },
   {
-    "objectID": "slides/04-poisson.html#drop-in-deviance-to-compare-model1-and-model2",
-    "href": "slides/04-poisson.html#drop-in-deviance-to-compare-model1-and-model2",
+    "objectID": "slides/04-poisson.html#iteratively-reweighted-least-squares-irls",
+    "href": "slides/04-poisson.html#iteratively-reweighted-least-squares-irls",
     "title": "Poisson Regression",
-    "section": "Drop-in-deviance to compare Model1 and Model2",
-    "text": "Drop-in-deviance to compare Model1 and Model2\n\nanova(model1, model2, test = \"Chisq\") |&gt;\n  kable(digits = 3)\n\n\n\n\nResid. Df\nResid. Dev\nDf\nDeviance\nPr(&gt;Chi)\n\n\n\n\n1498\n2337.089\nNA\nNA\nNA\n\n\n1497\n2200.944\n1\n136.145\n0\n\n\n\n\n\n\n\nWrite the null and alternative hypotheses.\nWhat does the value 2337.089 tell you?\nWhat does the value 1 tell you?\nWhat is your conclusion?"
+    "section": "Iteratively reweighted least-squares (IRLS)",
+    "text": "Iteratively reweighted least-squares (IRLS)\n\nIteratively reweighted least-squares (IRLS) is used to find the MLEs\nNelder and Wedderburn (1972) show that under certain specifications of the weights and a modified response variable, the estimates found using IRLS are equivalent to the MLEs."
   },
   {
-    "objectID": "slides/04-poisson.html#add-location-to-the-model",
-    "href": "slides/04-poisson.html#add-location-to-the-model",
+    "objectID": "slides/04-poisson.html#irls-procedure",
+    "href": "slides/04-poisson.html#irls-procedure",
     "title": "Poisson Regression",
-    "section": "Add location to the model?",
-    "text": "Add location to the model?\nSuppose we want to add location to the model, so we compare the following models:\nModel A: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2\\)\nModel B: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2 + \\beta_3 ~ Loc1_i + \\beta_4 ~ Loc2_i + \\beta_5 ~ Loc3_i + \\beta_6 ~ Loc4_i\\)\n\nWhich of the following are reliable ways to determine if location should be added to the model?\n\nDrop-in-deviance test\nUse the p-value for each coefficient\nLikelihood ratio test\nNested F Test\nBIC"
+    "section": "IRLS procedure",
+    "text": "IRLS procedure\n\nFind initial starting values \\(\\hat{\\theta}_i\\), the model parameter ( \\(\\hat{\\theta}_i = \\hat{\\lambda}_i\\) in the case of Poisson regression)\nCalculate the working response values \\(z_i\\).\nCalculate the working weights \\(W_i\\).\nFind the coefficient estimates of the weighted least squares model.\n\n\\[z_i = \\beta_0 + \\beta_1 x \\hspace{5mm} \\text{ with weights }W_i\\]\nThe estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are the estimates for the model coefficients.\n\nUse \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) to calculate updated values of \\(\\hat{\\theta}_i\\) and repeat steps 2 - 4 until convergence.\n\n\n\nSteps from Dunn, Smyth, et al. (2018)."
+  },
+  {
+    "objectID": "slides/04-poisson.html#irls-set-up",
+    "href": "slides/04-poisson.html#irls-set-up",
+    "title": "Poisson Regression",
+    "section": "IRLS Set up",
+    "text": "IRLS Set up\nWorking response: Modified response variable at each step of the iteration.\n\\[z_i = g(\\theta) + g'(\\theta)(y_i - \\theta_i)\\]\nwhere \\(g(\\theta)\\) is the link function. (We will talk all about link functions in Chapter 5)\n\nFor Poisson regression \\(g(\\theta) = \\log(\\lambda)\\)\n\\[z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\]\n\n\nWorking Weights: Weights applied to the observations at each step of the iteration\n\\[W_i = \\frac{\\theta^2}{Var(Y)} \\hspace{5mm} \\Rightarrow \\hspace{5mm}  W_i = \\frac{\\lambda^2}{\\lambda} =  \\lambda \\text{ for Poisson regression}\\]"
   },
   {
     "objectID": "slides/04-poisson.html#looking-ahead",
@@ -634,7 +641,7 @@
     "href": "slides/04-poisson.html#references",
     "title": "Poisson Regression",
     "section": "References",
-    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
+    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nDunn, Peter K, Gordon K Smyth, et al. 2018. Generalized Linear Models with Examples in r. Vol. 53. Springer.\n\n\nNelder, John Ashworth, and Robert WM Wedderburn. 1972. “Generalized Linear Models.” Journal of the Royal Statistical Society Series A: Statistics in Society 135 (3): 370–84.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
   },
   {
     "objectID": "slides/07-glm-theory.html#announcements",
@@ -1278,7 +1285,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nFixed + random effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 27\nMultilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nMultilevel models cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -1527,88 +1534,88 @@
     ]
   },
   {
-    "objectID": "ae/lec-10-correlated.html",
-    "href": "ae/lec-10-correlated.html",
-    "title": "Lecture 10: Correlated data",
+    "objectID": "ae/ae-02-mlr-review.html",
+    "href": "ae/ae-02-mlr-review.html",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(patchwork)"
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
-    "objectID": "ae/lec-10-correlated.html#scenario-1a",
-    "href": "ae/lec-10-correlated.html#scenario-1a",
-    "title": "Lecture 10: Correlated data",
-    "section": "Scenario 1a",
-    "text": "Scenario 1a\nBelow is the code for the binomial logistic regression model and confidence intervals calculated using the profile likelihood approach (confidence intervals calculated based on likelihood function with no assumptions on the distribution of the parameter of interest, \\(\\beta_0\\)).\n\nmodel_1a &lt;- glm(phat_1a ~ 1, family = binomial, weight = rep(10,24), \n                data = scenario_1)\n\ntidy(model_1a) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n0.067\n0.129\n0.516\n0.606\n\n\n\n\n\n95% CI of the odds of a pup with deformity\n\nexp(confint(model_1a))\n\n    2.5 %    97.5 % \n0.8298899 1.3778985 \n\n\nThe 95% CI of the probability of a pup with deformity\n\nexp(confint(model_1a)) / (1 + exp(confint(model_1a)))\n\n    2.5 %    97.5 % \n0.4535190 0.5794606 \n\n\nNext we fit a quasibinomial model\n\nquasi_model_1a &lt;- glm(phat_1a ~ 1, family = quasibinomial,\n                      weight = rep(10,24), data = scenario_1)\n\ntidy(quasi_model_1a)\n\n# A tibble: 1 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   0.0667     0.122     0.546   0.590\n\n\n95% CI of the odds of a pup with deformity\n\nexp(confint(quasi_model_1a))\n\n    2.5 %    97.5 % \n0.8414573 1.3588535 \n\n\nThe 95% CI of the probability of a pup with deformity\n\nexp(confint(quasi_model_1a)) / (1 + exp(confint(quasi_model_1a)))\n\n    2.5 %    97.5 % \n0.4569518 0.5760652"
-  },
-  {
-    "objectID": "ae/lec-10-correlated.html#scenario-1b",
-    "href": "ae/lec-10-correlated.html#scenario-1b",
-    "title": "Lecture 10: Correlated data",
-    "section": "Scenario 1b",
-    "text": "Scenario 1b\n\n\n\n\n\n\nFit models for Scenario 1b\n\n\n\n\nFit the binomial and quasibinomial models for the data generated under Scenario 1b. Calculate the 95% CI for \\(p\\) for each model.\n\n\n\n# add code here\n\n\n# add code here"
-  },
-  {
-    "objectID": "ae/lec-10-correlated.html#questions",
-    "href": "ae/lec-10-correlated.html#questions",
-    "title": "Lecture 10: Correlated data",
-    "section": "Questions",
-    "text": "Questions\n\n\n\n\n\n\nQuestion 1\n\n\n\nHow do the quasibinomial analysis for Scenario 1b differ from the binomial analysis for Scenario 1b? Consider the coefficient estimates, standard error, predicted probabilities and associated 95% CI.\n\n\n\n\n\n\n\n\nQuestion 2\n\n\n\nWhy are differences between the quasibinomial and binomial models of Scenario 1a less noticeable than the differences in Scenario 1b?"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html",
-    "href": "ae/lec-04-poisson-estimate.html",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "objectID": "ae/ae-02-mlr-review.html#introduction",
+    "href": "ae/ae-02-mlr-review.html#introduction",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
-    "href": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 1. Initial estimates of lambda",
-    "text": "Step 1. Initial estimates of lambda\nUsing total + 0.1 instead of total as initial starting values to avoid dividing by 0 or taking the log of 0.\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = hh_data$total + 5)"
+    "objectID": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
+    "href": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "Model 1: Main effects model",
+    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
-    "href": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 2. Calculate the working response values \\(z_i\\).",
-    "text": "Step 2. Calculate the working response values \\(z_i\\).\nFor Poisson regression, \\(z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\)\n\nhh_data &lt;- hh_data |&gt;\n  mutate(z = log(lambda) + (hh_data$total - lambda) / lambda)"
+    "objectID": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
+    "href": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "Model 2: Main effects + quadratic effect for year",
+    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
-    "href": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 3. Calculate the working weights \\(W_i\\)",
-    "text": "Step 3. Calculate the working weights \\(W_i\\)\nFor Poisson regression, \\(W_i = \\lambda_i\\) .\n\nhh_data &lt;- hh_data |&gt;\n  mutate(w = lambda)\n\n\nhh_data |&gt;\n  select(total, lambda, z, w) |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 4\n  total lambda     z     w\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0      5 0.609     5\n2     3      8 1.45      8\n3     4      9 1.64      9\n4     3      8 1.45      8\n5     3      8 1.45      8"
+    "objectID": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
+    "href": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
+    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "section": "Model 3: Main effects + interaction between year and condition",
+    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
-    "href": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 4. Find the coefficient estimates of the weighted least squares model",
-    "text": "Step 4. Find the coefficient estimates of the weighted least squares model\n\nwls &lt;- lm(z ~ age, weight = w, data = hh_data)\ntidy(wls) |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.7594\n0.0419\n41.9664\n0e+00\n\n\nage\n-0.0026\n0.0008\n-3.4172\n6e-04"
+    "objectID": "ae/lec-08-logistic.html",
+    "href": "ae/lec-08-logistic.html",
+    "title": "Lecture 08: Logistic regression",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(knitr)\n\n# add other packages as needed"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
-    "href": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Use this model to get new estimates of lambda",
-    "text": "Use this model to get new estimates of lambda\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = exp(predict(wls)))\n\nRepeat steps 2 - 4 until the estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) converge to their respective values."
+    "objectID": "ae/lec-08-logistic.html#data-supporting-railroads-in-the-1870s",
+    "href": "ae/lec-08-logistic.html#data-supporting-railroads-in-the-1870s",
+    "title": "Lecture 08: Logistic regression",
+    "section": "Data: Supporting railroads in the 1870s",
+    "text": "Data: Supporting railroads in the 1870s\nThe data set RR_Data_Hale.csv contains information on support for referendums related to railroad subsidies for 11 communities in Hale County, Alabama in the 1870s. The data were originally collected from the US Census by historian Michael Fitzgerald and analyzed as part of a thesis project by a student at St. Olaf College. The variables in the data are\n\npctBlack: percentage of Black residents in the county\ndistance: distance the proposed railroad is from the community (in miles)\nYesVotes: number of “yes” votes in favor of the proposed railroad line\nNumVotes: number of votes cast in the election\n\n\nrr &lt;- read_csv(\"data/RR_Data_Hale.csv\")\n\nrr &lt;- rr |&gt;\n  mutate(pctYes = YesVotes/NumVotes, \n         emp_logit = log(pctYes / (1 - pctYes)), \n         inFavor = if_else(pctYes &gt; 0.5, \"Yes\", \"No\"))"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#irls-automated",
-    "href": "ae/lec-04-poisson-estimate.html#irls-automated",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "IRLS automated",
-    "text": "IRLS automated\n\nnreps &lt;- 10\nhh_data &lt;- hh_data %&gt;%\n  mutate(lambda = hh_data$total + 5)\n\n\nbetas &lt;- tibble(beta0 = rep(0, nreps), \n                beta1 = rep(0, nreps))\n\nfor(i in 1:nreps){\n  hh_data &lt;- hh_data %&gt;%\n    mutate(z = log(lambda) + (hh_data$total - lambda)/ lambda, \n         w = lambda)\n  wls &lt;- lm(z ~ age, weight = w, data = hh_data)\n  betas$beta0[i] = tidy(wls)$estimate[1]\n  betas$beta1[i] = tidy(wls)$estimate[2]\n  \n  hh_data &lt;- hh_data %&gt;% \n    mutate(lambda = exp(predict(wls)))\n}\n  \nbetas\n\n# A tibble: 10 × 2\n   beta0    beta1\n   &lt;dbl&gt;    &lt;dbl&gt;\n 1  1.76 -0.00265\n 2  1.57 -0.00414\n 3  1.55 -0.00468\n 4  1.55 -0.00471\n 5  1.55 -0.00471\n 6  1.55 -0.00471\n 7  1.55 -0.00471\n 8  1.55 -0.00471\n 9  1.55 -0.00471\n10  1.55 -0.00471"
+    "objectID": "ae/ae-04-poisson.html",
+    "href": "ae/ae-04-poisson.html",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "",
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
-    "href": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Fit using the glm function",
-    "text": "Fit using the glm function\n\n## add code here"
+    "objectID": "ae/ae-04-poisson.html#introduction",
+    "href": "ae/ae-04-poisson.html#introduction",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "",
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+  },
+  {
+    "objectID": "ae/ae-04-poisson.html#model-1-main-effects-model",
+    "href": "ae/ae-04-poisson.html#model-1-main-effects-model",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 1: Main effects model",
+    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
+  },
+  {
+    "objectID": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
+    "href": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 2: Main effects + quadratic effect for year",
+    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
+  },
+  {
+    "objectID": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
+    "href": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 3: Main effects + interaction between year and condition",
+    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
   },
   {
     "objectID": "prepare/feb-05.html",
@@ -1943,53 +1950,123 @@
     "text": "Negative binomial regression model\n\nhh_age_loc_nb &lt;- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)\ntidy(hh_age_loc_nb) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.3753\n0.2076\n-1.8081\n0.0706\n\n\nage\n0.0699\n0.0079\n8.8981\n0.0000\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.5756\n0.0000\n\n\nlocationDavaoRegion\n-0.0219\n0.0625\n-0.3501\n0.7262\n\n\nlocationIlocosRegion\n0.0577\n0.0615\n0.9391\n0.3477\n\n\nlocationMetroManila\n0.0562\n0.0551\n1.0213\n0.3071\n\n\nlocationVisayas\n0.1104\n0.0487\n2.2654\n0.0235"
   },
   {
-    "objectID": "ae/lec-08-logistic.html",
-    "href": "ae/lec-08-logistic.html",
-    "title": "Lecture 08: Logistic regression",
+    "objectID": "ae/lec-04-poisson-estimate.html",
+    "href": "ae/lec-04-poisson-estimate.html",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(knitr)\n\n# add other packages as needed"
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
   },
   {
-    "objectID": "ae/lec-08-logistic.html#data-supporting-railroads-in-the-1870s",
-    "href": "ae/lec-08-logistic.html#data-supporting-railroads-in-the-1870s",
-    "title": "Lecture 08: Logistic regression",
-    "section": "Data: Supporting railroads in the 1870s",
-    "text": "Data: Supporting railroads in the 1870s\nThe data set RR_Data_Hale.csv contains information on support for referendums related to railroad subsidies for 11 communities in Hale County, Alabama in the 1870s. The data were originally collected from the US Census by historian Michael Fitzgerald and analyzed as part of a thesis project by a student at St. Olaf College. The variables in the data are\n\npctBlack: percentage of Black residents in the county\ndistance: distance the proposed railroad is from the community (in miles)\nYesVotes: number of “yes” votes in favor of the proposed railroad line\nNumVotes: number of votes cast in the election\n\n\nrr &lt;- read_csv(\"data/RR_Data_Hale.csv\")\n\nrr &lt;- rr |&gt;\n  mutate(pctYes = YesVotes/NumVotes, \n         emp_logit = log(pctYes / (1 - pctYes)), \n         inFavor = if_else(pctYes &gt; 0.5, \"Yes\", \"No\"))"
+    "objectID": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
+    "href": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 1. Initial estimates of lambda",
+    "text": "Step 1. Initial estimates of lambda\nUsing total + 0.1 instead of total as initial starting values to avoid dividing by 0 or taking the log of 0.\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = hh_data$total + 5)"
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html",
-    "href": "ae/ae-02-mlr-review.html",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "objectID": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
+    "href": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 2. Calculate the working response values \\(z_i\\).",
+    "text": "Step 2. Calculate the working response values \\(z_i\\).\nFor Poisson regression, \\(z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\)\n\nhh_data &lt;- hh_data |&gt;\n  mutate(z = log(lambda) + (hh_data$total - lambda) / lambda)"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
+    "href": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 3. Calculate the working weights \\(W_i\\)",
+    "text": "Step 3. Calculate the working weights \\(W_i\\)\nFor Poisson regression, \\(W_i = \\lambda_i\\) .\n\nhh_data &lt;- hh_data |&gt;\n  mutate(w = lambda)\n\n\nhh_data |&gt;\n  select(total, lambda, z, w) |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 4\n  total lambda     z     w\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0      5 0.609     5\n2     3      8 1.45      8\n3     4      9 1.64      9\n4     3      8 1.45      8\n5     3      8 1.45      8"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
+    "href": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 4. Find the coefficient estimates of the weighted least squares model",
+    "text": "Step 4. Find the coefficient estimates of the weighted least squares model\n\nwls &lt;- lm(z ~ age, weight = w, data = hh_data)\ntidy(wls) |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.7594\n0.0419\n41.9664\n0e+00\n\n\nage\n-0.0026\n0.0008\n-3.4172\n6e-04"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
+    "href": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Use this model to get new estimates of lambda",
+    "text": "Use this model to get new estimates of lambda\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = exp(predict(wls)))\n\nRepeat steps 2 - 4 until the estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) converge to their respective values."
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#irls-automated",
+    "href": "ae/lec-04-poisson-estimate.html#irls-automated",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "IRLS automated",
+    "text": "IRLS automated\n\nnreps &lt;- 10\nhh_data &lt;- hh_data %&gt;%\n  mutate(lambda = hh_data$total + 5)\n\n\nbetas &lt;- tibble(beta0 = rep(0, nreps), \n                beta1 = rep(0, nreps))\n\nfor(i in 1:nreps){\n  hh_data &lt;- hh_data %&gt;%\n    mutate(z = log(lambda) + (hh_data$total - lambda)/ lambda, \n         w = lambda)\n  wls &lt;- lm(z ~ age, weight = w, data = hh_data)\n  betas$beta0[i] = tidy(wls)$estimate[1]\n  betas$beta1[i] = tidy(wls)$estimate[2]\n  \n  hh_data &lt;- hh_data %&gt;% \n    mutate(lambda = exp(predict(wls)))\n}\n  \nbetas\n\n# A tibble: 10 × 2\n   beta0    beta1\n   &lt;dbl&gt;    &lt;dbl&gt;\n 1  1.76 -0.00265\n 2  1.57 -0.00414\n 3  1.55 -0.00468\n 4  1.55 -0.00471\n 5  1.55 -0.00471\n 6  1.55 -0.00471\n 7  1.55 -0.00471\n 8  1.55 -0.00471\n 9  1.55 -0.00471\n10  1.55 -0.00471"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
+    "href": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Fit using the glm function",
+    "text": "Fit using the glm function\n\n## add code here"
+  },
+  {
+    "objectID": "ae/lec-10-correlated.html",
+    "href": "ae/lec-10-correlated.html",
+    "title": "Lecture 10: Correlated data",
     "section": "",
-    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\nlibrary(patchwork)"
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#introduction",
-    "href": "ae/ae-02-mlr-review.html#introduction",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
+    "objectID": "ae/lec-10-correlated.html#scenario-1a",
+    "href": "ae/lec-10-correlated.html#scenario-1a",
+    "title": "Lecture 10: Correlated data",
+    "section": "Scenario 1a",
+    "text": "Scenario 1a\nBelow is the code for the binomial logistic regression model and confidence intervals calculated using the profile likelihood approach (confidence intervals calculated based on likelihood function with no assumptions on the distribution of the parameter of interest, \\(\\beta_0\\)).\n\nmodel_1a &lt;- glm(phat_1a ~ 1, family = binomial, weight = rep(10,24), \n                data = scenario_1)\n\ntidy(model_1a) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n0.067\n0.129\n0.516\n0.606\n\n\n\n\n\n95% CI of the odds of a pup with deformity\n\nexp(confint(model_1a))\n\n    2.5 %    97.5 % \n0.8298899 1.3778985 \n\n\nThe 95% CI of the probability of a pup with deformity\n\nexp(confint(model_1a)) / (1 + exp(confint(model_1a)))\n\n    2.5 %    97.5 % \n0.4535190 0.5794606 \n\n\nNext we fit a quasibinomial model\n\nquasi_model_1a &lt;- glm(phat_1a ~ 1, family = quasibinomial,\n                      weight = rep(10,24), data = scenario_1)\n\ntidy(quasi_model_1a)\n\n# A tibble: 1 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)   0.0667     0.122     0.546   0.590\n\n\n95% CI of the odds of a pup with deformity\n\nexp(confint(quasi_model_1a))\n\n    2.5 %    97.5 % \n0.8414573 1.3588535 \n\n\nThe 95% CI of the probability of a pup with deformity\n\nexp(confint(quasi_model_1a)) / (1 + exp(confint(quasi_model_1a)))\n\n    2.5 %    97.5 % \n0.4569518 0.5760652"
+  },
+  {
+    "objectID": "ae/lec-10-correlated.html#scenario-1b",
+    "href": "ae/lec-10-correlated.html#scenario-1b",
+    "title": "Lecture 10: Correlated data",
+    "section": "Scenario 1b",
+    "text": "Scenario 1b\n\n\n\n\n\n\nFit models for Scenario 1b\n\n\n\n\nFit the binomial and quasibinomial models for the data generated under Scenario 1b. Calculate the 95% CI for \\(p\\) for each model.\n\n\n\n# add code here\n\n\n# add code here"
+  },
+  {
+    "objectID": "ae/lec-10-correlated.html#questions",
+    "href": "ae/lec-10-correlated.html#questions",
+    "title": "Lecture 10: Correlated data",
+    "section": "Questions",
+    "text": "Questions\n\n\n\n\n\n\nQuestion 1\n\n\n\nHow do the quasibinomial analysis for Scenario 1b differ from the binomial analysis for Scenario 1b? Consider the coefficient estimates, standard error, predicted probabilities and associated 95% CI.\n\n\n\n\n\n\n\n\nQuestion 2\n\n\n\nWhy are differences between the quasibinomial and binomial models of Scenario 1a less noticeable than the differences in Scenario 1b?"
+  },
+  {
+    "objectID": "ae/lec-11-multilevel.html",
+    "href": "ae/lec-11-multilevel.html",
+    "title": "Lecture 11: Multilevel models",
     "section": "",
-    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(knitr)\nlibrary(patchwork)\nmusic &lt;- read_csv(\"data/musicdata.csv\") |&gt;\n  mutate(orchestra = factor(if_else(instrument == \"orchestral instrument\", \n                                    1, 0)), \n         large_ensemble = factor(if_else(perform_type == \"Large Ensemble\", \n                                         1, 0))\n  )"
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
-    "href": "ae/ae-02-mlr-review.html#model-1-main-effects-model",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "Model 1: Main effects model",
-    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
+    "objectID": "ae/lec-11-multilevel.html#part-1-univariate-eda",
+    "href": "ae/lec-11-multilevel.html#part-1-univariate-eda",
+    "title": "Lecture 11: Multilevel models",
+    "section": "Part 1: Univariate EDA",
+    "text": "Part 1: Univariate EDA\nBelow are plots of the distribution of the response variable na for (1) individual performances and (2) aggregated by musician (id)\n\np1 &lt;- ggplot(data = music, aes(x = na)) + \n  geom_histogram(color = \"white\", binwidth = 2) + \n  labs(x = \"NA\", \n       title = \"Individual performances\")\n\np2 &lt;- music |&gt;\n  group_by(id) |&gt;\n  summarise(mean_na = mean(na)) |&gt;\n  ggplot(aes(x = mean_na)) + \n  geom_histogram(color = \"white\", binwidth = 2) + \n  labs(x = \"Average NA\",\n       title = \"Aggregated by musician\")\n\np1 + p2 + plot_annotation(title = \"Negative affect scores\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nHow are the plots similar? How do they differ?\n\n\n\n\n\n\n\n\nEx 2\n\n\n\nWhat are some advantages of each plot? What are some disadvantages?"
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
-    "href": "ae/ae-02-mlr-review.html#model-2-main-effects-quadratic-effect-for-year",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "Model 2: Main effects + quadratic effect for year",
-    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
+    "objectID": "ae/lec-11-multilevel.html#part-2-bivariate-eda",
+    "href": "ae/lec-11-multilevel.html#part-2-bivariate-eda",
+    "title": "Lecture 11: Multilevel models",
+    "section": "Part 2: Bivariate EDA",
+    "text": "Part 2: Bivariate EDA\n\n\n\n\n\n\nEx 3\n\n\n\nMake a single scatterplot of the negative affect versus number of previous performances (previous) using the individual observations. Use geom_smooth() to add a linear regression line to the plot.\n\n\n\n# add code\n\n\n\n\n\n\n\nEx 4\n\n\n\nMake a separate scatterplot of negative affect versus number of previous performances (previous) for each musician (id). Use geom_smooth(method = \"lm\", se = FALSE) to add a linear regression line to each plot.\n\n\n\n# add code\n\n\n\n\n\n\n\nEx 5\n\n\n\nHow are the plots similar? How do they differ?\n\n\n\n\n\n\n\n\nEx 6\n\n\n\nWhat are some advantages of each plot? What are some disadvantages?"
   },
   {
-    "objectID": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
-    "href": "ae/ae-02-mlr-review.html#model-3-main-effects-interaction-between-year-and-condition",
-    "title": "Lecture 02 AE: Review of multiple linear regression",
-    "section": "Model 3: Main effects + interaction between year and condition",
-    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
+    "objectID": "ae/lec-11-multilevel.html#part-3-level-one-models",
+    "href": "ae/lec-11-multilevel.html#part-3-level-one-models",
+    "title": "Lecture 11: Multilevel models",
+    "section": "Part 3: Level One Models",
+    "text": "Part 3: Level One Models\nCode to fit and display the Level One model for Observation 22 is below.\n\nmusic |&gt;\n  filter(id == 22) |&gt;\n  lm(na ~ large_ensemble, data = _) |&gt;\n  tidy() |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n24.500\n1.96\n12.503\n0.000\n\n\nlarge_ensemble1\n-7.833\n2.53\n-3.097\n0.009\n\n\n\n\n\nThe code below fits the Level One models to obtain the fitted slope, intercept, and \\(R^2\\) value for each musician.\n\n# set up tibble for fitted values\nmodel_stats &lt;- tibble(slopes = rep(NA,37), \n               intercepts = rep(NA,37), \n               r.squared = rep(NA, 37))\n\nids &lt;- music |&gt; distinct(id) |&gt; pull()\n\n# fit the model and score the releveant statistcs\nfor(i in 1:length(ids)){\nlevel_one_data &lt;- music |&gt;\n  filter(id == ids[i]) \n\n# check if more than one performance type \nnum_perform_types &lt;- level_one_data |&gt; \n  distinct(large_ensemble) |&gt; \n  nrow() \n\nif(num_perform_types &gt; 1){\n\nlevel_one_model &lt;- lm(na ~ large_ensemble, \n                      data = level_one_data)\n\nlevel_one_model_tidy &lt;- tidy(level_one_model)\n\nmodel_stats$slopes[i] &lt;- level_one_model_tidy$estimate[2]\nmodel_stats$intercepts[i] &lt;- level_one_model_tidy$estimate[1]\nmodel_stats$r.squared[i] &lt;- glance(level_one_model)$r.squared\n}\n}\n\n\nlevel_one_int &lt;- ggplot(model_stats, aes(x = intercepts)) + \n  geom_histogram(color = \"white\", binwidth = 2) +\n  labs(x = \"\", \n       title = \"Fitted intercepts\", \n       subtitle = \"for 37 musicians\")\n\nlevel_one_slope &lt;- ggplot(model_stats, aes(x = slopes)) + \n  geom_histogram(color = \"white\", binwidth = 2) +\n  labs(x = \"\", \n       title = \"Fitted slopes\", \n       subtitle = \"for 37 musicians\")\n\nlevel_one_int + level_one_slope\n\n\n\n\n\n\n\n\n\nggplot(model_stats, aes(x = r.squared)) + \n  geom_histogram(color = \"white\", binwidth = 0.05) +\n  labs(x = \"\", \n       title = \"Fitted R-squared values\", \n       subtitle = \"for 37 musicians\")"
+  },
+  {
+    "objectID": "ae/lec-11-multilevel.html#part-4-level-two-models",
+    "href": "ae/lec-11-multilevel.html#part-4-level-two-models",
+    "title": "Lecture 11: Multilevel models",
+    "section": "Part 4: Level Two Models",
+    "text": "Part 4: Level Two Models\n\n# Make a Level Two data set\nmusicians &lt;- music |&gt;\n  distinct(id, orchestra) |&gt;\n  bind_cols(model_stats)\n\nModel for intercepts\n\na &lt;- lm(intercepts ~ orchestra, data = musicians) \ntidy(a) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n15.706\n0.789\n19.919\n0.000\n\n\norchestra1\n2.205\n1.115\n1.978\n0.058\n\n\n\n\n\nModel for slopes\n\nb &lt;- lm(slopes ~ orchestra, data = musicians) \ntidy(b) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.771\n0.851\n-0.906\n0.373\n\n\norchestra1\n-1.406\n1.203\n-1.168\n0.253"
   },
   {
     "objectID": "projects/final-project.html",
@@ -2962,252 +3039,252 @@
   {
     "objectID": "slides/03-likelihoods.html#announcements",
     "href": "slides/03-likelihoods.html#announcements",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Announcements",
-    "text": "Announcements\n\nHW 01 due Thursday at 6am\n\nYour access to the repo will be removed at the deadline. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned."
+    "text": "Announcements\n\nHW 01 due Wednesday at 11:59pm\n\nYour access to the repo will be removed at the deadline. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned."
   },
   {
     "objectID": "slides/03-likelihoods.html#computing-set-up",
     "href": "slides/03-likelihoods.html#computing-set-up",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Computing set up",
     "text": "Computing set up\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(GGally)\nlibrary(knitr)\nlibrary(patchwork)\nlibrary(viridis)\nlibrary(ggfortify)\n\nggplot2::theme_set(ggplot2::theme_bw(base_size = 16))\ncolors &lt;- tibble::tibble(green = \"#B5BA72\")"
   },
   {
     "objectID": "slides/03-likelihoods.html#topics",
     "href": "slides/03-likelihoods.html#topics",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Topics",
     "text": "Topics\n\nReview inference for multiple linear regression\nUsing likelihoods\n\n\n\nNotes based on Chapter 1 and 2 of Roback and Legler (2021) unless noted otherwise."
   },
   {
     "objectID": "slides/03-likelihoods.html#data-kentucky-derby-winners",
     "href": "slides/03-likelihoods.html#data-kentucky-derby-winners",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Data: Kentucky Derby Winners",
     "text": "Data: Kentucky Derby Winners\nToday’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv and contains information for races 1896 - 2017.\n\n\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\n\n\nGoal: Understand variability in average winner speed based on characteristics of the race."
   },
   {
     "objectID": "slides/03-likelihoods.html#data",
     "href": "slides/03-likelihoods.html#data",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Data",
     "text": "Data\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")\n\n\nderby |&gt;\n  head(5) |&gt; kable()\n\n\n\n\nyear\nwinner\ncondition\nspeed\nstarters\n\n\n\n\n1896\nBen Brush\ngood\n51.66\n8\n\n\n1897\nTyphoon II\nslow\n49.81\n6\n\n\n1898\nPlaudit\ngood\n51.16\n4\n\n\n1899\nManuel\nfast\n50.00\n5\n\n\n1900\nLieut. Gibson\nfast\n52.28\n7"
   },
   {
     "objectID": "slides/03-likelihoods.html#candidate-models",
     "href": "slides/03-likelihoods.html#candidate-models",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Candidate models",
     "text": "Candidate models\nModel 1: Main effects model (year, condition, starters)\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\n\n\nModel 2: Main effects + \\(year^2\\), the quadratic effect of year\n\nmodel2 &lt;- lm(speed ~ starters + year + I(year^2) + condition,\n             data = derby)\n\n\n\n\nModel 3: Main effects + interaction between year and condition\n\nmodel3 &lt;- lm(speed ~ starters + year + condition + year * condition, \n             data = derby)"
   },
   {
-    "objectID": "slides/03-likelihoods.html#inference-for-regression",
-    "href": "slides/03-likelihoods.html#inference-for-regression",
-    "title": "Inference review +  using likelihoods",
-    "section": "Inference for regression",
-    "text": "Inference for regression\nUse statistical inference to\n\nEvaluate if predictors are statistically significant (not necessarily practically significant!)\nQuantify uncertainty in coefficient estimates\nQuantify uncertainty in model predictions\n\nIf LINE assumptions are met, we can use inferential methods based on mathematical models. If at least linearity and independence are met, we can use simulation-based inference methods."
-  },
-  {
     "objectID": "slides/03-likelihoods.html#inference-for-regression-1",
     "href": "slides/03-likelihoods.html#inference-for-regression-1",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Inference for regression",
     "text": "Inference for regression\nWhen LINE assumptions are met… . . .\n\n\nUse least squares regression to obtain the estimates for the model coefficients \\(\\beta_0, \\beta_1, \\ldots, \\beta_j\\) and for \\(\\sigma^2\\)\n\\(\\hat{\\sigma}\\) is the regression standard error\n\\[\n\\hat{\\sigma} = \\sqrt{\\frac{\\sum_{i=1}^n(y_i - \\hat{y}_i)^2}{n - p - 1}} = \\sqrt{\\frac{\\sum_{i=1}^n e_i^2}{n-p-1}}\n\\]\nwhere \\(p\\) is the number of non-intercept terms in the model (e.g., \\(p = 1\\) in simple linear regression)\nGoal is to use estimated values to draw conclusions about \\(\\beta_j\\)\n\nUse \\(\\hat{\\sigma}\\) to calculate \\(SE_{\\hat{\\beta}_j}\\) . Click here for more detail."
   },
   {
     "objectID": "slides/03-likelihoods.html#hypothesis-testing-for-beta_j",
     "href": "slides/03-likelihoods.html#hypothesis-testing-for-beta_j",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Hypothesis testing for \\(\\beta_j\\)",
     "text": "Hypothesis testing for \\(\\beta_j\\)\n\nState the hypotheses. \\(H_0: \\beta_j = 0 \\text{ vs. } H_a: \\beta_j \\neq 0\\), given the other variables in the model.\n\n\n\nCalculate the test statistic.\n\n\\[\nt = \\frac{\\hat{\\beta}_j - 0}{SE_{\\hat{\\beta}_j}}\n\\]\n\n\nCalculate the p-value. The p-value is calculated from a \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom.\n\\[\n\\text{p-value} = 2P(T &gt; |t|) \\hspace{8mm} T \\sim t_{n-p-1}\n\\]\n\n\n\nState the conclusion in context of the data.\n\nReject \\(H_0\\) if p-value is sufficiently small."
   },
   {
     "objectID": "slides/03-likelihoods.html#confidence-interval-for-beta_j",
     "href": "slides/03-likelihoods.html#confidence-interval-for-beta_j",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Confidence interval for \\(\\beta_j\\)",
     "text": "Confidence interval for \\(\\beta_j\\)\nThe \\(C\\%\\) confidence confidence interval for \\(\\beta_j\\) is\n\\[\\hat{\\beta}_j \\pm t^* \\times SE_{\\hat{\\beta}_j}\\]\nwhere the critical value \\(t^* \\sim t_{n-p-1}\\)\n\n\nGeneral interpretation for the confidence interval [LB, UB]:\nWe are \\(C\\%\\) confident that for every one unit increase in \\(x_j\\), the response is expected to change by LB to UB units, holding all else constant."
   },
   {
     "objectID": "slides/03-likelihoods.html#measures-of-model-performance",
     "href": "slides/03-likelihoods.html#measures-of-model-performance",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Measures of model performance",
     "text": "Measures of model performance\n\n\\(R^2\\): Proportion of variability in the response explained by the model\n\nWill always increase as predictors are added, so it shouldn’t be used to compare models\n\n\\(Adj. R^2\\): Similar to \\(R^2\\) with a penalty for extra terms\n\\(AIC\\): Likelihood-based approach balancing model performance and complexity\n\\(BIC\\): Similar to AIC with stronger penalty for extra terms"
   },
   {
     "objectID": "slides/03-likelihoods.html#model-summary-statistics",
     "href": "slides/03-likelihoods.html#model-summary-statistics",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Model summary statistics",
     "text": "Model summary statistics\nUse the glance() function to get model summary statistics\n\n\n\n\n\n\nmodel\nr.squared\nadj.r.squared\nAIC\nBIC\n\n\n\n\nModel1\n0.730\n0.721\n259.478\n276.302\n\n\nModel2\n0.827\n0.819\n207.429\n227.057\n\n\nModel3\n0.751\n0.738\n253.584\n276.016\n\n\n\n\n\n\n\nWhich model do you choose based on these statistics?"
   },
   {
     "objectID": "slides/03-likelihoods.html#characteristics-of-a-good-final-model",
     "href": "slides/03-likelihoods.html#characteristics-of-a-good-final-model",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Characteristics of a “good” final model",
     "text": "Characteristics of a “good” final model\n\nModel can be used to answer primary research questions\nPredictor variables control for important covariates\nPotential interactions have been investigated\nVariables are centered, as needed, for more meaningful interpretations\nUnnecessary terms are removed\nAssumptions are met and influential points have been addressed\nModel tells a “persuasive story parsimoniously”\n\n\n\nList from Section 1.6.7 of Roback and Legler (2021)"
   },
   {
     "objectID": "slides/03-likelihoods.html#learning-goals",
     "href": "slides/03-likelihoods.html#learning-goals",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Learning goals",
-    "text": "Learning goals\n\nDescribe the concept of a likelihood\nConstruct the likelihood for a simple model\nDefine the Maximum Likelihood Estimate (MLE) and use it to answer an analysis question\nIdentify three ways to calculate or approximate the MLE and apply these methods to find the MLE for a simple model"
+    "text": "Learning goals\n\nDescribe the concept of a likelihood\nConstruct the likelihood for a simple model\nDefine the Maximum Likelihood Estimate (MLE) and use it to answer an analysis question\nIdentify three ways to calculate or approximate the MLE and apply these methods to find the MLE for a simple model\nUse likelihoods to compare models"
   },
   {
     "objectID": "slides/03-likelihoods.html#what-is-the-likelihood",
     "href": "slides/03-likelihoods.html#what-is-the-likelihood",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "What is the likelihood?",
-    "text": "What is the likelihood?\nA likelihood is a function that tells us how likely we are to observe our data for a given parameter value (or values).\n\nUnlike with Ordinary Least Squares (OLS) estimates, they do not require the responses be independent, identically distributed, and normal\nThey are not the same as probability functions"
+    "text": "What is the likelihood?\nA likelihood is a function that tells us how likely we are to observe our data for a given parameter value (or values).\n\nUnlike Ordinary Least Squares (OLS), they do not require the responses be independent, identically distributed, and normal (iidN)\nThey are not the same as probability functions"
   },
   {
     "objectID": "slides/03-likelihoods.html#probability-function-vs.-likelihood",
     "href": "slides/03-likelihoods.html#probability-function-vs.-likelihood",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Probability function vs. likelihood",
-    "text": "Probability function vs. likelihood\n\n\nProbability function: Fixed parameter value(s) + input possible outcomes \\(\\Rightarrow\\) probability of seeing the different outcomes given the parameter value(s)\nLikelihood: Fixed data + input possible parameter values \\(\\Rightarrow\\) probability of seeing the fixed data for each parameter value"
+    "text": "Probability function vs. likelihood\n\nProbability function: Fixed parameter value(s) + input possible outcomes \\(\\Rightarrow\\) probability of seeing the different outcomes given the parameter value(s)\nLikelihood: Fixed data + input possible parameter values \\(\\Rightarrow\\) probability of seeing the fixed data for each parameter value"
   },
   {
     "objectID": "slides/03-likelihoods.html#data-fouls-in-college-basketball-games",
     "href": "slides/03-likelihoods.html#data-fouls-in-college-basketball-games",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Data: Fouls in college basketball games",
     "text": "Data: Fouls in college basketball games\nThe data set 04-refs.csv includes 30 randomly selected NCAA men’s basketball games played in the 2009 - 2010 season.1\nWe will focus on the variables foul1, foul2, and foul3, which indicate which team had a foul called them for the 1st, 2nd, and 3rd fouls, respectively.\n\nH: Foul was called on the home team\nV: Foul was called on the visiting team\n\nWe are focusing on the first three fouls for this analysis, but this could easily be extended to include all fouls in a game.\nThe dataset was derived from basektball0910.csv used in BMLR Section 11.2"
   },
   {
     "objectID": "slides/03-likelihoods.html#fouls-in-college-basketball-games",
     "href": "slides/03-likelihoods.html#fouls-in-college-basketball-games",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Fouls in college basketball games",
     "text": "Fouls in college basketball games\n\nrefs &lt;- read_csv(\"data/04-refs.csv\")\nrefs |&gt; slice(1:5) |&gt; kable()\n\n\n\n\ngame\ndate\nvisitor\nhometeam\nfoul1\nfoul2\nfoul3\n\n\n\n\n166\n20100126\nCLEM\nBC\nV\nV\nV\n\n\n224\n20100224\nDEPAUL\nCIN\nH\nH\nV\n\n\n317\n20100109\nMARQET\nNOVA\nH\nH\nH\n\n\n214\n20100228\nMARQET\nSETON\nV\nV\nH\n\n\n278\n20100128\nSETON\nSFL\nH\nV\nV\n\n\n\n\n\nWe will treat the games as independent in this analysis."
   },
   {
     "objectID": "slides/03-likelihoods.html#different-likelihood-models",
     "href": "slides/03-likelihoods.html#different-likelihood-models",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Different likelihood models",
-    "text": "Different likelihood models\nModel 1 (Unconditional Model):\n\nWhat is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?\n\n\nModel 2 (Conditional Model):\n\nIs there a tendency for the referees to call more fouls on the visiting team or home team?\nIs there a tendency for referees to call a foul on the team that already has more fouls?\n\n\n\nUltimately we want to decide which model is better."
+    "text": "Different likelihood models\nModel 1 (Unconditional Model):\n\nWhat is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?\n\n\nModel 2 (Conditional Model):\n\nIs there a tendency for the referees to call more fouls on the visiting team or home team?\nIs there a tendency for referees to call a foul on the team that already has more fouls?\n\nUltimately we want to decide which model is better."
   },
   {
     "objectID": "slides/03-likelihoods.html#exploratory-data-analysis",
     "href": "slides/03-likelihoods.html#exploratory-data-analysis",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Exploratory data analysis",
     "text": "Exploratory data analysis\n\n\n\nrefs |&gt;\ncount(foul1, foul2, foul3) |&gt; kable()\n\n\n\n\nfoul1\nfoul2\nfoul3\nn\n\n\n\n\nH\nH\nH\n3\n\n\nH\nH\nV\n2\n\n\nH\nV\nH\n3\n\n\nH\nV\nV\n7\n\n\nV\nH\nH\n7\n\n\nV\nH\nV\n1\n\n\nV\nV\nH\n5\n\n\nV\nV\nV\n2\n\n\n\n\n\n\nThere are\n\n46 total fouls on the home team\n44 total fouls on the visiting team"
   },
   {
     "objectID": "slides/03-likelihoods.html#likelihood",
     "href": "slides/03-likelihoods.html#likelihood",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Likelihood",
     "text": "Likelihood\nLet \\(p_H\\) be the probability the referees call a foul on the home team. The likelihood for a single observation \\[Lik(p_H) = p_H^{y_i}(1 - p_H)^{n_i - y_i}\\]Where \\(y_i\\) is the number of fouls called on the home team. (In this example, we know \\(n_i = 3\\) for all observations.)\n\nExample\nFor a single game where the first three fouls are \\(H, H, V\\), then \\[Lik(p_H) = p_H^{2}(1 - p_H)^{3 - 2} = p_H^{2}(1 - p_H)\\]"
   },
   {
     "objectID": "slides/03-likelihoods.html#model-1-likelihood-contribution",
     "href": "slides/03-likelihoods.html#model-1-likelihood-contribution",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Model 1: Likelihood contribution",
     "text": "Model 1: Likelihood contribution\n\n\n\nFoul 1\nFoul 2\nFoul 3\nn\nLikelihood contribution\n\n\n\n\nH\nH\nH\n3\n\\(p_H^3\\)\n\n\nH\nH\nV\n2\n\\(p_H^2(1 - p_H)\\)\n\n\nH\nV\nH\n3\n\\(p_H^2(1 - p_H)\\)\n\n\nH\nV\nV\n7\nA\n\n\nV\nH\nH\n7\nB\n\n\nV\nH\nV\n1\n\\(p_H(1 - p_H)^2\\)\n\n\nV\nV\nH\n5\n\\(p_H(1 - p_H)^2\\)\n\n\nV\nV\nV\n2\n\\((1 - p_H)^3\\)\n\n\n\n\nFill in A and B.\n\n\n\n\n−+\n02:00"
   },
   {
     "objectID": "slides/03-likelihoods.html#model-1-likelihood-function",
     "href": "slides/03-likelihoods.html#model-1-likelihood-function",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Model 1: Likelihood function",
-    "text": "Model 1: Likelihood function\nBecause the observations (the games) are independent, the likelihood is\n\\[Lik(p_H) = \\prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}\\]\n\nWe will use this function to find the maximum likelihood estimate (MLE). The MLE is the value between 0 and 1 where we are most likely to see the observed data."
+    "text": "Model 1: Likelihood function\nBecause the observations (the games) are independent, the likelihood is"
+  },
+  {
+    "objectID": "slides/03-likelihoods.html#likp_h-prod_i1np_hy_i1---p_h3---y_i",
+    "href": "slides/03-likelihoods.html#likp_h-prod_i1np_hy_i1---p_h3---y_i",
+    "title": "Using likelihoods",
+    "section": "\\[Lik(p_H) = \\prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}\\]",
+    "text": "\\[Lik(p_H) = \\prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}\\]\n\nWe will use this function to find the maximum likelihood estimate (MLE). The MLE is the value between 0 and 1 where we are most likely to see the observed data."
   },
   {
     "objectID": "slides/03-likelihoods.html#visualizing-the-likelihood",
     "href": "slides/03-likelihoods.html#visualizing-the-likelihood",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Visualizing the likelihood",
-    "text": "Visualizing the likelihood\n\n\n\n\n\n\n\n\n\n\n\n\n\np &lt;- seq(0,1, length.out = 100) #sequence of 100 values between 0 and 100\nlik &lt;- p^46 *(1 -p)^44\nx &lt;- tibble(p = p, lik = lik)\nggplot(data = x, aes(x = p, y = lik)) + \n  geom_point() + \n  geom_line() +\n  labs(y = \"Likelihood\",\n       title = \"Likelihood of p_H\")"
+    "text": "Visualizing the likelihood\n\nWhat is your best guess for the MLE, $\\hat{p}_H$?\n\n0.489\n0.500\n0.511\n0.556"
   },
   {
     "objectID": "slides/03-likelihoods.html#finding-the-maximum-likelihood-estimate",
     "href": "slides/03-likelihoods.html#finding-the-maximum-likelihood-estimate",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Finding the maximum likelihood estimate",
     "text": "Finding the maximum likelihood estimate\nThere are three primary ways to find the MLE\n✅ Approximate using a graph\n✅ Numerical approximation\n✅ Using calculus"
   },
   {
     "objectID": "slides/03-likelihoods.html#approximate-mle-from-a-graph",
     "href": "slides/03-likelihoods.html#approximate-mle-from-a-graph",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Approximate MLE from a graph",
     "text": "Approximate MLE from a graph"
   },
   {
-    "objectID": "slides/03-likelihoods.html#mle-using-numerical-approximation",
-    "href": "slides/03-likelihoods.html#mle-using-numerical-approximation",
-    "title": "Inference review +  using likelihoods",
-    "section": "MLE using numerical approximation",
-    "text": "MLE using numerical approximation\nSpecify a finite set of possible values the for \\(p_H\\) and calculate the likelihood for each value\n\n\n# write an R function for the likelihood\nref_lik &lt;- function(ph) {\n  ph^46 *(1 - ph)^44\n}\n\n# search possible values for p and return max\nnGrid = 1000\nph &lt;- seq(0, 1, length = nGrid)\nlik &lt;- ref_lik(ph)\nph[lik == max(lik)]\n\n[1] 0.5115115"
+    "objectID": "slides/03-likelihoods.html#find-the-mle-using-numerical-approximation",
+    "href": "slides/03-likelihoods.html#find-the-mle-using-numerical-approximation",
+    "title": "Using likelihoods",
+    "section": "Find the MLE using numerical approximation",
+    "text": "Find the MLE using numerical approximation\nSpecify a finite set of possible values the for \\(p_H\\) and calculate the likelihood for each value\n\n\n# write an R function for the likelihood\nref_lik &lt;- function(ph) {\n  ph^46 *(1 - ph)^44\n}\n\n# search possible values for p and return max\nnGrid = 1000\nph &lt;- seq(0, 1, length = nGrid)\nlik &lt;- ref_lik(ph)\nph[lik == max(lik)]\n\n[1] 0.5115115\n\n\n\n\n\n# use the optimize function to find the MLE\noptimize(ref_lik, interval = c(0,1), maximum = TRUE)\n\n$maximum\n[1] 0.5111132\n\n$objective\n[1] 8.25947e-28"
   },
   {
     "objectID": "slides/03-likelihoods.html#find-mle-using-calculus",
     "href": "slides/03-likelihoods.html#find-mle-using-calculus",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Find MLE using calculus",
     "text": "Find MLE using calculus\n\nFind the MLE by taking the first derivative of the likelihood function.\nThis can be tricky because of the Product Rule, so we can maximize the log(Likelihood) instead. The same value maximizes the likelihood and log(Likelihood)"
   },
   {
     "objectID": "slides/03-likelihoods.html#find-mle-using-calculus-1",
     "href": "slides/03-likelihoods.html#find-mle-using-calculus-1",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Find MLE using calculus",
     "text": "Find MLE using calculus\n\\[Lik(p_H) = \\prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}\\]\n\n\\[\n\\begin{aligned}\\log(Lik(p_H)) &= \\sum_{i=1}^{n}y_i\\log(p_H) + (3 - y_i)\\log(1 - p_H)\\\\[10pt] &= 46\\log(p_H) + 44\\log(1 - p_H)\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/03-likelihoods.html#find-mle-using-calculus-2",
     "href": "slides/03-likelihoods.html#find-mle-using-calculus-2",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Find MLE using calculus",
     "text": "Find MLE using calculus\n\\[\\frac{d}{d p_H} \\log(Lik(p_H)) = \\frac{46}{p_H} - \\frac{44}{1-p_H} = 0\\]\n\n\\[\\Rightarrow \\frac{46}{p_H} = \\frac{44}{1-p_H}\\]\n\n\n\\[\\Rightarrow 46(1-p_H) = 44p_H\\]\n\n\n\\[\\Rightarrow 46 = 90p_H\\]\n\n\n\\[\n\\hat{p}_H = \\frac{46}{90} = 0.511\n\\]\n\n\n\n😐"
   },
   {
     "objectID": "slides/03-likelihoods.html#model-2-conditional-model-1",
     "href": "slides/03-likelihoods.html#model-2-conditional-model-1",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Model 2: Conditional model",
     "text": "Model 2: Conditional model\nNow let’s assume fouls are not independent within each game. We will specify this dependence using conditional probabilities.\n\nConditional probability: \\(P(A|B) =\\) Probability of \\(A\\) given \\(B\\) has occurred\n\n\nDefine new parameters:\n\n\n\\(p_{H|N}\\): Probability referees call foul on home team given there are equal numbers of fouls on the home and visiting teams\n\\(p_{H|H Bias}\\): Probability referees call foul on home team given there are more prior fouls on the home team\n\\(p_{H|V Bias}\\): Probability referees call foul on home team given there are more prior fouls on the visiting team"
   },
   {
     "objectID": "slides/03-likelihoods.html#model-2-likelihood-contributions",
     "href": "slides/03-likelihoods.html#model-2-likelihood-contributions",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Model 2: Likelihood contributions",
-    "text": "Model 2: Likelihood contributions\n\n\n\n\n\n\n\n\n\n\nFoul 1\nFoul 2\nFoul 3\nn\nLikelihood contribution\n\n\n\n\nH\nH\nH\n3\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(p_{H\\vert H Bias}) = (p_{H\\vert N})(p_{H\\vert H Bias})^2\\)\n\n\nH\nH\nV\n2\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(1-p_{H\\vert H Bias})\\)\n\n\nH\nV\nH\n3\n\\((p_{H\\vert N})(1 - p_{H \\vert HBias})(p_{H \\vert N}) = (p_{H \\vert N})^2(1 - p_{H \\vert HBias})\\)\n\n\nH\nV\nV\n7\nA\n\n\nV\nH\nH\n7\nB\n\n\nV\nH\nV\n1\n\\((1 - p_{H\\vert N})(p_{H\\vert V Bias})(1 - p_{H\\vert N}) = (1 - p_{H\\vert N})^2(p_{H\\vert V Bias})\\)\n\n\nV\nV\nH\n5\n\\((1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(p_{H\\vert V Bias})\\)\n\n\nV\nV\nV\n2\n\\(\\begin{aligned}&(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(1-p_{H\\vert V Bias})\\\\ &=(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})^2\\end{aligned}\\)"
+    "text": "Model 2: Likelihood contributions\n\n\n\n\n\n\n\n\n\n\nFoul 1\nFoul 2\nFoul 3\nn\nLikelihood contribution\n\n\n\n\nH\nH\nH\n3\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(p_{H\\vert H Bias}) = (p_{H\\vert N})(p_{H\\vert H Bias})^2\\)\n\n\nH\nH\nV\n2\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(p_{H\\vert H Bias}) = (p_{H\\vert N})(p_{H\\vert H Bias})^2\\)\n\n\nH\nV\nH\n3\n\\((p_{H\\vert N})(p_{H\\vert H Bias})(1 - p_{H\\vert H Bias})\\)\n\n\nH\nV\nV\n7\nA\n\n\nV\nH\nH\n7\nB\n\n\nV\nH\nV\n1\n\\((1 - p_{H\\vert N})(p_{H\\vert V Bias})(1 - p_{H\\vert N}) = (1 - p_{H\\vert N})^2(p_{H\\vert V Bias})\\)\n\n\nV\nV\nH\n5\n\\((1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(p_{H\\vert V Bias})\\)\n\n\nV\nV\nV\n2\n\\(\\begin{aligned}&(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})(1-p_{H\\vert V Bias})\\\\ &=(1 - p_{H\\vert N})(1-p_{H\\vert V Bias})^2\\end{aligned}\\)\n\n\n\n\nFill in A and B."
   },
   {
     "objectID": "slides/03-likelihoods.html#likelihood-function",
     "href": "slides/03-likelihoods.html#likelihood-function",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Likelihood function",
     "text": "Likelihood function\n\\[\\begin{aligned}Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}) &= [(p_{H| N})^{25}(1 - p_{H|N})^{23}(p_{H| H Bias})^8 \\\\ &(1 - p_{H| H Bias})^{12}(p_{H| V Bias})^{13}(1-p_{H|V Bias})^9]\\end{aligned}\\]\n(Note: The exponents sum to 90, the total number of fouls in the data)\n\n\n\\[\\begin{aligned}\\log (Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias})) &= 25 \\log(p_{H| N}) + 23 \\log(1 - p_{H|N}) \\\\ & + 8 \\log(p_{H| H Bias}) + 12 \\log(1 - p_{H| H Bias})\\\\ &+ 13 \\log(p_{H| V Bias}) + 9 \\log(1-p_{H|V Bias})\\end{aligned}\\]"
   },
   {
-    "objectID": "slides/03-likelihoods.html#mles-for-model-2",
-    "href": "slides/03-likelihoods.html#mles-for-model-2",
-    "title": "Inference review +  using likelihoods",
-    "section": "MLEs for Model 2",
-    "text": "MLEs for Model 2\nClick here for details on finding MLEs for Model2."
+    "objectID": "slides/03-likelihoods.html#update-the-choices",
+    "href": "slides/03-likelihoods.html#update-the-choices",
+    "title": "Using likelihoods",
+    "section": "UPDATE THE CHOICES!",
+    "text": "UPDATE THE CHOICES!\n\nIf there is a tendency for referees to call a foul on the team that already has more fouls, how would you expect \\(\\hat{p}_H\\) and \\(\\hat{p}_{H\\vert H Bias}\\) to compare?\n\n\\(\\hat{p}_H\\) is greater than \\(\\hat{p}_{H\\vert H Bias}\\)\n\\(\\hat{p}_{H\\vert H Bias}\\) is greater than \\(\\hat{p}_H\\)\nThey are approximately equal."
   },
   {
     "objectID": "slides/03-likelihoods.html#next-time",
     "href": "slides/03-likelihoods.html#next-time",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "Next time",
-    "text": "Next time\n\nPoisson regression"
+    "text": "Next time\n\nUsing likelihoods to compare models\nChapter 3: Distribution theory"
   },
   {
     "objectID": "slides/03-likelihoods.html#references",
     "href": "slides/03-likelihoods.html#references",
-    "title": "Inference review +  using likelihoods",
+    "title": "Using likelihoods",
     "section": "References",
     "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
   },
@@ -3482,7 +3559,7 @@
     "href": "slides/11-multilevel-models.html#questions-we-want-to-answer",
     "title": "Multilevel models",
     "section": "Questions we want to answer",
-    "text": "Questions we want to answer\nWhat is the association between performance type (large ensemble or not) and performance anxiety? Does the association differ based on instrument type (orchestral or not)?\n\n\nWhat is the problem with an ordinary least squares model to draw conclusions?\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n15.721\n0.359\n43.778\n0.000\n\n\norchestra\n1.789\n0.552\n3.243\n0.001\n\n\nlarge_ensemble\n-0.277\n0.791\n-0.350\n0.727\n\n\norchestra:large_ensemble\n-1.709\n1.062\n-1.609\n0.108"
+    "text": "Questions we want to answer\nWhat is the association between performance type (large ensemble or not) and performance anxiety? Does the association differ based on instrument type (orchestral or not)?\n\n\nWhat is the problem with an ordinary least squares model to draw conclusions?\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n15.721\n0.359\n43.778\n0.000\n\n\norchestra1\n1.789\n0.552\n3.243\n0.001\n\n\nlarge_ensemble1\n-0.277\n0.791\n-0.350\n0.727\n\n\norchestra1:large_ensemble1\n-1.709\n1.062\n-1.609\n0.108"
   },
   {
     "objectID": "slides/11-multilevel-models.html#other-modeling-approaches",
@@ -3496,7 +3573,7 @@
     "href": "slides/11-multilevel-models.html#level-one-model",
     "title": "Multilevel models",
     "section": "Level One model",
-    "text": "Level One model\nWe’ll start with the Level One model to understand the association between performance type and performance anxiety for the \\(i^{th}\\) musician and the \\(j^{th}\\) perfromance \\[na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \\epsilon_i, \\hspace{5mm} \\epsilon_{ij} \\sim N(0,\\sigma^2)\\]\n\nWhy is it more meaningful to use performance type for the Level One model than instrument?\n\nFor now, estimate \\(a_i\\) and \\(b_i\\) using least-squares regression."
+    "text": "Level One model\nWe’ll start with the Level One model to understand the association between performance type and performance anxiety for the \\(i^{th}\\) musician and the \\(j^{th}\\) performance \\[na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \\epsilon_i, \\hspace{5mm} \\epsilon_{ij} \\sim N(0,\\sigma^2)\\]\n\nWhy is it more meaningful to use performance type for the Level One model than instrument?\n\nFor now, estimate \\(a_i\\) and \\(b_i\\) using least-squares regression."
   },
   {
     "objectID": "slides/11-multilevel-models.html#example-level-one-model",
@@ -3510,7 +3587,7 @@
     "href": "slides/11-multilevel-models.html#level-one-model-1",
     "title": "Multilevel models",
     "section": "Level One model",
-    "text": "Level One model\n\nmusic |&gt;\n  filter(id == 22) |&gt;\n  lm(na ~ large_ensemble, data = _) |&gt;\n  tidy() |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n24.500\n1.96\n12.503\n0.000\n\n\nlarge_ensemble\n-7.833\n2.53\n-3.097\n0.009\n\n\n\n\n\n\n\n\nRepeat for all 37 musicians. See Part 3: Level One Models in AE."
+    "text": "Level One model\n\nmusic |&gt;\n  filter(id == 22) |&gt;\n  lm(na ~ large_ensemble, data = _) |&gt;\n  tidy() |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n24.500\n1.96\n12.503\n0.000\n\n\nlarge_ensemble1\n-7.833\n2.53\n-3.097\n0.009\n\n\n\n\n\n\n\n\nRepeat for all 37 musicians. See Part 3: Level One Models in AE."
   },
   {
     "objectID": "slides/11-multilevel-models.html#level-one-models",
@@ -3538,21 +3615,21 @@
     "href": "slides/11-multilevel-models.html#level-two-model-1",
     "title": "Multilevel models",
     "section": "Level Two model",
-    "text": "Level Two model\nModel for intercepts\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n16.283\n0.671\n24.249\n0.000\n\n\norchestra\n1.411\n0.991\n1.424\n0.163\n\n\n\n\n\n\nModel for slopes\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.771\n0.851\n-0.906\n0.373\n\n\norchestra\n-1.406\n1.203\n-1.168\n0.253"
+    "text": "Level Two model\nModel for intercepts\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n15.706\n0.789\n19.919\n0.000\n\n\norchestra1\n2.205\n1.115\n1.978\n0.058\n\n\n\n\n\n\nModel for slopes\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.771\n0.851\n-0.906\n0.373\n\n\norchestra1\n-1.406\n1.203\n-1.168\n0.253"
   },
   {
     "objectID": "slides/11-multilevel-models.html#writing-out-the-models",
     "href": "slides/11-multilevel-models.html#writing-out-the-models",
     "title": "Multilevel models",
     "section": "Writing out the models",
-    "text": "Writing out the models\nLevel One\n\\[\\hat{na}_{ij}  = \\hat{a}_i + \\hat{b}_i ~ LargeEnsemble_{ij}\\]\n\n\nLevel Two\n\\[\\begin{aligned}&\\hat{a}_i = 16.283 + 1.441 ~ Orchestra_i \\\\\n&\\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\\end{aligned}\\]"
+    "text": "Writing out the models\nLevel One\n\\[\\hat{na}_{ij}  = \\hat{a}_i + \\hat{b}_i ~ LargeEnsemble_{ij}\\]\n\n\nLevel Two\n\\[\\begin{aligned}&\\hat{a}_i = 15.721 + 1.441 ~ Orchestra_i \\\\\n&\\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\\end{aligned}\\]"
   },
   {
     "objectID": "slides/11-multilevel-models.html#estimated-composite-model",
     "href": "slides/11-multilevel-models.html#estimated-composite-model",
     "title": "Multilevel models",
     "section": "Estimated composite model",
-    "text": "Estimated composite model\n\\[\n\\begin{aligned}\\hat{na}_{ij} &= 16.283 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\\\\n&- 1.406 ~ Orchestra:LargeEnsemble_{ij}\\end{aligned}\n\\]\n(Note that we also have the error terms \\(\\epsilon_{ij}, u_i, v_i\\) that we will discuss later)\n\n\n\nWhat is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who place orchestral instruments?\nWhat is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?"
+    "text": "Estimated composite model\n\\[\n\\begin{aligned}\\hat{na}_{ij} &= 15.721 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\\\\n&- 1.406 ~ Orchestra:LargeEnsemble_{ij}\\end{aligned}\n\\]\n(Note that we also have the error terms \\(\\epsilon_{ij}, u_i, v_i\\) that we will discuss later)\n\n\n\nWhat is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who place orchestral instruments?\nWhat is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?"
   },
   {
     "objectID": "slides/11-multilevel-models.html#disadvantages-to-this-approach",
@@ -3615,7 +3692,7 @@
     "href": "slides/11-multilevel-models.html#fitted-model",
     "title": "Multilevel models",
     "section": "Fitted model",
-    "text": "Fitted model\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n15.930\n0.641\n24.833\n\n\nfixed\nNA\norchestra\n1.693\n0.945\n1.791\n\n\nfixed\nNA\nlarge_ensemble\n-0.911\n0.845\n-1.077\n\n\nfixed\nNA\norchestra:large_ensemble\n-1.424\n1.099\n-1.295\n\n\nran_pars\nid\nsd__(Intercept)\n2.378\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble\n-0.635\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble\n0.672\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.670\nNA\nNA"
+    "text": "Fitted model\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n15.930\n0.641\n24.833\n\n\nfixed\nNA\norchestra1\n1.693\n0.945\n1.791\n\n\nfixed\nNA\nlarge_ensemble1\n-0.911\n0.845\n-1.077\n\n\nfixed\nNA\norchestra1:large_ensemble1\n-1.424\n1.099\n-1.295\n\n\nran_pars\nid\nsd__(Intercept)\n2.378\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble1\n-0.635\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble1\n0.672\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.670\nNA\nNA"
   },
   {
     "objectID": "slides/11-multilevel-models.html#fitted-model-1",

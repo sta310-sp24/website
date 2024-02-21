@@ -172,6 +172,10 @@ There are two ways to visualize these associations:
 
 # Application exercise
 
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-11-mutlilevel](https://sta310-sp24.netlify.app/ae/lec-11-mutlilevel.html)
+:::
+
 ```{r echo = F}
 library(countdown)
 countdown(minutes = 6, seconds = 00,
@@ -192,8 +196,8 @@ What is the association between performance type (large ensemble or not) and per
 
 ```{r echo = F}
 music <- music |>
-  mutate(orchestra = if_else(instrument == "orchestral instrument", 1, 0), 
-         large_ensemble = if_else(perform_type == "Large Ensemble", 1,0))
+  mutate(orchestra = factor(if_else(instrument == "orchestral instrument", 1, 0)), 
+         large_ensemble = factor(if_else(perform_type == "Large Ensemble", 1,0)))
 
 ols <- lm(na ~ orchestra + large_ensemble + orchestra * large_ensemble, 
           data = music)
@@ -217,7 +221,7 @@ tidy(ols) |> kable(digits = 3)
 
 ## Level One model
 
-We'll start with the Level One model to understand the association between performance type and performance anxiety for the $i^{th}$ musician and the $j^{th}$ perfromance $$na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_i, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)$$
+We'll start with the Level One model to understand the association between performance type and performance anxiety for the $i^{th}$ musician and the $j^{th}$ performance $$na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_i, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)$$
 
 <br>
 
@@ -256,35 +260,38 @@ music |>
 **Repeat for all 37 musicians. See Part 3: Level One Models in AE.**
 :::
 
-## Level One models 
+## Level One models
 
 ```{r echo = F}
-# set up tibble for fitted values 
 
-model_stats <- tibble(slopes = rep(0,37), 
-               intercepts = rep(0,37), 
-               r.squared = rep(0, 37))
-
+# set up tibble for fitted values
+model_stats <- tibble(slopes = rep(NA,37), 
+               intercepts = rep(NA,37), 
+               r.squared = rep(NA, 37))
 
 ids <- music |> distinct(id) |> pull()
 
-# counter to keep track of row number to store model_stats
+# fit the model and score the releveant statistcs
+for(i in 1:length(ids)){
+level_one_data <- music |>
+  filter(id == ids[i]) 
 
-count <- 1
+# check if more than one performance type 
+num_perform_types <- level_one_data |> 
+  distinct(large_ensemble) |> 
+  nrow() 
 
-for(i in ids){
-level_one_model <- music |>
-  filter(id == i) |>
-  lm(na ~ large_ensemble, data = _)
+if(num_perform_types > 1){
+
+level_one_model <- lm(na ~ large_ensemble, 
+                      data = level_one_data)
 
 level_one_model_tidy <- tidy(level_one_model)
 
-
-model_stats$slopes[count] <- level_one_model_tidy$estimate[2]
-model_stats$intercepts[count] <- level_one_model_tidy$estimate[1]
-model_stats$r.squared[count] <- glance(level_one_model)$r.squared
-
-count = count + 1
+model_stats$slopes[i] <- level_one_model_tidy$estimate[2]
+model_stats$intercepts[i] <- level_one_model_tidy$estimate[1]
+model_stats$r.squared[i] <- glance(level_one_model)$r.squared
+}
 }
 ```
 
@@ -370,13 +377,13 @@ $$\hat{na}_{ij}  = \hat{a}_i + \hat{b}_i ~ LargeEnsemble_{ij}$$
 
 **Level Two**
 
-$$\begin{aligned}&\hat{a}_i = 16.283 + 1.441 ~ Orchestra_i \\
+$$\begin{aligned}&\hat{a}_i = 15.721 + 1.441 ~ Orchestra_i \\
 &\hat{b}_i = -0.771 - 1.406 ~ Orchestra_i\end{aligned}$$
 
 ## Estimated composite model {.midi}
 
 $$
-\begin{aligned}\hat{na}_{ij} &= 16.283 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
+\begin{aligned}\hat{na}_{ij} &= 15.721 + 1.441 ~ Orchestra_i - 0.771 ~ LargeEnsemble_{ij} \\
 &- 1.406 ~ Orchestra:LargeEnsemble_{ij}\end{aligned}
 $$
 
@@ -427,7 +434,7 @@ $$\begin{aligned}&a_i = \alpha_0 + \alpha_1 ~ Orchestra_i+ u_i\\
 
 This approach uses likelihood-based methods (instead of least squares) to address the previously mentioned disadvantages
 
-## Composite model  {.midi}
+## Composite model {.midi}
 
 Plug in the equations for $a_i$ and $b_i$ to get the **composite model** $$\begin{aligned}Y_{ij} &= (\alpha_0 + \alpha_1 ~ Orchestra_i + \beta_0 ~ LargeEnsemble_{ij} \\ 
 &+ \beta_1 ~ Orchestra_i:LargeEnsemble_{ij})\\

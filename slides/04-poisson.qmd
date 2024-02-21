@@ -339,7 +339,7 @@ Figures recreated from [BMLR Figure 4.1](https://bookdown.org/roback/bookdown-Be
 
 **Independence**: The observations must be independent of one another
 
-**Mean = Variance**: The mean must equal the variance
+**Mean = Variance**: The mean equals the variance
 
 **Linearity**: The log of the mean rate, $\log(\lambda)$, must be a linear function of the predictor(s)
 :::
@@ -416,121 +416,141 @@ where $z^* \sim N(0, 1)$ $$-0.0047 \pm 1.96 \times 0.0009 = \mathbf{(-.0065, -0.
 Interpret the interval in terms of the change in mean household size.
 :::
 
-## **Which plot can best help us determine whether Model 1 is a good fit?**
+# Estimating $\beta_0$ and $\beta_1$
 
-```{r echo = F}
-p1 <- ggplot(data = hh_data, aes(x = age, y = total)) + 
-  geom_point() + 
-  labs(y = "Total household size", 
-       title = "Plot A")
+## Estimating $\beta_0$ and $\beta_1$ {.midi}
 
-p2 <- hh_data |>
-  group_by(age) |> 
-  summarise(mean = mean(total)) |>
-  ggplot(aes(x = age, y = mean))+ 
-  geom_point() + 
-  labs(y = "Empirical mean household size", 
-       title = "Plot B")
+-   1.5499 and -0.0047 are the estimates of $\beta_0$ and $\beta_1$ respectively.
 
-p3 <- hh_data |>
-  group_by(age) |> 
-  summarise(log_mean = log(mean(total))) |>
-  ggplot(aes(x = age, y = log_mean)) + 
-  geom_point() + 
-  labs(y = "Log empirical mean household size", 
-       title = "Plot C")
+-   How were these values determined?
 
-p1 + p2 + p3 + plot_annotation(tag_levels = 'A')
-```
-
-## Model 2: Add a quadratic effect for `age`
-
-```{r}
-hh_data <- hh_data |> 
-  mutate(age2 = age*age)
-
-model2 <- glm(total ~ age + age2, data = hh_data, family = poisson)
-tidy(model2, conf.int = T) |> 
-  kable(digits = 4)
-```
-
-------------------------------------------------------------------------
-
-## Model 2: Add a quadratic effect for `age`
-
-```{r echo = F}
-tidy(model2, conf.int = T) |> 
-  kable(digits = 4)
-```
-
-We can determine whether to keep $age^2$ in the model in two ways:
-
-`r emo::ji("one")` Use the p-value (or confidence interval) for the coefficient (since we are adding a single term to the model)
-
-`r emo::ji("two")` Conduct a drop-in-deviance test
-
-## Deviance
-
-A **deviance** is a way to measure how the observed data differs (deviates) from the model predictions.
-
--   It's a measure unexplained variability in the response variable (similar to SSE in linear regression )
-
--   Lower deviance means the model is a better fit to the data
+-   Let's take a look at the first five rows of data:
 
 . . .
 
-We can calculate the "deviance residual" for each observation in the data (more on the formula later). Let $(\text{deviance residual}_i$ be the deviance residual for the $i^{th}$ observation, then
-
-$$\text{deviance} = \sum(\text{deviance residual})_i^2$$
-
-*Note: Deviance is also known as the "residual deviance"*
-
-------------------------------------------------------------------------
-
-## Drop-in-Deviance Test {.midi}
-
-We can use a **drop-in-deviance test** to compare two models. To conduct the test
-
-`r emo::ji("one")` Compute the deviance for each model
-
-`r emo::ji("two")` Calculate the drop in deviance
-
-$$\text{drop-in-deviance =  Deviance(reduced model) - Deviance(larger model)}$$
-
-`r emo::ji("three")` Given the reduced model is the true model $(H_0 \text{ true})$, then $$\text{drop-in-deviance} \sim \chi_d^2$$
-
-where $d$ is the difference in degrees of freedom between the two models (i.e., the difference in number of terms)
-
-## Drop-in-deviance to compare Model1 and Model2
-
 ```{r}
-anova(model1, model2, test = "Chisq") |>
+#| echo: false
+hh_data |>
+  slice(1:5) |>
   kable(digits = 3)
 ```
 
-::: question
-a.  Write the null and alternative hypotheses.
-b.  What does the value 2337.089 tell you?
-c.  What does the value 1 tell you?
-d.  What is your conclusion?
+## Likelihood
+
+Then the likelihood for those five observations is
+
+$$Likelihood =P(Y_1 = 0)P(Y_2 = 3)P(Y_3 = 4)P(Y_4 = 3)P(Y_5 = 3)
+$$
+
+. . .
+
+The Y's follow a Poisson distribution, so this equals
+
+$$
+Likelihood = \frac{e^{-\lambda_1}\lambda_1^0}{0!} * \frac{e^{-\lambda_2}\lambda_2^3}{3!} * \frac{e^{-\lambda_3}\lambda_3^4}{4!} *\frac{e^{-\lambda_4}\lambda_4^3}{3!} * \frac{e^{-\lambda_5}\lambda_5^3}{3!}
+$$
+
+where $\lambda_i$ can differ for each household based on its value of `age`.
+
+## Log-likelihood
+
+Let's take the log of the likelihood, as this will be easier to maximize than the likelihood itself.
+
+$$
+\begin{align}
+logL =& -\lambda_1 + 0\log(\lambda_1) - \lambda_2 + 3\log(\lambda_2) - \lambda_3 + 4\log(\lambda_3)\\ &- \lambda_4 + 3\log(\lambda_4) - \lambda_5 + 3\log(\lambda_5) \\ &+ C
+\end{align}
+$$
+
+::: callout-note
+We are going to maximize with respect to $\lambda$, we will drop the constant term $C$ moving forward.
 :::
 
-## Add `location` to the model? {.midi}
+## Log-likelihood {.midi}
 
-Suppose we want to add `location` to the model, so we compare the following models:
+Because we're fitting a Poisson regression model, we know
 
-**Model A**: $\lambda_i = \beta_0 + \beta_1 ~ age_i + \beta_2 ~ age_i^2$
+$$
+\log(\lambda_i) = \beta_0 + \beta_1~age_i \hspace{6mm} and \hspace{6mm} \lambda_i = e^{\beta_0 + \beta_1~age_i}
+$$
 
-**Model B**: $\lambda_i = \beta_0 + \beta_1 ~ age_i + \beta_2 ~ age_i^2 + \beta_3 ~ Loc1_i + \beta_4 ~ Loc2_i + \beta_5 ~ Loc3_i + \beta_6 ~ Loc4_i$
+. . .
 
-::: question
-Which of the following are reliable ways to determine if `location` should be added to the model?
+Plugging these formulas and the respective ages into $logL$, we have
 
-1.  Drop-in-deviance test
-2.  Use the p-value for each coefficient
-3.  Likelihood ratio test
-4.  Nested F Test
-5.  BIC
+```{=tex}
+\begin{align}
+logL \propto& - \exp^{\beta_0 + \beta_1*65} + 0*(\beta_0 + \beta_1*65)\\ 
+&- \exp^{\beta_0 + \beta_1*75} + 3*(\beta_0 + \beta_1*75)\\ 
+&- \exp^{\beta_0 + \beta_1*54} + 4*(\beta_0 + \beta_1*54)\\ 
+& -\exp^{\beta_0 + \beta_1*49}  + 3*(\beta_0 + \beta_1*49) \\
+&-\exp^{\beta_0 + \beta_1*74} + 3*(\beta_0 + \beta_1*74) 
+\end{align}
+```
+## Log-likelihood
+
+Expanding this to the entire data set, we have
+
+$$
+logL \propto \sum_{i=1}^{1500} -e^{\beta_0 + \beta_1age_i} + total_i (\beta_0 + \beta_1age_i)
+$$
+
+. . .
+
+Can use different numerical methods to try different values of $\beta_0$ and $\beta_1$ and find the combination that maximizes $logL$ .
+
+## Iteratively reweighted least-squares (IRLS)
+
+-   **Iteratively reweighted least-squares (IRLS)** is used to find the MLEs
+
+-   @nelder1972generalized show that under certain specifications of the weights and a modified response variable, the estimates found using IRLS are equivalent to the MLEs.
+
+## IRLS procedure {.midi}
+
+1.  Find initial starting values $\hat{\theta}_i$, the model parameter ( $\hat{\theta}_i = \hat{\lambda}_i$ in the case of Poisson regression)
+
+2.  Calculate the working response values $z_i$.
+
+3.  Calculate the working weights $W_i$.
+
+4.  Find the coefficient estimates of the weighted least squares model.
+
+$$z_i = \beta_0 + \beta_1 x \hspace{5mm} \text{ with weights }W_i$$
+
+The estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ are the estimates for the model coefficients.
+
+. . .
+
+Use $\hat{\beta}_0$ and $\hat{\beta}_1$ to calculate updated values of $\hat{\theta}_i$ and repeat steps 2 - 4 until convergence.
+
+::: aside
+Steps from @dunn2018generalized.
+:::
+
+## IRLS Set up {.midi}
+
+**Working response**: Modified response variable at each step of the iteration.
+
+$$z_i = g(\theta) + g'(\theta)(y_i - \theta_i)$$
+
+where $g(\theta)$ is the link function. (We will talk all about link functions in Chapter 5)
+
+. . .
+
+For Poisson regression $g(\theta) = \log(\lambda)$
+
+$$z_i = \log(\lambda) + \frac{(y_i - \lambda_i)}{\lambda_i}$$
+
+. . .
+
+**Working Weights:** Weights applied to the observations at each step of the iteration
+
+$$W_i = \frac{\theta^2}{Var(Y)} \hspace{5mm} \Rightarrow \hspace{5mm}  W_i = \frac{\lambda^2}{\lambda} =  \lambda \text{ for Poisson regression}$$
+
+# Application exercise
+
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-04-poisson-estimate](../ae/lec-04-poisson-estimate.html)
 :::
 
 ## Looking ahead

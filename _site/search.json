@@ -1697,7 +1697,7 @@
     "href": "hw/hw-03.html#exercise-3",
     "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 3",
-    "text": "Exercise 3\n\nBrown and Uyar (2004) describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.\n\nGive the observational units at Level One and Level Two based on the title of the paper.\nWhy can’t we assume all houses in the data set are independent?\nSuppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.\nWrite the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.\nWrite the composite model corresponding to part (c)\nList the fixed effects that must be estimated in the model in part (d).\nDescribe the variance components that must be estimated in the model in part (d).",
+    "text": "Exercise 3\n\nBrown and Uyar (2004) describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.\n\nGive the observational units at Level One and Level Two based on the title of the paper.\nWhy can’t we assume all houses in the data set are independent?\nSuppose we have the following set of predictors: Square footage (sqft), rating of neighborhood schools (rating), median neighborhood housing price (medprice). Write the two-level model for predicting housing prices.\nWrite the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.\nWrite the composite model corresponding to part (c)\nList the fixed effects that must be estimated in the model in part (d).\nDescribe the variance components that must be estimated in the model in part (d).",
     "crumbs": [
       "Homework",
       "HW 03"
@@ -3348,14 +3348,14 @@
     "href": "slides/06-poisson-pt3.html#announcements",
     "title": "Poisson Regression",
     "section": "Announcements",
-    "text": "Announcements"
+    "text": "Announcements\n\nQuiz 01 on Canvas due Thu, Feb 01 at noon\nHW 02 due Wed, Feb 07 at 11:59pm (grace period until Thu, Feb 08 noon)\n\nReleased tomorrow morning\n\nThis week’s lab: Project 01 article evaluation"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#topics",
     "href": "slides/06-poisson-pt3.html#topics",
     "title": "Poisson Regression",
     "section": "Topics",
-    "text": "Topics\n\nOffsets in Poisson regression\nZero-inflated Poisson regression"
+    "text": "Topics\n\nOffset in Poisson regression\nZero-inflated Poisson regression"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#data-airbnbs-in-nyc",
@@ -3369,7 +3369,7 @@
     "href": "slides/06-poisson-pt3.html#data-airbnbs-in-nyc-1",
     "title": "Poisson Regression",
     "section": "Data: Airbnbs in NYC",
-    "text": "Data: Airbnbs in NYC\n\nairbnb &lt;- read_csv(\"data/NYCairbnb.csv\") \n\n#|&gt;\n#  select(id, number_of_reviews, days, room_type, price)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\ndays\nlast_scraped\nhost_since\nroom_type\nbathrooms\nbedrooms\nprice\nnumber_of_reviews\nreview_scores_cleanliness\nreview_scores_location\nreview_scores_value\ninstant_bookable\n\n\n\n\n16859979\n74\n4/3/2017\n1/19/2017\nPrivate room\n1.0\n1\n67\n7\n10\n10\n10\nFALSE\n\n\n16083673\n913\n4/3/2017\n10/3/2014\nPrivate room\n0.5\n1\n49\n7\n8\n9\n9\nTRUE\n\n\n12870344\n333\n4/2/2017\n5/4/2016\nPrivate room\n1.0\n1\n145\n0\nNA\nNA\nNA\nFALSE\n\n\n6561509\n677\n4/2/2017\n5/26/2015\nPrivate room\n1.0\n1\n65\n7\n10\n10\n10\nFALSE\n\n\n1940534\n1503\n4/3/2017\n2/20/2013\nPrivate room\n1.0\n1\n60\n11\n5\n6\n7\nFALSE"
+    "text": "Data: Airbnbs in NYC\n\nairbnb &lt;- read_csv(\"data/NYCairbnb-sample.csv\") \n\n\n\n\n\n\n\n\nid\nnumber_of_reviews\ndays\nroom_type\nprice\n\n\n\n\n15756544\n16\n1144\nPrivate room\n120\n\n\n14218251\n15\n471\nPrivate room\n89\n\n\n21644\n0\n2600\nPrivate room\n89\n\n\n13667835\n1\n283\nEntire home/apt\n150\n\n\n265912\n0\n1970\nEntire home/apt\n89"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#eda",
@@ -3383,14 +3383,14 @@
     "href": "slides/06-poisson-pt3.html#eda-1",
     "title": "Poisson Regression",
     "section": "EDA",
-    "text": "EDA\n\n\n\nOverall\n\n\n\n\n\n\nmean\nvar\n\n\n\n\n15.904\n855.329\n\n\n\n\n\n\n\nby room type\n\n\n\n\n\n\nroom_type\nmean\nvar\n\n\n\n\nEntire home/apt\n16.824\n820.289\n\n\nPrivate room\n15.223\n909.915\n\n\nShared room\n11.858\n516.557"
+    "text": "EDA\n\n\n\nOverall\n\n\n\n\n\n\nmean\nvar\n\n\n\n\n15.916\n765.969\n\n\n\n\n\n\n\nby room type\n\n\n\n\n\n\nroom_type\nmean\nvar\n\n\n\n\nEntire home/apt\n16.283\n760.348\n\n\nPrivate room\n15.608\n786.399\n\n\nShared room\n15.028\n605.971"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#considerations-for-modeling",
     "href": "slides/06-poisson-pt3.html#considerations-for-modeling",
     "title": "Poisson Regression",
     "section": "Considerations for modeling",
-    "text": "Considerations for modeling\nWe would like to fit the Poisson regression model\n\\[\\log(\\lambda_i) = \\beta_0 + \\beta_1 ~ price_i + \\beta_2 ~ room\\_type1_i + \\beta_3 ~ room\\_type2_i\\]\n\n\n\nBased on the EDA, what are some potential issues we may want to address in the model building?\nSuppose any model fit issues are addressed. What are some potential limitations to the conclusions and interpretations from the model?\n\n\n\n\n\n−+\n03:00"
+    "text": "Considerations for modeling\nWe would like to fit the Poisson regression model\n\\[\\log(\\lambda_i) = \\beta_0 + \\beta_1 ~ price_i + \\beta_2 ~ room\\_type1_i + \\beta_3 ~ room\\_type2_i\\]\n\n\n\nBased on the EDA, what are some potential issues we may want to address in the model building?\nSuppose any model fit issues are addressed. What are some potential limitations to the conclusions and interpretations from the model?\n\n\n\n\n\n−+\n02:00"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#offset-1",
@@ -3418,21 +3418,28 @@
     "href": "slides/06-poisson-pt3.html#airbnb-model-in-r",
     "title": "Poisson Regression",
     "section": "Airbnb model in R",
-    "text": "Airbnb model in R\n\nairbnb_model &lt;- glm(number_of_reviews ~ price + room_type, \n                    data = airbnb, family = poisson, \n                    offset = log(days)) \n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-4.1528\n0.0027\n-1523.1520\n0\n\n\nprice\n-0.0004\n0.0000\n-38.5904\n0\n\n\nroom_typePrivate room\n-0.0469\n0.0028\n-16.8612\n0\n\n\nroom_typeShared room\n-0.1468\n0.0086\n-17.0990\n0\n\n\n\n\n\n\n\nThe coefficient for \\(\\log(days)\\) is fixed at 1, so it is not in the model output."
+    "text": "Airbnb model in R\n\nairbnb_model &lt;- glm(number_of_reviews ~ price + room_type, \n                    data = airbnb, family = poisson, \n                    offset = log(days)) \n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-4.1351\n0.0170\n-243.1397\n0\n\n\nprice\n-0.0005\n0.0001\n-7.0952\n0\n\n\nroom_typePrivate room\n-0.0994\n0.0174\n-5.6986\n0\n\n\nroom_typeShared room\n0.2436\n0.0452\n5.3841\n0\n\n\n\n\n\n\n\nThe coefficient for \\(\\log(days)\\) is fixed at 1, so it is not in the model output."
   },
   {
     "objectID": "slides/06-poisson-pt3.html#interpretations",
     "href": "slides/06-poisson-pt3.html#interpretations",
     "title": "Poisson Regression",
     "section": "Interpretations",
-    "text": "Interpretations\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-4.1528\n0.0027\n-1523.1520\n0\n\n\nprice\n-0.0004\n0.0000\n-38.5904\n0\n\n\nroom_typePrivate room\n-0.0469\n0.0028\n-16.8612\n0\n\n\nroom_typeShared room\n-0.1468\n0.0086\n-17.0990\n0\n\n\n\n\n\n\n\n\nInterpret the coefficient of price\nInterpret the coefficient of room_typePrivate room\n\n\n\n\n\n−+\n03:00"
+    "text": "Interpretations\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-4.1351\n0.0170\n-243.1397\n0\n\n\nprice\n-0.0005\n0.0001\n-7.0952\n0\n\n\nroom_typePrivate room\n-0.0994\n0.0174\n-5.6986\n0\n\n\nroom_typeShared room\n0.2436\n0.0452\n5.3841\n0\n\n\n\n\n\n\n\n\nInterpret the coefficient of price\nInterpret the coefficient of room_typePrivate room\n\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#quasi-poisson-model",
     "href": "slides/06-poisson-pt3.html#quasi-poisson-model",
     "title": "Poisson Regression",
     "section": "Quasi-Poisson model",
-    "text": "Quasi-Poisson model\n\nairbnb_model_q &lt;- glm(number_of_reviews ~ price + room_type, \n                    data = airbnb, family = quasipoisson, \n                    offset = log(days)) \n\ntidy(airbnb_model_q)\n\n# A tibble: 4 × 5\n  term                   estimate std.error statistic      p.value\n  &lt;chr&gt;                     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;\n1 (Intercept)           -4.15     0.0192      -216.   0           \n2 price                 -0.000426 0.0000777     -5.48 0.0000000434\n3 room_typePrivate room -0.0469   0.0196        -2.39 0.0167      \n4 room_typeShared room  -0.147    0.0605        -2.43 0.0152"
+    "text": "Quasi-Poisson model\n\nairbnb_model_q &lt;- glm(number_of_reviews ~ price + room_type, \n                    data = airbnb, family = quasipoisson, \n                    offset = log(days)) \n\nsummary(airbnb_model_q)\n\n\nCall:\nglm(formula = number_of_reviews ~ price + room_type, family = quasipoisson, \n    data = airbnb, offset = log(days))\n\nCoefficients:\n                        Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)           -4.1350727  0.1159506 -35.662   &lt;2e-16 ***\nprice                 -0.0004914  0.0004722  -1.041    0.298    \nroom_typePrivate room -0.0993582  0.1188728  -0.836    0.403    \nroom_typeShared room   0.2435939  0.3084581   0.790    0.430    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for quasipoisson family taken to be 46.48268)\n\n    Null deviance: 31550  on 999  degrees of freedom\nResidual deviance: 31379  on 996  degrees of freedom\nAIC: NA\n\nNumber of Fisher Scoring iterations: 6"
+  },
+  {
+    "objectID": "slides/06-poisson-pt3.html#quasi-poisson-model-1",
+    "href": "slides/06-poisson-pt3.html#quasi-poisson-model-1",
+    "title": "Poisson Regression",
+    "section": "Quasi-Poisson model",
+    "text": "Quasi-Poisson model\n\ntidy(airbnb_model_q) |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-4.1351\n0.1160\n-35.6624\n0.0000\n\n\nprice\n-0.0005\n0.0005\n-1.0407\n0.2983\n\n\nroom_typePrivate room\n-0.0994\n0.1189\n-0.8358\n0.4034\n\n\nroom_typeShared room\n0.2436\n0.3085\n0.7897\n0.4299"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#data-weekend-drinking",
@@ -3446,7 +3453,7 @@
     "href": "slides/06-poisson-pt3.html#eda-response-variable",
     "title": "Poisson Regression",
     "section": "EDA: Response variable",
-    "text": "EDA: Response variable"
+    "text": "EDA: Response variable\n\n\n\n\n\n\nmean\nvar\n\n\n\n\n2.013\n10.75"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#observed-vs.-expected-response",
@@ -3516,21 +3523,14 @@
     "href": "slides/06-poisson-pt3.html#comparing-poisson-and-zip-models",
     "title": "Poisson Regression",
     "section": "Comparing Poisson and ZIP Models",
-    "text": "Comparing Poisson and ZIP Models\n\nSuppose we want to compare our ZIP model to a Poisson model \\(\\log(\\lambda_i) = \\beta_0 + \\beta_1 ~ off_campus_i + \\beta_2 ~ sex_i\\)\nWhich of the following methods can we use to compare these models?\n\nAIC\nBIC\nLikelihood ratio test"
-  },
-  {
-    "objectID": "slides/06-poisson-pt3.html#likelihoods-for-zip-model",
-    "href": "slides/06-poisson-pt3.html#likelihoods-for-zip-model",
-    "title": "Poisson Regression",
-    "section": "Likelihoods for ZIP model",
-    "text": "Likelihoods for ZIP model"
+    "text": "Comparing Poisson and ZIP Models\n\nSuppose we want to compare our ZIP model to a Poisson model \\(\\log(\\lambda_i) = \\beta_0 + \\beta_1 ~ off_campus_i + \\beta_2 ~ sex_i\\)\n\nWhich of the following methods can we use to compare these models?\n\nAIC\nBIC\nLikelihood ratio test"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#probabilities-under-zip-model",
     "href": "slides/06-poisson-pt3.html#probabilities-under-zip-model",
     "title": "Poisson Regression",
     "section": "Probabilities under ZIP model",
-    "text": "Probabilities under ZIP model\nThere are three different types of observations in the data:\n\nObserved zero and will always be 0 (true zeros)\nObserved 0 but will not always be 0\nObserved non-zero count and will not always be 0"
+    "text": "Probabilities under ZIP model\nThere are three different types of observations in the data:\n\nObserved 0 and will always be 0 (true zeros)\nObserved 0 but will not always be 0\nObserved non-zero count and will not always be 0"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#probabilities-under-zip-model-1",
@@ -3544,7 +3544,7 @@
     "href": "slides/06-poisson-pt3.html#probabilities-under-zip-model-2",
     "title": "Poisson Regression",
     "section": "Probabilities under ZIP model",
-    "text": "Probabilities under ZIP model\nPutting this all together. Let \\(y_i\\) be an observed response then\n\\[P(Y_i = y_i | x_i) = \\begin{cases}\n\\alpha + (1 - \\alpha)e^{-\\lambda_i} && \\text{ if } y_i = 0 \\\\\n(1 - \\alpha)\\frac{e^{-\\lambda_i}\\lambda_i^{y_i}}{y_i!} && \\text{ if } y_i &gt; 0\n\\end{cases}\\]\n\nRecall from our example,\n\\[\\lambda_i = e^{\\beta_0 + \\beta_1~off\\_campus_i + \\beta_2 ~ sex_i}\\]\n\\[\\alpha_i = \\frac{e^{\\beta_{0\\alpha} + \\beta_{1\\alpha} ~ first\\_year_i}}{1 + e^{\\beta_{0\\alpha} + \\beta_{1\\alpha} ~ first\\_year_i}}\\]\n\nPlug in \\(\\lambda_i\\) and \\(\\alpha_i\\) into the above equation obtain the likelihood function"
+    "text": "Probabilities under ZIP model\nPutting this all together. Let \\(y_i\\) be an observed response then\n\\[P(Y_i = y_i) = \\begin{cases}\n\\alpha_i + (1 - \\alpha_i)e^{-\\lambda_i} && \\text{ if } y_i = 0 \\\\\n(1 - \\alpha_i)\\frac{e^{-\\lambda_i}\\lambda_i^{y_i}}{y_i!} && \\text{ if } y_i &gt; 0\n\\end{cases}\\]\n\nRecall from our example,\n\\[\\lambda_i = e^{\\beta_0 + \\beta_1~off\\_campus_i + \\beta_2 ~ sex_i}\\]\n\\[\\alpha_i = \\frac{e^{\\beta_{0\\alpha} + \\beta_{1\\alpha} ~ first\\_year_i}}{1 + e^{\\beta_{0\\alpha} + \\beta_{1\\alpha} ~ first\\_year_i}}\\]\nPlug in \\(\\lambda_i\\) and \\(\\alpha_i\\) into the above equation obtain the likelihood function"
   },
   {
     "objectID": "slides/06-poisson-pt3.html#references",

@@ -105,7 +105,7 @@ a.  Give the observational units at Level One and Level Two based on the title o
 
 b.  Why can't we assume all houses in the data set are independent?
 
-c.  Suppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.
+c.  Suppose we have the following set of predictors: Square footage (`sqft`), rating of neighborhood schools (`rating`), median neighborhood housing price (`medprice`). Write the two-level model for predicting housing prices.
 
     Write the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.
 

@@ -430,14 +430,19 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
-<!-- Quiz 01-->
-<!-- HW 02-->
-<!-- Article evaluation-->
+<ul>
+<li><p>Quiz 01 on Canvas due Thu, Feb 01 at noon</p></li>
+<li><p>HW 02 due Wed, Feb 07 at 11:59pm (grace period until Thu, Feb 08 noon)</p>
+<ul>
+<li>Released tomorrow morning</li>
+</ul></li>
+<li><p>This week’s lab: Project 01 article evaluation</p></li>
+</ul>
 </section>
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
 <ul>
-<li><p>Offsets in Poisson regression</p></li>
+<li><p>Offset in Poisson regression</p></li>
 <li><p>Zero-inflated Poisson regression</p></li>
 </ul>
 </section>
@@ -446,7 +451,7 @@ Prof.&nbsp;Maria Tackett
 <h1>Offset</h1>
 
 </section>
-<section id="data-airbnbs-in-nyc" class="slide level2 midi">
+<section id="data-airbnbs-in-nyc" class="slide level2 small">
 <h2>Data: Airbnbs in NYC</h2>
 <p>The data set <a href="data/NYCairbnb-sample.csv">NYCairbnb-sample.csv</a> contains information about a random sample of 1000 Airbnbs in New York City. It is a subset of the data on 40628 Airbnbs scraped by <span class="citation" data-cites="airbnb2017">Awad, Lebo, and Linden (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>.<sup>1</sup></p>
 <p><strong>Variables</strong></p>
@@ -458,126 +463,60 @@ Prof.&nbsp;Maria Tackett
 </ul>
 <p><strong>Goal</strong>: Use the price and room type of Airbnbs to describe variation in the number of reviews (a proxy for number of rentals).</p>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Data set pulled from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html#exercises-3">BMLR Section 4.11</a>.</p></li></ol></aside></section>
-<section id="data-airbnbs-in-nyc-1" class="slide level2 midi">
+<section id="data-airbnbs-in-nyc-1" class="slide level2 small">
 <h2>Data: Airbnbs in NYC</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>airbnb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/NYCairbnb.csv"</span>) </span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co">#|&gt;</span></span>
-<span id="cb1-4"><a></a><span class="co">#  select(id, number_of_reviews, days, room_type, price)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>airbnb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/NYCairbnb-sample.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br>
 </p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table>
-<colgroup>
-<col style="width: 5%">
-<col style="width: 2%">
-<col style="width: 7%">
-<col style="width: 6%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 3%">
-<col style="width: 10%">
-<col style="width: 14%">
-<col style="width: 12%">
-<col style="width: 11%">
-<col style="width: 9%">
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: right;">id</th>
-<th style="text-align: right;">days</th>
-<th style="text-align: left;">last_scraped</th>
-<th style="text-align: left;">host_since</th>
-<th style="text-align: left;">room_type</th>
-<th style="text-align: right;">bathrooms</th>
-<th style="text-align: right;">bedrooms</th>
-<th style="text-align: right;">price</th>
 <th style="text-align: right;">number_of_reviews</th>
-<th style="text-align: right;">review_scores_cleanliness</th>
-<th style="text-align: right;">review_scores_location</th>
-<th style="text-align: right;">review_scores_value</th>
-<th style="text-align: left;">instant_bookable</th>
+<th style="text-align: right;">days</th>
+<th style="text-align: left;">room_type</th>
+<th style="text-align: right;">price</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">16859979</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: left;">4/3/2017</td>
-<td style="text-align: left;">1/19/2017</td>
+<td style="text-align: right;">15756544</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1144</td>
 <td style="text-align: left;">Private room</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">120</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">16083673</td>
-<td style="text-align: right;">913</td>
-<td style="text-align: left;">4/3/2017</td>
-<td style="text-align: left;">10/3/2014</td>
+<td style="text-align: right;">14218251</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">471</td>
 <td style="text-align: left;">Private room</td>
-<td style="text-align: right;">0.5</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">89</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">12870344</td>
-<td style="text-align: right;">333</td>
-<td style="text-align: left;">4/2/2017</td>
-<td style="text-align: left;">5/4/2016</td>
-<td style="text-align: left;">Private room</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">145</td>
+<td style="text-align: right;">21644</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2600</td>
+<td style="text-align: left;">Private room</td>
+<td style="text-align: right;">89</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">6561509</td>
-<td style="text-align: right;">677</td>
-<td style="text-align: left;">4/2/2017</td>
-<td style="text-align: left;">5/26/2015</td>
-<td style="text-align: left;">Private room</td>
-<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">13667835</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">283</td>
+<td style="text-align: left;">Entire home/apt</td>
+<td style="text-align: right;">150</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1940534</td>
-<td style="text-align: right;">1503</td>
-<td style="text-align: left;">4/3/2017</td>
-<td style="text-align: left;">2/20/2013</td>
-<td style="text-align: left;">Private room</td>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">265912</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1970</td>
+<td style="text-align: left;">Entire home/apt</td>
+<td style="text-align: right;">89</td>
 </tr>
 </tbody>
 </table>
@@ -606,8 +545,8 @@ Prof.&nbsp;Maria Tackett
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">15.904</td>
-<td style="text-align: right;">855.329</td>
+<td style="text-align: right;">15.916</td>
+<td style="text-align: right;">765.969</td>
 </tr>
 </tbody>
 </table>
@@ -630,18 +569,18 @@ Prof.&nbsp;Maria Tackett
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Entire home/apt</td>
-<td style="text-align: right;">16.824</td>
-<td style="text-align: right;">820.289</td>
+<td style="text-align: right;">16.283</td>
+<td style="text-align: right;">760.348</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Private room</td>
-<td style="text-align: right;">15.223</td>
-<td style="text-align: right;">909.915</td>
+<td style="text-align: right;">15.608</td>
+<td style="text-align: right;">786.399</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Shared room</td>
-<td style="text-align: right;">11.858</td>
-<td style="text-align: right;">516.557</td>
+<td style="text-align: right;">15.028</td>
+<td style="text-align: right;">605.971</td>
 </tr>
 </tbody>
 </table>
@@ -663,9 +602,9 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5578dceb" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_bef0771c" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -731,30 +670,30 @@ Prof.&nbsp;Maria Tackett
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-4.1528</td>
-<td style="text-align: right;">0.0027</td>
-<td style="text-align: right;">-1523.1520</td>
+<td style="text-align: right;">-4.1351</td>
+<td style="text-align: right;">0.0170</td>
+<td style="text-align: right;">-243.1397</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">price</td>
-<td style="text-align: right;">-0.0004</td>
-<td style="text-align: right;">0.0000</td>
-<td style="text-align: right;">-38.5904</td>
+<td style="text-align: right;">-0.0005</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">-7.0952</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">room_typePrivate room</td>
-<td style="text-align: right;">-0.0469</td>
-<td style="text-align: right;">0.0028</td>
-<td style="text-align: right;">-16.8612</td>
+<td style="text-align: right;">-0.0994</td>
+<td style="text-align: right;">0.0174</td>
+<td style="text-align: right;">-5.6986</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">room_typeShared room</td>
-<td style="text-align: right;">-0.1468</td>
-<td style="text-align: right;">0.0086</td>
-<td style="text-align: right;">-17.0990</td>
+<td style="text-align: right;">0.2436</td>
+<td style="text-align: right;">0.0452</td>
+<td style="text-align: right;">5.3841</td>
 <td style="text-align: right;">0</td>
 </tr>
 </tbody>
@@ -766,7 +705,7 @@ Prof.&nbsp;Maria Tackett
 <p>The coefficient for <span class="math inline">\(\log(days)\)</span> is fixed at 1, so it is not in the model output.</p>
 </div>
 </section>
-<section id="interpretations" class="slide level2">
+<section id="interpretations" class="slide level2 midi">
 <h2>Interpretations</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -783,30 +722,30 @@ Prof.&nbsp;Maria Tackett
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-4.1528</td>
-<td style="text-align: right;">0.0027</td>
-<td style="text-align: right;">-1523.1520</td>
+<td style="text-align: right;">-4.1351</td>
+<td style="text-align: right;">0.0170</td>
+<td style="text-align: right;">-243.1397</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">price</td>
-<td style="text-align: right;">-0.0004</td>
-<td style="text-align: right;">0.0000</td>
-<td style="text-align: right;">-38.5904</td>
+<td style="text-align: right;">-0.0005</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">-7.0952</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">room_typePrivate room</td>
-<td style="text-align: right;">-0.0469</td>
-<td style="text-align: right;">0.0028</td>
-<td style="text-align: right;">-16.8612</td>
+<td style="text-align: right;">-0.0994</td>
+<td style="text-align: right;">0.0174</td>
+<td style="text-align: right;">-5.6986</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">room_typeShared room</td>
-<td style="text-align: right;">-0.1468</td>
-<td style="text-align: right;">0.0086</td>
-<td style="text-align: right;">-17.0990</td>
+<td style="text-align: right;">0.2436</td>
+<td style="text-align: right;">0.0452</td>
+<td style="text-align: right;">5.3841</td>
 <td style="text-align: right;">0</td>
 </tr>
 </tbody>
@@ -822,7 +761,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_46130c9a" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_d6ed51f9" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -836,15 +775,79 @@ Prof.&nbsp;Maria Tackett
 <span id="cb3-2"><a></a>                    <span class="at">data =</span> airbnb, <span class="at">family =</span> quasipoisson, </span>
 <span id="cb3-3"><a></a>                    <span class="at">offset =</span> <span class="fu">log</span>(days)) </span>
 <span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="fu">tidy</span>(airbnb_model_q)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a></a><span class="fu">summary</span>(airbnb_model_q)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 5
-  term                   estimate std.error statistic      p.value
-  &lt;chr&gt;                     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
-1 (Intercept)           -4.15     0.0192      -216.   0           
-2 price                 -0.000426 0.0000777     -5.48 0.0000000434
-3 room_typePrivate room -0.0469   0.0196        -2.39 0.0167      
-4 room_typeShared room  -0.147    0.0605        -2.43 0.0152      </code></pre>
+<pre><code>
+Call:
+glm(formula = number_of_reviews ~ price + room_type, family = quasipoisson, 
+    data = airbnb, offset = log(days))
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           -4.1350727  0.1159506 -35.662   &lt;2e-16 ***
+price                 -0.0004914  0.0004722  -1.041    0.298    
+room_typePrivate room -0.0993582  0.1188728  -0.836    0.403    
+room_typeShared room   0.2435939  0.3084581   0.790    0.430    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for quasipoisson family taken to be 46.48268)
+
+    Null deviance: 31550  on 999  degrees of freedom
+Residual deviance: 31379  on 996  degrees of freedom
+AIC: NA
+
+Number of Fisher Scoring iterations: 6</code></pre>
+</div>
+</div>
+</section>
+<section id="quasi-poisson-model-1" class="slide level2">
+<h2>Quasi-Poisson model</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">tidy</span>(airbnb_model_q) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-4.1351</td>
+<td style="text-align: right;">0.1160</td>
+<td style="text-align: right;">-35.6624</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">price</td>
+<td style="text-align: right;">-0.0005</td>
+<td style="text-align: right;">0.0005</td>
+<td style="text-align: right;">-1.0407</td>
+<td style="text-align: right;">0.2983</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">room_typePrivate room</td>
+<td style="text-align: right;">-0.0994</td>
+<td style="text-align: right;">0.1189</td>
+<td style="text-align: right;">-0.8358</td>
+<td style="text-align: right;">0.4034</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">room_typeShared room</td>
+<td style="text-align: right;">0.2436</td>
+<td style="text-align: right;">0.3085</td>
+<td style="text-align: right;">0.7897</td>
+<td style="text-align: right;">0.4299</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section></section>
@@ -868,11 +871,29 @@ Prof.&nbsp;Maria Tackett
 <section id="eda-response-variable" class="slide level2">
 <h2>EDA: Response variable</h2>
 
-<img data-src="06-poisson-pt3_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<img data-src="06-poisson-pt3_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:10.0%"><div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2.013</td>
+<td style="text-align: right;">10.75</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 <section id="observed-vs.-expected-response" class="slide level2">
 <h2>Observed vs.&nbsp;expected response</h2>
 
-<img data-src="06-poisson-pt3_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><div class="fragment">
+<img data-src="06-poisson-pt3_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:10.0%"><div class="fragment">
 <center>
 <b><strong>What does it mean to be a “zero” in this data?</strong></b>
 </center>
@@ -924,11 +945,11 @@ Prof.&nbsp;Maria Tackett
 <h2>ZIP model in R</h2>
 <p>Fit ZIP models using the <code>zeroinfl</code> function from the <strong>pscl</strong> R package.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(pscl)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>drinks_zip <span class="ot">&lt;-</span> <span class="fu">zeroinfl</span>(drinks <span class="sc">~</span> off_campus <span class="sc">+</span> sex <span class="sc">|</span> first_year,</span>
-<span id="cb5-4"><a></a>                <span class="at">data =</span> drinks)</span>
-<span id="cb5-5"><a></a>drinks_zip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(pscl)</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>drinks_zip <span class="ot">&lt;-</span> <span class="fu">zeroinfl</span>(drinks <span class="sc">~</span> off_campus <span class="sc">+</span> sex <span class="sc">|</span> first_year,</span>
+<span id="cb6-4"><a></a>                <span class="at">data =</span> drinks)</span>
+<span id="cb6-5"><a></a>drinks_zip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -948,13 +969,13 @@ Zero-inflation model coefficients (binomial with logit link):
 <h2>Tidy output</h2>
 <p>Use the <code>tidy</code> function from the <strong>poissonreg</strong> package for tidy model output.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(poissonreg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(poissonreg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p><strong>Mean number of drinks among those who drink</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">tidy</span>(drinks_zip, <span class="at">type =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">tidy</span>(drinks_zip, <span class="at">type =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1002,7 +1023,7 @@ Zero-inflation model coefficients (binomial with logit link):
 <h2>Tidy output</h2>
 <p><strong>Proportion of non-drinkers</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">tidy</span>(drinks_zip, <span class="at">type =</span> <span class="st">"zero"</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">tidy</span>(drinks_zip, <span class="at">type =</span> <span class="st">"zero"</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1090,7 +1111,7 @@ Zero-inflation model coefficients (binomial with logit link):
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1ca16a2d" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_8f82cf6d" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1142,7 +1163,7 @@ Zero-inflation model coefficients (binomial with logit link):
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_a39997cd" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_ce975e49" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1153,6 +1174,7 @@ Zero-inflation model coefficients (binomial with logit link):
 <h2>Comparing Poisson and ZIP Models</h2>
 <div class="question">
 <p>Suppose we want to compare our ZIP model to a Poisson model <span class="math inline">\(\log(\lambda_i) = \beta_0 + \beta_1 ~ off_campus_i + \beta_2 ~ sex_i\)</span></p>
+<p><br></p>
 <p>Which of the following methods can we use to compare these models?</p>
 <ul>
 <li><p>AIC</p></li>
@@ -1160,15 +1182,17 @@ Zero-inflation model coefficients (binomial with logit link):
 <li><p>Likelihood ratio test</p></li>
 </ul>
 </div>
-</section>
-<section id="likelihoods-for-zip-model" class="slide level2">
-<h2>Likelihoods for ZIP model</h2>
+</section></section>
+<section>
+<section id="likelihoods-for-zip-model" class="title-slide slide level1 center">
+<h1>Likelihoods for ZIP model</h1>
+
 </section>
 <section id="probabilities-under-zip-model" class="slide level2">
 <h2>Probabilities under ZIP model</h2>
 <p>There are three different types of observations in the data:</p>
 <ul>
-<li>Observed zero and will always be 0 (true zeros)</li>
+<li>Observed 0 and will always be 0 (true zeros)</li>
 <li>Observed 0 but will not always be 0</li>
 <li>Observed non-zero count and will not always be 0</li>
 </ul>
@@ -1185,20 +1209,18 @@ Zero-inflation model coefficients (binomial with logit link):
 <p><span class="math display">\[P(z_i | \text{not always zero}) = (1 - \alpha)\frac{e^{-\lambda}\lambda^{z_i}}{z_i!}\]</span></p>
 </div>
 </section>
-<section id="probabilities-under-zip-model-2" class="slide level2">
+<section id="probabilities-under-zip-model-2" class="slide level2 midi">
 <h2>Probabilities under ZIP model</h2>
 <p>Putting this all together. Let <span class="math inline">\(y_i\)</span> be an observed response then</p>
-<p><span class="math display">\[P(Y_i = y_i | x_i) = \begin{cases}
-\alpha + (1 - \alpha)e^{-\lambda_i} &amp;&amp; \text{ if } y_i = 0 \\
-(1 - \alpha)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!} &amp;&amp; \text{ if } y_i &gt; 0
+<p><span class="math display">\[P(Y_i = y_i) = \begin{cases}
+\alpha_i + (1 - \alpha_i)e^{-\lambda_i} &amp;&amp; \text{ if } y_i = 0 \\
+(1 - \alpha_i)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!} &amp;&amp; \text{ if } y_i &gt; 0
 \end{cases}\]</span></p>
 <div class="fragment">
 <p>Recall from our example,</p>
 <p><span class="math display">\[\lambda_i = e^{\beta_0 + \beta_1~off\_campus_i + \beta_2 ~ sex_i}\]</span></p>
 <p><span class="math display">\[\alpha_i = \frac{e^{\beta_{0\alpha} + \beta_{1\alpha} ~ first\_year_i}}{1 + e^{\beta_{0\alpha} + \beta_{1\alpha} ~ first\_year_i}}\]</span></p>
-<ul>
-<li>Plug in <span class="math inline">\(\lambda_i\)</span> and <span class="math inline">\(\alpha_i\)</span> into the above equation obtain the likelihood function</li>
-</ul>
+<p>Plug in <span class="math inline">\(\lambda_i\)</span> and <span class="math inline">\(\alpha_i\)</span> into the above equation obtain the likelihood function</p>
 </div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">

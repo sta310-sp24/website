@@ -52,21 +52,23 @@ library(viridis)
 
 ## Announcements
 
-<!-- Quiz 01-->
+-   Quiz 01 on Canvas due Thu, Feb 01 at noon
 
-<!-- HW 02-->
+-   HW 02 due Wed, Feb 07 at 11:59pm (grace period until Thu, Feb 08 noon)
 
-<!-- Article evaluation-->
+    -   Released tomorrow morning
+
+-   This week's lab: Project 01 article evaluation
 
 ## Topics
 
--   Offsets in Poisson regression
+-   Offset in Poisson regression
 
 -   Zero-inflated Poisson regression
 
 # Offset
 
-## Data: Airbnbs in NYC {.midi}
+## Data: Airbnbs in NYC {.small}
 
 The data set [NYCairbnb-sample.csv](data/NYCairbnb-sample.csv) contains information about a random sample of 1000 Airbnbs in New York City. It is a subset of the data on 40628 Airbnbs scraped by @airbnb2017.[^1]
 
@@ -81,13 +83,10 @@ The data set [NYCairbnb-sample.csv](data/NYCairbnb-sample.csv) contains informat
 
 **Goal**: Use the price and room type of Airbnbs to describe variation in the number of reviews (a proxy for number of rentals).
 
-## Data: Airbnbs in NYC {.midi}
+## Data: Airbnbs in NYC {.small}
 
 ```{r}
-airbnb <- read_csv("data/NYCairbnb.csv") 
-
-#|>
-#  select(id, number_of_reviews, days, room_type, price)
+airbnb <- read_csv("data/NYCairbnb-sample.csv") 
 ```
 
 \
@@ -117,7 +116,7 @@ p2 <- airbnb |>
     y = "Log(mean # reviews)", 
     title = "Log mean #  of reviews vs. price", 
     subtitle = "Airbnbs $2000 or less") +
- theme_set(ggplot2::theme_bw(base_size = 12))
+  theme_set(theme_bw(base_size = 12))
 
 p3 <- airbnb |>
   filter(price <= 500) |>
@@ -130,7 +129,7 @@ p3 <- airbnb |>
     y = "Log(mean # reviews)", 
     title = "Log mean # of reviews vs. price", 
     subtitle = "Airbnbs $500 or less") +
-  theme_set(ggplot2::theme_bw(base_size = 12))
+  theme_set(theme_bw(base_size = 12))
 
 p1  / (p2 + p3) 
 
@@ -185,7 +184,7 @@ $$\log(\lambda_i) = \beta_0 + \beta_1 ~ price_i + \beta_2 ~ room\_type1_i + \bet
 
 ```{r echo = F}
 library(countdown)
-countdown(minutes = 3, seconds = 0,
+countdown(minutes = 2, seconds = 0,
           margin = "5%")
 ```
 
@@ -253,7 +252,7 @@ tidy(airbnb_model) |>
 
 The coefficient for $\log(days)$ is fixed at 1, so it is not in the model output.
 
-## Interpretations
+## Interpretations {.midi}
 
 ```{r echo = F}
 tidy(airbnb_model) |>
@@ -281,7 +280,14 @@ airbnb_model_q <- glm(number_of_reviews ~ price + room_type,
                     data = airbnb, family = quasipoisson, 
                     offset = log(days)) 
 
-tidy(airbnb_model_q)
+summary(airbnb_model_q)
+```
+
+## Quasi-Poisson model
+
+```{r}
+tidy(airbnb_model_q) |>
+  kable(digits = 4)
 ```
 
 # Zero-inflated Poisson model
@@ -307,14 +313,16 @@ The data [`weekend-drinks.csv`](data/weekend-drinks.csv) contains information fr
 drinks <- read_csv("data/weekend-drinks.csv")
 ```
 
-```{r echo = F, out.width = "70%"}
+```{r echo = F}
+#| out-width: 10%
+
 ggplot(data = drinks, aes(x = drinks)) + 
   geom_histogram(aes(x = drinks), binwidth = 1, alpha = 0.8, fill = "gray", color = "gray") + 
   labs(title = "Observed number of drinks", 
        subtitle = "Mean = 2.013")
 ```
 
-```{r echo = F, eval = F}
+```{r echo = F}
 drinks |>
   summarise(mean = mean(drinks), var = var(drinks)) |>
   kable(digits = 3)
@@ -322,7 +330,8 @@ drinks |>
 
 ## Observed vs. expected response
 
-```{r echo = F,  out.width = "70%"}
+```{r echo = F}
+#| out-width: 10%
 drinks |>
   mutate(sim = rpois(77, 2.013)) |>
 ggplot() +   
@@ -461,6 +470,8 @@ countdown(minutes = 2, seconds = 0,
 ::: question
 Suppose we want to compare our ZIP model to a Poisson model $\log(\lambda_i) = \beta_0 + \beta_1 ~ off_campus_i + \beta_2 ~ sex_i$
 
+<br>
+
 Which of the following methods can we use to compare these models?
 
 -   AIC
@@ -470,13 +481,13 @@ Which of the following methods can we use to compare these models?
 -   Likelihood ratio test
 :::
 
-## Likelihoods for ZIP model
+# Likelihoods for ZIP model
 
 ## Probabilities under ZIP model
 
 There are three different types of observations in the data:
 
--   Observed zero and will always be 0 (true zeros)
+-   Observed 0 and will always be 0 (true zeros)
 -   Observed 0 but will not always be 0
 -   Observed non-zero count and will not always be 0
 
@@ -496,13 +507,13 @@ $$P(0 | \text{not always zero}) = (1 - \alpha)\frac{e^{-\lambda}\lambda^0}{0!}$$
 
 $$P(z_i | \text{not always zero}) = (1 - \alpha)\frac{e^{-\lambda}\lambda^{z_i}}{z_i!}$$
 
-## Probabilities under ZIP model
+## Probabilities under ZIP model {.midi}
 
 Putting this all together. Let $y_i$ be an observed response then
 
-$$P(Y_i = y_i | x_i) = \begin{cases}
-\alpha + (1 - \alpha)e^{-\lambda_i} && \text{ if } y_i = 0 \\
-(1 - \alpha)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!} && \text{ if } y_i > 0
+$$P(Y_i = y_i) = \begin{cases}
+\alpha_i + (1 - \alpha_i)e^{-\lambda_i} && \text{ if } y_i = 0 \\
+(1 - \alpha_i)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!} && \text{ if } y_i > 0
 \end{cases}$$
 
 . . .
@@ -513,6 +524,6 @@ $$\lambda_i = e^{\beta_0 + \beta_1~off\_campus_i + \beta_2 ~ sex_i}$$
 
 $$\alpha_i = \frac{e^{\beta_{0\alpha} + \beta_{1\alpha} ~ first\_year_i}}{1 + e^{\beta_{0\alpha} + \beta_{1\alpha} ~ first\_year_i}}$$
 
--   Plug in $\lambda_i$ and $\alpha_i$ into the above equation obtain the likelihood function
+Plug in $\lambda_i$ and $\alpha_i$ into the above equation obtain the likelihood function
 
 ## References

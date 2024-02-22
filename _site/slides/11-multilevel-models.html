@@ -634,7 +634,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_f764ca5b" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_388ec156" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -797,7 +797,7 @@ Prof.&nbsp;Maria Tackett
 <section id="level-one-models" class="slide level2">
 <h2>Level One models</h2>
 
-<img data-src="11-multilevel-models_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from BMLR Figure 8.9</p><div class="fragment">
+<img data-src="11-multilevel-models_files/figure-html/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from BMLR Figure 8.9</p><div class="fragment">
 <p><strong>Now let’s consider if there is an association between the estimated slopes, estimated intercepts, and the type of instrument</strong></p>
 </div>
 </section>
@@ -811,7 +811,7 @@ Prof.&nbsp;Maria Tackett
 <section id="estimated-coefficients-by-instrument" class="slide level2">
 <h2>Estimated coefficients by instrument</h2>
 
-<img data-src="11-multilevel-models_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<img data-src="11-multilevel-models_files/figure-html/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
 <section id="level-two-model-1" class="slide level2">
 <h2>Level Two model</h2>
 <p><strong>Model for intercepts</strong></p>
@@ -995,11 +995,11 @@ Prof.&nbsp;Maria Tackett
 <ul>
 <li class="fragment"><span class="math inline">\(u_i\)</span>: deviation of musician <span class="math inline">\(i\)</span> from the mean performance anxiety before solos and small ensembles after accounting for the instrument
 <ul>
-<li class="fragment">musician-to-musician differences in intercept</li>
+<li class="fragment">musician-to-musician differences in the intercepts</li>
 </ul></li>
 <li class="fragment"><span class="math inline">\(v_i\)</span>: deviance of musician <span class="math inline">\(i\)</span> from the mean difference in performance anxiety between large ensembles and other performance types after accounting for instrument
 <ul>
-<li class="fragment">musician-to-musician differences in intercept</li>
+<li class="fragment">musician-to-musician differences in the slopes</li>
 </ul></li>
 </ul></li>
 <li class="fragment">Need to account for fact that <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> are correlated for the <span class="math inline">\(i^{th}\)</span> musician</li>
@@ -1009,7 +1009,7 @@ Prof.&nbsp;Maria Tackett
 <section class="slide level2">
 
 
-<img data-src="11-multilevel-models_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from Figure 8.11</p><div class="question">
+<img data-src="11-multilevel-models_files/figure-html/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from Figure 8.11</p><div class="question">
 <div class="midi">
 <p>Describe what we learn about the association between the slopes and intercepts based on this plot.</p>
 </div>
@@ -1038,7 +1038,7 @@ Prof.&nbsp;Maria Tackett
 <section id="visualizing-multivariate-normal-distribution" class="slide level2">
 <h2>Visualizing multivariate normal distribution</h2>
 
-<img data-src="11-multilevel-models_files/figure-revealjs/contour-boundary-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p class="caption">Recreated from Figure 8.12</p></section>
+<img data-src="11-multilevel-models_files/figure-html/contour-boundary-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p class="caption">Recreated from Figure 8.12</p></section>
 <section id="fit-the-model" class="slide level2">
 <h2>Fit the model</h2>
 <p>Fit multilevel model using the <code>lmer</code> function from the <strong>lme4</strong> package. Display results using the <code>tidy()</code> function from the <strong>broom.mixed</strong> package.</p>
@@ -1397,44 +1397,6 @@ Sadler, Michael E, and Christopher J Miller. 2010. <span>“Performance Anxiety:
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

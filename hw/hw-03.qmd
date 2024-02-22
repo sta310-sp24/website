@@ -11,22 +11,91 @@ execute:
 bibliography: references.bib
 ---
 
+::: callout-important
+-   This assignment is due on Wednesday, February 28 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, February 29 noon (12pm).
+    -   Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.
+    -   You will have access to your HW repo again when grades are returned.
+:::
+
 # Instructions
 
--   Write all narrative using full sentences. Write all interpretations and conclusions in the context of the problem.
--   Display all analysis code in the PDF.
+-   Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.
+-   Be sure all analysis code is displayed in the rendered pdf.
 -   If you are fitting a model, display the model output in a neatly formatted table. (The `tidy` and `kable` functions can help!)
--   If you are creating a plot, use clear labels for all axes, titles, etc.
--   Commit and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.
--   When you're done, we should be able to knit the final version of the R Markdown document in your GitHub repo to get a copy of the PDF submitted to Gradescope.
+-   If you are creating a plot, use clear and informative labels and titles.
+-   Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.
+-   When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.
 
-<!--probit regression (replicate model from paper?) + proportional odds model-->
+# Exercises
 
-<!--logistic regression-->
-
-<!--ch 6 NBA data-->
+::: callout-note
+Exercise 1 was adapted from an exercise in Chapter 8 of @dobson2018introduction. Exercises 3 - 5 were adapted from exercises in Chapter 8 of @roback2021beyond.
+:::
 
 ## Exercise 1
+
+<!-- From Introduction to Generalized Linear Models Ex 8.2-->
+
+The data for this exercise come from a study about the satisfaction with housing conditions in Copenhagen. The data were obtained from @dobson2018introduction and are originally from @madsen1976statistical. Residents in selected areas living in rented homes built between 1960 and 1968 were asked about their satisfaction and the level of contact with other residents.
+
+The data are in `madsen1971.csv` in the `data` folder of your GitHub repo. The variables in the data are
+
+-   `satisfaction`: Overall satisfaction with housing conditions (Low, Medium, High)
+
+-   `contact`: Level of contact with other residents (Low, High)
+
+-   `type`: Type of housing unit (Tower block, Apartment, House)
+
+The goal of the analysis is to use `type` and `contact` to understand `satisfaction`.
+
+a.  Visualize the relationship of the response versus each predictor variable. Write 1 - 2 observations from the visualizations.
+
+b.  Do you think it would be appropriate to fit an ordinal model for this analysis? Briefly explain.
+
+c.  Fit the proportional odds model. Display the model.
+
+d.  Calculate the following probabilities for a resident living in a house who has high contact with other residents:
+
+    i.  $P(\text{Satisfaction} \leq \text{Medium})$
+
+    ii. $P(\text{Satisfaction} = \text{Medium})$
+
+## Exercise 2
+
+@ibanez2022impact conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants played a game in which they had an opportunity to donate to an environmental organization.
+
+The data set is available in `nature-experiment.csv` in the `data` folder. We will use the following variables:
+
+-   `donation_binary`:
+
+    -   1 - participant donated to environmental organization
+    -   0 - participant did not donate
+
+-   `Age`: Age in years
+
+-   `Gender`: Participant's reported gender
+
+-   `Treatment`:
+
+    -   "Urban (T1)" - the control group,
+    -   "Nature (T2)" - the treatment group
+
+-   `NEP_high`:
+
+    -   1 - score of 4 or higher on the New Ecological Paradigm (NEP)
+    -   0 - score less than 4
+
+See the Introduction and Methods sections of @ibanez2022impact for more detail about the variables.
+
+1.  Figure 2 on pg. 9 of the article visualizes the relationship between donation amount and treatment. Use the visualization to describe the relationship between donating and the treatment.
+
+2.  Fit a probit regression model using `age`, `gender`, `treatment`, `nep_high` and the interaction between `nep_high` and `treatment` predict the likelihood of donating. *(Note: Your model will be similar (but not exactly the same) as the "Likelihood" model in Table 5 on pg. 11.)* Display the model.
+
+3.  Describe the effect of watching the documentary on the likelihood of donating.
+
+4.   Based on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?
+
+## Exercise 3
 
 <!--Sec 8.13.1, Ex 1 - 3-->
 
@@ -34,60 +103,54 @@ bibliography: references.bib
 
 a.  Give the observational units at Level One and Level Two based on the title of the paper.
 
-b.  Why can't we assume all houses in the data set are independent? What would be the potential implications to our analysis of assuming independence among houses?
+b.  Why can't we assume all houses in the data set are independent?
 
 c.  Suppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.
 
     Write the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.
 
-d.  Write the composite model corresponding to part(c)
+d.  Write the composite model corresponding to part (c)
 
 e.  List the fixed effects that must be estimated in the model in part (d).
 
 f.  Describe the variance components that must be estimated in the model in part (d).
 
-## Exercise 2
+## Exercise 4
 
 <!--from BMLR Sec 8.13.3 Ex 4-->
 
-a.  Try to reproduce Model 2 presented in Table 2 of @sadler2010performance. We expect small differences in parameter estimates, since they use SAS (with an unstructured covariance structure) instead of R.
+a.  Try to reproduce Model 2 presented in Table 2 of @sadler2010performance. You can expect small differences in the parameter estimates, since the authors use SAS (with an unstructured covariance structure) instead of R. The data and codebook are available in `music-data.csv` in the `data` folder.
 b.  How do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?
+
+## Exercise 5
+
+<!--from BMLR Section 6.8.3 Ex 2-->
+
+The goal of this analysis is to build a model that can be used to describe the factors that explain the success of NBA teams. The data from @nba1718 includes various statistics and winning percentages for NBA teams in the 2017-18 season. The data set and codebook are available in the `data` folder in your GitHub repo.
+
+Include the following in your analysis:
+
+-   Comprehensive exploratory data analysis
+
+-   Create the best model you can that can be used to predict winning percentage. Be sure to consider collinearity between predictors as you select the final model.
+
+-   Use the EDA and model results to describe the factors that help explain an NBA team's success.
 
 # Submission
 
-**Before you wrap up the assignment, make sure all documents are updated in your GitHub repo.**
-
-To submit your assignment:
-
--   Go to http://www.gradescope.com and click *Log in* in the top right corner.
-
--   Click *School Credentials* `r emo::ji("arrow_right")` *Duke NetID* and log in using your NetID credentials.
-
--   Click on your *STA 310* course.
-
--   Click on the assignment, and you'll be prompted to submit it.
-
--   **Mark the pages associated with each exercise. All of the pages of your assignment should be associated with at least one question (i.e., should be "checked").**
-
--   Select the first page of your .PDF submission to be associated with the *"Workflow & formatting"* section.
-
-**The PDF must be submitted to Gradescope by the deadline to be considered on time.**
+To submit the assignment, push your final changes to your GitHub repo. Then, you're done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.
 
 # Grading
 
 | **Total**             | **50** |
 |-----------------------|:------:|
-| Ex 1                  |   5    |
-| Ex 2                  |   14   |
-| Ex 3                  |   5    |
-| Ex 4                  |   16   |
-| Ex 5                  |   7    |
+| Ex 1                  |   9    |
+| Ex 2                  |   10   |
+| Ex 3                  |   12   |
+| Ex 4                  |   6    |
+| Ex 5                  |   10   |
 | Workflow & formatting |   3    |
 
-The "Workflow & formatting" grade is based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible R Markdown document that can be knitted to reproduce the submitted PDF and implementing version control using multiple commits with informative commit messages.
+The "Workflow & formatting" grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.
 
-## Acknowledgements
-
-Exercises 1 - 4 are pulled or adapted from [*Beyond Multiple Linear Regression*](https://bookdown.org/roback/bookdown-BeyondMLR/).
-
-## References
+# References

@@ -487,9 +487,9 @@ Note that we no longer need to estimate $a_i$ and $b_i$ directly as we did earli
 -   We generally assume that the error terms are normally distributed, e.g. error associated with each performance of a given musician is $\epsilon_{ij} \sim N(0, \sigma^2)$
 -   For the Level Two models, the errors are
     -   $u_i$: deviation of musician $i$ from the mean performance anxiety before solos and small ensembles after accounting for the instrument
-        -   musician-to-musician differences in intercept
+        -   musician-to-musician differences in the intercepts
     -   $v_i$: deviance of musician $i$ from the mean difference in performance anxiety between large ensembles and other performance types after accounting for instrument
-        -   musician-to-musician differences in intercept
+        -   musician-to-musician differences in the slopes
 -   Need to account for fact that $u_i$ and $v_i$ are correlated for the $i^{th}$ musician
 :::
 

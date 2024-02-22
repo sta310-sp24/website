@@ -89,6 +89,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -270,17 +299,18 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   </ul></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
-  <ul class="collapse">
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-03.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -306,55 +336,141 @@ div.csl-indent {
 </header>
 
 
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>This assignment is due on Wednesday, February 28 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, February 29 noon (12pm).
+<ul>
+<li>Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.</li>
+<li>You will have access to your HW repo again when grades are returned.</li>
+</ul></li>
+</ul>
+</div>
+</div>
 <section id="instructions" class="level1">
 <h1>Instructions</h1>
 <ul>
-<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the problem.</li>
-<li>Display all analysis code in the PDF.</li>
+<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.</li>
+<li>Be sure all analysis code is displayed in the rendered pdf.</li>
 <li>If you are fitting a model, display the model output in a neatly formatted table. (The <code>tidy</code> and <code>kable</code> functions can help!)</li>
-<li>If you are creating a plot, use clear labels for all axes, titles, etc.</li>
-<li>Commit and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
-<li>When you’re done, we should be able to knit the final version of the R Markdown document in your GitHub repo to get a copy of the PDF submitted to Gradescope.</li>
+<li>If you are creating a plot, use clear and informative labels and titles.</li>
+<li>Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
+<li>When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.</li>
 </ul>
-<!--probit regression (replicate model from paper?) + proportional odds model-->
-<!--logistic regression-->
-<!--ch 6 NBA data-->
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Exercise 1 was adapted from an exercise in Chapter 8 of <span class="citation" data-cites="dobson2018introduction">Dobson and Barnett (<a href="#ref-dobson2018introduction" role="doc-biblioref">2018</a>)</span>. Exercises 3 - 5 were adapted from exercises in Chapter 8 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#ref-roback2021beyond" role="doc-biblioref">2021</a>)</span>.</p>
+</div>
+</div>
 <section id="exercise-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<!--Sec 8.13.1, Ex 1 - 3-->
-<p><span class="citation" data-cites="brown2004hierarchical">Brown and Uyar (<a href="#ref-brown2004hierarchical" role="doc-biblioref">2004</a>)</span> describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.</p>
+<!-- From Introduction to Generalized Linear Models Ex 8.2-->
+<p>The data for this exercise come from a study about the satisfaction with housing conditions in Copenhagen. The data were obtained from <span class="citation" data-cites="dobson2018introduction">Dobson and Barnett (<a href="#ref-dobson2018introduction" role="doc-biblioref">2018</a>)</span> and are originally from <span class="citation" data-cites="madsen1976statistical">Madsen (<a href="#ref-madsen1976statistical" role="doc-biblioref">1976</a>)</span>. Residents in selected areas living in rented homes built between 1960 and 1968 were asked about their satisfaction and the level of contact with other residents.</p>
+<p>The data are in <code>madsen1971.csv</code> in the <code>data</code> folder of your GitHub repo. The variables in the data are</p>
+<ul>
+<li><p><code>satisfaction</code>: Overall satisfaction with housing conditions (Low, Medium, High)</p></li>
+<li><p><code>contact</code>: Level of contact with other residents (Low, High)</p></li>
+<li><p><code>type</code>: Type of housing unit (Tower block, Apartment, House)</p></li>
+</ul>
+<p>The goal of the analysis is to use <code>type</code> and <code>contact</code> to understand <code>satisfaction</code>.</p>
 <ol type="a">
-<li><p>Give the observational units at Level One and Level Two based on the title of the paper.</p></li>
-<li><p>Why can’t we assume all houses in the data set are independent? What would be the potential implications to our analysis of assuming independence among houses?</p></li>
-<li><p>Suppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.</p>
-<p>Write the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.</p></li>
-<li><p>Write the composite model corresponding to part(c)</p></li>
-<li><p>List the fixed effects that must be estimated in the model in part (d).</p></li>
-<li><p>Describe the variance components that must be estimated in the model in part (d).</p></li>
+<li><p>Visualize the relationship of the response versus each predictor variable. Write 1 - 2 observations from the visualizations.</p></li>
+<li><p>Do you think it would be appropriate to fit an ordinal model for this analysis? Briefly explain.</p></li>
+<li><p>Fit the proportional odds model. Display the model.</p></li>
+<li><p>Calculate the following probabilities for a resident living in a house who has high contact with other residents:</p>
+<ol type="i">
+<li><p><span class="math inline">\(P(\text{Satisfaction} \leq \text{Medium})\)</span></p></li>
+<li><p><span class="math inline">\(P(\text{Satisfaction} = \text{Medium})\)</span></p></li>
+</ol></li>
 </ol>
 </section>
 <section id="exercise-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
+<p><span class="citation" data-cites="ibanez2022impact">Ibanez and Roussel (<a href="#ref-ibanez2022impact" role="doc-biblioref">2022</a>)</span> conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants played a game in which they had an opportunity to donate to an environmental organization.</p>
+<p>The data set is available in <code>nature-experiment.csv</code> in the <code>data</code> folder. We will use the following variables:</p>
+<ul>
+<li><p><code>donation_binary</code>:</p>
+<ul>
+<li>1 - participant donated to environmental organization</li>
+<li>0 - participant did not donate</li>
+</ul></li>
+<li><p><code>Age</code>: Age in years</p></li>
+<li><p><code>Gender</code>: Participant’s reported gender</p></li>
+<li><p><code>Treatment</code>:</p>
+<ul>
+<li>“Urban (T1)” - the control group,</li>
+<li>“Nature (T2)” - the treatment group</li>
+</ul></li>
+<li><p><code>NEP_high</code>:</p>
+<ul>
+<li>1 - score of 4 or higher on the New Ecological Paradigm (NEP)</li>
+<li>0 - score less than 4</li>
+</ul></li>
+</ul>
+<p>See the Introduction and Methods sections of <span class="citation" data-cites="ibanez2022impact">Ibanez and Roussel (<a href="#ref-ibanez2022impact" role="doc-biblioref">2022</a>)</span> for more detail about the variables.</p>
+<ol type="1">
+<li><p>Figure 2 on pg. 9 of the article visualizes the relationship between donation amount and treatment. Use the visualization to describe the relationship between donating and the treatment.</p></li>
+<li><p>Fit a probit regression model using <code>age</code>, <code>gender</code>, <code>treatment</code>, <code>nep_high</code> and the interaction between <code>nep_high</code> and <code>treatment</code> predict the likelihood of donating. <em>(Note: Your model will be similar (but not exactly the same) as the “Likelihood” model in Table 5 on pg. 11.)</em> Display the model.</p></li>
+<li><p>Describe the effect of watching the documentary on the likelihood of donating.</p></li>
+<li><p>Based on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?</p></li>
+</ol>
+</section>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
+<!--Sec 8.13.1, Ex 1 - 3-->
+<p><span class="citation" data-cites="brown2004hierarchical">Brown and Uyar (<a href="#ref-brown2004hierarchical" role="doc-biblioref">2004</a>)</span> describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.</p>
+<ol type="a">
+<li><p>Give the observational units at Level One and Level Two based on the title of the paper.</p></li>
+<li><p>Why can’t we assume all houses in the data set are independent?</p></li>
+<li><p>Suppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.</p>
+<p>Write the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.</p></li>
+<li><p>Write the composite model corresponding to part (c)</p></li>
+<li><p>List the fixed effects that must be estimated in the model in part (d).</p></li>
+<li><p>Describe the variance components that must be estimated in the model in part (d).</p></li>
+</ol>
+</section>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
 <!--from BMLR Sec 8.13.3 Ex 4-->
 <ol type="a">
-<li>Try to reproduce Model 2 presented in Table 2 of <span class="citation" data-cites="sadler2010performance">Sadler and Miller (<a href="#ref-sadler2010performance" role="doc-biblioref">2010</a>)</span>. We expect small differences in parameter estimates, since they use SAS (with an unstructured covariance structure) instead of R.</li>
+<li>Try to reproduce Model 2 presented in Table 2 of <span class="citation" data-cites="sadler2010performance">Sadler and Miller (<a href="#ref-sadler2010performance" role="doc-biblioref">2010</a>)</span>. You can expect small differences in the parameter estimates, since the authors use SAS (with an unstructured covariance structure) instead of R. The data and codebook are available in <code>music-data.csv</code> in the <code>data</code> folder.</li>
 <li>How do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?</li>
 </ol>
+</section>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<!--from BMLR Section 6.8.3 Ex 2-->
+<p>The goal of this analysis is to build a model that can be used to describe the factors that explain the success of NBA teams. The data from <span class="citation" data-cites="nba1718">Kaggle (<a href="#ref-nba1718" role="doc-biblioref">2018</a>)</span> includes various statistics and winning percentages for NBA teams in the 2017-18 season. The data set and codebook are available in the <code>data</code> folder in your GitHub repo.</p>
+<p>Include the following in your analysis:</p>
+<ul>
+<li><p>Comprehensive exploratory data analysis</p></li>
+<li><p>Create the best model you can that can be used to predict winning percentage. Be sure to consider collinearity between predictors as you select the final model.</p></li>
+<li><p>Use the EDA and model results to describe the factors that help explain an NBA team’s success.</p></li>
+</ul>
 </section>
 </section>
 <section id="submission" class="level1">
 <h1>Submission</h1>
-<p><strong>Before you wrap up the assignment, make sure all documents are updated in your GitHub repo.</strong></p>
-<p>To submit your assignment:</p>
-<ul>
-<li><p>Go to http://www.gradescope.com and click <em>Log in</em> in the top right corner.</p></li>
-<li><p>Click <em>School Credentials</em> <code>r emo::ji("arrow_right")</code> <em>Duke NetID</em> and log in using your NetID credentials.</p></li>
-<li><p>Click on your <em>STA 310</em> course.</p></li>
-<li><p>Click on the assignment, and you’ll be prompted to submit it.</p></li>
-<li><p><strong>Mark the pages associated with each exercise. All of the pages of your assignment should be associated with at least one question (i.e., should be “checked”).</strong></p></li>
-<li><p>Select the first page of your .PDF submission to be associated with the <em>“Workflow &amp; formatting”</em> section.</p></li>
-</ul>
-<p><strong>The PDF must be submitted to Gradescope by the deadline to be considered on time.</strong></p>
+<p>To submit the assignment, push your final changes to your GitHub repo. Then, you’re done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.</p>
 </section>
 <section id="grading" class="level1">
 <h1>Grading</h1>
@@ -368,23 +484,23 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td>Ex 1</td>
-<td style="text-align: center;">5</td>
+<td style="text-align: center;">9</td>
 </tr>
 <tr class="even">
 <td>Ex 2</td>
-<td style="text-align: center;">14</td>
+<td style="text-align: center;">10</td>
 </tr>
 <tr class="odd">
 <td>Ex 3</td>
-<td style="text-align: center;">5</td>
+<td style="text-align: center;">12</td>
 </tr>
 <tr class="even">
 <td>Ex 4</td>
-<td style="text-align: center;">16</td>
+<td style="text-align: center;">6</td>
 </tr>
 <tr class="odd">
 <td>Ex 5</td>
-<td style="text-align: center;">7</td>
+<td style="text-align: center;">10</td>
 </tr>
 <tr class="even">
 <td>Workflow &amp; formatting</td>
@@ -392,22 +508,33 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>The “Workflow &amp; formatting” grade is based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible R Markdown document that can be knitted to reproduce the submitted PDF and implementing version control using multiple commits with informative commit messages.</p>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Exercises 1 - 4 are pulled or adapted from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/"><em>Beyond Multiple Linear Regression</em></a>.</p>
+<p>The “Workflow &amp; formatting” grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.</p>
 </section>
-<section id="references" class="level2">
+<section id="references" class="level1">
 
 
 
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-brown2004hierarchical" class="csl-entry" role="listitem">
 Brown, Kenneth, and Bulent Uyar. 2004. <span>“A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices.”</span> <em>Journal of Real Estate Practice and Education</em> 7 (1): 15–24.
+</div>
+<div id="ref-dobson2018introduction" class="csl-entry" role="listitem">
+Dobson, Annette J, and Adrian G Barnett. 2018. <em>An Introduction to Generalized Linear Models</em>. CRC press.
+</div>
+<div id="ref-ibanez2022impact" class="csl-entry" role="listitem">
+Ibanez, Lisette, and Sébastien Roussel. 2022. <span>“The Impact of Nature Video Exposure on Pro-Environmental Behavior: An Experimental Investigation.”</span> <em>Plos One</em> 17 (11): e0275806.
+</div>
+<div id="ref-nba1718" class="csl-entry" role="listitem">
+Kaggle. 2018. <span>“NBA Enhanced Box Scores and Standings.”</span> https://www.kaggle.com/pablote/nba-enhanced-stats.
+</div>
+<div id="ref-madsen1976statistical" class="csl-entry" role="listitem">
+Madsen, Mette. 1976. <span>“Statistical Analysis of Multiple Contingency Tables. Two Examples.”</span> <em>Scandinavian Journal of Statistics</em>, 97–106.
+</div>
+<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
+Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in r</em>. CRC Press.
 </div>
 <div id="ref-sadler2010performance" class="csl-entry" role="listitem">
 Sadler, Michael E, and Christopher J Miller. 2010. <span>“Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians.”</span> <em>Social Psychological and Personality Science</em> 1 (3): 280–87.

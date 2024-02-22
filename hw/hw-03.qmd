@@ -29,7 +29,7 @@ bibliography: references.bib
 # Exercises
 
 ::: callout-note
-Exercise 1 was adapted from an exercise in Chapter 8 of @dobson2018introduction. Exercises 3 - 5 were adapted from exercises in Chapter 8 of @roback2021beyond.
+Exercise 1 was adapted from an exercise in Chapter 8 of @dobson2018introduction. Exercises 3 - 4 were adapted from exercises in Chapter 8 and Exercise 5 was adpated from an exercise in Chapter 6 of @roback2021beyond.
 :::
 
 ## Exercise 1
@@ -93,7 +93,7 @@ See the Introduction and Methods sections of @ibanez2022impact for more detail a
 
 3.  Describe the effect of watching the documentary on the likelihood of donating.
 
-4.   Based on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?
+4.  Based on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?
 
 ## Exercise 3
 

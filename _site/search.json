@@ -1662,7 +1662,7 @@
   {
     "objectID": "hw/hw-03.html",
     "href": "hw/hw-03.html",
-    "title": "HW 03",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "",
     "text": "Important\n\n\n\n\nThis assignment is due on Wednesday, February 28 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, February 29 noon (12pm).\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned.",
     "crumbs": [
@@ -1673,7 +1673,7 @@
   {
     "objectID": "hw/hw-03.html#exercise-1",
     "href": "hw/hw-03.html#exercise-1",
-    "title": "HW 03",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 1",
     "text": "Exercise 1\n\nThe data for this exercise come from a study about the satisfaction with housing conditions in Copenhagen. The data were obtained from Dobson and Barnett (2018) and are originally from Madsen (1976). Residents in selected areas living in rented homes built between 1960 and 1968 were asked about their satisfaction and the level of contact with other residents.\nThe data are in madsen1971.csv in the data folder of your GitHub repo. The variables in the data are\n\nsatisfaction: Overall satisfaction with housing conditions (Low, Medium, High)\ncontact: Level of contact with other residents (Low, High)\ntype: Type of housing unit (Tower block, Apartment, House)\n\nThe goal of the analysis is to use type and contact to understand satisfaction.\n\nVisualize the relationship of the response versus each predictor variable. Write 1 - 2 observations from the visualizations.\nDo you think it would be appropriate to fit an ordinal model for this analysis? Briefly explain.\nFit the proportional odds model. Display the model.\nCalculate the following probabilities for a resident living in a house who has high contact with other residents:\n\n\\(P(\\text{Satisfaction} \\leq \\text{Medium})\\)\n\\(P(\\text{Satisfaction} = \\text{Medium})\\)",
     "crumbs": [
@@ -1684,7 +1684,7 @@
   {
     "objectID": "hw/hw-03.html#exercise-2",
     "href": "hw/hw-03.html#exercise-2",
-    "title": "HW 03",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 2",
     "text": "Exercise 2\nIbanez and Roussel (2022) conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants played a game in which they had an opportunity to donate to an environmental organization.\nThe data set is available in nature-experiment.csv in the data folder. We will use the following variables:\n\ndonation_binary:\n\n1 - participant donated to environmental organization\n0 - participant did not donate\n\nAge: Age in years\nGender: Participant’s reported gender\nTreatment:\n\n“Urban (T1)” - the control group,\n“Nature (T2)” - the treatment group\n\nNEP_high:\n\n1 - score of 4 or higher on the New Ecological Paradigm (NEP)\n0 - score less than 4\n\n\nSee the Introduction and Methods sections of Ibanez and Roussel (2022) for more detail about the variables.\n\nFigure 2 on pg. 9 of the article visualizes the relationship between donation amount and treatment. Use the visualization to describe the relationship between donating and the treatment.\nFit a probit regression model using age, gender, treatment, nep_high and the interaction between nep_high and treatment predict the likelihood of donating. (Note: Your model will be similar (but not exactly the same) as the “Likelihood” model in Table 5 on pg. 11.) Display the model.\nDescribe the effect of watching the documentary on the likelihood of donating.\nBased on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?",
     "crumbs": [
@@ -1695,7 +1695,7 @@
   {
     "objectID": "hw/hw-03.html#exercise-3",
     "href": "hw/hw-03.html#exercise-3",
-    "title": "HW 03",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 3",
     "text": "Exercise 3\n\nBrown and Uyar (2004) describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.\n\nGive the observational units at Level One and Level Two based on the title of the paper.\nWhy can’t we assume all houses in the data set are independent?\nSuppose we have the following set of predictors: Square footage, age of house, rating of neighborhood schools, median neighborhood housing price. Write the two-level model for predicting housing prices.\nWrite the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.\nWrite the composite model corresponding to part (c)\nList the fixed effects that must be estimated in the model in part (d).\nDescribe the variance components that must be estimated in the model in part (d).",
     "crumbs": [
@@ -1706,7 +1706,7 @@
   {
     "objectID": "hw/hw-03.html#exercise-4",
     "href": "hw/hw-03.html#exercise-4",
-    "title": "HW 03",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 4",
     "text": "Exercise 4\n\n\nTry to reproduce Model 2 presented in Table 2 of Sadler and Miller (2010). You can expect small differences in the parameter estimates, since the authors use SAS (with an unstructured covariance structure) instead of R. The data and codebook are available in music-data.csv in the data folder.\nHow do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?",
     "crumbs": [
@@ -1717,7 +1717,7 @@
   {
     "objectID": "hw/hw-03.html#exercise-5",
     "href": "hw/hw-03.html#exercise-5",
-    "title": "HW 03",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 5",
     "text": "Exercise 5\n\nThe goal of this analysis is to build a model that can be used to describe the factors that explain the success of NBA teams. The data from Kaggle (2018) includes various statistics and winning percentages for NBA teams in the 2017-18 season. The data set and codebook are available in the data folder in your GitHub repo.\nInclude the following in your analysis:\n\nComprehensive exploratory data analysis\nCreate the best model you can that can be used to predict winning percentage. Be sure to consider collinearity between predictors as you select the final model.\nUse the EDA and model results to describe the factors that help explain an NBA team’s success.",
     "crumbs": [

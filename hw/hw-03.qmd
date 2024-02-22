@@ -1,5 +1,5 @@
 ---
-title: "HW 03" 
+title: "HW 03: Logistic regression + Multilevel models" 
 subtitle: ""
 editor: visual
 execute:

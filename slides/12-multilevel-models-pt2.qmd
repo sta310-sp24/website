@@ -1,6 +1,7 @@
 ---
 title: "Multilevel models"
-date: "February 21, 2024"
+subtitle: "Fitting and interpretation"
+date: "February 26, 2024"
 date-format: "MMM DD, YYYY"
 author: "Prof. Maria Tackett"
 footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
@@ -53,68 +54,23 @@ library(broom.mixed)
 
 ## Announcements
 
--   Quiz 02: **due Thu, Feb 22, 12pm (noon)**
+-   HW 03 released tomorrow due Wed, Feb 28 at 11:59pm
 
-    -   Covers readings & lectures: Jan 24 - Feb 12
-
-    -   Poisson regression, unifying framework for GLMs, logistic regression, proportional odds models, probit regression
-
--   HW 02 returned
-
-    -   Close issue in your GitHub after you've reviewed feedback
-
--   HW 03 released tomorrow and due Wed, Feb 28
+    -   See Slack for tips from Hun
 
 -   Read Sadler and Miller (2010) as part of [Feb 26 prepare](../prepare/feb-26.html) assignment
 
 ## Topics
 
--   Understand how multilevel models can be used to take correlation into account
-
--   Conduct univariate and bivariate EDA for multilevel models
-
 -   Write multilevel model, including assumptions about variance components
 
     -   In by-level and composite forms
 
--   Interpret the model parameters, fixed effects, and variance components
+-   Fit and interpret multilevel models
 
 ::: aside
 Notes based on Chapter 8 of @roback2021beyond unless noted otherwise.
 :::
-
-# Correlated observations
-
-## Multilevel data
-
--   We can think of correlated data as a multilevel structure
-
-    -   Population elements are aggregated into groups
-    -   There are observational units and measurements at each level
-
--   For now we will focus on data with two levels:
-
-    -   **Level one**: Most basic level of observation
-    -   **Level two**: Groups formed from aggregated level-one observations
-
-## Two types of effects
-
--   **Fixed effects**: Effects that are of interest in the study
-    -   Can think of these as effects whose interpretations would be included in a write up of the study
-
-. . .
-
--   **Random effects**: Not interested in studying effects of specific values in the data but we want to understand the variability
-    -   Can think of these as effects whose interpretations would not necessarily be included in a write up of the study
-
-## Example
-
-Researchers are interested in understanding the effect social media has on opinions about a proposed economic plan. They randomly select 1000 households. They ask each adult in the household how many minutes they spend on social media daily and whether they support the proposed economic plan.
-
--   daily minutes on social media is the fixed effect
--   household is the random effect
-
-# Multilevel models
 
 ## Data: Music performance anxiety {.midi}
 
@@ -132,13 +88,17 @@ The primary variables we'll use are
 ## Look at data {.midi}
 
 ```{r echo = F}
-music <- read_csv("data/musicdata.csv")
-music |>
-  filter(id %in% c(1, 12)) |>
-  group_by(id) |>
-  slice(1:3) |>
-  select(id, diary, perform_type, na, gender, instrument) |>
+music <- read_csv("data/musicdata.csv") |>
+  mutate(orchestra = factor(if_else(instrument == "orchestral instrument", 1, 0)), 
+         large_ensemble = factor(if_else(perform_type == "Large Ensemble", 1, 0)))
+
+music %>%
+  filter(id %in% c(1, 43)) %>%
+  group_by(id) %>%
+  slice(1:3) %>%
+  select(id, diary, large_ensemble, mpqnem, orchestra) %>%
   kable()
+
 ```
 
 ::: question
@@ -146,96 +106,25 @@ music |>
 -   What variables are measured at each level?
 :::
 
-## Univariate exploratory data analysis {.midi}
-
-**Level One variables**
-
-Two ways to approach univariate EDA (visualizations and summary statistics) for Level One variables:
-
--   Use individual observations (i.e., treat observations as independent)
-
--   Use aggregated values for each Level Two observation
-
-. . .
-
-**Level Two variables**
-
--   Use a data set that contains one row per Level Two observation
-
-## Bivariate exploratory data analysis {.midi}
-
-**Goals**
-
--   Explore general association between the predictor and response variable
--   Explore whether subjects at a given level of the predictor tend to have similar mean responses
--   Explore whether variation in response differs at different levels of a predictor
-
-. . .
-
-There are two ways to visualize these associations:
-
--   One plot of response vs. predictor for individual observations (i.e., treat observations as independent)
-
--   Separate plots of responses vs. predictor for each Level Two observation (lattice plots)
-
-# Application exercise
-
-::: appex
-📋 [sta310-sp24.netlify.app/ae/lec-11-multilevel](https://sta310-sp24.netlify.app/ae/lec-11-multilevel)
-:::
-
-```{r echo = F}
-library(countdown)
-countdown(minutes = 6, seconds = 00,
-          margin = "1.25%")
-```
-
 # Fitting the model
 
 ## Questions we want to answer {.midi}
 
 What is the association between performance type (large ensemble or not) and performance anxiety? Does the association differ based on instrument type (orchestral or not)?
 
+## Initial modeling approach {.midi}
+
+**Step 1**. Fit a separate model for each musician understand the association between performance type (Level One models) and anxiety.
+
 <br>
 
-. . .
-
-**What is the problem with an ordinary least squares model to draw conclusions?**
-
-```{r echo = F}
-music <- music |>
-  mutate(orchestra = factor(if_else(instrument == "orchestral instrument", 1, 0)), 
-         large_ensemble = factor(if_else(perform_type == "Large Ensemble", 1,0)))
-
-ols <- lm(na ~ orchestra + large_ensemble + orchestra * large_ensemble, 
-          data = music)
-tidy(ols) |> kable(digits = 3)
-```
-
-## Other modeling approaches {.midi}
-
-`r emo::ji("one")` Condense each musician's set of responses into a single outcome (e.g., mean, max, last observation, etc.), and fit a linear model on these condensed observations
-
--   Leaves only a few observations (37) to fit the model
--   Ignoring a lot of information in the multiple observations for each musician
-
-. . .
-
-`r emo::ji("two")` Fit a separate model for each musician understand the association between performance type (Level One models) and anxiety. Then fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).
-
-. . .
-
-**Let's look at approach #2**
+**Step 2** . fit a system of Level Two models to predict the fitted coefficients in the Level One model for each subject based on instrument type (Level Two model).
 
 ## Level One model
 
 We'll start with the Level One model to understand the association between performance type and performance anxiety for the $i^{th}$ musician and the $j^{th}$ performance $$na_{ij} = a_i + b_i ~ LargeEnsemble_{ij} + \epsilon_{ij}, \hspace{5mm} \epsilon_{ij} \sim N(0,\sigma^2)$$
 
 <br>
-
-**Why is it more meaningful to use performance type for the Level One model than instrument?**
-
-. . .
 
 For now, estimate $a_i$ and $b_i$ using least-squares regression.
 
@@ -261,10 +150,8 @@ music |>
 
 <br>
 
-. . .
-
 ::: question
-**Repeat for all 37 musicians. See Part 3: Level One Models in AE.**
+**Repeat for all 37 musicians.**
 :::
 
 ## Level One models
@@ -336,8 +223,6 @@ The slope and intercept for the $i^{th}$ musician can be modeled as $$\begin{ali
 
 Note the response variable in the Level Two models are not observed outcomes but the (fitted) slope and intercept from each musician
 
-**See Part 4: Level Two Models in AE.**
-
 ## Estimated coefficients by instrument
 
 ```{r echo = F}
@@ -379,7 +264,7 @@ tidy(b) |>
   kable(digits = 3)
 ```
 
-## Writing out the models
+## Estimated two-level model
 
 **Level One**
 
@@ -403,25 +288,15 @@ $$
 
 (Note that we also have the error terms $\epsilon_{ij}, u_i, v_i$ that we will discuss later)
 
-<br>
-
-::: question
-1.  What is the predicted average performance anxiety before solos and small ensemble performances for vocalists and keyboardists? For those who play orchestral instruments?
-
-2.  What is the predicted average performance anxiety before large ensemble performances for those who play orchestral instruments?
-:::
-
 ## Disadvantages to this approach
 
 `r emo::ji("warning")` Weighs each musician the same regardless of number of diary entries
 
 `r emo::ji("warning")` Drops subjects who have missing values for slope (7 individuals who didn't play a large ensemble performance)
 
-`r emo::ji("warning")` Does not share strength effectively across individuals (look at $R^2$ values in Part 3: Level One Models of AE)
+`r emo::ji("warning")` Does not share strength effectively across individuals
 
 <br>
-
-. . .
 
 **We will use a unified approach that utilizes likelihood-based methods to address some of these drawbacks.**
 
@@ -574,32 +449,68 @@ con.2 <- ggplot(data = zframe, aes(x = Var1, y = Var2, z = z)) +
 con.1 + con.2
 ```
 
-## Fit the model
+## Fit the model in R {.midi}
 
-Fit multilevel model using the `lmer` function from the **lme4** package. Display results using the `tidy()` function from the **broom.mixed** package.
+Fit multilevel model using the `lmer` ("linear mixed effects in R") function from the **lme4** package.
 
-<br>
-
-```{r eval = F}
+```{r}
 library(lme4)
-library(broom.mixed)
-
-music_model <- lmer(na ~ orchestra + large_ensemble + 
-                      orchestra:large_ensemble +
-                      (large_ensemble|id), 
-                    REML = TRUE, data = music)
-
-tidy(music_model) |> kable(digits = 3)
+music_model <- lmer(na ~ orchestra + large_ensemble +
+       orchestra:large_ensemble + (large_ensemble|id),
+       REML = TRUE, data = music)
 ```
 
-## Fitted model
+. . .
 
-```{r echo = F}
-music_model <- lmer(na ~ orchestra + large_ensemble + 
-                      orchestra:large_ensemble + (large_ensemble|id), 
-                    REML = TRUE, data = music)
+-   `na ~ orchestra + large_ensemble + orchestra:large_ensemble`: Represents the fixed effects
 
-tidy(music_model) |> kable(digits = 3)
+-   `(large_ensemble|id)`: Represents the error terms and associated variance components
+
+    -   Specifies two error terms: $u_i$ corresponding to the intercepts, $v_i$ corresponding to effect of large ensemble
+
+## Tidy output
+
+Display results using the `tidy` function from the **broom.mixed** package.
+
+```{r}
+#| eval: false
+library(broom.mixed)
+tidy(music_model) 
+```
+
+. . .
+
+Get fixed effects only
+
+```{r}
+#| eval: false
+tidy(music_model) |> filter(effect == "fixed")
+```
+
+. . .
+
+Get errors and variance components only
+
+```{r}
+#| eval: false
+
+tidy(music_model) |> filter(effect == "ran_pars")
+```
+
+## Estimated fixed effects 
+
+```{r}
+tidy(music_model) |> 
+  filter(effect == "fixed") |> 
+  kable(digits = 3)
+```
+
+## Estimated random effects
+
+```{r}
+tidy(music_model) |> 
+  filter(effect == "ran_pars") |> 
+  kable(digits = 3)
 ```
 
 ## Fitted model {.midi}
@@ -620,5 +531,23 @@ $$
 &\epsilon_{ij} \sim N(0, 4.670^2)
 \end{aligned}
 $$
+
+## Interpret the effects 
+
+-   Split into 4 groups.
+
+-   Each group will write the interpretation for one main effect and one variance component. The terms on each slide do not necessarily have a direct correspondence to each other.
+
+-   One person write the group's interpretations on the slide.
+
+-   [Click here](https://docs.google.com/presentation/d/1wwL1C0pqp3FAnf9knaysx4DbgW7GJEmXxW5mhAebFR4/edit?usp=sharing) for the slides.
+
+```{r}
+#| echo: false
+
+library(countdown)
+
+countdown(minutes = 6, seconds = 00, margin = "1.25%")
+```
 
 ## References

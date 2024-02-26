@@ -50,6 +50,7 @@ library(patchwork)
 library(viridis)
 library(lme4)
 library(broom.mixed)
+library(countdown)
 ```
 
 ## Announcements
@@ -57,8 +58,6 @@ library(broom.mixed)
 -   HW 03 released tomorrow due Wed, Feb 28 at 11:59pm
 
     -   See Slack for tips from Hun
-
--   Read Sadler and Miller (2010) as part of [Feb 26 prepare](../prepare/feb-26.html) assignment
 
 ## Topics
 
@@ -167,7 +166,7 @@ model_stats <- tibble(slopes = rep(NA,37),
 
 ids <- music |> distinct(id) |> pull()
 
-# fit the model and score the releveant statistcs
+# fit the model and score the relevant statistics
 for(i in 1:length(ids)){
 level_one_data <- music |>
   filter(id == ids[i]) 
@@ -467,6 +466,7 @@ music_model <- lmer(na ~ orchestra + large_ensemble +
 -   `(large_ensemble|id)`: Represents the error terms and associated variance components
 
     -   Specifies two error terms: $u_i$ corresponding to the intercepts, $v_i$ corresponding to effect of large ensemble
+    -   Use `(1|id)` for models with random intercepts and all other effects fixed.
 
 ## Tidy output
 
@@ -497,7 +497,7 @@ Get errors and variance components only
 tidy(music_model) |> filter(effect == "ran_pars")
 ```
 
-## Estimated fixed effects 
+## Estimated fixed effects
 
 ```{r}
 tidy(music_model) |> 
@@ -532,22 +532,35 @@ $$
 \end{aligned}
 $$
 
-## Interpret the effects 
+## Sadler and Miller (2010) 
 
--   Split into 4 groups.
+::: question
+Read the *Data Analysis* Section in @sadler2010performance. [Click here](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=928557) to access the paper in Canvas. Use the text to answer the following:
 
--   Each group will write the interpretation for one main effect and one variance component. The terms on each slide do not necessarily have a direct correspondence to each other.
-
--   One person write the group's interpretations on the slide.
-
--   [Click here](https://docs.google.com/presentation/d/1wwL1C0pqp3FAnf9knaysx4DbgW7GJEmXxW5mhAebFR4/edit?usp=sharing) for the slides.
+1.  What is the goal of the analysis?
+2.  What type of model is used? What is the response variable? What is the multilevel structure?
+3.  Describe the details of the model estimation.
+4.  Describe the data wrangling / creation of new variables. What were the goals of the data wrangling steps?
+5.  How as model performance assessed?
+:::
 
 ```{r}
 #| echo: false
-
-library(countdown)
-
 countdown(minutes = 6, seconds = 00, margin = "1.25%")
 ```
+
+## Sadler and Miller 2010
+
+::: question
+-   Split into 3 - 5 groups and discuss your responses.
+
+-   One person will write your group's response to your assigned question(s).
+
+-   [Click here](https://docs.google.com/presentation/d/1ZtVZst8oJkNrJ0DWl7j_5VsjZc1V40HyxqPPjzA2IPI/edit?usp=sharing) to access the slides.
+:::
+
+## Sadler and Miller (2010) Model 1
+
+![](images/12/sadler-miller-2010.png){fig-align="center" width="150%"}
 
 ## References

@@ -85,15 +85,19 @@ The data set is available in `nature-experiment.csv` in the `data` folder. We wi
     -   1 - score of 4 or higher on the New Ecological Paradigm (NEP)
     -   0 - score less than 4
 
+::: callout-tip
 See the Introduction and Methods sections of @ibanez2022impact for more detail about the variables.
 
-1.  Figure 2 on pg. 9 of the article visualizes the relationship between donation amount and treatment. Use the visualization to describe the relationship between donating and the treatment.
+[Click here](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=897959) to access the paper on Canvas.
+:::
 
-2.  Fit a probit regression model using `age`, `gender`, `treatment`, `nep_high` and the interaction between `nep_high` and `treatment` predict the likelihood of donating. *(Note: Your model will be similar (but not exactly the same) as the "Likelihood" model in Table 5 on pg. 11.)* Display the model.
+a.  Figure 2 on pg. 9 of the article visualizes the relationship between donation amount and treatment. Use the visualization to describe the relationship between donating and the treatment.
 
-3.  Describe the effect of watching the documentary on the likelihood of donating.
+b.  Fit a probit regression model using `age`, `gender`, `treatment`, `nep_high` and the interaction between `nep_high` and `treatment` predict the likelihood of donating. *(Note: Your model will be similar (but not exactly the same) as the "Likelihood" model in Table 5 on pg. 11.)* Display the model.
 
-4.  Based on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?
+c.  Describe the effect of watching the documentary on the likelihood of donating.
+
+d.  Based on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?
 
 ## Exercise 3
 
@@ -121,6 +125,10 @@ f.  Describe the variance components that must be estimated in the model in part
 
 a.  Try to reproduce Model 2 presented in Table 2 of @sadler2010performance. You can expect small differences in the parameter estimates, since the authors use SAS (with an unstructured covariance structure) instead of R. The data and codebook are available in `music-data.csv` in the `data` folder.
 b.  How do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?
+
+::: callout-tip
+[Click here](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=928557) to access @sadler2010performance on Canvas.
+:::
 
 ## Exercise 5
 

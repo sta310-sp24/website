@@ -1,6 +1,6 @@
 ---
 title: "Multilevel models"
-subtitle: "Fitting and interpretation"
+subtitle: "Variance components model fitting"
 date: "February 26, 2024"
 date-format: "MMM DD, YYYY"
 author: "Prof. Maria Tackett"
@@ -532,7 +532,7 @@ $$
 \end{aligned}
 $$
 
-## Sadler and Miller (2010) 
+## Sadler and Miller (2010)
 
 ::: question
 Read the *Data Analysis* Section in @sadler2010performance. [Click here](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=928557) to access the paper in Canvas. Use the text to answer the following:

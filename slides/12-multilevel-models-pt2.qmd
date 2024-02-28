@@ -1,6 +1,6 @@
 ---
 title: "Multilevel models"
-subtitle: "Variance components model fitting"
+subtitle: "Variance components + model fitting"
 date: "February 26, 2024"
 date-format: "MMM DD, YYYY"
 author: "Prof. Maria Tackett"

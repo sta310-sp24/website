@@ -1,0 +1,341 @@
+---
+title: "Multilevel models"
+subtitle: "Interpretation + Estimation"
+date: "February 28, 2024"
+date-format: "MMM DD, YYYY"
+author: "Prof. Maria Tackett"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+library(viridis)
+library(kableExtra)
+library(lme4)
+library(broom.mixed)
+
+music <- read_csv("data/musicdata.csv") |>
+  mutate(orchestra = factor(if_else(instrument == "orchestral instrument", 1, 0)), 
+         large_ensemble = factor(if_else(perform_type == "Large Ensemble", 1, 0)))
+```
+
+## Announcements
+
+-   HW 03 due TODAY at 11:59pm
+-   DataFest: March 1 - 3 in Penn Pavilion
+    -   See Slack for more information
+-   Please fill out Campus Culture Survey by March 1
+    -   You should have received an email with a personalized link
+
+## Topics
+
+-   Interpret and inference for multilevel model coefficients
+
+-   Calculate and interpret intraclass correlation coefficient
+
+-   Maximum likelihood (ML) and restricted maximum likelihood (REML) estimation approaches
+
+-   General process for fitting and comparing multilevel models
+
+::: aside
+Notes based on Chapter 8 of @roback2021beyond unless noted otherwise.
+:::
+
+## Data: Music performance anxiety {.midi}
+
+Today's data come from the study by @sadler2010performance of the emotional state of musicians before performances. The data set contains information collected from 37 undergraduate music majors who completed the Positive Affect Negative Affect Schedule (PANAS), an instrument produces a measure of anxiety (negative affect) and a measure of happiness (positive affect). This analysis will focus on negative affect as a measure of performance anxiety.
+
+The primary variables we'll use are
+
+-   **`id`**: unique musician identification number
+-   **`na`**: negative affect score on PANAS (the response variable)
+-   **`perform_type`**: type of performance (Solo, Large Ensemble, Small Ensemble)
+-   **`instrument`**: type of instrument (Voice, Orchestral, Piano)
+
+## Fit model in R
+
+```{r}
+library(lme4)
+music_model <- lmer(na ~ orchestra + large_ensemble +
+       orchestra:large_ensemble + (large_ensemble|id),
+       REML = TRUE, data = music)
+```
+
+-   `na ~ orchestra + large_ensemble + orchestra:large_ensemble`: Represents the fixed effects
+
+-   `(large_ensemble|id)`: Represents the error terms and associated variance components
+
+    -   Specifies two error terms: $u_i$ corresponding to the intercepts, $v_i$ corresponding to effect of large ensemble
+    -   Use `(1|id)` for models with random intercepts and all other effects fixed.
+
+## Model results {.midi}
+
+```{r}
+#| echo: false
+library(broom.mixed)
+tidy(music_model) |>
+  kable(digits = 3)
+```
+
+## Interpretation {.midi}
+
+::: question
+Select the best interpretation for `orchestra1:large_ensemble1`.
+
+a.  For students who play an orchestral instrument, the mean performance anxiety is expected to be 1.424 points lower for large ensemble performances compared to solo and small ensembles.
+
+b.  The mean decrease in performance anxiety from large ensemble performances versus solos or small ensembles is expected to be 1.424 points greater for students who play orchestral instruments than the expected decrease for soloists and pianists.
+
+c.  The mean performance anxiety for students who play orchestral instruments in large ensembles is expected to be -1.424 points.
+:::
+
+## Interpretation 
+
+::: question
+Select the best interpretation for `sd__(Intercept)`.
+
+a.  The estimated standard deviation of performance anxiety score for students playing in solos and small ensembles is 2.378 points.
+
+b.  The estimated standard deviation of performance anxiety score for vocalists and pianists is 2.378 points.
+
+c.  The estimated standard deviation of performance anxiety score for students playing in solos and small ensemble is 2.378, after adjusting for instrument.
+:::
+
+## Inference for fixed effects
+
+-   Notice the R model output has test statistic but no p-values for each coefficient
+
+    -   Exact $t$ distribution under the null hypothesis (no fixed effects) and the associated degrees of freedom are not known
+
+-   We can generally conclude coefficients with test statistic with absolute value greater than 2 are statistically significant
+
+-   Some software will produce p-values by making several assumptions, large sample results , or approximate p-values
+
+-   We will introduce a parametric bootstrap approach in the next chapter.
+
+## Unconditional means model
+
+The **unconditional means model** (also known as random intercepts model) is the multilevel model with no predictors at either level
+
+These models are used to estimate between and within group variability
+
+. . .
+
+Level One:
+
+$$Y_{ij} = a_i + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \sim N(0, \sigma^2)$$
+
+Level Two:
+
+$$
+a_i = \alpha_0 + u_i \hspace{10mm} u_i \sim(N, \sigma_u^2)
+$$
+
+## Fitting the unconditional means model
+
+```{r}
+uncond_means_model <- lmer(na ~ 1 + (1 | id), 
+                           REML = TRUE, data = music)
+
+tidy(uncond_means_model) |> kable(digits = 3)
+```
+
+## Intraclass correlation coefficient {.midi}
+
+The **intraclass correlation coefficient** $\rho$ is
+
+$$
+\rho = \frac{\text{Between group variability}}{\text{Total variability}} = \frac{\sigma^2_u}{\sigma^2_u + \sigma^2}
+$$
+
+. . .
+
+In this analysis, $\hat{\rho} = 0.182$ . This value means...
+
+. . .
+
+-   About 18.2% of the variability in performance anxiety can be explained by musician to musician differences
+
+-   The correlation of performance anxiety scores within a musician is 0.182
+
+. . .
+
+::: callout-note
+$\hat{\rho}$ is calculated based on the variance components from the unconditional means model.
+:::
+
+## Interpreting $\rho$ {.midi}
+
+::: question
+Which of the following values indicates the individual observations are essentially independent?
+
+1.  $\rho \approx 1$
+2.  $\rho \approx 0$
+:::
+
+. . .
+
+::: incremental
+-   When $\rho \approx 0$ , the **effective sample size** (how many pieces of independent information we have) approaches $n$, the sample size of the data
+
+    -   Accounting for multilevel structure of the data is less important when modeling
+
+-   When $\rho \approx 1$, the effective sample size is close to the number of groups
+
+    -   Accounting for multilevel structure of the data is very important when modeling
+:::
+
+# Estimation
+
+## ML and REML {.midi}
+
+Maximum Likelihood (ML) and Restricted (Residual) Maximum Likelihood (REML) are the two most common methods for estimating the fixed effects and variance components
+
+. . .
+
+**Maximum Likelihood (ML)**
+
+-   Jointly estimate the fixed effects and variance components using all the <u></u>sample data</u>
+-   Can be used to draw conclusions about fixed and random effects
+
+::: callout-caution
+*Issue*: Fixed effects are treated as known values when estimating variance components
+
+-   Tends to underestimate variance components (biased estimate), particularly when the sample size is small.
+:::
+
+## ML and REML
+
+**Restricted Maximum Likelihood (REML)**
+
+-   Estimate the variance components using the <u>sample residuals</u> not the sample data
+-   It is conditional on the fixed effects, so it accounts for uncertainty in fixed effects estimates.
+    -   This results in unbiased estimates of variance components.
+
+## Illustration of ML vs. REML
+
+::: columns
+::: {.column width="50%"}
+**ML**
+
+$$
+s^2 = \frac{\sum_{i=1}^n(x_i - \bar{x})^2}{n}
+$$
+
+Treats $\bar{x}$ as known value (no loss in degrees of freedom)
+:::
+
+::: {.column width="50%"}
+**REML**
+
+$$
+s^2 = \frac{\sum_{i=1}^n(x_i - \bar{x})^2}{n-1}
+$$\
+Treats $\bar{x}$ as estimated value (accounts for loss of degree of freedom)
+:::
+:::
+
+<br>
+
+*Note: These differences are small when* $n$ *is large.*
+
+## ML or REML? {.midi}
+
+-   Research has not determined one method absolutely superior to the other
+
+-   **REML** (`REML = TRUE`; default in `lmer`) is preferable when
+
+    -   the number of parameters is large, or
+    -   primary objective is to obtain estimates of the model parameters
+
+-   **ML** (`REML = FALSE`) <u>must</u> be used if you want to compare nested fixed effects models using a likelihood ratio test (e.g., a drop-in-deviance test).
+
+    -   For REML, the goodness-of-fit and likelihood ratio tests can only be used to draw conclusions about variance components
+
+-   In most cases, there is little difference between the results from ML and REML
+
+<br>
+
+::: aside
+See @singer2003applied for additional detail.
+:::
+
+## Comparing ML and REML results {.small}
+
+```{r echo = F}
+
+music_model_ml <- lmer(na ~ orchestra + large_ensemble + 
+                      orchestra:large_ensemble + (large_ensemble|id), 
+                      REML = FALSE, data = music)
+ml <- tidy(music_model_ml) %>%
+  select(term, estimate, std.error) 
+
+reml <- tidy(music_model) %>%
+  select(estimate, std.error) 
+
+full <- bind_cols(ml, reml) 
+names(full) <- c("Term", "Estimate", "SE", 
+                 "Estimate", "SE")
+
+full |> kable(digits = 3) |>
+  add_header_above(c(" " = 1, "ML" = 2, "REML" = 2)) |>
+  column_spec(3, border_right = T)
+```
+
+## Strategy for building multilevel models {.midi}
+
+-   Conduct exploratory data analysis for Level One and Level Two variables
+
+-   Fit model with no covariates to assess variability at each level
+
+-   Create Level One models. Start with a single term, then add terms as needed.
+
+-   Create Level Two models. Start with a single term, then add terms as needed. Start with equation for intercept term.
+
+-   Begin with the full set of variance components, then remove covariance and variance terms as needed.
+
+<br>
+
+::: callout-note
+*Alternate model building strategies in [BMLR Section 8.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html#sec:buildmodel)*
+:::
+
+## References

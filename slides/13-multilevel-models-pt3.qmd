@@ -127,7 +127,7 @@ b.  The mean decrease in performance anxiety from large ensemble performances ve
 c.  The mean performance anxiety for students who play orchestral instruments in large ensembles is expected to be -1.424 points.
 :::
 
-## Interpretation 
+## Interpretation
 
 ::: question
 Select the best interpretation for `sd__(Intercept)`.
@@ -336,6 +336,12 @@ full |> kable(digits = 3) |>
 
 ::: callout-note
 *Alternate model building strategies in [BMLR Section 8.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html#sec:buildmodel)*
+:::
+
+# Application exercise
+
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-13-multilevel-contd](https://sta310-sp24.netlify.app/ae/lec-13-multilevel-contd.html)
 :::
 
 ## References

@@ -1,0 +1,112 @@
+---
+title: "Lecture 13 AE: Multilevel models"
+subtitle: "Interpretation + Estimation"
+date: "02-28-2024"
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(lme4)
+library(broom.mixed)
+```
+
+```{r}
+music <- read_csv("data/music-data.csv") |>
+  mutate(orchestra = factor(if_else(instrument == "orchestral instrument", 
+                                    1, 0)), 
+         large_ensemble = factor(if_else(perform_type == "Large Ensemble", 
+                                         1, 0)))
+```
+
+::: callout-important
+Start modeling building with exploratory data analysis of Level One and Level Two variables.
+:::
+
+## Model 1: Random intercepts model
+
+This is also known as the unconditional means model.
+
+```{r}
+#Model1 (Unconditional means model)
+model1 <- lmer(na ~ 1 + (1 | id),  data = music)
+
+tidy(model1) |>
+  kable(digits = 3)
+```
+
+## Model 2: Add Level One covariate
+
+Add `large_ensemble` as a Level One covariate. This is called a *random slopes and intercepts* model.
+
+```{r}
+model2 <- lmer(na ~ large_ensemble + (large_ensemble | id),  
+               data = music)
+
+tidy(model2) |>
+  kable(digits = 3)
+```
+
+## Model 3: Add Level Two covariates
+
+Add orchestra as a Level Two covariate.
+
+```{r}
+model3 <- lmer(na ~ large_ensemble + orchestra + orchestra:large_ensemble + 
+                 (large_ensemble | id), data = music)
+
+tidy(model3) |>
+  kable(digits = 3)
+```
+
+## Model 4: Add `mpqnem` as an additional Level Two covariate
+
+::: callout-note
+## Ex 1
+
+Write the Level One and Level Two models.
+:::
+
+::: callout-note
+## Ex 2
+
+Write the composite model.
+:::
+
+```{r}
+model4 <- lmer(na ~ large_ensemble + orchestra + mpqnem +  
+                 orchestra:large_ensemble + mpqnem:large_ensemble +
+                 (large_ensemble | id), data = music)
+
+tidy(model4) |> 
+  kable(digits = 3)
+```
+
+::: callout-note
+## Ex 3
+
+Interpret the effect of `mpqnem` for solo and small ensembles.
+:::
+
+::: callout-note
+## Ex 4
+
+Interpret the effect of `mpqnem` for large ensembles.
+:::
+
+## Compare models
+
+You can get model summary statistics using the `glance` function from the **broom.mixed** package.
+
+::: callout-note
+## Ex 5
+
+Calculate AIC and BIC for Models 1 - 4. Use these statistics to choose a final model.
+:::
+
+```{r}
+# add code here
+```

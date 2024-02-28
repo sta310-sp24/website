@@ -338,7 +338,21 @@ full |> kable(digits = 3) |>
 *Alternate model building strategies in [BMLR Section 8.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-multilevelintro.html#sec:buildmodel)*
 :::
 
-# Application exercise
+## Saddler and Miller (2010) strategy
+
+::: question
+On pg. 283 - 284 of @sadler2010performance, the authors describe their model building process. Try to pick out the steps of the model building process.
+
+[Click here](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=928557) to access the paper in Canvas.
+:::
+
+```{r}
+#| echo: false
+library(countdown)
+countdown(minutes = 6, seconds = 00, margin = "1.25%")
+```
+
+#  Application exercise
 
 ::: appex
 📋 [sta310-sp24.netlify.app/ae/lec-13-multilevel-contd](https://sta310-sp24.netlify.app/ae/lec-13-multilevel-contd.html)

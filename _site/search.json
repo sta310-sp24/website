@@ -868,6 +868,13 @@
     "text": "Strategy for building multilevel models\n\nConduct exploratory data analysis for Level One and Level Two variables\nFit model with no covariates to assess variability at each level\nCreate Level One models. Start with a single term, then add terms as needed.\nCreate Level Two models. Start with a single term, then add terms as needed. Start with equation for intercept term.\nBegin with the full set of variance components, then remove covariance and variance terms as needed.\n\n\n\n\n\n\n\n\nNote\n\n\nAlternate model building strategies in BMLR Section 8.6"
   },
   {
+    "objectID": "slides/13-multilevel-models-pt3.html#saddler-and-miller-2010-strategy",
+    "href": "slides/13-multilevel-models-pt3.html#saddler-and-miller-2010-strategy",
+    "title": "Multilevel models",
+    "section": "Saddler and Miller (2010) strategy",
+    "text": "Saddler and Miller (2010) strategy\n\nOn pg. 283 - 284 of Sadler and Miller (2010), the authors describe their model building process. Try to pick out the steps of the model building process.\nClick here to access the paper in Canvas.\n\n\n\n\n−+\n06:00"
+  },
+  {
     "objectID": "slides/13-multilevel-models-pt3.html#references",
     "href": "slides/13-multilevel-models-pt3.html#references",
     "title": "Multilevel models",

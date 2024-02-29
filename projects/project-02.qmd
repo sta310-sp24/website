@@ -63,7 +63,7 @@ The article for this project <u>must</u> be published in a scholarly journal. Pl
 
 See the [Tips on finding articles](#Tips_on_finding_articles) for tips on searching databases to find articles and data.
 
-## Proposal (15 pts)
+## Proposal 
 
 The main goal of the proposal is to ensure you have an article that will set you up for a successful project. The proposal should include the following:
 
@@ -90,7 +90,7 @@ Write the proposal in the file `proposal.qmd`, then push the `.qmd` and rendered
 **You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.
 :::
 
-### Grading criteria 
+### Grading criteria
 
 The proposal will be graded based on the following:
 
@@ -294,7 +294,7 @@ The [PubMed heading tree](https://www.ncbi.nlm.nih.gov/mesh/68013223) lets you s
 
 2.  On the left-hand side, check "Data Set" under *Content Type* and check "Dataset" under *Data Types*. Click "Refine" to limit the results.
 
-3.Click on the article of interest.
+3.  Click on the article of interest.
 
 4.  You can use the options on the left-hand size to narrow down the search results.
 
@@ -306,4 +306,4 @@ The [PubMed heading tree](https://www.ncbi.nlm.nih.gov/mesh/68013223) lets you s
 
 ### Acknowledgements
 
--   Grading criteria and the repo organization for this project were adapted from Project 1 on [vizdata.org](https://vizdata.org).
+Grading criteria and the repo organization for this project were adapted from Project 1 on [vizdata.org](https://vizdata.org).

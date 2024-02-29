@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 310 - Spring 2024 - Project 02</title>
+<title>STA 310 - Spring 2024 - Project 02: Multilevel models + Reproducibility</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -246,14 +246,52 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#team-assignments" id="toc-team-assignments" class="nav-link active" data-scroll-target="#team-assignments">Team assignments</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
+  <li><a href="#due-dates" id="toc-due-dates" class="nav-link" data-scroll-target="#due-dates">Due dates</a></li>
+  <li><a href="#article-data-set" id="toc-article-data-set" class="nav-link" data-scroll-target="#article-data-set">Article + data set</a></li>
+  <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal">Proposal</a>
+  <ul class="collapse">
+  <li><a href="#grading-criteria-15-pts" id="toc-grading-criteria-15-pts" class="nav-link" data-scroll-target="#grading-criteria-15-pts">Grading criteria (15 pts)</a></li>
+  </ul></li>
+  <li><a href="#analysis-plan-optional" id="toc-analysis-plan-optional" class="nav-link" data-scroll-target="#analysis-plan-optional">Analysis plan (optional)</a>
+  <ul class="collapse">
+  <li><a href="#questions-to-consider-in-your-analysis-plan" id="toc-questions-to-consider-in-your-analysis-plan" class="nav-link" data-scroll-target="#questions-to-consider-in-your-analysis-plan">Questions to consider in your analysis plan</a></li>
+  <li><a href="#submitting-the-analysis-plan-optional" id="toc-submitting-the-analysis-plan-optional" class="nav-link" data-scroll-target="#submitting-the-analysis-plan-optional">Submitting the analysis plan (optional)</a></li>
+  </ul></li>
+  <li><a href="#draft" id="toc-draft" class="nav-link" data-scroll-target="#draft">Draft</a></li>
+  <li><a href="#written-report" id="toc-written-report" class="nav-link" data-scroll-target="#written-report">Written report</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#reproducing-the-model" id="toc-reproducing-the-model" class="nav-link" data-scroll-target="#reproducing-the-model">Reproducing the model</a></li>
+  <li><a href="#original-analysis" id="toc-original-analysis" class="nav-link" data-scroll-target="#original-analysis">Original analysis</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#grading-criteria" id="toc-grading-criteria" class="nav-link" data-scroll-target="#grading-criteria">Grading criteria</a></li>
+  </ul></li>
+  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation">Presentation</a></li>
+  <li><a href="#github-repo-organization" id="toc-github-repo-organization" class="nav-link" data-scroll-target="#github-repo-organization">GitHub repo organization</a></li>
+  <li><a href="#grading-100-points" id="toc-grading-100-points" class="nav-link" data-scroll-target="#grading-100-points">Grading (100 points)</a>
+  <ul class="collapse">
+  <li><a href="#tips-on-finding-articles" id="toc-tips-on-finding-articles" class="nav-link" data-scroll-target="#tips-on-finding-articles">Tips on finding articles</a></li>
+  <li><a href="#pubmed" id="toc-pubmed" class="nav-link" data-scroll-target="#pubmed">PubMed</a></li>
+  <li><a href="#psycinfo" id="toc-psycinfo" class="nav-link" data-scroll-target="#psycinfo">PsycInfo</a></li>
+  <li><a href="#web-of-science" id="toc-web-of-science" class="nav-link" data-scroll-target="#web-of-science">Web of Science</a></li>
+  <li><a href="#additional-tips" id="toc-additional-tips" class="nav-link" data-scroll-target="#additional-tips">Additional tips</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/projects/project-02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../projects/project-01.html">Projects</a></li><li class="breadcrumb-item"><a href="../projects/project-02.html">Project 02</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Project 02</h1>
+<h1 class="title">Project 02: Multilevel models + Reproducibility</h1>
 </div>
 
 
@@ -270,9 +308,374 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>To be posted.</p>
+<p>For this project you and your team will be reading and evaluating a scholarly article that uses a multilevel or longitudinal model in the analysis. You will also use data from the article to reproduce a model and conduct additional analysis.</p>
+<p>The learning objectives are to</p>
+<ul>
+<li>Explore how multilevel models are used in practice.</li>
+<li>Understand how statistical results are presented in scholarly research.</li>
+<li>Recognize what information is needed for an analysis to be reproducible.</li>
+<li>Gain experience analyzing real-world multilevel data.</li>
+</ul>
+<section id="team-assignments" class="level2">
+<h2 class="anchored" data-anchor-id="team-assignments">Team assignments</h2>
+<p>You will work in small teams for this project. You will find the team assignments in the <code>#project-02</code> channel in Slack.</p>
+<p>You will work in the same teams as Project 01. Before getting started, I encourage you to briefly discuss the following as a group in case anything has changed since the first project:</p>
+<ul>
+<li><p>Come up with a plan to communicate and work together outside of lab.</p></li>
+<li><p>Come up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings.</p></li>
+</ul>
+</section>
+<section id="workflow" class="level2">
+<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<ul>
+<li><p><strong>Project Week 01 (week of Feb 26)</strong>: Select the article and accompanying data set. Write and submit the proposal.</p></li>
+<li><p><strong>Project Week 02 (week of March 4)</strong>: Read and evaluate the article. Develop an analysis plan.</p></li>
+<li><p><em>Spring Break: March 11 - 15</em></p></li>
+<li><p><strong>Project Week 03 (week of March 18):</strong> Work on analysis.</p></li>
+<li><p><strong>Project Week 04 (Week of March 25)</strong>: Finalize analysis results, make presentation, and write report.</p></li>
+<li><p><strong>Project Week 05 (Week of Apr 1)</strong>: Presentations and submit reports.</p></li>
+</ul>
+</section>
+<section id="due-dates" class="level2">
+<h2 class="anchored" data-anchor-id="due-dates">Due dates</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All work will be submitted in your team’s project GitHub repo.</p>
+</div>
+</div>
+<ul>
+<li><p><strong>Proposal</strong>: due Friday, March 1 at 12pm (noon)</p></li>
+<li><p><strong>Analysis plan (optional)</strong>: due Friday, March 8 at 12pm (noon)</p>
+<ul>
+<li><em>Optional submission to receive feedback from the teaching team.</em></li>
+</ul></li>
+<li><p><strong>Draft results</strong>: due Friday, March 22 at 12pm (noon)</p></li>
+<li><p><strong>Presentations</strong>: due Wed, Apr 3 at 3:30pm</p></li>
+<li><p><strong>Written report</strong>: due Thursday, Apr 4 at 9pm</p></li>
+</ul>
+</section>
+<section id="article-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="article-data-set">Article + data set</h2>
+<p>The article for this project <u>must</u> be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must</p>
+<ul>
+<li>Incorporate the use one or more multilevel or longitudinal models in the analysis.</li>
+</ul>
+<!-- -->
+<ul>
+<li>Have the original data set or a comparable data set available.</li>
+</ul>
+<p>See the <a href="#Tips_on_finding_articles">Tips on finding articles</a> for tips on searching databases to find articles and data.</p>
+</section>
+<section id="proposal" class="level2">
+<h2 class="anchored" data-anchor-id="proposal">Proposal</h2>
+<p>The main goal of the proposal is to ensure you have an article that will set you up for a successful project. The proposal should include the following:</p>
+<ul>
+<li><p>The citation for the article. <em>If you’re using a <code>.bib</code> file you can use the default citation format in R Markdown (Chicago author-date format). Otherwise, use MLA format.</em></p></li>
+<li><p>Brief summary about why you chose this article.</p></li>
+<li><p>Brief summary of the article’s primary research objective.</p></li>
+<li><p>A description of the data analyzed in the article. Include</p>
+<ul>
+<li>A description of the observational units at each level. (<em>Note: Most articles will have level-one and level-two observational units, but some may have more levels to the data structure.</em>)</li>
+<li>A description of the response variable.</li>
+<li>A description of within-group variability.</li>
+<li>A description of the fixed and random effects.</li>
+</ul></li>
+<li><p>A <code>glimpse</code> of the data set</p></li>
+</ul>
+<p>You are only required to write the proposal for one article. Write the proposal in the file <code>proposal.qmd</code>, then push the <code>.qmd</code> and rendered PDF to the GitHub repo for submission.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The proposal is due on Friday, March 1 at noon.<br>
+<br>
+</strong>You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.</p>
+</div>
+</div>
+<section id="grading-criteria-15-pts" class="level3">
+<h3 class="anchored" data-anchor-id="grading-criteria-15-pts">Grading criteria (15 pts)</h3>
+<p>The proposal will be graded based on the following:</p>
+<ul>
+<li><p>All required components of the proposal are included and accurate (10 pts)</p></li>
+<li><p>Data set is in the <code>data</code> folder of the GitHub repo (2 pts)</p></li>
+<li><p>All team members have contributed (3 pts)</p>
+<ul>
+<li>This will be assessed based on the repo’s commit history.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="analysis-plan-optional" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-plan-optional">Analysis plan (optional)</h2>
+<p>The goal of the analysis plan is for you team to outline your approach for the two components of the project analysis. These components are</p>
+<ol type="1">
+<li>Try to reproduce one multilevel model in the article.</li>
+<li>Conduct original analysis using the data from the article and compare your results and conclusions to those from the article. The original analysis may include
+<ul>
+<li>Fitting a model that incorporates new variables and/or data</li>
+<li>Fitting a new model (e.g., using different parameter adjustments, transforming the response variable, etc.)</li>
+<li>Assessing the authors’ choice of any adjustments to the model (e.g., adding a penalty term)</li>
+<li>…other areas of exploration</li>
+</ul></li>
+</ol>
+<section id="questions-to-consider-in-your-analysis-plan" class="level3">
+<h3 class="anchored" data-anchor-id="questions-to-consider-in-your-analysis-plan">Questions to consider in your analysis plan</h3>
+<p><strong>Below are a few questions to consider as you outline the approach to reproduce one model in the paper:</strong></p>
+<ul>
+<li>What data cleaning (if any) is required to prepare the data for modeling? Did the authors remove any observations? Did they create or transform variables?</li>
+</ul>
+<!-- -->
+<ul>
+<li>Did the authors conduct model selection? If so, what was their approach?</li>
+<li>Did the authors make any adjustments to the model (e.g., including weighting or a penalty term)? If so, how will you incorporate these adjustments in your model? What questions do you have about these additional model adjustments?</li>
+<li>Did the authors assess the model fit or performance? If so, how? Otherwise, how will you assess the model fit or performance?</li>
+</ul>
+<p><strong>Below are a few questions to consider as you outline the approach for the original analysis:</strong></p>
+<ul>
+<li>What question do you want to explore as part of your original analysis?</li>
+<li>Do you need to add new data and/or create new variables? If so, what do you need to add? - What model will you use? How will you assess model fit and performance?</li>
+<li>How do your results compare to the results in the article?</li>
+</ul>
+</section>
+<section id="submitting-the-analysis-plan-optional" class="level3">
+<h3 class="anchored" data-anchor-id="submitting-the-analysis-plan-optional">Submitting the analysis plan (optional)</h3>
+<p>You may turn in the analysis plan along with any initial results to receive feedback from the teaching team. To do so,</p>
+<ol type="1">
+<li>Write your analysis plan in <code>analysis-plan.qmd</code> document. Render and push the updated proposal to your team’s GitHub repo.</li>
+<li>Open a new issue called “Analysis Plan”. In the body of the issue add the tag <code>@sta310-sp24/teaching-team</code>. If you have any specific questions you’d like the teaching team to address, add those in the body of the issue as well.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The analysis plan is optional. If you would like to receive feedback from the teaching team, you must open the issue and submit the analysis plan on GitHub by <strong>Friday, March 8 at 12pm (noon).</strong></p>
+<p><em>I recommend sketching an analysis plan before diving into the analysis even if you don’t turn it in for feedback.</em></p>
+</div>
+</div>
+</section>
+</section>
+<section id="draft" class="level2">
+<h2 class="anchored" data-anchor-id="draft">Draft</h2>
+<p>The goal of the draft is to get initial feedback on your analysis and report.</p>
+<p>At a minimum, the draft should include the following:</p>
+<ul>
+<li>Summary of the article and the primary research questions</li>
+<li>Exploratory data analysis for the response variable</li>
+<li>Description of the process to reproduce the model</li>
+<li>First attempt to reproduce the model with description of any differences between your results and results in the article</li>
+<li>Description of what you’re exploring in the original analysis</li>
+<li>First attempt at original analysis with initial conclusions</li>
+</ul>
+<p>Write the draft in <code>written-report.qmd</code>. Push the <code>.qmd</code> and rendered PDF to the GitHub repo for submission.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The draft is due on Friday, March 22 at noon.</strong></p>
+</div>
+</div>
+<p>Grading criteria (15 pts)</p>
+<p>The draft and peer review will be graded based on the following:</p>
+<ul>
+<li>Draft is comprehensive and includes an attempt at each component mentioned above (7 pts)</li>
+</ul>
+</section>
+<section id="written-report" class="level2">
+<h2 class="anchored" data-anchor-id="written-report">Written report</h2>
+<p>The final written report is due on <strong>Thursday, April 4 at 9pm</strong>. It should include the sections below. There is a 10-page limit.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>This section includes a brief summary of the article and its primary research objective. It will also include a description of the data set and relevant variables. This section should be written as if the reader has not read the article nor has seen the data dictionary in your GitHub repo. You do not need to include a description of every variable, but you want to provide enough information that the reader has an idea of the type of information in the data set.</p>
+</section>
+<section id="reproducing-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="reproducing-the-model">Reproducing the model</h3>
+<p>This section will include a description of model you’re reproducing along with a description of the response variable and any relevant descriptive statistics and visualizations. Describe the process you used to reproduce the model (data cleaning or preparation, model selection, etc.) and if there were places where your process differed from that in the original article.</p>
+<p>Include the output from the model and the conclusions from the model. These conclusions can include those from the original paper and/or any conclusions your group derived that were in the paper.</p>
+</section>
+<section id="original-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="original-analysis">Original analysis</h3>
+<p>This section will include a summary and results from your original analysis. Describe the question you’re exploring in this analysis and your motivation for choosing this question. Describe the analysis process (data cleaning, model selection, model evaluation, etc.). Include the relevant output from your results and a summary of the conclusions from this analysis. Note any conclusions that may have differed from those in the original article.</p>
+</section>
+<section id="discussion" class="level3">
+<h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
+<p>This section will include a summary of your conclusions along with any limitations to the data or analysis. Also include any challenges your group may have faced with reproducing the model and suggestions to improve the reproducible of the analysis.</p>
+</section>
+<section id="grading-criteria" class="level3">
+<h3 class="anchored" data-anchor-id="grading-criteria">Grading criteria</h3>
+<p>Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. The point allocation is as follows:</p>
+<p>The report will also be assessed based on the following:</p>
+<ul>
+<li>Thoroughness of analysis
+<ul>
+<li>This is an assessment of the thoroughness in at least one of the primary analyses in the report - reproducing the model or original analysis. Does the report demonstrate an an in-depth approach to reproduce the model, an in-depth evaluation of the authors’ choices, an in-depth exploration of new variables, model types, etc, or an in-depth exploration in some other part of the analysis?</li>
+</ul></li>
+<li>Formatting
+<ul>
+<li>This is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.</li>
+</ul></li>
+<li>Reproducibility
+<ul>
+<li>This is an assessment of the reproducibility of the report. Is the PDF produced by rendering the <code>.qmd</code> document?</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="presentation" class="level2">
+<h2 class="anchored" data-anchor-id="presentation">Presentation</h2>
+<p>You will present on <strong>Wednesday, April 3</strong> during lecture. Each team will have 8 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.</p>
+<p>You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in 8 minutes. A suggested outline is</p>
+<ul>
+<li>Introduction to the article and research question</li>
+<li>Description of the data</li>
+<li>Description of the model reproduction process and challenges</li>
+<li>Description and results from original analysis</li>
+<li>Discussion and conclusion</li>
+</ul>
+<p>You will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the “Peers” scores for your team’s presentation included in your presentation grade.</p>
+</section>
+<section id="github-repo-organization" class="level2">
+<h2 class="anchored" data-anchor-id="github-repo-organization">GitHub repo organization</h2>
+<p>You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by <strong>Thursday, April 4 at 9pm.</strong></p>
+<ul>
+<li><p><code>README.md</code>: Title and 3 - 5 sentence summary of the project</p></li>
+<li><p><code>*.bib</code>: BibTex file for references (optional)</p></li>
+<li><p><code>proposal.qmd</code></p></li>
+<li><p><code>proposal.pdf</code></p></li>
+<li><p><code>analysis-plan.qmd</code></p></li>
+<li><p><code>analysis-plan.pdf</code></p></li>
+<li><p><code>written-report.qmd</code></p></li>
+<li><p><code>written-report.pdf</code></p></li>
+<li><p><code>/presentation</code></p>
+<ul>
+<li><code>/presentation/*</code>: Presentation file (if not linked in README)</li>
+<li><code>/presentation/README.md</code>: Link to project (if not in presentation folder)</li>
+</ul></li>
+<li><p><code>/data/</code>:</p>
+<ul>
+<li><p><code>/data/*</code>: File containing data set</p></li>
+<li><p><code>/data/README.md</code>: Codebook for data set.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="grading-100-points" class="level2">
+<h2 class="anchored" data-anchor-id="grading-100-points">Grading (100 points)</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Proposal</td>
+<td>15 pts</td>
+</tr>
+<tr class="even">
+<td>Draft report</td>
+<td>15 pts</td>
+</tr>
+<tr class="odd">
+<td>Written report</td>
+<td>35 pts</td>
+</tr>
+<tr class="even">
+<td>Presentation</td>
+<td>20 pts</td>
+</tr>
+<tr class="odd">
+<td>Presentation peer review (individually assessed)</td>
+<td>5 pts</td>
+</tr>
+<tr class="even">
+<td>Repo organization</td>
+<td>5 pts</td>
+</tr>
+<tr class="odd">
+<td>Teamwork evaluation (individually assessed)</td>
+<td>5 pts</td>
+</tr>
+</tbody>
+</table>
+<section id="tips-on-finding-articles" class="level3">
+<h3 class="anchored" data-anchor-id="tips-on-finding-articles">Tips on finding articles</h3>
+<p>Below are tips to help you find articles based on information from <a href="https://directory.library.duke.edu/staff/jodi.psoter">Jodi Psoter</a>, the former Librarian for Chemistry and Statistical Science at Duke Libraries and current Head Librarian for the Marine Lab Library.</p>
+</section>
+<section id="pubmed" class="level3">
+<h3 class="anchored" data-anchor-id="pubmed">PubMed</h3>
+<p><em>Articles in health-related fields</em></p>
+<p>The <a href="https://www.ncbi.nlm.nih.gov/mesh/68013223">PubMed heading tree</a> lets you search by topic. The link will direct you to the results under the category of “Statistics as a Topic”.</p>
+<ol type="1">
+<li>Click on the model or distribution of interest, e.g.&nbsp;“Logistic Models”.</li>
+<li>Click “Add to search builder” under the <em>PubMed Search Builder</em> in the top right corner. You should now see the model/analysis type you chose in the search box.</li>
+<li>Click “Search PubMed”, and a page of search results will appear.</li>
+<li>There are options to narrow your results on the left-hand side. Under <em>Article Attributes</em>, check “Associated Data,” to limit the results to articles with data sets available.</li>
+</ol>
+</section>
+<section id="psycinfo" class="level3">
+<h3 class="anchored" data-anchor-id="psycinfo">PsycInfo</h3>
+<p><em>Articles in psychology</em></p>
+<p><a href="https://web-p-ebscohost-com.proxy.lib.duke.edu/ehost/search/advanced?vid=1&amp;sid=2061752c-359b-411c-9ebd-aec4d285fee4%40redis">PsycInfo</a> will allow users to search by analysis type.</p>
+<ol type="1">
+<li><p>Put the name of the model in the search bar, e.g., “Poisson Regression”. Then, in the drop down menu next to the search bar, select “DE Subjects [exact]”. Click Search.</p></li>
+<li><p>You can use the options on the left-hand size to narrow down the search results.</p></li>
+</ol>
+</section>
+<section id="web-of-science" class="level3">
+<h3 class="anchored" data-anchor-id="web-of-science">Web of Science</h3>
+<p><em>Articles on all topics</em></p>
+<p><a href="https://www-webofscience-com.proxy.lib.duke.edu/wos/drci/basic-search">Web of Science Data Citation Index</a> lets you search for data sets based on the topic of interest.</p>
+<ol type="1">
+<li><p>Use the search bar to search based on a topic of interest. You can also search for the model or distribution name.</p></li>
+<li><p>On the left-hand side, check “Data Set” under <em>Content Type</em> and check “Dataset” under <em>Data Types</em>. Click “Refine” to limit the results.</p></li>
+</ol>
+<p>3.Click on the article of interest.</p>
+<ol start="4" type="1">
+<li>You can use the options on the left-hand size to narrow down the search results.</li>
+</ol>
+</section>
+<section id="additional-tips" class="level3">
+<h3 class="anchored" data-anchor-id="additional-tips">Additional tips</h3>
+<ul>
+<li><p><a href="https://journals.plos.org/plosone/">Plos One</a> is an open-access peer-reviewed journal with articles from a variety of disciplines. Many of the articles include the data set as part of the “Supplemental Data”.</p></li>
+<li><p>You can use terms such as “multilevel models” , “mixed effects models”, “random effects models”, “longitudinal models”, and “hierarchical models” to find models for multilevel data.</p></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<ul>
+<li>Grading criteria and the repo organization for this project were adapted from Project 1 on <a href="https://vizdata.org">vizdata.org</a>.</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -682,7 +1085,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/projects/project-02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/projects/project-02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This site is built with <a href="https://quarto.org/">Quarto</a></p>
 </div>

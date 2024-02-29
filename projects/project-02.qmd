@@ -1,5 +1,315 @@
 ---
-title: Project 02
+title: "Project 02: Multilevel models + Reproducibility"
 ---
 
-To be posted.
+For this project you and your team will be reading and evaluating a scholarly article that uses a multilevel or longitudinal model in the analysis. You will also use data from the article to reproduce a model and conduct additional analysis.
+
+The learning objectives are to
+
+-   Explore how multilevel models are used in practice.
+-   Understand how statistical results are presented in scholarly research.
+-   Recognize what information is needed for an analysis to be reproducible.
+-   Gain experience analyzing real-world multilevel data.
+
+## Team assignments
+
+You will work in small teams for this project. You will find the team assignments in the `#project-02` channel in Slack.
+
+You will work in the same teams as Project 01. Before getting started, I encourage you to briefly discuss the following as a group in case anything has changed since the first project:
+
+-   Come up with a plan to communicate and work together outside of lab.
+
+-   Come up with a plan for remote work if some team members are unable to attend lab or other in-person team meetings.
+
+## Workflow
+
+-   **Project Week 01 (week of Feb 26)**: Select the article and accompanying data set. Write and submit the proposal.
+
+-   **Project Week 02 (week of March 4)**: Read and evaluate the article. Develop an analysis plan.
+
+-   *Spring Break: March 11 - 15*
+
+-   **Project Week 03 (week of March 18):** Work on analysis.
+
+-   **Project Week 04 (Week of March 25)**: Finalize analysis results, make presentation, and write report.
+
+-   **Project Week 05 (Week of Apr 1)**: Presentations and submit reports.
+
+## Due dates
+
+::: callout-note
+All work will be submitted in your team's project GitHub repo.
+:::
+
+-   **Proposal**: due Friday, March 1 at 12pm (noon)
+
+-   **Analysis plan (optional)**: due Friday, March 8 at 12pm (noon)
+
+    -   *Optional submission to receive feedback from the teaching team.*
+
+-   **Draft results**: due Friday, March 22 at 12pm (noon)
+
+-   **Presentations**: due Wed, Apr 3 at 3:30pm
+
+-   **Written report**: due Thursday, Apr 4 at 9pm
+
+## Article + data set
+
+The article for this project <u>must</u> be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must
+
+-   Incorporate the use one or more multilevel or longitudinal models in the analysis.
+
+```{=html}
+<!-- -->
+```
+-   Have the original data set or a comparable data set available.
+
+See the [Tips on finding articles](#Tips_on_finding_articles) for tips on searching databases to find articles and data.
+
+## Proposal
+
+The main goal of the proposal is to ensure you have an article that will set you up for a successful project. The proposal should include the following:
+
+-   The citation for the article. *If you're using a `.bib` file you can use the default citation format in R Markdown (Chicago author-date format). Otherwise, use MLA format.*
+
+-   Brief summary about why you chose this article.
+
+-   Brief summary of the article's primary research objective.
+
+-   A description of the data analyzed in the article. Include
+
+    -   A description of the observational units at each level. (*Note: Most articles will have level-one and level-two observational units, but some may have more levels to the data structure.*)
+    -   A description of the response variable.
+    -   A description of within-group variability.
+    -   A description of the fixed and random effects.
+
+-   A `glimpse` of the data set
+
+You are only required to write the proposal for one article. Write the proposal in the file `proposal.qmd`, then push the `.qmd` and rendered PDF to the GitHub repo for submission.
+
+::: callout-important
+**The proposal is due on Friday, March 1 at noon.\
+\
+**You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.
+:::
+
+### Grading criteria (15 pts)
+
+The proposal will be graded based on the following:
+
+-   All required components of the proposal are included and accurate (10 pts)
+
+-   Data set is in the `data` folder of the GitHub repo (2 pts)
+
+-   All team members have contributed (3 pts)
+
+    -   This will be assessed based on the repo's commit history.
+
+## Analysis plan (optional)
+
+The goal of the analysis plan is for you team to outline your approach for the two components of the project analysis. These components are
+
+1.  Try to reproduce one multilevel model in the article.
+2.  Conduct original analysis using the data from the article and compare your results and conclusions to those from the article. The original analysis may include
+    -   Fitting a model that incorporates new variables and/or data
+    -   Fitting a new model (e.g., using different parameter adjustments, transforming the response variable, etc.)
+    -   Assessing the authors' choice of any adjustments to the model (e.g., adding a penalty term)
+    -   ...other areas of exploration
+
+### Questions to consider in your analysis plan
+
+**Below are a few questions to consider as you outline the approach to reproduce one model in the paper:**
+
+-   What data cleaning (if any) is required to prepare the data for modeling? Did the authors remove any observations? Did they create or transform variables?
+
+```{=html}
+<!-- -->
+```
+-   Did the authors conduct model selection? If so, what was their approach?
+-   Did the authors make any adjustments to the model (e.g., including weighting or a penalty term)? If so, how will you incorporate these adjustments in your model? What questions do you have about these additional model adjustments?
+-   Did the authors assess the model fit or performance? If so, how? Otherwise, how will you assess the model fit or performance?
+
+**Below are a few questions to consider as you outline the approach for the original analysis:**
+
+-   What question do you want to explore as part of your original analysis?
+-   Do you need to add new data and/or create new variables? If so, what do you need to add? - What model will you use? How will you assess model fit and performance?
+-   How do your results compare to the results in the article?
+
+### Submitting the analysis plan (optional)
+
+You may turn in the analysis plan along with any initial results to receive feedback from the teaching team. To do so,
+
+1.  Write your analysis plan in `analysis-plan.qmd` document. Render and push the updated proposal to your team's GitHub repo.
+2.  Open a new issue called "Analysis Plan". In the body of the issue add the tag `@sta310-sp24/teaching-team`. If you have any specific questions you'd like the teaching team to address, add those in the body of the issue as well.
+
+::: callout-important
+The analysis plan is optional. If you would like to receive feedback from the teaching team, you must open the issue and submit the analysis plan on GitHub by **Friday, March 8 at 12pm (noon).**
+
+*I recommend sketching an analysis plan before diving into the analysis even if you don't turn it in for feedback.*
+:::
+
+## Draft 
+
+The goal of the draft is to get initial feedback on your analysis and report.
+
+At a minimum, the draft should include the following:
+
+-   Summary of the article and the primary research questions
+-   Exploratory data analysis for the response variable
+-   Description of the process to reproduce the model
+-   First attempt to reproduce the model with description of any differences between your results and results in the article
+-   Description of what you're exploring in the original analysis
+-   First attempt at original analysis with initial conclusions
+
+Write the draft in `written-report.qmd`. Push the `.qmd` and rendered PDF to the GitHub repo for submission.
+
+::: callout-important
+**The draft is due on Friday, March 22 at noon.**
+:::
+
+Grading criteria (15 pts)
+
+The draft and peer review will be graded based on the following:
+
+-   Draft is comprehensive and includes an attempt at each component mentioned above (7 pts)
+
+## Written report
+
+The final written report is due on **Thursday, April 4 at 9pm**. It should include the sections below. There is a 10-page limit.
+
+### Introduction 
+
+This section includes a brief summary of the article and its primary research objective. It will also include a description of the data set and relevant variables. This section should be written as if the reader has not read the article nor has seen the data dictionary in your GitHub repo. You do not need to include a description of every variable, but you want to provide enough information that the reader has an idea of the type of information in the data set.
+
+### Reproducing the model 
+
+This section will include a description of model you're reproducing along with a description of the response variable and any relevant descriptive statistics and visualizations. Describe the process you used to reproduce the model (data cleaning or preparation, model selection, etc.) and if there were places where your process differed from that in the original article.
+
+Include the output from the model and the conclusions from the model. These conclusions can include those from the original paper and/or any conclusions your group derived that were in the paper.
+
+### Original analysis 
+
+This section will include a summary and results from your original analysis. Describe the question you're exploring in this analysis and your motivation for choosing this question. Describe the analysis process (data cleaning, model selection, model evaluation, etc.). Include the relevant output from your results and a summary of the conclusions from this analysis. Note any conclusions that may have differed from those in the original article.
+
+### Discussion 
+
+This section will include a summary of your conclusions along with any limitations to the data or analysis. Also include any challenges your group may have faced with reproducing the model and suggestions to improve the reproducible of the analysis.
+
+### Grading criteria 
+
+Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. The point allocation is as follows:
+
+The report will also be assessed based on the following:
+
+-   Thoroughness of analysis
+    -   This is an assessment of the thoroughness in at least one of the primary analyses in the report - reproducing the model or original analysis. Does the report demonstrate an an in-depth approach to reproduce the model, an in-depth evaluation of the authors' choices, an in-depth exploration of new variables, model types, etc, or an in-depth exploration in some other part of the analysis?
+-   Formatting
+    -   This is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.
+-   Reproducibility
+    -   This is an assessment of the reproducibility of the report. Is the PDF produced by rendering the `.qmd` document?
+
+## Presentation
+
+You will present on **Wednesday, April 3** during lecture. Each team will have 8 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.
+
+You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in 8 minutes. A suggested outline is
+
+-   Introduction to the article and research question
+-   Description of the data
+-   Description of the model reproduction process and challenges
+-   Description and results from original analysis
+-   Discussion and conclusion
+
+You will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the "Peers" scores for your team's presentation included in your presentation grade.
+
+## GitHub repo organization
+
+You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by **Thursday, April 4 at 9pm.**
+
+-   `README.md`: Title and 3 - 5 sentence summary of the project
+
+-   `*.bib`: BibTex file for references (optional)
+
+-   `proposal.qmd`
+
+-   `proposal.pdf`
+
+-   `analysis-plan.qmd`
+
+-   `analysis-plan.pdf`
+
+-   `written-report.qmd`
+
+-   `written-report.pdf`
+
+-   `/presentation`
+
+    -   `/presentation/*`: Presentation file (if not linked in README)
+    -   `/presentation/README.md`: Link to project (if not in presentation folder)
+
+-   `/data/`:
+
+    -   `/data/*`: File containing data set
+
+    -   `/data/README.md`: Codebook for data set.
+
+## Grading (100 points)
+
+| Component                                        | Points |
+|--------------------------------------------------|--------|
+| Proposal                                         | 15 pts |
+| Draft report                                     | 15 pts |
+| Written report                                   | 35 pts |
+| Presentation                                     | 20 pts |
+| Presentation peer review (individually assessed) | 5 pts  |
+| Repo organization                                | 5 pts  |
+| Teamwork evaluation (individually assessed)      | 5 pts  |
+
+### Tips on finding articles
+
+Below are tips to help you find articles based on information from [Jodi Psoter](https://directory.library.duke.edu/staff/jodi.psoter), the former Librarian for Chemistry and Statistical Science at Duke Libraries and current Head Librarian for the Marine Lab Library.
+
+### PubMed
+
+*Articles in health-related fields*
+
+The [PubMed heading tree](https://www.ncbi.nlm.nih.gov/mesh/68013223) lets you search by topic. The link will direct you to the results under the category of "Statistics as a Topic".
+
+1.  Click on the model or distribution of interest, e.g. "Logistic Models".
+2.  Click "Add to search builder" under the *PubMed Search Builder* in the top right corner. You should now see the model/analysis type you chose in the search box.
+3.  Click "Search PubMed", and a page of search results will appear.
+4.  There are options to narrow your results on the left-hand side. Under *Article Attributes*, check “Associated Data,” to limit the results to articles with data sets available.
+
+### PsycInfo
+
+*Articles in psychology*
+
+[PsycInfo](https://web-p-ebscohost-com.proxy.lib.duke.edu/ehost/search/advanced?vid=1&sid=2061752c-359b-411c-9ebd-aec4d285fee4%40redis) will allow users to search by analysis type.
+
+1.  Put the name of the model in the search bar, e.g., "Poisson Regression". Then, in the drop down menu next to the search bar, select "DE Subjects \[exact\]". Click Search.
+
+2.  You can use the options on the left-hand size to narrow down the search results.
+
+### Web of Science
+
+*Articles on all topics*
+
+[Web of Science Data Citation Index](https://www-webofscience-com.proxy.lib.duke.edu/wos/drci/basic-search) lets you search for data sets based on the topic of interest.
+
+1.  Use the search bar to search based on a topic of interest. You can also search for the model or distribution name.
+
+2.  On the left-hand side, check "Data Set" under *Content Type* and check "Dataset" under *Data Types*. Click "Refine" to limit the results.
+
+3.Click on the article of interest.
+
+4.  You can use the options on the left-hand size to narrow down the search results.
+
+### Additional tips 
+
+-   [Plos One](https://journals.plos.org/plosone/) is an open-access peer-reviewed journal with articles from a variety of disciplines. Many of the articles include the data set as part of the "Supplemental Data".
+
+-   You can use terms such as "multilevel models" , "mixed effects models", "random effects models", "longitudinal models", and "hierarchical models" to find models for multilevel data.
+
+### Acknowledgements
+
+-   Grading criteria and the repo organization for this project were adapted from Project 1 on [vizdata.org](https://vizdata.org).

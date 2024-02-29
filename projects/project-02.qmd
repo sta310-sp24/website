@@ -2,7 +2,7 @@
 title: "Project 02: Multilevel models + Reproducibility"
 ---
 
-For this project you and your team will be reading and evaluating a scholarly article that uses a multilevel or longitudinal model in the analysis. You will also use data from the article to reproduce a model and conduct additional analysis.
+For this project you and your team will read and evaluate a scholarly article that uses a multilevel model in the analysis. You will also use data from the article to reproduce one model and conduct additional analysis.
 
 The learning objectives are to
 
@@ -13,9 +13,7 @@ The learning objectives are to
 
 ## Team assignments
 
-You will work in small teams for this project. You will find the team assignments in the `#project-02` channel in Slack.
-
-You will work in the same teams as Project 01. Before getting started, I encourage you to briefly discuss the following as a group in case anything has changed since the first project:
+You will work in the same teams the Project 01 teams. A reminder of those team assignments is available in Slack. Before getting started, I encourage you to briefly discuss the following as a group in case anything has changed since the first project:
 
 -   Come up with a plan to communicate and work together outside of lab.
 
@@ -29,11 +27,11 @@ You will work in the same teams as Project 01. Before getting started, I encoura
 
 -   *Spring Break: March 11 - 15*
 
--   **Project Week 03 (week of March 18):** Work on analysis.
+-   **Project Week 03 (week of March 18):** Work on analysis and submit draft report.
 
 -   **Project Week 04 (Week of March 25)**: Finalize analysis results, make presentation, and write report.
 
--   **Project Week 05 (Week of Apr 1)**: Presentations and submit reports.
+-   **Project Week 05 (Week of Apr 1)**: Present during lecture and submit final report.
 
 ## Due dates
 
@@ -57,16 +55,15 @@ All work will be submitted in your team's project GitHub repo.
 
 The article for this project <u>must</u> be published in a scholarly journal. Please ask a member of the teaching team if you are unsure whether the article is published in a scholarly journal. The article must
 
--   Incorporate the use one or more multilevel or longitudinal models in the analysis.
+-   Incorporate the use one or more multilevel models in the analysis.
 
-```{=html}
 <!-- -->
-```
+
 -   Have the original data set or a comparable data set available.
 
 See the [Tips on finding articles](#Tips_on_finding_articles) for tips on searching databases to find articles and data.
 
-## Proposal
+## Proposal (15 pts)
 
 The main goal of the proposal is to ensure you have an article that will set you up for a successful project. The proposal should include the following:
 
@@ -85,7 +82,7 @@ The main goal of the proposal is to ensure you have an article that will set you
 
 -   A `glimpse` of the data set
 
-You are only required to write the proposal for one article. Write the proposal in the file `proposal.qmd`, then push the `.qmd` and rendered PDF to the GitHub repo for submission.
+Write the proposal in the file `proposal.qmd`, then push the `.qmd` and rendered PDF to the GitHub repo for submission.
 
 ::: callout-important
 **The proposal is due on Friday, March 1 at noon.\
@@ -93,7 +90,7 @@ You are only required to write the proposal for one article. Write the proposal 
 **You will not be able to commit new work to your GitHub repo after the deadline until we have completed grading. If your group needs to submit your work late, please send me a message on Slack or email to reopen the repo.
 :::
 
-### Grading criteria (15 pts)
+### Grading criteria 
 
 The proposal will be graded based on the following:
 
@@ -107,7 +104,7 @@ The proposal will be graded based on the following:
 
 ## Analysis plan (optional)
 
-The goal of the analysis plan is for you team to outline your approach for the two components of the project analysis. These components are
+The goal of the analysis plan is for you team to outline your approach for the two analysis components of the project. These components are
 
 1.  Try to reproduce one multilevel model in the article.
 2.  Conduct original analysis using the data from the article and compare your results and conclusions to those from the article. The original analysis may include
@@ -121,10 +118,6 @@ The goal of the analysis plan is for you team to outline your approach for the t
 **Below are a few questions to consider as you outline the approach to reproduce one model in the paper:**
 
 -   What data cleaning (if any) is required to prepare the data for modeling? Did the authors remove any observations? Did they create or transform variables?
-
-```{=html}
-<!-- -->
-```
 -   Did the authors conduct model selection? If so, what was their approach?
 -   Did the authors make any adjustments to the model (e.g., including weighting or a penalty term)? If so, how will you incorporate these adjustments in your model? What questions do you have about these additional model adjustments?
 -   Did the authors assess the model fit or performance? If so, how? Otherwise, how will you assess the model fit or performance?
@@ -132,14 +125,15 @@ The goal of the analysis plan is for you team to outline your approach for the t
 **Below are a few questions to consider as you outline the approach for the original analysis:**
 
 -   What question do you want to explore as part of your original analysis?
--   Do you need to add new data and/or create new variables? If so, what do you need to add? - What model will you use? How will you assess model fit and performance?
+-   Do you need to add new data and/or create new variables? If so, what do you need to add?
+-   What model will you use? How will you assess model fit and performance?
 -   How do your results compare to the results in the article?
 
-### Submitting the analysis plan (optional)
+### Submit the analysis plan (optional)
 
 You may turn in the analysis plan along with any initial results to receive feedback from the teaching team. To do so,
 
-1.  Write your analysis plan in `analysis-plan.qmd` document. Render and push the updated proposal to your team's GitHub repo.
+1.  Write your analysis plan in `analysis-plan.qmd` . Render and push the updated document to your team's GitHub repo.
 2.  Open a new issue called "Analysis Plan". In the body of the issue add the tag `@sta310-sp24/teaching-team`. If you have any specific questions you'd like the teaching team to address, add those in the body of the issue as well.
 
 ::: callout-important
@@ -148,7 +142,7 @@ The analysis plan is optional. If you would like to receive feedback from the te
 *I recommend sketching an analysis plan before diving into the analysis even if you don't turn it in for feedback.*
 :::
 
-## Draft 
+## Draft
 
 The goal of the draft is to get initial feedback on your analysis and report.
 
@@ -167,35 +161,35 @@ Write the draft in `written-report.qmd`. Push the `.qmd` and rendered PDF to the
 **The draft is due on Friday, March 22 at noon.**
 :::
 
-Grading criteria (15 pts)
-
-The draft and peer review will be graded based on the following:
-
--   Draft is comprehensive and includes an attempt at each component mentioned above (7 pts)
+<!--add grading criteria-->
 
 ## Written report
 
-The final written report is due on **Thursday, April 4 at 9pm**. It should include the sections below. There is a 10-page limit.
+The final written report should include the sections below. **There is a 10-page limit.**
 
-### Introduction 
+### Introduction
 
 This section includes a brief summary of the article and its primary research objective. It will also include a description of the data set and relevant variables. This section should be written as if the reader has not read the article nor has seen the data dictionary in your GitHub repo. You do not need to include a description of every variable, but you want to provide enough information that the reader has an idea of the type of information in the data set.
 
-### Reproducing the model 
+### Reproducing the model
 
 This section will include a description of model you're reproducing along with a description of the response variable and any relevant descriptive statistics and visualizations. Describe the process you used to reproduce the model (data cleaning or preparation, model selection, etc.) and if there were places where your process differed from that in the original article.
 
 Include the output from the model and the conclusions from the model. These conclusions can include those from the original paper and/or any conclusions your group derived that were in the paper.
 
-### Original analysis 
+### Original analysis
 
 This section will include a summary and results from your original analysis. Describe the question you're exploring in this analysis and your motivation for choosing this question. Describe the analysis process (data cleaning, model selection, model evaluation, etc.). Include the relevant output from your results and a summary of the conclusions from this analysis. Note any conclusions that may have differed from those in the original article.
 
-### Discussion 
+### Discussion
 
 This section will include a summary of your conclusions along with any limitations to the data or analysis. Also include any challenges your group may have faced with reproducing the model and suggestions to improve the reproducible of the analysis.
 
-### Grading criteria 
+::: callout-important
+**The final written report is due on Thursday, April 4 at 9pm.**
+:::
+
+### Grading criteria
 
 Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. The point allocation is as follows:
 
@@ -210,7 +204,7 @@ The report will also be assessed based on the following:
 
 ## Presentation
 
-You will present on **Wednesday, April 3** during lecture. Each team will have 8 minutes for the presentation along with a few minutes for questions, and every team member should speak about an equal amount of time during the presentation.
+You will present on **Wednesday, April 3** during lecture. Each team will have 8 minutes for the presentation along with a few minutes for questions. Every team member is expected to speak about an equal amount of time during the presentation.
 
 You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in 8 minutes. A suggested outline is
 
@@ -265,7 +259,7 @@ You should have the following files and folders in the project repo. The repo an
 | Repo organization                                | 5 pts  |
 | Teamwork evaluation (individually assessed)      | 5 pts  |
 
-### Tips on finding articles
+## Tips on finding articles
 
 Below are tips to help you find articles based on information from [Jodi Psoter](https://directory.library.duke.edu/staff/jodi.psoter), the former Librarian for Chemistry and Statistical Science at Duke Libraries and current Head Librarian for the Marine Lab Library.
 
@@ -304,7 +298,7 @@ The [PubMed heading tree](https://www.ncbi.nlm.nih.gov/mesh/68013223) lets you s
 
 4.  You can use the options on the left-hand size to narrow down the search results.
 
-### Additional tips 
+### Additional tips
 
 -   [Plos One](https://journals.plos.org/plosone/) is an open-access peer-reviewed journal with articles from a variety of disciplines. Many of the articles include the data set as part of the "Supplemental Data".
 

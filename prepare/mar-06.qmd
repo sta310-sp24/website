@@ -1,0 +1,5 @@
+---
+title: "Prepare for March 06 lecture"
+---
+
+-   Read [BMLR: Sections 9.6](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#finalmodel)

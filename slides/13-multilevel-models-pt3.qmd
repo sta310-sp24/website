@@ -352,7 +352,7 @@ library(countdown)
 countdown(minutes = 6, seconds = 00, margin = "1.25%")
 ```
 
-#  Application exercise
+# Application exercise
 
 ::: appex
 📋 [sta310-sp24.netlify.app/ae/lec-13-multilevel-contd](https://sta310-sp24.netlify.app/ae/lec-13-multilevel-contd.html)

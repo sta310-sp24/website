@@ -2010,242 +2010,245 @@
     "text": "Questions\n\n\n\n\n\n\nQuestion 1\n\n\n\nHow do the quasibinomial analysis for Scenario 1b differ from the binomial analysis for Scenario 1b? Consider the coefficient estimates, standard error, predicted probabilities and associated 95% CI.\n\n\n\n\n\n\n\n\nQuestion 2\n\n\n\nWhy are differences between the quasibinomial and binomial models of Scenario 1a less noticeable than the differences in Scenario 1b?"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html",
-    "href": "ae/lec-04-poisson-estimate.html",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "objectID": "ae/lec-14-longitudinal.html",
+    "href": "ae/lec-14-longitudinal.html",
+    "title": "Lecture 14 AE: Modeling two-level longitudinal data",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
+    "text": "library(tidyverse)\nlibrary(knitr)\nlibrary(lme4)\nlibrary(broom.mixed)\nlibrary(skimr)\ncharter &lt;- read_csv(\"data/charter-long.csv\") |&gt;\n  mutate(urban = factor(urban),\n         charter = factor(charter))"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
-    "href": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 1. Initial estimates of lambda",
-    "text": "Step 1. Initial estimates of lambda\nUsing total + 0.1 instead of total as initial starting values to avoid dividing by 0 or taking the log of 0.\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = hh_data$total + 5)"
+    "objectID": "ae/lec-14-longitudinal.html#exploratory-data-analysis",
+    "href": "ae/lec-14-longitudinal.html#exploratory-data-analysis",
+    "title": "Lecture 14 AE: Modeling two-level longitudinal data",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\n\n\n\n\n\nCaution\n\n\n\nThis is not a complete EDA for this data.\n\n\n\nUnivariate EDA\n\nggplot(data = charter, aes(x = MathAvgScore))  + \n  geom_histogram(fill = \"steelblue\", color = \"black\") + \n  labs(title = \"Average math scores\", \n  subtitle = \"6th graders in Minneapolis public schools\")\n\n\n\n\n\n\n\n\n\n\nBivariate EDA\n\nggplot(data = charter, aes(x = charter, y = MathAvgScore)) + \n  geom_boxplot(fill = \"steelblue\", color = \"black\")  +\n  labs(title = \"Average math scores of 6th graders in Minneapolis public schools\", \n       subtitle = \"by school type\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nMake a scatterplot of the average math score versus the proportion of students who receive free or reduced lunches in a school (based on 2010 figures).\n\n\n\n## scatterplot\n\n\n\n\n\n\n\nEx 2\n\n\n\nWhat do you observe from each bivariate plot?\n\n\n\n\nLattice plot\nMake a lattice plot of the average math scores over time for 24 randomly selected schools.\n\nset.seed(030424)\n\n# get sample of 24 schools\nsample_schools &lt;- charter |&gt;\n  distinct(schoolid) |&gt;\n  sample_n(24) |&gt; pull()\n\n# get data for those schools\nsample_data &lt;- charter |&gt;\n  filter(schoolid %in% sample_schools)\n\n\n## lattice plot\n\n\n\nSpaghetti plots\nPlot average math scores over time for each school. Apply a LOESS smoother (locally estimated scatterplot smoother).\n\nggplot(data = charter, aes(x = year08, y = MathAvgScore)) + \n  geom_line(aes(group = schoolid), color = \"light gray\") + \n  geom_smooth(color = \"black\", linewidth = 1, method = \"loess\") + \n  labs(x =\"Years since 2008\",\n       y =\"Average Math Scores\", \n       title = \"Math Scores over time for 6th graders in Minneapolis public schools\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEx 3\n\n\n\n\nWhat features are easier to observe in the lattice plots versus the spaghetti plot?\nWhat features are easier to observe in the spaghetti plot versus the lattice plot?\n\n\n\n\n\n\n\n\n\nEx 4\n\n\n\n\nMake a separate spaghetti plot of average maths scores over time by school type (charter vs. non-charter).\n\n\n\n\n# spaghetti plot by school type\n\n\n\n\n\n\n\nEx 5\n\n\n\n\nHow do the typical math scores from charter and non-charter schools compare over time?\nHow does the variability in math scores from charter and non-charter schools compare over time?"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
-    "href": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 2. Calculate the working response values \\(z_i\\).",
-    "text": "Step 2. Calculate the working response values \\(z_i\\).\nFor Poisson regression, \\(z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\)\n\nhh_data &lt;- hh_data |&gt;\n  mutate(z = log(lambda) + (hh_data$total - lambda) / lambda)"
+    "objectID": "ae/lec-14-longitudinal.html#unconditional-means-model",
+    "href": "ae/lec-14-longitudinal.html#unconditional-means-model",
+    "title": "Lecture 14 AE: Modeling two-level longitudinal data",
+    "section": "Unconditional means model",
+    "text": "Unconditional means model\n\n\n\n\n\n\nEx 6\n\n\n\nFit the unconditional means model and calculate the intraclass correlation.\n\n\n\n# Fit the unconditional means model\n\n\n# Calculate the intraclass correlation"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
-    "href": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 3. Calculate the working weights \\(W_i\\)",
-    "text": "Step 3. Calculate the working weights \\(W_i\\)\nFor Poisson regression, \\(W_i = \\lambda_i\\) .\n\nhh_data &lt;- hh_data |&gt;\n  mutate(w = lambda)\n\n\nhh_data |&gt;\n  select(total, lambda, z, w) |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 4\n  total lambda     z     w\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0      5 0.609     5\n2     3      8 1.45      8\n3     4      9 1.64      9\n4     3      8 1.45      8\n5     3      8 1.45      8"
+    "objectID": "ae/lec-14-longitudinal.html#unconditional-growth-model",
+    "href": "ae/lec-14-longitudinal.html#unconditional-growth-model",
+    "title": "Lecture 14 AE: Modeling two-level longitudinal data",
+    "section": "Unconditional growth model",
+    "text": "Unconditional growth model\n\n\n\n\n\n\nEx 7\n\n\n\nFit the unconditional growth model.\n\n\n\n# Fit the unconditional growth model\n\n\n\n\n\n\n\nEx 8\n\n\n\nCalculate the \\(Pseudo R^2\\) to estimate the change of within school variance between the unconditional means and unconditional growth models.\n\n\n\n# Pseudo R^2"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
-    "href": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Step 4. Find the coefficient estimates of the weighted least squares model",
-    "text": "Step 4. Find the coefficient estimates of the weighted least squares model\n\nwls &lt;- lm(z ~ age, weight = w, data = hh_data)\ntidy(wls) |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.7594\n0.0419\n41.9664\n0e+00\n\n\nage\n-0.0026\n0.0008\n-3.4172\n6e-04"
+    "objectID": "ae/lec-14-longitudinal.html#model-with-school-level-covariates",
+    "href": "ae/lec-14-longitudinal.html#model-with-school-level-covariates",
+    "title": "Lecture 14 AE: Modeling two-level longitudinal data",
+    "section": "Model with school-level covariates",
+    "text": "Model with school-level covariates\n\n\n\n\n\n\nEx 9\n\n\n\nFit the model with the school-level covariates.\n\n\n\n# Fit model with school level covariates"
   },
   {
-    "objectID": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
-    "href": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Use this model to get new estimates of lambda",
-    "text": "Use this model to get new estimates of lambda\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = exp(predict(wls)))\n\nRepeat steps 2 - 4 until the estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) converge to their respective values."
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#irls-automated",
-    "href": "ae/lec-04-poisson-estimate.html#irls-automated",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "IRLS automated",
-    "text": "IRLS automated\n\nnreps &lt;- 10\nhh_data &lt;- hh_data %&gt;%\n  mutate(lambda = hh_data$total + 5)\n\n\nbetas &lt;- tibble(beta0 = rep(0, nreps), \n                beta1 = rep(0, nreps))\n\nfor(i in 1:nreps){\n  hh_data &lt;- hh_data %&gt;%\n    mutate(z = log(lambda) + (hh_data$total - lambda)/ lambda, \n         w = lambda)\n  wls &lt;- lm(z ~ age, weight = w, data = hh_data)\n  betas$beta0[i] = tidy(wls)$estimate[1]\n  betas$beta1[i] = tidy(wls)$estimate[2]\n  \n  hh_data &lt;- hh_data %&gt;% \n    mutate(lambda = exp(predict(wls)))\n}\n  \nbetas\n\n# A tibble: 10 × 2\n   beta0    beta1\n   &lt;dbl&gt;    &lt;dbl&gt;\n 1  1.76 -0.00265\n 2  1.57 -0.00414\n 3  1.55 -0.00468\n 4  1.55 -0.00471\n 5  1.55 -0.00471\n 6  1.55 -0.00471\n 7  1.55 -0.00471\n 8  1.55 -0.00471\n 9  1.55 -0.00471\n10  1.55 -0.00471"
-  },
-  {
-    "objectID": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
-    "href": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
-    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
-    "section": "Fit using the glm function",
-    "text": "Fit using the glm function\n\n## add code here"
-  },
-  {
-    "objectID": "ae/ae-04-poisson.html",
-    "href": "ae/ae-04-poisson.html",
-    "title": "Lecture 04 AE: Poisson regression",
+    "objectID": "ae/lec-13-multilevel-contd.html",
+    "href": "ae/lec-13-multilevel-contd.html",
+    "title": "Lecture 13 AE: Multilevel models",
     "section": "",
-    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+    "text": "library(tidyverse)\nlibrary(knitr)\nlibrary(lme4)\nlibrary(broom.mixed)\nmusic &lt;- read_csv(\"data/music-data.csv\") |&gt;\n  mutate(orchestra = factor(if_else(instrument == \"orchestral instrument\", \n                                    1, 0)), \n         large_ensemble = factor(if_else(perform_type == \"Large Ensemble\", \n                                         1, 0)))"
   },
   {
-    "objectID": "ae/ae-04-poisson.html#introduction",
-    "href": "ae/ae-04-poisson.html#introduction",
-    "title": "Lecture 04 AE: Poisson regression",
+    "objectID": "ae/lec-13-multilevel-contd.html#model-1-random-intercepts-model",
+    "href": "ae/lec-13-multilevel-contd.html#model-1-random-intercepts-model",
+    "title": "Lecture 13 AE: Multilevel models",
+    "section": "Model 1: Random intercepts model",
+    "text": "Model 1: Random intercepts model\nThis is also known as the unconditional means model.\n\n#Model1 (Unconditional means model)\nmodel1 &lt;- lmer(na ~ 1 + (1 | id),  data = music)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n16.237\n0.428\n37.943\n\n\nran_pars\nid\nsd__(Intercept)\n2.225\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.739\nNA\nNA"
+  },
+  {
+    "objectID": "ae/lec-13-multilevel-contd.html#model-2-add-level-one-covariate",
+    "href": "ae/lec-13-multilevel-contd.html#model-2-add-level-one-covariate",
+    "title": "Lecture 13 AE: Multilevel models",
+    "section": "Model 2: Add Level One covariate",
+    "text": "Model 2: Add Level One covariate\nAdd large_ensemble as a Level One covariate. This is called a random slopes and intercepts model.\n\nmodel2 &lt;- lmer(na ~ large_ensemble + (large_ensemble | id),  \n               data = music)\n\ntidy(model2) |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n16.730\n0.491\n34.09\n\n\nfixed\nNA\nlarge_ensemble1\n-1.676\n0.542\n-3.09\n\n\nran_pars\nid\nsd__(Intercept)\n2.517\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble1\n-0.759\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble1\n0.862\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.666\nNA\nNA"
+  },
+  {
+    "objectID": "ae/lec-13-multilevel-contd.html#model-3-add-level-two-covariates",
+    "href": "ae/lec-13-multilevel-contd.html#model-3-add-level-two-covariates",
+    "title": "Lecture 13 AE: Multilevel models",
+    "section": "Model 3: Add Level Two covariates",
+    "text": "Model 3: Add Level Two covariates\nAdd orchestra as a Level Two covariate.\n\nmodel3 &lt;- lmer(na ~ large_ensemble + orchestra + orchestra:large_ensemble + \n                 (large_ensemble | id), data = music)\n\ntidy(model3) |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n15.930\n0.641\n24.833\n\n\nfixed\nNA\nlarge_ensemble1\n-0.911\n0.845\n-1.077\n\n\nfixed\nNA\norchestra1\n1.693\n0.945\n1.791\n\n\nfixed\nNA\nlarge_ensemble1:orchestra1\n-1.424\n1.099\n-1.295\n\n\nran_pars\nid\nsd__(Intercept)\n2.378\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble1\n-0.635\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble1\n0.672\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.670\nNA\nNA"
+  },
+  {
+    "objectID": "ae/lec-13-multilevel-contd.html#model-4-add-mpqnem-as-an-additional-level-two-covariate",
+    "href": "ae/lec-13-multilevel-contd.html#model-4-add-mpqnem-as-an-additional-level-two-covariate",
+    "title": "Lecture 13 AE: Multilevel models",
+    "section": "Model 4: Add mpqnem as an additional Level Two covariate",
+    "text": "Model 4: Add mpqnem as an additional Level Two covariate\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the Level One and Level Two models.\n\n\n\n\n\n\n\n\nEx 2\n\n\n\nWrite the composite model.\n\n\n\nmodel4 &lt;- lmer(na ~ large_ensemble + orchestra + mpqnem +  \n                 orchestra:large_ensemble + mpqnem:large_ensemble +\n                 (large_ensemble | id), data = music)\n\ntidy(model4) |&gt; \n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n11.568\n1.221\n9.478\n\n\nfixed\nNA\nlarge_ensemble1\n-0.280\n1.834\n-0.153\n\n\nfixed\nNA\norchestra1\n1.001\n0.817\n1.225\n\n\nfixed\nNA\nmpqnem\n0.148\n0.038\n3.893\n\n\nfixed\nNA\nlarge_ensemble1:orchestra1\n-0.949\n1.106\n-0.858\n\n\nfixed\nNA\nlarge_ensemble1:mpqnem\n-0.030\n0.052\n-0.575\n\n\nran_pars\nid\nsd__(Intercept)\n1.813\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble1\n-0.379\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble1\n0.746\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.670\nNA\nNA\n\n\n\n\n\n\n\n\n\n\n\nEx 3\n\n\n\nInterpret the effect of mpqnem for solo and small ensembles.\n\n\n\n\n\n\n\n\nEx 4\n\n\n\nInterpret the effect of mpqnem for large ensembles."
+  },
+  {
+    "objectID": "ae/lec-13-multilevel-contd.html#compare-models",
+    "href": "ae/lec-13-multilevel-contd.html#compare-models",
+    "title": "Lecture 13 AE: Multilevel models",
+    "section": "Compare models",
+    "text": "Compare models\nYou can get model summary statistics using the glance function from the broom.mixed package.\n\n\n\n\n\n\nEx 5\n\n\n\nCalculate AIC and BIC for Models 1 - 4. Use these statistics to choose a final model.\n\n\n\n# add code here"
+  },
+  {
+    "objectID": "ae/lec-05-overdisp.html",
+    "href": "ae/lec-05-overdisp.html",
+    "title": "Lecture 05 AE: Poisson Regression",
     "section": "",
-    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
+    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(knitr)\n# add other packages as needed\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
   },
   {
-    "objectID": "ae/ae-04-poisson.html#model-1-main-effects-model",
-    "href": "ae/ae-04-poisson.html#model-1-main-effects-model",
-    "title": "Lecture 04 AE: Poisson regression",
-    "section": "Model 1: Main effects model",
-    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
+    "objectID": "ae/lec-05-overdisp.html#household-vs.-age-age2-and-location",
+    "href": "ae/lec-05-overdisp.html#household-vs.-age-age2-and-location",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Household vs. age, age^2, and location",
+    "text": "Household vs. age, age^2, and location\n\nhh_age_loc &lt;- glm(total ~ age + I(age^2) + location, \n                  data = hh_data, family = poisson)\n\ntidy(hh_age_loc, conf.int = T) |&gt; \n  kable(digits = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.1821\n-2.1107\n0.0348\n-0.7444\n-0.0306\n\n\nage\n0.0704\n0.0069\n10.1900\n0.0000\n0.0569\n0.0840\n\n\nI(age^2)\n-0.0007\n0.0001\n-10.9437\n0.0000\n-0.0008\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0538\n-0.3605\n0.7185\n-0.1250\n0.0859\n\n\nlocationIlocosRegion\n0.0610\n0.0527\n1.1580\n0.2468\n-0.0423\n0.1641\n\n\nlocationMetroManila\n0.0545\n0.0472\n1.1542\n0.2484\n-0.0378\n0.1473\n\n\nlocationVisayas\n0.1121\n0.0417\n2.6853\n0.0072\n0.0308\n0.1945\n\n\n\n\n\n\n\n\n\n\n\nCalculating residuals in R\n\n\n\nYou can get the residuals in two ways:\n\nresiduals function with type = \"pearson\" or type = \"deviance\".\naugment function with type.residuals = \"pearson\" or type.residuals = deviance."
   },
   {
-    "objectID": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
-    "href": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
-    "title": "Lecture 04 AE: Poisson regression",
-    "section": "Model 2: Main effects + quadratic effect for year",
-    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
+    "objectID": "ae/lec-05-overdisp.html#calculate-model-deviance-goodness-of-fit",
+    "href": "ae/lec-05-overdisp.html#calculate-model-deviance-goodness-of-fit",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Calculate model deviance & Goodness-of-fit",
+    "text": "Calculate model deviance & Goodness-of-fit\n\n\n\n\n\n\nEx 1\n\n\n\nUse the deviance residuals to calculate the model deviance.\n\n\n\n# Calculate model deviance\n\n\n\n\n\n\n\nEx 2\n\n\n\nCheck your work above using the glance function.\n\n\n\n# Get deviance using glance function\n\n\n\n\n\n\n\nEx 3\n\n\n\nConduct a goodness-of-fit test\n\n\n\n# Conduct goodness-of-fit test"
   },
   {
-    "objectID": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
-    "href": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
-    "title": "Lecture 04 AE: Poisson regression",
-    "section": "Model 3: Main effects + interaction between year and condition",
-    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
+    "objectID": "ae/lec-05-overdisp.html#quasi-poisson",
+    "href": "ae/lec-05-overdisp.html#quasi-poisson",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Quasi-Poisson",
+    "text": "Quasi-Poisson\n\nhh_age_loc_q &lt;- glm(total ~ age + I(age^2) + location, \n                    data = hh_data, family = quasipoisson)\n\n\n\n\n\n\n\nEx 4\n\n\n\nWhat do we expect the dispersion parameter to be if there is no overdispersion?\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nUse the Pearson residuals to calculate the dispersion parameter.\n\n\n\n# Calculate dispersion parameter \n\n\n\n\n\n\n\nEx 6\n\n\n\nView the dispersion parameter in the model output\n\n\n\n#summary(hh_age_loc_q)"
   },
   {
-    "objectID": "prepare/feb-05.html",
-    "href": "prepare/feb-05.html",
-    "title": "Prepare for Feb 05 lecture",
+    "objectID": "ae/lec-05-overdisp.html#negative-binomial-regression-model",
+    "href": "ae/lec-05-overdisp.html#negative-binomial-regression-model",
+    "title": "Lecture 05 AE: Poisson Regression",
+    "section": "Negative binomial regression model",
+    "text": "Negative binomial regression model\n\nhh_age_loc_nb &lt;- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)\ntidy(hh_age_loc_nb) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.3753\n0.2076\n-1.8081\n0.0706\n\n\nage\n0.0699\n0.0079\n8.8981\n0.0000\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.5756\n0.0000\n\n\nlocationDavaoRegion\n-0.0219\n0.0625\n-0.3501\n0.7262\n\n\nlocationIlocosRegion\n0.0577\n0.0615\n0.9391\n0.3477\n\n\nlocationMetroManila\n0.0562\n0.0551\n1.0213\n0.3071\n\n\nlocationVisayas\n0.1104\n0.0487\n2.2654\n0.0235"
+  },
+  {
+    "objectID": "prepare/feb-07.html",
+    "href": "prepare/feb-07.html",
+    "title": "Prepare for Feb 07 lecture",
     "section": "",
-    "text": "Read BMLR Section 5.1 - 5.3"
+    "text": "Read BMLR Section 6.1 - 6.7"
   },
   {
-    "objectID": "prepare/feb-12.html",
-    "href": "prepare/feb-12.html",
-    "title": "Prepare for Feb 12 lecture",
+    "objectID": "prepare/jan-22.html",
+    "href": "prepare/jan-22.html",
+    "title": "Prepare for Jan 22 lecture",
     "section": "",
-    "text": "Read BMLR Sections 6.1 - 6.7"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/jan-24.html",
-    "href": "prepare/jan-24.html",
-    "title": "Prepare for Jan 24 lecture",
+    "objectID": "prepare/jan-31.html",
+    "href": "prepare/jan-31.html",
+    "title": "Prepare for Jan 31 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
   },
   {
-    "objectID": "prepare/jan-29.html",
-    "href": "prepare/jan-29.html",
-    "title": "Prepare for Jan 29 lecture",
+    "objectID": "prepare/jan-17.html",
+    "href": "prepare/jan-17.html",
+    "title": "Prepare for Jan 17 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/mar-06.html",
-    "href": "prepare/mar-06.html",
-    "title": "Prepare for March 06 lecture",
+    "objectID": "prepare/mar-04.html",
+    "href": "prepare/mar-04.html",
+    "title": "Prepare for March 04 lecture",
     "section": "",
-    "text": "Read BMLR: Sections 9.6"
+    "text": "Read BMLR: Sections 9.1 - 9.5"
   },
   {
-    "objectID": "prepare/feb-19.html",
-    "href": "prepare/feb-19.html",
-    "title": "Prepare for Feb 19 lecture",
+    "objectID": "prepare/feb-26.html",
+    "href": "prepare/feb-26.html",
+    "title": "Prepare for Feb 26 lecture",
     "section": "",
-    "text": "Read BMLR: Sections 7.1 - 7.8"
+    "text": "Read BMLR: Sections 8.5 - 8.12\nSadler, Michael E., and Christopher J. Miller. 2010. “Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians.” Social Psychological and Personality Science 1 (3): 280–87.\n\nClick here to access the paper on Canvas"
   },
   {
-    "objectID": "prepare/feb-21.html",
-    "href": "prepare/feb-21.html",
-    "title": "Prepare for Feb 21 lecture",
+    "objectID": "hw/hw-02.html",
+    "href": "hw/hw-02.html",
+    "title": "HW 02: Poisson regression",
     "section": "",
-    "text": "Read BMLR: Sections 8.1 - 8.4"
-  },
-  {
-    "objectID": "hw/hw-03.html",
-    "href": "hw/hw-03.html",
-    "title": "HW 03: Logistic regression + Multilevel models",
-    "section": "",
-    "text": "Important\n\n\n\n\nThis assignment is due on Wednesday, February 28 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, February 29 noon (12pm).\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned.",
+    "text": "library(tidyverse)\nlibrary(knitr)\nlibrary(kableExtra)",
     "crumbs": [
       "Homework",
-      "HW 03"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-03.html#exercise-1",
-    "href": "hw/hw-03.html#exercise-1",
-    "title": "HW 03: Logistic regression + Multilevel models",
+    "objectID": "hw/hw-02.html#exercise-1",
+    "href": "hw/hw-02.html#exercise-1",
+    "title": "HW 02: Poisson regression",
     "section": "Exercise 1",
-    "text": "Exercise 1\n\nThe data for this exercise come from a study about the satisfaction with housing conditions in Copenhagen. The data were obtained from Dobson and Barnett (2018) and are originally from Madsen (1976). Residents in selected areas living in rented homes built between 1960 and 1968 were asked about their satisfaction and the level of contact with other residents.\nThe data are in madsen1971.csv in the data folder of your GitHub repo. The variables in the data are\n\nsatisfaction: Overall satisfaction with housing conditions (Low, Medium, High)\ncontact: Level of contact with other residents (Low, High)\ntype: Type of housing unit (Tower block, Apartment, House)\n\nThe goal of the analysis is to use type and contact to understand satisfaction.\n\nVisualize the relationship of the response versus each predictor variable. Write 1 - 2 observations from the visualizations.\nDo you think it would be appropriate to fit an ordinal model for this analysis? Briefly explain.\nFit the proportional odds model. Display the model.\nCalculate the following probabilities for a resident living in a house who has high contact with other residents:\n\n\\(P(\\text{Satisfaction} \\leq \\text{Medium})\\)\n\\(P(\\text{Satisfaction} = \\text{Medium})\\)",
+    "text": "Exercise 1\n\nAnswer parts a - d in the context of the following study:\nA state wildlife biologist collected data from 250 park visitors as they left at the end of their stay. Each was asked to report the number of fish they caught during their one-week stay. On average, visitors caught 21.5 fish per week.\n\nDefine the response.\nWhat are the possible values for the response?\nWhat does \\(\\lambda\\) represent?\nWould a zero-inflated model be considered here? If so, what would be a “true zero”?",
     "crumbs": [
       "Homework",
-      "HW 03"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-03.html#exercise-2",
-    "href": "hw/hw-03.html#exercise-2",
-    "title": "HW 03: Logistic regression + Multilevel models",
+    "objectID": "hw/hw-02.html#exercise-2",
+    "href": "hw/hw-02.html#exercise-2",
+    "title": "HW 02: Poisson regression",
     "section": "Exercise 2",
-    "text": "Exercise 2\nIbanez and Roussel (2022) conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants played a game in which they had an opportunity to donate to an environmental organization.\nThe data set is available in nature-experiment.csv in the data folder. We will use the following variables:\n\ndonation_binary:\n\n1 - participant donated to environmental organization\n0 - participant did not donate\n\nAge: Age in years\nGender: Participant’s reported gender\nTreatment:\n\n“Urban (T1)” - the control group,\n“Nature (T2)” - the treatment group\n\nNEP_high:\n\n1 - score of 4 or higher on the New Ecological Paradigm (NEP)\n0 - score less than 4\n\n\n\n\n\n\n\n\nTip\n\n\n\nSee the Introduction and Methods sections of Ibanez and Roussel (2022) for more detail about the variables.\nClick here to access the paper on Canvas.\n\n\n\nFigure 2 on pg. 9 of the article visualizes the relationship between donation amount and treatment. Use the visualization to describe the relationship between donating and the treatment.\nFit a probit regression model using age, gender, treatment, nep_high and the interaction between nep_high and treatment predict the likelihood of donating. (Note: Your model will be similar (but not exactly the same) as the “Likelihood” model in Table 5 on pg. 11.) Display the model.\nDescribe the effect of watching the documentary on the likelihood of donating.\nBased on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?",
+    "text": "Exercise 2\n\nBrockmann (1996) carried out a study of nesting female horseshoe crabs. Female horseshoe crabs often have male crabs attached to a female’s nest known as satellites. One objective of the study was to determine which characteristics of the female were associated with the number of satellites. Of particular interest is the relationship between the width of the female carapace and satellites.\nThe data can be found in crab.csv in the data folder. It includes the following variables:\n\nSatellite = number of satellites\nWidth = carapace width (cm)\nWeight = weight (kg)\nSpine = spine condition (1 = both good, 2 = one worn or broken, 3 = both worn or broken)\nColor = color (1 = light medium, 2 = medium, 3 = dark medium, 4 = dark)\n\nMake sure to convert Spine and Color to the appropriate data types in R before doing the analysis.\n\nCreate a histogram of Satellite. Is there preliminary evidence the number of satellites could be modeled as a Poisson response? Briefly explain.\nFit a Poisson regression model including Width, Weight, and Spine as predictors. Display the model with the 95% confidence interval for each coefficient.\nDescribe the effect of Spine in terms of the mean number of satellites.",
     "crumbs": [
       "Homework",
-      "HW 03"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-03.html#exercise-3",
-    "href": "hw/hw-03.html#exercise-3",
-    "title": "HW 03: Logistic regression + Multilevel models",
+    "objectID": "hw/hw-02.html#exercise-3",
+    "href": "hw/hw-02.html#exercise-3",
+    "title": "HW 02: Poisson regression",
     "section": "Exercise 3",
-    "text": "Exercise 3\n\nBrown and Uyar (2004) describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.\n\nGive the observational units at Level One and Level Two based on the title of the paper.\nWhy can’t we assume all houses in the data set are independent?\nSuppose we have the following set of predictors: Square footage (sqft), rating of neighborhood schools (rating), median neighborhood housing price (medprice). Write the two-level model for predicting housing prices.\nWrite the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.\nWrite the composite model corresponding to part (c)\nList the fixed effects that must be estimated in the model in part (d).\nDescribe the variance components that must be estimated in the model in part (d).",
+    "text": "Exercise 3\nUse the scenario from the previous exercise to answer questions (a) - (d).\n\nWe would like to fit a quasi-Poisson regression model for this data. Briefly explain why we may want to consider fitting a quasi-Poisson regression model for this data.\nFit a quasi-Poisson regression model that corresponds with the model chosen the previous exercise. Display the model.\nWhat is the estimated dispersion parameter? Show how this value is calculated.\nHow do the estimated coefficients change compared to the model chosen in the previous exercise? How do the standard errors change?",
     "crumbs": [
       "Homework",
-      "HW 03"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-03.html#exercise-4",
-    "href": "hw/hw-03.html#exercise-4",
-    "title": "HW 03: Logistic regression + Multilevel models",
+    "objectID": "hw/hw-02.html#exercise-4",
+    "href": "hw/hw-02.html#exercise-4",
+    "title": "HW 02: Poisson regression",
     "section": "Exercise 4",
-    "text": "Exercise 4\n\n\nTry to reproduce Model 2 presented in Table 2 of Sadler and Miller (2010). You can expect small differences in the parameter estimates, since the authors use SAS (with an unstructured covariance structure) instead of R. The data and codebook are available in music-data.csv in the data folder.\nHow do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?\n\n\n\n\n\n\n\nTip\n\n\n\nClick here to access Sadler and Miller (2010) on Canvas.",
+    "text": "Exercise 4\nThe goal of this exercise is to use simulation to understand the equivalency between a gamma-Poisson mixture and a negative binomial distribution.\n\n\n\n\n\n\nTip\n\n\n\nRemember to set a seed so your simulations are reproducible!\n\n\n\n\nUse the R function rpois() to generate 10,000 \\(x_i\\) from a regular Poisson distribution, \\(X \\sim \\textrm{Poisson}(\\lambda=1.5)\\). Plot a histogram of this distribution and note its mean and variance. Next, let \\(Y \\sim \\textrm{Gamma}(r = 3, \\lambda = 2)\\) and use rgamma() to generate 10,000 random \\(y_i\\) from this distribution.\nNow, consider 10,000 different Poisson distributions where \\(\\lambda_i = y_i\\). Randomly generate one \\(z_i\\) from each Poisson distribution. Plot a histogram of these \\(z_i\\) and compare it to your original histogram of \\(X\\) (where \\(X \\sim \\textrm{Poisson}(1.5)\\)). How do the means and variances compare?\nA negative binomial distribution can actually be expressed as a gamma-Poisson mixture. In Part a, you looked at a gamma-Poisson mixture \\(Z \\sim \\textrm{Poisson}(\\lambda)\\) where \\(\\lambda \\sim \\textrm{Gamma}(r = 3, \\lambda' = 2)\\).\nFind the parameters of a negative binomial distribution \\(X \\sim \\textrm{NegBinom}(r, p)\\) such that \\(X\\) is equivalent to \\(Z\\). As a hint, the means of both distributions must be the same, so \\(\\frac{r(1-p)}{p} = \\frac{3}{2}\\).\nShow through histograms and summary statistics that your negative binomial distribution is equivalent to the gamma-Poisson mixture. You can use rnbinom() in R.\nMake an argument that if you want a \\(\\textrm{NegBinom}(r, p)\\) random variable, you can instead sample from a Poisson distribution, where the \\(\\lambda\\) values are themselves sampled from a gamma distribution with parameters \\(r\\) and \\(\\lambda' = \\frac{p}{1-p}\\).",
     "crumbs": [
       "Homework",
-      "HW 03"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-03.html#exercise-5",
-    "href": "hw/hw-03.html#exercise-5",
-    "title": "HW 03: Logistic regression + Multilevel models",
+    "objectID": "hw/hw-02.html#exercise-5",
+    "href": "hw/hw-02.html#exercise-5",
+    "title": "HW 02: Poisson regression",
     "section": "Exercise 5",
-    "text": "Exercise 5\n\nThe goal of this analysis is to build a model that can be used to describe the factors that explain the success of NBA teams. The data from Kaggle (2018) includes various statistics and winning percentages for NBA teams in the 2017-18 season. The data set and codebook are available in the data folder in your GitHub repo.\nInclude the following in your analysis:\n\nComprehensive exploratory data analysis\nCreate the best model you can that can be used to predict winning percentage. Be sure to consider collinearity between predictors as you select the final model.\nUse the EDA and model results to describe the factors that help explain an NBA team’s success.",
+    "text": "Exercise 5\nIn a 2018 study, Chapp et al. (2018) scraped every issue statement from webpages of candidates for the U.S. House of Representatives, counting the number of issues candidates commented on and scoring the level of ambiguity of each statement. We will focus on the issue counts, and determining which attributes (of both the district as a whole and the candidates themselves) are associated with candidate silence (commenting on 0 issues) and a willingness to comment on a greater number of issues. The data set is in ambiguity.csv in the data folder . This analysis will focus on the following variables:\n\nname : candidate name\ndistID : unique identification number for Congressional district\nideology : candidate left-right orientation\ndemocrat : 1 if Democrat, 0 if Republican\ntotalIssuePages : number of issues candidates commented on (response)\n\nSee Roback and Legler (2021) for the full list of variables.\nWe will use a hurdle model to analyze the data. A hurdle model is similar to a zero-inflated Poisson model, but instead of assuming that “zeros” are comprised of two distinct groups—those who would always be 0 and those who happen to be 0 on this occasion—the hurdle model assumes that “zeros” are a single entity. Therefore, in a hurdle model, cases are classified as either “zeros” or “non-zeros”, where “non-zeros” hurdle the 0 threshold—they must always have counts of 1 or above.\nWe will use the pscl package and the hurdle function in it to analyze a hurdle model. Note that coefficients in the “zero hurdle model” section of the output relate predictors to the log-odds of being a non-zero (i.e., having at least one issue statement), which is opposite of the ZIP model.\n\nVisualize the distribution of the response variable totalIssuePages. Why might we consider using a hurdle model compared to a Poisson model? Why is a zero-inflated Poisson model not appropriate in this scenario?\nCreate a plot of the empirical log odds of having at least one issue statement by ideology. You may want to group ideology values first. What can you conclude from this plot?\nCreate a hurdle model with ideology and democrat as predictors in both parts.1 Display the model. Interpret ideology in both parts of the model.\nRepeat (d), but include an interaction in both parts. Interpret the interaction in the zero hurdle part of the model.",
     "crumbs": [
       "Homework",
-      "HW 03"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-04.html",
-    "href": "hw/hw-04.html",
-    "title": "HW 04",
-    "section": "",
-    "text": "To be posted.",
+    "objectID": "hw/hw-02.html#exercise-6",
+    "href": "hw/hw-02.html#exercise-6",
+    "title": "HW 02: Poisson regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\n\nAwad, Lebo, and Linden (2017) scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set NYCairbnb.csv. The codebook is in the data folder of the hw-02 repo.\nPerform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews.",
     "crumbs": [
       "Homework",
-      "HW 04"
+      "HW 02"
     ]
   },
   {
-    "objectID": "hw/hw-06.html",
-    "href": "hw/hw-06.html",
-    "title": "HW 06",
-    "section": "",
-    "text": "To be posted.",
+    "objectID": "hw/hw-02.html#footnotes",
+    "href": "hw/hw-02.html#footnotes",
+    "title": "HW 02: Poisson regression",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe R syntax in the hurlde function is similar to the syntax for the zero-inflated Poisson model. You will need to specify the distributions for the count and hurdle portions of the model, using dist = \"poisson\" and zero.dist = \"binomial\".↩︎",
     "crumbs": [
       "Homework",
-      "HW 06"
-    ]
-  },
-  {
-    "objectID": "hw/hw-05.html",
-    "href": "hw/hw-05.html",
-    "title": "HW 05",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Homework",
-      "HW 05"
+      "HW 02"
     ]
   },
   {
@@ -2337,211 +2340,243 @@
     ]
   },
   {
-    "objectID": "hw/hw-02.html",
-    "href": "hw/hw-02.html",
-    "title": "HW 02: Poisson regression",
+    "objectID": "hw/hw-05.html",
+    "href": "hw/hw-05.html",
+    "title": "HW 05",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(knitr)\nlibrary(kableExtra)",
+    "text": "To be posted.",
     "crumbs": [
       "Homework",
-      "HW 02"
+      "HW 05"
     ]
   },
   {
-    "objectID": "hw/hw-02.html#exercise-1",
-    "href": "hw/hw-02.html#exercise-1",
-    "title": "HW 02: Poisson regression",
+    "objectID": "hw/hw-06.html",
+    "href": "hw/hw-06.html",
+    "title": "HW 06",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Homework",
+      "HW 06"
+    ]
+  },
+  {
+    "objectID": "hw/hw-04.html",
+    "href": "hw/hw-04.html",
+    "title": "HW 04",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Homework",
+      "HW 04"
+    ]
+  },
+  {
+    "objectID": "hw/hw-03.html",
+    "href": "hw/hw-03.html",
+    "title": "HW 03: Logistic regression + Multilevel models",
+    "section": "",
+    "text": "Important\n\n\n\n\nThis assignment is due on Wednesday, February 28 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, February 29 noon (12pm).\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned.",
+    "crumbs": [
+      "Homework",
+      "HW 03"
+    ]
+  },
+  {
+    "objectID": "hw/hw-03.html#exercise-1",
+    "href": "hw/hw-03.html#exercise-1",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 1",
-    "text": "Exercise 1\n\nAnswer parts a - d in the context of the following study:\nA state wildlife biologist collected data from 250 park visitors as they left at the end of their stay. Each was asked to report the number of fish they caught during their one-week stay. On average, visitors caught 21.5 fish per week.\n\nDefine the response.\nWhat are the possible values for the response?\nWhat does \\(\\lambda\\) represent?\nWould a zero-inflated model be considered here? If so, what would be a “true zero”?",
+    "text": "Exercise 1\n\nThe data for this exercise come from a study about the satisfaction with housing conditions in Copenhagen. The data were obtained from Dobson and Barnett (2018) and are originally from Madsen (1976). Residents in selected areas living in rented homes built between 1960 and 1968 were asked about their satisfaction and the level of contact with other residents.\nThe data are in madsen1971.csv in the data folder of your GitHub repo. The variables in the data are\n\nsatisfaction: Overall satisfaction with housing conditions (Low, Medium, High)\ncontact: Level of contact with other residents (Low, High)\ntype: Type of housing unit (Tower block, Apartment, House)\n\nThe goal of the analysis is to use type and contact to understand satisfaction.\n\nVisualize the relationship of the response versus each predictor variable. Write 1 - 2 observations from the visualizations.\nDo you think it would be appropriate to fit an ordinal model for this analysis? Briefly explain.\nFit the proportional odds model. Display the model.\nCalculate the following probabilities for a resident living in a house who has high contact with other residents:\n\n\\(P(\\text{Satisfaction} \\leq \\text{Medium})\\)\n\\(P(\\text{Satisfaction} = \\text{Medium})\\)",
     "crumbs": [
       "Homework",
-      "HW 02"
+      "HW 03"
     ]
   },
   {
-    "objectID": "hw/hw-02.html#exercise-2",
-    "href": "hw/hw-02.html#exercise-2",
-    "title": "HW 02: Poisson regression",
+    "objectID": "hw/hw-03.html#exercise-2",
+    "href": "hw/hw-03.html#exercise-2",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 2",
-    "text": "Exercise 2\n\nBrockmann (1996) carried out a study of nesting female horseshoe crabs. Female horseshoe crabs often have male crabs attached to a female’s nest known as satellites. One objective of the study was to determine which characteristics of the female were associated with the number of satellites. Of particular interest is the relationship between the width of the female carapace and satellites.\nThe data can be found in crab.csv in the data folder. It includes the following variables:\n\nSatellite = number of satellites\nWidth = carapace width (cm)\nWeight = weight (kg)\nSpine = spine condition (1 = both good, 2 = one worn or broken, 3 = both worn or broken)\nColor = color (1 = light medium, 2 = medium, 3 = dark medium, 4 = dark)\n\nMake sure to convert Spine and Color to the appropriate data types in R before doing the analysis.\n\nCreate a histogram of Satellite. Is there preliminary evidence the number of satellites could be modeled as a Poisson response? Briefly explain.\nFit a Poisson regression model including Width, Weight, and Spine as predictors. Display the model with the 95% confidence interval for each coefficient.\nDescribe the effect of Spine in terms of the mean number of satellites.",
+    "text": "Exercise 2\nIbanez and Roussel (2022) conducted an experiment to understand the impact of watching a nature documentary on pro-environmental behavior. The researchers randomly assigned the 113 participants to watch an video about architecture in NYC (control) or a video about Yellowstone National Park (treatment). As part of the experiment, participants played a game in which they had an opportunity to donate to an environmental organization.\nThe data set is available in nature-experiment.csv in the data folder. We will use the following variables:\n\ndonation_binary:\n\n1 - participant donated to environmental organization\n0 - participant did not donate\n\nAge: Age in years\nGender: Participant’s reported gender\nTreatment:\n\n“Urban (T1)” - the control group,\n“Nature (T2)” - the treatment group\n\nNEP_high:\n\n1 - score of 4 or higher on the New Ecological Paradigm (NEP)\n0 - score less than 4\n\n\n\n\n\n\n\n\nTip\n\n\n\nSee the Introduction and Methods sections of Ibanez and Roussel (2022) for more detail about the variables.\nClick here to access the paper on Canvas.\n\n\n\nFigure 2 on pg. 9 of the article visualizes the relationship between donation amount and treatment. Use the visualization to describe the relationship between donating and the treatment.\nFit a probit regression model using age, gender, treatment, nep_high and the interaction between nep_high and treatment predict the likelihood of donating. (Note: Your model will be similar (but not exactly the same) as the “Likelihood” model in Table 5 on pg. 11.) Display the model.\nDescribe the effect of watching the documentary on the likelihood of donating.\nBased on the model, what is the predicted probability of donating for a 20-year old female in the treatment group with a NEP score of 3?",
     "crumbs": [
       "Homework",
-      "HW 02"
+      "HW 03"
     ]
   },
   {
-    "objectID": "hw/hw-02.html#exercise-3",
-    "href": "hw/hw-02.html#exercise-3",
-    "title": "HW 02: Poisson regression",
+    "objectID": "hw/hw-03.html#exercise-3",
+    "href": "hw/hw-03.html#exercise-3",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 3",
-    "text": "Exercise 3\nUse the scenario from the previous exercise to answer questions (a) - (d).\n\nWe would like to fit a quasi-Poisson regression model for this data. Briefly explain why we may want to consider fitting a quasi-Poisson regression model for this data.\nFit a quasi-Poisson regression model that corresponds with the model chosen the previous exercise. Display the model.\nWhat is the estimated dispersion parameter? Show how this value is calculated.\nHow do the estimated coefficients change compared to the model chosen in the previous exercise? How do the standard errors change?",
+    "text": "Exercise 3\n\nBrown and Uyar (2004) describe “A Hierarchical Linear Model Approach for Assessing the Effects of House and Neighborhood Characteristics on Housing Prices”.\n\nGive the observational units at Level One and Level Two based on the title of the paper.\nWhy can’t we assume all houses in the data set are independent?\nSuppose we have the following set of predictors: Square footage (sqft), rating of neighborhood schools (rating), median neighborhood housing price (medprice). Write the two-level model for predicting housing prices.\nWrite the full model such that (1) the Level Two predictors are used to estimate the intercept and slope for each Level One predictor, and (2) there are random effects for the slopes and intercepts.\nWrite the composite model corresponding to part (c)\nList the fixed effects that must be estimated in the model in part (d).\nDescribe the variance components that must be estimated in the model in part (d).",
     "crumbs": [
       "Homework",
-      "HW 02"
+      "HW 03"
     ]
   },
   {
-    "objectID": "hw/hw-02.html#exercise-4",
-    "href": "hw/hw-02.html#exercise-4",
-    "title": "HW 02: Poisson regression",
+    "objectID": "hw/hw-03.html#exercise-4",
+    "href": "hw/hw-03.html#exercise-4",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 4",
-    "text": "Exercise 4\nThe goal of this exercise is to use simulation to understand the equivalency between a gamma-Poisson mixture and a negative binomial distribution.\n\n\n\n\n\n\nTip\n\n\n\nRemember to set a seed so your simulations are reproducible!\n\n\n\n\nUse the R function rpois() to generate 10,000 \\(x_i\\) from a regular Poisson distribution, \\(X \\sim \\textrm{Poisson}(\\lambda=1.5)\\). Plot a histogram of this distribution and note its mean and variance. Next, let \\(Y \\sim \\textrm{Gamma}(r = 3, \\lambda = 2)\\) and use rgamma() to generate 10,000 random \\(y_i\\) from this distribution.\nNow, consider 10,000 different Poisson distributions where \\(\\lambda_i = y_i\\). Randomly generate one \\(z_i\\) from each Poisson distribution. Plot a histogram of these \\(z_i\\) and compare it to your original histogram of \\(X\\) (where \\(X \\sim \\textrm{Poisson}(1.5)\\)). How do the means and variances compare?\nA negative binomial distribution can actually be expressed as a gamma-Poisson mixture. In Part a, you looked at a gamma-Poisson mixture \\(Z \\sim \\textrm{Poisson}(\\lambda)\\) where \\(\\lambda \\sim \\textrm{Gamma}(r = 3, \\lambda' = 2)\\).\nFind the parameters of a negative binomial distribution \\(X \\sim \\textrm{NegBinom}(r, p)\\) such that \\(X\\) is equivalent to \\(Z\\). As a hint, the means of both distributions must be the same, so \\(\\frac{r(1-p)}{p} = \\frac{3}{2}\\).\nShow through histograms and summary statistics that your negative binomial distribution is equivalent to the gamma-Poisson mixture. You can use rnbinom() in R.\nMake an argument that if you want a \\(\\textrm{NegBinom}(r, p)\\) random variable, you can instead sample from a Poisson distribution, where the \\(\\lambda\\) values are themselves sampled from a gamma distribution with parameters \\(r\\) and \\(\\lambda' = \\frac{p}{1-p}\\).",
+    "text": "Exercise 4\n\n\nTry to reproduce Model 2 presented in Table 2 of Sadler and Miller (2010). You can expect small differences in the parameter estimates, since the authors use SAS (with an unstructured covariance structure) instead of R. The data and codebook are available in music-data.csv in the data folder.\nHow do the parameter estimates, standard errors and AIC compare between your model in part (a) and the results in Table 2 of the paper?\n\n\n\n\n\n\n\nTip\n\n\n\nClick here to access Sadler and Miller (2010) on Canvas.",
     "crumbs": [
       "Homework",
-      "HW 02"
+      "HW 03"
     ]
   },
   {
-    "objectID": "hw/hw-02.html#exercise-5",
-    "href": "hw/hw-02.html#exercise-5",
-    "title": "HW 02: Poisson regression",
+    "objectID": "hw/hw-03.html#exercise-5",
+    "href": "hw/hw-03.html#exercise-5",
+    "title": "HW 03: Logistic regression + Multilevel models",
     "section": "Exercise 5",
-    "text": "Exercise 5\nIn a 2018 study, Chapp et al. (2018) scraped every issue statement from webpages of candidates for the U.S. House of Representatives, counting the number of issues candidates commented on and scoring the level of ambiguity of each statement. We will focus on the issue counts, and determining which attributes (of both the district as a whole and the candidates themselves) are associated with candidate silence (commenting on 0 issues) and a willingness to comment on a greater number of issues. The data set is in ambiguity.csv in the data folder . This analysis will focus on the following variables:\n\nname : candidate name\ndistID : unique identification number for Congressional district\nideology : candidate left-right orientation\ndemocrat : 1 if Democrat, 0 if Republican\ntotalIssuePages : number of issues candidates commented on (response)\n\nSee Roback and Legler (2021) for the full list of variables.\nWe will use a hurdle model to analyze the data. A hurdle model is similar to a zero-inflated Poisson model, but instead of assuming that “zeros” are comprised of two distinct groups—those who would always be 0 and those who happen to be 0 on this occasion—the hurdle model assumes that “zeros” are a single entity. Therefore, in a hurdle model, cases are classified as either “zeros” or “non-zeros”, where “non-zeros” hurdle the 0 threshold—they must always have counts of 1 or above.\nWe will use the pscl package and the hurdle function in it to analyze a hurdle model. Note that coefficients in the “zero hurdle model” section of the output relate predictors to the log-odds of being a non-zero (i.e., having at least one issue statement), which is opposite of the ZIP model.\n\nVisualize the distribution of the response variable totalIssuePages. Why might we consider using a hurdle model compared to a Poisson model? Why is a zero-inflated Poisson model not appropriate in this scenario?\nCreate a plot of the empirical log odds of having at least one issue statement by ideology. You may want to group ideology values first. What can you conclude from this plot?\nCreate a hurdle model with ideology and democrat as predictors in both parts.1 Display the model. Interpret ideology in both parts of the model.\nRepeat (d), but include an interaction in both parts. Interpret the interaction in the zero hurdle part of the model.",
+    "text": "Exercise 5\n\nThe goal of this analysis is to build a model that can be used to describe the factors that explain the success of NBA teams. The data from Kaggle (2018) includes various statistics and winning percentages for NBA teams in the 2017-18 season. The data set and codebook are available in the data folder in your GitHub repo.\nInclude the following in your analysis:\n\nComprehensive exploratory data analysis\nCreate the best model you can that can be used to predict winning percentage. Be sure to consider collinearity between predictors as you select the final model.\nUse the EDA and model results to describe the factors that help explain an NBA team’s success.",
     "crumbs": [
       "Homework",
-      "HW 02"
+      "HW 03"
     ]
   },
   {
-    "objectID": "hw/hw-02.html#exercise-6",
-    "href": "hw/hw-02.html#exercise-6",
-    "title": "HW 02: Poisson regression",
-    "section": "Exercise 6",
-    "text": "Exercise 6\n\n\nAwad, Lebo, and Linden (2017) scraped 40628 Airbnb listings from New York City in March 2017 and put together the data set NYCairbnb.csv. The codebook is in the data folder of the hw-02 repo.\nPerform the EDA and build a model, considering offset and accounting for overdispersion, if needed. Then, use the model to describe the characteristics of Airbnbs that are expected to have a high number of reviews.",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "hw/hw-02.html#footnotes",
-    "href": "hw/hw-02.html#footnotes",
-    "title": "HW 02: Poisson regression",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe R syntax in the hurlde function is similar to the syntax for the zero-inflated Poisson model. You will need to specify the distributions for the count and hurdle portions of the model, using dist = \"poisson\" and zero.dist = \"binomial\".↩︎",
-    "crumbs": [
-      "Homework",
-      "HW 02"
-    ]
-  },
-  {
-    "objectID": "prepare/feb-26.html",
-    "href": "prepare/feb-26.html",
-    "title": "Prepare for Feb 26 lecture",
+    "objectID": "prepare/feb-21.html",
+    "href": "prepare/feb-21.html",
+    "title": "Prepare for Feb 21 lecture",
     "section": "",
-    "text": "Read BMLR: Sections 8.5 - 8.12\nSadler, Michael E., and Christopher J. Miller. 2010. “Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians.” Social Psychological and Personality Science 1 (3): 280–87.\n\nClick here to access the paper on Canvas"
+    "text": "Read BMLR: Sections 8.1 - 8.4"
   },
   {
-    "objectID": "prepare/mar-04.html",
-    "href": "prepare/mar-04.html",
-    "title": "Prepare for March 04 lecture",
+    "objectID": "prepare/feb-19.html",
+    "href": "prepare/feb-19.html",
+    "title": "Prepare for Feb 19 lecture",
     "section": "",
-    "text": "Read BMLR: Sections 9.1 - 9.5"
+    "text": "Read BMLR: Sections 7.1 - 7.8"
   },
   {
-    "objectID": "prepare/jan-17.html",
-    "href": "prepare/jan-17.html",
-    "title": "Prepare for Jan 17 lecture",
+    "objectID": "prepare/mar-06.html",
+    "href": "prepare/mar-06.html",
+    "title": "Prepare for March 06 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "text": "Read BMLR: Sections 9.6"
   },
   {
-    "objectID": "prepare/jan-31.html",
-    "href": "prepare/jan-31.html",
-    "title": "Prepare for Jan 31 lecture",
+    "objectID": "prepare/jan-29.html",
+    "href": "prepare/jan-29.html",
+    "title": "Prepare for Jan 29 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.9"
   },
   {
-    "objectID": "prepare/jan-22.html",
-    "href": "prepare/jan-22.html",
-    "title": "Prepare for Jan 22 lecture",
+    "objectID": "prepare/jan-24.html",
+    "href": "prepare/jan-24.html",
+    "title": "Prepare for Jan 24 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
   },
   {
-    "objectID": "prepare/feb-07.html",
-    "href": "prepare/feb-07.html",
-    "title": "Prepare for Feb 07 lecture",
+    "objectID": "prepare/feb-12.html",
+    "href": "prepare/feb-12.html",
+    "title": "Prepare for Feb 12 lecture",
     "section": "",
-    "text": "Read BMLR Section 6.1 - 6.7"
+    "text": "Read BMLR Sections 6.1 - 6.7"
   },
   {
-    "objectID": "ae/lec-05-overdisp.html",
-    "href": "ae/lec-05-overdisp.html",
-    "title": "Lecture 05 AE: Poisson Regression",
+    "objectID": "prepare/feb-05.html",
+    "href": "prepare/feb-05.html",
+    "title": "Prepare for Feb 05 lecture",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(broom)\nlibrary(knitr)\n# add other packages as needed\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
+    "text": "Read BMLR Section 5.1 - 5.3"
   },
   {
-    "objectID": "ae/lec-05-overdisp.html#household-vs.-age-age2-and-location",
-    "href": "ae/lec-05-overdisp.html#household-vs.-age-age2-and-location",
-    "title": "Lecture 05 AE: Poisson Regression",
-    "section": "Household vs. age, age^2, and location",
-    "text": "Household vs. age, age^2, and location\n\nhh_age_loc &lt;- glm(total ~ age + I(age^2) + location, \n                  data = hh_data, family = poisson)\n\ntidy(hh_age_loc, conf.int = T) |&gt; \n  kable(digits = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3843\n0.1821\n-2.1107\n0.0348\n-0.7444\n-0.0306\n\n\nage\n0.0704\n0.0069\n10.1900\n0.0000\n0.0569\n0.0840\n\n\nI(age^2)\n-0.0007\n0.0001\n-10.9437\n0.0000\n-0.0008\n-0.0006\n\n\nlocationDavaoRegion\n-0.0194\n0.0538\n-0.3605\n0.7185\n-0.1250\n0.0859\n\n\nlocationIlocosRegion\n0.0610\n0.0527\n1.1580\n0.2468\n-0.0423\n0.1641\n\n\nlocationMetroManila\n0.0545\n0.0472\n1.1542\n0.2484\n-0.0378\n0.1473\n\n\nlocationVisayas\n0.1121\n0.0417\n2.6853\n0.0072\n0.0308\n0.1945\n\n\n\n\n\n\n\n\n\n\n\nCalculating residuals in R\n\n\n\nYou can get the residuals in two ways:\n\nresiduals function with type = \"pearson\" or type = \"deviance\".\naugment function with type.residuals = \"pearson\" or type.residuals = deviance."
-  },
-  {
-    "objectID": "ae/lec-05-overdisp.html#calculate-model-deviance-goodness-of-fit",
-    "href": "ae/lec-05-overdisp.html#calculate-model-deviance-goodness-of-fit",
-    "title": "Lecture 05 AE: Poisson Regression",
-    "section": "Calculate model deviance & Goodness-of-fit",
-    "text": "Calculate model deviance & Goodness-of-fit\n\n\n\n\n\n\nEx 1\n\n\n\nUse the deviance residuals to calculate the model deviance.\n\n\n\n# Calculate model deviance\n\n\n\n\n\n\n\nEx 2\n\n\n\nCheck your work above using the glance function.\n\n\n\n# Get deviance using glance function\n\n\n\n\n\n\n\nEx 3\n\n\n\nConduct a goodness-of-fit test\n\n\n\n# Conduct goodness-of-fit test"
-  },
-  {
-    "objectID": "ae/lec-05-overdisp.html#quasi-poisson",
-    "href": "ae/lec-05-overdisp.html#quasi-poisson",
-    "title": "Lecture 05 AE: Poisson Regression",
-    "section": "Quasi-Poisson",
-    "text": "Quasi-Poisson\n\nhh_age_loc_q &lt;- glm(total ~ age + I(age^2) + location, \n                    data = hh_data, family = quasipoisson)\n\n\n\n\n\n\n\nEx 4\n\n\n\nWhat do we expect the dispersion parameter to be if there is no overdispersion?\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nUse the Pearson residuals to calculate the dispersion parameter.\n\n\n\n# Calculate dispersion parameter \n\n\n\n\n\n\n\nEx 6\n\n\n\nView the dispersion parameter in the model output\n\n\n\n#summary(hh_age_loc_q)"
-  },
-  {
-    "objectID": "ae/lec-05-overdisp.html#negative-binomial-regression-model",
-    "href": "ae/lec-05-overdisp.html#negative-binomial-regression-model",
-    "title": "Lecture 05 AE: Poisson Regression",
-    "section": "Negative binomial regression model",
-    "text": "Negative binomial regression model\n\nhh_age_loc_nb &lt;- MASS::glm.nb(total ~ age + I(age^2) + location, data = hh_data)\ntidy(hh_age_loc_nb) |&gt; \n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.3753\n0.2076\n-1.8081\n0.0706\n\n\nage\n0.0699\n0.0079\n8.8981\n0.0000\n\n\nI(age^2)\n-0.0007\n0.0001\n-9.5756\n0.0000\n\n\nlocationDavaoRegion\n-0.0219\n0.0625\n-0.3501\n0.7262\n\n\nlocationIlocosRegion\n0.0577\n0.0615\n0.9391\n0.3477\n\n\nlocationMetroManila\n0.0562\n0.0551\n1.0213\n0.3071\n\n\nlocationVisayas\n0.1104\n0.0487\n2.2654\n0.0235"
-  },
-  {
-    "objectID": "ae/lec-13-multilevel-contd.html",
-    "href": "ae/lec-13-multilevel-contd.html",
-    "title": "Lecture 13 AE: Multilevel models",
+    "objectID": "ae/ae-04-poisson.html",
+    "href": "ae/ae-04-poisson.html",
+    "title": "Lecture 04 AE: Poisson regression",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(knitr)\nlibrary(lme4)\nlibrary(broom.mixed)\nmusic &lt;- read_csv(\"data/music-data.csv\") |&gt;\n  mutate(orchestra = factor(if_else(instrument == \"orchestral instrument\", \n                                    1, 0)), \n         large_ensemble = factor(if_else(perform_type == \"Large Ensemble\", \n                                         1, 0)))"
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
-    "objectID": "ae/lec-13-multilevel-contd.html#model-1-random-intercepts-model",
-    "href": "ae/lec-13-multilevel-contd.html#model-1-random-intercepts-model",
-    "title": "Lecture 13 AE: Multilevel models",
-    "section": "Model 1: Random intercepts model",
-    "text": "Model 1: Random intercepts model\nThis is also known as the unconditional means model.\n\n#Model1 (Unconditional means model)\nmodel1 &lt;- lmer(na ~ 1 + (1 | id),  data = music)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n16.237\n0.428\n37.943\n\n\nran_pars\nid\nsd__(Intercept)\n2.225\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.739\nNA\nNA"
+    "objectID": "ae/ae-04-poisson.html#introduction",
+    "href": "ae/ae-04-poisson.html#introduction",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "",
+    "text": "Today’s data is from the Kentucky Derby, an annual 1.25-mile horse race held at the Churchill Downs race track in Louisville, KY. The data is in the file derbyplus.csv in the data folder. It contains information for races 1896 - 2017.\nResponse variable\n\nspeed: Average speed of the winner in feet per second (ft/s)\n\nAdditional variable\n\nwinner: Winning horse\n\nPredictor variables\n\nyear: Year of the race\ncondition: Condition of the track (good, fast, slow)\nstarters: Number of horses who raced\n\nGoal: Understand variability in average winner speed based on characteristics of the race.\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nderby &lt;- read_csv(\"data/derbyplus.csv\")"
   },
   {
-    "objectID": "ae/lec-13-multilevel-contd.html#model-2-add-level-one-covariate",
-    "href": "ae/lec-13-multilevel-contd.html#model-2-add-level-one-covariate",
-    "title": "Lecture 13 AE: Multilevel models",
-    "section": "Model 2: Add Level One covariate",
-    "text": "Model 2: Add Level One covariate\nAdd large_ensemble as a Level One covariate. This is called a random slopes and intercepts model.\n\nmodel2 &lt;- lmer(na ~ large_ensemble + (large_ensemble | id),  \n               data = music)\n\ntidy(model2) |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n16.730\n0.491\n34.09\n\n\nfixed\nNA\nlarge_ensemble1\n-1.676\n0.542\n-3.09\n\n\nran_pars\nid\nsd__(Intercept)\n2.517\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble1\n-0.759\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble1\n0.862\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.666\nNA\nNA"
+    "objectID": "ae/ae-04-poisson.html#model-1-main-effects-model",
+    "href": "ae/ae-04-poisson.html#model-1-main-effects-model",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 1: Main effects model",
+    "text": "Model 1: Main effects model\n\nmodel1 &lt;- lm(speed ~ starters + year + condition, data = derby)\n\ntidy(model1) |&gt;\n  kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n8.197\n4.508\n1.818\n0.072\n\n\nstarters\n-0.005\n0.017\n-0.299\n0.766\n\n\nyear\n0.023\n0.002\n9.766\n0.000\n\n\nconditiongood\n-0.443\n0.231\n-1.921\n0.057\n\n\nconditionslow\n-1.543\n0.161\n-9.616\n0.000\n\n\n\n\n\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the equation of the fitted model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 2\n\n\n\nInterpret the coefficient of conditionslow in the context of the data.\n\n\n[add response here]\n\n\n\n\n\n\nEx 3\n\n\n\nDoes the intercept have a meaningful interpretation? If so, interpret it. If not…\n\nRefit the model so that the intercept has a meaningful interpretation.\nInterpret the intercept for the new model.\n\n\n\n[add response here]"
   },
   {
-    "objectID": "ae/lec-13-multilevel-contd.html#model-3-add-level-two-covariates",
-    "href": "ae/lec-13-multilevel-contd.html#model-3-add-level-two-covariates",
-    "title": "Lecture 13 AE: Multilevel models",
-    "section": "Model 3: Add Level Two covariates",
-    "text": "Model 3: Add Level Two covariates\nAdd orchestra as a Level Two covariate.\n\nmodel3 &lt;- lmer(na ~ large_ensemble + orchestra + orchestra:large_ensemble + \n                 (large_ensemble | id), data = music)\n\ntidy(model3) |&gt;\n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n15.930\n0.641\n24.833\n\n\nfixed\nNA\nlarge_ensemble1\n-0.911\n0.845\n-1.077\n\n\nfixed\nNA\norchestra1\n1.693\n0.945\n1.791\n\n\nfixed\nNA\nlarge_ensemble1:orchestra1\n-1.424\n1.099\n-1.295\n\n\nran_pars\nid\nsd__(Intercept)\n2.378\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble1\n-0.635\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble1\n0.672\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.670\nNA\nNA"
+    "objectID": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
+    "href": "ae/ae-04-poisson.html#model-2-main-effects-quadratic-effect-for-year",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 2: Main effects + quadratic effect for year",
+    "text": "Model 2: Main effects + quadratic effect for year\n\n\n\n\n\n\nEx 4\n\n\n\nFit a model that includes all main effects and a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nInterpreting quadratic effects\n\n\n\nSuppose you have the following model:\n\\[\\hat{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 ~ x_1  + \\hat{\\beta}_2 ~ x_2 + \\hat{\\beta}_3 ~ x_2^2\\]\nThe interpretation of a variable’s effect when there is a quadratic term in the model is\n“When \\(x_2\\) increases from a to b, \\(y\\) is expected to change by \\(\\hat{\\beta}_2(b - a) + \\hat{\\beta}_3(b^2 - a^2)\\), holding \\(x_1\\) constant.”\n\n\n\n\n\n\n\n\nEx 5\n\n\n\nInterpret the effect of year for the 5 most recent years (2013 - 2017).\n\n\n[add response here]"
   },
   {
-    "objectID": "ae/lec-13-multilevel-contd.html#model-4-add-mpqnem-as-an-additional-level-two-covariate",
-    "href": "ae/lec-13-multilevel-contd.html#model-4-add-mpqnem-as-an-additional-level-two-covariate",
-    "title": "Lecture 13 AE: Multilevel models",
-    "section": "Model 4: Add mpqnem as an additional Level Two covariate",
-    "text": "Model 4: Add mpqnem as an additional Level Two covariate\n\n\n\n\n\n\nEx 1\n\n\n\nWrite the Level One and Level Two models.\n\n\n\n\n\n\n\n\nEx 2\n\n\n\nWrite the composite model.\n\n\n\nmodel4 &lt;- lmer(na ~ large_ensemble + orchestra + mpqnem +  \n                 orchestra:large_ensemble + mpqnem:large_ensemble +\n                 (large_ensemble | id), data = music)\n\ntidy(model4) |&gt; \n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n11.568\n1.221\n9.478\n\n\nfixed\nNA\nlarge_ensemble1\n-0.280\n1.834\n-0.153\n\n\nfixed\nNA\norchestra1\n1.001\n0.817\n1.225\n\n\nfixed\nNA\nmpqnem\n0.148\n0.038\n3.893\n\n\nfixed\nNA\nlarge_ensemble1:orchestra1\n-0.949\n1.106\n-0.858\n\n\nfixed\nNA\nlarge_ensemble1:mpqnem\n-0.030\n0.052\n-0.575\n\n\nran_pars\nid\nsd__(Intercept)\n1.813\nNA\nNA\n\n\nran_pars\nid\ncor__(Intercept).large_ensemble1\n-0.379\nNA\nNA\n\n\nran_pars\nid\nsd__large_ensemble1\n0.746\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n4.670\nNA\nNA\n\n\n\n\n\n\n\n\n\n\n\nEx 3\n\n\n\nInterpret the effect of mpqnem for solo and small ensembles.\n\n\n\n\n\n\n\n\nEx 4\n\n\n\nInterpret the effect of mpqnem for large ensembles."
+    "objectID": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
+    "href": "ae/ae-04-poisson.html#model-3-main-effects-interaction-between-year-and-condition",
+    "title": "Lecture 04 AE: Poisson regression",
+    "section": "Model 3: Main effects + interaction between year and condition",
+    "text": "Model 3: Main effects + interaction between year and condition\n\n\n\n\n\n\nEx 6\n\n\n\nFit a model that includes all main effects and an interaction between year and condition. Do not include a quadratic term for year. Display the model.\n\n\n[add response here]\n\n\n\n\n\n\nEx 7\n\n\n\nInterpret yearnew:conditiongood.\n\n\n[add response here]\n\n\n\n\n\n\nEx 8\n\n\n\nInterpret the effect of year for slow track conditions.\n\n\n[add response here]"
   },
   {
-    "objectID": "ae/lec-13-multilevel-contd.html#compare-models",
-    "href": "ae/lec-13-multilevel-contd.html#compare-models",
-    "title": "Lecture 13 AE: Multilevel models",
-    "section": "Compare models",
-    "text": "Compare models\nYou can get model summary statistics using the glance function from the broom.mixed package.\n\n\n\n\n\n\nEx 5\n\n\n\nCalculate AIC and BIC for Models 1 - 4. Use these statistics to choose a final model.\n\n\n\n# add code here"
+    "objectID": "ae/lec-04-poisson-estimate.html",
+    "href": "ae/lec-04-poisson-estimate.html",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(tidymodels)\nlibrary(knitr)\n\nhh_data &lt;- read_csv(\"data/fHH1.csv\")"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
+    "href": "ae/lec-04-poisson-estimate.html#step-1.-initial-estimates-of-lambda",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 1. Initial estimates of lambda",
+    "text": "Step 1. Initial estimates of lambda\nUsing total + 0.1 instead of total as initial starting values to avoid dividing by 0 or taking the log of 0.\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = hh_data$total + 5)"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
+    "href": "ae/lec-04-poisson-estimate.html#step-2.-calculate-the-working-response-values-z_i.",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 2. Calculate the working response values \\(z_i\\).",
+    "text": "Step 2. Calculate the working response values \\(z_i\\).\nFor Poisson regression, \\(z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\)\n\nhh_data &lt;- hh_data |&gt;\n  mutate(z = log(lambda) + (hh_data$total - lambda) / lambda)"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
+    "href": "ae/lec-04-poisson-estimate.html#step-3.-calculate-the-working-weights-w_i",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 3. Calculate the working weights \\(W_i\\)",
+    "text": "Step 3. Calculate the working weights \\(W_i\\)\nFor Poisson regression, \\(W_i = \\lambda_i\\) .\n\nhh_data &lt;- hh_data |&gt;\n  mutate(w = lambda)\n\n\nhh_data |&gt;\n  select(total, lambda, z, w) |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 4\n  total lambda     z     w\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0      5 0.609     5\n2     3      8 1.45      8\n3     4      9 1.64      9\n4     3      8 1.45      8\n5     3      8 1.45      8"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
+    "href": "ae/lec-04-poisson-estimate.html#step-4.-find-the-coefficient-estimates-of-the-weighted-least-squares-model",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Step 4. Find the coefficient estimates of the weighted least squares model",
+    "text": "Step 4. Find the coefficient estimates of the weighted least squares model\n\nwls &lt;- lm(z ~ age, weight = w, data = hh_data)\ntidy(wls) |&gt;\n  kable(digits = 4)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.7594\n0.0419\n41.9664\n0e+00\n\n\nage\n-0.0026\n0.0008\n-3.4172\n6e-04"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
+    "href": "ae/lec-04-poisson-estimate.html#use-this-model-to-get-new-estimates-of-lambda",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Use this model to get new estimates of lambda",
+    "text": "Use this model to get new estimates of lambda\n\nhh_data &lt;- hh_data |&gt;\n  mutate(lambda = exp(predict(wls)))\n\nRepeat steps 2 - 4 until the estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) converge to their respective values."
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#irls-automated",
+    "href": "ae/lec-04-poisson-estimate.html#irls-automated",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "IRLS automated",
+    "text": "IRLS automated\n\nnreps &lt;- 10\nhh_data &lt;- hh_data %&gt;%\n  mutate(lambda = hh_data$total + 5)\n\n\nbetas &lt;- tibble(beta0 = rep(0, nreps), \n                beta1 = rep(0, nreps))\n\nfor(i in 1:nreps){\n  hh_data &lt;- hh_data %&gt;%\n    mutate(z = log(lambda) + (hh_data$total - lambda)/ lambda, \n         w = lambda)\n  wls &lt;- lm(z ~ age, weight = w, data = hh_data)\n  betas$beta0[i] = tidy(wls)$estimate[1]\n  betas$beta1[i] = tidy(wls)$estimate[2]\n  \n  hh_data &lt;- hh_data %&gt;% \n    mutate(lambda = exp(predict(wls)))\n}\n  \nbetas\n\n# A tibble: 10 × 2\n   beta0    beta1\n   &lt;dbl&gt;    &lt;dbl&gt;\n 1  1.76 -0.00265\n 2  1.57 -0.00414\n 3  1.55 -0.00468\n 4  1.55 -0.00471\n 5  1.55 -0.00471\n 6  1.55 -0.00471\n 7  1.55 -0.00471\n 8  1.55 -0.00471\n 9  1.55 -0.00471\n10  1.55 -0.00471"
+  },
+  {
+    "objectID": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
+    "href": "ae/lec-04-poisson-estimate.html#fit-using-the-glm-function",
+    "title": "Lecture 04 AE: Estimating coefficients for Poisson Regression",
+    "section": "Fit using the glm function",
+    "text": "Fit using the glm function\n\n## add code here"
   },
   {
     "objectID": "ae/lec-08-logistic.html",
@@ -2839,7 +2874,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
     "crumbs": [
       "Course information",
       "Schedule"

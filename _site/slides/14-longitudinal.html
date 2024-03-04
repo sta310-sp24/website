@@ -651,14 +651,16 @@ Prof.&nbsp;Maria Tackett
 <section id="dealing-with-missing-data-1" class="slide level2 midi">
 <h2>Dealing with missing data</h2>
 <div class="question">
+<p>For your group’s assigned approach?</p>
 <ul>
-<li><p>What is an advantage of each method?</p></li>
+<li><p>What is an advantage?</p></li>
 <li><p>What is a disadvantage?</p></li>
 </ul>
+<p>One person post your group’s response in the <code>lectures</code> channel on Slack.</p>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_68fdfd6b" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
+<div class="countdown" id="timer_f9ee1d1c" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -731,7 +733,7 @@ Y_{ij} = a_i + b_iYear08_{ij} + \epsilon_{ij}, \hspace{8mm} \epsilon_{ij} \sim N
 <p><strong>Level Two</strong>:</p>
 <p><span class="math display">\[
 \begin{aligned}
-&amp;a_i = \alpha_0 + u_i \hspace{10mm} b_i = \beta_0 + v_i \\
+&amp;a_i = \alpha_0 + u_i \hspace{20mm} b_i = \beta_0 + v_i \\
 &amp;\left[ \begin{array}{c}
             u_{i} \\ v_{i}
           \end{array}  \right] \sim N \left( \left[
@@ -750,7 +752,7 @@ Y_{ij} = a_i + b_iYear08_{ij} + \epsilon_{ij}, \hspace{8mm} \epsilon_{ij} \sim N
 <div class="question">
 <ul>
 <li>Write the composite model.</li>
-<li>Fit the unconditional growth model.</li>
+<li>Fit the unconditional growth model in the AE.</li>
 <li>What can we learn from this model?</li>
 </ul>
 </div>
@@ -761,7 +763,7 @@ Y_{ij} = a_i + b_iYear08_{ij} + \epsilon_{ij}, \hspace{8mm} \epsilon_{ij} \sim N
 <p><strong>Note</strong>: This should only be used when the definition of the variance component is the same between the two models</p>
 <p><span class="math display">\[\text{Pseudo }R^2 = \frac{\hat{\sigma}^2(\text{Model 1})  -  \hat{\sigma}^2(\text{Model 2})}{\hat{\sigma}^2(\text{Model 1})}\]</span></p>
 <div class="question">
-<p>Calculate the <span class="math inline">\(\text{Pseudo }R^2\)</span> to estimate the change of within school variance between the unconditional means and unconditional growth models.</p>
+<p>Calculate the <span class="math inline">\(\text{Pseudo }R^2\)</span> in the AE to estimate the change of within school variance between the unconditional means and unconditional growth models.</p>
 </div>
 </section>
 <section id="model-with-school-level-covariates" class="slide level2 midi">
@@ -773,9 +775,8 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \si
 \end{equation*}\]</span>
 <p><strong>Level Two</strong></p>
 <span class="math display">\[\begin{align*}
-a_{i} &amp; = \alpha_{0} + \alpha_{1}Charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
-b_{i} &amp; = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i + v_{i} \\[10pt]
-\beta_0 + v_i \\
+a_{i} &amp; = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
+b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i + v_{i} \\[10pt]
 &amp;\left[ \begin{array}{c}
             u_{i} \\ v_{i}
           \end{array}  \right] \sim N \left( \left[
@@ -810,13 +811,13 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \si
 \end{equation*}\]</span>
 <p><strong>Level Two</strong></p>
 <span class="math display">\[\begin{align*}
-a_{i} &amp; = \alpha_{0} + \alpha_{1}Charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
+a_{i} &amp; = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
 &amp; u_i \sim N(0, \sigma_u^2) \\[5pt]
-b_{i} &amp; = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i  
+b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i  
 \end{align*}\]</span>
 </div>
 <div class="fragment">
-<p>In this model, the effect of year is the same for all schools with a given combination of <code>Charter</code> and <code>urban</code></p>
+<p>In this model, the effect of year is the same for all schools with a given combination of <code>charter</code> and <code>urban</code></p>
 </div>
 </section>
 <section id="full-and-reduced-models" class="slide level2">

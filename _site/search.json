@@ -522,7 +522,7 @@
     "href": "slides/14-longitudinal.html#dealing-with-missing-data-1",
     "title": "Modeling two-level longitudinal data",
     "section": "Dealing with missing data",
-    "text": "Dealing with missing data\n\n\nWhat is an advantage of each method?\nWhat is a disadvantage?\n\n\n\n\n\n−+\n03:00"
+    "text": "Dealing with missing data\n\nFor your group’s assigned approach?\n\nWhat is an advantage?\nWhat is a disadvantage?\n\nOne person post your group’s response in the lectures channel on Slack.\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/14-longitudinal.html#strategy-for-building-multilevel-models",
@@ -557,28 +557,28 @@
     "href": "slides/14-longitudinal.html#unconditional-growth-model",
     "title": "Modeling two-level longitudinal data",
     "section": "Unconditional growth model",
-    "text": "Unconditional growth model\nA next step in the model building is the unconditional growth model, a model with Level One predictors but no Level Two predictors.\nLevel One\n\\[\nY_{ij} = a_i + b_iYear08_{ij} + \\epsilon_{ij}, \\hspace{8mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\]\nLevel Two:\n\\[\n\\begin{aligned}\n&a_i = \\alpha_0 + u_i \\hspace{10mm} b_i = \\beta_0 + v_i \\\\\n&\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\n\\end{aligned}\n\\]"
+    "text": "Unconditional growth model\nA next step in the model building is the unconditional growth model, a model with Level One predictors but no Level Two predictors.\nLevel One\n\\[\nY_{ij} = a_i + b_iYear08_{ij} + \\epsilon_{ij}, \\hspace{8mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\]\nLevel Two:\n\\[\n\\begin{aligned}\n&a_i = \\alpha_0 + u_i \\hspace{20mm} b_i = \\beta_0 + v_i \\\\\n&\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "slides/14-longitudinal.html#unconditional-growth-model-1",
     "href": "slides/14-longitudinal.html#unconditional-growth-model-1",
     "title": "Modeling two-level longitudinal data",
     "section": "Unconditional growth model",
-    "text": "Unconditional growth model\n\n\nWrite the composite model.\nFit the unconditional growth model.\nWhat can we learn from this model?"
+    "text": "Unconditional growth model\n\n\nWrite the composite model.\nFit the unconditional growth model in the AE.\nWhat can we learn from this model?"
   },
   {
     "objectID": "slides/14-longitudinal.html#pseudo-r2",
     "href": "slides/14-longitudinal.html#pseudo-r2",
     "title": "Modeling two-level longitudinal data",
     "section": "Pseudo \\(R^2\\)",
-    "text": "Pseudo \\(R^2\\)\nWe can use Pseudo R2 to explain changes in variance components between two models\nNote: This should only be used when the definition of the variance component is the same between the two models\n\\[\\text{Pseudo }R^2 = \\frac{\\hat{\\sigma}^2(\\text{Model 1})  -  \\hat{\\sigma}^2(\\text{Model 2})}{\\hat{\\sigma}^2(\\text{Model 1})}\\]\n\nCalculate the \\(\\text{Pseudo }R^2\\) to estimate the change of within school variance between the unconditional means and unconditional growth models."
+    "text": "Pseudo \\(R^2\\)\nWe can use Pseudo R2 to explain changes in variance components between two models\nNote: This should only be used when the definition of the variance component is the same between the two models\n\\[\\text{Pseudo }R^2 = \\frac{\\hat{\\sigma}^2(\\text{Model 1})  -  \\hat{\\sigma}^2(\\text{Model 2})}{\\hat{\\sigma}^2(\\text{Model 1})}\\]\n\nCalculate the \\(\\text{Pseudo }R^2\\) in the AE to estimate the change of within school variance between the unconditional means and unconditional growth models."
   },
   {
     "objectID": "slides/14-longitudinal.html#model-with-school-level-covariates",
     "href": "slides/14-longitudinal.html#model-with-school-level-covariates",
     "title": "Modeling two-level longitudinal data",
     "section": "Model with school-level covariates",
-    "text": "Model with school-level covariates\nFit a model with school-level covariates that takes the following form:\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij} \\hspace{10mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}Charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\nb_{i} & = \\beta_{0} + \\beta_{1}Charter_i + \\beta_{2}urban_i + v_{i} \\\\[10pt]\n\\beta_0 + v_i \\\\\n&\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\n\\end{align*}\\]"
+    "text": "Model with school-level covariates\nFit a model with school-level covariates that takes the following form:\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij} \\hspace{10mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\nb_{i} & = \\beta_{0} + \\beta_{1}charter_i + \\beta_{2}urban_i + v_{i} \\\\[10pt]\n&\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\n\\end{align*}\\]"
   },
   {
     "objectID": "slides/14-longitudinal.html#model-with-school-level-covariates-1",
@@ -592,7 +592,7 @@
     "href": "slides/14-longitudinal.html#consider-a-simpler-model",
     "title": "Modeling two-level longitudinal data",
     "section": "Consider a simpler model",
-    "text": "Consider a simpler model\n\nWould a model without the effects \\(v_i\\) and \\(\\rho_{uv}\\) be preferable?\n\n\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij} \\hspace{10mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}Charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\n& u_i \\sim N(0, \\sigma_u^2) \\\\[5pt]\nb_{i} & = \\beta_{0} + \\beta_{1}Charter_i + \\beta_{2}urban_i  \n\\end{align*}\\]\n\n\nIn this model, the effect of year is the same for all schools with a given combination of Charter and urban"
+    "text": "Consider a simpler model\n\nWould a model without the effects \\(v_i\\) and \\(\\rho_{uv}\\) be preferable?\n\n\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij} \\hspace{10mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\n& u_i \\sim N(0, \\sigma_u^2) \\\\[5pt]\nb_{i} & = \\beta_{0} + \\beta_{1}charter_i + \\beta_{2}urban_i  \n\\end{align*}\\]\n\n\nIn this model, the effect of year is the same for all schools with a given combination of charter and urban"
   },
   {
     "objectID": "slides/14-longitudinal.html#full-and-reduced-models",
@@ -2909,25 +2909,18 @@
     "text": "Meet your TA!"
   },
   {
+    "objectID": "slides/lab-01.html#meet-each-other",
+    "href": "slides/lab-01.html#meet-each-other",
+    "title": "Welcome to STA 310 Labs!",
+    "section": "Meet each other!",
+    "text": "Meet each other!\n\n\nGet into groups of 3 - 5.\nIntroduce yourself if you haven’t met\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to today’s date.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (e.g., we’re all wearing socks)\nNot body parts (e.g., we all have a nose)\n\nReporter will share list with the class.\n\n\n\n\n\n−+\n05:00"
+  },
+  {
     "objectID": "slides/lab-01.html#what-to-expect-in-lab",
     "href": "slides/lab-01.html#what-to-expect-in-lab",
     "title": "Welcome to STA 310 Labs!",
     "section": "What to expect in lab",
     "text": "What to expect in lab\n\nIntroduction to the week’s lab\nAnswer questions about lectures and cover additional content, as needed\nWork on homework or projects"
-  },
-  {
-    "objectID": "slides/lab-01.html#lecture-02-ae",
-    "href": "slides/lab-01.html#lecture-02-ae",
-    "title": "Welcome to STA 310 Labs!",
-    "section": "Lecture 02 AE",
-    "text": "Lecture 02 AE\n\nOpen the Lecture 02 AE from yesterday’s class.\nAre there any questions about Exercises 1 - 5?\nWe will go over Exercises 6 - 8 about Model 3 today. You will do Part 2 in Monday’s lecture."
-  },
-  {
-    "objectID": "slides/lab-01.html#icebreaker",
-    "href": "slides/lab-01.html#icebreaker",
-    "title": "Welcome to STA 310 Labs!",
-    "section": "Icebreaker",
-    "text": "Icebreaker\n\n\nGet into groups of 3 - 5.\nIntroduce yourself if you haven’t met\nChoose a reporter\n\nNeed help choosing? Person with birthday closest to today’s date.\n\nIdentify 8 things everyone in the group has in common\n\nNot being a Duke student\nNot clothes (e.g., we’re all wearing socks)\nNot body parts (e.g., we all have a nose)\n\nReporter will share list with the class.\n\n\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/lab-01.html#todays-lab",

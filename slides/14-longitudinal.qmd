@@ -52,7 +52,7 @@ library(lme4)
 library(broom.mixed)
 ```
 
-## Announcements 
+## Announcements
 
 -   Quiz 03 - Tue, Mar 04 at 9am - Thu, Mar 06 at noon
 
@@ -60,7 +60,7 @@ library(broom.mixed)
 
     -   Correlated data, multilevel models
 
-## Topics 
+## Topics
 
 -   Exploratory data analysis for longitudinal data
 -   Fit and compare longitudinal models
@@ -143,14 +143,16 @@ charter |>
 -   **Apply multilevel methods**: Estimate patterns using available data recognizing that trends for groups with complete data are more precise than for those with fewer measurements. This is under the condition that the probability of missingness does not depend on unobserved predictors or the response.
 :::
 
-------------------------------------------------------------------------
-
 ## Dealing with missing data {.midi}
 
 ::: question
--   What is an advantage of each method?
+For your group's assigned approach?
+
+-   What is an advantage?
 
 -   What is a disadvantage?
+
+One person post your group's response in the `lectures` channel on Slack.
 :::
 
 ```{r echo = F}
@@ -237,7 +239,7 @@ $$
 
 $$
 \begin{aligned}
-&a_i = \alpha_0 + u_i \hspace{10mm} b_i = \beta_0 + v_i \\
+&a_i = \alpha_0 + u_i \hspace{20mm} b_i = \beta_0 + v_i \\
 &\left[ \begin{array}{c}
             u_{i} \\ v_{i}
           \end{array}  \right] \sim N \left( \left[
@@ -255,7 +257,7 @@ $$
 
 ::: question
 -   Write the composite model.
--   Fit the unconditional growth model.
+-   Fit the unconditional growth model in the AE.
 -   What can we learn from this model?
 :::
 
@@ -268,7 +270,7 @@ We can use **Pseudo R**<sup>2</sup> to explain changes in variance components be
 $$\text{Pseudo }R^2 = \frac{\hat{\sigma}^2(\text{Model 1})  -  \hat{\sigma}^2(\text{Model 2})}{\hat{\sigma}^2(\text{Model 1})}$$
 
 ::: question
-Calculate the $\text{Pseudo }R^2$ to estimate the change of within school variance between the unconditional means and unconditional growth models.
+Calculate the $\text{Pseudo }R^2$ in the AE to estimate the change of within school variance between the unconditional means and unconditional growth models.
 :::
 
 ## Model with school-level covariates {.midi}
@@ -286,9 +288,8 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \si
 
 ```{=tex}
 \begin{align*}
-a_{i} & = \alpha_{0} + \alpha_{1}Charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
-b_{i} & = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i + v_{i} \\[10pt]
-\beta_0 + v_i \\
+a_{i} & = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
+b_{i} & = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i + v_{i} \\[10pt]
 &\left[ \begin{array}{c}
             u_{i} \\ v_{i}
           \end{array}  \right] \sim N \left( \left[
@@ -326,14 +327,14 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \si
 
 ```{=tex}
 \begin{align*}
-a_{i} & = \alpha_{0} + \alpha_{1}Charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
+a_{i} & = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
 & u_i \sim N(0, \sigma_u^2) \\[5pt]
-b_{i} & = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i  
+b_{i} & = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i  
 \end{align*}
 ```
 . . .
 
-In this model, the effect of year is the same for all schools with a given combination of `Charter` and `urban`
+In this model, the effect of year is the same for all schools with a given combination of `charter` and `urban`
 
 ## Full and reduced models
 

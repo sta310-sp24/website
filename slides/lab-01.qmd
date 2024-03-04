@@ -31,25 +31,7 @@ bibliography: references.bib
 
 ![](images/labs/hello-sticker.jpeg){fig-alt="Pink sticker that says Hello my name is." fig-align="center"}
 
-## What to expect in lab
-
--   Introduction to the week's lab
-
--   Answer questions about lectures and cover additional content, as needed
-
--   Work on homework or projects
-
-# Any questions about the course or syllabus?
-
-## Lecture 02 AE
-
--   Open the Lecture 02 AE from yesterday's class.
-
--   Are there any questions about Exercises 1 - 5?
-
--   We will go over Exercises 6 - 8 about Model 3 today. You will do Part 2 in Monday's lecture.
-
-## Icebreaker
+## Meet each other!
 
 ::: midi
 -   Get into groups of 3 - 5.
@@ -74,6 +56,16 @@ bibliography: references.bib
 
 countdown::countdown(minutes  = 5)
 ```
+
+## What to expect in lab
+
+-   Introduction to the week's lab
+
+-   Answer questions about lectures and cover additional content, as needed
+
+-   Work on homework or projects
+
+# Any questions about the course or syllabus?
 
 ## Today's lab {.midi}
 

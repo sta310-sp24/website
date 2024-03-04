@@ -462,18 +462,18 @@
     "text": "Next class\n\nUsing likelihoods\nSee Prepare for Jan 22 lecture"
   },
   {
-    "objectID": "slides/14-longitudinal.html#announcements---update",
-    "href": "slides/14-longitudinal.html#announcements---update",
+    "objectID": "slides/14-longitudinal.html#announcements",
+    "href": "slides/14-longitudinal.html#announcements",
     "title": "Modeling two-level longitudinal data",
-    "section": "Announcements - UPDATE",
-    "text": "Announcements - UPDATE"
+    "section": "Announcements",
+    "text": "Announcements\n\nQuiz 03 - Tue, Mar 04 at 9am - Thu, Mar 06 at noon\n\nCovers readings and lectures in Feb 19 - 28 lectures\nCorrelated data, multilevel models"
   },
   {
-    "objectID": "slides/14-longitudinal.html#topics---update",
-    "href": "slides/14-longitudinal.html#topics---update",
+    "objectID": "slides/14-longitudinal.html#topics",
+    "href": "slides/14-longitudinal.html#topics",
     "title": "Modeling two-level longitudinal data",
-    "section": "Topics - UPDATE",
-    "text": "Topics - UPDATE\n\nFit and interpret multilevel models for longitudinal data\n\n\n\nNotes are based on Chapter 9 of Roback and Legler (2021), Boedeker (2019), Faraway (2016), and Singer and Willett (2003)."
+    "section": "Topics",
+    "text": "Topics\n\nExploratory data analysis for longitudinal data\nFit and compare longitudinal models\nInference for fixed and random effects\n\n\n\nNotes are based on Chapter 9 of Roback and Legler (2021), Boedeker (2019), Faraway (2016), and Singer and Willett (2003)."
   },
   {
     "objectID": "slides/14-longitudinal.html#data-charter-schools-in-mn",
@@ -518,6 +518,13 @@
     "text": "Dealing with missing data\n\n\nComplete case analysis: Only include schools with complete data for all three years.\n\nWould remove 12.6% of observations in this data.\n\nLast observation carried forward: Keep the last observation from each group (school) and conduct analysis for independent observations.\nImpute missing observations: “Fill in” values of missing observations using the typical observed trends from groups with similar covariates.\nApply multilevel methods: Estimate patterns using available data recognizing that trends for groups with complete data are more precise than for those with fewer measurements. This is under the condition that the probability of missingness does not depend on unobserved predictors or the response."
   },
   {
+    "objectID": "slides/14-longitudinal.html#dealing-with-missing-data-1",
+    "href": "slides/14-longitudinal.html#dealing-with-missing-data-1",
+    "title": "Modeling two-level longitudinal data",
+    "section": "Dealing with missing data",
+    "text": "Dealing with missing data\n\n\nWhat is an advantage of each method?\nWhat is a disadvantage?\n\n\n\n\n\n−+\n03:00"
+  },
+  {
     "objectID": "slides/14-longitudinal.html#strategy-for-building-multilevel-models",
     "href": "slides/14-longitudinal.html#strategy-for-building-multilevel-models",
     "title": "Modeling two-level longitudinal data",
@@ -529,7 +536,7 @@
     "href": "slides/14-longitudinal.html#exploratory-data-analysis",
     "title": "Modeling two-level longitudinal data",
     "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\nGiven the longitudinal structure of the data, we are able to answer questions at two levels\n\nLevel One (within school): How did average math scores for a given school change over time?\nLevel Two (between schools): What is the effect of school-specific covariates on the average math scores in 2008 and the rate of change from 2008 to 2010?\n\nWe can conduct exploratory data analysis at both levels, e.g.,\n\nUnivariate and bivariate EDA\nLattice plots\nSpaghetti plots"
+    "text": "Exploratory data analysis\nGiven the longitudinal structure of the data, we are able to answer questions at two levels\n\nLevel One (within school): How did average math scores for a given school change over time?\nLevel Two (between schools): What is the effect of school-specific covariates on the average math scores in 2008 and the rate of change from 2008 to 2010?\n\n\nWe can conduct exploratory data analysis at both levels, e.g.,\n\nUnivariate and bivariate EDA\nLattice plots\nSpaghetti plots"
   },
   {
     "objectID": "slides/14-longitudinal.html#unconditional-means-model",
@@ -543,35 +550,49 @@
     "href": "slides/14-longitudinal.html#intraclass-correlation",
     "title": "Modeling two-level longitudinal data",
     "section": "Intraclass correlation",
-    "text": "Intraclass correlation\nThe intraclass correlation is the relative variability between groups\n\\[\\hat{\\rho} = \\frac{\\text{Between variability}}{\\text{Total variability}} = \\frac{\\hat{\\sigma}_u^2}{\\hat{\\sigma}^2_u + \\hat{\\sigma}^2}\\]\n\n\nFit the unconditional means model and calculate the intraclass correlation.\nWhat does this mean?"
+    "text": "Intraclass correlation\nThe intraclass correlation is the relative variability between groups\n\\[\\hat{\\rho} = \\frac{\\text{Between variability}}{\\text{Total variability}} = \\frac{\\hat{\\sigma}_u^2}{\\hat{\\sigma}^2_u + \\hat{\\sigma}^2}\\]\n\n\nFit the unconditional means model and calculate the intraclass correlation in the AE.\nWhat does this value tell you?"
   },
   {
     "objectID": "slides/14-longitudinal.html#unconditional-growth-model",
     "href": "slides/14-longitudinal.html#unconditional-growth-model",
     "title": "Modeling two-level longitudinal data",
     "section": "Unconditional growth model",
-    "text": "Unconditional growth model\nA next step in the model building is the unconditional growth model, a model with Level One predictors but no Level Two predictors.\nLevel One: \\(Y_{ij} = a_i + b_iYear08_{ij} + \\epsilon_{ij}\\)\nLevel Two:\n\n\\(a_i = \\alpha_0 + u_i\\)\n\\(b_i = \\beta_0 + v_i\\)\n\n\n\nWrite the composite model.\nFit the unconditional growth model.\nWhat can we learn from this model?"
+    "text": "Unconditional growth model\nA next step in the model building is the unconditional growth model, a model with Level One predictors but no Level Two predictors.\nLevel One\n\\[\nY_{ij} = a_i + b_iYear08_{ij} + \\epsilon_{ij}, \\hspace{8mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\]\nLevel Two:\n\\[\n\\begin{aligned}\n&a_i = \\alpha_0 + u_i \\hspace{10mm} b_i = \\beta_0 + v_i \\\\\n&\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/14-longitudinal.html#unconditional-growth-model-1",
+    "href": "slides/14-longitudinal.html#unconditional-growth-model-1",
+    "title": "Modeling two-level longitudinal data",
+    "section": "Unconditional growth model",
+    "text": "Unconditional growth model\n\n\nWrite the composite model.\nFit the unconditional growth model.\nWhat can we learn from this model?"
   },
   {
     "objectID": "slides/14-longitudinal.html#pseudo-r2",
     "href": "slides/14-longitudinal.html#pseudo-r2",
     "title": "Modeling two-level longitudinal data",
     "section": "Pseudo \\(R^2\\)",
-    "text": "Pseudo \\(R^2\\)\nWe can use Pseudo R2 to explain changes in variance components between two models\n\nNote: This should only be used when the definition of the variance component is the same between the two models\n\n\\[\\text{Pseudo }R^2 = \\frac{\\hat{\\sigma}^2(\\text{Model 1})  -  \\hat{\\sigma}^2(\\text{Model 2})}{\\hat{\\sigma}^2(\\text{Model 1})}\\]\n\nCalculate the \\(\\text{Pseudo }R^2\\) to estimate the change of within school variance between the unconditional means and unconditional growth models."
+    "text": "Pseudo \\(R^2\\)\nWe can use Pseudo R2 to explain changes in variance components between two models\nNote: This should only be used when the definition of the variance component is the same between the two models\n\\[\\text{Pseudo }R^2 = \\frac{\\hat{\\sigma}^2(\\text{Model 1})  -  \\hat{\\sigma}^2(\\text{Model 2})}{\\hat{\\sigma}^2(\\text{Model 1})}\\]\n\nCalculate the \\(\\text{Pseudo }R^2\\) to estimate the change of within school variance between the unconditional means and unconditional growth models."
   },
   {
     "objectID": "slides/14-longitudinal.html#model-with-school-level-covariates",
     "href": "slides/14-longitudinal.html#model-with-school-level-covariates",
     "title": "Modeling two-level longitudinal data",
     "section": "Model with school-level covariates",
-    "text": "Model with school-level covariates\nFit a model with school-level covariates that takes the following form:\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij}\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}Charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\nb_{i} & = \\beta_{0} + \\beta_{1}Charter_i + \\beta_{2}urban_i + v_{i}\n\\end{align*}\\]\n\n\nWrite out the composite model.\nFit the model in R.\nUse the model to describe how the average math scores differed between charter and non-charter schools."
+    "text": "Model with school-level covariates\nFit a model with school-level covariates that takes the following form:\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij} \\hspace{10mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}Charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\nb_{i} & = \\beta_{0} + \\beta_{1}Charter_i + \\beta_{2}urban_i + v_{i} \\\\[10pt]\n\\beta_0 + v_i \\\\\n&\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "slides/14-longitudinal.html#model-with-school-level-covariates-1",
+    "href": "slides/14-longitudinal.html#model-with-school-level-covariates-1",
+    "title": "Modeling two-level longitudinal data",
+    "section": "Model with school-level covariates",
+    "text": "Model with school-level covariates\n\n\nWrite out the composite model.\nFit the model in R.\nUse the model to describe how the average math scores differed between charter and non-charter schools."
   },
   {
     "objectID": "slides/14-longitudinal.html#consider-a-simpler-model",
     "href": "slides/14-longitudinal.html#consider-a-simpler-model",
     "title": "Modeling two-level longitudinal data",
     "section": "Consider a simpler model",
-    "text": "Consider a simpler model\n\nWould a model without the effects \\(v_i\\) and \\(\\rho_{uv}\\) be preferable?\n\n\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij}\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}Charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\nb_{i} & = \\beta_{0} + \\beta_{1}Charter_i + \\beta_{2}urban_i\n\\end{align*}\\]\n\n\n\nIn this model, the effect of year is the same for all schools with a given combination of Charter and urban"
+    "text": "Consider a simpler model\n\nWould a model without the effects \\(v_i\\) and \\(\\rho_{uv}\\) be preferable?\n\n\nLevel One\n\\[\\begin{equation*}\nY_{ij}= a_{i} + b_{i}Year08_{ij} + \\epsilon_{ij} \\hspace{10mm} \\epsilon_{ij} \\sim N(0, \\sigma^2)\n\\end{equation*}\\]\nLevel Two\n\\[\\begin{align*}\na_{i} & = \\alpha_{0} + \\alpha_{1}Charter_i + \\alpha_{2}urban_i + \\alpha_{3}schpctfree_i + u_{i} \\\\\n& u_i \\sim N(0, \\sigma_u^2) \\\\[5pt]\nb_{i} & = \\beta_{0} + \\beta_{1}Charter_i + \\beta_{2}urban_i  \n\\end{align*}\\]\n\n\nIn this model, the effect of year is the same for all schools with a given combination of Charter and urban"
   },
   {
     "objectID": "slides/14-longitudinal.html#full-and-reduced-models",
@@ -585,7 +606,7 @@
     "href": "slides/14-longitudinal.html#notes-on-drop-in-deviance-test",
     "title": "Modeling two-level longitudinal data",
     "section": "Notes on drop-in-deviance test",
-    "text": "Notes on drop-in-deviance test\n\nanova(full_model, reduced_model, test = \"LRT\") |&gt;\n  kable(digits = 3)\n\n\n\n\n\nnpar\nAIC\nBIC\nlogLik\ndeviance\nChisq\nDf\nPr(&gt;Chisq)\n\n\n\n\nreduced_model\n9\n9952.992\n10002.11\n-4967.496\n9934.992\nNA\nNA\nNA\n\n\nfull_model\n11\n9953.793\n10013.83\n-4965.897\n9931.793\n3.199\n2\n0.202\n\n\n\n\n\n\n\n\n\n\\(\\chi^2\\) test is conservative, i.e., the p-values are larger than they should be, when testing random effects at the boundary ( e.g., \\(\\sigma_v^2 = 0\\)) or those with bounded ranges (e.g., \\(\\rho_{uv}\\) )\nIf you observe small p-values, you can feel relatively certain the tested effects are statistically significant\nUse bootstrap methods to obtain more accurate p-values"
+    "text": "Notes on drop-in-deviance test\n\nanova(full_model, reduced_model, test = \"LRT\") |&gt;\n  kable(digits = 3)\n\n\n\n\n\nnpar\nAIC\nBIC\nlogLik\ndeviance\nChisq\nDf\nPr(&gt;Chisq)\n\n\n\n\nreduced_model\n9\n9952.992\n10002.11\n-4967.496\n9934.992\nNA\nNA\nNA\n\n\nfull_model\n11\n9953.793\n10013.83\n-4965.897\n9931.793\n3.199\n2\n0.202\n\n\n\n\n\n\n\n\n\n\n\\(\\chi^2\\) test is conservative, i.e., the p-values are larger than they should be, when testing random effects at the boundary ( e.g., \\(\\sigma_v^2 = 0\\)) or those with bounded ranges (e.g., \\(\\rho_{uv}\\) )\nIf you observe small p-values, you can feel relatively certain the tested effects are statistically significant\nUse bootstrap methods to obtain more accurate p-values"
   },
   {
     "objectID": "slides/14-longitudinal.html#references",
@@ -2874,7 +2895,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
     "crumbs": [
       "Course information",
       "Schedule"

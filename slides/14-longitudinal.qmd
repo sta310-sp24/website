@@ -52,11 +52,19 @@ library(lme4)
 library(broom.mixed)
 ```
 
-## Announcements - UPDATE
+## Announcements 
 
-## Topics - UPDATE
+-   Quiz 03 - Tue, Mar 04 at 9am - Thu, Mar 06 at noon
 
--   Fit and interpret multilevel models for longitudinal data
+    -   Covers readings and lectures in Feb 19 - 28 lectures
+
+    -   Correlated data, multilevel models
+
+## Topics 
+
+-   Exploratory data analysis for longitudinal data
+-   Fit and compare longitudinal models
+-   Inference for fixed and random effects
 
 ::: aside
 Notes are based on Chapter 9 of @roback2021beyond, @boedeker2019hierarchical, @faraway2016extending, and @singer2003applied.
@@ -74,7 +82,7 @@ Today's data set contains standardized test scores and demographic information f
 -   **`schPctfree`**: proportion of students who receive free or reduced lunches in a school (based on 2010 figures).
 -   **`year08`**: Years since 2008
 
-## Data {.midi}
+## Data {.small}
 
 ```{r}
 #| echo: false
@@ -137,7 +145,13 @@ charter |>
 
 ------------------------------------------------------------------------
 
-.center\[ .question\[ What is an advantage of each method? What is a disadvantage?\]\]
+## Dealing with missing data {.midi}
+
+::: question
+-   What is an advantage of each method?
+
+-   What is a disadvantage?
+:::
 
 ```{r echo = F}
 library(countdown)
@@ -145,7 +159,7 @@ countdown(minutes = 3, seconds = 00,
           margin = "1.25%")
 ```
 
-## Strategy for building multilevel models
+## Strategy for building multilevel models {.midi}
 
 -   Conduct exploratory data analysis for Level One and Level Two variables.
 
@@ -159,13 +173,15 @@ countdown(minutes = 3, seconds = 00,
 
 *Alternate model building strategies in BMLR Section 8.6*
 
-## Exploratory data analysis
+## Exploratory data analysis {.midi}
 
 Given the longitudinal structure of the data, we are able to answer questions at two levels
 
 -   **Level One (within school)**: How did average math scores for a given school change over time?
 
 -   **Level Two (between schools)**: What is the effect of school-specific covariates on the average math scores in 2008 and the rate of change from 2008 to 2010?
+
+. . .
 
 We can conduct exploratory data analysis at both levels, e.g.,
 
@@ -175,9 +191,13 @@ We can conduct exploratory data analysis at both levels, e.g.,
 
 # Application exercise
 
-.question\[ Conduct exploratory data analysis in `lecture-18.Rmd`.\]
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-14-longitudinal](https://sta310-sp24.netlify.app/ae/lec-14-longitudinal.html)
+:::
 
-See BMLR Section 9.3 for full exploratory data analysis.
+<br>
+
+See [BMLR Section 9.3](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#exploratoryanalysis) for full exploratory data analysis.
 
 ## Unconditional means model
 
@@ -185,7 +205,7 @@ Start with the **unconditional means model**, a model with no covariates at any 
 
 **Level One** : $Y_{ij} = a_{i} + \epsilon_{ij}, \hspace{5mm} \epsilon_{ij} \sim N(0, \sigma^2)$
 
-**Level Two**: $a_i = \alpha_0 + u_i, \hspace{5mm} u_{i} \sim N(0, \sigma^2_u)$
+**Level Two**: $a_i = \alpha_0 + u_i, \hspace{5mm} u_{i} \sim N(0, \sigma^2_u)$<br>
 
 ::: question
 Write the composite model.
@@ -198,21 +218,40 @@ The **intraclass correlation** is the relative variability between groups
 $$\hat{\rho} = \frac{\text{Between variability}}{\text{Total variability}} = \frac{\hat{\sigma}_u^2}{\hat{\sigma}^2_u + \hat{\sigma}^2}$$
 
 ::: question
--   Fit the unconditional means model and calculate the intraclass correlation.
+-   Fit the unconditional means model and calculate the intraclass correlation in the AE.
 
--   What does this mean?
+-   What does this value tell you?
 :::
 
 ## Unconditional growth model
 
 A next step in the model building is the **unconditional growth model**, a model with Level One predictors but no Level Two predictors.
 
-**Level One**: $Y_{ij} = a_i + b_iYear08_{ij} + \epsilon_{ij}$
+**Level One**
+
+$$
+Y_{ij} = a_i + b_iYear08_{ij} + \epsilon_{ij}, \hspace{8mm} \epsilon_{ij} \sim N(0, \sigma^2)
+$$
 
 **Level Two**:
 
--   $a_i = \alpha_0 + u_i$
--   $b_i = \beta_0 + v_i$
+$$
+\begin{aligned}
+&a_i = \alpha_0 + u_i \hspace{10mm} b_i = \beta_0 + v_i \\
+&\left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)
+\end{aligned}
+$$
+
+## Unconditional growth model
 
 ::: question
 -   Write the composite model.
@@ -224,7 +263,7 @@ A next step in the model building is the **unconditional growth model**, a model
 
 We can use **Pseudo R**<sup>2</sup> to explain changes in variance components between two models
 
--   **Note**: This should only be used when the definition of the variance component is the same between the two models
+**Note**: This should only be used when the definition of the variance component is the same between the two models
 
 $$\text{Pseudo }R^2 = \frac{\hat{\sigma}^2(\text{Model 1})  -  \hat{\sigma}^2(\text{Model 2})}{\hat{\sigma}^2(\text{Model 1})}$$
 
@@ -240,7 +279,7 @@ Fit a model with school-level covariates that takes the following form:
 
 ```{=tex}
 \begin{equation*}
-Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij}
+Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \sim N(0, \sigma^2)
 \end{equation*}
 ```
 **Level Two**
@@ -248,16 +287,29 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij}
 ```{=tex}
 \begin{align*}
 a_{i} & = \alpha_{0} + \alpha_{1}Charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
-b_{i} & = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i + v_{i}
+b_{i} & = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i + v_{i} \\[10pt]
+\beta_0 + v_i \\
+&\left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)
 \end{align*}
 ```
+## Model with school-level covariates
+
 ::: question
 -   Write out the composite model.
 -   Fit the model in R.
 -   Use the model to describe how the average math scores differed between charter and non-charter schools.
 :::
 
-## Consider a simpler model
+## Consider a simpler model {.midi}
 
 <center>Would a model without the effects $v_i$ and $\rho_{uv}$ be preferable?</center>
 
@@ -267,7 +319,7 @@ b_{i} & = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i + v_{i}
 
 ```{=tex}
 \begin{equation*}
-Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij}
+Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \sim N(0, \sigma^2)
 \end{equation*}
 ```
 **Level Two**
@@ -275,11 +327,10 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij}
 ```{=tex}
 \begin{align*}
 a_{i} & = \alpha_{0} + \alpha_{1}Charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
-b_{i} & = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i 
+& u_i \sim N(0, \sigma_u^2) \\[5pt]
+b_{i} & = \beta_{0} + \beta_{1}Charter_i + \beta_{2}urban_i  
 \end{align*}
 ```
-<br>
-
 . . .
 
 In this model, the effect of year is the same for all schools with a given combination of `Charter` and `urban`
@@ -302,7 +353,7 @@ reduced_model <-  lmer(MathAvgScore ~ charter + urban + schPctfree +
                        (1 | schoolid), REML = F, data = charter) 
 ```
 
-## Notes on drop-in-deviance test
+## Notes on drop-in-deviance test {.midi}
 
 ```{r}
 anova(full_model, reduced_model, test = "LRT") |>
@@ -311,10 +362,12 @@ anova(full_model, reduced_model, test = "LRT") |>
 
 . . .
 
+::: incremental
 -   $\chi^2$ test is conservative, i.e., the p-values are larger than they should be, when testing random effects at the boundary ( e.g., $\sigma_v^2 = 0$) or those with bounded ranges (e.g., $\rho_{uv}$ )
 
 -   If you observe small p-values, you can feel relatively certain the tested effects are statistically significant
 
 -   Use bootstrap methods to obtain more accurate p-values
+:::
 
 ## References

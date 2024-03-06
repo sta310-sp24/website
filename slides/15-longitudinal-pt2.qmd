@@ -1,0 +1,352 @@
+---
+title: "Modeling two-level longitudinal data"
+subtitle: "Inference for fixed and random effects"
+date: "March 6, 2024"
+date-format: "MMM DD, YYYY"
+author: "Prof. Maria Tackett"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+library(viridis)
+library(lme4)
+library(broom.mixed)
+```
+
+## Announcements
+
+-   Quiz 03 - due Thu, Mar 06 at noon
+
+    -   Covers readings and lectures in Feb 19 - 28 lectures
+
+    -   Correlated data, multilevel models
+
+-   HW 04 - due Wed, Mar 20
+
+    -   Released Thu, Mar 06 \~ 9am
+
+## Topics
+
+-   Inference for fixed and random effects
+
+::: aside
+Notes are based on Chapter 9 of @roback2021beyond, @boedeker2019hierarchical, @faraway2016extending, and @singer2003applied.
+:::
+
+# Modeling two-level longitudinal data
+
+## Data: Charter schools in MN {.midi}
+
+Today's data set contains standardized test scores and demographic information for schools in Minneapolis, MN from 2008 to 2010. The data were collected by the Minnesota Department of Education. Understanding the effectiveness of charter schools is of particular interest, since they often incorporate unique methods of instruction and learning that differ from public schools.
+
+-   **`MathAvgScore`**: Average MCA-II score for all 6th grade students in a school (response variable)
+-   **`urban`**: urban (1) or rural (0) location school location
+-   **`charter`**: charter school (1) or a non-charter public school (0)
+-   **`schPctfree`**: proportion of students who receive free or reduced lunches in a school (based on 2010 figures).
+-   **`year08`**: Years since 2008
+
+## Data {.small}
+
+```{r}
+#| echo: false
+charter <- read_csv("data/charter-long.csv")
+```
+
+```{r echo = F}
+charter |>
+  select(schoolName, year08, urban, charter, schPctfree, MathAvgScore) |>
+  slice(1:3, 1852:1854) |>
+  kable(digits = 3)
+```
+
+## Closer look at missing data pattern
+
+```{r echo = F}
+charter |>
+  select(schoolid, schoolName, year08, MathAvgScore) |>
+  pivot_wider(id_cols = c(schoolid, schoolName), names_from = year08,
+              names_prefix = "MathAvgScore.", values_from = MathAvgScore) |> 
+  mutate(MathAvgScore0_miss = if_else(is.na(MathAvgScore.0), 1, 0),
+         MathAvgScore1_miss = if_else(is.na(MathAvgScore.1), 1, 0),
+         MathAvgScore2_miss = if_else(is.na(MathAvgScore.2), 1, 0)) |> 
+  count(MathAvgScore0_miss, MathAvgScore1_miss, MathAvgScore2_miss) |> 
+  kable()
+```
+
+```         
+```
+
+## Exploratory data analysis {.midi}
+
+## Unconditional means model
+
+Start with the **unconditional means model**, a model with no covariates at any level. This is also called the random intercepts model.
+
+**Level One** : $Y_{ij} = a_{i} + \epsilon_{ij}, \hspace{5mm} \epsilon_{ij} \sim N(0, \sigma^2)$
+
+**Level Two**: $a_i = \alpha_0 + u_i, \hspace{5mm} u_{i} \sim N(0, \sigma^2_u)$<br>
+
+## Unconditional growth model
+
+A next step in the model building is the **unconditional growth model**, a model with Level One predictors but no Level Two predictors.
+
+**Level One**
+
+$$
+Y_{ij} = a_i + b_iYear08_{ij} + \epsilon_{ij}, \hspace{8mm} \epsilon_{ij} \sim N(0, \sigma^2)
+$$
+
+**Level Two**:
+
+$$
+\begin{aligned}
+&a_i = \alpha_0 + u_i \hspace{20mm} b_i = \beta_0 + v_i \\
+&\left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)
+\end{aligned}
+$$
+
+## Model with school-level covariates {.midi}
+
+Fit a model with school-level covariates that takes the following form:
+
+**Level One**
+
+```{=tex}
+\begin{equation*}
+Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \sim N(0, \sigma^2)
+\end{equation*}
+```
+**Level Two**
+
+```{=tex}
+\begin{align*}
+a_{i} & = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
+b_{i} & = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i + v_{i} \\[10pt]
+&\left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)
+\end{align*}
+```
+## Model with school-level covariates
+
+::: question
+-   Fit the model in R.
+-   Use the model to describe how the average math scores differed between charter and non-charter schools.
+:::
+
+## Consider a simpler model {.midi}
+
+<center>Would a model without the effects $v_i$ and $\rho_{uv}$ be preferable?</center>
+
+. . .
+
+**Level One**
+
+```{=tex}
+\begin{equation*}
+Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \sim N(0, \sigma^2)
+\end{equation*}
+```
+**Level Two**
+
+```{=tex}
+\begin{align*}
+a_{i} & = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
+& u_i \sim N(0, \sigma_u^2) \\[5pt]
+b_{i} & = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i  
+\end{align*}
+```
+. . .
+
+In this model, the effect of year is the same for all schools with a given combination of `charter` and `urban`
+
+## Full and reduced models
+
+```{r}
+#| code-line-numbers: "3"
+full_model <- lmer(MathAvgScore ~ charter + urban + schPctfree + 
+                     charter:year08  + urban:year08 + year08 + 
+                     (year08|schoolid), REML = F, data = charter) 
+```
+
+<br>
+
+```{r}
+#| code-line-numbers: "3"
+reduced_model <-  lmer(MathAvgScore ~ charter + urban + schPctfree + 
+                     charter:year08  + urban:year08 + year08 +
+                       (1 | schoolid), REML = F, data = charter) 
+```
+
+## Likelihood ratio test {.midi}
+
+```{r}
+anova(full_model, reduced_model, test = "LRT") |>
+  kable(digits = 3)
+```
+
+. . .
+
+::: incremental
+-   $\chi^2$ test is conservative, i.e., the p-values are larger than they should be, when testing random effects at the boundary ( e.g., $\sigma_v^2 = 0$) or those with bounded ranges (e.g., $\rho_{uv}$ )
+
+-   If you observe small p-values, you can feel relatively certain the tested effects are statistically significant
+
+-   Use bootstrap methods to calculate confidence intervals or obtain more accurate p-values (see [Section 9.6.4](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot) for more detail on bootstrapping for LRT)
+:::
+
+## Bootstrapping
+
+-   **Bootstrapping** is from the phrase "pulling oneself up by one’s bootstraps"
+
+-   Accomplishing a difficult task without any outside help
+
+-   **Task**: conduct inference for model parameters (fixed and random effects) using only the sample data
+
+## Nonparametric bootstrapping {.small}
+
+`r emo::ji("one")`   Take a sample, with replacement, of size $n$ (the size of the original data) (called *case resampling*).
+
+<br>
+
+`r emo::ji("two")`   Fit the model to obtain estimates of the coefficients.
+
+<br>
+
+`r emo::ji("three")`   Repeat steps 1 - 2 many times (\~ 1000) to obtain the bootstrap distribution.
+
+<br>
+
+`r emo::ji("four")`   Get the coefficients for the 95% confidence interval by taking the middle 95% of the bootstrap distribution.
+
+## Bootstrap CI {.small}
+
+Use the `confint` function to calculate bootstrapped confidence intervals to conduct inference on the fixed and random effects
+
+```{r}
+confint(full_model, method = "boot", oldNames = FALSE) |>
+  kable(digits = 4)
+```
+
+## Bootstrap CI {.midi}
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| echo: false
+
+confint(full_model, method = "boot", oldNames = FALSE) |>
+  kable(digits = 4)
+
+```
+:::
+
+::: {.column width="30%"}
+::: question
+Would you keep $\sigma_{v}$ and/or $\rho_{uv}$ in the model?
+:::
+:::
+:::
+
+## Inference for fixed effects {.midi}
+
+-   The output for multilevel models do not contain p-values for the coefficients of fixed effects
+
+-   The exact distribution of the test statistic under the null hypothesis (no fixed effect) is unknown, because the exact degrees of freedom are unknown
+
+    -   Finding suitable approximations is an area of ongoing research
+
+-   We can use likelihood ratio test with an approximate $\chi^2$ distribution to test these effects, since we're not testing on the boundary and fixed effects do not have limited ranges
+
+    -   Some research suggests the p-values are too low but approximations are generally pretty good
+    -   Can also calculate the p-values using parametric bootstrap approach
+
+## Methods to conduct inference for individual coefficients {.midi}
+
+-   Use the t-value $\big(\frac{estimate}{std.error}\big)$ in the model output
+    -   General rule: Coefficients with \|t-value\| \> 2 considered to be statistically significant, i.e., different from 0
+-   Calculate confidence intervals using **nonparametric bootstrapping**
+
+## Summary: Model comparisons {.midi}
+
+**Methods to compare models with different fixed effects**
+
+-   AIC or BIC
+-   Nonparametric bootstrap confidence intervals
+-   Likelihood ratio tests based on $\chi^2$ distribution
+-   Likelihood ratio test based on parametric bootstrapped p-values (see [Section 9.6.4](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot) for more detail)
+
+**Methods to compare models with different variance components**
+
+-   AIC or BIC
+-   Nonparametric bootstrap confidence intervals
+-   Likelihood ratio test based on parametric bootstrapped p-values (see [Section 9.6.4](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot) for more detail)
+
+## Summary: Understanding the model
+
+**Methods to understand individual coefficients**
+
+-   Likelihood ratio tests
+-   Bootstrap confidence intervals
+-   Pseudo $R^2$ for variance components (if meaning is unchanged between models)
+
+**Methods to understand data structure**
+
+-   Calculate intraclass correlation coefficient using unconditional means model
+
+## References

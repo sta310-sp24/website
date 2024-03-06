@@ -1488,7 +1488,7 @@
     "href": "slides/15-longitudinal-pt2.html#pseudo-r2",
     "title": "Modeling two-level longitudinal data",
     "section": "Pseudo \\(R^2\\)",
-    "text": "Pseudo \\(R^2\\)"
+    "text": "Pseudo \\(R^2\\)\nWe can use Pseudo R2 to explain changes in variance components between two models\nNote: This should only be used when the definition of the variance component is the same between the two models\n\\[\\text{Pseudo }R^2 = \\frac{\\hat{\\sigma}^2(\\text{Model 1})  -  \\hat{\\sigma}^2(\\text{Model 2})}{\\hat{\\sigma}^2(\\text{Model 1})}\\]\n\nWe found that 17% of within-school variability in test scores by a change in scores over time."
   },
   {
     "objectID": "slides/15-longitudinal-pt2.html#model-with-school-level-covariates",

@@ -429,14 +429,14 @@ Prof.&nbsp;Maria Tackett
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li><p>Quiz 03 - due Thu, Mar 06 at noon</p>
+<li><p>Quiz 03 - due Thu, Mar 07 at noon</p>
 <ul>
 <li><p>Covers readings and lectures in Feb 19 - 28 lectures</p></li>
 <li><p>Correlated data, multilevel models</p></li>
 </ul></li>
 <li><p>HW 04 - due Wed, Mar 20</p>
 <ul>
-<li>Released Thu, Mar 06 ~ 9am</li>
+<li>Released Thu, Mar 07 ~ 9am</li>
 </ul></li>
 </ul>
 </section>
@@ -482,8 +482,8 @@ Prof.&nbsp;Maria Tackett
 <tr class="header">
 <th style="text-align: left;">schoolName</th>
 <th style="text-align: right;">year08</th>
-<th style="text-align: right;">urban</th>
-<th style="text-align: right;">charter</th>
+<th style="text-align: left;">urban</th>
+<th style="text-align: left;">charter</th>
 <th style="text-align: right;">schPctfree</th>
 <th style="text-align: right;">MathAvgScore</th>
 </tr>
@@ -492,48 +492,48 @@ Prof.&nbsp;Maria Tackett
 <tr class="odd">
 <td style="text-align: left;">RIPPLESIDE ELEMENTARY</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
 <td style="text-align: right;">0.363</td>
 <td style="text-align: right;">652.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">RIPPLESIDE ELEMENTARY</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
 <td style="text-align: right;">0.363</td>
 <td style="text-align: right;">656.6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">RIPPLESIDE ELEMENTARY</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
 <td style="text-align: right;">0.363</td>
 <td style="text-align: right;">652.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">RICHARD ALLEN MATH&amp;SCIENCE ACADEMY</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
 <td style="text-align: right;">0.545</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">RICHARD ALLEN MATH&amp;SCIENCE ACADEMY</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
 <td style="text-align: right;">0.545</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">RICHARD ALLEN MATH&amp;SCIENCE ACADEMY</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
 <td style="text-align: right;">0.545</td>
 <td style="text-align: right;">631.2</td>
 </tr>
@@ -606,7 +606,12 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="exploratory-data-analysis" class="slide level2 midi">
 <h2>Exploratory data analysis</h2>
-</section>
+
+<img data-src="15-longitudinal-pt2_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="exploratory-data-analysis-1" class="slide level2 midi">
+<h2>Exploratory data analysis</h2>
+
+<img data-src="15-longitudinal-pt2_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
 <section id="unconditional-means-model" class="slide level2">
 <h2>Unconditional means model</h2>
 <p>Start with the <strong>unconditional means model</strong>, a model with no covariates at any level. This is also called the random intercepts model.</p>
@@ -636,6 +641,9 @@ Y_{ij} = a_i + b_iYear08_{ij} + \epsilon_{ij}, \hspace{8mm} \epsilon_{ij} \sim N
           \end{array} \right] \right)
 \end{aligned}
 \]</span></p>
+</section>
+<section id="pseudo-r2" class="slide level2">
+<h2>Pseudo <span class="math inline">\(R^2\)</span></h2>
 </section>
 <section id="model-with-school-level-covariates" class="slide level2 midi">
 <h2>Model with school-level covariates</h2>
@@ -681,8 +689,7 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \si
 \end{equation*}\]</span>
 <p><strong>Level Two</strong></p>
 <span class="math display">\[\begin{align*}
-a_{i} &amp; = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
-&amp; u_i \sim N(0, \sigma_u^2) \\[5pt]
+a_{i} &amp; = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \hspace{10mm} u_i \sim N(0, \sigma_u^2) \\[8pt]
 b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i  
 \end{align*}\]</span>
 </div>
@@ -767,7 +774,7 @@ b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i
 <ul>
 <li class="fragment"><p><span class="math inline">\(\chi^2\)</span> test is conservative, i.e., the p-values are larger than they should be, when testing random effects at the boundary ( e.g., <span class="math inline">\(\sigma_v^2 = 0\)</span>) or those with bounded ranges (e.g., <span class="math inline">\(\rho_{uv}\)</span> )</p></li>
 <li class="fragment"><p>If you observe small p-values, you can feel relatively certain the tested effects are statistically significant</p></li>
-<li class="fragment"><p>Use bootstrap methods to calculate confidence intervals or obtain more accurate p-values (see <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot">Section 9.6.4</a> for more detail on bootstrapping for LRT)</p></li>
+<li class="fragment"><p>Use bootstrap methods to calculate confidence intervals or obtain more accurate p-values for LRT</p></li>
 </ul>
 </div>
 </div>
@@ -780,22 +787,29 @@ b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i
 <li><p><strong>Task</strong>: conduct inference for model parameters (fixed and random effects) using only the sample data</p></li>
 </ul>
 </section>
-<section id="nonparametric-bootstrapping" class="slide level2 small">
-<h2>Nonparametric bootstrapping</h2>
-<p>1️⃣ &nbsp; Take a sample, with replacement, of size <span class="math inline">\(n\)</span> (the size of the original data) (called <em>case resampling</em>).</p>
+<section id="parametric-bootstrap-for-lrt" class="slide level2 midi">
+<h2>Parametric bootstrap for LRT</h2>
+<p>1️⃣ Fit the null (reduced) model to obtain the fixed effects and variance components (<em>parametric</em> part).</p>
 <p><br></p>
-<p>2️⃣ &nbsp; Fit the model to obtain estimates of the coefficients.</p>
+<p>2️⃣ Use the estimated fixed effects and variance components to generate a new set of response values with the same sample size and associated covariates for each observation as the original data (<em>bootstrap</em> part).</p>
 <p><br></p>
-<p>3️⃣ &nbsp; Repeat steps 1 - 2 many times (~ 1000) to obtain the bootstrap distribution.</p>
+<p>3️⃣ Fit the full and null models to the newly generated data.</p>
 <p><br></p>
-<p>4️⃣ &nbsp; Get the coefficients for the 95% confidence interval by taking the middle 95% of the bootstrap distribution.</p>
+<p>4️⃣ Compute the likelihood test statistic comparing the models from the previous step.</p>
+<p><br></p>
+<p>5️⃣ Repeat steps 2 - 4 many times (~ 1000).</p>
 </section>
+<section id="parametric-bootstrap-for-lrt-1" class="slide level2">
+<h2>Parametric bootstrap for LRT</h2>
+
+<img data-src="images/15/ParametricBootstrapDiagram9.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Figure 9.19 in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot">BMLR</a></p></section>
 <section id="bootstrap-ci" class="slide level2 small">
 <h2>Bootstrap CI</h2>
-<p>Use the <code>confint</code> function to calculate bootstrapped confidence intervals to conduct inference on the fixed and random effects</p>
+<p>Use the <code>confint</code> function to calculate (parametric) bootstrapped confidence intervals to conduct inference on the fixed and random effects</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">confint</span>(full_model, <span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">oldNames =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">set.seed</span>(<span class="dv">310</span>)</span>
+<span id="cb5-2"><a></a><span class="fu">confint</span>(full_model, <span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">oldNames =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -808,58 +822,58 @@ b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">sd_(Intercept)|schoolid</td>
-<td style="text-align: right;">3.9607</td>
-<td style="text-align: right;">4.6798</td>
+<td style="text-align: right;">4.0127</td>
+<td style="text-align: right;">4.7203</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">cor_year08.(Intercept)|schoolid</td>
-<td style="text-align: right;">-0.2763</td>
+<td style="text-align: right;">-0.2755</td>
 <td style="text-align: right;">1.0000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">sd_year08|schoolid</td>
-<td style="text-align: right;">0.0417</td>
-<td style="text-align: right;">0.8715</td>
+<td style="text-align: right;">0.0384</td>
+<td style="text-align: right;">0.9191</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">sigma</td>
-<td style="text-align: right;">2.7978</td>
-<td style="text-align: right;">3.0869</td>
+<td style="text-align: right;">2.7839</td>
+<td style="text-align: right;">3.0873</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">659.3807</td>
-<td style="text-align: right;">661.3582</td>
+<td style="text-align: right;">659.3502</td>
+<td style="text-align: right;">661.4273</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">charter</td>
-<td style="text-align: right;">-4.2621</td>
-<td style="text-align: right;">-1.5047</td>
+<td style="text-align: left;">charter1</td>
+<td style="text-align: right;">-4.4390</td>
+<td style="text-align: right;">-1.5448</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">urban</td>
-<td style="text-align: right;">-2.0537</td>
-<td style="text-align: right;">-0.2665</td>
+<td style="text-align: left;">urban1</td>
+<td style="text-align: right;">-2.0170</td>
+<td style="text-align: right;">-0.2651</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">schPctfree</td>
-<td style="text-align: right;">-19.1619</td>
-<td style="text-align: right;">-15.8609</td>
+<td style="text-align: right;">-19.3348</td>
+<td style="text-align: right;">-16.0699</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">year08</td>
-<td style="text-align: right;">1.2270</td>
-<td style="text-align: right;">1.7998</td>
+<td style="text-align: right;">1.2239</td>
+<td style="text-align: right;">1.8147</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">charter:year08</td>
-<td style="text-align: right;">0.3660</td>
-<td style="text-align: right;">1.6615</td>
+<td style="text-align: left;">charter1:year08</td>
+<td style="text-align: right;">0.4337</td>
+<td style="text-align: right;">1.6641</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">urban:year08</td>
-<td style="text-align: right;">-0.9074</td>
-<td style="text-align: right;">-0.1207</td>
+<td style="text-align: left;">urban1:year08</td>
+<td style="text-align: right;">-0.9597</td>
+<td style="text-align: right;">-0.1922</td>
 </tr>
 </tbody>
 </table>
@@ -869,7 +883,7 @@ b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i
 <section id="bootstrap-ci-1" class="slide level2 midi">
 <h2>Bootstrap CI</h2>
 <div class="columns">
-<div class="column" style="width:70%;">
+<div class="column" style="width:80%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table>
@@ -883,93 +897,96 @@ b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">sd_(Intercept)|schoolid</td>
-<td style="text-align: right;">3.9840</td>
-<td style="text-align: right;">4.6955</td>
+<td style="text-align: right;">4.0127</td>
+<td style="text-align: right;">4.7203</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">cor_year08.(Intercept)|schoolid</td>
-<td style="text-align: right;">-0.1178</td>
+<td style="text-align: right;">-0.2755</td>
 <td style="text-align: right;">1.0000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">sd_year08|schoolid</td>
-<td style="text-align: right;">0.0388</td>
-<td style="text-align: right;">0.9196</td>
+<td style="text-align: right;">0.0384</td>
+<td style="text-align: right;">0.9191</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">sigma</td>
-<td style="text-align: right;">2.7797</td>
-<td style="text-align: right;">3.0704</td>
+<td style="text-align: right;">2.7839</td>
+<td style="text-align: right;">3.0873</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">659.4439</td>
-<td style="text-align: right;">661.2883</td>
+<td style="text-align: right;">659.3502</td>
+<td style="text-align: right;">661.4273</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">charter</td>
-<td style="text-align: right;">-4.3766</td>
-<td style="text-align: right;">-1.5730</td>
+<td style="text-align: left;">charter1</td>
+<td style="text-align: right;">-4.4390</td>
+<td style="text-align: right;">-1.5448</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">urban</td>
-<td style="text-align: right;">-1.9167</td>
-<td style="text-align: right;">-0.2616</td>
+<td style="text-align: left;">urban1</td>
+<td style="text-align: right;">-2.0170</td>
+<td style="text-align: right;">-0.2651</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">schPctfree</td>
-<td style="text-align: right;">-19.3234</td>
-<td style="text-align: right;">-16.0920</td>
+<td style="text-align: right;">-19.3348</td>
+<td style="text-align: right;">-16.0699</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">year08</td>
-<td style="text-align: right;">1.2226</td>
-<td style="text-align: right;">1.8152</td>
+<td style="text-align: right;">1.2239</td>
+<td style="text-align: right;">1.8147</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">charter:year08</td>
-<td style="text-align: right;">0.3518</td>
-<td style="text-align: right;">1.6764</td>
+<td style="text-align: left;">charter1:year08</td>
+<td style="text-align: right;">0.4337</td>
+<td style="text-align: right;">1.6641</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">urban:year08</td>
-<td style="text-align: right;">-0.9522</td>
-<td style="text-align: right;">-0.1943</td>
+<td style="text-align: left;">urban1:year08</td>
+<td style="text-align: right;">-0.9597</td>
+<td style="text-align: right;">-0.1922</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div><div class="column" style="width:30%;">
+</div><div class="column" style="width:20%;">
 <div class="question">
-<p>Would you keep <span class="math inline">\(\sigma_{v}\)</span> and/or <span class="math inline">\(\rho_{uv}\)</span> in the model?</p>
+<p>Would you keep <span class="math inline">\(\sigma_{v}\)</span> or <span class="math inline">\(\rho_{uv}\)</span> in the model?</p>
 </div>
 </div>
 </div>
 </section>
 <section id="inference-for-fixed-effects" class="slide level2 midi">
 <h2>Inference for fixed effects</h2>
+<div>
 <ul>
-<li><p>The output for multilevel models do not contain p-values for the coefficients of fixed effects</p></li>
-<li><p>The exact distribution of the test statistic under the null hypothesis (no fixed effect) is unknown, because the exact degrees of freedom are unknown</p>
+<li class="fragment"><p>The output for multilevel models do not contain p-values for the coefficients of fixed effects</p></li>
+<li class="fragment"><p>The exact distribution of the test statistic under the null hypothesis (no fixed effect) is unknown, because the exact degrees of freedom are unknown</p>
 <ul>
-<li>Finding suitable approximations is an area of ongoing research</li>
+<li class="fragment">Finding suitable approximations is an area of ongoing research</li>
 </ul></li>
-<li><p>We can use likelihood ratio test with an approximate <span class="math inline">\(\chi^2\)</span> distribution to test these effects, since we’re not testing on the boundary and fixed effects do not have limited ranges</p>
+<li class="fragment"><p>We can use likelihood ratio test with an approximate <span class="math inline">\(\chi^2\)</span> distribution to test fixed effects</p>
 <ul>
-<li>Some research suggests the p-values are too low but approximations are generally pretty good</li>
-<li>Can also calculate the p-values using parametric bootstrap approach</li>
+<li class="fragment">Some research suggests the p-values are too low but approximations are generally pretty good</li>
+<li class="fragment">Can also calculate the p-values using parametric bootstrap approach (can be computationally intensive)</li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="methods-to-conduct-inference-for-individual-coefficients" class="slide level2 midi">
-<h2>Methods to conduct inference for individual coefficients</h2>
+<section id="methods-to-conduct-inference-for-individual-estimates" class="slide level2">
+<h2>Methods to conduct inference for individual estimates</h2>
 <ul>
-<li>Use the t-value <span class="math inline">\(\big(\frac{estimate}{std.error}\big)\)</span> in the model output
+<li>Use the t-value <span class="math inline">\(\big(\frac{estimate}{std.error}\big)\)</span> in the model output for fixed effects
 <ul>
 <li>General rule: Coefficients with |t-value| &gt; 2 considered to be statistically significant, i.e., different from 0</li>
 </ul></li>
-<li>Calculate confidence intervals using <strong>nonparametric bootstrapping</strong></li>
+<li>Likelihood ratio tests for fixed effects</li>
+<li>Calculate confidence intervals using parametric bootstrapping for fixed effects and variance components</li>
 </ul>
 </section>
 <section id="summary-model-comparisons" class="slide level2 midi">
@@ -977,29 +994,18 @@ b_{i} &amp; = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i
 <p><strong>Methods to compare models with different fixed effects</strong></p>
 <ul>
 <li>AIC or BIC</li>
-<li>Nonparametric bootstrap confidence intervals</li>
+<li>Parametric bootstrap confidence intervals</li>
 <li>Likelihood ratio tests based on <span class="math inline">\(\chi^2\)</span> distribution</li>
 <li>Likelihood ratio test based on parametric bootstrapped p-values (see <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot">Section 9.6.4</a> for more detail)</li>
 </ul>
+<div class="fragment">
 <p><strong>Methods to compare models with different variance components</strong></p>
 <ul>
 <li>AIC or BIC</li>
-<li>Nonparametric bootstrap confidence intervals</li>
+<li>Parametric bootstrap confidence intervals</li>
 <li>Likelihood ratio test based on parametric bootstrapped p-values (see <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot">Section 9.6.4</a> for more detail)</li>
 </ul>
-</section>
-<section id="summary-understanding-the-model" class="slide level2">
-<h2>Summary: Understanding the model</h2>
-<p><strong>Methods to understand individual coefficients</strong></p>
-<ul>
-<li>Likelihood ratio tests</li>
-<li>Bootstrap confidence intervals</li>
-<li>Pseudo <span class="math inline">\(R^2\)</span> for variance components (if meaning is unchanged between models)</li>
-</ul>
-<p><strong>Methods to understand data structure</strong></p>
-<ul>
-<li>Calculate intraclass correlation coefficient using unconditional means model</li>
-</ul>
+</div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

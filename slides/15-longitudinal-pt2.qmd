@@ -54,7 +54,7 @@ library(broom.mixed)
 
 ## Announcements
 
--   Quiz 03 - due Thu, Mar 06 at noon
+-   Quiz 03 - due Thu, Mar 07 at noon
 
     -   Covers readings and lectures in Feb 19 - 28 lectures
 
@@ -62,7 +62,7 @@ library(broom.mixed)
 
 -   HW 04 - due Wed, Mar 20
 
-    -   Released Thu, Mar 06 \~ 9am
+    -   Released Thu, Mar 07 \~ 9am
 
 ## Topics
 
@@ -88,7 +88,9 @@ Today's data set contains standardized test scores and demographic information f
 
 ```{r}
 #| echo: false
-charter <- read_csv("data/charter-long.csv")
+charter <- read_csv("data/charter-long.csv") |>
+  mutate(urban = as.factor(urban), 
+         charter = as.factor(charter))
 ```
 
 ```{r echo = F}
@@ -116,6 +118,38 @@ charter |>
 ```
 
 ## Exploratory data analysis {.midi}
+
+```{r}
+#| echo: false
+set.seed(030424)
+
+# get sample of 24 schools
+sample_schools <- charter |>
+  distinct(schoolid) |>
+  sample_n(24) |> pull()
+
+# get data for those schools
+sample_data <- charter |>
+  filter(schoolid %in% sample_schools)
+
+ggplot(sample_data, aes(x = year08, y = MathAvgScore)) +
+  geom_point() +
+  geom_line() + 
+  facet_wrap(~ schoolid)
+```
+
+## Exploratory data analysis {.midi}
+
+```{r}
+#| echo: false
+ggplot(data = charter, aes(x = year08, y = MathAvgScore)) + 
+  geom_line(aes(group = schoolid), color = "light gray") + 
+  geom_smooth(color = "black", linewidth = 1, method = "loess") + 
+  labs(x ="Years since 2008",
+       y ="Average Math Scores", 
+       title = "Math Scores over time for 6th graders in Minneapolis public schools")  + 
+  facet_wrap(~ charter)
+```
 
 ## Unconditional means model
 
@@ -152,6 +186,8 @@ $$
           \end{array} \right] \right)
 \end{aligned}
 $$
+
+## Pseudo $R^2$
 
 ## Model with school-level covariates {.midi}
 
@@ -206,8 +242,7 @@ Y_{ij}= a_{i} + b_{i}Year08_{ij} + \epsilon_{ij} \hspace{10mm} \epsilon_{ij} \si
 
 ```{=tex}
 \begin{align*}
-a_{i} & = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \\
-& u_i \sim N(0, \sigma_u^2) \\[5pt]
+a_{i} & = \alpha_{0} + \alpha_{1}charter_i + \alpha_{2}urban_i + \alpha_{3}schpctfree_i + u_{i} \hspace{10mm} u_i \sim N(0, \sigma_u^2) \\[8pt]
 b_{i} & = \beta_{0} + \beta_{1}charter_i + \beta_{2}urban_i  
 \end{align*}
 ```
@@ -247,7 +282,7 @@ anova(full_model, reduced_model, test = "LRT") |>
 
 -   If you observe small p-values, you can feel relatively certain the tested effects are statistically significant
 
--   Use bootstrap methods to calculate confidence intervals or obtain more accurate p-values (see [Section 9.6.4](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot) for more detail on bootstrapping for LRT)
+-   Use bootstrap methods to calculate confidence intervals or obtain more accurate p-values for LRT
 :::
 
 ## Bootstrapping
@@ -258,27 +293,36 @@ anova(full_model, reduced_model, test = "LRT") |>
 
 -   **Task**: conduct inference for model parameters (fixed and random effects) using only the sample data
 
-## Nonparametric bootstrapping {.small}
+## Parametric bootstrap for LRT {.midi}
 
-`r emo::ji("one")`   Take a sample, with replacement, of size $n$ (the size of the original data) (called *case resampling*).
-
-<br>
-
-`r emo::ji("two")`   Fit the model to obtain estimates of the coefficients.
+`r emo::ji("one")` Fit the null (reduced) model to obtain the fixed effects and variance components (*parametric* part).
 
 <br>
 
-`r emo::ji("three")`   Repeat steps 1 - 2 many times (\~ 1000) to obtain the bootstrap distribution.
+`r emo::ji("two")` Use the estimated fixed effects and variance components to generate a new set of response values with the same sample size and associated covariates for each observation as the original data (*bootstrap* part).
 
 <br>
 
-`r emo::ji("four")`   Get the coefficients for the 95% confidence interval by taking the middle 95% of the bootstrap distribution.
+`r emo::ji("three")` Fit the full and null models to the newly generated data.
+
+<br>
+
+`r emo::ji("four")` Compute the likelihood test statistic comparing the models from the previous step.
+
+<br>
+
+`r emo::ji("five")` Repeat steps 2 - 4 many times (\~ 1000).
+
+## Parametric bootstrap for LRT
+
+![Figure 9.19 in [BMLR](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot)](images/15/ParametricBootstrapDiagram9.png){fig-align="center"}
 
 ## Bootstrap CI {.small}
 
-Use the `confint` function to calculate bootstrapped confidence intervals to conduct inference on the fixed and random effects
+Use the `confint` function to calculate (parametric) bootstrapped confidence intervals to conduct inference on the fixed and random effects
 
 ```{r}
+set.seed(310)
 confint(full_model, method = "boot", oldNames = FALSE) |>
   kable(digits = 4)
 ```
@@ -286,67 +330,60 @@ confint(full_model, method = "boot", oldNames = FALSE) |>
 ## Bootstrap CI {.midi}
 
 ::: columns
-::: {.column width="70%"}
+::: {.column width="80%"}
 ```{r}
 #| echo: false
-
+set.seed(310)
 confint(full_model, method = "boot", oldNames = FALSE) |>
   kable(digits = 4)
 
 ```
 :::
 
-::: {.column width="30%"}
+::: {.column width="20%"}
 ::: question
-Would you keep $\sigma_{v}$ and/or $\rho_{uv}$ in the model?
+Would you keep $\sigma_{v}$ or $\rho_{uv}$ in the model?
 :::
 :::
 :::
 
 ## Inference for fixed effects {.midi}
 
+::: incremental
 -   The output for multilevel models do not contain p-values for the coefficients of fixed effects
 
 -   The exact distribution of the test statistic under the null hypothesis (no fixed effect) is unknown, because the exact degrees of freedom are unknown
 
     -   Finding suitable approximations is an area of ongoing research
 
--   We can use likelihood ratio test with an approximate $\chi^2$ distribution to test these effects, since we're not testing on the boundary and fixed effects do not have limited ranges
+-   We can use likelihood ratio test with an approximate $\chi^2$ distribution to test fixed effects
 
     -   Some research suggests the p-values are too low but approximations are generally pretty good
-    -   Can also calculate the p-values using parametric bootstrap approach
+    -   Can also calculate the p-values using parametric bootstrap approach (can be computationally intensive)
+:::
 
-## Methods to conduct inference for individual coefficients {.midi}
+## Methods to conduct inference for individual estimates
 
--   Use the t-value $\big(\frac{estimate}{std.error}\big)$ in the model output
+-   Use the t-value $\big(\frac{estimate}{std.error}\big)$ in the model output for fixed effects
     -   General rule: Coefficients with \|t-value\| \> 2 considered to be statistically significant, i.e., different from 0
--   Calculate confidence intervals using **nonparametric bootstrapping**
+-   Likelihood ratio tests for fixed effects
+-   Calculate confidence intervals using parametric bootstrapping for fixed effects and variance components
 
 ## Summary: Model comparisons {.midi}
 
 **Methods to compare models with different fixed effects**
 
 -   AIC or BIC
--   Nonparametric bootstrap confidence intervals
+-   Parametric bootstrap confidence intervals
 -   Likelihood ratio tests based on $\chi^2$ distribution
 -   Likelihood ratio test based on parametric bootstrapped p-values (see [Section 9.6.4](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot) for more detail)
+
+. . .
 
 **Methods to compare models with different variance components**
 
 -   AIC or BIC
--   Nonparametric bootstrap confidence intervals
+-   Parametric bootstrap confidence intervals
 -   Likelihood ratio test based on parametric bootstrapped p-values (see [Section 9.6.4](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#longitudinal-paraboot) for more detail)
-
-## Summary: Understanding the model
-
-**Methods to understand individual coefficients**
-
--   Likelihood ratio tests
--   Bootstrap confidence intervals
--   Pseudo $R^2$ for variance components (if meaning is unchanged between models)
-
-**Methods to understand data structure**
-
--   Calculate intraclass correlation coefficient using unconditional means model
 
 ## References

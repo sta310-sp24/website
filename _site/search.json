@@ -704,7 +704,7 @@
     "href": "slides/04-poisson.html#assumptions-for-poisson-regression",
     "title": "Poisson Regression",
     "section": "Assumptions for Poisson regression",
-    "text": "Assumptions for Poisson regression\n\n\nPoisson response: The response variable is a count per unit of time or space, described by a Poisson distribution, at each level of the predictor(s)\nIndependence: The observations must be independent of one another\nMean = Variance: The mean equals the variance\nLinearity: The log of the mean rate, \\(\\log(\\lambda)\\), must be a linear function of the predictor(s)"
+    "text": "Assumptions for Poisson regression\n\n\nPoisson response: The response variable is a count per unit of time or space, described by a Poisson distribution, at each level of the predictor(s)\nIndependence: The observations must be independent of one another\nMean = Variance: The mean must equal the variance\nLinearity: The log of the mean rate, \\(\\log(\\lambda)\\), must be a linear function of the predictor(s)"
   },
   {
     "objectID": "slides/04-poisson.html#model-1-household-vs.-age",
@@ -728,60 +728,53 @@
     "text": "What are plausible values for the coefficient of age?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n1.5499\n0.0503\n30.8290\n0\n1.4512\n1.6482\n\n\nage\n-0.0047\n0.0009\n-5.0258\n0\n-0.0065\n-0.0029\n\n\n\n\n\n95% confidence interval for the coefficient of age\n\\[\\hat{\\beta}_1 \\pm z^{*}\\times SE(\\hat{\\beta}_1)\\]\nwhere \\(z^* \\sim N(0, 1)\\) \\[-0.0047 \\pm 1.96 \\times 0.0009 = \\mathbf{(-.0065, -0.0029)}\\]\n\nInterpret the interval in terms of the change in mean household size."
   },
   {
-    "objectID": "slides/04-poisson.html#estimating-beta_0-and-beta_1-1",
-    "href": "slides/04-poisson.html#estimating-beta_0-and-beta_1-1",
+    "objectID": "slides/04-poisson.html#which-plot-can-best-help-us-determine-whether-model-1-is-a-good-fit",
+    "href": "slides/04-poisson.html#which-plot-can-best-help-us-determine-whether-model-1-is-a-good-fit",
     "title": "Poisson Regression",
-    "section": "Estimating \\(\\beta_0\\) and \\(\\beta_1\\)",
-    "text": "Estimating \\(\\beta_0\\) and \\(\\beta_1\\)\n\n1.5499 and -0.0047 are the estimates of \\(\\beta_0\\) and \\(\\beta_1\\) respectively.\nHow were these values determined?\nLet’s take a look at the first five rows of data:\n\n\n\n\n\n\n\nlocation\nage\ntotal\nnumLT5\nroof\n\n\n\n\nCentralLuzon\n65\n0\n0\nPredominantly Strong Material\n\n\nMetroManila\n75\n3\n0\nPredominantly Strong Material\n\n\nDavaoRegion\n54\n4\n0\nPredominantly Strong Material\n\n\nVisayas\n49\n3\n0\nPredominantly Strong Material\n\n\nMetroManila\n74\n3\n0\nPredominantly Strong Material"
+    "section": "Which plot can best help us determine whether Model 1 is a good fit?",
+    "text": "Which plot can best help us determine whether Model 1 is a good fit?"
   },
   {
-    "objectID": "slides/04-poisson.html#likelihood",
-    "href": "slides/04-poisson.html#likelihood",
+    "objectID": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age",
+    "href": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age",
     "title": "Poisson Regression",
-    "section": "Likelihood",
-    "text": "Likelihood\nThen the likelihood for those five observations is\n\\[Likelihood =P(Y_1 = 0)P(Y_2 = 3)P(Y_3 = 4)P(Y_4 = 3)P(Y_5 = 3)\n\\]\n\nThe Y’s follow a Poisson distribution, so this equals\n\\[\nLikelihood = \\frac{e^{-\\lambda_1}\\lambda_1^0}{0!} * \\frac{e^{-\\lambda_2}\\lambda_2^3}{3!} * \\frac{e^{-\\lambda_3}\\lambda_3^4}{4!} *\\frac{e^{-\\lambda_4}\\lambda_4^3}{3!} * \\frac{e^{-\\lambda_5}\\lambda_5^3}{3!}\n\\]\nwhere \\(\\lambda_i\\) can differ for each household based on its value of age."
+    "section": "Model 2: Add a quadratic effect for age",
+    "text": "Model 2: Add a quadratic effect for age\n\nhh_data &lt;- hh_data |&gt; \n  mutate(age2 = age*age)\n\nmodel2 &lt;- glm(total ~ age + age2, data = hh_data, family = poisson)\ntidy(model2, conf.int = T) |&gt; \n  kable(digits = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3325\n0.1788\n-1.8594\n0.063\n-0.6863\n0.0148\n\n\nage\n0.0709\n0.0069\n10.2877\n0.000\n0.0575\n0.0845\n\n\nage2\n-0.0007\n0.0001\n-11.0578\n0.000\n-0.0008\n-0.0006"
   },
   {
-    "objectID": "slides/04-poisson.html#log-likelihood",
-    "href": "slides/04-poisson.html#log-likelihood",
+    "objectID": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age-1",
+    "href": "slides/04-poisson.html#model-2-add-a-quadratic-effect-for-age-1",
     "title": "Poisson Regression",
-    "section": "Log-likelihood",
-    "text": "Log-likelihood\nLet’s take the log of the likelihood, as this will be easier to maximize than the likelihood itself.\n\\[\n\\begin{align}\nlogL =& -\\lambda_1 + 0\\log(\\lambda_1) - \\lambda_2 + 3\\log(\\lambda_2) - \\lambda_3 + 4\\log(\\lambda_3)\\\\ &- \\lambda_4 + 3\\log(\\lambda_4) - \\lambda_5 + 3\\log(\\lambda_5) \\\\ &+ C\n\\end{align}\n\\]\n\n\n\n\n\n\nNote\n\n\nWe are going to maximize with respect to \\(\\lambda\\), we will drop the constant term \\(C\\) moving forward."
+    "section": "Model 2: Add a quadratic effect for age",
+    "text": "Model 2: Add a quadratic effect for age\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-0.3325\n0.1788\n-1.8594\n0.063\n-0.6863\n0.0148\n\n\nage\n0.0709\n0.0069\n10.2877\n0.000\n0.0575\n0.0845\n\n\nage2\n-0.0007\n0.0001\n-11.0578\n0.000\n-0.0008\n-0.0006\n\n\n\n\n\nWe can determine whether to keep \\(age^2\\) in the model in two ways:\n1️⃣ Use the p-value (or confidence interval) for the coefficient (since we are adding a single term to the model)\n2️⃣ Conduct a drop-in-deviance test"
   },
   {
-    "objectID": "slides/04-poisson.html#log-likelihood-1",
-    "href": "slides/04-poisson.html#log-likelihood-1",
+    "objectID": "slides/04-poisson.html#deviance",
+    "href": "slides/04-poisson.html#deviance",
     "title": "Poisson Regression",
-    "section": "Log-likelihood",
-    "text": "Log-likelihood\nBecause we’re fitting a Poisson regression model, we know\n\\[\n\\log(\\lambda_i) = \\beta_0 + \\beta_1~age_i \\hspace{6mm} and \\hspace{6mm} \\lambda_i = e^{\\beta_0 + \\beta_1~age_i}\n\\]\n\nPlugging these formulas and the respective ages into \\(logL\\), we have\n\\[\\begin{align}\nlogL \\propto& - \\exp^{\\beta_0 + \\beta_1*65} + 0*(\\beta_0 + \\beta_1*65)\\\\\n&- \\exp^{\\beta_0 + \\beta_1*75} + 3*(\\beta_0 + \\beta_1*75)\\\\\n&- \\exp^{\\beta_0 + \\beta_1*54} + 4*(\\beta_0 + \\beta_1*54)\\\\\n& -\\exp^{\\beta_0 + \\beta_1*49}  + 3*(\\beta_0 + \\beta_1*49) \\\\\n&-\\exp^{\\beta_0 + \\beta_1*74} + 3*(\\beta_0 + \\beta_1*74)\n\\end{align}\\]"
+    "section": "Deviance",
+    "text": "Deviance\nA deviance is a way to measure how the observed data differs (deviates) from the model predictions.\n\nIt’s a measure unexplained variability in the response variable (similar to SSE in linear regression )\nLower deviance means the model is a better fit to the data\n\n\nWe can calculate the “deviance residual” for each observation in the data (more on the formula later). Let \\((\\text{deviance residual}_i\\) be the deviance residual for the \\(i^{th}\\) observation, then\n\\[\\text{deviance} = \\sum(\\text{deviance residual})_i^2\\]\nNote: Deviance is also known as the “residual deviance”"
   },
   {
-    "objectID": "slides/04-poisson.html#log-likelihood-2",
-    "href": "slides/04-poisson.html#log-likelihood-2",
+    "objectID": "slides/04-poisson.html#drop-in-deviance-test",
+    "href": "slides/04-poisson.html#drop-in-deviance-test",
     "title": "Poisson Regression",
-    "section": "Log-likelihood",
-    "text": "Log-likelihood\nExpanding this to the entire data set, we have\n\\[\nlogL \\propto \\sum_{i=1}^{1500} -e^{\\beta_0 + \\beta_1age_i} + total_i (\\beta_0 + \\beta_1age_i)\n\\]\n\nCan use different numerical methods to try different values of \\(\\beta_0\\) and \\(\\beta_1\\) and find the combination that maximizes \\(logL\\) ."
+    "section": "Drop-in-Deviance Test",
+    "text": "Drop-in-Deviance Test\nWe can use a drop-in-deviance test to compare two models. To conduct the test\n1️⃣ Compute the deviance for each model\n2️⃣ Calculate the drop in deviance\n\\[\\text{drop-in-deviance =  Deviance(reduced model) - Deviance(larger model)}\\]\n3️⃣ Given the reduced model is the true model \\((H_0 \\text{ true})\\), then \\[\\text{drop-in-deviance} \\sim \\chi_d^2\\]\nwhere \\(d\\) is the difference in degrees of freedom between the two models (i.e., the difference in number of terms)"
   },
   {
-    "objectID": "slides/04-poisson.html#iteratively-reweighted-least-squares-irls",
-    "href": "slides/04-poisson.html#iteratively-reweighted-least-squares-irls",
+    "objectID": "slides/04-poisson.html#drop-in-deviance-to-compare-model1-and-model2",
+    "href": "slides/04-poisson.html#drop-in-deviance-to-compare-model1-and-model2",
     "title": "Poisson Regression",
-    "section": "Iteratively reweighted least-squares (IRLS)",
-    "text": "Iteratively reweighted least-squares (IRLS)\n\nIteratively reweighted least-squares (IRLS) is used to find the MLEs\nNelder and Wedderburn (1972) show that under certain specifications of the weights and a modified response variable, the estimates found using IRLS are equivalent to the MLEs."
+    "section": "Drop-in-deviance to compare Model1 and Model2",
+    "text": "Drop-in-deviance to compare Model1 and Model2\n\nanova(model1, model2, test = \"Chisq\") |&gt;\n  kable(digits = 3)\n\n\n\n\nResid. Df\nResid. Dev\nDf\nDeviance\nPr(&gt;Chi)\n\n\n\n\n1498\n2337.089\nNA\nNA\nNA\n\n\n1497\n2200.944\n1\n136.145\n0\n\n\n\n\n\n\n\nWrite the null and alternative hypotheses.\nWhat does the value 2337.089 tell you?\nWhat does the value 1 tell you?\nWhat is your conclusion?"
   },
   {
-    "objectID": "slides/04-poisson.html#irls-procedure",
-    "href": "slides/04-poisson.html#irls-procedure",
+    "objectID": "slides/04-poisson.html#add-location-to-the-model",
+    "href": "slides/04-poisson.html#add-location-to-the-model",
     "title": "Poisson Regression",
-    "section": "IRLS procedure",
-    "text": "IRLS procedure\n\nFind initial starting values \\(\\hat{\\theta}_i\\), the model parameter ( \\(\\hat{\\theta}_i = \\hat{\\lambda}_i\\) in the case of Poisson regression)\nCalculate the working response values \\(z_i\\).\nCalculate the working weights \\(W_i\\).\nFind the coefficient estimates of the weighted least squares model.\n\n\\[z_i = \\beta_0 + \\beta_1 x \\hspace{5mm} \\text{ with weights }W_i\\]\nThe estimates \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) are the estimates for the model coefficients.\n\nUse \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\) to calculate updated values of \\(\\hat{\\theta}_i\\) and repeat steps 2 - 4 until convergence.\n\n\n\nSteps from Dunn, Smyth, et al. (2018)."
-  },
-  {
-    "objectID": "slides/04-poisson.html#irls-set-up",
-    "href": "slides/04-poisson.html#irls-set-up",
-    "title": "Poisson Regression",
-    "section": "IRLS Set up",
-    "text": "IRLS Set up\nWorking response: Modified response variable at each step of the iteration.\n\\[z_i = g(\\theta) + g'(\\theta)(y_i - \\theta_i)\\]\nwhere \\(g(\\theta)\\) is the link function. (We will talk all about link functions in Chapter 5)\n\nFor Poisson regression \\(g(\\theta) = \\log(\\lambda)\\)\n\\[z_i = \\log(\\lambda) + \\frac{(y_i - \\lambda_i)}{\\lambda_i}\\]\n\n\nWorking Weights: Weights applied to the observations at each step of the iteration\n\\[W_i = \\frac{\\theta^2}{Var(Y)} \\hspace{5mm} \\Rightarrow \\hspace{5mm}  W_i = \\frac{\\lambda^2}{\\lambda} =  \\lambda \\text{ for Poisson regression}\\]"
+    "section": "Add location to the model?",
+    "text": "Add location to the model?\nSuppose we want to add location to the model, so we compare the following models:\nModel A: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2\\)\nModel B: \\(\\lambda_i = \\beta_0 + \\beta_1 ~ age_i + \\beta_2 ~ age_i^2 + \\beta_3 ~ Loc1_i + \\beta_4 ~ Loc2_i + \\beta_5 ~ Loc3_i + \\beta_6 ~ Loc4_i\\)\n\nWhich of the following are reliable ways to determine if location should be added to the model?\n\nDrop-in-deviance test\nUse the p-value for each coefficient\nLikelihood ratio test\nNested F Test\nBIC"
   },
   {
     "objectID": "slides/04-poisson.html#looking-ahead",
@@ -795,7 +788,7 @@
     "href": "slides/04-poisson.html#references",
     "title": "Poisson Regression",
     "section": "References",
-    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nDunn, Peter K, Gordon K Smyth, et al. 2018. Generalized Linear Models with Examples in r. Vol. 53. Springer.\n\n\nNelder, John Ashworth, and Robert WM Wedderburn. 1972. “Generalized Linear Models.” Journal of the Royal Statistical Society Series A: Statistics in Society 135 (3): 370–84.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
+    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
   },
   {
     "objectID": "slides/07-glm-theory.html#announcements",
@@ -2127,9 +2120,53 @@
   {
     "objectID": "hw/hw-04.html",
     "href": "hw/hw-04.html",
-    "title": "HW 04",
+    "title": "HW 04: Multilevel models",
     "section": "",
-    "text": "To be posted.",
+    "text": "Important\n\n\n\n\nThis assignment is due on Wednesday, March 20 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, March 21 noon (12pm).\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned.",
+    "crumbs": [
+      "Homework",
+      "HW 04"
+    ]
+  },
+  {
+    "objectID": "hw/hw-04.html#exercise-1",
+    "href": "hw/hw-04.html#exercise-1",
+    "title": "HW 04: Multilevel models",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nState the observational units at Level One and Level Two in this study, then state the explanatory variables at each level from the list above.\nCreate spaghetti plots that illustrate diversion hours over time faceted by (1) EMS level, and another by (2) number of stations (divided into “high” (stations &gt; 23) and “low”). Describe terms that might be worth testing in a model based on these plots.\nFit and display the unconditional growth model.\nInterpret \\(\\hat{\\alpha}_0\\) in the context of the data.\nInterpret \\(\\hat{\\sigma}_v\\) in the context of the data.",
+    "crumbs": [
+      "Homework",
+      "HW 04"
+    ]
+  },
+  {
+    "objectID": "hw/hw-04.html#exercise-2",
+    "href": "hw/hw-04.html#exercise-2",
+    "title": "HW 04: Multilevel models",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nCompare the models \\(D\\) and \\(D0\\) shown below.\n\nmodelD &lt;- lmer(diverthours ~ year2013 + ems_basic + \n  (year2013 | id), data = ambulance3)\n\nmodelD0 &lt;- lmer(diverthours ~ year2013 + ems_basic + \n  (1 | id), data = ambulance3)\n\n\nWrite out null and alternative hypotheses in terms of model parameters being tested.\nTest the hypotheses from part (a). Showing any relevant code, output, or calculations to support your response. State your conclusion in the context of the data.",
+    "crumbs": [
+      "Homework",
+      "HW 04"
+    ]
+  },
+  {
+    "objectID": "hw/hw-04.html#exercise-3",
+    "href": "hw/hw-04.html#exercise-3",
+    "title": "HW 04: Multilevel models",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nConsider the code for Model E below:\n\nmodelE &lt;- lmer(diverthours ~ year2013 + ems_basic +\n  ems_basic:year2013 + (year2013 | id), data = ambulance3)\n\n\nWrite the composite model in mathematical notation.\nInterpret the coefficient of ems_basic:year2013 in the context of the data.\nIs the interaction term ems_basic:year2013 statistically significant? Briefly explain, showing any relevant code, output, or calculations to support your response.",
+    "crumbs": [
+      "Homework",
+      "HW 04"
+    ]
+  },
+  {
+    "objectID": "hw/hw-04.html#exercise-4",
+    "href": "hw/hw-04.html#exercise-4",
+    "title": "HW 04: Multilevel models",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nIn Goldstein and Shapiro (2000), the researchers collected information from 203 registered nurses in the Los Angeles area to understand factors that potentially contribute to hypertension.\nThe data set includes 40 - 60 observations per nurse, that were repeatedly taken on the over the course of a single day. The first blood pressure measurement was taken half an hour before the subject’s normal start of work, then blood pressure was taken about every 20 minutes for the remainder of the day. Nurses also rated their stress levels when their blood pressure was taken. Each subject’s activity during the 10 minutes before each reading was measured using an actigraph worn on the waist.\nThe data set nursebp.csv and the codebook are available in the data folder of your GitHub repo.\nThe goal of the analysis is to understand the factors that are significantly associated with higher systolic blood pressure.\nWrite your analysis as a brief report. Include the following in your analysis:\n\nComprehensive exploratory data analysis\nCreate the best model you can that can be used to explain factors associated with systolic blood pressure.\nNarrative throughout describing your modeling process and decision-making process.\nUse the EDA and model results to describe the factors associated with higher systolic blood pressure.",
     "crumbs": [
       "Homework",
       "HW 04"

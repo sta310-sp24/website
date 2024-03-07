@@ -1,12 +1,113 @@
 ---
-title: "HW 04"
+title: "HW 04: Multilevel models"
+subtitle: ""
+editor: visual
 execute:
   freeze: auto
   echo: true
-  eval: true
+  eval: false
   warning: false
   message: false
 bibliography: references.bib
 ---
 
-To be posted.
+::: callout-important
+-   This assignment is due on Wednesday, March 20 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, March 21 noon (12pm).
+    -   Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.
+    -   You will have access to your HW repo again when grades are returned.
+:::
+
+# Instructions
+
+-   Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.
+-   Be sure all analysis code is displayed in the rendered pdf.
+-   If you are fitting a model, display the model output in a neatly formatted table. (The `tidy` and `kable` functions can help!)
+-   If you are creating a plot, use clear and informative labels and titles.
+-   Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.
+-   When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.
+
+# Exercises
+
+::: callout-note
+All exercises in this assignment were adapted from exercises in chapters 8 and 9 of @roback2021beyond.
+:::
+
+***Use the following prompt for Exercises 1 - 3.***
+
+One response to emergency department overcrowding is “ambulance diversion”---closing its doors and forcing ambulances to bring patients to alternative hospitals. The California Office of Statewide Health Planning and Development collected data on how often hospitals enacted “diversion status”, enabling researchers to investigate factors associated with increasing amounts of ambulance diversions. In @ambulance, students analyzed data on 184 California hospitals collected over a 3-year period (2013-2015).
+
+The data set `ambulance3.csv` and codebook for key variables are available in the `data` folder of your GitHub repo.
+
+## Exercise 1
+
+a.  State the observational units at Level One and Level Two in this study, then state the explanatory variables at each level from the list above.
+b.  Create spaghetti plots that illustrate diversion hours over time faceted by (1) EMS level, and another by (2) number of stations (divided into "high" (stations \> 23) and "low"). Describe terms that might be worth testing in a model based on these plots.
+c.  Fit and display the unconditional growth model.
+d.  Interpret $\hat{\alpha}_0$ in the context of the data.
+e.  Interpret $\hat{\sigma}_v$ in the context of the data.
+
+## Exercise 2
+
+Compare the models $D$ and $D0$ shown below.
+
+```{r eval = F, echo = T}
+modelD <- lmer(diverthours ~ year2013 + ems_basic + 
+  (year2013 | id), data = ambulance3)
+
+modelD0 <- lmer(diverthours ~ year2013 + ems_basic + 
+  (1 | id), data = ambulance3)
+```
+
+a.  Write out null and alternative hypotheses in terms of model parameters being tested.
+b.  Test the hypotheses from part (a). Showing any relevant code, output, or calculations to support your response. State your conclusion in the context of the data.
+
+## Exercise 3
+
+Consider the code for Model E below:
+
+```{r eval = F, echo = T}
+modelE <- lmer(diverthours ~ year2013 + ems_basic +
+  ems_basic:year2013 + (year2013 | id), data = ambulance3)
+```
+
+a.  Write the composite model in mathematical notation.
+b.  Interpret the coefficient of `ems_basic:year2013` in the context of the data.
+c.  Is the interaction term `ems_basic:year2013` statistically significant? Briefly explain, showing any relevant code, output, or calculations to support your response.
+
+## Exercise 4
+
+In @goldstein2000ambulatory, the researchers collected information from 203 registered nurses in the Los Angeles area to understand factors that potentially contribute to hypertension.
+
+The data set includes 40 - 60 observations per nurse, that were repeatedly taken on the over the course of a single day. The first blood pressure measurement was taken half an hour before the subject’s normal start of work, then blood pressure was taken about every 20 minutes for the remainder of the day. Nurses also rated their stress levels when their blood pressure was taken. Each subject's activity during the 10 minutes before each reading was measured using an actigraph worn on the waist.
+
+The data set `nursebp.csv` and the codebook are available in the `data` folder of your GitHub repo.
+
+The goal of the analysis is to understand the factors that are significantly associated with higher systolic blood pressure.
+
+Write your analysis as a brief report. Include the following in your analysis:
+
+-   Comprehensive exploratory data analysis
+
+-   Create the best model you can that can be used to explain factors associated with systolic blood pressure.
+
+-   Narrative throughout describing your modeling process and decision-making process.
+
+-   Use the EDA and model results to describe the factors associated with **higher systolic blood pressure*.***
+
+# Submission
+
+To submit the assignment, push your final changes to your GitHub repo. Then, you're done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.
+
+# Grading
+
+| **Total**             | **50** |
+|-----------------------|:------:|
+| Ex 1                  |   14   |
+| Ex 2                  |   6    |
+| Ex 3                  |   10   |
+| Ex 4                  |   16   |
+| Workflow & formatting |   4    |
+
+The "Workflow & formatting" grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.
+
+# References

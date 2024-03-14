@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
-  <title>STA 310 - Spring 2024 - Using likelihoods</title>
+  <title>STA 310 - Spring 2024 - Inference review +  using likelihoods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -415,7 +415,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Using likelihoods</h1>
+  <h1 class="title">Inference review + <br> using likelihoods</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -573,10 +573,9 @@ Prof.&nbsp;Maria Tackett
 <span id="cb6-2"><a></a>             <span class="at">data =</span> derby)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="inference-for-regression" class="title-slide slide level1 center">
-<h1>Inference for regression</h1>
+</section>
+<section id="inference-for-regression" class="slide level2">
+<h2>Inference for regression</h2>
 <p>Use statistical inference to</p>
 <ul>
 <li><p>Evaluate if predictors are statistically significant (not necessarily practically significant!)</p></li>
@@ -743,18 +742,20 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <h2>What is the likelihood?</h2>
 <p>A <strong>likelihood</strong> is a function that tells us how likely we are to observe our data for a given parameter value (or values).</p>
 <ul>
-<li><p>Unlike Ordinary Least Squares (OLS), they do not require the responses be independent, identically distributed, and normal (iidN)</p></li>
+<li><p>Unlike with Ordinary Least Squares (OLS) estimates, they do not require the responses be independent, identically distributed, and normal</p></li>
 <li><p>They are <u>not</u> the same as probability functions</p></li>
 </ul>
 </section>
 <section id="probability-function-vs.-likelihood" class="slide level2 incremental">
 <h2>Probability function vs.&nbsp;likelihood</h2>
+<div>
 <ul>
-<li><p><strong>Probability function:</strong> Fixed parameter value(s) + input possible outcomes <span class="math inline">\(\Rightarrow\)</span> probability of seeing the different outcomes given the parameter value(s)</p></li>
-<li><p><strong>Likelihood:</strong> Fixed data + input possible parameter values <span class="math inline">\(\Rightarrow\)</span> probability of seeing the fixed data for each parameter value</p></li>
+<li class="fragment"><p><strong>Probability function:</strong> Fixed parameter value(s) + input possible outcomes <span class="math inline">\(\Rightarrow\)</span> probability of seeing the different outcomes given the parameter value(s)</p></li>
+<li class="fragment"><p><strong>Likelihood:</strong> Fixed data + input possible parameter values <span class="math inline">\(\Rightarrow\)</span> probability of seeing the fixed data for each parameter value</p></li>
 </ul>
+</div>
 </section>
-<section id="data-fouls-in-college-basketball-games" class="slide level2">
+<section id="data-fouls-in-college-basketball-games" class="slide level2 midi">
 <h2>Data: Fouls in college basketball games</h2>
 <p>The data set <a href="data/04-refs.csv"><code>04-refs.csv</code></a> includes 30 randomly selected NCAA men’s basketball games played in the 2009 - 2010 season.<sup>1</sup></p>
 <p>We will focus on the variables <code>foul1</code>, <code>foul2</code>, and <code>foul3</code>, which indicate which team had a foul called them for the 1st, 2nd, and 3rd fouls, respectively.</p>
@@ -846,10 +847,12 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <li><p>Is there a tendency for the referees to call more fouls on the visiting team or home team?</p></li>
 <li><p>Is there a tendency for referees to call a foul on the team that already has more fouls?</p></li>
 </ul>
+</div>
+<div class="fragment">
 <p><strong>Ultimately we want to decide which model is better.</strong></p>
 </div>
 </section>
-<section id="exploratory-data-analysis" class="slide level2">
+<section id="exploratory-data-analysis" class="slide level2 midi">
 <h2>Exploratory data analysis</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1017,7 +1020,7 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c2673556" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_25d70855" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1027,17 +1030,42 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <section id="model-1-likelihood-function" class="slide level2">
 <h2>Model 1: Likelihood function</h2>
 <p>Because the observations (the games) are independent, the <strong>likelihood</strong> is</p>
-</section>
-<section id="likp_h-prod_i1np_hy_i1---p_h3---y_i" class="slide level2">
-<h2><span class="math display">\[Lik(p_H) = \prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}\]</span></h2>
+<p><span class="math display">\[Lik(p_H) = \prod_{i=1}^{n}p_H^{y_i}(1 - p_H)^{3 - y_i}\]</span></p>
 <div class="fragment">
 <p>We will use this function to find the <strong>maximum likelihood estimate (MLE)</strong>. The MLE is the value between 0 and 1 where we are most likely to see the observed data.</p>
 </div>
 </section>
-<section id="visualizing-the-likelihood" class="slide level2 midi">
+<section id="visualizing-the-likelihood" class="slide level2">
 <h2>Visualizing the likelihood</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="03-likelihoods_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>) <span class="co">#sequence of 100 values between 0 and 100</span></span>
+<span id="cb9-2"><a></a>lik <span class="ot">&lt;-</span> p<span class="sc">^</span><span class="dv">46</span> <span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span>p)<span class="sc">^</span><span class="dv">44</span></span>
+<span id="cb9-3"><a></a>x <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">p =</span> p, <span class="at">lik =</span> lik)</span>
+<span id="cb9-4"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> x, <span class="fu">aes</span>(<span class="at">x =</span> p, <span class="at">y =</span> lik)) <span class="sc">+</span> </span>
+<span id="cb9-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb9-6"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb9-7"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Likelihood"</span>,</span>
+<span id="cb9-8"><a></a>       <span class="at">title =</span> <span class="st">"Likelihood of p_H"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
 <div class="question">
-<p>What is your best guess for the MLE, $\hat{p}_H$?</p>
+<p>What is your best guess for the MLE, <span class="math inline">\(\hat{p}_H\)</span>?</p>
 <ol type="a">
 <li>0.489</li>
 <li>0.500</li>
@@ -1056,37 +1084,24 @@ t = \frac{\hat{\beta}_j - 0}{SE_{\hat{\beta}_j}}
 <section id="approximate-mle-from-a-graph" class="slide level2">
 <h2>Approximate MLE from a graph</h2>
 
-<img data-src="03-likelihoods_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
-<section id="find-the-mle-using-numerical-approximation" class="slide level2">
-<h2>Find the MLE using numerical approximation</h2>
+<img data-src="03-likelihoods_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="mle-using-numerical-approximation" class="slide level2">
+<h2>MLE using numerical approximation</h2>
 <p>Specify a finite set of possible values the for <span class="math inline">\(p_H\)</span> and calculate the likelihood for each value</p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># write an R function for the likelihood</span></span>
-<span id="cb9-2"><a></a>ref_lik <span class="ot">&lt;-</span> <span class="cf">function</span>(ph) {</span>
-<span id="cb9-3"><a></a>  ph<span class="sc">^</span><span class="dv">46</span> <span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> ph)<span class="sc">^</span><span class="dv">44</span></span>
-<span id="cb9-4"><a></a>}</span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a><span class="co"># search possible values for p and return max</span></span>
-<span id="cb9-7"><a></a>nGrid <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb9-8"><a></a>ph <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> nGrid)</span>
-<span id="cb9-9"><a></a>lik <span class="ot">&lt;-</span> <span class="fu">ref_lik</span>(ph)</span>
-<span id="cb9-10"><a></a>ph[lik <span class="sc">==</span> <span class="fu">max</span>(lik)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># write an R function for the likelihood</span></span>
+<span id="cb10-2"><a></a>ref_lik <span class="ot">&lt;-</span> <span class="cf">function</span>(ph) {</span>
+<span id="cb10-3"><a></a>  ph<span class="sc">^</span><span class="dv">46</span> <span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> ph)<span class="sc">^</span><span class="dv">44</span></span>
+<span id="cb10-4"><a></a>}</span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a><span class="co"># search possible values for p and return max</span></span>
+<span id="cb10-7"><a></a>nGrid <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb10-8"><a></a>ph <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length =</span> nGrid)</span>
+<span id="cb10-9"><a></a>lik <span class="ot">&lt;-</span> <span class="fu">ref_lik</span>(ph)</span>
+<span id="cb10-10"><a></a>ph[lik <span class="sc">==</span> <span class="fu">max</span>(lik)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5115115</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># use the optimize function to find the MLE</span></span>
-<span id="cb11-2"><a></a><span class="fu">optimize</span>(ref_lik, <span class="at">interval =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">maximum =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$maximum
-[1] 0.5111132
-
-$objective
-[1] 8.25947e-28</code></pre>
 </div>
 </div>
 </div>
@@ -1098,12 +1113,26 @@ $objective
 <li><p>This can be tricky because of the Product Rule, so we can maximize the <strong>log(Likelihood)</strong> instead. The same value maximizes the likelihood and log(Likelihood)</p></li>
 </ul>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="03-likelihoods_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="03-likelihoods_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
 </figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="03-likelihoods_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1136,9 +1165,9 @@ $objective
 \]</span></p>
 </div>
 <div class="fragment">
-<div class="center">
-<p>😐</p>
-</div>
+<center>
+😐
+</center>
 </div>
 </section></section>
 <section>
@@ -1147,7 +1176,7 @@ $objective
 <p>Is there a tendency for referees to call more fouls on the visiting team or home team?</p>
 <p>Is there a tendency for referees to call a foul on the team that already has more fouls?</p>
 </section>
-<section id="model-2-conditional-model-1" class="slide level2">
+<section id="model-2-conditional-model-1" class="slide level2 midi">
 <h2>Model 2: Conditional model</h2>
 <p>Now let’s assume fouls are <u>not</u> independent within each game. We will specify this dependence using conditional probabilities.</p>
 <ul>
@@ -1164,7 +1193,7 @@ $objective
 </div>
 </div>
 </section>
-<section id="model-2-likelihood-contributions" class="slide level2 midi">
+<section id="model-2-likelihood-contributions" class="slide level2 small">
 <h2>Model 2: Likelihood contributions</h2>
 <table style="width:98%;">
 <colgroup>
@@ -1196,14 +1225,14 @@ $objective
 <td>H</td>
 <td>V</td>
 <td>2</td>
-<td><div class="line-block"><span class="math inline">\((p_{H\vert N})(p_{H\vert H Bias})(p_{H\vert H Bias}) = (p_{H\vert N})(p_{H\vert H Bias})^2\)</span></div></td>
+<td><div class="line-block"><span class="math inline">\((p_{H\vert N})(p_{H\vert H Bias})(1-p_{H\vert H Bias})\)</span></div></td>
 </tr>
 <tr class="odd">
 <td>H</td>
 <td>V</td>
 <td>H</td>
 <td>3</td>
-<td><div class="line-block"><span class="math inline">\((p_{H\vert N})(p_{H\vert H Bias})(1 - p_{H\vert H Bias})\)</span></div></td>
+<td><span class="math inline">\((p_{H\vert N})(1 - p_{H \vert HBias})(p_{H \vert N}) = (p_{H \vert N})^2(1 - p_{H \vert HBias})\)</span></td>
 </tr>
 <tr class="even">
 <td>H</td>
@@ -1242,11 +1271,11 @@ $objective
 </tr>
 </tbody>
 </table>
-<div class="question">
-<p>Fill in <strong>A</strong> and <strong>B.</strong></p>
+<div class="footer">
+
 </div>
 </section>
-<section id="likelihood-function" class="slide level2">
+<section id="likelihood-function" class="slide level2 midi">
 <h2>Likelihood function</h2>
 <p><span class="math display">\[\begin{aligned}Lik(p_{H| N}, p_{H|H Bias}, p_{H |V Bias}) &amp;= [(p_{H| N})^{25}(1 - p_{H|N})^{23}(p_{H| H Bias})^8 \\ &amp;(1 - p_{H| H Bias})^{12}(p_{H| V Bias})^{13}(1-p_{H|V Bias})^9]\end{aligned}\]</span></p>
 <p><strong>(Note: The exponents sum to 90, the total number of fouls in the data)</strong></p>
@@ -1267,22 +1296,235 @@ $objective
 </ol>
 </div>
 </section>
-<section id="update-the-choices" class="slide level2">
-<h2>UPDATE THE CHOICES!</h2>
-<div class="question">
-<p>If there is a tendency for referees to call a foul on the team that already has more fouls, how would you expect <span class="math inline">\(\hat{p}_H\)</span> and <span class="math inline">\(\hat{p}_{H\vert H Bias}\)</span> to compare?</p>
-<ol type="a">
-<li><p><span class="math inline">\(\hat{p}_H\)</span> is greater than <span class="math inline">\(\hat{p}_{H\vert H Bias}\)</span></p></li>
-<li><p><span class="math inline">\(\hat{p}_{H\vert H Bias}\)</span> is greater than <span class="math inline">\(\hat{p}_H\)</span></p></li>
-<li><p>They are approximately equal.</p></li>
-</ol>
+<section id="mles-for-model-2" class="slide level2">
+<h2>MLEs for Model 2</h2>
+<p><a href="03-model2-mle.html">Click here</a> for details on finding MLEs for Model2.</p>
+</section></section>
+<section>
+<section id="using-likelihoods-to-compare-models" class="title-slide slide level1 center">
+<h1>Using likelihoods to compare models</h1>
+
+</section>
+<section id="maximum-likelihood-estimates" class="slide level2 midi">
+<h2>Maximum likelihood estimates</h2>
+<p>The <strong>maximum likelihood estimate (MLE)</strong> is the value between 0 and 1 where we are most likely to see the observed data.</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Model 1 (Unconditional Model)</strong></p>
+<ul>
+<li><span class="math inline">\(\hat{p}_H = 46/90 = 0.511\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Model 2 (Conditional Model)</strong></p>
+<ul>
+<li><span class="math inline">\(\hat{p}_{H|N} = 25 / 48 = 0.521\)</span></li>
+<li><span class="math inline">\(\hat{p}_{H|H Bias} = 8 /20 = 0.4\)</span></li>
+<li><span class="math inline">\(\hat{p}_{H|V Bias} = 13/ 22 = 0.591\)</span></li>
+</ul>
 </div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>What is the probability the referees call a foul on the home team, assuming foul calls within a game are independent?</li>
+<li>Is there a tendency for the referees to call more fouls on the visiting team or home team?</li>
+<li>Is there a tendency for referees to call a foul on the team that already has more fouls?</li>
+</ul>
+</div>
+</section>
+<section id="model-comparisons" class="slide level2">
+<h2>Model comparisons</h2>
+<ul>
+<li><p>Nested models</p></li>
+<li><p>Non-nested models</p></li>
+</ul>
+</section></section>
+<section>
+<section id="comparing-nested-models" class="title-slide slide level1 center">
+<h1>Comparing nested models</h1>
+
+</section>
+<section id="nested-models" class="slide level2 midi">
+<h2>Nested Models</h2>
+<p><strong>Nested models</strong>: Models such that the parameters of the reduced model are a subset of the parameters for a larger model</p>
+<p>Example:</p>
+<p><span class="math display">\[\begin{aligned}&amp;\text{Model A: }y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\\
+&amp;\text{Model B: }y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4 + \epsilon\end{aligned}\]</span></p>
+<div class="fragment">
+<p>Model A is nested in Model B. We could use likelihoods to test whether it is useful to add <span class="math inline">\(x_3\)</span> and <span class="math inline">\(x_4\)</span> to the model.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\begin{aligned}&amp;H_0: \beta_3 = \beta_4 = 0 \\
+&amp;H_a: \text{ at least one }\beta_j \text{ is not equal to 0}\end{aligned}\]</span></p>
+</div>
+</section>
+<section id="nested-models-1" class="slide level2 midi">
+<h2>Nested models</h2>
+<p><strong>Another way to think about nested models</strong>: Parameters in larger model can be equated to get the simpler model or if some parameters can be set to constants</p>
+<p><strong>Example:</strong></p>
+<p><span class="math display">\[\begin{aligned}&amp;\text{Model 1: }p_H \\
+&amp;\text{Model 2: }p_{H| N}, p_{H| H Bias}, p_{H| V Bias}\end{aligned}\]</span></p>
+<div class="fragment">
+<p>Model 1 is nested in Model 2. The parameters <span class="math inline">\(p_{H| N}\)</span>, <span class="math inline">\(p_{H|H Bias}\)</span>, and <span class="math inline">\(p_{H |V Bias}\)</span> can be set equal to <span class="math inline">\(p_H\)</span> to get Model 1.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\begin{aligned}&amp;H_0: p_{H| N} = p_{H| H Bias} = p_{H| V Bias} = p_H \\
+&amp;H_a: \text{At least one of }p_{H| N}, p_{H| H Bias}, p_{H| V Bias} \text{ differs from the others}\end{aligned}\]</span></p>
+</div>
+</section>
+<section id="steps-to-compare-models" class="slide level2">
+<h2>Steps to compare models</h2>
+<p>1️⃣ Find the MLEs for each model.</p>
+<p>2️⃣ Plug the MLEs into the log-likelihood function for each model to get the maximum value of the log-likelihood for each model.</p>
+<p>3️⃣ Find the difference in the maximum log-likelihoods</p>
+<p>4️⃣ Use the Likelihood Ratio Test to determine if the difference is statistically significant</p>
+</section>
+<section id="steps-1---2" class="slide level2">
+<h2>Steps 1 - 2</h2>
+<p>Find the MLEs for each model and plug them into the log-likelihood functions.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Model 1:</strong></p>
+<ul>
+<li><span class="math inline">\(\hat{p}_H = 46/90 = 0.511\)</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>loglik1 <span class="ot">&lt;-</span> <span class="cf">function</span>(ph){</span>
+<span id="cb12-2"><a></a> <span class="fu">log</span>(ph<span class="sc">^</span><span class="dv">46</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> ph)<span class="sc">^</span><span class="dv">44</span>)</span>
+<span id="cb12-3"><a></a>}</span>
+<span id="cb12-4"><a></a><span class="fu">loglik1</span>(<span class="dv">46</span><span class="sc">/</span><span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -62.36102</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Model 2</strong></p>
+<ul>
+<li><span class="math inline">\(\hat{p}_{H|N} = 25 / 48 = 0.521\)</span></li>
+<li><span class="math inline">\(\hat{p}_{H|H Bias} = 8 /20 = 0.4\)</span></li>
+<li><span class="math inline">\(\hat{p}_{H|V Bias} = 13/ 22 = 0.591\)</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>loglik2 <span class="ot">&lt;-</span> <span class="cf">function</span>(phn, phh, phv) {</span>
+<span id="cb14-2"><a></a>  <span class="fu">log</span>(phn<span class="sc">^</span><span class="dv">25</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phn)<span class="sc">^</span><span class="dv">23</span> <span class="sc">*</span> phh<span class="sc">^</span><span class="dv">8</span> <span class="sc">*</span> </span>
+<span id="cb14-3"><a></a>        (<span class="dv">1</span> <span class="sc">-</span> phh)<span class="sc">^</span><span class="dv">12</span> <span class="sc">*</span> phv<span class="sc">^</span><span class="dv">13</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phv)<span class="sc">^</span><span class="dv">9</span>)</span>
+<span id="cb14-4"><a></a>}</span>
+<span id="cb14-5"><a></a><span class="fu">loglik2</span>(<span class="dv">25</span><span class="sc">/</span><span class="dv">48</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">20</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">22</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -61.57319</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3" class="slide level2">
+<h2>Step 3</h2>
+<p>Find the difference in the log-likelihoods</p>
+<p><span class="math display">\[
+\log(Lik(Model 2)) - \log(Lik(Model1))
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>(diff <span class="ot">&lt;-</span> <span class="fu">loglik2</span>(<span class="dv">25</span><span class="sc">/</span><span class="dv">48</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">20</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">22</span>) <span class="sc">-</span> <span class="fu">loglik1</span>(<span class="dv">46</span><span class="sc">/</span><span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7878318</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<center>
+<strong>Is the difference in the maximum log-likelihoods statistically significant?</strong>
+</center>
+</div>
+</section>
+<section id="likelihood-ratio-test" class="slide level2 midi">
+<h2>Likelihood Ratio Test</h2>
+<p><strong>Test statistic</strong></p>
+<p><span class="math display">\[\begin{aligned} LRT &amp;= 2[\max\{\log(Lik(\text{larger model}))\} - \max\{\log(Lik(\text{reduced model}))\}]\\[10pt]
+&amp;= 2\log\Bigg(\frac{\max\{(Lik(\text{larger model})\}}{\max\{(Lik(\text{reduced model})\}}\Bigg)\end{aligned}\]</span></p>
+<p><br></p>
+<div class="fragment">
+<p>LRT follows a <span class="math inline">\(\chi^2\)</span> distribution where the degrees of freedom equal the difference in the number of parameters between the two models</p>
+</div>
+</section>
+<section id="step-4" class="slide level2">
+<h2>Step 4</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>(LRT <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="fu">loglik2</span>(<span class="dv">25</span><span class="sc">/</span><span class="dv">48</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">20</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">22</span>) <span class="sc">-</span> <span class="fu">loglik1</span>(<span class="dv">46</span><span class="sc">/</span><span class="dv">90</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.575664</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>The test statistic follows a <span class="math inline">\(\chi^2\)</span> distribution with 2 degrees of freedom. Therefore, the p-value is <span class="math inline">\(P(\chi^2 &gt; LRT)\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">pchisq</span>(LRT, <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4548299</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>The p-value is very large, so we fail to reject <span class="math inline">\(H_0\)</span>. We do not have convincing evidence that the conditional model is an improvement over the unconditional model. Therefore, we can stick with the unconditional model.</p>
+</div>
+</section></section>
+<section>
+<section id="comparing-non-nested-models" class="title-slide slide level1 center">
+<h1>Comparing non-nested models</h1>
+
+</section>
+<section id="comparing-non-nested-models-1" class="slide level2 midi">
+<h2>Comparing non-nested models</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>AIC = -2(max logLik) + 2p</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>(Model1_AIC <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">loglik1</span>(<span class="dv">46</span><span class="sc">/</span><span class="dv">90</span>) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -122.722</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>(Model2_AIC <span class="ot">&lt;-</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">loglik2</span>(<span class="dv">25</span><span class="sc">/</span><span class="dv">48</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">20</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">22</span>) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -117.1464</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>BIC = -2(max logLik) + plog(n)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>(Model1_BIC <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">loglik1</span>(<span class="dv">46</span><span class="sc">/</span><span class="dv">90</span>) <span class="sc">+</span> <span class="dv">1</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -121.3208</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>(Model2_BIC <span class="ot">&lt;-</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">loglik2</span>(<span class="dv">25</span><span class="sc">/</span><span class="dv">48</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">20</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">22</span>) <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -112.9428</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<p><strong>Choose Model 1, the unconditional model, based on AIC and BIC</strong></p>
+</div>
+</section>
+<section id="looking-ahead" class="slide level2 midi">
+<h2>Looking ahead</h2>
+<ul>
+<li><p>Likelihoods help us answer the question of how likely we are to observe the data given different parameters</p></li>
+<li><p>In this example, we did not consider covariates, so in practice the parameters we want to estimate will look more similar to this</p></li>
+</ul>
+<p><span class="math display">\[p_H = \frac{e^{\beta_0 + \beta_1x_1 + \dots + \beta_px_p}}{1 + e^{\beta_0 + \beta_1x_1 + \dots + \beta_px_p}}\]</span></p>
+<ul>
+<li>Finding the MLE becomes much more complex and numerical methods may be required.
+<ul>
+<li>We will primarily rely on software to find the MLE, but the conceptual ideas will be the same</li>
+</ul></li>
+</ul>
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next time</h2>
 <ul>
-<li><p>Using likelihoods to compare models</p></li>
-<li><p>Chapter 3: Distribution theory</p></li>
+<li>Poisson regression</li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">

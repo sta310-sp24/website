@@ -45,9 +45,9 @@ All work will be submitted in your team's project GitHub repo.
 
     -   *Optional submission to receive feedback from the teaching team.*
 
--   **Draft results**: due Friday, March 22 at 12pm (noon)
+-   **Draft report**: due Friday, March 22 at 12pm (noon)
 
--   **Presentations**: due Wed, Apr 3 at 3:30pm
+-   **Presentation**: due Wed, Apr 3 at 3:30pm
 
 -   **Written report**: due Thursday, Apr 4 at 9pm
 
@@ -63,7 +63,7 @@ The article for this project <u>must</u> be published in a scholarly journal. Pl
 
 See the [Tips on finding articles](#Tips_on_finding_articles) for tips on searching databases to find articles and data.
 
-## Proposal 
+## Proposal
 
 The main goal of the proposal is to ensure you have an article that will set you up for a successful project. The proposal should include the following:
 
@@ -142,7 +142,7 @@ The analysis plan is optional. If you would like to receive feedback from the te
 *I recommend sketching an analysis plan before diving into the analysis even if you don't turn it in for feedback.*
 :::
 
-## Draft
+## Draft report
 
 The goal of the draft is to get initial feedback on your analysis and report.
 
@@ -161,11 +161,21 @@ Write the draft in `written-report.qmd`. Push the `.qmd` and rendered PDF to the
 **The draft is due on Friday, March 22 at noon.**
 :::
 
-<!--add grading criteria-->
+### Grading criteria
+
+The draft will be graded based on the following:
+
+-   All required components of the draft are included and accurate (12 pts)
+
+-   All team members have contributed (3 pts)
+
+    -   This will be assessed based on the repo's commit history.
 
 ## Written report
 
 The final written report should include the sections below. **There is a 10-page limit.**
+
+You are welcome to include an appendix with additional work at the end of the written report document; however, grading will overwhelmingly be based on the content in the main body of the report. You should assume the reader will not see the material in the appendix unless prompted to view it in the main body of the report. The appendix should be neatly formatted and easy for the reader to navigate. It is not included in the 10-page limit.
 
 ### Introduction
 
@@ -183,7 +193,9 @@ This section will include a summary and results from your original analysis. Des
 
 ### Discussion
 
-This section will include a summary of your conclusions along with any limitations to the data or analysis. Also include any challenges your group may have faced with reproducing the model and suggestions to improve the reproducible of the analysis.
+This section will include a summary of your conclusions along with any limitations to the data and/or analysis. Also include any challenges your group may have faced with reproducing the model and suggestions to improve the reproducibility of the analysis.
+
+Write the report in `written-report.qmd`. Push the `.qmd` and rendered PDF to the GitHub repo for submission.
 
 ::: callout-important
 **The final written report is due on Thursday, April 4 at 9pm.**
@@ -191,30 +203,69 @@ This section will include a summary of your conclusions along with any limitatio
 
 ### Grading criteria
 
-Each section will assessed on whether the components of the section are clearly, comprehensively, and accurately discussed in the report. The point allocation is as follows:
-
-The report will also be assessed based on the following:
+The written report (35 pts) will be assessed on how clearly, comprehensively and accurately each section is written. Additionally, the report will be assessed on the following:
 
 -   Thoroughness of analysis
-    -   This is an assessment of the thoroughness in at least one of the primary analyses in the report - reproducing the model or original analysis. Does the report demonstrate an an in-depth approach to reproduce the model, an in-depth evaluation of the authors' choices, an in-depth exploration of new variables, model types, etc, or an in-depth exploration in some other part of the analysis?
+    -   This is an assessment of whether a thorough approach was taken in at least one of the primary analyses in the report - reproducing the model or original analysis. Does the report demonstrate an an in-depth approach to reproduce the model, an in-depth evaluation of the authors' choices, an in-depth exploration of new variables, model types, etc, or an in-depth exploration in some other part of the analysis?
 -   Formatting
     -   This is an assessment of the overall presentation and formatting of the written report. This includes neatly formatted text and tables, appropriate labels on figures, suppressing all code and extraneous output, properly rendered LaTex, etc.
 -   Reproducibility
     -   This is an assessment of the reproducibility of the report. Is the PDF produced by rendering the `.qmd` document?
+-   All team members have contributed
+    -   This will be assessed based on the repo's commit history.
 
 ## Presentation
 
-You will present on **Wednesday, April 3** during lecture. Each team will have 8 minutes for the presentation along with a few minutes for questions. Every team member is expected to speak about an equal amount of time during the presentation.
+You will present on **Wednesday, April 3** during lecture. Each team will have 10 minutes for the presentation along with a few minutes for questions. Every team member is expected to speak about an equal amount of time during the presentation.
 
-You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in 8 minutes. A suggested outline is
+You can make the presentation slides using the software of your choice. You can use as many slide as you wish, just be mindful of what can reasonably be presented in 10 minutes. A suggested outline is
 
 -   Introduction to the article and research question
 -   Description of the data
--   Description of the model reproduction process and challenges
+-   Description of the process, challenges and results from reproducing the model
 -   Description and results from original analysis
 -   Discussion and conclusion
 
-You will be assigned two presentations to peer review. You must submit the peer review scores for both presentations to have the "Peers" scores for your team's presentation included in your presentation grade.
+The presentation order and peer review assignments will be given closer to the presentation date.
+
+The presentation is worth 20 points. The points are broken down as follows:
+
+-   Teaching team scores: 15 pts
+-   Peer scores: 5 pts
+
+### Grading criteria - Teaching Team (15 pts)
+
+This portion of the grade will the average of the scores from the members of the teaching team.
+
+-   **Professionalism** **(3 pts)**
+    -   Was the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?
+    -   Was the time reasonably divided among team members? Was the presentation within the time limit?
+    -   Did the team present a unified story?
+-   **Content** **(8 pts)**
+    -   Is the content presented in a clear and accurate way? This includes clearly and accurately describing the components described in the presentation outline.
+-   **Slides** **(4 pts)**
+    -   Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?
+
+### Grading criteria - Peers (5 pts)
+
+This portion of the grade will the average of the scores from the peer reviewers. Peer review assignments will be posted on Slack.
+
+-   **Professionalism (1 pt)**
+
+    -   Was the team prepared for the presentation? Did each team member have a meaningful contribution to the presentation?
+    -   Did the team present a unified story?
+
+-   **Content (2 pt)**
+
+    -   Is the content presented in a clear and accurate way? This includes clearly and accurately describing the components described in the presentation outline.
+
+-   **Slides** **(2 pt)**
+
+    -   Are the slides well organized, readable, not full of text, featuring figures with legible labels, legends, etc.?
+
+## Presentation peer review
+
+You will be assigned two presentations to peer review. Submitting the scores for your assigned presentations is worth 5 points. This portion of the grade will be individually assessed.
 
 ## GitHub repo organization
 
@@ -228,9 +279,9 @@ You should have the following files and folders in the project repo. The repo an
 
 -   `proposal.pdf`
 
--   `analysis-plan.qmd`
+-   `analysis-plan.qmd` (you can remove this file if you did not write an analysis plan)
 
--   `analysis-plan.pdf`
+-   `analysis-plan.pdf` (you can remove this file if you did not write an analysis plan)
 
 -   `written-report.qmd`
 

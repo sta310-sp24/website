@@ -1614,7 +1614,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data: Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\nExam period",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data: Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nTBD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\nLab: Project 02 write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\nLab: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\nLab: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\n\nTh\nApr 24\nFinal Project: Round 1 Submission due (optional)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExam period\nTh\nMay 2\nFinal Project: Final submission due",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -2592,7 +2592,128 @@
     "href": "projects/final-project.html",
     "title": "Final project",
     "section": "",
-    "text": "To be posted.",
+    "text": "The goal of the final project is for you to use statistical methods from this course to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web or combining multiple data sets.\nThere are two options for the analysis:\n1️⃣ Use multilevel modeling to analyze data with a multilevel structure.\n2️⃣ Use one or more generalized linear models we haven’t covered in class to analyze data with independent observations.1\nYou may not use data that has been used for lectures, in-class activities, or assignments.\nYou may discuss your project with members of the teaching team if you are unsure whether your data and modeling approach are appropriate for the project. All analyses must be done in RStudio, and all components of the project must be reproducible.",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#introduction",
+    "href": "projects/final-project.html#introduction",
+    "title": "Final project",
+    "section": "",
+    "text": "The goal of the final project is for you to use statistical methods from this course to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web or combining multiple data sets.\nThere are two options for the analysis:\n1️⃣ Use multilevel modeling to analyze data with a multilevel structure.\n2️⃣ Use one or more generalized linear models we haven’t covered in class to analyze data with independent observations.1\nYou may not use data that has been used for lectures, in-class activities, or assignments.\nYou may discuss your project with members of the teaching team if you are unsure whether your data and modeling approach are appropriate for the project. All analyses must be done in RStudio, and all components of the project must be reproducible.",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#logistics",
+    "href": "projects/final-project.html#logistics",
+    "title": "Final project",
+    "section": "Logistics",
+    "text": "Logistics\n\nThis is an individual project.\nThere are two primary deliverables for the final project:\n\nA written, reproducible report detailing your analysis\nA GitHub repository with your report, data, and a summary in the README",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#due-dates",
+    "href": "projects/final-project.html#due-dates",
+    "title": "Final project",
+    "section": "Due dates",
+    "text": "Due dates\nAll work for the project will be submitted on GitHub.\n\nRound 1 submission (optional): Thursday, April 25 at 9m\nFinal submission: Thursday, May 2 at 9pm",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#round-1-submission-optional",
+    "href": "projects/final-project.html#round-1-submission-optional",
+    "title": "Final project",
+    "section": "Round 1 submission (optional)",
+    "text": "Round 1 submission (optional)\n\n\n\n\n\n\nDue date\n\n\n\nThe Round 1 submission must be submitted Thursday, April 25 at 9pm to receive feedback.\n\n\nThe Round 1 submission is an opportunity to receive detailed feedback on your analysis and written report before the final submission. Therefore, to make the feedback most useful, you must submit a complete written report to receive feedback. You will also be notified of the grade you would receive at that point. You will have the option to keep the grade (and thus you don’t need to turn in an updated report) or resubmit the written report by the final submission deadline to receive a new grade.\n\nTo submit the Round 1 submission:\n\nPush the updated written-report.qmd and written-report.pdf to your GitHub repo.\nOpen an issue with the title “Round 1 Submission”. Make sure I am tagged in the issue (@matackett), so I receive an email notification of your Round 1 submission. See Creating an issue from a repository for instructions on opening an issue. Please ask a member of the teaching team for assistance if you need help opening the issue.\n\n\n\n\n\n\n\nNote\n\n\n\nThe Round 1 submissions is optional, so there is nograde penalty if you do not turn something in. Due to time constraints at the end of the semester, less detailed feedback will be given for the final submissions on May 2.",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#final-submission",
+    "href": "projects/final-project.html#final-submission",
+    "title": "Final project",
+    "section": "Final submission",
+    "text": "Final submission\n\n\n\n\n\n\nDue date\n\n\n\nThe final written report and organized GitHub repo are due Thursday, May 2 at 9pm. You will submit the final written report by pushing the .qmd and rendered PDF documents to your GitHub repo.\n\n\nGiven the short grading timelines, there will be high level feedback on the final written report. You can submit a draft in the Round 1 submission if you wish to receive more detailed feedback.\nIn addition to the written report, the GitHub repo should include\n\nThe title and a short summary (3 - 5 sentences) of the report in the README.\nThe data set and codebook in the data folder.",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#written-report",
+    "href": "projects/final-project.html#written-report",
+    "title": "Final project",
+    "section": "Written report",
+    "text": "Written report\nYour written report must be completed in the written-report.Rmd file and must be reproducible.\nBefore you finalize your write up, make sure the code, warnings, and messages are suppressed in the rendered PDF.\nThe report, including visualizations and output should be no more than 10 pages long. There is no minimum page requirement; however, you should comprehensively address all of the aspects mentioned below.\nPlease be selective in what you include in your final write-up. The goal is to write a cohesive narrative rather than explain every step of the analysis. If you have additional work you wish to include that doesn’t fit in the 10-page limit, you may include it in a neatly organized appendix. Note that the appendix is only for supplemental material; the main body of the report must should be comprehensive and include all relevant details.\nBelow is an outline of the sections of the report.\n\nIntroduction\nThis section includes an introduction to the project motivation, data, and research question. It also includes any background information relevant for understanding the analysis and relevant previous work.\n\n\nData\nThe data and definitions of key variables are described. It should also include some exploratory data analysis (EDA) - visualizations and appropriate summary statistics. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and other key variables and multivariate relationships.\n\n\nMethodology\nThis section includes a description of the modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model and any interactions. Additionally, discuss how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process including model assumptions and diagnostics as needed. This section will also include the equation for the final statistical model written in mathematical notation.\n\n\nResults\nThis is where you will output the final model and explain key results. The goal is not to interpret every single variable in the model but rather to show that you are proficient in using the model output to address the research questions, using the interpretations to support your conclusions. Focus on the variables that help you answer the research question and that provide relevant context for the reader.\n\n\nDiscussion + Conclusion\nIn this section you’ll include a summary of the conclusions about the research question with statistical arguments supporting your conclusions. In addition, discuss the limitations of your analysis. Issues pertaining to the reliability and validity of your data and appropriateness of the statistical analysis should also be discussed here. Include ideas for future work.\nIn addition to the content described above, the report will be assessed on the following:\n\n\nOrganization + formatting\nThis is an assessment of the overall presentation and formatting of the written report. This includes having clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted. All code, warnings, and messages are suppressed. Overall, the document would be presentable in a business or research setting.",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#reproducibility",
+    "href": "projects/final-project.html#reproducibility",
+    "title": "Final project",
+    "section": "Reproducibility",
+    "text": "Reproducibility\nThe analysis and written report should be done in a reproducible way. This means we should be able to reproduce the analysis and written report starting with the  raw data. Any data cleaning, combining data sets, creating new variables, etc. should also be done in a reproducible way.",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#github-repo-organization",
+    "href": "projects/final-project.html#github-repo-organization",
+    "title": "Final project",
+    "section": "GitHub repo organization",
+    "text": "GitHub repo organization\nYou should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by the final submission due May 2, 2024 at 9pm.\n\nREADME.md: Title and 3 - 5 sentence summary of the project\n/data/: The data set\n\n/data/*: File containing raw data set\n/data/README.md: Codebook for data set. Include citations for the data source(s).\n\nwritten-report.Rmd: R Markdown file for written report\nwritten-report.pdf: Knitted PDF of written report\n*.bib: BibTex file for references (optional)",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#grading-50-pts",
+    "href": "projects/final-project.html#grading-50-pts",
+    "title": "Final project",
+    "section": "Grading (50 pts)",
+    "text": "Grading (50 pts)\n\n\n\nComponent\nPoints\n\n\n\n\nWritten report content\n35 pts\n\n\nOrganization + formatting\n5 pts\n\n\nReproducibility\n5 pts\n\n\nGitHub repo organization\n5 pts\n\n\n\n\n\nGrading details\nEach section - Introduction, Data, Methods, Results, Discussion + Conclusion - along with the organization + formatting will be assessed using the following scale:\n\nExcellent: An understanding of the course material and its application to the data set is clearly demonstrated. The work is described clearly and comprehensively in the report and exceeds expectations.\nStrong: An understanding of the course material and its application to the data set is clearly demonstrated. The work is described clearly and comprehensively in the report.\nSatisfactory: The section satisfies standard for the final project but requires revision.\nNeeds Improvement: The section requires revision to satisfy standards for the final project.\nIncomplete/Missing: The section is largely incomplete and/or not included in the report.\n\nA letter grade (A, A-, B+ , B, B-, etc.) will be assigned based on a holistic assessment of the report. The letter grade will be converted to points out of 40.\nThe GitHub repo organization and reproducibility will each be assessed out of 5 points.",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#data-sources",
+    "href": "projects/final-project.html#data-sources",
+    "title": "Final project",
+    "section": "Data sources",
+    "text": "Data sources\n\nSome resources that may be helpful as you find data:\n\nR Data Sources for Regression Analysis\nFiveThirtyEight data\nTidyTuesday\n\n\n\nOther data repositories\n\nWorld Health Organization\nThe National Bureau of Economic Research\nInternational Monetary Fund\nGeneral Social Survey\nUnited Nations Data\nUnited Nations Statistics Division\nU.K. Data\nU.S. Data\nU.S. Census Data\nEuropean Statistics\nStatistics Canada\nPew Research\nUNICEF\nCDC\nWorld Bank\nElection Studies",
+    "crumbs": [
+      "Projects",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html#footnotes",
+    "href": "projects/final-project.html#footnotes",
+    "title": "Final project",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis means the analysis should primarily focus on a model that is not linear regression, logistic regression, Poisson regression, negative binomial regression, proportional odds, or probit regression.↩︎",
     "crumbs": [
       "Projects",
       "Final Project"

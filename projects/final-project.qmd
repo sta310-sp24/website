@@ -2,4 +2,179 @@
 title: Final project
 ---
 
-To be posted.
+## Introduction
+
+The goal of the final project is for you to use statistical methods from this course to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web or combining multiple data sets.
+
+There are two options for the analysis:
+
+1️⃣ Use multilevel modeling to analyze data with a multilevel structure.
+
+2️⃣ Use one or more generalized linear models we haven't covered in class to analyze data with independent observations.[^1]
+
+[^1]: This means the analysis should primarily focus on a model that is <u>not</u> linear regression, logistic regression, Poisson regression, negative binomial regression, proportional odds, or probit regression.
+
+You may <u>not</u> use data that has been used for lectures, in-class activities, or assignments.
+
+You may discuss your project with members of the teaching team if you are unsure whether your data and modeling approach are appropriate for the project. All analyses must be done in RStudio, and all components of the project must be reproducible.
+
+## Logistics
+
+-   This is an individual project.
+-   There are two primary deliverables for the final project:
+    -   A written, reproducible report detailing your analysis
+    -   A GitHub repository with your report, data, and a summary in the README
+
+## Due dates
+
+*All work for the project will be submitted on GitHub.*
+
+-   **Round 1 submission (optional)**: Thursday, April 25 at 9m
+
+-   **Final submission**: Thursday, May 2 at 9pm
+
+## Round 1 submission (optional)
+
+::: callout-important
+## Due date
+
+The Round 1 submission must be submitted **Thursday, April 25 at 9pm** to receive feedback.
+:::
+
+The Round 1 submission is an opportunity to receive detailed feedback on your analysis and [written report](#written-report) before the final submission. Therefore, to make the feedback most useful, ***you must submit a complete written report to receive feedback.*** You will also be notified of the grade you would receive at that point. You will have the option to keep the grade (and thus you don't need to turn in an updated report) or resubmit the written report by the final submission deadline to receive a new grade.
+
+#### **To submit the Round 1 submission:**
+
+1.  Push the updated `written-report.qmd` and `written-report.pdf` to your GitHub repo.
+
+2.  Open an issue with the title "Round 1 Submission". Make sure I am tagged in the issue (`@matackett`), so I receive an email notification of your Round 1 submission. See [Creating an issue from a repository](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-repository) for instructions on opening an issue. Please ask a member of the teaching team for assistance if you need help opening the issue.
+
+::: callout-note
+The Round 1 submissions is optional, so there is [**no**]{.underline}grade penalty if you do not turn something in. Due to time constraints at the end of the semester, less detailed feedback will be given for the final submissions on May 2.
+:::
+
+## Final submission
+
+::: callout-important
+## Due date
+
+The final written report and organized GitHub repo are due **Thursday, May 2 at 9pm**. You will submit the final written report by pushing the `.qmd` and rendered PDF documents to your GitHub repo.
+:::
+
+Given the short grading timelines, there will be high level feedback on the final written report. You can submit a draft in the Round 1 submission if you wish to receive more detailed feedback.
+
+In addition to the written report, the GitHub repo should include
+
+-   The title and a short summary (3 - 5 sentences) of the report in the `README`.
+-   The data set and codebook in the `data` folder.
+
+## Written report {#written-report}
+
+Your written report must be completed in the written-report.Rmd file and must be reproducible.
+
+Before you finalize your write up, make sure the code, warnings, and messages are suppressed in the rendered PDF.
+
+The report, including visualizations and output should be **no more than 10 pages long**. There is no minimum page requirement; however, you should comprehensively address all of the aspects mentioned below.
+
+Please be selective in what you include in your final write-up. The goal is to write a cohesive narrative rather than explain every step of the analysis. If you have additional work you wish to include that doesn't fit in the 10-page limit, you may include it in a neatly organized appendix. Note that the appendix is <u>only</u> for supplemental material; the main body of the report must should be comprehensive and include all relevant details.
+
+Below is an outline of the sections of the report.
+
+### Introduction
+
+This section includes an introduction to the project motivation, data, and research question. It also includes any background information relevant for understanding the analysis and relevant previous work.
+
+### Data
+
+The data and definitions of key variables are described. It should also include some exploratory data analysis (EDA) - visualizations and appropriate summary statistics. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and other key variables and multivariate relationships.
+
+### Methodology
+
+This section includes a description of the modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model and any interactions. Additionally, discuss how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process including model assumptions and diagnostics as needed. This section will also include the equation for the final statistical model written in mathematical notation.
+
+### Results
+
+This is where you will output the final model and explain key results. The goal is not to interpret every single variable in the model but rather to show that you are proficient in using the model output to address the research questions, using the interpretations to support your conclusions. Focus on the variables that help you answer the research question and that provide relevant context for the reader.
+
+### Discussion + Conclusion
+
+In this section you’ll include a summary of the conclusions about the research question with statistical arguments supporting your conclusions. In addition, discuss the limitations of your analysis. Issues pertaining to the reliability and validity of your data and appropriateness of the statistical analysis should also be discussed here. Include ideas for future work.
+
+In addition to the content described above, the report will be assessed on the following:
+
+### Organization + formatting
+
+This is an assessment of the overall presentation and formatting of the written report. This includes having clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted. All code, warnings, and messages are suppressed. Overall, the document would be presentable in a business or research setting.
+
+## Reproducibility
+
+The analysis and written report should be done in a reproducible way. This means we should be able to reproduce the analysis and written report starting with the <u> raw</u> data. Any data cleaning, combining data sets, creating new variables, etc. should also be done in a reproducible way.
+
+## GitHub repo organization
+
+You should have the following files and folders in the project repo. The repo and brief summary in the README should be updated by the final submission due May 2, 2024 at 9pm.
+
+-   `README.md`: Title and 3 - 5 sentence summary of the project
+
+-   `/data/`: The data set
+
+    -   `/data/*`: File containing raw data set
+    -   `/data/README.md`: Codebook for data set. Include citations for the data source(s).
+
+-   `written-report.Rmd`: R Markdown file for written report
+
+-   `written-report.pdf`: Knitted PDF of written report
+
+-   `*.bib`: BibTex file for references (optional)
+
+## Grading (50 pts)
+
+| Component                 | Points |
+|---------------------------|--------|
+| Written report content    | 35 pts |
+| Organization + formatting | 5 pts  |
+| Reproducibility           | 5 pts  |
+| GitHub repo organization  | 5 pts  |
+
+<br>
+
+### Grading details
+
+Each section - Introduction, Data, Methods, Results, Discussion + Conclusion - along with the organization + formatting will be assessed using the following scale:
+
+-   **Excellent:** An understanding of the course material and its application to the data set is clearly demonstrated. The work is described clearly and comprehensively in the report and exceeds expectations.
+-   **Strong:** An understanding of the course material and its application to the data set is clearly demonstrated. The work is described clearly and comprehensively in the report.
+-   **Satisfactory:** The section satisfies standard for the final project but requires revision.
+-   **Needs Improvement:** The section requires revision to satisfy standards for the final project.
+-   **Incomplete/Missing:** The section is largely incomplete and/or not included in the report.
+
+A letter grade (A, A-, B+ , B, B-, etc.) will be assigned based on a holistic assessment of the report. The letter grade will be converted to points out of 40.
+
+The GitHub repo organization and reproducibility will each be assessed out of 5 points.
+
+## Data sources
+
+#### Some resources that may be helpful as you find data:
+
+-   [R Data Sources for Regression Analysis](https://rfun.library.duke.edu/blog/data-sources-for-regression-analysis/)
+-   [FiveThirtyEight data](https://data.fivethirtyeight.com/)
+-   [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+
+#### Other data repositories
+
+-   [World Health Organization](https://www.who.int/gho/database/en/)
+-   [The National Bureau of Economic Research](https://data.nber.org/data/)
+-   [International Monetary Fund](https://data.imf.org/?sk=388DFA60-1D26-4ADE-B505-A05A558D9A42&sId=1479329328660)
+-   [General Social Survey](http://gss.norc.org/)
+-   [United Nations Data](http://data.un.org/)
+-   [United Nations Statistics Division](https://unstats.un.org/home/)
+-   [U.K. Data](https://data.gov.uk/)
+-   [U.S. Data](https://www.data.gov/)
+-   [U.S. Census Data](https://www.census.gov/data.html)
+-   [European Statistics](https://ec.europa.eu/eurostat/)
+-   [Statistics Canada](https://www.statcan.gc.ca/eng/start)
+-   [Pew Research](https://www.pewresearch.org/download-datasets/)
+-   [UNICEF](https://data.unicef.org/)
+-   [CDC](https://www.cdc.gov/datastatistics/index.html)
+-   [World Bank](https://datacatalog.worldbank.org/)
+-   [Election Studies](https://electionstudies.org//)

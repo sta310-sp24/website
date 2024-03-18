@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 310 - Spring 2024 - Review of multiple linear regression</title>
@@ -569,7 +569,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="02-mlr-review_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="02-mlr-review_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:100.0%"></p>
 <figcaption>Modified from Figure 1.1. in BMLR</figcaption>
 </figure>
 </div>
@@ -715,7 +715,7 @@ y_{ij} = \mu_i + \epsilon_{ij}
 <section id="data-science-workflow" class="slide level2">
 <h2>Data science workflow</h2>
 
-<img data-src="images/02/data-science-cycle.png" class="quarto-figure quarto-figure-center r-stretch" alt="Data science workflow cycle from R for Data Science"><p class="caption">Image source: <span class="citation" data-cites="wickham2023r">Wickham, Çetinkaya-Rundel, and Grolemund (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p></section>
+<img data-src="images/02/data-science-cycle.png" class="r-stretch quarto-figure-center"><p class="caption">Image source: <span class="citation" data-cites="wickham2023r">Wickham, Çetinkaya-Rundel, and Grolemund (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p></section>
 <section id="exploratory-data-analysis-eda" class="slide level2">
 <h2>Exploratory data analysis (EDA)</h2>
 <ul>
@@ -1347,6 +1347,24 @@ Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for 
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/sta310-sp24\.netlify\.app");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1383,7 +1401,11 @@ Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for 
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

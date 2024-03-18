@@ -1,0 +1,360 @@
+---
+title: "Covariance structure of observations"
+date: "March 18, 2024"
+date-format: "MMM DD, YYYY"
+author: "Prof. Maria Tackett"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+library(viridis)
+library(lme4)
+library(broom.mixed)
+```
+
+## Announcements
+
+-   HW 04 due TODAY
+
+-   Project 02
+
+## Topics
+
+-   Define the covariance structure of observations for a given model
+-   Understand how the covariance structure of observations differs from the covariance structure of error terms
+-   Calculate variance and covariance from model estimates
+
+::: aside
+Notes are based on Section 9.7 of @roback2021beyond.
+:::
+
+## Data: Charter schools in MN {.midi}
+
+Today's data set contains standardized test scores and demographic information for schools in Minneapolis, MN from 2008 to 2010. The data were collected by the Minnesota Department of Education. Understanding the effectiveness of charter schools is of particular interest, since they often incorporate unique methods of instruction and learning that differ from public schools.
+
+-   **`MathAvgScore`**: Average MCA-II score for all 6th grade students in a school (response variable)
+-   **`urban`**: urban (1) or rural (0) location school location
+-   **`charter`**: charter school (1) or a non-charter public school (0)
+-   **`schPctfree`**: proportion of students who receive free or reduced lunches in a school (based on 2010 figures).
+-   **`year08`**: Years since 2008
+
+## Data {.small}
+
+```{r}
+#| echo: false
+charter <- read_csv("data/charter-long.csv") |>
+  mutate(urban = as.factor(urban), 
+         charter = as.factor(charter))
+```
+
+```{r echo = F}
+charter |>
+  select(schoolName, year08, urban, charter, schPctfree, MathAvgScore) |>
+  slice(1:3, 1852:1854) |>
+  kable(digits = 3)
+```
+
+## Exploratory data analysis {.midi}
+
+```{r}
+#| echo: false
+set.seed(030424)
+
+# get sample of 24 schools
+sample_schools <- charter |>
+  distinct(schoolid) |>
+  sample_n(24) |> pull()
+
+# get data for those schools
+sample_data <- charter |>
+  filter(schoolid %in% sample_schools)
+
+ggplot(sample_data, aes(x = year08, y = MathAvgScore)) +
+  geom_point() +
+  geom_line() + 
+  facet_wrap(~ schoolid)
+```
+
+## Exploratory data analysis {.midi}
+
+```{r}
+#| echo: false
+ggplot(data = charter, aes(x = year08, y = MathAvgScore)) + 
+  geom_line(aes(group = schoolid), color = "light gray") + 
+  geom_smooth(color = "black", linewidth = 1, method = "loess") + 
+  labs(x ="Years since 2008",
+       y ="Average Math Scores", 
+       title = "Math Scores over time for 6th graders in Minneapolis public schools")  + 
+  facet_wrap(~ charter)
+```
+
+## Model
+
+We will use Model C[^1]: Uncontrolled effects for school type.
+
+[^1]: From [Section 9.6.1](https://bookdown.org/roback/bookdown-BeyondMLR/ch-lon.html#sec:modelc9)
+
+$$
+\begin{aligned}
+Y_{ij} &= \alpha_0 + \alpha_1Charter_i + \beta_0Year08_{ij} + \beta_1Charter_iYear08_{ij}\\&+ u_i + v_iYear08_{ij} + \epsilon_{ij} \\[8pt]
+&\epsilon_{ij} \sim N(0, \sigma^2) \hspace{15mm}  \left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)
+\end{aligned}
+$$
+
+## What we've done
+
+So far we have discussed...
+
+-   the covariance structure between error terms at a given level, e.g. the distribution of between $u_i$ and $v_i$ from a Level Two model:
+
+$$\left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)$$
+
+. . .
+
+-   how to use the intraclass correlation coefficient to get an idea of the average correlation between observations nested in the same Level Two group
+
+## Questions we want to answer
+
+Now we want to be able to answer more specific questions about the covariance (and correlation) structure of *observations* at different levels.
+
+-   What is the relative variability of 2008 and 2010 scores from the same school?
+
+-   What is the correlation between 2008 and 2009 scores from the same school? What is the correlation between 2009 and 2010 scores? 2008 and 2010?
+
+## Covariance structure 
+
+The covariance structure of the three time points (2008, 2009, 2010) for School $i$ is
+
+$$\small{Cov(\textbf{Y}_{i}) = \left[
+          \begin{array}{ccc}
+            Var(Y_{i1}) & Cov(Y_{i1}, Y_{i2}) & Cov(Y_{i1}, Y_{i3})\\
+           Cov(Y_{i1}, Y_{i2}) & Var(Y_{i2})& Cov(Y_{i2}, Y_{i3}) \\
+           Cov(Y_{i1}, Y_{i3}) &Cov(Y_{i2}, Y_{i3}) &  Var(Y_{i3})\\
+          \end{array} \right]}$$
+
+. . .
+
+::: question
+Do you expect the covariances to be positive or negative? Why?
+:::
+
+## Covariance structure and error terms
+
+Note that covariance structure of observations is <u>not</u> the same as the error structure at Level Two.
+
+$$
+Cov(\mathbf{Y}_i) \neq \left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)
+$$
+
+## Calculating variance and covariance {.midi}
+
+Suppose $Y_1 = a_1 X_1 + a_2 X_2 + a_3$ and $Y_2 = b_1 X_1 + b_2 X_2 + b_3$, where $X_1$ and $X_2$ are random variables and $a_i$ and $b_i$ are constants for $i = 1, 2, 3$. Then we know from probability theory that
+
+. . .
+
+$${\small\begin{aligned}Var(Y_1) & = a^{2}_{1} Var(X_1) + a^{2}_{2} Var(X_2) + 2 a_1 a_2 Cov(X_1,X_2) \\[10pt]
+Cov(Y_1,Y_2) & = a_1 b_1 Var(X_1) + a_2 b_2 Var(X_2) + (a_1 b_2 + a_2 b_1) Cov(X_1,X_2)\end{aligned}}$$
+
+::: callout-note
+*This extends beyond two random variables*
+:::
+
+. . .
+
+We will use these properties to define the covariance structure of the observations in the model.
+
+## Calculating variance and covariance from the model
+
+$$
+\begin{aligned}
+&Var(Y_{ij}) = \sigma^2_u + t^2_j\sigma^2_v + \sigma^2 + 2t_j\sigma_{uv} \\ 
+&Cov(Y_{ij}, Y_{ik}) = \sigma^2_u + t_jt_k\sigma^2_v + (t_j + t_k)\sigma_{uv}
+\end{aligned}
+$$
+
+where $t_j$ is the $j^{th}$ time period
+
+::: question
+Let's see how these equations were derived.
+:::
+
+## Model estimates {.midi}
+
+Get the estimates for $\sigma$, $\sigma_u$, and $\sigma_v$ from the model output
+
+```{r}
+model <- lmer(MathAvgScore ~ charter + year08 + charter:year08 +
+                (year08|schoolid), data = charter)
+tidy(model) |> kable(digits = 3)
+```
+
+## Estimated variances and covariances
+
+**Within-school variance for 2008 time point** $(t_{i1} = 0)$
+
+$$
+\begin{aligned}
+\hat{Var}(Y_{i1}) &= 5.986^2 + 0^2*0.362^2 + 2.964^2 \\ &+ 2*0*(0.880 *5.986*0.362) \\
+& = \mathbf{44.617}
+\end{aligned}
+$$
+
+<br>
+
+. . .
+
+**Within-school covariance between 2008 and 2009** $(t_{i1} = 0, t_{i2} = 1)$
+
+$$
+\begin{aligned}
+\hat{Cov}(Y_{i1}, Y_{i2}) &= 5.986^2 + 0 * 1 * 0.362^2 \\ &+ (0 + 1)(0.880 *5.986*0.362) \\ 
+& = \mathbf{37.739}
+\end{aligned}
+$$
+
+## Estimated covariance structure 
+
+$$
+\hat{Cov}(\mathbf{Y}) =\left[
+          \begin{array}{ccc}
+            44.62 & 37.74 & 39.65\\
+           37.74 & 48.56& 41.81 \\
+           39.65 &41.81 &  52.77\\
+          \end{array} \right]$$
+
+## Correlation between observations
+
+$$Corr(Y_1, Y_2) = \frac{Cov(Y_1, Y_2)}{\sqrt{Var(Y_1)Var(Y_2)}}$$
+
+. . .
+
+$$
+\begin{aligned}
+\hat{Corr}(Y_{i1}, Y_{i2}) &= \frac{37.74}{\sqrt{44.62 * 48.56}} \\
+ &= \mathbf{0.811}
+\end{aligned}
+$$
+
+::: question
+Write the within-school correlation matrix.
+:::
+
+## Notes on covariance and correlation matrices
+
+::: incremental
+-   Often observe higher correlation between observations that are closer in time.
+
+    -   Is this the case in the MN schools data?
+
+-   Often observe similar variability in all time points.
+
+    -   Is this the case in the MN schools data?
+
+-   Two-level model structure is very flexible. Note that the time points do not need to be evenly spaced nor does each school have to have the same number of measurements.
+
+-   These concepts apply for all multilevel models not just those for longitudinal data.
+:::
+
+## Alternative covariance structures {.midi}
+
+The standard covariance structure calculated from the multilevel model is useful in most situations. Sometimes, however, there may be a different covariance structure that better fits the data. A few alternatives are
+
+. . .
+
+**Unstructured**: Every variance and covariance term for observations with each level is a separate parameter and is uniquely estimated. No patterns among variances or correlations are assumed. Very flexible but requires the estimation of many parameters.
+
+. . .
+
+**Compound Symmetry**: Assume variance is constant across all Level One observations and correlation is constant across all pairs of Level One observations. Restrictive but few parameters to estimate.
+
+## Alternative covariance structures {.midi}
+
+**Autoregressive**: Assume constant variance across all time points, but correlation reduces in a systematic way such that closer time points are more correlated than those further apart.
+
+. . .
+
+**Toeplitz**: Similar to autoregressive but there is no imposed structure on the decreased correlation for time periods further apart.
+
+. . .
+
+**Heterogeneous variances**: Allows for equal variances across time points. Requires additional parameters to be estimated to allow for the unequal variances.
+
+## Trying different covariance structures {.midi}
+
+-   There is generally little difference in estimates of fixed effects, and the impact on standard errors tends to be minimal.
+
+-   If the primary analysis objective is inference and conclusions for fixed effects, it is often not worth spending too much time modeling different covariance structures.
+
+-   If the analysis is also greatly interested in the random effects and estimated variance components, then the covariance structure can make a difference and it is worth testing different structures.
+
+::: callout-tip
+See ["Fitting Linear Mixed Models in R"](http://staff.pubhealth.ku.dk/~jufo/courses/rm2018/nlmePackage.pdf) for details on R packages and code for multilevel models with a predetermined covariance structure.
+:::
+
+## References

@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 310 - Spring 2024 - Multilevel models</title>
@@ -624,7 +624,7 @@ Prof.&nbsp;Maria Tackett
 <section id="level-one-models" class="slide level2">
 <h2>Level One models</h2>
 
-<img data-src="12-multilevel-models-pt2_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from BMLR Figure 8.9</p><div class="fragment">
+<img data-src="12-multilevel-models-pt2_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Recreated from BMLR Figure 8.9</p><div class="fragment">
 <p><strong>Now let’s consider if there is an association between the estimated slopes, estimated intercepts, and the type of instrument</strong></p>
 </div>
 </section>
@@ -826,7 +826,7 @@ Prof.&nbsp;Maria Tackett
 <section class="slide level2">
 
 
-<img data-src="12-multilevel-models-pt2_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p class="caption">Recreated from Figure 8.11</p><div class="question">
+<img data-src="12-multilevel-models-pt2_files/figure-revealjs/unnamed-chunk-10-1.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Recreated from Figure 8.11</p><div class="question">
 <div class="midi">
 <p>Describe what we learn about the association between the slopes and intercepts based on this plot.</p>
 </div>
@@ -855,7 +855,7 @@ Prof.&nbsp;Maria Tackett
 <section id="visualizing-multivariate-normal-distribution" class="slide level2">
 <h2>Visualizing multivariate normal distribution</h2>
 
-<img data-src="12-multilevel-models-pt2_files/figure-revealjs/contour-boundary-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p class="caption">Recreated from Figure 8.12</p></section>
+<img data-src="12-multilevel-models-pt2_files/figure-revealjs/contour-boundary-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">Recreated from Figure 8.12</p></section>
 <section id="fit-the-model-in-r" class="slide level2 midi">
 <h2>Fit the model in R</h2>
 <p>Fit multilevel model using the <code>lmer</code> (“linear mixed effects in R”) function from the <strong>lme4</strong> package.</p>
@@ -1422,6 +1422,24 @@ Sadler, Michael E, and Christopher J Miller. 2010. <span>“Performance Anxiety:
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/sta310-sp24\.netlify\.app");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1458,7 +1476,11 @@ Sadler, Michael E, and Christopher J Miller. 2010. <span>“Performance Anxiety:
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

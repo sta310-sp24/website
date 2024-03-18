@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="Prof.&nbsp;Maria Tackett">
   <title>STA 310 - Spring 2024 - Logistic regression</title>
@@ -439,7 +439,7 @@ Prof.&nbsp;Maria Tackett
 <section id="logistic-vs-linear-regression-model" class="slide level2">
 <h2>Logistic vs linear regression model</h2>
 
-<img data-src="07-logistic-intro_files/figure-revealjs/OLSlogistic-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p class="caption">Graph from BMLR Chapter 6</p></section>
+<img data-src="07-logistic-intro_files/figure-revealjs/OLSlogistic-1.png" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">Graph from BMLR Chapter 6</p></section>
 <section id="logit-link" class="slide level2">
 <h2>Logit link</h2>
 <p>Bernoulli and Binomial random variables can be written in one-parameter exponential family form, <span class="math inline">\(f(y;\theta) = e^{[a(y)b(\theta) + c(\theta) + d(y)]}\)</span></p>
@@ -852,6 +852,24 @@ Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple l
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/sta310-sp24\.netlify\.app");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -888,7 +906,11 @@ Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple l
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

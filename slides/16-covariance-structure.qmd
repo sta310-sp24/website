@@ -53,9 +53,11 @@ library(broom.mixed)
 
 ## Announcements
 
--   HW 04 due TODAY
+-   HW 04 due Wed, March 20 at 11:59pm
 
 -   Project 02
+
+    -   Draft report due Friday at noon
 
 ## Topics
 
@@ -168,17 +170,17 @@ $$\left[ \begin{array}{c}
 
 . . .
 
--   how to use the intraclass correlation coefficient to get an idea of the average correlation between observations nested in the same Level Two group
+-   how to use the intraclass correlation coefficient to get an idea of the average correlation between observations nested in the same Level Two group (school)
 
 ## Questions we want to answer
 
 Now we want to be able to answer more specific questions about the covariance (and correlation) structure of *observations* at different levels.
 
--   What is the relative variability of 2008 and 2010 scores from the same school?
+-   What is the does the variability in 2008 and 2010 scores from the same school compare?
 
 -   What is the correlation between 2008 and 2009 scores from the same school? What is the correlation between 2009 and 2010 scores? 2008 and 2010?
 
-## Covariance structure 
+## Covariance structure
 
 The covariance structure of the three time points (2008, 2009, 2010) for School $i$ is
 
@@ -188,6 +190,8 @@ $$\small{Cov(\textbf{Y}_{i}) = \left[
            Cov(Y_{i1}, Y_{i2}) & Var(Y_{i2})& Cov(Y_{i2}, Y_{i3}) \\
            Cov(Y_{i1}, Y_{i3}) &Cov(Y_{i2}, Y_{i3}) &  Var(Y_{i3})\\
           \end{array} \right]}$$
+
+<br>
 
 . . .
 
@@ -229,16 +233,16 @@ Cov(Y_1,Y_2) & = a_1 b_1 Var(X_1) + a_2 b_2 Var(X_2) + (a_1 b_2 + a_2 b_1) Cov(X
 
 We will use these properties to define the covariance structure of the observations in the model.
 
-## Calculating variance and covariance from the model
+## Variance and covariance for Model C
 
 $$
 \begin{aligned}
-&Var(Y_{ij}) = \sigma^2_u + t^2_j\sigma^2_v + \sigma^2 + 2t_j\sigma_{uv} \\ 
-&Cov(Y_{ij}, Y_{ik}) = \sigma^2_u + t_jt_k\sigma^2_v + (t_j + t_k)\sigma_{uv}
+&Var(Y_{ij}) = \sigma^2_u + t^2_{ij}\sigma^2_v + \sigma^2 + 2t_{ij}\sigma_{uv} \\ 
+&Cov(Y_{ij}, Y_{ik}) = \sigma^2_u + t_{ij}t_{ik}\sigma^2_v + (t_{ij} + t_{ik})\sigma_{uv}
 \end{aligned}
 $$
 
-where $t_j$ is the $j^{th}$ time period
+where $t_{ij}$ is the $j^{th}$ time period for school $i$.
 
 ::: question
 Let's see how these equations were derived.
@@ -246,7 +250,7 @@ Let's see how these equations were derived.
 
 ## Model estimates {.midi}
 
-Get the estimates for $\sigma$, $\sigma_u$, and $\sigma_v$ from the model output
+Get the estimates for $\rho$, $\sigma$, $\sigma_u$, and $\sigma_v$ from the model output
 
 ```{r}
 model <- lmer(MathAvgScore ~ charter + year08 + charter:year08 +
@@ -278,7 +282,7 @@ $$
 \end{aligned}
 $$
 
-## Estimated covariance structure 
+## Estimated covariance structure
 
 $$
 \hat{Cov}(\mathbf{Y}) =\left[
@@ -321,6 +325,47 @@ Write the within-school correlation matrix.
 -   These concepts apply for all multilevel models not just those for longitudinal data.
 :::
 
+## Other multilevel data {.midi}
+
+Recall the data from @sadler2010performance on musicians and performance anxiety and the model
+
+$$\begin{aligned}Y_{ij} &= (\alpha_0 + \alpha_1 ~ Orchestra_i + \beta_0 ~ LargeEnsemble_{ij} \\ 
+&+ \beta_1 ~ Orchestra_i:LargeEnsemble_{ij})\\
+&+ (u_i + v_i ~ LargeEnsemble_{ij} + \epsilon_{ij}) \\[8pt]
+&\epsilon_{ij} \sim N(0, \sigma^2) \hspace{15mm}  \left[ \begin{array}{c}
+            u_{i} \\ v_{i}
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_{u}^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)\end{aligned}$$
+
+::: question
+1.  Write the equation for $Var(Y_{ij})$.
+2.  Write the equation for $Cov(Y_{ij}, Y_{ik})$.
+:::
+
+## Other multilevel data {.midi}
+
+$$
+\begin{aligned}
+Var(Y_{ij}) & = \left\{ \begin{array}{ll}                 \sigma^{2} + \sigma_{u}^{2} & \mbox{if $\textrm{Large}_{ij}=0$} \\                 \sigma^{2} + \sigma_{u}^{2} + \sigma_{v}^{2} + 2\sigma_{uv} & \mbox{if $\textrm{Large}_{ij}=1$}               \end{array}       \right.\end{aligned}
+$$
+
+<br>
+
+$$
+\begin{aligned}Cov(Y_{ij},Y_{ik}) & = \left\{ \begin{array}{ll}                 \sigma_{u}^{2} & \mbox{if $\textrm{Large}_{ij}=\textrm{Large}_{ik}=0$} \\                 \sigma_{u}^{2} + \sigma_{uv} & \mbox{if $\textrm{Large}_{ij}=0$, $\textrm{Large}_{ik}=1$ or vice versa} \\                 \sigma_{u}^{2} + \sigma_{v}^{2} + 2\sigma_{uv} & \mbox{if $\textrm{Large}_{ij}=\textrm{Large}_{ik}=1$}               \end{array}   \right.
+\end{aligned}
+$$
+
+::: callout-note
+Every musician will have a unique covariance matrix depending on the number of performances and whether they are large or small ensemble.
+:::
+
 ## Alternative covariance structures {.midi}
 
 The standard covariance structure calculated from the multilevel model is useful in most situations. Sometimes, however, there may be a different covariance structure that better fits the data. A few alternatives are
@@ -351,7 +396,7 @@ The standard covariance structure calculated from the multilevel model is useful
 
 -   If the primary analysis objective is inference and conclusions for fixed effects, it is often not worth spending too much time modeling different covariance structures.
 
--   If the analysis is also greatly interested in the random effects and estimated variance components, then the covariance structure can make a difference and it is worth testing different structures.
+-   If the analysis is also greatly interested in the random effects and estimated variance components, then the covariance structure can make a difference and it is worth modeling different covariance structures.
 
 ::: callout-tip
 See ["Fitting Linear Mixed Models in R"](http://staff.pubhealth.ku.dk/~jufo/courses/rm2018/nlmePackage.pdf) for details on R packages and code for multilevel models with a predetermined covariance structure.

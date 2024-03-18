@@ -235,7 +235,7 @@
     "href": "slides/16-covariance-structure.html#announcements",
     "title": "Covariance structure of observations",
     "section": "Announcements",
-    "text": "Announcements\n\nHW 04 due TODAY\nProject 02"
+    "text": "Announcements\n\nHW 04 due Wed, March 20 at 11:59pm\nProject 02\n\nDraft report due Friday at noon"
   },
   {
     "objectID": "slides/16-covariance-structure.html#topics",
@@ -284,21 +284,21 @@
     "href": "slides/16-covariance-structure.html#what-weve-done",
     "title": "Covariance structure of observations",
     "section": "What we’ve done",
-    "text": "What we’ve done\nSo far we have discussed…\n\nthe covariance structure between error terms at a given level, e.g. the distribution of between \\(u_i\\) and \\(v_i\\) from a Level Two model:\n\n\\[\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\\]\n\n\nhow to use the intraclass correlation coefficient to get an idea of the average correlation between observations nested in the same Level Two group"
+    "text": "What we’ve done\nSo far we have discussed…\n\nthe covariance structure between error terms at a given level, e.g. the distribution of between \\(u_i\\) and \\(v_i\\) from a Level Two model:\n\n\\[\\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\\]\n\n\nhow to use the intraclass correlation coefficient to get an idea of the average correlation between observations nested in the same Level Two group (school)"
   },
   {
     "objectID": "slides/16-covariance-structure.html#questions-we-want-to-answer",
     "href": "slides/16-covariance-structure.html#questions-we-want-to-answer",
     "title": "Covariance structure of observations",
     "section": "Questions we want to answer",
-    "text": "Questions we want to answer\nNow we want to be able to answer more specific questions about the covariance (and correlation) structure of observations at different levels.\n\nWhat is the relative variability of 2008 and 2010 scores from the same school?\nWhat is the correlation between 2008 and 2009 scores from the same school? What is the correlation between 2009 and 2010 scores? 2008 and 2010?"
+    "text": "Questions we want to answer\nNow we want to be able to answer more specific questions about the covariance (and correlation) structure of observations at different levels.\n\nWhat is the does the variability in 2008 and 2010 scores from the same school compare?\nWhat is the correlation between 2008 and 2009 scores from the same school? What is the correlation between 2009 and 2010 scores? 2008 and 2010?"
   },
   {
     "objectID": "slides/16-covariance-structure.html#covariance-structure",
     "href": "slides/16-covariance-structure.html#covariance-structure",
     "title": "Covariance structure of observations",
     "section": "Covariance structure",
-    "text": "Covariance structure\nThe covariance structure of the three time points (2008, 2009, 2010) for School \\(i\\) is\n\\[\\small{Cov(\\textbf{Y}_{i}) = \\left[\n          \\begin{array}{ccc}\n            Var(Y_{i1}) & Cov(Y_{i1}, Y_{i2}) & Cov(Y_{i1}, Y_{i3})\\\\\n           Cov(Y_{i1}, Y_{i2}) & Var(Y_{i2})& Cov(Y_{i2}, Y_{i3}) \\\\\n           Cov(Y_{i1}, Y_{i3}) &Cov(Y_{i2}, Y_{i3}) &  Var(Y_{i3})\\\\\n          \\end{array} \\right]}\\]\n\n\nDo you expect the covariances to be positive or negative? Why?"
+    "text": "Covariance structure\nThe covariance structure of the three time points (2008, 2009, 2010) for School \\(i\\) is\n\\[\\small{Cov(\\textbf{Y}_{i}) = \\left[\n          \\begin{array}{ccc}\n            Var(Y_{i1}) & Cov(Y_{i1}, Y_{i2}) & Cov(Y_{i1}, Y_{i3})\\\\\n           Cov(Y_{i1}, Y_{i2}) & Var(Y_{i2})& Cov(Y_{i2}, Y_{i3}) \\\\\n           Cov(Y_{i1}, Y_{i3}) &Cov(Y_{i2}, Y_{i3}) &  Var(Y_{i3})\\\\\n          \\end{array} \\right]}\\]\n\n\n\nDo you expect the covariances to be positive or negative? Why?"
   },
   {
     "objectID": "slides/16-covariance-structure.html#covariance-structure-and-error-terms",
@@ -315,18 +315,18 @@
     "text": "Calculating variance and covariance\nSuppose \\(Y_1 = a_1 X_1 + a_2 X_2 + a_3\\) and \\(Y_2 = b_1 X_1 + b_2 X_2 + b_3\\), where \\(X_1\\) and \\(X_2\\) are random variables and \\(a_i\\) and \\(b_i\\) are constants for \\(i = 1, 2, 3\\). Then we know from probability theory that\n\n\\[{\\small\\begin{aligned}Var(Y_1) & = a^{2}_{1} Var(X_1) + a^{2}_{2} Var(X_2) + 2 a_1 a_2 Cov(X_1,X_2) \\\\[10pt]\nCov(Y_1,Y_2) & = a_1 b_1 Var(X_1) + a_2 b_2 Var(X_2) + (a_1 b_2 + a_2 b_1) Cov(X_1,X_2)\\end{aligned}}\\]\n\n\n\n\n\n\nNote\n\n\nThis extends beyond two random variables\n\n\n\n\n\nWe will use these properties to define the covariance structure of the observations in the model."
   },
   {
-    "objectID": "slides/16-covariance-structure.html#calculating-variance-and-covariance-from-the-model",
-    "href": "slides/16-covariance-structure.html#calculating-variance-and-covariance-from-the-model",
+    "objectID": "slides/16-covariance-structure.html#variance-and-covariance-for-model-c",
+    "href": "slides/16-covariance-structure.html#variance-and-covariance-for-model-c",
     "title": "Covariance structure of observations",
-    "section": "Calculating variance and covariance from the model",
-    "text": "Calculating variance and covariance from the model\n\\[\n\\begin{aligned}\n&Var(Y_{ij}) = \\sigma^2_u + t^2_j\\sigma^2_v + \\sigma^2 + 2t_j\\sigma_{uv} \\\\\n&Cov(Y_{ij}, Y_{ik}) = \\sigma^2_u + t_jt_k\\sigma^2_v + (t_j + t_k)\\sigma_{uv}\n\\end{aligned}\n\\]\nwhere \\(t_j\\) is the \\(j^{th}\\) time period\n\nLet’s see how these equations were derived."
+    "section": "Variance and covariance for Model C",
+    "text": "Variance and covariance for Model C\n\\[\n\\begin{aligned}\n&Var(Y_{ij}) = \\sigma^2_u + t^2_{ij}\\sigma^2_v + \\sigma^2 + 2t_{ij}\\sigma_{uv} \\\\\n&Cov(Y_{ij}, Y_{ik}) = \\sigma^2_u + t_{ij}t_{ik}\\sigma^2_v + (t_{ij} + t_{ik})\\sigma_{uv}\n\\end{aligned}\n\\]\nwhere \\(t_{ij}\\) is the \\(j^{th}\\) time period for school \\(i\\).\n\nLet’s see how these equations were derived."
   },
   {
     "objectID": "slides/16-covariance-structure.html#model-estimates",
     "href": "slides/16-covariance-structure.html#model-estimates",
     "title": "Covariance structure of observations",
     "section": "Model estimates",
-    "text": "Model estimates\nGet the estimates for \\(\\sigma\\), \\(\\sigma_u\\), and \\(\\sigma_v\\) from the model output\n\nmodel &lt;- lmer(MathAvgScore ~ charter + year08 + charter:year08 +\n                (year08|schoolid), data = charter)\ntidy(model) |&gt; kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n652.058\n0.284\n2291.998\n\n\nfixed\nNA\ncharter1\n-6.018\n0.866\n-6.953\n\n\nfixed\nNA\nyear08\n1.197\n0.094\n12.698\n\n\nfixed\nNA\ncharter1:year08\n0.856\n0.314\n2.723\n\n\nran_pars\nschoolid\nsd__(Intercept)\n5.986\nNA\nNA\n\n\nran_pars\nschoolid\ncor__(Intercept).year08\n0.880\nNA\nNA\n\n\nran_pars\nschoolid\nsd__year08\n0.362\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n2.964\nNA\nNA"
+    "text": "Model estimates\nGet the estimates for \\(\\rho\\), \\(\\sigma\\), \\(\\sigma_u\\), and \\(\\sigma_v\\) from the model output\n\nmodel &lt;- lmer(MathAvgScore ~ charter + year08 + charter:year08 +\n                (year08|schoolid), data = charter)\ntidy(model) |&gt; kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\n\n\n\n\nfixed\nNA\n(Intercept)\n652.058\n0.284\n2291.998\n\n\nfixed\nNA\ncharter1\n-6.018\n0.866\n-6.953\n\n\nfixed\nNA\nyear08\n1.197\n0.094\n12.698\n\n\nfixed\nNA\ncharter1:year08\n0.856\n0.314\n2.723\n\n\nran_pars\nschoolid\nsd__(Intercept)\n5.986\nNA\nNA\n\n\nran_pars\nschoolid\ncor__(Intercept).year08\n0.880\nNA\nNA\n\n\nran_pars\nschoolid\nsd__year08\n0.362\nNA\nNA\n\n\nran_pars\nResidual\nsd__Observation\n2.964\nNA\nNA"
   },
   {
     "objectID": "slides/16-covariance-structure.html#estimated-variances-and-covariances",
@@ -357,6 +357,20 @@
     "text": "Notes on covariance and correlation matrices\n\n\nOften observe higher correlation between observations that are closer in time.\n\nIs this the case in the MN schools data?\n\nOften observe similar variability in all time points.\n\nIs this the case in the MN schools data?\n\nTwo-level model structure is very flexible. Note that the time points do not need to be evenly spaced nor does each school have to have the same number of measurements.\nThese concepts apply for all multilevel models not just those for longitudinal data."
   },
   {
+    "objectID": "slides/16-covariance-structure.html#other-multilevel-data",
+    "href": "slides/16-covariance-structure.html#other-multilevel-data",
+    "title": "Covariance structure of observations",
+    "section": "Other multilevel data",
+    "text": "Other multilevel data\nRecall the data from Sadler and Miller (2010) on musicians and performance anxiety and the model\n\\[\\begin{aligned}Y_{ij} &= (\\alpha_0 + \\alpha_1 ~ Orchestra_i + \\beta_0 ~ LargeEnsemble_{ij} \\\\\n&+ \\beta_1 ~ Orchestra_i:LargeEnsemble_{ij})\\\\\n&+ (u_i + v_i ~ LargeEnsemble_{ij} + \\epsilon_{ij}) \\\\[8pt]\n&\\epsilon_{ij} \\sim N(0, \\sigma^2) \\hspace{15mm}  \\left[ \\begin{array}{c}\n            u_{i} \\\\ v_{i}\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_{u}^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\\end{aligned}\\]\n\n\nWrite the equation for \\(Var(Y_{ij})\\).\nWrite the equation for \\(Cov(Y_{ij}, Y_{ik})\\)."
+  },
+  {
+    "objectID": "slides/16-covariance-structure.html#other-multilevel-data-1",
+    "href": "slides/16-covariance-structure.html#other-multilevel-data-1",
+    "title": "Covariance structure of observations",
+    "section": "Other multilevel data",
+    "text": "Other multilevel data\n\\[\n\\begin{aligned}\nVar(Y_{ij}) & = \\left\\{ \\begin{array}{ll}                 \\sigma^{2} + \\sigma_{u}^{2} & \\mbox{if $\\textrm{Large}_{ij}=0$} \\\\                 \\sigma^{2} + \\sigma_{u}^{2} + \\sigma_{v}^{2} + 2\\sigma_{uv} & \\mbox{if $\\textrm{Large}_{ij}=1$}               \\end{array}       \\right.\\end{aligned}\n\\]\n\n\\[\n\\begin{aligned}Cov(Y_{ij},Y_{ik}) & = \\left\\{ \\begin{array}{ll}                 \\sigma_{u}^{2} & \\mbox{if $\\textrm{Large}_{ij}=\\textrm{Large}_{ik}=0$} \\\\                 \\sigma_{u}^{2} + \\sigma_{uv} & \\mbox{if $\\textrm{Large}_{ij}=0$, $\\textrm{Large}_{ik}=1$ or vice versa} \\\\                 \\sigma_{u}^{2} + \\sigma_{v}^{2} + 2\\sigma_{uv} & \\mbox{if $\\textrm{Large}_{ij}=\\textrm{Large}_{ik}=1$}               \\end{array}   \\right.\n\\end{aligned}\n\\]\n\n\n\n\n\n\nNote\n\n\nEvery musician will have a unique covariance matrix depending on the number of performances and whether they are large or small ensemble."
+  },
+  {
     "objectID": "slides/16-covariance-structure.html#alternative-covariance-structures",
     "href": "slides/16-covariance-structure.html#alternative-covariance-structures",
     "title": "Covariance structure of observations",
@@ -375,14 +389,14 @@
     "href": "slides/16-covariance-structure.html#trying-different-covariance-structures",
     "title": "Covariance structure of observations",
     "section": "Trying different covariance structures",
-    "text": "Trying different covariance structures\n\nThere is generally little difference in estimates of fixed effects, and the impact on standard errors tends to be minimal.\nIf the primary analysis objective is inference and conclusions for fixed effects, it is often not worth spending too much time modeling different covariance structures.\nIf the analysis is also greatly interested in the random effects and estimated variance components, then the covariance structure can make a difference and it is worth testing different structures.\n\n\n\n\n\n\n\nTip\n\n\nSee “Fitting Linear Mixed Models in R” for details on R packages and code for multilevel models with a predetermined covariance structure."
+    "text": "Trying different covariance structures\n\nThere is generally little difference in estimates of fixed effects, and the impact on standard errors tends to be minimal.\nIf the primary analysis objective is inference and conclusions for fixed effects, it is often not worth spending too much time modeling different covariance structures.\nIf the analysis is also greatly interested in the random effects and estimated variance components, then the covariance structure can make a difference and it is worth modeling different covariance structures.\n\n\n\n\n\n\n\nTip\n\n\nSee “Fitting Linear Mixed Models in R” for details on R packages and code for multilevel models with a predetermined covariance structure."
   },
   {
     "objectID": "slides/16-covariance-structure.html#references",
     "href": "slides/16-covariance-structure.html#references",
     "title": "Covariance structure of observations",
     "section": "References",
-    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
+    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press.\n\n\nSadler, Michael E, and Christopher J Miller. 2010. “Performance Anxiety: A Longitudinal Study of the Roles of Personality and Experience in Musicians.” Social Psychological and Personality Science 1 (3): 280–87."
   },
   {
     "objectID": "slides/06-poisson-pt3.html#announcements",

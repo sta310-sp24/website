@@ -1,0 +1,138 @@
+---
+title: "Lecture 17: Longitudinal modeling in practice"
+subtitle: "Study on sleep and quality of life"
+date: "03-20-2024"
+execute:
+  warning: false
+  message: false
+bibliography: references.bib
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(lme4)
+library(broom.mixed)
+library(skimr)
+```
+
+```{r}
+sleep <- read_csv("data/sleep-study.csv") |>
+  mutate(sex = as_factor(sex), 
+         educ_kat = as_factor(educ_kat), 
+         estat = as_factor(estat), 
+         hincome_6 = as_factor(hincome_6))
+```
+
+## Introduction
+
+The analysis for this AE is based on the paper @kudrnácová2023. We will use the following variables:
+
+**Response variables**
+
+-   `lfsat_OT`: life satisfaction
+-   `wellbe_OT`: Wellbeing
+-   `happy_OT`: Happiness
+
+**Sleep variables**
+
+-   `slequal_OT`: Sleep quality
+-   `SDweek_OT`: Sleep duration
+-   `jetlag_OT`: Social jetlag
+
+**Other covariates**
+
+-   `sex`: 1: male, 2: female
+-   `educ_kat`**:** highest level of education attained
+    -   1: basic and secondary vocational
+    -   2: secondary with maturita
+    -   3: tertiary education
+-   `hincome_6`**:** household income
+    -   1: up to CZK 22,999:
+    -   2: CZK 23,000 to 29,999
+    -   3: CZK 30,000 to 34,999
+    -   4: CZK 35,000 to 39,999
+    -   5: CZK 50,000 to 74,999
+    -   6: more than CZK 75,000
+-   `age`: age in years
+-   `estat`**:** employment status
+    -   0: employed
+    -   1: self-employed
+    -   2: unemployed
+    -   3: students
+    -   4: retired
+    -   5: maternity leave
+-   `deti5_OT`: number of children below age 5 in the household
+-   `wave`:
+    -   3: fourth wave (2018)
+    -   4: fifth wave (2019)
+    -   5: sixth wave (2020)
+
+## Exploratory data analysis
+
+::: callout-note
+## Exercise 1
+
+Examine the distribution of your response variable. What do you observe?
+:::
+
+```{r}
+#| label: EDA-response
+
+# add code 
+
+```
+
+::: callout-note
+## Exercise 2
+
+Examine the response variable over time. What do you observe?
+:::
+
+```{r}
+#| label: EDA-response-time
+
+# add code 
+```
+
+::: callout-note
+## Exercise 3
+
+Examine the relationship between the response variable and the sleep variables. What do you observe?
+:::
+
+```{r}
+#| label: EDA-response-sleep
+
+# add code 
+```
+
+## Modeling
+
+::: callout-note
+## Exercise 4
+
+Fill in your response variable in the code below to make the linear mixed model (similar to the models in Table 2 of the paper).\
+\
+Remove `#| eval: false` once you have filled in the code.
+:::
+
+```{r}
+#| eval: false
+
+sleep_model <- lmer(______ ~ SDweek_OT + slequal_OT + jetlag_OT + SDweek_OT:wave + slequal_OT:wave + jetlag_OT:wave + wave +  sex + educ_kat + age + 
+             hincome_6 + estat + deti5_OT + (1|w1_hid) + (wave|w1_pid), 
+           data = sleep, control = lmerControl(check.nobs.vs.nRE = "ignore"))
+
+tidy(sleep_model) |> 
+  kable(digits = 3)
+
+```
+
+::: callout-note
+## Exercise 5
+
+What initial conclusions do you draw from the model?
+:::
+
+## References

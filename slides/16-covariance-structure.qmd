@@ -176,7 +176,7 @@ $$\left[ \begin{array}{c}
 
 Now we want to be able to answer more specific questions about the covariance (and correlation) structure of *observations* at different levels.
 
--   What is the does the variability in 2008 and 2010 scores from the same school compare?
+-   How does the variability in 2008 and 2010 scores from the same school compare?
 
 -   What is the correlation between 2008 and 2009 scores from the same school? What is the correlation between 2009 and 2010 scores? 2008 and 2010?
 

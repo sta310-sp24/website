@@ -94,7 +94,7 @@ library(countdown)
 countdown(minutes = 6, margin = 1.25)
 ```
 
-## Data collection 
+## Data collection
 
 -   Data are from the Czech Household Panel Survey (CHPS)
 -   Data collected annually from 2015 - 2020 between June - October
@@ -142,7 +142,7 @@ We will focus on three of the outcomes:
 
     -   Measured as response, ranging from 0 (extremely unhappy) to 10 (extremely happy), to the question *"Taking all things together, how happy would you say you are?"*
 
-## Sleep variables 
+## Sleep variables
 
 ::: question
 Describe how each sleep variable is measured (page 6):
@@ -161,7 +161,7 @@ library(countdown)
 countdown(minutes = 4, margin = 1.25)
 ```
 
-## Other covariates 
+## Other covariates
 
 -   **sex**
 -   **highest level of education attained** (basic and secondary vocational, secondary with maturita, tertiary education)
@@ -185,16 +185,16 @@ library(countdown)
 countdown(minutes = 8, margin = 1.25)
 ```
 
-# Modeling 
+# Modeling
 
 ## Analysis strategy
 
 ::: question
 Read the *Statistical analysis strategy* on page 7.
 
--   What type of random effects did the authors include in their models?
--   What type of data preparation did the authors do?
--   What steps did they authors take in the model building process?
+-   What type of random effects did the researchers include in their models?
+-   Describe the data wrangling and preparation.
+-   Describe the modeling building process.
 :::
 
 ```{r}
@@ -222,7 +222,7 @@ countdown(minutes = 5, margin = 1.25)
 ## Results
 
 ::: question
-See the list of hypotheses the authors want to test on page 4 -5 .
+See the list of hypotheses the researchers want to test on page 4 -5 .
 
 <br>
 

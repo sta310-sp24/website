@@ -291,7 +291,7 @@
     "href": "slides/16-covariance-structure.html#questions-we-want-to-answer",
     "title": "Covariance structure of observations",
     "section": "Questions we want to answer",
-    "text": "Questions we want to answer\nNow we want to be able to answer more specific questions about the covariance (and correlation) structure of observations at different levels.\n\nWhat is the does the variability in 2008 and 2010 scores from the same school compare?\nWhat is the correlation between 2008 and 2009 scores from the same school? What is the correlation between 2009 and 2010 scores? 2008 and 2010?"
+    "text": "Questions we want to answer\nNow we want to be able to answer more specific questions about the covariance (and correlation) structure of observations at different levels.\n\nHow does the variability in 2008 and 2010 scores from the same school compare?\nWhat is the correlation between 2008 and 2009 scores from the same school? What is the correlation between 2009 and 2010 scores? 2008 and 2010?"
   },
   {
     "objectID": "slides/16-covariance-structure.html#covariance-structure",
@@ -3516,14 +3516,14 @@
     "href": "slides/17-longitudinal-in-practice.html#analysis-strategy",
     "title": "Longitudinal modeling in practice",
     "section": "Analysis strategy",
-    "text": "Analysis strategy\n\nRead the Statistical analysis strategy on page 7.\n\nWhat type of random effects did the authors include in their models?\nWhat type of data preparation did the authors do?\nWhat steps did they authors take in the model building process?\n\n\n\n\n\n−+\n05:00"
+    "text": "Analysis strategy\n\nRead the Statistical analysis strategy on page 7.\n\nWhat type of random effects did the researchers include in their models?\nDescribe the data wrangling and preparation.\nDescribe the modeling building process.\n\n\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#results",
     "href": "slides/17-longitudinal-in-practice.html#results",
     "title": "Longitudinal modeling in practice",
     "section": "Results",
-    "text": "Results\n\nSee the list of hypotheses the authors want to test on page 4 -5 .\n\nWhat term(s) in the model can we use to test each hypothesis?\n\n\n\n\nWhat are your conclusions about the effects of sleep on quality of life indicators?\n\n\n\n\n\n\n−+\n04:00"
+    "text": "Results\n\nSee the list of hypotheses the researchers want to test on page 4 -5 .\n\nWhat term(s) in the model can we use to test each hypothesis?\n\n\n\n\nWhat are your conclusions about the effects of sleep on quality of life indicators?\n\n\n\n\n\n\n−+\n04:00"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#limitations",

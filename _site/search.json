@@ -2125,7 +2125,7 @@
     "href": "index.html",
     "title": "STA 310: Generalized Linear Models",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data: Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nCovariance structure of observations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nLongitudinal modeling in practice\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\nLab: Project 02 write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\nLab: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\nLab: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\n\nTh\nApr 24\nFinal Project: Round 1 Submission due (optional)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExam period\nTh\nMay 2\nFinal Project: Final submission due",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\ntopic\nprepare\nlectures\nae\nhw\nquiz\nproject\nnotes\n\n\n\n\n1\nW\nJan 10\nWelcome\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 11\nNo lab: Labs start 1/18\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\nM\nJan 15\nNo lecture: Martin Luther King Jr. Day\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 17\nReview: Multiple linear regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 18\nLab 01: Welcome + HW 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nM\nJan 22\nInference review + Using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 24\nComparing models using likelihoods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 01 due\n\n\n\n\n\n\nPoisson regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nJan 25\nLab: Start Project 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\nM\nJan 29\nPoisson: Goodness of fit + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nJan 31\nPoisson: offset + ZIP models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 1\nLab: Project 01 Article Evaluation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 01 due at 12pm\n\n\n5\nM\nFeb 5\nUnifying framework for GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 7\nLogistic: Binomial responses + overdispersion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 02 due\n\n\n\nTh\nFeb 8\nLab: Project 01 Write up + Presentation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6\nM\nFeb 12\nProportional odds + Probit regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 14\nProject 01 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 15\nLab: Project 01 Write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProject 01 write up + GitHub repo due at 9pm\n\n\n7\nM\nFeb 19\nCorrelated data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 21\nIntroduction to multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nFeb 22\nLab: HW 03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 02 due at 12pm\n\n\n8\nM\nFeb 26\nVariance components + model fitting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nFeb 28\nEstimation for multilevel models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 03 due\n\n\n\nTh\nFeb 29\nLab: Start Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n9\nM\nMar 4\nModeling longitudinal data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 6\nModeling longitudinal data: Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 7\nLab: Project 02 Analysis plan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 03 due at 12pm\n\n\n10\nM\nMar 11\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 13\nNo lecture: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 14\nNo lab: Spring break!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11\nM\nMar 18\nCovariance structure of observations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 20\nLongitudinal modeling in practice\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 04 due\n\n\n\nTh\nMar 21\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n12\nM\nMar 25\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nMar 27\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nMar 28\nLab: Project 02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 04 due at 12pm\n\n\n13\nM\nApr 1\nMultilevel models with 3+ levels\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 3\nProject 02 presentations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 05 due\n\n\n\nTh\nApr 4\nLab: Project 02 write up\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n14\nM\nApr 8\nNo lecture: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 10\nCovariance structures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTh\nApr 11\nLab: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 05 due at 12pm\n\n\n15\nM\nApr 15\nMultilevel GLMs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 17\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW 06 due\n\n\n\nTh\nApr 18\nLab: Work on final project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n16\nM\nApr 22\nMultilevel GLMs cont'd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\nApr 24\nFinal project meetings\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuiz 06 due at 12pm\n\n\n\nTh\nApr 24\nFinal Project: Round 1 Submission due (optional)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExam period\nTh\nMay 2\nFinal Project: Final submission due",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -2570,11 +2570,18 @@
     "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 2.1 - 2.10\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/jan-24.html",
-    "href": "prepare/jan-24.html",
-    "title": "Prepare for Jan 24 lecture",
+    "objectID": "prepare/mar-18.html",
+    "href": "prepare/mar-18.html",
+    "title": "Prepare for March 18 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+    "text": "Read BMLR: Sections 9.7"
+  },
+  {
+    "objectID": "prepare/jan-31.html",
+    "href": "prepare/jan-31.html",
+    "title": "Prepare for Jan 31 lecture",
+    "section": "",
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
   },
   {
     "objectID": "prepare/jan-29.html",
@@ -2945,18 +2952,25 @@
     "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 1.1 - 1.7\nInstall RStudio and configure git or reserve RStudio Docker container. See computing page for instructions.\nIf you have not yet done so, see Canvas announcement for links to…\n\nSign up for Slack\nComplete STA 310 Student Survey"
   },
   {
-    "objectID": "prepare/jan-31.html",
-    "href": "prepare/jan-31.html",
-    "title": "Prepare for Jan 31 lecture",
+    "objectID": "prepare/mar-25.html",
+    "href": "prepare/mar-25.html",
+    "title": "Prepare for March 25 lecture",
     "section": "",
-    "text": "Read Beyond Multiple Linear Regression (BMLR): Section 4.6, 4.10"
+    "text": "Read BMLR: Sections 10.1 - 10.8"
   },
   {
-    "objectID": "prepare/mar-18.html",
-    "href": "prepare/mar-18.html",
-    "title": "Prepare for March 18 lecture",
+    "objectID": "prepare/jan-24.html",
+    "href": "prepare/jan-24.html",
+    "title": "Prepare for Jan 24 lecture",
     "section": "",
-    "text": "Read BMLR: Sections 9.7"
+    "text": "Read Beyond Multiple Linear Regression (BMLR): Sections 4.1 - 4.8"
+  },
+  {
+    "objectID": "prepare/mar-27.html",
+    "href": "prepare/mar-27.html",
+    "title": "Prepare for March 27 lecture",
+    "section": "",
+    "text": "Read BMLR: Sections 10.1 - 10.10"
   },
   {
     "objectID": "prepare/feb-12.html",

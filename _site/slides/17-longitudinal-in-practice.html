@@ -379,7 +379,7 @@ Prof.&nbsp;Maria Tackett
 <li><p>Read <span class="citation" data-cites="kudrnavcova2023better">Kudrnáčová and Kudrnáč (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span> as example of longitudinal modeling in practice</p>
 <ul>
 <li>Background and motivation</li>
-<li>Data collection and data inclusion</li>
+<li>Data collection and structure</li>
 <li>Exploratory data analysis</li>
 <li>Modeling</li>
 <li>Results in context and limitations</li>
@@ -413,7 +413,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3a698989" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown" id="timer_9a2f1bf8" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -456,16 +456,18 @@ Prof.&nbsp;Maria Tackett
 <section id="outcomes-of-interest" class="slide level2 midi">
 <h2>Outcomes of interest</h2>
 <p>We will focus on three of the outcomes:</p>
+<div>
 <ul>
-<li><p><strong>Life satisfaction (<code>lfstat_OT</code>)</strong>: “represents a stable assessment of general feelings about life and indicates a long-term attitude”</p>
+<li class="fragment"><p><strong>Life satisfaction (<code>lfstat_OT</code>)</strong>: “represents a stable assessment of general feelings about life and indicates a long-term attitude”</p>
 <ul>
-<li>Measured as response, ranging from 0 (extremely dissatisfied) to 10 (extremely satisfied), to the question <em>“All things considered, how satisfied are you with your life as a whole?”</em></li>
+<li class="fragment">Measured as response, ranging from 0 (extremely dissatisfied) to 10 (extremely satisfied), to the question <em>“All things considered, how satisfied are you with your life as a whole?”</em></li>
 </ul></li>
-<li><p><strong>Wellbeing (<code>wellbe_OT</code>)</strong>: “captures a person’s emotional state and touches on their mental state”</p>
+<li class="fragment"><p><strong>Wellbeing (<code>wellbe_OT</code>)</strong>: “captures a person’s emotional state and touches on their mental state”</p>
 <ul>
-<li>Measured as average response, ranging from “at no time” to “all of the time”, to three items about how often in the last two weeks respondents <em>“have been cheerful and in good spirits”</em>, <em>“have felt calm and relaxed”,</em> and <em>“have been active and vigorous”</em></li>
+<li class="fragment">Measured as average response, ranging from “at no time” to “all of the time”, to three items about how often in the last two weeks respondents <em>“have been cheerful and in good spirits”</em>, <em>“have felt calm and relaxed”,</em> and <em>“have been active and vigorous”</em></li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="outcomes-of-interest-1" class="slide level2 midi">
 <h2>Outcomes of interest</h2>
@@ -479,7 +481,7 @@ Prof.&nbsp;Maria Tackett
 <section id="sleep-variables" class="slide level2">
 <h2>Sleep variables</h2>
 <div class="question">
-<p>On page 6, the authors explain how each sleep variable is measured.</p>
+<p>Describe how each sleep variable is measured (page 6):</p>
 <ul>
 <li><p><strong>sleep duration (<code>SDweek_OT</code>)</strong></p></li>
 <li><p><strong>quality of sleep (<code>slequal_OT</code>)</strong></p></li>
@@ -488,7 +490,7 @@ Prof.&nbsp;Maria Tackett
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_21185490" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown" id="timer_4a30df3e" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -507,12 +509,10 @@ Prof.&nbsp;Maria Tackett
 <li><strong>wave</strong> (2018, 2019, 2020)</li>
 </ul>
 </section>
-<section id="exploratory-data-analysis" class="title-slide slide level1 center">
-<h1>Exploratory data analysis</h1>
-<p>AE</p>
-<ul>
-<li>make sure to put in the AE to make certain variables categorical</li>
-</ul>
+<section id="application-exercise" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<p>Exploratory data analysis</p>
+<!--# make sure to put in the AE to make certain variables categorical-->
 </section>
 
 <section>
@@ -523,63 +523,58 @@ Prof.&nbsp;Maria Tackett
 <section id="analysis-strategy" class="slide level2">
 <h2>Analysis strategy</h2>
 <div class="question">
-<p>Read the <em>Statistical analysis strategy</em> on page 7. Outline the authors’ analysis steps.</p>
+<p>Read the <em>Statistical analysis strategy</em> on page 7.</p>
+<ul>
+<li>What type of random effects did the authors include in their models?</li>
+<li>What type of data preparation did the authors do?</li>
+<li>What steps did they authors take in the model building process?</li>
+</ul>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c92eaefd" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown" id="timer_bd9e8074" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
-</section>
-<section id="considerations-for-modeling" class="slide level2">
-<h2>Considerations for modeling</h2>
-<div class="question">
-<p>We are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.</p>
-<p>Do you think a linear mixed model is the best choice? Why or why not?</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="countdown" id="timer_ed04a085" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
 </section></section>
 <section>
-<section id="modeling-1" class="title-slide slide level1 center">
-<h1>Modeling</h1>
-<p>AE - fit the model for your group</p>
-<ul>
-<li>talk about why the code has that weird control line in it</li>
-</ul>
+<section id="application-exercise-1" class="title-slide slide level1 center">
+<h1>Application exercise</h1>
+<p>Modeling</p>
+<!--# AE - fit the model for your group-->
+<!--# talk about why the code has that weird control line in it-->
 </section>
-<section id="testing-hypotheses" class="slide level2">
-<h2>Testing hypotheses</h2>
-<p>The authors want to test the following hypotheses:</p>
-<ul>
-<li><p><em>H1A. Individuals with on average longer sleep duration have higher levels of QoL than individuals with shorter sleep duration.</em></p></li>
-<li><p><em>H1B. Increases in sleep duration over time are related to higher levels of QoL.</em></p></li>
-<li><p><em>H2A. Individuals with on average higher sleep quality have higher levels of QoL than individuals with lower sleep quality.</em></p></li>
-<li><p><em>H2B. Improvements in sleep quality over time are related to higher levels of QoL.</em></p></li>
-<li><p><em>H3A. Individuals with on average lower social jetlag levels have higher levels of QoL than individuals with higher social jetlag.</em></p></li>
-<li><p><em>H3B. Decreases in social jetlag over time are related to higher levels of QoL.</em></p></li>
-</ul>
+<section id="results" class="slide level2">
+<h2>Results</h2>
 <div class="question">
-<ul>
-<li><p>What term(s) in the model can we use to test each hypothesis?</p></li>
-<li><p>What are you conclusions?</p></li>
-</ul>
+<p>See the list of hypotheses the authors want to test on page 4 -5 .</p>
+<p><br></p>
+<p>What term(s) in the model can we use to test each hypothesis?</p>
 </div>
-</section>
-<section id="generalizability" class="slide level2">
-<h2>Generalizability</h2>
+<p><br></p>
+<div class="fragment">
+<div class="question">
+<p>What are your conclusions about the effects of sleep on quality of life indicators?</p>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="countdown" id="timer_edcd0820" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="limitations" class="slide level2">
 <h2>Limitations</h2>
+<div class="question">
+<p>What are some potential limitations of this study?</p>
+</div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

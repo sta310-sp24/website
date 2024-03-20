@@ -66,7 +66,7 @@ library(broom.mixed)
 -   Read @kudrnavcova2023better as example of longitudinal modeling in practice
 
     -   Background and motivation
-    -   Data collection and data inclusion
+    -   Data collection and structure
     -   Exploratory data analysis
     -   Modeling
     -   Results in context and limitations
@@ -126,6 +126,7 @@ Authors state that these factors are important for describing overall quality of
 
 We will focus on three of the outcomes:
 
+::: incremental
 -   **Life satisfaction (`lfstat_OT`)**: "represents a stable assessment of general feelings about life and indicates a long-term attitude"
 
     -   Measured as response, ranging from 0 (extremely dissatisfied) to 10 (extremely satisfied), to the question *"All things considered, how satisfied are you with your life as a whole?"*
@@ -133,6 +134,7 @@ We will focus on three of the outcomes:
 -   **Wellbeing (`wellbe_OT`)**: "captures a person's emotional state and touches on their mental state"
 
     -   Measured as average response, ranging from "at no time" to "all of the time", to three items about how often in the last two weeks respondents *"have been cheerful and in good spirits"*, *"have felt calm and relaxed",* and *"have been active and vigorous"*
+:::
 
 ## Outcomes of interest {.midi}
 
@@ -143,7 +145,7 @@ We will focus on three of the outcomes:
 ## Sleep variables 
 
 ::: question
-On page 6, the authors explain how each sleep variable is measured.
+Describe how each sleep variable is measured (page 6):
 
 -   **sleep duration (`SDweek_OT`)**
 
@@ -169,18 +171,22 @@ countdown(minutes = 4, margin = 1.25)
 -   **number of children below age 5 in the household**
 -   **wave** (2018, 2019, 2020)
 
-# Exploratory data analysis 
+# Application exercise
 
-AE
+Exploratory data analysis
 
--   make sure to put in the AE to make certain variables categorical
+<!--# make sure to put in the AE to make certain variables categorical-->
 
 # Modeling 
 
 ## Analysis strategy
 
 ::: question
-Read the *Statistical analysis strategy* on page 7. Outline the authors' analysis steps.
+Read the *Statistical analysis strategy* on page 7.
+
+-   What type of random effects did the authors include in their models?
+-   What type of data preparation did the authors do?
+-   What steps did they authors take in the model building process?
 :::
 
 ```{r}
@@ -190,51 +196,45 @@ library(countdown)
 countdown(minutes = 6, margin = 1.25)
 ```
 
-## Considerations for modeling 
+# Application exercise
+
+Modeling
+
+<!--# AE - fit the model for your group-->
+
+<!--# talk about why the code has that weird control line in it-->
+
+## Results
 
 ::: question
-We are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.
+See the list of hypotheses the authors want to test on page 4 -5 .
 
-Do you think a linear mixed model is the best choice? Why or why not?
+<br>
+
+What term(s) in the model can we use to test each hypothesis?
 :::
+
+<br>
+
+. . .
+
+::: question
+What are your conclusions about the effects of sleep on quality of life indicators?
+:::
+
+. . .
 
 ```{r}
 #| echo: false
 
 library(countdown)
-countdown(minutes = 2, margin = 1.25)
+countdown(minutes = 4, margin = 1.25)
 ```
 
-# Modeling
-
-AE - fit the model for your group
-
--   talk about why the code has that weird control line in it
-
-## Testing hypotheses
-
-The authors want to test the following hypotheses:
-
--   *H1A. Individuals with on average longer sleep duration have higher levels of QoL than individuals with shorter sleep duration.*
-
--   *H1B. Increases in sleep duration over time are related to higher levels of QoL.*
-
--   *H2A. Individuals with on average higher sleep quality have higher levels of QoL than individuals with lower sleep quality.*
-
--   *H2B. Improvements in sleep quality over time are related to higher levels of QoL.*
-
--   *H3A. Individuals with on average lower social jetlag levels have higher levels of QoL than individuals with higher social jetlag.*
-
--   *H3B. Decreases in social jetlag over time are related to higher levels of QoL.*
+## Limitations
 
 ::: question
--   What term(s) in the model can we use to test each hypothesis?
-
--   What are you conclusions?
+What are some potential limitations of this study?
 :::
-
-## Generalizability 
-
-## Limitations
 
 ## References

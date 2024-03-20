@@ -373,7 +373,7 @@ Prof.&nbsp;Maria Tackett
 <li><p>Introduce final project</p></li>
 </ul>
 </section>
-<section id="topics" class="slide level2">
+<section id="topics" class="slide level2 midi">
 <h2>Topics</h2>
 <ul>
 <li><p>Read <span class="citation" data-cites="kudrnavcova2023better">Kudrnáčová and Kudrnáč (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span> as example of longitudinal modeling in practice</p>
@@ -384,7 +384,7 @@ Prof.&nbsp;Maria Tackett
 <li>Modeling</li>
 <li>Results in context and limitations</li>
 </ul></li>
-<li><p>Conduct some analysis from the article</p></li>
+<li><p>(Mostly) reproduce models from the paper</p></li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -403,19 +403,19 @@ Prof.&nbsp;Maria Tackett
 <section id="background-and-motivation" class="slide level2">
 <h2>Background and motivation</h2>
 <div class="question">
-<p>Read the abstract. Then use the abstract to answer the following questions:</p>
+<p>Read the abstract and answer the following questions:</p>
 <ol type="1">
 <li>What is the primary motivation for the study? What gap in the existing research do the researchers hope to address?</li>
-<li>What effects are the researchers primarily interested in?</li>
 <li>What outcomes are the researchers primarily interested in?</li>
+<li>What effects are the researchers primarily interested in?</li>
 <li>What is a key conclusion from their study ?</li>
 </ol>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_fd18a046" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown" id="timer_3a698989" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -423,64 +423,72 @@ Prof.&nbsp;Maria Tackett
 <section id="data-collection" class="slide level2">
 <h2>Data collection</h2>
 <ul>
-<li><p>describe the data collection</p></li>
-<li><p>ask what happened between 2018 and 2019?</p></li>
+<li>Data are from the Czech Household Panel Survey (CHPS)</li>
+<li>Data collected annually from 2015 - 2020 between June - October</li>
+<li>Two-stage stratified sampling used</li>
+<li>All members of a household were invited to participate
+<ul>
+<li>Approached the same households for each wave (year)</li>
+</ul></li>
+<li>Respondents filled out a paper questionnaire</li>
+<li>Large reduction in response between 2018 and 2019 due to new requirements</li>
 </ul>
 </section>
 <section id="data-structure" class="slide level2">
 <h2>Data structure</h2>
+<p>Multilevel structure with 3 levels</p>
 <ul>
-<li>3 level model (we will talk more about these next week)</li>
+<li><p><strong>Level Three:</strong> Household</p>
+<ul>
+<li><p><strong>Level Two:</strong> Individual</p>
+<ul>
+<li><strong>Level One:</strong> Wave</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
 <section id="response-variables" class="slide level2">
 <h2>Response variables</h2>
 <p>Response variables are based on the “subjective component of integrative quality of life theory.”</p>
 
-<img data-src="images/17/fig1.PNG" class="r-stretch quarto-figure-center"><p class="caption">Figure 1 in <span class="citation" data-cites="kudrnavcova2023better">Kudrnáčová and Kudrnáč (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p><p>Authors state that these factors are important for describing quality of life.</p>
+<img data-src="images/17/fig1.PNG" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Figure 1 in <span class="citation" data-cites="kudrnavcova2023better">Kudrnáčová and Kudrnáč (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p><p>Authors state that these factors are important for describing overall quality of life.</p>
 </section>
-<section id="response-variables-1" class="slide level2">
-<h2>Response variables</h2>
+<section id="outcomes-of-interest" class="slide level2 midi">
+<h2>Outcomes of interest</h2>
 <p>We will focus on three of the outcomes:</p>
 <ul>
 <li><p><strong>Life satisfaction (<code>lfstat_OT</code>)</strong>: “represents a stable assessment of general feelings about life and indicates a long-term attitude”</p>
 <ul>
-<li>Measured as response 0 (extremely dissatisfied) to 10 (extremely satisfied) to the question <em>“All things considered, how satisfied are you with your life as a whole?”</em></li>
+<li>Measured as response, ranging from 0 (extremely dissatisfied) to 10 (extremely satisfied), to the question <em>“All things considered, how satisfied are you with your life as a whole?”</em></li>
 </ul></li>
 <li><p><strong>Wellbeing (<code>wellbe_OT</code>)</strong>: “captures a person’s emotional state and touches on their mental state”</p>
 <ul>
-<li>Measured as average response ranging from “at no time” to “all of the time” to three items about how often in the last two weeks respondents <em>“have been cheerful and in good spirits”</em>, <em>“have felt calm and relaxed”,</em> and <em>“have been active and vigorous”</em></li>
-</ul></li>
-<li><p><strong>Happiness (<code>happy_OT</code></strong>): a person’s current positive emotional condition</p>
-<ul>
-<li>Measured as response 0 (extremely unhappy) to 10 (extremely happy) to the question <em>“Taking all things together, how happy would you say you are?”</em></li>
+<li>Measured as average response, ranging from “at no time” to “all of the time”, to three items about how often in the last two weeks respondents <em>“have been cheerful and in good spirits”</em>, <em>“have felt calm and relaxed”,</em> and <em>“have been active and vigorous”</em></li>
 </ul></li>
 </ul>
 </section>
-<section id="considerations-for-modeling" class="slide level2">
-<h2>Considerations for modeling</h2>
-<div class="question">
-<p>We are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.</p>
-<p>Do you think a linear mixed model is the best choice? Why or why not?</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="countdown" id="timer_a9e193c0" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
+<section id="outcomes-of-interest-1" class="slide level2 midi">
+<h2>Outcomes of interest</h2>
+<ul>
+<li><p><strong>Happiness (<code>happy_OT</code></strong>): a person’s current positive emotional condition</p>
+<ul>
+<li>Measured as response, ranging from 0 (extremely unhappy) to 10 (extremely happy), to the question <em>“Taking all things together, how happy would you say you are?”</em></li>
+</ul></li>
+</ul>
 </section>
 <section id="sleep-variables" class="slide level2">
 <h2>Sleep variables</h2>
 <div class="question">
 <p>On page 6, the authors explain how each sleep variable is measured.</p>
-<p>Describe how <strong>sleep duration (<code>SDweek_OT</code>)</strong>, <strong>quality of sleep (<code>slequal_OT</code>)</strong> and <strong>social jetlag (<code>jetlag_OT</code>)</strong> are measured.</p>
+<ul>
+<li><p><strong>sleep duration (<code>SDweek_OT</code>)</strong></p></li>
+<li><p><strong>quality of sleep (<code>slequal_OT</code>)</strong></p></li>
+<li><p><strong>social jetlag (<code>jetlag_OT</code>)</strong></p></li>
+</ul>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_868d3dcd" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown" id="timer_21185490" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -507,21 +515,40 @@ Prof.&nbsp;Maria Tackett
 </ul>
 </section>
 
+<section>
 <section id="modeling" class="title-slide slide level1 center">
 <h1>Modeling</h1>
+
+</section>
+<section id="analysis-strategy" class="slide level2">
+<h2>Analysis strategy</h2>
 <div class="question">
 <p>Read the <em>Statistical analysis strategy</em> on page 7. Outline the authors’ analysis steps.</p>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_a8b05c5c" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown" id="timer_c92eaefd" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-
+<section id="considerations-for-modeling" class="slide level2">
+<h2>Considerations for modeling</h2>
+<div class="question">
+<p>We are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.</p>
+<p>Do you think a linear mixed model is the best choice? Why or why not?</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="countdown" id="timer_ed04a085" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1.25;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="modeling-1" class="title-slide slide level1 center">
 <h1>Modeling</h1>

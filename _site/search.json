@@ -3425,56 +3425,56 @@
     "href": "slides/17-longitudinal-in-practice.html#topics",
     "title": "Longitudinal modeling in practice",
     "section": "Topics",
-    "text": "Topics\n\nRead Kudrnáčová and Kudrnáč (2023) as example of longitudinal modeling in practice\n\nBackground and motivation\nData collection and data inclusion\nExploratory data analysis\nModeling\nResults in context and limitations\n\nConduct some analysis from the article\n\n\n\n\n\n\n\nNote\n\n\nClick here to access the article on Canvas."
+    "text": "Topics\n\nRead Kudrnáčová and Kudrnáč (2023) as example of longitudinal modeling in practice\n\nBackground and motivation\nData collection and data inclusion\nExploratory data analysis\nModeling\nResults in context and limitations\n\n(Mostly) reproduce models from the paper\n\n\n\n\n\n\n\nNote\n\n\nClick here to access the article on Canvas."
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#background-and-motivation",
     "href": "slides/17-longitudinal-in-practice.html#background-and-motivation",
     "title": "Longitudinal modeling in practice",
     "section": "Background and motivation",
-    "text": "Background and motivation\n\nRead the abstract. Then use the abstract to answer the following questions:\n\nWhat is the primary motivation for the study? What gap in the existing research do the researchers hope to address?\nWhat effects are the researchers primarily interested in?\nWhat outcomes are the researchers primarily interested in?\nWhat is a key conclusion from their study ?\n\n\n\n\n\n−+\n05:00"
+    "text": "Background and motivation\n\nRead the abstract and answer the following questions:\n\nWhat is the primary motivation for the study? What gap in the existing research do the researchers hope to address?\nWhat outcomes are the researchers primarily interested in?\nWhat effects are the researchers primarily interested in?\nWhat is a key conclusion from their study ?\n\n\n\n\n\n−+\n06:00"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#data-collection",
     "href": "slides/17-longitudinal-in-practice.html#data-collection",
     "title": "Longitudinal modeling in practice",
     "section": "Data collection",
-    "text": "Data collection\n\ndescribe the data collection\nask what happened between 2018 and 2019?"
+    "text": "Data collection\n\nData are from the Czech Household Panel Survey (CHPS)\nData collected annually from 2015 - 2020 between June - October\nTwo-stage stratified sampling used\nAll members of a household were invited to participate\n\nApproached the same households for each wave (year)\n\nRespondents filled out a paper questionnaire\nLarge reduction in response between 2018 and 2019 due to new requirements"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#data-structure",
     "href": "slides/17-longitudinal-in-practice.html#data-structure",
     "title": "Longitudinal modeling in practice",
     "section": "Data structure",
-    "text": "Data structure\n\n3 level model (we will talk more about these next week)"
+    "text": "Data structure\nMultilevel structure with 3 levels\n\nLevel Three: Household\n\nLevel Two: Individual\n\nLevel One: Wave"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#response-variables",
     "href": "slides/17-longitudinal-in-practice.html#response-variables",
     "title": "Longitudinal modeling in practice",
     "section": "Response variables",
-    "text": "Response variables\nResponse variables are based on the “subjective component of integrative quality of life theory.”\n\nFigure 1 in Kudrnáčová and Kudrnáč (2023)Authors state that these factors are important for describing quality of life."
+    "text": "Response variables\nResponse variables are based on the “subjective component of integrative quality of life theory.”\n\nFigure 1 in Kudrnáčová and Kudrnáč (2023)Authors state that these factors are important for describing overall quality of life."
   },
   {
-    "objectID": "slides/17-longitudinal-in-practice.html#response-variables-1",
-    "href": "slides/17-longitudinal-in-practice.html#response-variables-1",
+    "objectID": "slides/17-longitudinal-in-practice.html#outcomes-of-interest",
+    "href": "slides/17-longitudinal-in-practice.html#outcomes-of-interest",
     "title": "Longitudinal modeling in practice",
-    "section": "Response variables",
-    "text": "Response variables\nWe will focus on three of the outcomes:\n\nLife satisfaction (lfstat_OT): “represents a stable assessment of general feelings about life and indicates a long-term attitude”\n\nMeasured as response 0 (extremely dissatisfied) to 10 (extremely satisfied) to the question “All things considered, how satisfied are you with your life as a whole?”\n\nWellbeing (wellbe_OT): “captures a person’s emotional state and touches on their mental state”\n\nMeasured as average response ranging from “at no time” to “all of the time” to three items about how often in the last two weeks respondents “have been cheerful and in good spirits”, “have felt calm and relaxed”, and “have been active and vigorous”\n\nHappiness (happy_OT): a person’s current positive emotional condition\n\nMeasured as response 0 (extremely unhappy) to 10 (extremely happy) to the question “Taking all things together, how happy would you say you are?”"
+    "section": "Outcomes of interest",
+    "text": "Outcomes of interest\nWe will focus on three of the outcomes:\n\nLife satisfaction (lfstat_OT): “represents a stable assessment of general feelings about life and indicates a long-term attitude”\n\nMeasured as response, ranging from 0 (extremely dissatisfied) to 10 (extremely satisfied), to the question “All things considered, how satisfied are you with your life as a whole?”\n\nWellbeing (wellbe_OT): “captures a person’s emotional state and touches on their mental state”\n\nMeasured as average response, ranging from “at no time” to “all of the time”, to three items about how often in the last two weeks respondents “have been cheerful and in good spirits”, “have felt calm and relaxed”, and “have been active and vigorous”"
   },
   {
-    "objectID": "slides/17-longitudinal-in-practice.html#considerations-for-modeling",
-    "href": "slides/17-longitudinal-in-practice.html#considerations-for-modeling",
+    "objectID": "slides/17-longitudinal-in-practice.html#outcomes-of-interest-1",
+    "href": "slides/17-longitudinal-in-practice.html#outcomes-of-interest-1",
     "title": "Longitudinal modeling in practice",
-    "section": "Considerations for modeling",
-    "text": "Considerations for modeling\n\nWe are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.\nDo you think a linear mixed model is the best choice? Why or why not?\n\n\n\n\n−+\n02:00"
+    "section": "Outcomes of interest",
+    "text": "Outcomes of interest\n\nHappiness (happy_OT): a person’s current positive emotional condition\n\nMeasured as response, ranging from 0 (extremely unhappy) to 10 (extremely happy), to the question “Taking all things together, how happy would you say you are?”"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#sleep-variables",
     "href": "slides/17-longitudinal-in-practice.html#sleep-variables",
     "title": "Longitudinal modeling in practice",
     "section": "Sleep variables",
-    "text": "Sleep variables\n\nOn page 6, the authors explain how each sleep variable is measured.\nDescribe how sleep duration (SDweek_OT), quality of sleep (slequal_OT) and social jetlag (jetlag_OT) are measured.\n\n\n\n\n−+\n04:00"
+    "text": "Sleep variables\n\nOn page 6, the authors explain how each sleep variable is measured.\n\nsleep duration (SDweek_OT)\nquality of sleep (slequal_OT)\nsocial jetlag (jetlag_OT)\n\n\n\n\n\n−+\n04:00"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#other-covariates",
@@ -3482,6 +3482,20 @@
     "title": "Longitudinal modeling in practice",
     "section": "Other covariates",
     "text": "Other covariates\n\ngender\nhighest level of education attained (basic and secondary vocational, secondary with maturita, tertiary education)\nhousehold income (divided into 6 categories)\nage\nemployment status (employed, self-employed, unemployed, student, retired, on maternity leave)\nnumber of children below age 5 in the household\nwave (2018, 2019, 2020)"
+  },
+  {
+    "objectID": "slides/17-longitudinal-in-practice.html#analysis-strategy",
+    "href": "slides/17-longitudinal-in-practice.html#analysis-strategy",
+    "title": "Longitudinal modeling in practice",
+    "section": "Analysis strategy",
+    "text": "Analysis strategy\n\nRead the Statistical analysis strategy on page 7. Outline the authors’ analysis steps.\n\n\n\n\n−+\n06:00"
+  },
+  {
+    "objectID": "slides/17-longitudinal-in-practice.html#considerations-for-modeling",
+    "href": "slides/17-longitudinal-in-practice.html#considerations-for-modeling",
+    "title": "Longitudinal modeling in practice",
+    "section": "Considerations for modeling",
+    "text": "Considerations for modeling\n\nWe are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.\nDo you think a linear mixed model is the best choice? Why or why not?\n\n\n\n\n−+\n02:00"
   },
   {
     "objectID": "slides/17-longitudinal-in-practice.html#testing-hypotheses",

@@ -61,7 +61,7 @@ library(broom.mixed)
 
 -   Introduce final project
 
-## Topics
+## Topics {.midi}
 
 -   Read @kudrnavcova2023better as example of longitudinal modeling in practice
 
@@ -71,7 +71,7 @@ library(broom.mixed)
     -   Modeling
     -   Results in context and limitations
 
--   Conduct some analysis from the article
+-   (Mostly) reproduce models from the paper
 
 ::: callout-note
 [Click here](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1070654) to access the article on Canvas.
@@ -80,75 +80,76 @@ library(broom.mixed)
 ## Background and motivation
 
 ::: question
-Read the abstract. Then use the abstract to answer the following questions:
+Read the abstract and answer the following questions:
 
 1.  What is the primary motivation for the study? What gap in the existing research do the researchers hope to address?
-2.  What effects are the researchers primarily interested in?
-3.  What outcomes are the researchers primarily interested in?
+2.  What outcomes are the researchers primarily interested in?
+3.  What effects are the researchers primarily interested in?
 4.  What is a key conclusion from their study ?
 :::
 
 ```{r}
 #| echo: false
 library(countdown)
-countdown(minutes = 5, margin = 1.25)
+countdown(minutes = 6, margin = 1.25)
 ```
 
 ## Data collection 
 
--   describe the data collection
+-   Data are from the Czech Household Panel Survey (CHPS)
+-   Data collected annually from 2015 - 2020 between June - October
+-   Two-stage stratified sampling used
+-   All members of a household were invited to participate
+    -   Approached the same households for each wave (year)
+-   Respondents filled out a paper questionnaire
+-   Large reduction in response between 2018 and 2019 due to new requirements
 
--   ask what happened between 2018 and 2019?
+## Data structure
 
-## Data structure 
+Multilevel structure with 3 levels
 
--   3 level model (we will talk more about these next week)
+-   **Level Three:** Household
+
+    -   **Level Two:** Individual
+
+        -   **Level One:** Wave
 
 ## Response variables
 
 Response variables are based on the "subjective component of integrative quality of life theory."
 
-![Figure 1 in @kudrnavcova2023better](images/17/fig1.PNG){fig-align="center"}
+![Figure 1 in @kudrnavcova2023better](images/17/fig1.PNG){fig-align="center" width="100%"}
 
-Authors state that these factors are important for describing quality of life.
+Authors state that these factors are important for describing overall quality of life.
 
-## Response variables
+## Outcomes of interest {.midi}
 
 We will focus on three of the outcomes:
 
 -   **Life satisfaction (`lfstat_OT`)**: "represents a stable assessment of general feelings about life and indicates a long-term attitude"
 
-    -   Measured as response 0 (extremely dissatisfied) to 10 (extremely satisfied) to the question *"All things considered, how satisfied are you with your life as a whole?"*
+    -   Measured as response, ranging from 0 (extremely dissatisfied) to 10 (extremely satisfied), to the question *"All things considered, how satisfied are you with your life as a whole?"*
 
 -   **Wellbeing (`wellbe_OT`)**: "captures a person's emotional state and touches on their mental state"
 
-    -   Measured as average response ranging from "at no time" to "all of the time" to three items about how often in the last two weeks respondents *"have been cheerful and in good spirits"*, *"have felt calm and relaxed",* and *"have been active and vigorous"*
+    -   Measured as average response, ranging from "at no time" to "all of the time", to three items about how often in the last two weeks respondents *"have been cheerful and in good spirits"*, *"have felt calm and relaxed",* and *"have been active and vigorous"*
+
+## Outcomes of interest {.midi}
 
 -   **Happiness (`happy_OT`**): a person's current positive emotional condition
 
-    -   Measured as response 0 (extremely unhappy) to 10 (extremely happy) to the question *"Taking all things together, how happy would you say you are?"*
-
-## Considerations for modeling 
-
-::: question
-We are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.
-
-Do you think a linear mixed model is the best choice? Why or why not?
-:::
-
-```{r}
-#| echo: false
-
-library(countdown)
-countdown(minutes = 2, margin = 1.25)
-```
+    -   Measured as response, ranging from 0 (extremely unhappy) to 10 (extremely happy), to the question *"Taking all things together, how happy would you say you are?"*
 
 ## Sleep variables 
 
 ::: question
 On page 6, the authors explain how each sleep variable is measured.
 
-Describe how **sleep duration (`SDweek_OT`)**, **quality of sleep (`slequal_OT`)** and **social jetlag (`jetlag_OT`)** are measured.
+-   **sleep duration (`SDweek_OT`)**
+
+-   **quality of sleep (`slequal_OT`)**
+
+-   **social jetlag (`jetlag_OT`)**
 :::
 
 ```{r}
@@ -176,6 +177,8 @@ AE
 
 # Modeling 
 
+## Analysis strategy
+
 ::: question
 Read the *Statistical analysis strategy* on page 7. Outline the authors' analysis steps.
 :::
@@ -185,6 +188,21 @@ Read the *Statistical analysis strategy* on page 7. Outline the authors' analysi
 
 library(countdown)
 countdown(minutes = 6, margin = 1.25)
+```
+
+## Considerations for modeling 
+
+::: question
+We are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.
+
+Do you think a linear mixed model is the best choice? Why or why not?
+:::
+
+```{r}
+#| echo: false
+
+library(countdown)
+countdown(minutes = 2, margin = 1.25)
 ```
 
 # Modeling

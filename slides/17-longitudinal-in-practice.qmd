@@ -1,0 +1,222 @@
+---
+title: "Longitudinal modeling in practice"
+date: "March 20, 2024"
+date-format: "MMM DD, YYYY"
+author: "Prof. Maria Tackett"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+library(viridis)
+library(lme4)
+library(broom.mixed)
+```
+
+## Announcements
+
+-   HW 04 due TODAY at 11:59pm
+
+-   Project 02
+
+    -   Draft report due Friday at noon
+
+-   Introduce final project
+
+## Topics
+
+-   Read @kudrnavcova2023better as example of longitudinal modeling in practice
+
+    -   Background and motivation
+    -   Data collection and data inclusion
+    -   Exploratory data analysis
+    -   Modeling
+    -   Results in context and limitations
+
+-   Conduct some analysis from the article
+
+::: callout-note
+[Click here](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1070654) to access the article on Canvas.
+:::
+
+## Background and motivation
+
+::: question
+Read the abstract. Then use the abstract to answer the following questions:
+
+1.  What is the primary motivation for the study? What gap in the existing research do the researchers hope to address?
+2.  What effects are the researchers primarily interested in?
+3.  What outcomes are the researchers primarily interested in?
+4.  What is a key conclusion from their study ?
+:::
+
+```{r}
+#| echo: false
+library(countdown)
+countdown(minutes = 5, margin = 1.25)
+```
+
+## Data collection 
+
+-   describe the data collection
+
+-   ask what happened between 2018 and 2019?
+
+## Data structure 
+
+-   3 level model (we will talk more about these next week)
+
+## Response variables
+
+Response variables are based on the "subjective component of integrative quality of life theory."
+
+![Figure 1 in @kudrnavcova2023better](images/17/fig1.PNG){fig-align="center"}
+
+Authors state that these factors are important for describing quality of life.
+
+## Response variables
+
+We will focus on three of the outcomes:
+
+-   **Life satisfaction (`lfstat_OT`)**: "represents a stable assessment of general feelings about life and indicates a long-term attitude"
+
+    -   Measured as response 0 (extremely dissatisfied) to 10 (extremely satisfied) to the question *"All things considered, how satisfied are you with your life as a whole?"*
+
+-   **Wellbeing (`wellbe_OT`)**: "captures a person's emotional state and touches on their mental state"
+
+    -   Measured as average response ranging from "at no time" to "all of the time" to three items about how often in the last two weeks respondents *"have been cheerful and in good spirits"*, *"have felt calm and relaxed",* and *"have been active and vigorous"*
+
+-   **Happiness (`happy_OT`**): a person's current positive emotional condition
+
+    -   Measured as response 0 (extremely unhappy) to 10 (extremely happy) to the question *"Taking all things together, how happy would you say you are?"*
+
+## Considerations for modeling 
+
+::: question
+We are going to fit a separate linear mixed model to understand the impact of sleep on each of these quality of life outcomes.
+
+Do you think a linear mixed model is the best choice? Why or why not?
+:::
+
+```{r}
+#| echo: false
+
+library(countdown)
+countdown(minutes = 2, margin = 1.25)
+```
+
+## Sleep variables 
+
+::: question
+On page 6, the authors explain how each sleep variable is measured.
+
+Describe how **sleep duration (`SDweek_OT`)**, **quality of sleep (`slequal_OT`)** and **social jetlag (`jetlag_OT`)** are measured.
+:::
+
+```{r}
+#| echo: false
+
+library(countdown)
+countdown(minutes = 4, margin = 1.25)
+```
+
+## Other covariates 
+
+-   **gender**
+-   **highest level of education attained** (basic and secondary vocational, secondary with maturita, tertiary education)
+-   **household income** (divided into 6 categories)
+-   **age**
+-   **employment status** (employed, self-employed, unemployed, student, retired, on maternity leave)
+-   **number of children below age 5 in the household**
+-   **wave** (2018, 2019, 2020)
+
+# Exploratory data analysis 
+
+AE
+
+-   make sure to put in the AE to make certain variables categorical
+
+# Modeling 
+
+::: question
+Read the *Statistical analysis strategy* on page 7. Outline the authors' analysis steps.
+:::
+
+```{r}
+#| echo: false
+
+library(countdown)
+countdown(minutes = 6, margin = 1.25)
+```
+
+# Modeling
+
+AE - fit the model for your group
+
+-   talk about why the code has that weird control line in it
+
+## Testing hypotheses
+
+The authors want to test the following hypotheses:
+
+-   *H1A. Individuals with on average longer sleep duration have higher levels of QoL than individuals with shorter sleep duration.*
+
+-   *H1B. Increases in sleep duration over time are related to higher levels of QoL.*
+
+-   *H2A. Individuals with on average higher sleep quality have higher levels of QoL than individuals with lower sleep quality.*
+
+-   *H2B. Improvements in sleep quality over time are related to higher levels of QoL.*
+
+-   *H3A. Individuals with on average lower social jetlag levels have higher levels of QoL than individuals with higher social jetlag.*
+
+-   *H3B. Decreases in social jetlag over time are related to higher levels of QoL.*
+
+::: question
+-   What term(s) in the model can we use to test each hypothesis?
+
+-   What are you conclusions?
+:::
+
+## Generalizability 
+
+## Limitations
+
+## References

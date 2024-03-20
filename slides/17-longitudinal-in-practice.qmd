@@ -180,6 +180,7 @@ Complete the Exploratory Data Analysis section.
 :::
 
 ```{r}
+#| echo: false
 library(countdown)
 countdown(minutes = 8, margin = 1.25)
 ```

@@ -1,0 +1,327 @@
+---
+title: "Modeling data with three (or more) levels"
+date: "03.25.24"
+date-format: "MMM DD, YYYY"
+author: "Prof. Maria Tackett"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(GGally)
+library(knitr)
+library(patchwork)
+library(kableExtra)
+library(lme4)
+library(broom.mixed)
+```
+
+## Announcements
+
+-   Quiz 04 - March 26 \~ 9am - March 28 at noon
+
+    -   Covers readings and lectures March 4 - 20
+
+    -   Longitudinal modeling, Chapter 9 of *BMLR*
+
+-   Project 02
+
+    -   Presentations April 3 during lecture
+    -   Written report + GitHub repo due April 4 at 11:59pm
+
+-   Final project - Round 1 submission (optional) due April 25
+
+## Topics
+
+-   Write form of model for models with more than two levels
+
+-   Interpret fixed and random effects at each level
+
+-   See how three-level models are used in data analysis example
+
+::: callout-note
+The notes are based on Chapter 10 of @roback2021beyond and @jones1991specifying unless otherwise noted.
+:::
+
+# Sleep study
+
+## Data structure
+
+Let's look at the study about the effect of sleep on quality of life indicators. The data follow a multilevel structure with 3 levels
+
+-   **Level Three:** Household
+
+    -   **Level Two:** Individual
+
+        -   **Level One:** Wave
+
+## Outcomes of interest {.midi}
+
+We will focus on three of the outcomes:
+
+::: incremental
+-   **Life satisfaction (`lfstat_OT`)**: "represents a stable assessment of general feelings about life and indicates a long-term attitude"
+
+    -   Measured as response, ranging from 0 (extremely dissatisfied) to 10 (extremely satisfied), to the question *"All things considered, how satisfied are you with your life as a whole?"*
+
+-   **Wellbeing (`wellbe_OT`)**: "captures a person's emotional state and touches on their mental state"
+
+    -   Measured as average response, ranging from "at no time" to "all of the time", to three items about how often in the last two weeks respondents *"have been cheerful and in good spirits"*, *"have felt calm and relaxed",* and *"have been active and vigorous"*
+:::
+
+## Outcomes of interest {.midi}
+
+-   **Happiness (`happy_OT`**): a person's current positive emotional condition
+
+    -   Measured as response, ranging from 0 (extremely unhappy) to 10 (extremely happy), to the question *"Taking all things together, how happy would you say you are?"*
+
+## Sleep variables
+
+-   **sleep duration (`SDweek_OT`)**
+
+-   **quality of sleep (`slequal_OT`)**
+
+-   **social jetlag (`jetlag_OT`)**
+
+## Other covariates
+
+-   **sex**
+-   **highest level of education attained** (basic and secondary vocational, secondary with maturita, tertiary education)
+-   **household income** (divided into 6 categories)
+-   **age**
+-   **employment status** (employed, self-employed, unemployed, student, retired, on maternity leave)
+-   **number of children below age 5 in the household**
+-   **wave** (2018, 2019, 2020)
+
+## Conclusions 
+
+Recall the Modeling section in the `lec-17` AE.
+
+::: question
+What are your conclusions about the effects of sleep on quality of life indicators?
+:::
+
+## Limitations
+
+::: question
+What are some potential limitations of this study?
+:::
+
+# Modeling data with three (or more) levels
+
+## Data: Housing prices in Southampton {.midi}
+
+The data includes the price and characteristics for 918 houses sold between 1986 and 1991 in Southampton, England. The data were originally collected from a local real estate agency and were analyzed in @jones1991specifying. The primary variables of interest are
+
+-   **price**: Sales price in thousands of £
+-   **Age**: Age of the house
+-   **Bedrooms**: Number of bedrooms
+-   **House Type**: (semi-detached, detached, bungalow, terrace, flat)
+-   **Central heating**: Whether house has central heating (0: yes, 1: no)
+-   **Garage**: Number of garages (none, single, double)
+-   **Districts**: one of 34 districts (baseline: )
+-   **Half-years**: Half-year periods beginning the second half of 1986
+
+## Data structure
+
+![Portions of Figure 2b from @jones1991specifying](images/18/figure-2b.png){fig-align="center" width="75%"}
+
+::: callout-note
+The paper uses different symbols to represent parameters than what is in the textbook. The slides will follow the textbook.
+:::
+
+## Unconditional means model
+
+$$
+Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk}
+$$
+
+**Level One** (house)
+
+$Y_{ijk} = a_{ij} + \epsilon_{ijk}, \hspace{10mm} \epsilon_{ijk} \sim N(0, \sigma^2)$
+
+**Level Two** (time)
+
+$a_{ij} = a_i + u_{ij}, \hspace{10mm} u_{ij} \sim N(0, \sigma^2_u)$
+
+**Level Three** (district)
+
+$a_{i} = \alpha_0 + \tilde{u}_{i}, \hspace{10mm} \tilde{u}_{i} \sim N(0, \sigma^2_{\tilde{u}})$
+
+## Label the terms of the composite model {.midi}
+
+-   $Y_{ijk}$: Price of house $k^{th}$ sold in the $j^{th}$ time period in district $i$
+
+-   $\alpha_0$:
+
+-   $\epsilon_{ijk}$:
+
+-   $u_{ij}$
+
+-   $\tilde{u}_i$:
+
+<hr>
+
+-   $\sigma$: House-to-house variability within a given time period
+
+-   $\sigma_{u}$: Variability over time within a district
+
+-   $\sigma_{\tilde{u}}$: District-to-district variability
+
+## Model A
+
+::: columns
+::: {.column width="50%"}
+![](images/18/fixed-effects-modela.png){fig-align="center" width="80%"}
+:::
+
+::: {.column width="50%"}
+![Table 1 from Jones (1991)](images/18/random-effects-modela.png){fig-align="center" width="80%"}
+:::
+:::
+
+<br>
+
+::: question
+Interpret $\hat{\beta}_0$ (this is $\alpha_0$ in our model notation)
+:::
+
+::: aside
+Table 1 from @jones1991specifying
+:::
+
+## Model A: Random effects
+
+::: columns
+::: {.column width="50%"}
+![](images/18/random-effects-modela.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+::: question
+1.  Calculate the intraclass correlation for time.
+2.  Calculate the intraclass correlation coefficient for districts.
+3.  Is there evidence the multilevel model structure is useful for this data?
+:::
+:::
+:::
+
+## Model B: Covariates + random intercepts {.small}
+
+::: columns
+::: {.column width="50%"}
+![](images/18/fixed-effects-modelb.png){fig-align="center" width="80%"}
+:::
+
+::: {.column width="50%"}
+![](images/18/random-effects-modelb.png){fig-align="center" width="80%"}
+
+::: question
+1.  Write the composite model.
+2.  Which variables appear to have a statistically significant effect on price?
+3.  Use this model to interpret the effect of bedrooms on the price of houses in Southampton.
+:::
+:::
+:::
+
+::: aside
+Table 1 from @jones1991specifying
+:::
+
+## Model C: Additional random effect {.midi}
+
+::: columns
+::: {.column width="50%"}
+![](images/18/fixed-effects-modelc.png){fig-align="center" width="80%"}
+:::
+
+::: {.column width="50%"}
+![](images/18/random-effects-modelc.png){fig-align="center" width="80%"}
+
+::: question
+1.  How does this model differ from Model B?
+2.  Write the composite model.
+3.  Write the Level One, Level Two, and Level Three models.
+:::
+:::
+:::
+
+::: aside
+Table 1 from @jones1991specifying
+:::
+
+## Visualizing price by district over time
+
+::: columns
+::: {.column width="50%"}
+![Figure 3 from @jones1991specifying](images/18/figure-3.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+::: question
+1.  What do you observe from the plot?
+2.  What terms in the model can be understood from the plot?
+3.  How might you use this type of plot to support decisions you make in the analysis?
+:::
+:::
+:::
+
+## Price by district and bedrooms {.midi}
+
+::: columns
+::: {.column width="50%"}
+![Figure 4 from @jones1991specifying](images/18/figure-4.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+::: question
+1.  What do you observe from the plot?
+2.  What terms in the model can be understood from the plot?
+3.  How might you use this type of plot to support decisions you make in the analysis?
+:::
+
+<br>
+
+::: question
+How does our understanding of the effect of bedrooms differ in this model compared to Model B?
+:::
+:::
+:::
+
+## References

@@ -129,7 +129,7 @@ We will focus on three of the outcomes:
 -   **number of children below age 5 in the household**
 -   **wave** (2018, 2019, 2020)
 
-## Conclusions 
+## Conclusions
 
 Recall the Modeling section in the `lec-17` AE.
 
@@ -155,7 +155,7 @@ The data includes the price and characteristics for 918 houses sold between 1986
 -   **House Type**: (semi-detached, detached, bungalow, terrace, flat)
 -   **Central heating**: Whether house has central heating (0: yes, 1: no)
 -   **Garage**: Number of garages (none, single, double)
--   **Districts**: one of 34 districts (baseline: )
+-   **Districts**: one of 34 districts
 -   **Half-years**: Half-year periods beginning the second half of 1986
 
 ## Data structure
@@ -163,7 +163,7 @@ The data includes the price and characteristics for 918 houses sold between 1986
 ![Portions of Figure 2b from @jones1991specifying](images/18/figure-2b.png){fig-align="center" width="75%"}
 
 ::: callout-note
-The paper uses different symbols to represent parameters than what is in the textbook. The slides will follow the textbook.
+You can access the paper on [Canvas](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1096423).The paper uses different symbols to represent parameters than what is in the textbook. The slides will follow the textbook.
 :::
 
 ## Unconditional means model
@@ -172,13 +172,19 @@ $$
 Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk}
 $$
 
-**Level One** (house)
+. . .
+
+**Level One** (house within time)
 
 $Y_{ijk} = a_{ij} + \epsilon_{ijk}, \hspace{10mm} \epsilon_{ijk} \sim N(0, \sigma^2)$
 
-**Level Two** (time)
+. . .
+
+**Level Two** (time within district)
 
 $a_{ij} = a_i + u_{ij}, \hspace{10mm} u_{ij} \sim N(0, \sigma^2_u)$
+
+. . .
 
 **Level Three** (district)
 
@@ -186,7 +192,7 @@ $a_{i} = \alpha_0 + \tilde{u}_{i}, \hspace{10mm} \tilde{u}_{i} \sim N(0, \sigma^
 
 ## Label the terms of the composite model {.midi}
 
--   $Y_{ijk}$: Price of house $k^{th}$ sold in the $j^{th}$ time period in district $i$
+-   $Y_{ijk}$: Price of house $k$ in district $i$ sold in time period $j$
 
 -   $\alpha_0$:
 
@@ -198,11 +204,13 @@ $a_{i} = \alpha_0 + \tilde{u}_{i}, \hspace{10mm} \tilde{u}_{i} \sim N(0, \sigma^
 
 <hr>
 
--   $\sigma$: House-to-house variability within a given time period
+. . .
 
--   $\sigma_{u}$: Variability over time within a district
+-   $\sigma$: Variance component describing house-to-house variability within a given time period
 
--   $\sigma_{\tilde{u}}$: District-to-district variability
+-   $\sigma_{u}$: Variance component describing variability between time periods within a district
+
+-   $\sigma_{\tilde{u}}$: Variance component describing district-to-district variability
 
 ## Model A
 
@@ -255,7 +263,7 @@ Table 1 from @jones1991specifying
 ::: question
 1.  Write the composite model.
 2.  Which variables appear to have a statistically significant effect on price?
-3.  Use this model to interpret the effect of bedrooms on the price of houses in Southampton.
+3.  Use this model to interpret the effect of a double garage on the price of houses in Southampton.
 :::
 :::
 :::

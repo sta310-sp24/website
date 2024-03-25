@@ -488,7 +488,7 @@ Prof.&nbsp;Maria Tackett
 <li><strong>House Type</strong>: (semi-detached, detached, bungalow, terrace, flat)</li>
 <li><strong>Central heating</strong>: Whether house has central heating (0: yes, 1: no)</li>
 <li><strong>Garage</strong>: Number of garages (none, single, double)</li>
-<li><strong>Districts</strong>: one of 34 districts (baseline: )</li>
+<li><strong>Districts</strong>: one of 34 districts</li>
 <li><strong>Half-years</strong>: Half-year periods beginning the second half of 1986</li>
 </ul>
 </section>
@@ -504,7 +504,7 @@ Prof.&nbsp;Maria Tackett
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>The paper uses different symbols to represent parameters than what is in the textbook. The slides will follow the textbook.</p>
+<p>You can access the paper on <a href="https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1096423">Canvas</a>.The paper uses different symbols to represent parameters than what is in the textbook. The slides will follow the textbook.</p>
 </div>
 </div>
 </div>
@@ -514,28 +514,36 @@ Prof.&nbsp;Maria Tackett
 <p><span class="math display">\[
 Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk}
 \]</span></p>
-<p><strong>Level One</strong> (house)</p>
+<div class="fragment">
+<p><strong>Level One</strong> (house within time)</p>
 <p><span class="math inline">\(Y_{ijk} = a_{ij} + \epsilon_{ijk}, \hspace{10mm} \epsilon_{ijk} \sim N(0, \sigma^2)\)</span></p>
-<p><strong>Level Two</strong> (time)</p>
+</div>
+<div class="fragment">
+<p><strong>Level Two</strong> (time within district)</p>
 <p><span class="math inline">\(a_{ij} = a_i + u_{ij}, \hspace{10mm} u_{ij} \sim N(0, \sigma^2_u)\)</span></p>
+</div>
+<div class="fragment">
 <p><strong>Level Three</strong> (district)</p>
 <p><span class="math inline">\(a_{i} = \alpha_0 + \tilde{u}_{i}, \hspace{10mm} \tilde{u}_{i} \sim N(0, \sigma^2_{\tilde{u}})\)</span></p>
+</div>
 </section>
 <section id="label-the-terms-of-the-composite-model" class="slide level2 midi">
 <h2>Label the terms of the composite model</h2>
 <ul>
-<li><p><span class="math inline">\(Y_{ijk}\)</span>: Price of house <span class="math inline">\(k^{th}\)</span> sold in the <span class="math inline">\(j^{th}\)</span> time period in district <span class="math inline">\(i\)</span></p></li>
+<li><p><span class="math inline">\(Y_{ijk}\)</span>: Price of house <span class="math inline">\(k\)</span> in district <span class="math inline">\(i\)</span> sold in time period <span class="math inline">\(j\)</span></p></li>
 <li><p><span class="math inline">\(\alpha_0\)</span>:</p></li>
 <li><p><span class="math inline">\(\epsilon_{ijk}\)</span>:</p></li>
 <li><p><span class="math inline">\(u_{ij}\)</span></p></li>
 <li><p><span class="math inline">\(\tilde{u}_i\)</span>:</p></li>
 </ul>
 <hr>
+<div class="fragment">
 <ul>
-<li><p><span class="math inline">\(\sigma\)</span>: House-to-house variability within a given time period</p></li>
-<li><p><span class="math inline">\(\sigma_{u}\)</span>: Variability over time within a district</p></li>
-<li><p><span class="math inline">\(\sigma_{\tilde{u}}\)</span>: District-to-district variability</p></li>
+<li><p><span class="math inline">\(\sigma\)</span>: Variance component describing house-to-house variability within a given time period</p></li>
+<li><p><span class="math inline">\(\sigma_{u}\)</span>: Variance component describing variability between time periods within a district</p></li>
+<li><p><span class="math inline">\(\sigma_{\tilde{u}}\)</span>: Variance component describing district-to-district variability</p></li>
 </ul>
+</div>
 </section>
 <section id="model-a" class="slide level2">
 <h2>Model A</h2>
@@ -602,7 +610,7 @@ Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk}
 <ol type="1">
 <li>Write the composite model.</li>
 <li>Which variables appear to have a statistically significant effect on price?</li>
-<li>Use this model to interpret the effect of bedrooms on the price of houses in Southampton.</li>
+<li>Use this model to interpret the effect of a double garage on the price of houses in Southampton.</li>
 </ol>
 </div>
 </div>

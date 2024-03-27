@@ -432,13 +432,20 @@ Prof.&nbsp;Maria Tackett
 <section id="unconditional-means-model" class="slide level2">
 <h2>Unconditional means model</h2>
 <p><span class="math display">\[
-Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk}
+\begin{aligned}
+&amp;Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk} \\[5pt]
+&amp;\tilde{u}_i \sim N(0, \sigma^2_{\tilde{u}}) \hspace{8mm} u_{ij} \sim N(0, \sigma^2_{u}) \hspace{8mm} \epsilon_{ijk} \sim N(0, \sigma^2)
+\end{aligned}
 \]</span></p>
 <div class="fragment">
 <p><strong>Level One</strong> (house within time)</p>
 <p><span class="math inline">\(Y_{ijk} = a_{ij} + \epsilon_{ijk}, \hspace{10mm} \epsilon_{ijk} \sim N(0, \sigma^2)\)</span></p>
+</div>
+<div class="fragment">
 <p><strong>Level Two</strong> (time within district)</p>
 <p><span class="math inline">\(a_{ij} = a_i + u_{ij}, \hspace{10mm} u_{ij} \sim N(0, \sigma^2_u)\)</span></p>
+</div>
+<div class="fragment">
 <p><strong>Level Three</strong> (district)</p>
 <p><span class="math inline">\(a_{i} = \alpha_0 + \tilde{u}_{i}, \hspace{10mm} \tilde{u}_{i} \sim N(0, \sigma^2_{\tilde{u}})\)</span></p>
 </div>
@@ -636,7 +643,7 @@ Cov(Y_1,Y_2) &amp; = a_1 b_1 Var(X_1) + a_2 b_2 Var(X_2) + (a_1 b_2 + a_2 b_1) C
 <ol type="1">
 <li>Use Model B to write the derivation of <span class="math inline">\(Var(Y_{ijk})\)</span>, the variance of an individual observation.</li>
 <li>Use Model B to write the derivation of <span class="math inline">\(Cov(Y_{ijk}, Y_{ijk'})\)</span>, the covariance between houses sold in the same time period that are in the same district.</li>
-<li>Write the derivation of <span class="math inline">\(Cov(\textbf{Y}_{ij})\)</span>, the covariance matrix for houses sold in the same time period that are in the same district.</li>
+<li>Write <span class="math inline">\(Cov(\mathbf{Y}_{ij})\)</span>, covariance matrix for houses sold in the same time period in the same district</li>
 </ol>
 </div>
 </section>

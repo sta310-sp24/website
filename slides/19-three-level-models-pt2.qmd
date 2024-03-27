@@ -104,7 +104,10 @@ You can access the paper on [Canvas](https://canvas.duke.edu/courses/25310/files
 ## Unconditional means model
 
 $$
-Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk}
+\begin{aligned}
+&Y_{ijk} = \alpha_0 + \tilde{u}_i + u_{ij} + \epsilon_{ijk} \\[5pt]
+&\tilde{u}_i \sim N(0, \sigma^2_{\tilde{u}}) \hspace{8mm} u_{ij} \sim N(0, \sigma^2_{u}) \hspace{8mm} \epsilon_{ijk} \sim N(0, \sigma^2)
+\end{aligned}
 $$
 
 . . .
@@ -113,9 +116,13 @@ $$
 
 $Y_{ijk} = a_{ij} + \epsilon_{ijk}, \hspace{10mm} \epsilon_{ijk} \sim N(0, \sigma^2)$
 
+. . .
+
 **Level Two** (time within district)
 
 $a_{ij} = a_i + u_{ij}, \hspace{10mm} u_{ij} \sim N(0, \sigma^2_u)$
+
+. . .
 
 **Level Three** (district)
 
@@ -283,7 +290,7 @@ Let $Y_{ijk}$ be the sales price for the house $k$ in district $i$ sold in time 
 ::: question
 1.  Use Model B to write the derivation of $Var(Y_{ijk})$, the variance of an individual observation.
 2.  Use Model B to write the derivation of $Cov(Y_{ijk}, Y_{ijk'})$, the covariance between houses sold in the same time period that are in the same district.
-3.  Write the derivation of $Cov(\textbf{Y}_{ij})$, the covariance matrix for houses sold in the same time period that are in the same district.
+3.  Write $Cov(\mathbf{Y}_{ij})$, covariance matrix for houses sold in the same time period in the same district
 :::
 
 ## References

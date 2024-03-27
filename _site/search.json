@@ -1418,7 +1418,7 @@
     "href": "slides/19-three-level-models-pt2.html#unconditional-means-model",
     "title": "Modeling data with three (or more) levels",
     "section": "Unconditional means model",
-    "text": "Unconditional means model\n\\[\nY_{ijk} = \\alpha_0 + \\tilde{u}_i + u_{ij} + \\epsilon_{ijk}\n\\]\n\nLevel One (house within time)\n\\(Y_{ijk} = a_{ij} + \\epsilon_{ijk}, \\hspace{10mm} \\epsilon_{ijk} \\sim N(0, \\sigma^2)\\)\nLevel Two (time within district)\n\\(a_{ij} = a_i + u_{ij}, \\hspace{10mm} u_{ij} \\sim N(0, \\sigma^2_u)\\)\nLevel Three (district)\n\\(a_{i} = \\alpha_0 + \\tilde{u}_{i}, \\hspace{10mm} \\tilde{u}_{i} \\sim N(0, \\sigma^2_{\\tilde{u}})\\)"
+    "text": "Unconditional means model\n\\[\n\\begin{aligned}\n&Y_{ijk} = \\alpha_0 + \\tilde{u}_i + u_{ij} + \\epsilon_{ijk} \\\\[5pt]\n&\\tilde{u}_i \\sim N(0, \\sigma^2_{\\tilde{u}}) \\hspace{8mm} u_{ij} \\sim N(0, \\sigma^2_{u}) \\hspace{8mm} \\epsilon_{ijk} \\sim N(0, \\sigma^2)\n\\end{aligned}\n\\]\n\nLevel One (house within time)\n\\(Y_{ijk} = a_{ij} + \\epsilon_{ijk}, \\hspace{10mm} \\epsilon_{ijk} \\sim N(0, \\sigma^2)\\)\n\n\nLevel Two (time within district)\n\\(a_{ij} = a_i + u_{ij}, \\hspace{10mm} u_{ij} \\sim N(0, \\sigma^2_u)\\)\n\n\nLevel Three (district)\n\\(a_{i} = \\alpha_0 + \\tilde{u}_{i}, \\hspace{10mm} \\tilde{u}_{i} \\sim N(0, \\sigma^2_{\\tilde{u}})\\)"
   },
   {
     "objectID": "slides/19-three-level-models-pt2.html#model-a",
@@ -1495,7 +1495,7 @@
     "href": "slides/19-three-level-models-pt2.html#variance-and-covariance-derivations",
     "title": "Modeling data with three (or more) levels",
     "section": "Variance and covariance derivations",
-    "text": "Variance and covariance derivations\n\n\nUse Model B to write the derivation of \\(Var(Y_{ijk})\\), the variance of an individual observation.\nUse Model B to write the derivation of \\(Cov(Y_{ijk}, Y_{ijk'})\\), the covariance between houses sold in the same time period that are in the same district.\nWrite the derivation of \\(Cov(\\textbf{Y}_{ij})\\), the covariance matrix for houses sold in the same time period that are in the same district."
+    "text": "Variance and covariance derivations\n\n\nUse Model B to write the derivation of \\(Var(Y_{ijk})\\), the variance of an individual observation.\nUse Model B to write the derivation of \\(Cov(Y_{ijk}, Y_{ijk'})\\), the covariance between houses sold in the same time period that are in the same district.\nWrite \\(Cov(\\mathbf{Y}_{ij})\\), covariance matrix for houses sold in the same time period in the same district"
   },
   {
     "objectID": "slides/19-three-level-models-pt2.html#references",

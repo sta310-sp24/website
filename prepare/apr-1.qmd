@@ -1,0 +1,5 @@
+---
+title: "Prepare for April 1 lecture"
+---
+
+-   Read [BMLR: Sections 11.1 - 11.9](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html)

@@ -134,7 +134,7 @@ The goal of the analysis plan is for you team to outline your approach for the t
 You may turn in the analysis plan along with any initial results to receive feedback from the teaching team. To do so,
 
 1.  Write your analysis plan in `analysis-plan.qmd` . Render and push the updated document to your team's GitHub repo.
-2.  Open a new issue called "Analysis Plan". In the body of the issue add the tag `@sta310-sp24/teaching-team`. If you have any specific questions you'd like the teaching team to address, add those in the body of the issue as well.
+2.  Open a new issue called "Analysis Plan". In the body of the issue add the tag `@sta310-sp24/teaching-team`. <!--# change the tag to my Github username and the TAs. I don't get a notification for teaching-team--> If you have any specific questions you'd like the teaching team to address, add those in the body of the issue as well.
 
 ::: callout-important
 The analysis plan is optional. If you would like to receive feedback from the teaching team, you must open the issue and submit the analysis plan on GitHub by **Friday, March 8 at 12pm (noon).**

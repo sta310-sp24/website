@@ -1,0 +1,158 @@
+---
+title: "Lecture 20: Multilevel generalized linear models"
+date: "`r Sys.Date()`"
+fig_height: 3
+fig_width: 5
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(lme4)
+library(broom.mixed)
+library(viridis)
+```
+
+```{r}
+basketball <- read_csv("data/basketball0910.csv")
+```
+
+See [Section 11.1: Multilevel generalized linear models](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html) for the full codebook.
+
+# Exploratory data analysis
+
+## Univariate EDA
+
+::: callout-note
+## Exercise 1
+
+Make a table or visualization of the distribution of the response variable,`foul.home`. What proportion of fouls are called on the home team?
+:::
+
+::: callout-note
+## Exercise 2
+
+A histogram of the primary predictor of interest, `foul.diff` is below. Describe the distribution. Based on this, does it appear referees try to even out fouls called on the home and visiting teams?
+:::
+
+```{r}
+ggplot(data = basketball, aes(x = foul.diff)) + 
+  geom_histogram(binwidth = 1, color = "black", fill = "steelblue") + 
+  labs(x = "Difference = Home - Visitor", 
+       title = "Distribution of difference in fouls", 
+       subtitle = "before current foul was called")
+```
+
+::: callout-note
+## Exercise 3
+
+Below is the average total number of fouls in all games in which a given team was the home team.
+:::
+
+```{r}
+basketball |>
+  group_by(hometeam, game) |>
+  summarise(total_fouls = sum(foul.home, foul.vis)) |>
+  group_by(hometeam) |>
+  summarise(avg_foul = sum(total_fouls) / n())
+```
+
+::: callout-note
+## Exercise 4
+
+-   The most total number fouls were called, on average, when which team was the home team? How many fouls were called on average?
+
+-   The least total number fouls were called, on average, when which team was the home team? How many fouls were called on average?
+
+-   Does this support including a random effect for home team in the model? Explain.
+:::
+
+## Bivariate EDA
+
+::: callout-note
+## Exercise 5
+
+Below is a conditional density plot of `score.diff`, the score differential before the foul was called versus the response variable `foul.home`. Describe the relationship between score differential and the probability a foul called was on the home team.
+:::
+
+```{r}
+ggplot(data = basketball, aes(x = score.diff, fill = factor(foul.home))) + 
+  geom_density(position = "fill", adjust = 2, alpha = 0.7) + 
+  labs(x = "Score difference (home - visitor)", 
+       y = "Probability of home foul", 
+       fill = "Home foul",
+       title = "Score difference vs. probability of home foul") + 
+  scale_fill_viridis_d(end = 0.9)
+```
+
+::: callout-note
+## Exercise 6
+
+Make a conditional density plot of `foul.diff` versus the response variable `foul.home`. Describe the relationship between foul differential and the probability a foul called was on the home team.
+:::
+
+```{r}
+# conditional density plot
+
+```
+
+::: callout-note
+## Exercise 7
+
+Make an empirical logit plot of `foul.diff` versus the logit of `foul.home`. Based on this plot, is the logit link function appropriate to model this data?
+:::
+
+```{r}
+# empirical logit 
+
+```
+
+# Multilevel model
+
+## Original model
+
+```{r}
+model1 <- glmer(foul.home ~ foul.diff + (foul.diff|game), 
+                data = basketball, family = binomial)
+tidy(model1)
+```
+
+## Reparameterize model
+
+::: callout-note
+## Exercise 8
+
+Which term(s) should we remove to try to address boundary constraint?
+:::
+
+::: callout-note
+## Exercise 9
+
+Refit the model with these terms removed. Call this `model2`.
+:::
+
+```{r}
+# refit model 
+
+```
+
+::: callout-note
+Which model do you choose - model1 or model2? Explain.
+:::
+
+## Interpret coefficients
+
+Interpret the applicable coefficients in the selected model:
+
+-   $\hat{\alpha}_0$:
+
+-   $\hat{\beta}_0$:
+
+-   $\hat{\sigma}_u$:
+
+-   $\hat{\sigma}_v$:
+
+-   $\hat{\rho}_{uv}$:

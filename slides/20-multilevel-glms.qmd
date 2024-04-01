@@ -142,7 +142,7 @@ countdown(minutes = 6, seconds = 0,
           margin = "5%")
 ```
 
-## Logistic regression
+## Logistic regression {.midi}
 
 Start with a logistic regression model treating all observations as independent
 

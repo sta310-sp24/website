@@ -58,6 +58,12 @@ library(broom.mixed)
     -   Presentations April 3 during lecture
     -   Written report + GitHub repo due April 4 at 11:59pm
 
+-   Looking ahead:
+
+    -   HW 05 released on Thursday
+
+    -   No office hours or lecture on Monday, April 8
+
 -   Final project - Round 1 submission (optional) due April 25
 
 ## Topics
@@ -100,6 +106,7 @@ basketball |>
 
 ## Modeling approach
 
+::: incremental
 -   `foul.home` is a binary response variable (1: foul called on home team, 0: foul called on visiting team)
 
     `r emo::ji("white_check_mark")` Use a generalized linear model, specifically one with the logit link function
@@ -109,6 +116,9 @@ basketball |>
     -   Covariates at individual foul level and game level
 
         `r emo::ji("white_check_mark")` Use a multilevel model
+:::
+
+. . .
 
 We will combine these and fit a **multilevel generalized linear model** with a logit link function
 
@@ -133,7 +143,7 @@ We will combine these and fit a **multilevel generalized linear model** with a l
 # Application exercise
 
 ::: appex
-📋 [sta310-sp24.netlify.app/ae/lec-20-mutlievel-glm](https://sta310-sp24.netlify.app/ae/lec-20-mutlievel-glm.html)
+📋 [sta310-sp24.netlify.app/ae/lec-20-mutlievel-glm](https://sta310-sp24.netlify.app/ae/lec-20-multilevel-glm.html)
 :::
 
 ```{r echo = F}
@@ -146,7 +156,9 @@ countdown(minutes = 6, seconds = 0,
 
 Start with a logistic regression model treating all observations as independent
 
-Quick analysis to get initial intuition about research question sand important variables, not be used for final conclusions
+Quick analysis to get initial intuition about research question sand important variables, not for final conclusions
+
+. . .
 
 ```{r echo = F}
 logistic_model  = glm(foul.home ~ foul.diff + score.diff + lead.home + 
@@ -186,20 +198,36 @@ $$
 
 **Level One models**
 
-$$\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) = a_i + b_i ~ \text{foul.diff}_{ij}$$ **Level Two models**
+$$\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) = a_i + b_i ~ \text{foul.diff}_{ij}$$
 
-$$a_i = \alpha_0 + u_i\hspace{20mm} b_i = \beta_0 + v_i$$
+<br>
 
-$$\left[ \begin{array}{c}
-            u_i \\ v_i
-          \end{array}  \right] \sim N \left( \left[
-          \begin{array}{c}
-            0 \\ 0
-          \end{array} \right], \left[
-          \begin{array}{cc}
-            \sigma_u^{2} & \sigma_{uv} \\
-            \sigma_{uv} & \sigma_{v}^{2}
-          \end{array} \right] \right)$$
+**Level Two models**
+
+Explain the game-to-game variability in the intercepts ($a_i$) and the slopes ($b_i$)
+
+## Level One Models {.small}
+
+**For Game 1**
+
+```{r}
+level_one_model <- basketball |>
+  filter(game == 1) |>
+  glm(factor(foul.home) ~ foul.diff, data = _, family = binomial)
+
+tidy(level_one_model) |> kable(digits = 3)
+```
+
+. . .
+
+**For Game 2**
+
+```{r}
+level_one_model <- basketball |> 
+  filter(game == 2) |> 
+  glm(factor(foul.home) ~ foul.diff, data = _, family = binomial)
+tidy(level_one_model) |> kable(digits = 3)
+```
 
 ## Level One Models
 
@@ -268,7 +296,13 @@ level_one_coef |>
 :::
 :::
 
-## Number of fouls per game
+<br>
+
+::: question
+What do we learn from the distribution of the slopes and intercepts?
+:::
+
+## Consider number of fouls per game
 
 ```{r echo = F, out.width = "70%"}
 basketball |>
@@ -281,9 +315,30 @@ basketball |>
 
 . . .
 
-`r emo::ji("warning")` In the two-stage approach, games with 3 fouls are treated with equal weight as games with 20 + fouls
+::: callout-warning
+In the two-stage approach, games with 3 fouls are treated with equal weight as games with 20 + fouls
+:::
 
 # Unified multilevel model
+
+## Models by level
+
+**Level One models**
+
+$$\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) = a_i + b_i ~ \text{foul.diff}_{ij}$$ **Level Two models**
+
+$$a_i = \alpha_0 + u_i\hspace{20mm} b_i = \beta_0 + v_i$$
+
+$$\left[ \begin{array}{c}
+            u_i \\ v_i
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_u^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)$$
 
 ## Composite model
 
@@ -408,6 +463,8 @@ Best to try to deal with boundary constraints, but you can sometimes leave the m
 ```{r echo = F}
 tidy(model1) |> kable(digits = 3)
 ```
+
+<br>
 
 ::: question
 1.  Which term(s) should we remove to try to address boundary constraint?

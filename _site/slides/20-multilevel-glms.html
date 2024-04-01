@@ -435,6 +435,11 @@ Prof.&nbsp;Maria Tackett
 <li>Presentations April 3 during lecture</li>
 <li>Written report + GitHub repo due April 4 at 11:59pm</li>
 </ul></li>
+<li><p>Looking ahead:</p>
+<ul>
+<li><p>HW 05 released on Thursday</p></li>
+<li><p>No office hours or lecture on Monday, April 8</p></li>
+</ul></li>
 <li><p>Final project - Round 1 submission (optional) due April 25</p></li>
 </ul>
 </section>
@@ -602,16 +607,20 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="modeling-approach" class="slide level2">
 <h2>Modeling approach</h2>
+<div>
 <ul>
-<li><p><code>foul.home</code> is a binary response variable (1: foul called on home team, 0: foul called on visiting team)</p>
+<li class="fragment"><p><code>foul.home</code> is a binary response variable (1: foul called on home team, 0: foul called on visiting team)</p>
 <p>✅ Use a generalized linear model, specifically one with the logit link function</p></li>
-<li><p>Data has a multilevel structure</p>
+<li class="fragment"><p>Data has a multilevel structure</p>
 <ul>
-<li><p>Covariates at individual foul level and game level</p>
+<li class="fragment"><p>Covariates at individual foul level and game level</p>
 <p>✅ Use a multilevel model</p></li>
 </ul></li>
 </ul>
+</div>
+<div class="fragment">
 <p>We will combine these and fit a <strong>multilevel generalized linear model</strong> with a logit link function</p>
+</div>
 </section>
 <section>
 <section id="exploratory-data-analysis" class="title-slide slide level1 center">
@@ -638,11 +647,11 @@ Prof.&nbsp;Maria Tackett
 <section id="application-exercise" class="title-slide slide level1 center">
 <h1>Application exercise</h1>
 <div class="appex">
-<p>📋 <a href="https://sta310-sp24.netlify.app/ae/lec-20-mutlievel-glm.html">sta310-sp24.netlify.app/ae/lec-20-mutlievel-glm</a></p>
+<p>📋 <a href="https://sta310-sp24.netlify.app/ae/lec-20-multilevel-glm.html">sta310-sp24.netlify.app/ae/lec-20-mutlievel-glm</a></p>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_de2e3f7e" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_5398b1c2" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -652,7 +661,8 @@ Prof.&nbsp;Maria Tackett
 <section id="logistic-regression" class="slide level2 midi">
 <h2>Logistic regression</h2>
 <p>Start with a logistic regression model treating all observations as independent</p>
-<p>Quick analysis to get initial intuition about research question sand important variables, not be used for final conclusions</p>
+<p>Quick analysis to get initial intuition about research question sand important variables, not for final conclusions</p>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table>
@@ -719,6 +729,7 @@ Prof.&nbsp;Maria Tackett
 </table>
 </div>
 </div>
+</div>
 </section></section>
 <section>
 <section id="two-stage-modeling" class="title-slide slide level1 center">
@@ -750,20 +761,90 @@ Y_{ij} \sim Bernoulli(p_{ij})
 <section id="model-set-up-1" class="slide level2">
 <h2>Model Set Up</h2>
 <p><strong>Level One models</strong></p>
-<p><span class="math display">\[\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) = a_i + b_i ~ \text{foul.diff}_{ij}\]</span> <strong>Level Two models</strong></p>
-<p><span class="math display">\[a_i = \alpha_0 + u_i\hspace{20mm} b_i = \beta_0 + v_i\]</span></p>
-<p><span class="math display">\[\left[ \begin{array}{c}
-            u_i \\ v_i
-          \end{array}  \right] \sim N \left( \left[
-          \begin{array}{c}
-            0 \\ 0
-          \end{array} \right], \left[
-          \begin{array}{cc}
-            \sigma_u^{2} &amp; \sigma_{uv} \\
-            \sigma_{uv} &amp; \sigma_{v}^{2}
-          \end{array} \right] \right)\]</span></p>
+<p><span class="math display">\[\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) = a_i + b_i ~ \text{foul.diff}_{ij}\]</span></p>
+<p><br></p>
+<p><strong>Level Two models</strong></p>
+<p>Explain the game-to-game variability in the intercepts (<span class="math inline">\(a_i\)</span>) and the slopes (<span class="math inline">\(b_i\)</span>)</p>
 </section>
-<section id="level-one-models" class="slide level2">
+<section id="level-one-models" class="slide level2 small">
+<h2>Level One Models</h2>
+<p><strong>For Game 1</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>level_one_model <span class="ot">&lt;-</span> basketball <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">filter</span>(game <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a></a>  <span class="fu">glm</span>(<span class="fu">factor</span>(foul.home) <span class="sc">~</span> foul.diff, <span class="at">data =</span> _, <span class="at">family =</span> binomial)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="fu">tidy</span>(level_one_model) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-0.951</td>
+<td style="text-align: right;">1.110</td>
+<td style="text-align: right;">-0.857</td>
+<td style="text-align: right;">0.392</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">foul.diff</td>
+<td style="text-align: right;">-1.901</td>
+<td style="text-align: right;">1.369</td>
+<td style="text-align: right;">-1.389</td>
+<td style="text-align: right;">0.165</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="fragment">
+<p><strong>For Game 2</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>level_one_model <span class="ot">&lt;-</span> basketball <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a></a>  <span class="fu">filter</span>(game <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a></a>  <span class="fu">glm</span>(<span class="fu">factor</span>(foul.home) <span class="sc">~</span> foul.diff, <span class="at">data =</span> _, <span class="at">family =</span> binomial)</span>
+<span id="cb2-4"><a></a><span class="fu">tidy</span>(level_one_model) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">2.047</td>
+<td style="text-align: right;">1.424</td>
+<td style="text-align: right;">1.438</td>
+<td style="text-align: right;">0.150</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">foul.diff</td>
+<td style="text-align: right;">-0.780</td>
+<td style="text-align: right;">0.525</td>
+<td style="text-align: right;">-1.486</td>
+<td style="text-align: right;">0.137</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="level-one-models-1" class="slide level2">
 <h2>Level One Models</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -771,7 +852,7 @@ Y_{ij} \sim Bernoulli(p_{ij})
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="20-multilevel-glms_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="20-multilevel-glms_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -797,7 +878,7 @@ Y_{ij} \sim Bernoulli(p_{ij})
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="20-multilevel-glms_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="20-multilevel-glms_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -820,18 +901,50 @@ Y_{ij} \sim Bernoulli(p_{ij})
 </div>
 </div>
 </div>
+<p><br></p>
+<div class="question">
+<p>What do we learn from the distribution of the slopes and intercepts?</p>
+</div>
 </section>
-<section id="number-of-fouls-per-game" class="slide level2">
-<h2>Number of fouls per game</h2>
+<section id="consider-number-of-fouls-per-game" class="slide level2">
+<h2>Consider number of fouls per game</h2>
 
-<img data-src="20-multilevel-glms_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><div class="fragment">
-<p>⚠️ In the two-stage approach, games with 3 fouls are treated with equal weight as games with 20 + fouls</p>
+<img data-src="20-multilevel-glms_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>In the two-stage approach, games with 3 fouls are treated with equal weight as games with 20 + fouls</p>
+</div>
+</div>
+</div>
 </div>
 </section></section>
 <section>
 <section id="unified-multilevel-model" class="title-slide slide level1 center">
 <h1>Unified multilevel model</h1>
 
+</section>
+<section id="models-by-level" class="slide level2">
+<h2>Models by level</h2>
+<p><strong>Level One models</strong></p>
+<p><span class="math display">\[\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) = a_i + b_i ~ \text{foul.diff}_{ij}\]</span> <strong>Level Two models</strong></p>
+<p><span class="math display">\[a_i = \alpha_0 + u_i\hspace{20mm} b_i = \beta_0 + v_i\]</span></p>
+<p><span class="math display">\[\left[ \begin{array}{c}
+            u_i \\ v_i
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_u^{2} &amp; \sigma_{uv} \\
+            \sigma_{uv} &amp; \sigma_{v}^{2}
+          \end{array} \right] \right)\]</span></p>
 </section>
 <section id="composite-model" class="slide level2">
 <h2>Composite model</h2>
@@ -850,8 +963,8 @@ Y_{ij} \sim Bernoulli(p_{ij})
 <h2>Fit the model in R</h2>
 <p>Use the <code>glmer</code> function in the <strong>lme4</strong> package to fit multilevel GLMs.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>model1 <span class="ot">&lt;-</span> <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> (foul.diff<span class="sc">|</span>game), </span>
-<span id="cb1-2"><a></a>                <span class="at">data =</span> basketball, <span class="at">family =</span> binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>model1 <span class="ot">&lt;-</span> <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> (foul.diff<span class="sc">|</span>game), </span>
+<span id="cb3-2"><a></a>                <span class="at">data =</span> basketball, <span class="at">family =</span> binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>boundary (singular) fit: see help('isSingular')</code></pre>
 </div>
@@ -1066,6 +1179,7 @@ Y_{ij} \sim Bernoulli(p_{ij})
 </table>
 </div>
 </div>
+<p><br></p>
 <div class="question">
 <ol type="1">
 <li>Which term(s) should we remove to try to address boundary constraint?</li>
@@ -1074,7 +1188,7 @@ Y_{ij} \sim Bernoulli(p_{ij})
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_efb4e720" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
+<div class="countdown" id="timer_62de9cc0" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:5%;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

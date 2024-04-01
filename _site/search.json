@@ -1208,7 +1208,7 @@
     "href": "slides/20-multilevel-glms.html#announcements",
     "title": "Multilevel Generalized Linear Models",
     "section": "Announcements",
-    "text": "Announcements\n\nProject 02\n\nPresentations April 3 during lecture\nWritten report + GitHub repo due April 4 at 11:59pm\n\nFinal project - Round 1 submission (optional) due April 25"
+    "text": "Announcements\n\nProject 02\n\nPresentations April 3 during lecture\nWritten report + GitHub repo due April 4 at 11:59pm\n\nLooking ahead:\n\nHW 05 released on Thursday\nNo office hours or lecture on Monday, April 8\n\nFinal project - Round 1 submission (optional) due April 25"
   },
   {
     "objectID": "slides/20-multilevel-glms.html#topics",
@@ -1236,7 +1236,7 @@
     "href": "slides/20-multilevel-glms.html#modeling-approach",
     "title": "Multilevel Generalized Linear Models",
     "section": "Modeling approach",
-    "text": "Modeling approach\n\nfoul.home is a binary response variable (1: foul called on home team, 0: foul called on visiting team)\n✅ Use a generalized linear model, specifically one with the logit link function\nData has a multilevel structure\n\nCovariates at individual foul level and game level\n✅ Use a multilevel model\n\n\nWe will combine these and fit a multilevel generalized linear model with a logit link function"
+    "text": "Modeling approach\n\n\nfoul.home is a binary response variable (1: foul called on home team, 0: foul called on visiting team)\n✅ Use a generalized linear model, specifically one with the logit link function\nData has a multilevel structure\n\nCovariates at individual foul level and game level\n✅ Use a multilevel model\n\n\n\n\nWe will combine these and fit a multilevel generalized linear model with a logit link function"
   },
   {
     "objectID": "slides/20-multilevel-glms.html#exploratory-data-analysis-1",
@@ -1250,7 +1250,7 @@
     "href": "slides/20-multilevel-glms.html#logistic-regression",
     "title": "Multilevel Generalized Linear Models",
     "section": "Logistic regression",
-    "text": "Logistic regression\nStart with a logistic regression model treating all observations as independent\nQuick analysis to get initial intuition about research question sand important variables, not be used for final conclusions\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.103\n0.101\n-1.023\n0.306\n\n\nfoul.diff\n-0.077\n0.025\n-3.078\n0.002\n\n\nscore.diff\n0.020\n0.007\n3.012\n0.003\n\n\nlead.home\n-0.093\n0.160\n-0.582\n0.560\n\n\ntime\n-0.013\n0.008\n-1.653\n0.098\n\n\nfoul.diff:time\n-0.007\n0.003\n-2.485\n0.013\n\n\nlead.home:time\n0.022\n0.011\n1.957\n0.050"
+    "text": "Logistic regression\nStart with a logistic regression model treating all observations as independent\nQuick analysis to get initial intuition about research question sand important variables, not for final conclusions\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.103\n0.101\n-1.023\n0.306\n\n\nfoul.diff\n-0.077\n0.025\n-3.078\n0.002\n\n\nscore.diff\n0.020\n0.007\n3.012\n0.003\n\n\nlead.home\n-0.093\n0.160\n-0.582\n0.560\n\n\ntime\n-0.013\n0.008\n-1.653\n0.098\n\n\nfoul.diff:time\n-0.007\n0.003\n-2.485\n0.013\n\n\nlead.home:time\n0.022\n0.011\n1.957\n0.050"
   },
   {
     "objectID": "slides/20-multilevel-glms.html#two-stage-modeling-1",
@@ -1271,21 +1271,35 @@
     "href": "slides/20-multilevel-glms.html#model-set-up-1",
     "title": "Multilevel Generalized Linear Models",
     "section": "Model Set Up",
-    "text": "Model Set Up\nLevel One models\n\\[\\log\\Big(\\frac{p_{ij}}{1 - p_{ij}}\\Big) = a_i + b_i ~ \\text{foul.diff}_{ij}\\] Level Two models\n\\[a_i = \\alpha_0 + u_i\\hspace{20mm} b_i = \\beta_0 + v_i\\]\n\\[\\left[ \\begin{array}{c}\n            u_i \\\\ v_i\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_u^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\\]"
+    "text": "Model Set Up\nLevel One models\n\\[\\log\\Big(\\frac{p_{ij}}{1 - p_{ij}}\\Big) = a_i + b_i ~ \\text{foul.diff}_{ij}\\]\n\nLevel Two models\nExplain the game-to-game variability in the intercepts (\\(a_i\\)) and the slopes (\\(b_i\\))"
   },
   {
     "objectID": "slides/20-multilevel-glms.html#level-one-models",
     "href": "slides/20-multilevel-glms.html#level-one-models",
     "title": "Multilevel Generalized Linear Models",
     "section": "Level One Models",
-    "text": "Level One Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nalpha0\nsigma2_u\n\n\n\n\n-0.301\n128.858\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbeta0\nsigma2_v\n\n\n\n\n-3.328\n60.049"
+    "text": "Level One Models\nFor Game 1\n\nlevel_one_model &lt;- basketball |&gt;\n  filter(game == 1) |&gt;\n  glm(factor(foul.home) ~ foul.diff, data = _, family = binomial)\n\ntidy(level_one_model) |&gt; kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-0.951\n1.110\n-0.857\n0.392\n\n\nfoul.diff\n-1.901\n1.369\n-1.389\n0.165\n\n\n\n\n\n\nFor Game 2\n\nlevel_one_model &lt;- basketball |&gt; \n  filter(game == 2) |&gt; \n  glm(factor(foul.home) ~ foul.diff, data = _, family = binomial)\ntidy(level_one_model) |&gt; kable(digits = 3)\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n2.047\n1.424\n1.438\n0.150\n\n\nfoul.diff\n-0.780\n0.525\n-1.486\n0.137"
   },
   {
-    "objectID": "slides/20-multilevel-glms.html#number-of-fouls-per-game",
-    "href": "slides/20-multilevel-glms.html#number-of-fouls-per-game",
+    "objectID": "slides/20-multilevel-glms.html#level-one-models-1",
+    "href": "slides/20-multilevel-glms.html#level-one-models-1",
     "title": "Multilevel Generalized Linear Models",
-    "section": "Number of fouls per game",
-    "text": "Number of fouls per game\n\n\n⚠️ In the two-stage approach, games with 3 fouls are treated with equal weight as games with 20 + fouls"
+    "section": "Level One Models",
+    "text": "Level One Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nalpha0\nsigma2_u\n\n\n\n\n-0.301\n128.858\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbeta0\nsigma2_v\n\n\n\n\n-3.328\n60.049\n\n\n\n\n\n\n\n\n\nWhat do we learn from the distribution of the slopes and intercepts?"
+  },
+  {
+    "objectID": "slides/20-multilevel-glms.html#consider-number-of-fouls-per-game",
+    "href": "slides/20-multilevel-glms.html#consider-number-of-fouls-per-game",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Consider number of fouls per game",
+    "text": "Consider number of fouls per game\n\n\n\n\n\n\n\n\nWarning\n\n\nIn the two-stage approach, games with 3 fouls are treated with equal weight as games with 20 + fouls"
+  },
+  {
+    "objectID": "slides/20-multilevel-glms.html#models-by-level",
+    "href": "slides/20-multilevel-glms.html#models-by-level",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Models by level",
+    "text": "Models by level\nLevel One models\n\\[\\log\\Big(\\frac{p_{ij}}{1 - p_{ij}}\\Big) = a_i + b_i ~ \\text{foul.diff}_{ij}\\] Level Two models\n\\[a_i = \\alpha_0 + u_i\\hspace{20mm} b_i = \\beta_0 + v_i\\]\n\\[\\left[ \\begin{array}{c}\n            u_i \\\\ v_i\n          \\end{array}  \\right] \\sim N \\left( \\left[\n          \\begin{array}{c}\n            0 \\\\ 0\n          \\end{array} \\right], \\left[\n          \\begin{array}{cc}\n            \\sigma_u^{2} & \\sigma_{uv} \\\\\n            \\sigma_{uv} & \\sigma_{v}^{2}\n          \\end{array} \\right] \\right)\\]"
   },
   {
     "objectID": "slides/20-multilevel-glms.html#composite-model",
@@ -1334,7 +1348,7 @@
     "href": "slides/20-multilevel-glms.html#original-model",
     "title": "Multilevel Generalized Linear Models",
     "section": "Original model",
-    "text": "Original model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\nfixed\nNA\n(Intercept)\n-0.157\n0.046\n-3.382\n0.001\n\n\nfixed\nNA\nfoul.diff\n-0.285\n0.038\n-7.440\n0.000\n\n\nran_pars\ngame\nsd__(Intercept)\n0.542\nNA\nNA\nNA\n\n\nran_pars\ngame\ncor__(Intercept).foul.diff\n-1.000\nNA\nNA\nNA\n\n\nran_pars\ngame\nsd__foul.diff\n0.035\nNA\nNA\nNA\n\n\n\n\n\n\n\nWhich term(s) should we remove to try to address boundary constraint?\nRefit the model with these terms removed. 3. Which model do you choose? Explain.\n\n\n\n\n\n−+\n04:00"
+    "text": "Original model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\nfixed\nNA\n(Intercept)\n-0.157\n0.046\n-3.382\n0.001\n\n\nfixed\nNA\nfoul.diff\n-0.285\n0.038\n-7.440\n0.000\n\n\nran_pars\ngame\nsd__(Intercept)\n0.542\nNA\nNA\nNA\n\n\nran_pars\ngame\ncor__(Intercept).foul.diff\n-1.000\nNA\nNA\nNA\n\n\nran_pars\ngame\nsd__foul.diff\n0.035\nNA\nNA\nNA\n\n\n\n\n\n\n\n\nWhich term(s) should we remove to try to address boundary constraint?\nRefit the model with these terms removed. 3. Which model do you choose? Explain.\n\n\n\n\n\n−+\n04:00"
   },
   {
     "objectID": "slides/20-multilevel-glms.html#interpret-model-coefficients",

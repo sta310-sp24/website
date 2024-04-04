@@ -2873,9 +2873,53 @@
   {
     "objectID": "hw/hw-05.html",
     "href": "hw/hw-05.html",
-    "title": "HW 05",
+    "title": "HW 05: Multilevel models with 3+ levels",
     "section": "",
-    "text": "To be posted.",
+    "text": "Important\n\n\n\nThis assignment is due on Wednesday, April 10 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, April 11 at noon (12pm).\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned.",
+    "crumbs": [
+      "Homework",
+      "HW 05"
+    ]
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-1",
+    "href": "hw/hw-05.html#exercise-1",
+    "title": "HW 05: Multilevel models with 3+ levels",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nConsider Section 10.3.2, the exploratory data analysis for the seed germination study described in Section 10.2. Briefly explain why an autoregressive error structure is suggested for leadplant data at the end of Section 10.3.2. \nModel C in Section 10.5 faced a boundary constraint, in which the Level Three correlation between the slope and intercept error terms was estimated to be exactly -1. The boundary constraint was addressed in the text by removing the Level Three correlation between error terms from the multilevel model. What other model adjustments might the authors have considered? Describe the proposed adjustments in the context of the data. \nThe estimated value of \\(\\hat{\\sigma}_u^2\\) increased from the unconditional means model in Section 10.4.1 to the unconditional growth model in Section 10.4.2. Should we be concerned about this increase in \\(\\hat{\\sigma}^2_u\\)? Briefly explain why or why not? \n\n\n\n\n\n\n\nNote\n\n\n\nUse the following scenario for Exercises 2 and 3.\nIn Eisinger, Elling, and Stamp (2011), a student research team at St. Olaf College contributed to the efforts of biologist Dr. Kathy Shea to investigate a rich data set concerning forestation in the surrounding land. Tubes were placed on trees in some locations (also called transects) but not in others. The goal of the study was to understand whether tree growth is affected by the presence of tubes.\nThe data are available in treetube.csv. We will use the following variables for the analysis:\n\nTRANSECT: The id of the transect housing the tree\nTUBEX: 1 if the tree had a tube, 0 if not\nID: The tree’s unique id\nSPECIES: The tree’s species\nYEAR: Year of the observation\nHEIGHT: The tree’s height in meters (response variable)",
+    "crumbs": [
+      "Homework",
+      "HW 05"
+    ]
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-2",
+    "href": "hw/hw-05.html#exercise-2",
+    "title": "HW 05: Multilevel models with 3+ levels",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\n\nConduct exploratory data analysis. What variables seem to be correlated with the height of trees?\nExplore patterns of missing data, specifically exploring patterns between transects. Do there appear to be any patterns of missigness? If so, how might this impact the modeling?\nWe would like to fit a three-level model for a tree’s height.\n\nIdentify the observational units at Level One, Level Two, and Level Three.\nIdentify the variables measured at Level One, Level Two, and Level Three.",
+    "crumbs": [
+      "Homework",
+      "HW 05"
+    ]
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-3",
+    "href": "hw/hw-05.html#exercise-3",
+    "title": "HW 05: Multilevel models with 3+ levels",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\n\nCreate a new variable, TIME, which represents the number of years since 1990. Use this variable to fit an unconditonal growth model for height, such that Level Two and Level Three random effects are not correlated (\\(\\rho_{uv} = \\rho_{\\tilde{u}\\tilde{v}} = 0\\)). Display the model.\nWe would like to test the hypothesis that trees’ growth rates are affected by tubes. Add an interaction between TUBEX and TIME to the model fit in part (a). Display the model.\nInterpret the fitted estimate of the interaction term in the context of the data.\nIs there evidence that the presence of a tube impacts tree growth? Briefly explain, showing any analysis results used to support your conclusion.",
+    "crumbs": [
+      "Homework",
+      "HW 05"
+    ]
+  },
+  {
+    "objectID": "hw/hw-05.html#exercise-4",
+    "href": "hw/hw-05.html#exercise-4",
+    "title": "HW 05: Multilevel models with 3+ levels",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nUse Model C in Table 1 of Jones (1991) to write the following expressions. You can access the article on Canvas.\n\nWrite the expression for \\(Var(Y_{ijk})\\), the variance for an individual observation.\nWrite the expression for \\(Cov(Y_{ijk}, Y_{ijk'})\\), the covariance between observations taken at different houses sold in the same time period in the same district.\nWrite the expression for \\(Cov(Y_{ijk}, Y_{ij'k'})\\), the covariance between observations taken at different houses, sold in different time periods from different districts.",
     "crumbs": [
       "Homework",
       "HW 05"

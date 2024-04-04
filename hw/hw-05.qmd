@@ -1,12 +1,120 @@
 ---
-title: "HW 05"
+title: "HW 05: Multilevel models with 3+ levels"
+subtitle: ""
+editor: visual
 execute:
   freeze: auto
   echo: true
-  eval: true
+  eval: false
   warning: false
   message: false
 bibliography: references.bib
 ---
 
-To be posted.
+::: callout-important
+This assignment is due on Wednesday, April 10 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, April 11 at noon (12pm).
+
+-   Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.
+-   You will have access to your HW repo again when grades are returned.
+:::
+
+# Instructions
+
+-   Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.
+-   Be sure all analysis code is displayed in the rendered pdf.
+-   If you are fitting a model, display the model output in a neatly formatted table. (The `tidy` and `kable` functions can help!)
+-   If you are creating a plot, use clear and informative labels and titles.
+-   Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.
+-   When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.
+
+# Exercises
+
+::: callout-note
+Exercises 1 - 5 were adapted from exercises in chapter 10 of @roback2021beyond.
+:::
+
+## Exercise 1
+
+a.  Consider [Section 10.3.2](https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#explore3v2), the exploratory data analysis for the seed germination study described in [Section 10.2](https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#cs:seeds). Briefly explain why an autoregressive error structure is suggested for leadplant data at the end of Section [10.3.2](https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#explore3v2). <!--# Ex 6 in Sec 10.11.1-->
+
+b.  Model C in [Section 10.5](https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#sec:boundary) faced a boundary constraint, in which the Level Three correlation between the slope and intercept error terms was estimated to be exactly -1. The boundary constraint was addressed in the text by removing the Level Three correlation between error terms from the multilevel model. What other model adjustments might the authors have considered? Describe the proposed adjustments in the context of the data. <!--# Ex 11 in Sec 10.11.1-->
+
+c.  The estimated value of $\hat{\sigma}_u^2$ increased from the unconditional means model in [Section 10.4.1](https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#unconditional-means) to the unconditional growth model in [Section 10.4.2](https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#unconditional-growth). Should we be concerned about this increase in $\hat{\sigma}^2_u$? Briefly explain why or why not? <!--# Ex 9 Sec 10.11.1-->
+
+::: callout-note
+**Use the following scenario for Exercises 2 and 3.**
+
+In @eisingeretal2011, a student research team at St. Olaf College contributed to the efforts of biologist Dr. Kathy Shea to investigate a rich data set concerning forestation in the surrounding land. Tubes were placed on trees in some locations (also called *transects*) but not in others. The goal of the study was to understand whether tree growth is affected by the presence of tubes.
+
+The data are available in `treetube.csv`. We will use the following variables for the analysis:
+
+-   `TRANSECT`: The id of the transect housing the tree
+-   `TUBEX`: 1 if the tree had a tube, 0 if not
+-   `ID`: The tree’s unique id
+-   `SPECIES`: The tree’s species
+-   `YEAR`: Year of the observation
+-   `HEIGHT`: The tree’s height in meters (response variable)
+:::
+
+## Exercise 2
+
+<!--# From Ex 1 of Sec 10.11.2-->
+
+a.  Conduct exploratory data analysis. What variables seem to be correlated with the height of trees?
+
+b.  Explore patterns of missing data, specifically exploring patterns between transects. Do there appear to be any patterns of missigness? If so, how might this impact the modeling?
+
+c.  We would like to fit a three-level model for a tree’s height.
+
+    -   Identify the observational units at Level One, Level Two, and Level Three.
+    -   Identify the variables measured at Level One, Level Two, and Level Three.
+
+## Exercise 3
+
+<!--# From Ex 1 of Sec 10.11.2-->
+
+a.  Create a new variable, `TIME`, which represents the number of years since 1990. Use this variable to fit an unconditonal growth model for height, such that Level Two and Level Three random effects are not correlated ($\rho_{uv} = \rho_{\tilde{u}\tilde{v}} = 0$). Display the model.
+
+b.  We would like to test the hypothesis that trees’ growth rates are affected by tubes. Add an interaction between `TUBEX` and `TIME` to the model fit in part (a). Display the model.
+
+c.  Interpret the fitted estimate of the interaction term in the context of the data.
+
+d.  Is there evidence that the presence of a tube impacts tree growth? Briefly explain, showing any analysis results used to support your conclusion.
+
+## Exercise 4
+
+Use Model C in Table 1 of @jones1991specifying to write the following expressions. You can [access the article](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1096423) on Canvas.
+
+a.  Write the expression for $Var(Y_{ijk})$, the variance for an individual observation.
+b.  Write the expression for $Cov(Y_{ijk}, Y_{ijk'})$, the covariance between observations taken at different houses sold in the same time period in the same district.
+c.  Write the expression for $Cov(Y_{ijk}, Y_{ij'k'})$, the covariance between observations taken at different houses, sold in different time periods from different districts.
+
+# Submission
+
+To submit the assignment, push your final changes to your GitHub repo. Then, you're done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.
+
+# Grading
+
+| **Total**             | **50** |
+|-----------------------|:------:|
+| Ex 1                  |   9    |
+| Ex 2                  |   14   |
+| Ex 3                  |   14   |
+| Ex 4                  |   9    |
+| Workflow & formatting |   4    |
+
+The "Workflow & formatting" grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.
+
+# References	
+
+				
+
+				
+
+				
+
+			
+
+		
+
+	

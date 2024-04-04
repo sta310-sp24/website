@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 310 - Spring 2024 - HW 05</title>
+<title>STA 310 - Spring 2024 - HW 05: Multilevel models with 3+ levels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -69,6 +89,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -246,14 +295,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-05.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hw/hw-01.html">Homework</a></li><li class="breadcrumb-item"><a href="../hw/hw-05.html">HW 05</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">HW 05</h1>
+<h1 class="title">HW 05: Multilevel models with 3+ levels</h1>
 </div>
 
 
@@ -270,11 +335,169 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>To be posted.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This assignment is due on Wednesday, April 10 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, April 11 at noon (12pm).</p>
+<ul>
+<li>Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.</li>
+<li>You will have access to your HW repo again when grades are returned.</li>
+</ul>
+</div>
+</div>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<ul>
+<li>Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.</li>
+<li>Be sure all analysis code is displayed in the rendered pdf.</li>
+<li>If you are fitting a model, display the model output in a neatly formatted table. (The <code>tidy</code> and <code>kable</code> functions can help!)</li>
+<li>If you are creating a plot, use clear and informative labels and titles.</li>
+<li>Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.</li>
+<li>When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.</li>
+</ul>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Exercises 1 - 5 were adapted from exercises in chapter 10 of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#ref-roback2021beyond" role="doc-biblioref">2021</a>)</span>.</p>
+</div>
+</div>
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
+<ol type="a">
+<li><p>Consider <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#explore3v2">Section 10.3.2</a>, the exploratory data analysis for the seed germination study described in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#cs:seeds">Section 10.2</a>. Briefly explain why an autoregressive error structure is suggested for leadplant data at the end of Section <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#explore3v2">10.3.2</a>. <!--# Ex 6 in Sec 10.11.1--></p></li>
+<li><p>Model C in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#sec:boundary">Section 10.5</a> faced a boundary constraint, in which the Level Three correlation between the slope and intercept error terms was estimated to be exactly -1. The boundary constraint was addressed in the text by removing the Level Three correlation between error terms from the multilevel model. What other model adjustments might the authors have considered? Describe the proposed adjustments in the context of the data. <!--# Ex 11 in Sec 10.11.1--></p></li>
+<li><p>The estimated value of <span class="math inline">\(\hat{\sigma}_u^2\)</span> increased from the unconditional means model in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#unconditional-means">Section 10.4.1</a> to the unconditional growth model in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-3level.html#unconditional-growth">Section 10.4.2</a>. Should we be concerned about this increase in <span class="math inline">\(\hat{\sigma}^2_u\)</span>? Briefly explain why or why not? <!--# Ex 9 Sec 10.11.1--></p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Use the following scenario for Exercises 2 and 3.</strong></p>
+<p>In <span class="citation" data-cites="eisingeretal2011">Eisinger, Elling, and Stamp (<a href="#ref-eisingeretal2011" role="doc-biblioref">2011</a>)</span>, a student research team at St.&nbsp;Olaf College contributed to the efforts of biologist Dr.&nbsp;Kathy Shea to investigate a rich data set concerning forestation in the surrounding land. Tubes were placed on trees in some locations (also called <em>transects</em>) but not in others. The goal of the study was to understand whether tree growth is affected by the presence of tubes.</p>
+<p>The data are available in <code>treetube.csv</code>. We will use the following variables for the analysis:</p>
+<ul>
+<li><code>TRANSECT</code>: The id of the transect housing the tree</li>
+<li><code>TUBEX</code>: 1 if the tree had a tube, 0 if not</li>
+<li><code>ID</code>: The tree’s unique id</li>
+<li><code>SPECIES</code>: The tree’s species</li>
+<li><code>YEAR</code>: Year of the observation</li>
+<li><code>HEIGHT</code>: The tree’s height in meters (response variable)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
+<!--# From Ex 1 of Sec 10.11.2-->
+<ol type="a">
+<li><p>Conduct exploratory data analysis. What variables seem to be correlated with the height of trees?</p></li>
+<li><p>Explore patterns of missing data, specifically exploring patterns between transects. Do there appear to be any patterns of missigness? If so, how might this impact the modeling?</p></li>
+<li><p>We would like to fit a three-level model for a tree’s height.</p>
+<ul>
+<li>Identify the observational units at Level One, Level Two, and Level Three.</li>
+<li>Identify the variables measured at Level One, Level Two, and Level Three.</li>
+</ul></li>
+</ol>
+</section>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
+<!--# From Ex 1 of Sec 10.11.2-->
+<ol type="a">
+<li><p>Create a new variable, <code>TIME</code>, which represents the number of years since 1990. Use this variable to fit an unconditonal growth model for height, such that Level Two and Level Three random effects are not correlated (<span class="math inline">\(\rho_{uv} = \rho_{\tilde{u}\tilde{v}} = 0\)</span>). Display the model.</p></li>
+<li><p>We would like to test the hypothesis that trees’ growth rates are affected by tubes. Add an interaction between <code>TUBEX</code> and <code>TIME</code> to the model fit in part (a). Display the model.</p></li>
+<li><p>Interpret the fitted estimate of the interaction term in the context of the data.</p></li>
+<li><p>Is there evidence that the presence of a tube impacts tree growth? Briefly explain, showing any analysis results used to support your conclusion.</p></li>
+</ol>
+</section>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
+<p>Use Model C in Table 1 of <span class="citation" data-cites="jones1991specifying">Jones (<a href="#ref-jones1991specifying" role="doc-biblioref">1991</a>)</span> to write the following expressions. You can <a href="https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1096423">access the article</a> on Canvas.</p>
+<ol type="a">
+<li>Write the expression for <span class="math inline">\(Var(Y_{ijk})\)</span>, the variance for an individual observation.</li>
+<li>Write the expression for <span class="math inline">\(Cov(Y_{ijk}, Y_{ijk'})\)</span>, the covariance between observations taken at different houses sold in the same time period in the same district.</li>
+<li>Write the expression for <span class="math inline">\(Cov(Y_{ijk}, Y_{ij'k'})\)</span>, the covariance between observations taken at different houses, sold in different time periods from different districts.</li>
+</ol>
+</section>
+</section>
+<section id="submission" class="level1">
+<h1>Submission</h1>
+<p>To submit the assignment, push your final changes to your GitHub repo. Then, you’re done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.</p>
+</section>
+<section id="grading" class="level1">
+<h1>Grading</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Total</strong></th>
+<th style="text-align: center;"><strong>50</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ex 1</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td>Ex 2</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="odd">
+<td>Ex 3</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="even">
+<td>Ex 4</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="odd">
+<td>Workflow &amp; formatting</td>
+<td style="text-align: center;">4</td>
+</tr>
+</tbody>
+</table>
+<p>The “Workflow &amp; formatting” grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.</p>
+</section>
+<section id="references" class="level1">
 
 
 
-</main> <!-- /main -->
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-eisingeretal2011" class="csl-entry" role="listitem">
+Eisinger, Robert, Amanda Elling, and J. R. Stamp. 2011. <span>“Tree Growth Rates and Mortality.”</span> <em>Proceedings of the National Conference on Undergraduate Research (NCUR)</em>.
+</div>
+<div id="ref-jones1991specifying" class="csl-entry" role="listitem">
+Jones, Kelvyn. 1991. <span>“Specifying and Estimating Multi-Level Models for Geographical Research.”</span> <em>Transactions of the Institute of British Geographers</em>, 148–59.
+</div>
+<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
+Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in r</em>. CRC Press.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -704,7 +927,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-05.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/hw/hw-05.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This site is built with <a href="https://quarto.org/">Quarto</a></p>
 </div>

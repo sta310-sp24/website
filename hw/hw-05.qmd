@@ -30,7 +30,7 @@ This assignment is due on Wednesday, April 10 at 11:59pm with a grace period (i.
 # Exercises
 
 ::: callout-note
-Exercises 1 - 5 were adapted from exercises in chapter 10 of @roback2021beyond.
+Exercises 1 - 5 are adapted from exercises in chapter 10 of @roback2021beyond.
 :::
 
 ## Exercise 1

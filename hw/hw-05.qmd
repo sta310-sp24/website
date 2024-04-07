@@ -85,6 +85,10 @@ d.  Is there evidence that the presence of a tube impacts tree growth? Briefly e
 
 Use Model C in Table 1 of @jones1991specifying to write the following expressions. You can [access the article](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1096423) on Canvas.
 
+::: callout-note
+The subscripts here align with the subscripts in the notes and chapter 10 of @roback2021beyond, such that $i$ denotes the district, $j$ denotes the time period and $k$ denotes the house. Note that these differ from the subscripts used in @jones1991specifying.
+:::
+
 a.  Write the expression for $Var(Y_{ijk})$, the variance for an individual observation.
 b.  Write the expression for $Cov(Y_{ijk}, Y_{ijk'})$, the covariance between observations taken at different houses sold in the same time period in the same district.
 c.  Write the expression for $Cov(Y_{ijk}, Y_{ij'k'})$, the covariance between observations taken at different houses, sold in different time periods from different districts.
@@ -105,16 +109,4 @@ To submit the assignment, push your final changes to your GitHub repo. Then, you
 
 The "Workflow & formatting" grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.
 
-# References	
-
-				
-
-				
-
-				
-
-			
-
-		
-
-	
+# References

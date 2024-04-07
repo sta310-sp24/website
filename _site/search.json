@@ -2919,7 +2919,7 @@
     "href": "hw/hw-05.html#exercise-4",
     "title": "HW 05: Multilevel models with 3+ levels",
     "section": "Exercise 4",
-    "text": "Exercise 4\nUse Model C in Table 1 of Jones (1991) to write the following expressions. You can access the article on Canvas.\n\nWrite the expression for \\(Var(Y_{ijk})\\), the variance for an individual observation.\nWrite the expression for \\(Cov(Y_{ijk}, Y_{ijk'})\\), the covariance between observations taken at different houses sold in the same time period in the same district.\nWrite the expression for \\(Cov(Y_{ijk}, Y_{ij'k'})\\), the covariance between observations taken at different houses, sold in different time periods from different districts.",
+    "text": "Exercise 4\nUse Model C in Table 1 of Jones (1991) to write the following expressions. You can access the article on Canvas.\n\n\n\n\n\n\nNote\n\n\n\nThe subscripts here align with the subscripts in the notes and chapter 10 of Roback and Legler (2021), such that \\(i\\) denotes the district, \\(j\\) denotes the time period and \\(k\\) denotes the house. Note that these differ from the subscripts used in Jones (1991).\n\n\n\nWrite the expression for \\(Var(Y_{ijk})\\), the variance for an individual observation.\nWrite the expression for \\(Cov(Y_{ijk}, Y_{ijk'})\\), the covariance between observations taken at different houses sold in the same time period in the same district.\nWrite the expression for \\(Cov(Y_{ijk}, Y_{ij'k'})\\), the covariance between observations taken at different houses, sold in different time periods from different districts.",
     "crumbs": [
       "Homework",
       "HW 05"

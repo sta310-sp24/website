@@ -1,0 +1,417 @@
+---
+title: "Multilevel Generalized Linear Models"
+subtitle: "Crossed random effects"
+date: "04.10.24"
+date-format: "MMM DD, YYYY"
+author: "Prof. Maria Tackett"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+library(ggfortify)
+library(lme4)
+library(broom.mixed)
+```
+
+## Announcements
+
+-   HW 05 due today at 11:59pm
+    -   No office hours or lecture on Monday, April 8
+-   Final project
+    -   Round 1 submission (optional) due April 25
+
+    -   Final submission due May 2
+
+## Topics
+
+-   Exploratory data analysis for multilevel data with non-normal response variable
+
+-   Write One, Level Two and composite models for mutlilevel GLM
+
+-   Fit and interpret multilevel GLM
+
+-   Understand crossed random effects and incorporate them in the multilevel model
+
+::: aside
+The notes are based on Chapter 11 of @roback2021beyond unless otherwise noted.
+:::
+
+## Data: College Basketball referees {.midi}
+
+Today's data set includes information on 4972 fouls in 340 NCAA basketball games from the Big Ten, ACC, and Big East conferences during the 2009-2010 season. The goal is to determine whether the data from this season support a conclusion from @anderson2009officiating that referees tend to "even out" foul calls in a game. The variables we'll focus on are
+
+-   **`foul.home`**: foul was called on home team (1: yes, 0: no)
+-   **`foul.diff`**: difference in fouls before current foul was called (home - visitor)
+-   **`game`**: Unique game ID number
+-   **`visitor`**: visiting team abbreviation
+-   **`home`**: home team abbreviation
+
+See [BMLR: Section 11.3.1](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#explore-glmm) for full codebook.
+
+## Data: College basketball referees
+
+```{r echo = F}
+basketball <- read_csv("data/basketball0910.csv") |>
+  select(-1)
+
+basketball |>
+  slice(1:10) |>
+  select(game, visitor, hometeam, foul.num, foul.home, foul.vis, foul.diff, foul.type, time) |>
+  kable(format = "html", digits = 3) 
+```
+
+## Model 1: Composite model
+
+\
+$$\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) = \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + [u_i + v_i ~ \text{foul.diff}_{ij}]$$ $$\left[ \begin{array}{c}
+            u_i \\ v_i
+          \end{array}  \right] \sim N \left( \left[
+          \begin{array}{c}
+            0 \\ 0
+          \end{array} \right], \left[
+          \begin{array}{cc}
+            \sigma_u^{2} & \sigma_{uv} \\
+            \sigma_{uv} & \sigma_{v}^{2}
+          \end{array} \right] \right)$$
+
+## Model 1 in R {.midi}
+
+Use the `glmer` function in the **lme4** package to fit multilevel GLMs.
+
+```{r echo = TRUE, warning = TRUE, message = TRUE}
+model1 <- glmer(foul.home ~ foul.diff + (foul.diff|game), 
+                data = basketball, family = binomial)
+```
+
+<br>
+
+```{r echo = F}
+tidy(model1) |> kable(digits = 3)
+```
+
+## Boundary constraints {.midi}
+
+-   The estimates of the parameters $\alpha_0, \beta_0, \sigma_u, \sigma_v, \rho_{uv}$ are those that maximize the likelihood of observing the data
+
+-   The fixed effects, e.g., $\alpha_0$ and $\beta_0$, can take any values, but the terms associated with the error terms are constrained to a set of "allowable" values
+
+$$\sigma_u \geq 0 \hspace{10mm} \sigma_v \geq 0 \hspace{10mm} -1 \leq \rho_{uv} \leq 1$$
+
+-   Because of these boundaries, a "constrained" search is used to find the MLEs.
+
+-   The warning message `"## boundary (singular) fit"`, means the estimate of one or more terms was set at the maximum (or minimum) allowable value, not the value it would've been if an unconstrained search were allowable
+
+## Illustrating boundary constraints
+
+::: columns
+::: {.column .fragment width="50%" fragment-index="1"}
+Contour plots from a hypothetical likelihood $L(\beta_0, \sigma^2)$
+
+<br>
+
+```{r,boundary,  fig.align="center", out.width="100%",fig.cap = "From BMLR Figure 10.14",echo=FALSE, warning=FALSE, message=FALSE}
+library(mnormt)
+#thr-contour-boundary
+# Diagram to help explain boundary constraints
+b0 <- seq(-4,12,length=51)
+sigma2 <- seq(-8,4,length=51)
+xy <- expand.grid(b0,sigma2)
+
+# Include all points
+Sigma <- matrix(c(12,0,0,6),2,2)
+Mu <- c(4,-2)
+z <- dmnorm(xy, Mu, Sigma)
+zframe <- data.frame(xy, z)
+MLE <- xy[z==max(z),]
+con.1 <- ggplot(data=zframe,aes(x=Var1,y=Var2,z=z)) + 
+  geom_contour(stat="contour",lineend="butt",
+               linejoin="round",linemitre=1,
+               na.rm=FALSE,colour="black") + 
+  labs(x="b0",y="sigma2",title="Unconstrained") + 
+  scale_y_continuous(limits=c(-8,4)) + 
+  geom_abline(intercept=0,slope=0) + 
+  geom_abline(intercept=0,slope=1000)
+
+# Include all points where sigma2 >= 0
+z <- ifelse(xy[,2]<0,0,dmnorm(xy, Mu, Sigma))
+zframe.1 <- zframe[zframe$Var2>=0,]
+MLE <- xy[z==max(z),]
+con.2 <- ggplot(data=zframe.1,aes(x=Var1,y=Var2,z=z)) + 
+  geom_contour(stat="contour",lineend="butt",
+               linejoin="round",linemitre=1,
+               na.rm=FALSE,colour="black") + 
+  scale_y_continuous(limits=c(-8,4)) + 
+  labs(x="b0",y="sigma2",title="Constrained") + 
+  geom_abline(intercept=0,slope=0) + 
+  geom_abline(intercept=0,slope=1000)
+
+con.1 + con.2
+
+```
+:::
+
+::: {.column .fragment width="50%" fragment-index="2"}
+-   In the unconstrained search, the likelihood $L(\beta_0, \sigma^2)$ is maximized at $\hat{\beta}_0 = 4, \hat{\sigma}^2 = -2$
+
+-   In reality $\sigma^2$ must be non-negative, so the search for the MLE is restricted to the region such that $\sigma^2 \geq 0$.
+
+-   The constrained likelihood is maximized at $\hat{\beta}_0 = 4, \hat{\sigma}^2 = 0$
+:::
+:::
+
+## Model 2: Refit model without $\rho_{uv}$ 
+
+```{r}
+model2 <- glmer(foul.home ~ foul.diff + (1|game) + (0 + foul.diff|game), 
+                data = basketball, family = binomial)
+```
+
+<br>
+
+```{r}
+#| echo: false
+tidy(model2) |> kable(digits = 3)
+```
+
+## Model 2: Interpretations {.midi}
+
+-   $\hat{\alpha}_0$: The odds of a foul on the home team when the number of fouls is even is expected to be `r round(exp(-0.187), 3)`, $e^{-0.187}$.
+
+-   $\hat{\beta}_0$: When the foul differential increases by 1, the odds of a foul on the home team is expected to decrease by 23.8% (multiply by $e^{-0.272}$).
+
+-   $\hat{\sigma}_u$: The variance in the log-odds intercepts between games after adjusting for foul differential is $0.518^2 = 0.268$.
+
+-   $\hat{\sigma}_v$: The variance in the effect on the log-odds of foul differential between games is $0.043^2 = 0.002$.
+
+-   $\hat{\rho}_{uv}$: The correlation between the game-to-game variability in the slopes and intercepts (not included in this model)
+
+# Crossed random effects
+
+## Crossed random effects
+
+::: incremental
+-   The Level Two covariates are the home team and visiting team
+
+-   There is some evidence in the EDA that there may be differences in the probability of a foul depending on the home team
+
+-   We will account for this difference by treating home team and visiting team as random effects in the model
+
+    -   *Issue*: Home and visiting team are not nested within game, since a single home and visiting team can be in multiple games
+
+-   The random effects for game, home team, and visiting team are **crossed random effects**
+:::
+
+## Notation
+
+$Y_{i[gh]j}$: Random variable indicating whether the $j^{th}$ foul in Game $i$ was called on home team $h$ instead of visiting team $g$
+
+$$Y_{i[gh]j} \sim Bernoulli(p_{i[gh]j})$$
+
+<br>
+
+where $p_{i[gh]j}$ is the true probability a foul in Game $i$ was called on home team $h$ instead of visiting team $g$
+
+## Model 3: Models by level
+
+**Level One**
+
+$$\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) = a_i + b_i ~ \text{foul.diff}_{ij}$$
+
+. . .
+
+**Level Two**
+
+$$\begin{aligned}&a_i = \alpha_0 + u_i + v_h + w_g\\
+&\beta_i = \beta_0\end{aligned}$$
+
+<br>
+
+$$u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)$$
+
+## Model 3: Composite model {.midi}
+
+$$\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) = \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + [u_i + v_h + w_g]$$
+
+$$u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)$$
+
+. . .
+
+**Why add additional random effects?**
+
+-   Get more precise estimates of fixed effects
+
+-   Can make comparisons of game-to-game and team-to-team variability
+
+-   Can get estimated random effects for each team and use them to compare odds of a foul on the home team for different teams
+
+## Model 3 in R
+
+```{r}
+model3 <- glmer(foul.home ~ foul.diff + 
+                  (1|game) + (1|hometeam) + (1 | visitor),
+               data = basketball, family = binomial)
+```
+
+```{r}
+tidy(model3) |> kable(digits = 3)
+```
+
+## Model 3 coefficients {.midi}
+
+```{r}
+#| echo: false
+
+tidy(model3) |> kable(digits = 3)
+```
+
+. . .
+
+::: question
+About what percent of the variability in the intercepts is due to...
+
+-   game-to-game differences?
+-   differences among home teams?
+-   differences among visiting teams?
+:::
+
+## Keep the crossed random effects? {.midi}
+
+-   Given a large proportion of the variability in the intercepts is explained by game-to-game differences, we can assess if the random effects for home team and visiting team are providing useful information.
+
+-   To do so, we will compare the following models
+
+```{r warning = FALSE, message = FALSE}
+modela <-  glmer(foul.home ~ foul.diff + (1|game), 
+                 data = basketball, family = binomial)
+
+modelb <- glmer(foul.home ~ foul.diff + 
+                  (1|game) + (1 | hometeam) + (1|visitor),
+                data = basketball, family = binomial)
+```
+
+::: question
+-   What parameters are being tested?
+
+-   Write the null and alternative hypotheses.
+:::
+
+## Keep the crossed random effects?
+
+We can use the following methods to assess if it is useful to keep the crossed random effects in the model:
+
+-   Parametric bootstrap confidence intervals
+
+-   Compare models with and without the random effects using AIC or BIC
+
+. . .
+
+Additional methods to use with caution:
+
+-   Likelihood ratio test based on $\chi^2$ (unreliable when testing random effects)
+
+-   Parametric bootstrap likelihood ratio test (can have very long computational time)
+
+## Parametric bootstrap CI
+
+```{r}
+#| eval: true
+set.seed(310)
+confint(modelb, method = "boot", oldNames = FALSE) |>
+  kable(digits = 3)
+```
+
+## AIC and BIC
+
+```{r}
+glance(modela) |> kable(digits = 3)
+glance(modelb) |> kable(digits = 3)
+```
+
+## Full model {.midi}
+
+$$\begin{aligned}\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) &= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + \gamma_0 ~\text{score.diff}_{ij} + \delta_0 ~ \text{lead.home}_{ij} \\ 
+&+ \phi_0 ~ \text{time}_{ij} + \kappa_0 ~ \text{offensive}_{ij} + \lambda_0 ~ \text{personal}_{ij} \\ 
+&+ \mu_0 ~ \text{foul.diff}_{ij}\text{:offensive}_{ij} + \nu_0 ~ \text{foul.diff}_{ij}\text{:personal}_{ij} \\ 
+& + \omega_0 ~ \text{foul.diff}_{ij}\text{:time_}_{ij}+ \zeta_0 ~ \text{lead.home}_{ij}\text{:time}_{ij} \\ 
+&+ [u_i + v_h + w_g]\end{aligned}$$
+$$u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)$$
+
+. . .
+
+```{r}
+#| eval: false
+model_full <- glmer(foul.home ~ foul.diff + score.diff + lead.home + time + 
+                      offensive + personal + foul.diff:offensive + 
+                      foul.diff:personal + foul.diff:time + lead.home:time + 
+                      (1|game) + (1|hometeam) + (1|visitor),
+  family = binomial, data = basketball)
+```
+
+---
+
+::: small
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+model_full <- glmer(foul.home ~ foul.diff + score.diff + 
+  lead.home + time + offensive + personal + 
+  foul.diff:offensive + foul.diff:personal + 
+  foul.diff:time + lead.home:time + (1|game) + 
+  (1|hometeam) + (1|visitor),
+  family = binomial, data = basketball)
+
+tidy(model_full) |>
+  kable(digits = 3)
+```
+:::
+
+## Conclusions from full model 
+
+::: question
+Based on the full model, what are your conclusions about the factors that impact the odds of a foul on the home team?
+:::
+
+<!--# Maybe see the conclusions from the paper and see if it's consistent?-->
+
+## References

@@ -807,9 +807,6 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="model-2" class="slide level2">
 <h2>Model 2</h2>
-<p><br>
-<span class="math display">\[\begin{aligned}\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) &amp;= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + [u_i + v_i ~ \text{foul.diff}_{ij}] \\
-&amp;u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_i \sim N(0, \sigma^2_v)\end{aligned}\]</span></p>
 <div>
 <ul>
 <li class="fragment"><p><span class="math inline">\(\hat{\alpha}_0\)</span>: The odds of a foul on the home team when the number of fouls is even is expected to be 0.829, <span class="math inline">\(e^{-0.187}\)</span>.</p></li>
@@ -853,7 +850,7 @@ Prof.&nbsp;Maria Tackett
 <div class="fragment">
 <p><strong>Level Two</strong></p>
 <p><span class="math display">\[\begin{aligned}&amp;a_i = \alpha_0 + u_i + v_h + w_g\\
-&amp;\beta_i = \beta_0\end{aligned}\]</span></p>
+&amp;b_i = \beta_0\end{aligned}\]</span></p>
 <p><br></p>
 <p><span class="math display">\[u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)\]</span></p>
 </div>
@@ -1184,7 +1181,7 @@ Prof.&nbsp;Maria Tackett
 <p><span class="math display">\[\begin{aligned}\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) &amp;= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + \gamma_0 ~\text{score.diff}_{ij} +  \\
 &amp;+ \phi_0 ~ \text{time}_{ij} + \kappa_0 ~ \text{offensive}_{ij} + \lambda_0 ~ \text{personal}_{ij} \\
 &amp;+ \mu_0 ~ \text{foul.diff}_{ij}\text{:offensive}_{ij} + \nu_0 ~ \text{foul.diff}_{ij}\text{:personal}_{ij} \\
-&amp; + \omega_0 ~ \text{foul.diff}_{ij}\text{:time_}_{ij} \\
+&amp; + \omega_0 ~ \text{foul.diff}_{ij}\text{:time}_{ij} \\
 &amp;+ [u_i + v_h + w_g]\end{aligned}\]</span> <span class="math display">\[u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)\]</span></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">

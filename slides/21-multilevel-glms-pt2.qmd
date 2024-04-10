@@ -209,10 +209,6 @@ tidy(model2) |> kable(digits = 3)
 
 ## Model 2
 
-\
-$$\begin{aligned}\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) &= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + [u_i + v_i ~ \text{foul.diff}_{ij}] \\
-&u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_i \sim N(0, \sigma^2_v)\end{aligned}$$
-
 ::: incremental
 -   $\hat{\alpha}_0$: The odds of a foul on the home team when the number of fouls is even is expected to be `r round(exp(-0.187), 3)`, $e^{-0.187}$.
 
@@ -262,7 +258,7 @@ $$\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) = a_i + b_i ~ \text{foul.diff}
 **Level Two**
 
 $$\begin{aligned}&a_i = \alpha_0 + u_i + v_h + w_g\\
-&\beta_i = \beta_0\end{aligned}$$
+&b_i = \beta_0\end{aligned}$$
 
 <br>
 
@@ -373,7 +369,7 @@ glance(modelb) |> kable(digits = 3)
 $$\begin{aligned}\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) &= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + \gamma_0 ~\text{score.diff}_{ij} +  \\ 
 &+ \phi_0 ~ \text{time}_{ij} + \kappa_0 ~ \text{offensive}_{ij} + \lambda_0 ~ \text{personal}_{ij} \\ 
 &+ \mu_0 ~ \text{foul.diff}_{ij}\text{:offensive}_{ij} + \nu_0 ~ \text{foul.diff}_{ij}\text{:personal}_{ij} \\ 
-& + \omega_0 ~ \text{foul.diff}_{ij}\text{:time_}_{ij} \\ 
+& + \omega_0 ~ \text{foul.diff}_{ij}\text{:time}_{ij} \\ 
 &+ [u_i + v_h + w_g]\end{aligned}$$ $$u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)$$
 
 . . .

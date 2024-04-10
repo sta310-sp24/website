@@ -91,7 +91,7 @@ The subscripts here align with the subscripts in the notes and chapter 10 of @ro
 
 a.  Write the expression for $Var(Y_{ijk})$, the variance for an individual observation.
 b.  Write the expression for $Cov(Y_{ijk}, Y_{ijk'})$, the covariance between observations taken at different houses sold in the same time period in the same district.
-c.  Write the expression for $Cov(Y_{ijk}, Y_{ij'k'})$, the covariance between observations taken at different houses, sold in different time periods from same districts.
+c.  Write the expression for $Cov(Y_{ijk}, Y_{ij'k'})$, the covariance between observations taken at different houses, sold in different time periods from the same district.
 
 # Submission
 

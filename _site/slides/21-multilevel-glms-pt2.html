@@ -429,10 +429,7 @@ Prof.&nbsp;Maria Tackett
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>HW 05 due today at 11:59pm
-<ul>
-<li>No office hours or lecture on Monday, April 8</li>
-</ul></li>
+<li>HW 05 due today at 11:59pm</li>
 <li>Final project
 <ul>
 <li><p>Round 1 submission (optional) due April 25</p></li>
@@ -443,8 +440,6 @@ Prof.&nbsp;Maria Tackett
 <section id="topics" class="slide level2">
 <h2>Topics</h2>
 <ul>
-<li><p>Exploratory data analysis for multilevel data with non-normal response variable</p></li>
-<li><p>Write One, Level Two and composite models for mutlilevel GLM</p></li>
 <li><p>Fit and interpret multilevel GLM</p></li>
 <li><p>Understand crossed random effects and incorporate them in the multilevel model</p></li>
 </ul>
@@ -810,15 +805,20 @@ Prof.&nbsp;Maria Tackett
 </div>
 </div>
 </section>
-<section id="model-2-interpretations" class="slide level2 midi">
-<h2>Model 2: Interpretations</h2>
+<section id="model-2" class="slide level2">
+<h2>Model 2</h2>
+<p><br>
+<span class="math display">\[\begin{aligned}\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) &amp;= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + [u_i + v_i ~ \text{foul.diff}_{ij}] \\
+&amp;u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_i \sim N(0, \sigma^2_v)\end{aligned}\]</span></p>
+<div>
 <ul>
-<li><p><span class="math inline">\(\hat{\alpha}_0\)</span>: The odds of a foul on the home team when the number of fouls is even is expected to be 0.829, <span class="math inline">\(e^{-0.187}\)</span>.</p></li>
-<li><p><span class="math inline">\(\hat{\beta}_0\)</span>: When the foul differential increases by 1, the odds of a foul on the home team is expected to decrease by 23.8% (multiply by <span class="math inline">\(e^{-0.272}\)</span>).</p></li>
-<li><p><span class="math inline">\(\hat{\sigma}_u\)</span>: The variance in the log-odds intercepts between games after adjusting for foul differential is <span class="math inline">\(0.518^2 = 0.268\)</span>.</p></li>
-<li><p><span class="math inline">\(\hat{\sigma}_v\)</span>: The variance in the effect on the log-odds of foul differential between games is <span class="math inline">\(0.043^2 = 0.002\)</span>.</p></li>
-<li><p><span class="math inline">\(\hat{\rho}_{uv}\)</span>: The correlation between the game-to-game variability in the slopes and intercepts (not included in this model)</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\alpha}_0\)</span>: The odds of a foul on the home team when the number of fouls is even is expected to be 0.829, <span class="math inline">\(e^{-0.187}\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\beta}_0\)</span>: When the foul differential increases by 1, the odds of a foul on the home team is expected to decrease by 23.8% (multiply by <span class="math inline">\(e^{-0.272}\)</span>).</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\sigma}_u\)</span>: The variance in the log-odds intercepts between games after adjusting for foul differential is <span class="math inline">\(0.518^2 = 0.268\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\sigma}_v\)</span>: The variance in the effect on the log-odds of foul differential between games is <span class="math inline">\(0.043^2 = 0.002\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\rho}_{uv}\)</span>: The correlation between the game-to-game variability in the slopes and intercepts (not included in this model)</p></li>
 </ul>
+</div>
 </section>
 <section>
 <section id="crossed-random-effects" class="title-slide slide level1 center">
@@ -879,7 +879,6 @@ Prof.&nbsp;Maria Tackett
 <span id="cb4-3"><a></a>               <span class="at">data =</span> basketball, <span class="at">family =</span> binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">tidy</span>(model3) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table style="width:100%;">
 <colgroup>
@@ -1046,12 +1045,12 @@ Prof.&nbsp;Maria Tackett
 <li><p>To do so, we will compare the following models</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>modela <span class="ot">&lt;-</span>  <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>game), </span>
-<span id="cb6-2"><a></a>                 <span class="at">data =</span> basketball, <span class="at">family =</span> binomial)</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a>modelb <span class="ot">&lt;-</span> <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> </span>
-<span id="cb6-5"><a></a>                  (<span class="dv">1</span><span class="sc">|</span>game) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> hometeam) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>visitor),</span>
-<span id="cb6-6"><a></a>                <span class="at">data =</span> basketball, <span class="at">family =</span> binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>modela <span class="ot">&lt;-</span>  <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>game), </span>
+<span id="cb5-2"><a></a>                 <span class="at">data =</span> basketball, <span class="at">family =</span> binomial)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>modelb <span class="ot">&lt;-</span> <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> </span>
+<span id="cb5-5"><a></a>                  (<span class="dv">1</span><span class="sc">|</span>game) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> hometeam) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>visitor),</span>
+<span id="cb5-6"><a></a>                <span class="at">data =</span> basketball, <span class="at">family =</span> binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="question">
 <ul>
@@ -1078,9 +1077,9 @@ Prof.&nbsp;Maria Tackett
 <section id="parametric-bootstrap-ci" class="slide level2">
 <h2>Parametric bootstrap CI</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">set.seed</span>(<span class="dv">310</span>)</span>
-<span id="cb7-2"><a></a><span class="fu">confint</span>(modelb, <span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">oldNames =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">set.seed</span>(<span class="dv">310</span>)</span>
+<span id="cb6-2"><a></a><span class="fu">confint</span>(modelb, <span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">oldNames =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1124,7 +1123,7 @@ Prof.&nbsp;Maria Tackett
 <section id="aic-and-bic" class="slide level2">
 <h2>AIC and BIC</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">glance</span>(modela) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">glance</span>(modela) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1151,7 +1150,7 @@ Prof.&nbsp;Maria Tackett
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">glance</span>(modelb) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">glance</span>(modelb) <span class="sc">|&gt;</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1182,23 +1181,26 @@ Prof.&nbsp;Maria Tackett
 </section>
 <section id="full-model" class="slide level2 midi">
 <h2>Full model</h2>
-<p><span class="math display">\[\begin{aligned}\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) &amp;= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + \gamma_0 ~\text{score.diff}_{ij} + \delta_0 ~ \text{lead.home}_{ij} \\
+<p><span class="math display">\[\begin{aligned}\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) &amp;= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + \gamma_0 ~\text{score.diff}_{ij} +  \\
 &amp;+ \phi_0 ~ \text{time}_{ij} + \kappa_0 ~ \text{offensive}_{ij} + \lambda_0 ~ \text{personal}_{ij} \\
 &amp;+ \mu_0 ~ \text{foul.diff}_{ij}\text{:offensive}_{ij} + \nu_0 ~ \text{foul.diff}_{ij}\text{:personal}_{ij} \\
-&amp; + \omega_0 ~ \text{foul.diff}_{ij}\text{:time_}_{ij}+ \zeta_0 ~ \text{lead.home}_{ij}\text{:time}_{ij} \\
+&amp; + \omega_0 ~ \text{foul.diff}_{ij}\text{:time_}_{ij} \\
 &amp;+ [u_i + v_h + w_g]\end{aligned}\]</span> <span class="math display">\[u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)\]</span></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>model_full <span class="ot">&lt;-</span> <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> score.diff <span class="sc">+</span> lead.home <span class="sc">+</span> time <span class="sc">+</span> </span>
-<span id="cb10-2"><a></a>                      offensive <span class="sc">+</span> personal <span class="sc">+</span> foul.diff<span class="sc">:</span>offensive <span class="sc">+</span> </span>
-<span id="cb10-3"><a></a>                      foul.diff<span class="sc">:</span>personal <span class="sc">+</span> foul.diff<span class="sc">:</span>time <span class="sc">+</span> lead.home<span class="sc">:</span>time <span class="sc">+</span> </span>
-<span id="cb10-4"><a></a>                      (<span class="dv">1</span><span class="sc">|</span>game) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>hometeam) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>visitor),</span>
-<span id="cb10-5"><a></a>  <span class="at">family =</span> binomial, <span class="at">data =</span> basketball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>full_model <span class="ot">&lt;-</span> <span class="fu">glmer</span>(foul.home <span class="sc">~</span> foul.diff <span class="sc">+</span> score.diff <span class="sc">+</span> time <span class="sc">+</span> </span>
+<span id="cb9-2"><a></a>                      offensive <span class="sc">+</span> personal <span class="sc">+</span> foul.diff<span class="sc">:</span>offensive <span class="sc">+</span> </span>
+<span id="cb9-3"><a></a>                      foul.diff<span class="sc">:</span>personal <span class="sc">+</span> foul.diff<span class="sc">:</span>time <span class="sc">+</span> </span>
+<span id="cb9-4"><a></a>                      (<span class="dv">1</span><span class="sc">|</span>game) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>hometeam) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>visitor),</span>
+<span id="cb9-5"><a></a>  <span class="at">family =</span> binomial, <span class="at">data =</span> basketball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-<section class="slide level2">
 
+</div>
+<aside><div>
+<p>Similar to model from <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#sec:finalmodel-glmm">Section 11.7</a> of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</div></aside></section>
+<section id="full-model-1" class="slide level2">
+<h2>Full model</h2>
 <div class="small">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1228,106 +1230,88 @@ Prof.&nbsp;Maria Tackett
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.246</td>
-<td style="text-align: right;">0.134</td>
-<td style="text-align: right;">-1.840</td>
-<td style="text-align: right;">0.066</td>
+<td style="text-align: right;">-0.336</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">-3.347</td>
+<td style="text-align: right;">0.001</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">foul.diff</td>
-<td style="text-align: right;">-0.171</td>
-<td style="text-align: right;">0.045</td>
-<td style="text-align: right;">-3.780</td>
+<td style="text-align: right;">-0.169</td>
+<td style="text-align: right;">0.046</td>
+<td style="text-align: right;">-3.697</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">score.diff</td>
-<td style="text-align: right;">0.034</td>
-<td style="text-align: right;">0.008</td>
-<td style="text-align: right;">4.070</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">6.238</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">lead.home</td>
-<td style="text-align: right;">-0.151</td>
-<td style="text-align: right;">0.177</td>
-<td style="text-align: right;">-0.850</td>
-<td style="text-align: right;">0.395</td>
+<td style="text-align: left;">time</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.854</td>
+<td style="text-align: right;">0.393</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">fixed</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">time</td>
-<td style="text-align: right;">-0.009</td>
-<td style="text-align: right;">0.009</td>
-<td style="text-align: right;">-1.022</td>
-<td style="text-align: right;">0.307</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">offensive</td>
-<td style="text-align: right;">-0.081</td>
+<td style="text-align: right;">-0.077</td>
 <td style="text-align: right;">0.111</td>
-<td style="text-align: right;">-0.726</td>
-<td style="text-align: right;">0.468</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">fixed</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">personal</td>
-<td style="text-align: right;">0.067</td>
-<td style="text-align: right;">0.065</td>
-<td style="text-align: right;">1.028</td>
-<td style="text-align: right;">0.304</td>
+<td style="text-align: right;">-0.692</td>
+<td style="text-align: right;">0.489</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">foul.diff:offensive</td>
-<td style="text-align: right;">-0.104</td>
-<td style="text-align: right;">0.054</td>
-<td style="text-align: right;">-1.923</td>
-<td style="text-align: right;">0.055</td>
+<td style="text-align: left;">personal</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">1.115</td>
+<td style="text-align: right;">0.265</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">foul.diff:offensive</td>
+<td style="text-align: right;">-0.102</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;">-1.893</td>
+<td style="text-align: right;">0.058</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">foul.diff:personal</td>
 <td style="text-align: right;">-0.056</td>
 <td style="text-align: right;">0.032</td>
-<td style="text-align: right;">-1.742</td>
-<td style="text-align: right;">0.082</td>
+<td style="text-align: right;">-1.755</td>
+<td style="text-align: right;">0.079</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">fixed</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">foul.diff:time</td>
 <td style="text-align: right;">-0.009</td>
 <td style="text-align: right;">0.003</td>
-<td style="text-align: right;">-2.654</td>
-<td style="text-align: right;">0.008</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">fixed</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">lead.home:time</td>
-<td style="text-align: right;">0.026</td>
-<td style="text-align: right;">0.012</td>
-<td style="text-align: right;">2.137</td>
-<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">-2.766</td>
+<td style="text-align: right;">0.006</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ran_pars</td>
 <td style="text-align: left;">game</td>
 <td style="text-align: left;">sd__(Intercept)</td>
-<td style="text-align: right;">0.430</td>
+<td style="text-align: right;">0.425</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -1336,7 +1320,7 @@ Prof.&nbsp;Maria Tackett
 <td style="text-align: left;">ran_pars</td>
 <td style="text-align: left;">hometeam</td>
 <td style="text-align: left;">sd__(Intercept)</td>
-<td style="text-align: right;">0.280</td>
+<td style="text-align: right;">0.278</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -1360,8 +1344,86 @@ Prof.&nbsp;Maria Tackett
 <h2>Conclusions from full model</h2>
 <div class="question">
 <p>Based on the full model, what are your conclusions about the factors that impact the odds of a foul on the home team?</p>
+<p>See <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#explore-glmm">Section 11.3.1</a> of <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> or full codebook.</p>
 </div>
-<!--# Maybe see the conclusions from the paper and see if it's consistent?-->
+</section></section>
+<section>
+<section id="estimated-random-effects" class="title-slide slide level1 center">
+<h1>Estimated random effects</h1>
+
+</section>
+<section id="estimated-random-effects-for-each-team" class="slide level2">
+<h2>Estimated random effects for each team</h2>
+<ul>
+<li><p>We will use the full model to get the estimated random effect for each team.</p></li>
+<li><p>These are <strong>empirical Bayes estimates</strong> (“shrinkage estimates”).</p>
+<ul>
+<li>Combine individual-specific information with information from all teams</li>
+<li>“Shrinks” the individual estimates toward the group averages</li>
+</ul></li>
+</ul>
+
+<aside><div>
+<p>See <span class="citation" data-cites="liu2021use">Liu, Kuppens, and Bringmann (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> on <a href="https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1170605">Canvas</a> for more detail on empirical Bayes estimation.</p>
+</div></aside></section>
+<section id="estimated-random-effects-for-each-team-1" class="slide level2 small">
+<h2>Estimated random effects for each team</h2>
+<p>We can get these effects using the <strong><code>ranef</code></strong> function in the lmer R package.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>reffect_game <span class="ot">&lt;-</span> <span class="fu">ranef</span>(full_model)<span class="sc">$</span>game <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">(Intercept)</span><span class="st">`</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>()</span>
+<span id="cb10-2"><a></a>reffect_home <span class="ot">&lt;-</span> <span class="fu">ranef</span>(full_model)<span class="sc">$</span>hometeam <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">(Intercept)</span><span class="st">`</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>()</span>
+<span id="cb10-3"><a></a>reffect_visitor <span class="ot">&lt;-</span> <span class="fu">ranef</span>(full_model)<span class="sc">$</span>visitor <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">(Intercept)</span><span class="st">`</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>()</span>
+<span id="cb10-4"><a></a>team_names <span class="ot">&lt;-</span> <span class="fu">rownames</span>(<span class="fu">ranef</span>(full_model)<span class="sc">$</span>visitor)</span>
+<span id="cb10-5"><a></a>reffect_team <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">team =</span> team_names, </span>
+<span id="cb10-6"><a></a>                       <span class="at">reffect_home =</span> reffect_home,</span>
+<span id="cb10-7"><a></a>                     <span class="at">reffect_visitor =</span> reffect_visitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>reffect_team <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  team   reffect_home reffect_visitor
+  &lt;chr&gt;         &lt;dbl&gt;           &lt;dbl&gt;
+1 BC          -0.0623          0.0296
+2 CIN          0.291          -0.0827
+3 CLEM        -0.174          -0.126 
+4 CT          -0.274           0.0756
+5 DEPAUL       0.439          -0.281 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="distribution-of-random-home-team-effects" class="slide level2">
+<h2>Distribution of random home team effects</h2>
+
+<img data-src="21-multilevel-glms-pt2_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<section id="estimated-home-random-effects-by-team" class="slide level2">
+<h2>Estimated home random effects by team</h2>
+
+<img data-src="21-multilevel-glms-pt2_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="code" class="slide level2">
+<h2>Code</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>var <span class="ot">&lt;-</span> <span class="fu">attr</span>(<span class="fu">ranef</span>(full_model)<span class="sc">$</span>hometeam, <span class="st">"postVar"</span>)</span>
+<span id="cb13-2"><a></a>reffect_predict <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Intercepts =</span> reffect_home,</span>
+<span id="cb13-3"><a></a>              <span class="at">SD =</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(var[,,<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(var)]),</span>
+<span id="cb13-4"><a></a>              <span class="at">team_names =</span> reffect_team<span class="sc">$</span>team)</span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> reffect_predict, <span class="fu">aes</span>(<span class="fu">fct_reorder</span>(team_names, Intercepts), </span>
+<span id="cb13-7"><a></a>                                   Intercepts)) <span class="sc">+</span> </span>
+<span id="cb13-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-9"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb13-10"><a></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Intercepts <span class="sc">-</span> SD,</span>
+<span id="cb13-11"><a></a>                    <span class="at">ymax =</span> Intercepts <span class="sc">+</span> SD),</span>
+<span id="cb13-12"><a></a>                <span class="at">width=</span><span class="dv">0</span>,<span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb13-13"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Estimated random home team effects"</span>, </span>
+<span id="cb13-14"><a></a>       <span class="at">x =</span> <span class="st">"Home teams"</span>, </span>
+<span id="cb13-15"><a></a>       <span class="at">y =</span> <span class="st">"Estimated random effects"</span>) <span class="sc">+</span> </span>
+<span id="cb13-16"><a></a> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)) <span class="sc">+</span> </span>
+<span id="cb13-17"><a></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -1375,6 +1437,9 @@ Prof.&nbsp;Maria Tackett
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-anderson2009officiating" class="csl-entry" role="listitem">
 Anderson, Kyle J, and David A Pierce. 2009. <span>“Officiating Bias: The Effect of Foul Differential on Foul Calls in NCAA Basketball.”</span> <em>Journal of Sports Sciences</em> 27 (7): 687–94.
+</div>
+<div id="ref-liu2021use" class="csl-entry" role="listitem">
+Liu, Siwei, Peter Kuppens, and Laura Bringmann. 2021. <span>“On the Use of Empirical Bayes Estimates as Measures of Individual Traits.”</span> <em>Assessment</em> 28 (3): 845–57.
 </div>
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
 Roback, Paul, and Julie Legler. 2021. <em><span class="nocase">Beyond multiple linear regression: applied generalized linear models and multilevel models in R</span></em>. CRC Press.

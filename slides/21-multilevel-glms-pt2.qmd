@@ -55,17 +55,12 @@ library(broom.mixed)
 ## Announcements
 
 -   HW 05 due today at 11:59pm
-    -   No office hours or lecture on Monday, April 8
 -   Final project
     -   Round 1 submission (optional) due April 25
 
     -   Final submission due May 2
 
 ## Topics
-
--   Exploratory data analysis for multilevel data with non-normal response variable
-
--   Write One, Level Two and composite models for mutlilevel GLM
 
 -   Fit and interpret multilevel GLM
 
@@ -198,7 +193,7 @@ con.1 + con.2
 :::
 :::
 
-## Model 2: Refit model without $\rho_{uv}$ 
+## Model 2: Refit model without $\rho_{uv}$
 
 ```{r}
 model2 <- glmer(foul.home ~ foul.diff + (1|game) + (0 + foul.diff|game), 
@@ -212,8 +207,13 @@ model2 <- glmer(foul.home ~ foul.diff + (1|game) + (0 + foul.diff|game),
 tidy(model2) |> kable(digits = 3)
 ```
 
-## Model 2: Interpretations {.midi}
+## Model 2
 
+\
+$$\begin{aligned}\log\Big(\frac{p_{ij}}{1 - p_{ij}}\Big) &= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + [u_i + v_i ~ \text{foul.diff}_{ij}] \\
+&u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_i \sim N(0, \sigma^2_v)\end{aligned}$$
+
+::: incremental
 -   $\hat{\alpha}_0$: The odds of a foul on the home team when the number of fouls is even is expected to be `r round(exp(-0.187), 3)`, $e^{-0.187}$.
 
 -   $\hat{\beta}_0$: When the foul differential increases by 1, the odds of a foul on the home team is expected to decrease by 23.8% (multiply by $e^{-0.272}$).
@@ -223,6 +223,7 @@ tidy(model2) |> kable(digits = 3)
 -   $\hat{\sigma}_v$: The variance in the effect on the log-odds of foul differential between games is $0.043^2 = 0.002$.
 
 -   $\hat{\rho}_{uv}$: The correlation between the game-to-game variability in the slopes and intercepts (not included in this model)
+:::
 
 # Crossed random effects
 
@@ -292,6 +293,7 @@ model3 <- glmer(foul.home ~ foul.diff +
 ```
 
 ```{r}
+#| echo: false
 tidy(model3) |> kable(digits = 3)
 ```
 
@@ -368,25 +370,28 @@ glance(modelb) |> kable(digits = 3)
 
 ## Full model {.midi}
 
-$$\begin{aligned}\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) &= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + \gamma_0 ~\text{score.diff}_{ij} + \delta_0 ~ \text{lead.home}_{ij} \\ 
+$$\begin{aligned}\log\Big(\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\Big) &= \alpha_0 + \beta_0 ~ \text{foul.diff}_{ij} + \gamma_0 ~\text{score.diff}_{ij} +  \\ 
 &+ \phi_0 ~ \text{time}_{ij} + \kappa_0 ~ \text{offensive}_{ij} + \lambda_0 ~ \text{personal}_{ij} \\ 
 &+ \mu_0 ~ \text{foul.diff}_{ij}\text{:offensive}_{ij} + \nu_0 ~ \text{foul.diff}_{ij}\text{:personal}_{ij} \\ 
-& + \omega_0 ~ \text{foul.diff}_{ij}\text{:time_}_{ij}+ \zeta_0 ~ \text{lead.home}_{ij}\text{:time}_{ij} \\ 
-&+ [u_i + v_h + w_g]\end{aligned}$$
-$$u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)$$
+& + \omega_0 ~ \text{foul.diff}_{ij}\text{:time_}_{ij} \\ 
+&+ [u_i + v_h + w_g]\end{aligned}$$ $$u_i \sim N(0, \sigma^2_u) \hspace{10mm} v_h \sim N(0, \sigma^2_v) \hspace{10mm} w_g \sim N(0, \sigma^2_w)$$
 
 . . .
 
 ```{r}
 #| eval: false
-model_full <- glmer(foul.home ~ foul.diff + score.diff + lead.home + time + 
+full_model <- glmer(foul.home ~ foul.diff + score.diff + time + 
                       offensive + personal + foul.diff:offensive + 
-                      foul.diff:personal + foul.diff:time + lead.home:time + 
+                      foul.diff:personal + foul.diff:time + 
                       (1|game) + (1|hometeam) + (1|visitor),
   family = binomial, data = basketball)
 ```
 
----
+::: aside
+Similar to model from [Section 11.7](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#sec:finalmodel-glmm) of @roback2021beyond
+:::
+
+## Full model
 
 ::: small
 ```{r}
@@ -394,24 +399,112 @@ model_full <- glmer(foul.home ~ foul.diff + score.diff + lead.home + time +
 #| message: false
 #| warning: false
 
-model_full <- glmer(foul.home ~ foul.diff + score.diff + 
-  lead.home + time + offensive + personal + 
+full_model <- glmer(foul.home ~ foul.diff + score.diff + 
+   time + offensive + personal + 
   foul.diff:offensive + foul.diff:personal + 
-  foul.diff:time + lead.home:time + (1|game) + 
+  foul.diff:time + (1|game) + 
   (1|hometeam) + (1|visitor),
   family = binomial, data = basketball)
 
-tidy(model_full) |>
+tidy(full_model) |>
   kable(digits = 3)
 ```
 :::
 
-## Conclusions from full model 
+## Conclusions from full model
 
 ::: question
 Based on the full model, what are your conclusions about the factors that impact the odds of a foul on the home team?
+
+See [Section 11.3.1](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#explore-glmm) of @roback2021beyond or full codebook.
 :::
 
-<!--# Maybe see the conclusions from the paper and see if it's consistent?-->
+# Estimated random effects
+
+## Estimated random effects for each team
+
+-   We will use the full model to get the estimated random effect for each team.
+
+-   These are **empirical Bayes estimates** ("shrinkage estimates").
+
+    -   Combine individual-specific information with information from all teams
+    -   "Shrinks" the individual estimates toward the group averages
+
+::: aside
+See @liu2021use on [Canvas](https://canvas.duke.edu/courses/25310/files/folder/journal-articles?preview=1170605) for more detail on empirical Bayes estimation.
+:::
+
+## Estimated random effects for each team {.small}
+
+We can get these effects using the **`ranef`** function in the lmer R package.
+
+```{r}
+reffect_game <- ranef(full_model)$game |> select(`(Intercept)`) |> pull()
+reffect_home <- ranef(full_model)$hometeam |> select(`(Intercept)`) |> pull()
+reffect_visitor <- ranef(full_model)$visitor |> select(`(Intercept)`) |> pull()
+team_names <- rownames(ranef(full_model)$visitor)
+reffect_team <- tibble(team = team_names, 
+                       reffect_home = reffect_home,
+                     reffect_visitor = reffect_visitor)
+```
+
+. . .
+
+```{r}
+reffect_team |>
+  slice(1:5)
+```
+
+## Distribution of random home team effects
+
+```{r out.width = "60%", echo = FALSE}
+ggplot(data = reffect_team, aes(x = reffect_home)) + 
+  geom_histogram(binwidth = .05, color = "black", fill = "steelblue") + 
+  labs(x = "Random home team effects", 
+       title = "Random home team effects from Full Model") 
+```
+
+## Estimated home random effects by team
+
+```{r echo = F, out.width = "100%"}
+var <- attr(ranef(full_model)$hometeam, "postVar")
+reffect_predict <- tibble(Intercepts = reffect_home,
+              SD = 2*sqrt(var[,,1:length(var)]),
+              team_names = reffect_team$team)
+
+ggplot(data = reffect_predict, aes(fct_reorder(team_names, Intercepts), Intercepts)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0) + 
+  geom_errorbar(aes(ymin = Intercepts - SD,
+                    ymax = Intercepts + SD),
+                width=0,color="black") + 
+  labs(title = "Estimated random home team effects", 
+       x = "Home teams", 
+       y = "Estimated random effects") + 
+ theme(axis.text.y = element_text(size = 7)) + 
+  coord_flip()
+```
+
+## Code 
+
+```{r eval = F}
+var <- attr(ranef(full_model)$hometeam, "postVar")
+reffect_predict <- tibble(Intercepts = reffect_home,
+              SD = 2*sqrt(var[,,1:length(var)]),
+              team_names = reffect_team$team)
+
+ggplot(data = reffect_predict, aes(fct_reorder(team_names, Intercepts), 
+                                   Intercepts)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0) + 
+  geom_errorbar(aes(ymin = Intercepts - SD,
+                    ymax = Intercepts + SD),
+                width=0,color="black") + 
+  labs(title = "Estimated random home team effects", 
+       x = "Home teams", 
+       y = "Estimated random effects") + 
+ theme(axis.text.y = element_text(size = 7)) + 
+  coord_flip()
+```
 
 ## References

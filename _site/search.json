@@ -5471,14 +5471,14 @@
     "href": "slides/21-multilevel-glms-pt2.html#announcements",
     "title": "Multilevel Generalized Linear Models",
     "section": "Announcements",
-    "text": "Announcements\n\nHW 05 due today at 11:59pm\n\nNo office hours or lecture on Monday, April 8\n\nFinal project\n\nRound 1 submission (optional) due April 25\nFinal submission due May 2"
+    "text": "Announcements\n\nHW 05 due today at 11:59pm\nFinal project\n\nRound 1 submission (optional) due April 25\nFinal submission due May 2"
   },
   {
     "objectID": "slides/21-multilevel-glms-pt2.html#topics",
     "href": "slides/21-multilevel-glms-pt2.html#topics",
     "title": "Multilevel Generalized Linear Models",
     "section": "Topics",
-    "text": "Topics\n\nExploratory data analysis for multilevel data with non-normal response variable\nWrite One, Level Two and composite models for mutlilevel GLM\nFit and interpret multilevel GLM\nUnderstand crossed random effects and incorporate them in the multilevel model\n\n\n\nThe notes are based on Chapter 11 of Roback and Legler (2021) unless otherwise noted."
+    "text": "Topics\n\nFit and interpret multilevel GLM\nUnderstand crossed random effects and incorporate them in the multilevel model\n\n\n\nThe notes are based on Chapter 11 of Roback and Legler (2021) unless otherwise noted."
   },
   {
     "objectID": "slides/21-multilevel-glms-pt2.html#data-college-basketball-referees",
@@ -5530,11 +5530,11 @@
     "text": "Model 2: Refit model without \\(\\rho_{uv}\\)\n\nmodel2 &lt;- glmer(foul.home ~ foul.diff + (1|game) + (0 + foul.diff|game), \n                data = basketball, family = binomial)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\nfixed\nNA\n(Intercept)\n-0.187\n0.044\n-4.213\n0\n\n\nfixed\nNA\nfoul.diff\n-0.272\n0.040\n-6.713\n0\n\n\nran_pars\ngame\nsd__(Intercept)\n0.518\nNA\nNA\nNA\n\n\nran_pars\ngame.1\nsd__foul.diff\n0.043\nNA\nNA\nNA"
   },
   {
-    "objectID": "slides/21-multilevel-glms-pt2.html#model-2-interpretations",
-    "href": "slides/21-multilevel-glms-pt2.html#model-2-interpretations",
+    "objectID": "slides/21-multilevel-glms-pt2.html#model-2",
+    "href": "slides/21-multilevel-glms-pt2.html#model-2",
     "title": "Multilevel Generalized Linear Models",
-    "section": "Model 2: Interpretations",
-    "text": "Model 2: Interpretations\n\n\\(\\hat{\\alpha}_0\\): The odds of a foul on the home team when the number of fouls is even is expected to be 0.829, \\(e^{-0.187}\\).\n\\(\\hat{\\beta}_0\\): When the foul differential increases by 1, the odds of a foul on the home team is expected to decrease by 23.8% (multiply by \\(e^{-0.272}\\)).\n\\(\\hat{\\sigma}_u\\): The variance in the log-odds intercepts between games after adjusting for foul differential is \\(0.518^2 = 0.268\\).\n\\(\\hat{\\sigma}_v\\): The variance in the effect on the log-odds of foul differential between games is \\(0.043^2 = 0.002\\).\n\\(\\hat{\\rho}_{uv}\\): The correlation between the game-to-game variability in the slopes and intercepts (not included in this model)"
+    "section": "Model 2",
+    "text": "Model 2\n\n\\[\\begin{aligned}\\log\\Big(\\frac{p_{ij}}{1 - p_{ij}}\\Big) &= \\alpha_0 + \\beta_0 ~ \\text{foul.diff}_{ij} + [u_i + v_i ~ \\text{foul.diff}_{ij}] \\\\\n&u_i \\sim N(0, \\sigma^2_u) \\hspace{10mm} v_i \\sim N(0, \\sigma^2_v)\\end{aligned}\\]\n\n\n\\(\\hat{\\alpha}_0\\): The odds of a foul on the home team when the number of fouls is even is expected to be 0.829, \\(e^{-0.187}\\).\n\\(\\hat{\\beta}_0\\): When the foul differential increases by 1, the odds of a foul on the home team is expected to decrease by 23.8% (multiply by \\(e^{-0.272}\\)).\n\\(\\hat{\\sigma}_u\\): The variance in the log-odds intercepts between games after adjusting for foul differential is \\(0.518^2 = 0.268\\).\n\\(\\hat{\\sigma}_v\\): The variance in the effect on the log-odds of foul differential between games is \\(0.043^2 = 0.002\\).\n\\(\\hat{\\rho}_{uv}\\): The correlation between the game-to-game variability in the slopes and intercepts (not included in this model)"
   },
   {
     "objectID": "slides/21-multilevel-glms-pt2.html#crossed-random-effects-1",
@@ -5569,7 +5569,7 @@
     "href": "slides/21-multilevel-glms-pt2.html#model-3-in-r",
     "title": "Multilevel Generalized Linear Models",
     "section": "Model 3 in R",
-    "text": "Model 3 in R\n\nmodel3 &lt;- glmer(foul.home ~ foul.diff + \n                  (1|game) + (1|hometeam) + (1 | visitor),\n               data = basketball, family = binomial)\n\n\ntidy(model3) |&gt; kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\nfixed\nNA\n(Intercept)\n-0.188\n0.063\n-2.967\n0.003\n\n\nfixed\nNA\nfoul.diff\n-0.264\n0.039\n-6.795\n0.000\n\n\nran_pars\ngame\nsd__(Intercept)\n0.414\nNA\nNA\nNA\n\n\nran_pars\nhometeam\nsd__(Intercept)\n0.261\nNA\nNA\nNA\n\n\nran_pars\nvisitor\nsd__(Intercept)\n0.152\nNA\nNA\nNA"
+    "text": "Model 3 in R\n\nmodel3 &lt;- glmer(foul.home ~ foul.diff + \n                  (1|game) + (1|hometeam) + (1 | visitor),\n               data = basketball, family = binomial)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\nfixed\nNA\n(Intercept)\n-0.188\n0.063\n-2.967\n0.003\n\n\nfixed\nNA\nfoul.diff\n-0.264\n0.039\n-6.795\n0.000\n\n\nran_pars\ngame\nsd__(Intercept)\n0.414\nNA\nNA\nNA\n\n\nran_pars\nhometeam\nsd__(Intercept)\n0.261\nNA\nNA\nNA\n\n\nran_pars\nvisitor\nsd__(Intercept)\n0.152\nNA\nNA\nNA"
   },
   {
     "objectID": "slides/21-multilevel-glms-pt2.html#model-3-coefficients",
@@ -5611,21 +5611,63 @@
     "href": "slides/21-multilevel-glms-pt2.html#full-model",
     "title": "Multilevel Generalized Linear Models",
     "section": "Full model",
-    "text": "Full model\n\\[\\begin{aligned}\\log\\Big(\\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\\Big) &= \\alpha_0 + \\beta_0 ~ \\text{foul.diff}_{ij} + \\gamma_0 ~\\text{score.diff}_{ij} + \\delta_0 ~ \\text{lead.home}_{ij} \\\\\n&+ \\phi_0 ~ \\text{time}_{ij} + \\kappa_0 ~ \\text{offensive}_{ij} + \\lambda_0 ~ \\text{personal}_{ij} \\\\\n&+ \\mu_0 ~ \\text{foul.diff}_{ij}\\text{:offensive}_{ij} + \\nu_0 ~ \\text{foul.diff}_{ij}\\text{:personal}_{ij} \\\\\n& + \\omega_0 ~ \\text{foul.diff}_{ij}\\text{:time_}_{ij}+ \\zeta_0 ~ \\text{lead.home}_{ij}\\text{:time}_{ij} \\\\\n&+ [u_i + v_h + w_g]\\end{aligned}\\] \\[u_i \\sim N(0, \\sigma^2_u) \\hspace{10mm} v_h \\sim N(0, \\sigma^2_v) \\hspace{10mm} w_g \\sim N(0, \\sigma^2_w)\\]\n\n\nmodel_full &lt;- glmer(foul.home ~ foul.diff + score.diff + lead.home + time + \n                      offensive + personal + foul.diff:offensive + \n                      foul.diff:personal + foul.diff:time + lead.home:time + \n                      (1|game) + (1|hometeam) + (1|visitor),\n  family = binomial, data = basketball)"
+    "text": "Full model\n\\[\\begin{aligned}\\log\\Big(\\frac{p_{i[gh]j}}{1 - p_{i[gh]j}}\\Big) &= \\alpha_0 + \\beta_0 ~ \\text{foul.diff}_{ij} + \\gamma_0 ~\\text{score.diff}_{ij} +  \\\\\n&+ \\phi_0 ~ \\text{time}_{ij} + \\kappa_0 ~ \\text{offensive}_{ij} + \\lambda_0 ~ \\text{personal}_{ij} \\\\\n&+ \\mu_0 ~ \\text{foul.diff}_{ij}\\text{:offensive}_{ij} + \\nu_0 ~ \\text{foul.diff}_{ij}\\text{:personal}_{ij} \\\\\n& + \\omega_0 ~ \\text{foul.diff}_{ij}\\text{:time_}_{ij} \\\\\n&+ [u_i + v_h + w_g]\\end{aligned}\\] \\[u_i \\sim N(0, \\sigma^2_u) \\hspace{10mm} v_h \\sim N(0, \\sigma^2_v) \\hspace{10mm} w_g \\sim N(0, \\sigma^2_w)\\]\n\n\nfull_model &lt;- glmer(foul.home ~ foul.diff + score.diff + time + \n                      offensive + personal + foul.diff:offensive + \n                      foul.diff:personal + foul.diff:time + \n                      (1|game) + (1|hometeam) + (1|visitor),\n  family = binomial, data = basketball)\n\n\n\n\nSimilar to model from Section 11.7 of Roback and Legler (2021)"
+  },
+  {
+    "objectID": "slides/21-multilevel-glms-pt2.html#full-model-1",
+    "href": "slides/21-multilevel-glms-pt2.html#full-model-1",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Full model",
+    "text": "Full model\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\neffect\ngroup\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\nfixed\nNA\n(Intercept)\n-0.336\n0.100\n-3.347\n0.001\n\n\nfixed\nNA\nfoul.diff\n-0.169\n0.046\n-3.697\n0.000\n\n\nfixed\nNA\nscore.diff\n0.035\n0.006\n6.238\n0.000\n\n\nfixed\nNA\ntime\n0.005\n0.006\n0.854\n0.393\n\n\nfixed\nNA\noffensive\n-0.077\n0.111\n-0.692\n0.489\n\n\nfixed\nNA\npersonal\n0.073\n0.065\n1.115\n0.265\n\n\nfixed\nNA\nfoul.diff:offensive\n-0.102\n0.054\n-1.893\n0.058\n\n\nfixed\nNA\nfoul.diff:personal\n-0.056\n0.032\n-1.755\n0.079\n\n\nfixed\nNA\nfoul.diff:time\n-0.009\n0.003\n-2.766\n0.006\n\n\nran_pars\ngame\nsd__(Intercept)\n0.425\nNA\nNA\nNA\n\n\nran_pars\nhometeam\nsd__(Intercept)\n0.278\nNA\nNA\nNA\n\n\nran_pars\nvisitor\nsd__(Intercept)\n0.208\nNA\nNA\nNA"
   },
   {
     "objectID": "slides/21-multilevel-glms-pt2.html#conclusions-from-full-model",
     "href": "slides/21-multilevel-glms-pt2.html#conclusions-from-full-model",
     "title": "Multilevel Generalized Linear Models",
     "section": "Conclusions from full model",
-    "text": "Conclusions from full model\n\nBased on the full model, what are your conclusions about the factors that impact the odds of a foul on the home team?"
+    "text": "Conclusions from full model\n\nBased on the full model, what are your conclusions about the factors that impact the odds of a foul on the home team?\nSee Section 11.3.1 of Roback and Legler (2021) or full codebook."
+  },
+  {
+    "objectID": "slides/21-multilevel-glms-pt2.html#estimated-random-effects-for-each-team",
+    "href": "slides/21-multilevel-glms-pt2.html#estimated-random-effects-for-each-team",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Estimated random effects for each team",
+    "text": "Estimated random effects for each team\n\nWe will use the full model to get the estimated random effect for each team.\nThese are empirical Bayes estimates (“shrinkage estimates”).\n\nCombine individual-specific information with information from all teams\n“Shrinks” the individual estimates toward the group averages\n\n\n\n\nSee Liu, Kuppens, and Bringmann (2021) on Canvas for more detail on empirical Bayes estimation."
+  },
+  {
+    "objectID": "slides/21-multilevel-glms-pt2.html#estimated-random-effects-for-each-team-1",
+    "href": "slides/21-multilevel-glms-pt2.html#estimated-random-effects-for-each-team-1",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Estimated random effects for each team",
+    "text": "Estimated random effects for each team\nWe can get these effects using the ranef function in the lmer R package.\n\nreffect_game &lt;- ranef(full_model)$game |&gt; select(`(Intercept)`) |&gt; pull()\nreffect_home &lt;- ranef(full_model)$hometeam |&gt; select(`(Intercept)`) |&gt; pull()\nreffect_visitor &lt;- ranef(full_model)$visitor |&gt; select(`(Intercept)`) |&gt; pull()\nteam_names &lt;- rownames(ranef(full_model)$visitor)\nreffect_team &lt;- tibble(team = team_names, \n                       reffect_home = reffect_home,\n                     reffect_visitor = reffect_visitor)\n\n\n\nreffect_team |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 3\n  team   reffect_home reffect_visitor\n  &lt;chr&gt;         &lt;dbl&gt;           &lt;dbl&gt;\n1 BC          -0.0623          0.0296\n2 CIN          0.291          -0.0827\n3 CLEM        -0.174          -0.126 \n4 CT          -0.274           0.0756\n5 DEPAUL       0.439          -0.281"
+  },
+  {
+    "objectID": "slides/21-multilevel-glms-pt2.html#distribution-of-random-home-team-effects",
+    "href": "slides/21-multilevel-glms-pt2.html#distribution-of-random-home-team-effects",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Distribution of random home team effects",
+    "text": "Distribution of random home team effects"
+  },
+  {
+    "objectID": "slides/21-multilevel-glms-pt2.html#estimated-home-random-effects-by-team",
+    "href": "slides/21-multilevel-glms-pt2.html#estimated-home-random-effects-by-team",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Estimated home random effects by team",
+    "text": "Estimated home random effects by team"
+  },
+  {
+    "objectID": "slides/21-multilevel-glms-pt2.html#code",
+    "href": "slides/21-multilevel-glms-pt2.html#code",
+    "title": "Multilevel Generalized Linear Models",
+    "section": "Code",
+    "text": "Code\n\nvar &lt;- attr(ranef(full_model)$hometeam, \"postVar\")\nreffect_predict &lt;- tibble(Intercepts = reffect_home,\n              SD = 2*sqrt(var[,,1:length(var)]),\n              team_names = reffect_team$team)\n\nggplot(data = reffect_predict, aes(fct_reorder(team_names, Intercepts), \n                                   Intercepts)) + \n  geom_point() + \n  geom_hline(yintercept = 0) + \n  geom_errorbar(aes(ymin = Intercepts - SD,\n                    ymax = Intercepts + SD),\n                width=0,color=\"black\") + \n  labs(title = \"Estimated random home team effects\", \n       x = \"Home teams\", \n       y = \"Estimated random effects\") + \n theme(axis.text.y = element_text(size = 7)) + \n  coord_flip()"
   },
   {
     "objectID": "slides/21-multilevel-glms-pt2.html#references",
     "href": "slides/21-multilevel-glms-pt2.html#references",
     "title": "Multilevel Generalized Linear Models",
     "section": "References",
-    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nAnderson, Kyle J, and David A Pierce. 2009. “Officiating Bias: The Effect of Foul Differential on Foul Calls in NCAA Basketball.” Journal of Sports Sciences 27 (7): 687–94.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
+    "text": "References\n\n\n\n\n🔗 STA 310 - Spring 2024\n\n\n\n\nAnderson, Kyle J, and David A Pierce. 2009. “Officiating Bias: The Effect of Foul Differential on Foul Calls in NCAA Basketball.” Journal of Sports Sciences 27 (7): 687–94.\n\n\nLiu, Siwei, Peter Kuppens, and Laura Bringmann. 2021. “On the Use of Empirical Bayes Estimates as Measures of Individual Traits.” Assessment 28 (3): 845–57.\n\n\nRoback, Paul, and Julie Legler. 2021. Beyond multiple linear regression: applied generalized linear models and multilevel models in R. CRC Press."
   },
   {
     "objectID": "slides/11-multilevel-models.html#announcements",

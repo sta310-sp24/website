@@ -1,0 +1,125 @@
+---
+title: "Lecture 22: Multilevel multinomial logistic model"
+date: "`r Sys.Date()`"
+execute:
+  warning: false
+  message: false
+bibliography: references.bib
+---
+
+```{r}
+#label: load-packages-data
+library(tidyverse)
+library(knitr)
+library(viridis)
+library(broom.mixed)
+library(mclogit)
+
+inhaler <- read_csv("data/inhaler.csv")  |>
+  mutate(rating = factor(rating), 
+         treat = factor(treat), 
+         period = factor(period))
+```
+
+## Introduction
+
+Today's data come from an experiment in @ezzet1991. The authors analyze data from a two-treatment, two-period crossover trial to compare 2 inhalation devices for delivering the drug salbutamol in 286 asthma patients. Patients were asked to rate the clarity of leaflet instructions accompanying each device, using a 4-point ordinal scale.[^1]
+
+[^1]: Experiment description from <https://paul-buerkner.github.io/brms/reference/inhaler.html>
+
+We will use the following variables:
+
+-   `subject`: The subject number
+-   `rating`: The rating of the inhaler instructions on a scale ranging from 1 to 4
+    -   1: easy to understand
+    -   2: only clear after rereading
+    -   3: not very clear
+    -   4: confusing
+-   `treat`: Indicator of which of the two inhaler devices was used
+-   `period`: Indicator of whether the rating is from the first or second inhaler evaluated
+
+**The goal of the analysis is to understand which inhaler was easier for participants to understand.**
+
+## Exploratory data analysis
+
+::: callout-note
+## Ex 1
+
+Examine the distribution of the response variable `rating`. In general, what did the participants think about the instructions?
+:::
+
+```{r}
+#| label: ex1
+
+## add code here
+
+```
+
+::: callout-note
+## Ex 2
+
+Examine the relationship between `rating` and `period`. Does there appear to be an association between the order and what participants thought about the instructions?
+:::
+
+```{r}
+#| label: ex2
+
+## add code here
+```
+
+::: callout-note
+## Ex 3
+
+Examine the relationship between `rating` and `treat`. Does there appear to be an association between the inhaler used and what participants thought about the instructions?
+:::
+
+```{r}
+#| label: ex3
+
+## add code here
+
+```
+
+## Model
+
+::: callout-note
+## Ex 4
+
+We will fit a multinomial logistic model for multilevel data. We need a random effect for what term?
+:::
+
+Form of the multilevel multinomial logistic model:
+
+Let $\pi_{ijk}$ be the probability of participant $i$ selecting rating $k$ in period $j$
+
+$$\log\Big(\frac{\pi_{ijk}}{\pi_{ij1}}\Big) = \alpha_k + \beta_{1k}treat_{ij} + \beta_{2k}period_{ij} + u_{ik} \hspace{8mm} u_{ik} \sim N(0, \sigma^2_k)$$\
+\
+
+::: callout-note
+## Ex 5
+
+Fit the model using the `mblogit()` function from the **mclogit** R package[@mclogit].
+:::
+
+```{r}
+#| label: ex5
+
+## add code to fit and display model
+
+```
+
+## Conclusions
+
+::: callout-note
+## Ex 6
+
+Use the model to describe the effect of the order (`period`).
+:::
+
+::: callout-note
+## Ex 7
+
+Use the model to describe the effect of the inhaler (`treat`)
+:::
+
+## References

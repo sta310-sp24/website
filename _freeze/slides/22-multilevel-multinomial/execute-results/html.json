@@ -1,0 +1,19 @@
+{
+  "hash": "61495b6dcfadea58d336043ee8887a81",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Multilevel Multinomial Logistic Models\"\ndate: \"04.15.24\"\ndate-format: \"MMM DD, YYYY\"\nauthor: \"Prof. Maria Tackett\"\nfooter: \"[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)\"\nlogo: \"../images/logo.png\"\nformat: \n  revealjs:\n    theme: slides.scss\n    slide-number: true\n    multiplex: false\n    transition: fade\n    incremental: false \n    chalkboard: true\nhtml-math-method:\n  method: mathjax\n  url: \"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"\nexecute:\n  freeze: auto\n  echo: true\n  warning: false\n  message: false\nknitr:\n  opts_chunk: \n    R.options:      \n    width: 200\nbibliography: references.bib\n---\n\n\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n\n## Announcements\n\n-   Quiz 05 Tue, April 16 \\~ 9am - Thu, Apr 18 at noon\n    -   Covers readings, lectures, and content from March 25 - April 12\n-   Final project\n    -   Round 1 submission (optional) due April 25\n\n    -   Final submission due May 2\n\n    -   Next week classes for project meetings\n-   Please fill out course evaluations!\n\n## Topics\n\n-   Review covariance between observations for 3-level models\n\n-   Fit and interpret a multilevel multinomial logistic model\n\n# Covariance between observations\n\n## Model C in Jones (1991)\n\nRecall Model C from @jones1991specifying\n\n::: columns\n::: {.column width=\"50%\"}\n![](images/18/fixed-effects-modelc.png){fig-align=\"center\" width=\"100%\"}\n:::\n\n::: {.column width=\"50%\"}\n![](images/18/random-effects-modelc.png){fig-align=\"center\"}\n:::\n:::\n\n## Covariance structure between observations \n\n::: question\n-   Write the variance in price for a single house.\n-   Write the covariance between two houses in the same district in the same time period.\n-   Write the covariance matrix for houses from the same time period in the same district.\n:::\n\n## Covariance structure between observations\n\n::: question\n-   Write the covariance between two houses in different time periods in the same district.\n\n-   Write the covariance matrix between houses in different time periods in the same district.\n:::\n\n# Multilevel multinomial logistic models\n\n# Application exercise\n\n::: appex\n📋 [sta310-sp24.netlify.app/ae/lec-22-multinomial](https://sta310-sp24.netlify.app/ae/lec-22-multinomial.html)\n:::\n\n## References\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

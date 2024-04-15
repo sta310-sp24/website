@@ -85,7 +85,7 @@ Recall Model C from @jones1991specifying
 :::
 :::
 
-## Covariance structure between observations 
+## Covariance structure between observations
 
 ::: question
 -   Write the variance in price for a single house.
@@ -93,12 +93,10 @@ Recall Model C from @jones1991specifying
 -   Write the covariance matrix for houses from the same time period in the same district.
 :::
 
-## Covariance structure between observations
+. . .
 
 ::: question
 -   Write the covariance between two houses in different time periods in the same district.
-
--   Write the covariance matrix between houses in different time periods in the same district.
 :::
 
 # Multilevel multinomial logistic models

@@ -1194,14 +1194,7 @@
     "href": "slides/22-multilevel-multinomial.html#covariance-structure-between-observations",
     "title": "Multilevel Multinomial Logistic Models",
     "section": "Covariance structure between observations",
-    "text": "Covariance structure between observations\n\n\nWrite the variance in price for a single house.\nWrite the covariance between two houses in the same district in the same time period.\nWrite the covariance matrix for houses from the same time period in the same district."
-  },
-  {
-    "objectID": "slides/22-multilevel-multinomial.html#covariance-structure-between-observations-1",
-    "href": "slides/22-multilevel-multinomial.html#covariance-structure-between-observations-1",
-    "title": "Multilevel Multinomial Logistic Models",
-    "section": "Covariance structure between observations",
-    "text": "Covariance structure between observations\n\n\nWrite the covariance between two houses in different time periods in the same district.\nWrite the covariance matrix between houses in different time periods in the same district."
+    "text": "Covariance structure between observations\n\n\nWrite the variance in price for a single house.\nWrite the covariance between two houses in the same district in the same time period.\nWrite the covariance matrix for houses from the same time period in the same district.\n\n\n\n\n\nWrite the covariance between two houses in different time periods in the same district."
   },
   {
     "objectID": "slides/22-multilevel-multinomial.html#references",

@@ -3525,28 +3525,70 @@
     "href": "ae/lec-23-yelp.html#introduction",
     "title": "Lecture 23: Modeling Yelp Reviews",
     "section": "Introduction",
-    "text": "Introduction\nToday’s dataset contains a sample of 1000 Yelp reviews for restaurants in Madison, WI from 2005 to 2017. The data were originally obtained from the Yelp Dataset Challenge on Kaggle, which contains about 60,000 reviews on 888 restaurants posted by over 20,000 reviewers.\nWe will focus on the following variables:\n\nstars_given: Restaurant star rating 1(worst) - 5(best)\nlength_100: Number words in the review / 100\nuseful: Number of users who rated the review as “useful”\nfunny: Number of users who rated the review was “funny”\ncool: Number of users who rated the review as “cool”\nrevs_user100: Number of previous reviews the user has written / 100\nrevs_biz100: Number of reviews the restaurant has / 100\navg_biz_star: Average star rating for restaurant\n\nThe goal of the analysis is to determine what factors are associated with a good Yelp review."
+    "text": "Introduction\nToday’s dataset contains a sample of 1000 Yelp reviews for restaurants in Madison, WI from 2005 to 2017. The data were originally obtained from the Yelp Dataset Challenge on Kaggle, which contains about 60,000 reviews on 888 restaurants posted by over 20,000 reviewers.\nWe will focus on the following variables:\n\nstars_given: Restaurant star rating 1(worst) - 5(best)\nlength100: Number words in the review / 100\nuseful: Number of users who rated the review as “useful”\nfunny: Number of users who rated the review was “funny”\ncool: Number of users who rated the review as “cool”\nrevs_user100: Number of previous reviews the user has written / 100\nrevs_biz100: Number of reviews the restaurant has / 100\navg_biz_stars: Average star rating for restaurant\nuser_id: Denotes the reviewer\nname: Name of restaurant being reviewed\n\nThe goal of the analysis is to determine what factors are associated with a good Yelp review."
   },
   {
     "objectID": "ae/lec-23-yelp.html#exploratory-data-analysis",
     "href": "ae/lec-23-yelp.html#exploratory-data-analysis",
     "title": "Lecture 23: Modeling Yelp Reviews",
     "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\n\n\n\n\n\nExercise 1\n\n\n\nConsider the distribution of the respones variable stars_given. What type of model(s) can we fit to understand the association between the response and the other factors?\n\n\n\n## add code here\n\n\n\n\n\n\n\nExercise 2\n\n\n\nVisualize the relationship between the response and 1 - 2 predictors. What do you observe from these plots?\n\n\n\n## add code here"
+    "text": "Exploratory data analysis"
+  },
+  {
+    "objectID": "ae/lec-23-yelp.html#exercise-1",
+    "href": "ae/lec-23-yelp.html#exercise-1",
+    "title": "Lecture 23: Modeling Yelp Reviews",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nConsider the distribution of the response variable stars_given.\n\nWhat type of model(s) can we fit to understand the association between the a good Yelp review and the other factors?\nWhat random effect(s) do we need to account for in the model(s)?\n\n\n## add code here"
+  },
+  {
+    "objectID": "ae/lec-23-yelp.html#exercise-2",
+    "href": "ae/lec-23-yelp.html#exercise-2",
+    "title": "Lecture 23: Modeling Yelp Reviews",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nVisualize the relationship between the response and 1 - 2 predictors. What do you observe from these plots?\n\n## add code here"
   },
   {
     "objectID": "ae/lec-23-yelp.html#modeling",
     "href": "ae/lec-23-yelp.html#modeling",
     "title": "Lecture 23: Modeling Yelp Reviews",
     "section": "Modeling",
-    "text": "Modeling\n\n\n\n\n\n\nExercise 3\n\n\n\nWhat random effect(s) do we need to account for in the model?\n\n\n\n\n\n\n\n\nExercise 4\n\n\n\nFit and display the model(s) described in Exercise 1.\n\n\n\n# add code here"
+    "text": "Modeling"
+  },
+  {
+    "objectID": "ae/lec-23-yelp.html#exercise-3",
+    "href": "ae/lec-23-yelp.html#exercise-3",
+    "title": "Lecture 23: Modeling Yelp Reviews",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nFit and display the model(s) described in Exercise 1.\n\n# add code here"
   },
   {
     "objectID": "ae/lec-23-yelp.html#conclusions",
     "href": "ae/lec-23-yelp.html#conclusions",
     "title": "Lecture 23: Modeling Yelp Reviews",
     "section": "Conclusions",
-    "text": "Conclusions\n\n\n\n\n\n\nExercise 5\n\n\n\nWe will use one of the models from Exercise 4 to draw conclusions about factors associated with a good Yelp review. Which model do choose? Briefly explain your choice.\n\n\n\n\n\n\n\n\nExercise 6\n\n\n\nUse the model selected from the previous exercise. What factors are associated with a good Yelp review?"
+    "text": "Conclusions"
+  },
+  {
+    "objectID": "ae/lec-23-yelp.html#exercise-4",
+    "href": "ae/lec-23-yelp.html#exercise-4",
+    "title": "Lecture 23: Modeling Yelp Reviews",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nWe will use one of the models from Exercise 3 to draw conclusions about factors associated with a good Yelp review. Which model do choose? Briefly explain your choice."
+  },
+  {
+    "objectID": "ae/lec-23-yelp.html#exercise-5",
+    "href": "ae/lec-23-yelp.html#exercise-5",
+    "title": "Lecture 23: Modeling Yelp Reviews",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nUse the model selected from the previous exercise. What factors are associated with a good Yelp review?"
+  },
+  {
+    "objectID": "ae/lec-23-yelp.html#acknowledgements",
+    "href": "ae/lec-23-yelp.html#acknowledgements",
+    "title": "Lecture 23: Modeling Yelp Reviews",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThe data set used in this exercise was obtained from the collection of data sets in Beyond Multiple Linear Regression."
   },
   {
     "objectID": "ae/lec-05-overdisp.html",

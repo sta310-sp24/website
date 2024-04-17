@@ -285,8 +285,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sta310-sp24/website/edit/main/ae/lec-23-yelp.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sta310-sp24/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -335,111 +341,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will focus on the following variables:</p>
 <ul>
 <li><code>stars_given</code>: Restaurant star rating 1(worst) - 5(best)</li>
-<li><code>length_100</code>: Number words in the review / 100</li>
+<li><code>length100</code>: Number words in the review / 100</li>
 <li><code>useful</code>: Number of users who rated the review as “useful”</li>
 <li><code>funny</code>: Number of users who rated the review was “funny”</li>
 <li><code>cool</code>: Number of users who rated the review as “cool”</li>
 <li><code>revs_user100</code>: Number of previous reviews the user has written / 100</li>
 <li><code>revs_biz100</code>: Number of reviews the restaurant has / 100</li>
-<li><code>avg_biz_star</code>: Average star rating for restaurant</li>
+<li><code>avg_biz_stars</code>: Average star rating for restaurant</li>
+<li><code>user_id</code>: Denotes the reviewer</li>
+<li><code>name</code>: Name of restaurant being reviewed</li>
 </ul>
 <p><strong>The goal of the analysis is to determine what factors are associated with a good Yelp review.</strong></p>
 </section>
 <section id="exploratory-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory data analysis</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 1
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Consider the distribution of the respones variable <code>stars_given</code>. What type of model(s) can we fit to understand the association between the response and the other factors?</p>
-</div>
-</div>
+</section>
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
+<p>Consider the distribution of the response variable <code>stars_given</code>.</p>
+<ul>
+<li><p>What type of model(s) can we fit to understand the association between the a good Yelp review and the other factors?</p></li>
+<li><p>What random effect(s) do we need to account for in the model(s)?</p></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 2
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
 <p>Visualize the relationship between the response and 1 - 2 predictors. What do you observe from these plots?</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="modeling" class="level2">
 <h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 3
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>What random effect(s) do we need to account for in the model?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 4
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
 <p>Fit and display the model(s) described in Exercise 1.</p>
-</div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="conclusions" class="level2">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 5
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We will use one of the models from Exercise 4 to draw conclusions about factors associated with a good Yelp review. Which model do choose? Briefly explain your choice.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 6
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
+<p>We will use one of the models from Exercise 3 to draw conclusions about factors associated with a good Yelp review. Which model do choose? Briefly explain your choice.</p>
+</section>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
 <p>Use the model selected from the previous exercise. What factors are associated with a good Yelp review?</p>
-</div>
-</div>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>The data set used in this exercise was obtained from the <a href="https://github.com/proback/BeyondMLR/tree/master/data">collection of data sets</a> in <a href="https://bookdown.org/roback/bookdown-BeyondMLR/"><em>Beyond Multiple Linear Regression</em></a>.</p>
 
 
 </section>

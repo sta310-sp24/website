@@ -8,7 +8,7 @@ execute:
 
 ```{r}
 #| label: load-packages-data
-#| eval: false
+#| eval: false 
 
 
 library(tidyverse)
@@ -29,23 +29,27 @@ Today's dataset contains a sample of 1000 Yelp reviews for restaurants in Madiso
 We will focus on the following variables:
 
 -   `stars_given`: Restaurant star rating 1(worst) - 5(best)
--   `length_100`: Number words in the review / 100
+-   `length100`: Number words in the review / 100
 -   `useful`: Number of users who rated the review as "useful"
 -   `funny`: Number of users who rated the review was "funny"
 -   `cool`: Number of users who rated the review as "cool"
 -   `revs_user100`: Number of previous reviews the user has written / 100
 -   `revs_biz100`: Number of reviews the restaurant has / 100
--   `avg_biz_star`: Average star rating for restaurant
+-   `avg_biz_stars`: Average star rating for restaurant
+-   `user_id`: Denotes the reviewer
+-   `name`: Name of restaurant being reviewed
 
 **The goal of the analysis is to determine what factors are associated with a good Yelp review.**
 
 ## Exploratory data analysis
 
-::: callout-note
 ## Exercise 1
 
-Consider the distribution of the respones variable `stars_given`. What type of model(s) can we fit to understand the association between the response and the other factors?
-:::
+Consider the distribution of the response variable `stars_given`.
+
+-   What type of model(s) can we fit to understand the association between the a good Yelp review and the other factors?
+
+-   What random effect(s) do we need to account for in the model(s)?
 
 ```{r}
 #| label: ex1
@@ -54,11 +58,9 @@ Consider the distribution of the respones variable `stars_given`. What type of m
 
 ```
 
-::: callout-note
 ## Exercise 2
 
 Visualize the relationship between the response and 1 - 2 predictors. What do you observe from these plots?
-:::
 
 ```{r}
 #| label: ex2
@@ -69,34 +71,26 @@ Visualize the relationship between the response and 1 - 2 predictors. What do yo
 
 ## Modeling
 
-::: callout-note
 ## Exercise 3
 
-What random effect(s) do we need to account for in the model?
-:::
-
-::: callout-note
-## Exercise 4
-
 Fit and display the model(s) described in Exercise 1.
-:::
 
 ```{r}
-#| label: ex4
+#| label: ex3
 
 # add code here
 ```
 
 ## Conclusions
 
-::: callout-note
+## Exercise 4
+
+We will use one of the models from Exercise 3 to draw conclusions about factors associated with a good Yelp review. Which model do choose? Briefly explain your choice.
+
 ## Exercise 5
 
-We will use one of the models from Exercise 4 to draw conclusions about factors associated with a good Yelp review. Which model do choose? Briefly explain your choice.
-:::
-
-::: callout-note
-## Exercise 6
-
 Use the model selected from the previous exercise. What factors are associated with a good Yelp review?
-:::
+
+## Acknowledgements
+
+The data set used in this exercise was obtained from the [collection of data sets](https://github.com/proback/BeyondMLR/tree/master/data) in [*Beyond Multiple Linear Regression*](https://bookdown.org/roback/bookdown-BeyondMLR/).

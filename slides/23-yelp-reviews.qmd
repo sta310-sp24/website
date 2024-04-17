@@ -1,0 +1,74 @@
+---
+title: "Modeling Yelp Reviews"
+date: "04.17.24"
+date-format: "MMM DD, YYYY"
+author: "Prof. Maria Tackett"
+footer: "[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)"
+logo: "../images/logo.png"
+format: 
+  revealjs:
+    theme: slides.scss
+    slide-number: true
+    multiplex: false
+    transition: fade
+    incremental: false 
+    chalkboard: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+knitr:
+  opts_chunk: 
+    R.options:      
+    width: 200
+bibliography: references.bib
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(fig.width = 8,
+                      fig.asp = 0.618, 
+                      fig.retina = 3, 
+                      dpt = 300, 
+                      out.width = "70%",
+                      fig.align = "center")
+
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+
+colors <- tibble::tibble(green = "#B5BA72")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(patchwork)
+library(ggfortify)
+library(lme4)
+library(broom.mixed)
+```
+
+## Announcements {.midi}
+
+-   Quiz 05 due Thu, Apr 18 at noon
+    -   Covers readings, lectures, and content from March 25 - April 12
+-   HW 06 due Wed, Apr 24 (open tomorrow at 9am)
+-   Quiz 06: Mon Apr 22 (\~9am) - Wed Apr 24 at noon
+-   Final project
+    -   Round 1 submission (optional) due April 25
+
+    -   Final submission due May 2
+
+    -   [Click here](https://docs.google.com/spreadsheets/d/10n1g62amtfAwLpsYZwe1Oacsw-Fryo9BWoRQGpcGzPA/edit?usp=sharing) to sign up for a project meeting
+-   Please fill out course evaluations!
+
+# Application exercise
+
+::: appex
+📋 [sta310-sp24.netlify.app/ae/lec-23-yelp](https://sta310-sp24.netlify.app/ae/lec-23-yelp.html)
+:::
+
+## References

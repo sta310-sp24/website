@@ -1,0 +1,19 @@
+{
+  "hash": "6050b41c64fbdcaad329ab8c9a1e61be",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Modeling Yelp Reviews\"\ndate: \"04.17.24\"\ndate-format: \"MMM DD, YYYY\"\nauthor: \"Prof. Maria Tackett\"\nfooter: \"[🔗 STA 310 - Spring 2024](https://sta310-sp24.netlify.app)\"\nlogo: \"../images/logo.png\"\nformat: \n  revealjs:\n    theme: slides.scss\n    slide-number: true\n    multiplex: false\n    transition: fade\n    incremental: false \n    chalkboard: true\nhtml-math-method:\n  method: mathjax\n  url: \"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"\nexecute:\n  freeze: auto\n  echo: true\n  warning: false\n  message: false\nknitr:\n  opts_chunk: \n    R.options:      \n    width: 200\nbibliography: references.bib\n---\n\n\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n\n## Announcements {.midi}\n\n-   Quiz 05 due Thu, Apr 18 at noon\n    -   Covers readings, lectures, and content from March 25 - April 12\n-   HW 06 due Wed, Apr 24 (open tomorrow at 9am)\n-   Quiz 06: Mon Apr 22 (\\~9am) - Wed Apr 24 at noon\n-   Final project\n    -   Round 1 submission (optional) due April 25\n\n    -   Final submission due May 2\n\n    -   [Click here](https://docs.google.com/spreadsheets/d/10n1g62amtfAwLpsYZwe1Oacsw-Fryo9BWoRQGpcGzPA/edit?usp=sharing) to sign up for a project meeting\n-   Please fill out course evaluations!\n\n# Application exercise\n\n::: appex\n📋 [sta310-sp24.netlify.app/ae/lec-23-yelp](https://sta310-sp24.netlify.app/ae/lec-23-yelp.html)\n:::\n\n## References\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -29,76 +29,80 @@
     <lastmod>2024-03-07T04:31:12.345Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/22-multilevel-multinomial.html</loc>
-    <lastmod>2024-04-15T16:53:57.621Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/03-model2-mle.html</loc>
+    <lastmod>2024-01-23T19:15:19.667Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/07-glm-theory.html</loc>
-    <lastmod>2024-02-05T18:27:15.187Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/18-three-level-models.html</loc>
+    <lastmod>2024-03-25T15:22:16.558Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/20-multilevel-glms.html</loc>
-    <lastmod>2024-04-01T16:11:26.582Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/13-multilevel-models-pt3.html</loc>
+    <lastmod>2024-03-03T19:35:53.225Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/07-logistic-intro.html</loc>
-    <lastmod>2024-02-05T16:21:50.447Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/09-prop-odds-probit.html</loc>
+    <lastmod>2024-02-12T19:42:13.269Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/02-big-picture.html</loc>
-    <lastmod>2024-01-03T03:38:31.000Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/19-three-level-models-pt2.html</loc>
+    <lastmod>2024-03-27T18:26:18.128Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/10-correlated-data.html</loc>
-    <lastmod>2024-02-20T18:13:23.307Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/01-welcome.html</loc>
+    <lastmod>2024-01-10T19:21:49.041Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/15-longitudinal-pt2.html</loc>
-    <lastmod>2024-03-17T20:36:53.195Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/03-mlr-review-pt2.html</loc>
+    <lastmod>2024-01-16T18:56:11.000Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/lab-01.html</loc>
-    <lastmod>2024-03-04T16:26:59.651Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/08-logistic-pt2.html</loc>
+    <lastmod>2024-02-07T18:28:33.588Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/17-longitudinal-in-practice.html</loc>
-    <lastmod>2024-03-20T17:38:35.241Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/05-poisson-pt2.html</loc>
+    <lastmod>2024-01-29T20:06:09.431Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/course-overview.html</loc>
-    <lastmod>2024-01-22T19:15:46.920Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/index.html</loc>
+    <lastmod>2024-01-23T19:27:09.265Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/projects/project-02.html</loc>
-    <lastmod>2024-03-26T14:56:09.622Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/projects/project-tips.html</loc>
+    <lastmod>2024-01-03T03:38:31.034Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/projects/final-project.html</loc>
-    <lastmod>2024-03-24T23:42:17.719Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/projects/project-01.html</loc>
+    <lastmod>2024-02-08T18:40:33.489Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-11-multilevel.html</loc>
-    <lastmod>2024-02-21T19:37:48.181Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/support.html</loc>
+    <lastmod>2024-01-05T16:41:11.203Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-20-multilevel-glm.html</loc>
-    <lastmod>2024-04-01T00:30:08.437Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/ae-02-mlr-review.html</loc>
+    <lastmod>2024-01-18T00:46:43.420Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-08-logistic.html</loc>
-    <lastmod>2024-02-07T18:40:29.914Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-10-correlated.html</loc>
+    <lastmod>2024-02-19T02:36:34.755Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-04-poisson-estimate.html</loc>
-    <lastmod>2024-01-24T19:19:40.680Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-14-longitudinal.html</loc>
+    <lastmod>2024-03-03T20:06:42.716Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-13-multilevel-contd.html</loc>
-    <lastmod>2024-02-28T19:30:19.682Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-17-sleep-study.html</loc>
+    <lastmod>2024-03-20T14:15:39.447Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-05-overdisp.html</loc>
-    <lastmod>2024-01-29T17:39:45.236Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/ae-04-poisson.html</loc>
+    <lastmod>2024-02-21T02:24:04.818Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-22-multinomial.html</loc>
+    <lastmod>2024-04-15T15:21:46.306Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/prepare/apr-10.html</loc>
@@ -201,80 +205,84 @@
     <lastmod>2024-02-03T01:28:33.883Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-22-multinomial.html</loc>
-    <lastmod>2024-04-15T15:21:46.306Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-23-yelp.html</loc>
+    <lastmod>2024-04-17T15:03:57.370Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/ae-04-poisson.html</loc>
-    <lastmod>2024-02-21T02:24:04.818Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-05-overdisp.html</loc>
+    <lastmod>2024-01-29T17:39:45.236Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-17-sleep-study.html</loc>
-    <lastmod>2024-03-20T14:15:39.447Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-13-multilevel-contd.html</loc>
+    <lastmod>2024-02-28T19:30:19.682Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-14-longitudinal.html</loc>
-    <lastmod>2024-03-03T20:06:42.716Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-04-poisson-estimate.html</loc>
+    <lastmod>2024-01-24T19:19:40.680Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/lec-10-correlated.html</loc>
-    <lastmod>2024-02-19T02:36:34.755Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-08-logistic.html</loc>
+    <lastmod>2024-02-07T18:40:29.914Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/ae/ae-02-mlr-review.html</loc>
-    <lastmod>2024-01-18T00:46:43.420Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-20-multilevel-glm.html</loc>
+    <lastmod>2024-04-01T00:30:08.437Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/support.html</loc>
-    <lastmod>2024-01-05T16:41:11.203Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/ae/lec-11-multilevel.html</loc>
+    <lastmod>2024-02-21T19:37:48.181Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/projects/project-01.html</loc>
-    <lastmod>2024-02-08T18:40:33.489Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/projects/final-project.html</loc>
+    <lastmod>2024-03-24T23:42:17.719Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/projects/project-tips.html</loc>
-    <lastmod>2024-01-03T03:38:31.034Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/projects/project-02.html</loc>
+    <lastmod>2024-03-26T14:56:09.622Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/index.html</loc>
-    <lastmod>2024-01-23T19:27:09.265Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/course-overview.html</loc>
+    <lastmod>2024-01-22T19:15:46.920Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/05-poisson-pt2.html</loc>
-    <lastmod>2024-01-29T20:06:09.431Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/17-longitudinal-in-practice.html</loc>
+    <lastmod>2024-03-20T17:38:35.241Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/08-logistic-pt2.html</loc>
-    <lastmod>2024-02-07T18:28:33.588Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/lab-01.html</loc>
+    <lastmod>2024-03-04T16:26:59.651Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/03-mlr-review-pt2.html</loc>
-    <lastmod>2024-01-16T18:56:11.000Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/15-longitudinal-pt2.html</loc>
+    <lastmod>2024-03-17T20:36:53.195Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/01-welcome.html</loc>
-    <lastmod>2024-01-10T19:21:49.041Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/10-correlated-data.html</loc>
+    <lastmod>2024-02-20T18:13:23.307Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/19-three-level-models-pt2.html</loc>
-    <lastmod>2024-03-27T18:26:18.128Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/02-big-picture.html</loc>
+    <lastmod>2024-01-03T03:38:31.000Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/09-prop-odds-probit.html</loc>
-    <lastmod>2024-02-12T19:42:13.269Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/07-logistic-intro.html</loc>
+    <lastmod>2024-02-05T16:21:50.447Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/13-multilevel-models-pt3.html</loc>
-    <lastmod>2024-03-03T19:35:53.225Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/20-multilevel-glms.html</loc>
+    <lastmod>2024-04-01T16:11:26.582Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/18-three-level-models.html</loc>
-    <lastmod>2024-03-25T15:22:16.558Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/07-glm-theory.html</loc>
+    <lastmod>2024-02-05T18:27:15.187Z</lastmod>
   </url>
   <url>
-    <loc>https://sta310-sp24.netlify.app/slides/03-model2-mle.html</loc>
-    <lastmod>2024-01-23T19:15:19.667Z</lastmod>
+    <loc>https://sta310-sp24.netlify.app/slides/22-multilevel-multinomial.html</loc>
+    <lastmod>2024-04-15T16:53:57.621Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta310-sp24.netlify.app/slides/23-yelp-reviews.html</loc>
+    <lastmod>2024-04-17T15:05:50.632Z</lastmod>
   </url>
   <url>
     <loc>https://sta310-sp24.netlify.app/slides/03-likelihoods.html</loc>

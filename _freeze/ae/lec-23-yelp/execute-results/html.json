@@ -1,0 +1,15 @@
+{
+  "hash": "71a169af8e93392036fe78fb1f09bfde",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Lecture 23: Modeling Yelp Reviews\"\ndate: \"2024-04-17\"\nexecute:\n  warning: false\n  message: false\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(knitr)\nlibrary(viridis)\nlibrary(broom.mixed)\nlibrary(mclogit)\nlibrary(ordinal)\n\nyelp <- read_csv(\"data/yelp_sample.csv\") |>\n  mutate(stars_given = factor(stars_given))\n```\n:::\n\n\n## Introduction\n\nToday's dataset contains a sample of 1000 Yelp reviews for restaurants in Madison, WI from 2005 to 2017. The data were originally obtained from the Yelp Dataset Challenge on [Kaggle](https://www.kaggle.com/yelp-dataset/yelp-dataset), which contains about 60,000 reviews on 888 restaurants posted by over 20,000 reviewers.\n\nWe will focus on the following variables:\n\n-   `stars_given`: Restaurant star rating 1(worst) - 5(best)\n-   `length_100`: Number words in the review / 100\n-   `useful`: Number of users who rated the review as \"useful\"\n-   `funny`: Number of users who rated the review was \"funny\"\n-   `cool`: Number of users who rated the review as \"cool\"\n-   `revs_user100`: Number of previous reviews the user has written / 100\n-   `revs_biz100`: Number of reviews the restaurant has / 100\n-   `avg_biz_star`: Average star rating for restaurant\n\n**The goal of the analysis is to determine what factors are associated with a good Yelp review.**\n\n## Exploratory data analysis\n\n::: callout-note\n## Exercise 1\n\nConsider the distribution of the respones variable `stars_given`. What type of model(s) can we fit to understand the association between the response and the other factors?\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\n## add code here\n```\n:::\n\n\n::: callout-note\n## Exercise 2\n\nVisualize the relationship between the response and 1 - 2 predictors. What do you observe from these plots?\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\n## add code here\n```\n:::\n\n\n## Modeling\n\n::: callout-note\n## Exercise 3\n\nWhat random effect(s) do we need to account for in the model?\n:::\n\n::: callout-note\n## Exercise 4\n\nFit and display the model(s) described in Exercise 1.\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# add code here\n```\n:::\n\n\n## Conclusions\n\n::: callout-note\n## Exercise 5\n\nWe will use one of the models from Exercise 4 to draw conclusions about factors associated with a good Yelp review. Which model do choose? Briefly explain your choice.\n:::\n\n::: callout-note\n## Exercise 6\n\nUse the model selected from the previous exercise. What factors are associated with a good Yelp review?\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

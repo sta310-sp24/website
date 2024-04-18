@@ -3211,9 +3211,53 @@
   {
     "objectID": "hw/hw-06.html",
     "href": "hw/hw-06.html",
-    "title": "HW 06",
+    "title": "HW 06: Multilevel Generalized Linear Models",
     "section": "",
-    "text": "To be posted.",
+    "text": "Important\n\n\n\nThis assignment is due on Wednesday, April 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, April 25 at noon (12pm).\n\nYour access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.\nYou will have access to your HW repo again when grades are returned.",
+    "crumbs": [
+      "Homework",
+      "HW 06"
+    ]
+  },
+  {
+    "objectID": "hw/hw-06.html#exercise-1",
+    "href": "hw/hw-06.html#exercise-1",
+    "title": "HW 06: Multilevel Generalized Linear Models",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nExplain to someone unfamiliar with the plots in Figure 11.2 how to read both a conditional density plot and an empirical logit plot. For example, explain what the dark region in a conditional density plot represents, what each point in an empirical logit plot represents, etc. \nIn Section 11.4.2, why don’t we simply run a logistic regression model for each of the 340 games, collect the 340 intercepts and slopes, and fit a model to those intercepts and slopes? \nIn Section 11.8, why isn’t the baseline odds of a home foul for DePaul considered a model parameter?",
+    "crumbs": [
+      "Homework",
+      "HW 06"
+    ]
+  },
+  {
+    "objectID": "hw/hw-06.html#exercise-2",
+    "href": "hw/hw-06.html#exercise-2",
+    "title": "HW 06: Multilevel Generalized Linear Models",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nConsider Model F in Section 11.7 of Roback and Legler (2021). Interpret the following in the context of the data.\n\n\\(\\hat{\\phi}_0\\)\n\\(\\hat{\\kappa}_0\\)\n\\(\\hat{\\zeta}_0\\)",
+    "crumbs": [
+      "Homework",
+      "HW 06"
+    ]
+  },
+  {
+    "objectID": "hw/hw-06.html#exercise-3",
+    "href": "hw/hw-06.html#exercise-3",
+    "title": "HW 06: Multilevel Generalized Linear Models",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nWe will analyze the data from Angell (2010) used in Case Study 10.2 to explore factors related to whether or not a seed germinated. The data is available in seeds2.csv and is described in Section 10.3.1. We will ignore plant heights over time and focus solely on if the plant germinated at any time.\nUse multilevel generalized linear models to determine the effects of soil type and sterilization on germination rates; perform separate analyses for coneflowers and leadplants, and describe differences between the two species. Support your conclusions with well-interpreted model coefficients and insightful visualizations.",
+    "crumbs": [
+      "Homework",
+      "HW 06"
+    ]
+  },
+  {
+    "objectID": "hw/hw-06.html#exercise-4",
+    "href": "hw/hw-06.html#exercise-4",
+    "title": "HW 06: Multilevel Generalized Linear Models",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nJanusz and Mohr (2018) created a data set Yelp restaurant reviews in Madison, WI, from 2005 through 2017 based on the Yelp Dataset Challenge on Kaggle. The data is in yelp.csv , and it contains almost 60,000 reviews on 888 restaurants from over 20,000 reviewers. It incudes contains a selection of variables on the reviewer (e.g., total reviews, average stars), the restaurant (e.g., neighborhood, average stars, category), and the review itself (e.g., stars, year, useful ratings, actual text).\nThe goal is to use the variables in the data to model the number of stars in the rating or whether or not the rating is “good” (however you define “good”).\n\n\n\n\n\n\nTip\n\n\n\nA few things to keep in mind while building models to answer your questions:\n\nuser and restaurant can be considered crossed random effects\nconvergence (or computing time) may be an issue. You may have to take a random sample of reviews, or a targeted sample of more frequently appearing users and/or restaurants.",
     "crumbs": [
       "Homework",
       "HW 06"

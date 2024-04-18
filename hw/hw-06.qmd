@@ -1,5 +1,5 @@
 ---
-title: "HW 06"
+title: "HW 06: Multilevel Generalized Linear Models"
 subtitle: ""
 editor: visual
 execute:
@@ -11,4 +11,82 @@ execute:
 bibliography: references.bib
 ---
 
-To be posted.
+::: callout-important
+This assignment is due on Wednesday, April 24 at 11:59pm with a grace period (i.e., no late penalty) until Thursday, April 25 at noon (12pm).
+
+-   Your access to the repo will be removed at the end of the grace period. If you wish to submit the HW late, please email me and I will extend your access to the repo.
+-   You will have access to your HW repo again when grades are returned.
+:::
+
+# Instructions
+
+-   Write all narrative using full sentences. Write all interpretations and conclusions in the context of the data.
+-   Be sure all analysis code is displayed in the rendered pdf.
+-   If you are fitting a model, display the model output in a neatly formatted table. (The `tidy` and `kable` functions can help!)
+-   If you are creating a plot, use clear and informative labels and titles.
+-   Render, commit, and push your work to GitHub regularly, at least after each exercise. Write short and informative commit messages.
+-   When you’re done, we should be able to render the final version of the Quarto document in your GitHub repo to fully reproduce your pdf.
+
+# Exercises
+
+::: callout-note
+Exercises 1 - 4 are from exercises in chapter 11 of @roback2021beyond.
+:::
+
+## Exercise 1
+
+a.  Explain to someone unfamiliar with the plots in [Figure 11.2](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#fig:gmu-cdelogitmat1) how to read both a conditional density plot and an empirical logit plot. For example, explain what the dark region in a conditional density plot represents, what each point in an empirical logit plot represents, etc. <!--# Ex2 in Section 11.10.1-->
+
+b.  In [Section 11.4.2](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#twostage-glmm), why don’t we simply run a logistic regression model for each of the 340 games, collect the 340 intercepts and slopes, and fit a model to those intercepts and slopes? <!--# Ex 4 in Section 11.10.1-->
+
+c.  In [Section 11.8](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#estimatedRE), why isn’t the baseline odds of a home foul for DePaul considered a model parameter?
+
+## Exercise 2 
+
+Consider [Model F](https://bookdown.org/roback/bookdown-BeyondMLR/ch-GLMM.html#sec:finalmodel-glmm) in Section 11.7 of @roback2021beyond. Interpret the following in the context of the data.
+
+a.  $\hat{\phi}_0$
+b.  $\hat{\kappa}_0$
+c.  $\hat{\zeta}_0$
+
+## Exercise 3
+
+<!--# Ex 2 in Section 11.10.-->
+
+We will analyze the data from @Angell2010 used in [Case Study 10.2](#0) to explore factors related to whether or not a seed germinated. The data is available in `seeds2.csv` and is described in [Section 10.3.1](#0). We will ignore plant heights over time and focus solely on if the plant germinated at any time.
+
+Use multilevel generalized linear models to determine the effects of soil type and sterilization on germination rates; perform separate analyses for coneflowers and leadplants, and describe differences between the two species. Support your conclusions with well-interpreted model coefficients and insightful visualizations.
+
+## Exercise 4
+
+<!--# Ex 4 in Section 11.10.2-->
+
+@Mohr2018 created a data set Yelp restaurant reviews in Madison, WI, from 2005 through 2017 based on the Yelp Dataset Challenge on [Kaggle](https://www.kaggle.com/yelp-dataset/yelp-dataset). The data is in `yelp.csv` , and it contains almost 60,000 reviews on 888 restaurants from over 20,000 reviewers. It incudes contains a selection of variables on the reviewer (e.g., total reviews, average stars), the restaurant (e.g., neighborhood, average stars, category), and the review itself (e.g., stars, year, useful ratings, actual text).
+
+The goal is to use the variables in the data to model the number of stars in the rating or whether or not the rating is "good" (however you define "good").
+
+::: callout-tip
+A few things to keep in mind while building models to answer your questions:
+
+-   user and restaurant can be considered crossed random effects
+
+-   convergence (or computing time) may be an issue. You may have to take a random sample of reviews, or a targeted sample of more frequently appearing users and/or restaurants.
+:::
+
+# Submission
+
+To submit the assignment, push your final changes to your GitHub repo. Then, you're done! We will grade the latest versions of the files that were pushed to the GitHub repo by the deadline unless otherwise notified that you wish to submit late work.
+
+# Grading
+
+| **Total**             | **50** |
+|-----------------------|:------:|
+| Ex 1                  |   11   |
+| Ex 2                  |   9    |
+| Ex 3                  |   12   |
+| Ex 4                  |   15   |
+| Workflow & formatting |   3    |
+
+The "Workflow & formatting" grade is to based on the organization of the assignment write up along with the reproducible workflow. This includes having an organized write up with neat and readable headers, code, and narrative, including properly rendered mathematical notation. It also includes having a reproducible Quarto document that can be rendered to reproduce the submitted PDF, along with implementing version control using multiple commits with informative commit messages.
+
+# References
